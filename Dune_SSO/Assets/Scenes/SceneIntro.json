@@ -1,8 +1,180 @@
 {
     "SceneIntro": {
         "active": true,
-        "game_objects_amount": 253,
+        "game_objects_amount": 255,
         "game_objects_list": [
+            {
+                "UID": 1063059068,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_frustum": true,
+                        "far_plane_distance": 100.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.10000000149011612,
+                        "type": "camera",
+                        "vertical_fov": 60.0
+                    }
+                ],
+                "is3D": true,
+                "name": "camera",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1996815609,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_frustum": true,
+                        "far_plane_distance": 100.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.10000000149011612,
+                        "type": "camera",
+                        "vertical_fov": 60.0
+                    }
+                ],
+                "is3D": true,
+                "name": "camera",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 2049531616,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_frustum": true,
+                        "far_plane_distance": 100.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.10000000149011612,
+                        "type": "camera",
+                        "vertical_fov": 60.0
+                    }
+                ],
+                "is3D": true,
+                "name": "camera",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1169420277,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_frustum": true,
+                        "far_plane_distance": 100.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.10000000149011612,
+                        "type": "camera",
+                        "vertical_fov": 60.0
+                    }
+                ],
+                "is3D": true,
+                "name": "camera",
+                "parent_UID": 4294967295
+            },
             {
                 "UID": 1720035744,
                 "active": true,
@@ -14754,356 +14926,6 @@
                 "parent_UID": 477925363
             },
             {
-                "UID": 572630954,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            -190.0,
-                            -107.35501861572266,
-                            -380.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ],
-                        "scale": [
-                            0.02160000242292881,
-                            0.02160000242292881,
-                            0.02160000242292881
-                        ],
-                        "type": "transform"
-                    }
-                ],
-                "is3D": true,
-                "name": "jail",
-                "parent_UID": 4294967295
-            },
-            {
-                "UID": 1253225526,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            -65.84606170654297,
-                            71.16275024414063,
-                            0.010304336436092854
-                        ],
-                        "rotation": [
-                            -0.7071068286895752,
-                            0.0,
-                            0.0,
-                            0.7071067094802856
-                        ],
-                        "scale": [
-                            802.783203125,
-                            802.783203125,
-                            184.69979858398438
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cube.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/jail_texture_2.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "active": true,
-                        "collider_type": 3,
-                        "is_trigger": false,
-                        "type": "collider"
-                    }
-                ],
-                "is3D": true,
-                "name": "Cube",
-                "parent_UID": 572630954
-            },
-            {
-                "UID": 701251683,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            680.2423706054688,
-                            171.9608917236328,
-                            -0.10645203292369843
-                        ],
-                        "rotation": [
-                            -0.7071068286895752,
-                            0.0,
-                            0.0,
-                            0.7071067094802856
-                        ],
-                        "scale": [
-                            33.47137451171875,
-                            33.47137451171875,
-                            184.69979858398438
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cylinder.004.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/jail_texture_3.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "active": true,
-                        "collider_type": 3,
-                        "is_trigger": false,
-                        "type": "collider"
-                    }
-                ],
-                "is3D": true,
-                "name": "Cylinder.004",
-                "parent_UID": 572630954
-            },
-            {
-                "UID": 420236855,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            -180.48504638671875,
-                            -108.61907196044922,
-                            -428.0766906738281
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ],
-                        "scale": [
-                            0.021924011409282684,
-                            0.021924011409282684,
-                            0.021924011409282684
-                        ],
-                        "type": "transform"
-                    }
-                ],
-                "is3D": true,
-                "name": "Jail2",
-                "parent_UID": 4294967295
-            },
-            {
-                "UID": 2140358874,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            -65.84606170654297,
-                            71.16275024414063,
-                            0.010304336436092854
-                        ],
-                        "rotation": [
-                            -0.7071068286895752,
-                            0.0,
-                            0.0,
-                            0.7071067094802856
-                        ],
-                        "scale": [
-                            802.783203125,
-                            802.783203125,
-                            184.69979858398438
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cube.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/jail_texture_1.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "active": true,
-                        "collider_type": 3,
-                        "is_trigger": false,
-                        "type": "collider"
-                    }
-                ],
-                "is3D": true,
-                "name": "Cube",
-                "parent_UID": 420236855
-            },
-            {
-                "UID": 34901424,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            680.2423706054688,
-                            171.9608917236328,
-                            -0.10645203292369843
-                        ],
-                        "rotation": [
-                            -0.7071068286895752,
-                            0.0,
-                            0.0,
-                            0.7071067094802856
-                        ],
-                        "scale": [
-                            33.47137451171875,
-                            33.47137451171875,
-                            184.69979858398438
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cylinder.004.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/jail_texture_3.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "active": true,
-                        "collider_type": 3,
-                        "is_trigger": false,
-                        "type": "collider"
-                    }
-                ],
-                "is3D": true,
-                "name": "Cylinder.004",
-                "parent_UID": 420236855
-            },
-            {
                 "UID": 1735546765,
                 "active": true,
                 "components": [
@@ -16125,15 +15947,15 @@
                             146.9074249267578
                         ],
                         "rotation": [
-                            0.1766369640827179,
-                            0.684689462184906,
-                            0.6846891045570374,
-                            -0.17663699388504028
+                            -0.17663703858852386,
+                            -0.6846896409988403,
+                            -0.684688925743103,
+                            0.17663691937923431
                         ],
                         "scale": [
-                            3.815279245376587,
-                            22.17291831970215,
-                            30.798789978027344
+                            3.8152806758880615,
+                            22.17292022705078,
+                            30.79879379272461
                         ],
                         "type": "transform"
                     },
@@ -16283,6 +16105,165 @@
                 "is3D": true,
                 "name": "Circle.002",
                 "parent_UID": 975055685
+            },
+            {
+                "UID": 809079953,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "logicalSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": "canvas"
+                    }
+                ],
+                "is3D": false,
+                "name": "Canvas",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 459347003,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -804.9099731445313,
+                            -38.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            309.95001220703125,
+                            1004.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/character_abilities_extended_v1.0.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "CharacterAbilites",
+                "parent_UID": 809079953
+            },
+            {
+                "UID": 2018708386,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            769.0,
+                            -324.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            382.0,
+                            437.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/radar_menu_extended_v1.3.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Radar/Map",
+                "parent_UID": 809079953
+            },
+            {
+                "UID": 798141997,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            400.3500061035156
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            290.0,
+                            188.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/objective_timer_v1.2.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Image",
+                "parent_UID": 809079953
             }
         ],
         "name": "SceneIntro"
