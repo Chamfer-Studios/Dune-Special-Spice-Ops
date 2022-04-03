@@ -4,7 +4,7 @@
         "game_objects_amount": 4,
         "game_objects_list": [
             {
-                "UID": 477529146,
+                "UID": 718982867,
                 "active": true,
                 "components": [
                     {
@@ -14,8 +14,8 @@
                     {
                         "active": true,
                         "position": [
-                            321.7974853515625,
-                            -294.2901916503906,
+                            0.0,
+                            0.0,
                             0.0
                         ],
                         "rotation": [
@@ -47,7 +47,7 @@
                 "parent_UID": 4294967295
             },
             {
-                "UID": 862334459,
+                "UID": 609855484,
                 "active": true,
                 "components": [
                     {
@@ -80,7 +80,7 @@
                 "parent_UID": 4294967295
             },
             {
-                "UID": 1534534507,
+                "UID": 849466727,
                 "active": true,
                 "components": [
                     {
@@ -142,10 +142,10 @@
                 ],
                 "is3D": true,
                 "name": "Chimney",
-                "parent_UID": 862334459
+                "parent_UID": 609855484
             },
             {
-                "UID": 662957244,
+                "UID": 1170845734,
                 "active": true,
                 "components": [
                     {
@@ -207,7 +207,7 @@
                 ],
                 "is3D": true,
                 "name": "Baker_house",
-                "parent_UID": 862334459
+                "parent_UID": 609855484
             }
         ],
         "name": "SceneIntro",
