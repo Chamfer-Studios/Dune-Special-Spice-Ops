@@ -1,7 +1,7 @@
 {
     "Level_1": {
         "active": true,
-        "game_objects_amount": 113,
+        "game_objects_amount": 119,
         "game_objects_list": [
             {
                 "UID": 1855757815,
@@ -68,13 +68,13 @@
                         ],
                         "size": [
                             477.0,
-                            360.0
+                            370.0
                         ],
                         "type": "transform2D"
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/radar_menu_extended_v1.3.png",
+                        "texture": "Assets/HUD/radar_v1.4.png",
                         "type": "image"
                     }
                 ],
@@ -161,9 +161,40 @@
                     },
                     {
                         "active": true,
-                        "file_name": "Assets/Scripts/UI_CharacterSelected.lua",
+                        "file_name": "Assets/Scripts/UI_CharacterSelectedSFX.lua",
                         "script_number": 1,
                         "type": "script"
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/click_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/hover_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": "audio_switch"
                     }
                 ],
                 "is3D": false,
@@ -206,6 +237,43 @@
                         "idleTexture": "Assets/HUD/character_nebala_normal_v1.3.png",
                         "pressedTexture": "Assets/HUD/character_nebala_select_v1.3.png",
                         "type": "button"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/UI_CharacterSelectedSFX2.lua",
+                        "script_number": 1,
+                        "type": "script"
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/click_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/hover_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": "audio_switch"
                     }
                 ],
                 "is3D": false,
@@ -282,7 +350,7 @@
                     },
                     {
                         "active": true,
-                        "file_name": "Assets/Scripts/UI_SFX.lua",
+                        "file_name": "Assets/Scripts/UI_CharacterSelectedSFX3.lua",
                         "script_number": 1,
                         "type": "script"
                     }
@@ -410,46 +478,6 @@
                 "is3D": false,
                 "name": "Skill_Slot_3",
                 "parent_UID": 738051600
-            },
-            {
-                "UID": 2043050516,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 2,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -27.5,
-                            -5.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            153.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "Q 1"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter",
-                "parent_UID": 1025753550
             },
             {
                 "UID": 337521856,
@@ -645,7 +673,7 @@
                             0.5
                         ],
                         "position": [
-                            -321.0,
+                            -315.0,
                             -360.0
                         ],
                         "rotation": [
@@ -666,7 +694,7 @@
                     }
                 ],
                 "is3D": false,
-                "name": "Zhibb",
+                "name": "Portrait",
                 "parent_UID": 1855757815
             },
             {
@@ -790,86 +818,6 @@
                 "parent_UID": 1855757815
             },
             {
-                "UID": 1721936553,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 2,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -27.0,
-                            -7.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            255.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "E 100"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter1",
-                "parent_UID": 733408228
-            },
-            {
-                "UID": 1817646285,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 1,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -13.0,
-                            -6.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            51.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "W"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter2",
-                "parent_UID": 1566707212
-            },
-            {
                 "UID": 1583141216,
                 "active": true,
                 "components": [
@@ -983,6 +931,12 @@
                         "active": true,
                         "texture": "Assets/HUD/hud_portrait_main_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/UI_CharacterAssetsChange.lua",
+                        "script_number": 1,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -1365,6 +1319,12 @@
                                 }
                             }
                         ]
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/GameState.lua",
+                        "script_number": 1,
+                        "type": "script"
                     }
                 ],
                 "is3D": true,
@@ -1734,7 +1694,7 @@
                         "scale": [
                             6.171868801116943,
                             37.91328048706055,
-                            5.734508037567139
+                            5.734494686126709
                         ],
                         "type": "transform"
                     },
@@ -1838,7 +1798,7 @@
                         "scale": [
                             21.5231876373291,
                             11.684016227722168,
-                            24.47530174255371
+                            24.475248336791992
                         ],
                         "type": "transform"
                     },
@@ -2351,7 +2311,7 @@
                         ],
                         "scale": [
                             15.089888572692871,
-                            13.269049644470215,
+                            13.269076347351074,
                             19.00071144104004
                         ],
                         "type": "transform"
@@ -2864,9 +2824,9 @@
                             -0.1258147656917572
                         ],
                         "scale": [
-                            16.879985809326172,
-                            13.835649490356445,
-                            21.200361251831055
+                            16.880084991455078,
+                            13.835702896118164,
+                            21.200481414794922
                         ],
                         "type": "transform"
                     },
@@ -3170,15 +3130,15 @@
                             -139.76702880859375
                         ],
                         "rotation": [
-                            -0.6872443556785583,
-                            0.16642065346240997,
-                            0.16642071306705475,
-                            0.6872435212135315
+                            -0.6872442960739136,
+                            0.1664206087589264,
+                            0.1664208620786667,
+                            0.6872434616088867
                         ],
                         "scale": [
                             2.220000982284546,
-                            7.180044651031494,
-                            2.479877233505249
+                            7.180046558380127,
+                            2.4798784255981445
                         ],
                         "type": "transform"
                     },
@@ -3282,7 +3242,7 @@
                         "scale": [
                             5.21999979019165,
                             2.2600033283233643,
-                            1.539945125579834
+                            1.5399417877197266
                         ],
                         "type": "transform"
                     },
@@ -3580,15 +3540,15 @@
                             -61.12946319580078
                         ],
                         "rotation": [
-                            -0.021933166310191154,
+                            -0.021933095529675484,
                             0.7067665457725525,
                             0.7067665457725525,
-                            0.02193324826657772
+                            0.02193331904709339
                         ],
                         "scale": [
-                            1.0000194311141968,
-                            0.9999898076057434,
-                            0.9999918937683105
+                            1.0000253915786743,
+                            0.9999914765357971,
+                            0.999995231628418
                         ],
                         "type": "transform"
                     },
@@ -3691,8 +3651,8 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.781494140625,
-                            184.69937133789063
+                            802.77978515625,
+                            184.69894409179688
                         ],
                         "type": "transform"
                     },
@@ -3756,8 +3716,8 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.4711799621582,
-                            184.6990203857422
+                            33.471073150634766,
+                            184.69859313964844
                         ],
                         "type": "transform"
                     },
@@ -3954,12 +3914,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             100.0,
-                            99.99986267089844,
-                            99.99986267089844
+                            99.99967193603516,
+                            99.99967193603516
                         ],
                         "type": "transform"
                     },
@@ -4019,12 +3979,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             100.0,
-                            99.99986267089844,
-                            99.99986267089844
+                            99.99967193603516,
+                            99.99967193603516
                         ],
                         "type": "transform"
                     },
@@ -4088,8 +4048,8 @@
                         ],
                         "scale": [
                             0.04796108976006508,
-                            0.04796101525425911,
-                            0.04796101525425911
+                            0.04796091839671135,
+                            0.04796091839671135
                         ],
                         "type": "transform"
                     },
@@ -4186,8 +4146,8 @@
                         ],
                         "scale": [
                             80.6787109375,
-                            767.5541381835938,
-                            97.48792266845703
+                            767.5524291992188,
+                            97.48770904541016
                         ],
                         "type": "transform"
                     },
@@ -4498,8 +4458,8 @@
                         ],
                         "scale": [
                             112.7684326171875,
-                            110.97943115234375,
-                            99.99993133544922
+                            110.97921752929688,
+                            99.99971771240234
                         ],
                         "type": "transform"
                     },
@@ -4569,8 +4529,8 @@
                         ],
                         "scale": [
                             487.72540283203125,
-                            487.7251281738281,
-                            99.99993133544922
+                            487.72430419921875,
+                            99.99972534179688
                         ],
                         "type": "transform"
                     },
@@ -4738,8 +4698,8 @@
                         ],
                         "scale": [
                             52.379886627197266,
-                            197.9552459716797,
-                            99.99994659423828
+                            197.95481872558594,
+                            99.9997329711914
                         ],
                         "type": "transform"
                     },
@@ -4799,12 +4759,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             11.124163627624512,
-                            99.99994659423828,
-                            99.99994659423828
+                            99.999755859375,
+                            99.999755859375
                         ],
                         "type": "transform"
                     },
@@ -4862,7 +4822,7 @@
                         ],
                         "rotation": [
                             0.0,
-                            -0.027340149506926537,
+                            -0.027340229600667953,
                             0.0,
                             0.9996262192726135
                         ],
@@ -4901,8 +4861,8 @@
                         ],
                         "scale": [
                             300.2073059082031,
-                            513.0497436523438,
-                            71.25141143798828
+                            513.0480346679688,
+                            71.2511978149414
                         ],
                         "type": "transform"
                     },
@@ -4972,8 +4932,8 @@
                         ],
                         "scale": [
                             16.808149337768555,
-                            19.276485443115234,
-                            30.18397331237793
+                            19.27643394470215,
+                            30.183921813964844
                         ],
                         "type": "transform"
                     },
@@ -5037,8 +4997,8 @@
                         ],
                         "scale": [
                             100.0,
-                            9.344147682189941,
-                            99.99996185302734
+                            9.344120979309082,
+                            99.99974822998047
                         ],
                         "type": "transform"
                     },
@@ -5241,12 +5201,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             100.0,
-                            99.99996185302734,
-                            99.99996185302734
+                            99.99976348876953,
+                            99.99976348876953
                         ],
                         "type": "transform"
                     },
@@ -5310,8 +5270,8 @@
                         ],
                         "scale": [
                             70.88108825683594,
-                            70.88105010986328,
-                            99.99996185302734
+                            70.88084411621094,
+                            99.999755859375
                         ],
                         "type": "transform"
                     },
@@ -5475,12 +5435,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             100.0,
-                            99.99994659423828,
-                            99.99994659423828
+                            99.999755859375,
+                            99.999755859375
                         ],
                         "type": "transform"
                     },
@@ -5540,12 +5500,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             100.0,
-                            99.99994659423828,
-                            99.99994659423828
+                            99.999755859375,
+                            99.999755859375
                         ],
                         "type": "transform"
                     },
@@ -5642,8 +5602,8 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.782470703125,
-                            184.69961547851563
+                            802.78076171875,
+                            184.69918823242188
                         ],
                         "type": "transform"
                     },
@@ -5707,8 +5667,8 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.47075271606445,
-                            184.69729614257813
+                            33.470645904541016,
+                            184.69686889648438
                         ],
                         "type": "transform"
                     },
@@ -5748,6 +5708,362 @@
                 "is3D": true,
                 "name": "Cylinder.0041",
                 "parent_UID": 2033793875
+            },
+            {
+                "UID": 290582165,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/GameState.lua",
+                        "script_number": 1,
+                        "type": "script"
+                    }
+                ],
+                "is3D": true,
+                "name": "GameState_Script",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1324954725,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/TemporaryPlayer.lua",
+                        "script_number": 1,
+                        "type": "script"
+                    }
+                ],
+                "is3D": true,
+                "name": "Player_Script",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1660335987,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5600000023841858,
+                            0.25
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            80.0,
+                            80.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/Ability Icons/Zhib/throwable_knife_ability_v1.0.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Skill_1",
+                "parent_UID": 1025753550
+            },
+            {
+                "UID": 1649483858,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5600000023841858,
+                            0.25
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            80.0,
+                            80.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/Ability Icons/Zhib/decoy_ability_v1.1.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Skill_2",
+                "parent_UID": 1566707212
+            },
+            {
+                "UID": 2027654493,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5600000023841858,
+                            0.25
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            80.0,
+                            80.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/Ability Icons/Zhib/zhib_ultimate_ability_v1.1.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Skill_3",
+                "parent_UID": 733408228
+            },
+            {
+                "UID": 346275239,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 8,
+                        "pivot": [
+                            1.0,
+                            0.0
+                        ],
+                        "position": [
+                            -100.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            50.0,
+                            50.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/HUD/spice_icon_v1.0.png",
+                        "type": "image"
+                    }
+                ],
+                "is3D": false,
+                "name": "Spice_Icon",
+                "parent_UID": 656183654
+            },
+            {
+                "UID": 376993197,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "anchor": 8,
+                        "pivot": [
+                            1.0,
+                            0.004999999888241291
+                        ],
+                        "position": [
+                            -160.0,
+                            -10.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            255.0,
+                            75.0
+                        ],
+                        "type": "transform2D"
+                    },
+                    {
+                        "active": true,
+                        "type": "text",
+                        "value": "00100"
+                    }
+                ],
+                "is3D": false,
+                "name": "Spice_Counter",
+                "parent_UID": 656183654
+            },
+            {
+                "UID": 301361706,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/TemporaryPlayer2.lua",
+                        "script_number": 1,
+                        "type": "script"
+                    }
+                ],
+                "is3D": true,
+                "name": "Player_Script_2",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 188102236,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/TemporaryPlayer3.lua",
+                        "script_number": 1,
+                        "type": "script"
+                    }
+                ],
+                "is3D": true,
+                "name": "Player_Script_3",
+                "parent_UID": 4294967295
             }
         ],
         "name": "Level_1",
