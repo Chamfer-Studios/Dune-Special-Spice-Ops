@@ -1,7 +1,7 @@
 {
     "Level_1": {
         "active": true,
-        "game_objects_amount": 63,
+        "game_objects_amount": 81,
         "game_objects_list": [
             {
                 "UID": 1855757815,
@@ -1323,7 +1323,7 @@
                         ],
                         "rotation": [
                             0.0,
-                            -0.030389878898859024,
+                            -0.030389860272407532,
                             0.0,
                             0.9995381236076355
                         ],
@@ -1624,7 +1624,7 @@
                         "active": true,
                         "position": [
                             89.51864624023438,
-                            -10.096976280212402,
+                            -13.097000122070313,
                             -104.90280151367188
                         ],
                         "rotation": [
@@ -1734,7 +1734,7 @@
                         "scale": [
                             6.171868801116943,
                             37.91328048706055,
-                            5.7345194816589355
+                            5.734516620635986
                         ],
                         "type": "transform"
                     },
@@ -1838,7 +1838,7 @@
                         "scale": [
                             21.5231876373291,
                             11.684016227722168,
-                            24.4753475189209
+                            24.4753360748291
                         ],
                         "type": "transform"
                     },
@@ -2345,13 +2345,13 @@
                         ],
                         "rotation": [
                             -0.517720639705658,
-                            0.4634670615196228,
+                            0.4634670913219452,
                             0.5047327876091003,
                             0.5122581720352173
                         ],
                         "scale": [
                             15.089888572692871,
-                            13.269026756286621,
+                            13.26903247833252,
                             19.00071144104004
                         ],
                         "type": "transform"
@@ -2448,15 +2448,15 @@
                             -201.4836883544922
                         ],
                         "rotation": [
-                            -0.7000421285629272,
-                            -0.09971348941326141,
-                            -0.09971324354410172,
-                            0.7000396251678467
+                            -0.700042188167572,
+                            -0.09971342980861664,
+                            -0.0997132807970047,
+                            0.7000396847724915
                         ],
                         "scale": [
                             1.8579919338226318,
-                            18.061777114868164,
-                            4.760834217071533
+                            18.06177520751953,
+                            4.760831832885742
                         ],
                         "type": "transform"
                     },
@@ -2756,7 +2756,7 @@
                         "rotation": [
                             -0.7025566101074219,
                             0.08011096715927124,
-                            0.08011097460985184,
+                            0.08011100441217422,
                             0.702551543712616
                         ],
                         "scale": [
@@ -2864,9 +2864,9 @@
                             -0.1258147656917572
                         ],
                         "scale": [
-                            16.879894256591797,
-                            13.835589408874512,
-                            21.200227737426758
+                            16.87991714477539,
+                            13.835604667663574,
+                            21.200258255004883
                         ],
                         "type": "transform"
                     },
@@ -2965,7 +2965,7 @@
                             -0.232334166765213,
                             0.6678454875946045,
                             0.6678498983383179,
-                            0.23233546316623688
+                            0.23233547806739807
                         ],
                         "scale": [
                             17.069231033325195,
@@ -3016,6 +3016,920 @@
                 "is3D": true,
                 "name": "lowpo.001",
                 "parent_UID": 2110985119
+            },
+            {
+                "UID": 1392609856,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_21",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 299089820,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            105.04542541503906,
+                            -14.54563045501709,
+                            -169.03355407714844
+                        ],
+                        "rotation": [
+                            0.42278292775154114,
+                            0.566794216632843,
+                            0.5667927861213684,
+                            -0.422782301902771
+                        ],
+                        "scale": [
+                            1.026015281677246,
+                            8.880223274230957,
+                            1.339839220046997
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0223.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0223",
+                "parent_UID": 1392609856
+            },
+            {
+                "UID": 930916908,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_34",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 309585408,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            129.42031860351563,
+                            -11.314616203308105,
+                            -139.76702880859375
+                        ],
+                        "rotation": [
+                            -0.6872442960739136,
+                            0.16642065346240997,
+                            0.16642065346240997,
+                            0.6872434616088867
+                        ],
+                        "scale": [
+                            2.220000982284546,
+                            7.180044651031494,
+                            2.47987961769104
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0015.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0015",
+                "parent_UID": 930916908
+            },
+            {
+                "UID": 87112891,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "metallic_box",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 392765183,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -244.79495239257813,
+                            -14.102618217468262,
+                            3.3739371299743652
+                        ],
+                        "rotation": [
+                            -0.6892813444137573,
+                            -0.15777161717414856,
+                            -0.1577713042497635,
+                            0.6892804503440857
+                        ],
+                        "scale": [
+                            5.21999979019165,
+                            2.2600033283233643,
+                            1.5399478673934937
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube1.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/metallic_box_textures.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube1",
+                "parent_UID": 87112891
+            },
+            {
+                "UID": 795528392,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "metallic_box1",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1878923302,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -247.38917541503906,
+                            -11.471325874328613,
+                            2.465700626373291
+                        ],
+                        "rotation": [
+                            -0.7005904316902161,
+                            -0.09578222036361694,
+                            -0.09578194469213486,
+                            0.7005887627601624
+                        ],
+                        "scale": [
+                            2.4600000381469727,
+                            2.3600001335144043,
+                            0.9999324679374695
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube2.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/metallic_box_textures.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube2",
+                "parent_UID": 795528392
+            },
+            {
+                "UID": 700335184,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "small_rock_3",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1567123776,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -235.22169494628906,
+                            -15.221253395080566,
+                            -23.1919002532959
+                        ],
+                        "rotation": [
+                            -0.7066193222999573,
+                            -0.026252692565321922,
+                            -0.02625274285674095,
+                            0.7066192030906677
+                        ],
+                        "scale": [
+                            6.239999771118164,
+                            6.019997596740723,
+                            5.239999771118164
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Circle.002.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/small_rock_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Circle.002",
+                "parent_UID": 700335184
+            },
+            {
+                "UID": 1817723061,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "still_tent",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 485912171,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -241.4185333251953,
+                            -14.267614364624023,
+                            -61.12946319580078
+                        ],
+                        "rotation": [
+                            -0.02193317748606205,
+                            0.7067665457725525,
+                            0.7067665457725525,
+                            0.02193320356309414
+                        ],
+                        "scale": [
+                            1.0000172853469849,
+                            0.9999887347221375,
+                            0.9999897480010986
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube3.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/still_tent_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube3",
+                "parent_UID": 1817723061
+            },
+            {
+                "UID": 381366000,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "tent",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1741958139,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            86.48609161376953,
+                            0.0
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067094802856
+                        ],
+                        "scale": [
+                            112.7684326171875,
+                            110.9789810180664,
+                            99.99948120117188
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube4.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube4",
+                "parent_UID": 381366000
+            },
+            {
+                "UID": 2023598288,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            682.3788452148438,
+                            0.0
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067094802856
+                        ],
+                        "scale": [
+                            487.72540283203125,
+                            487.7253112792969,
+                            99.9999771118164
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0016.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0016",
+                "parent_UID": 381366000
+            },
+            {
+                "UID": 5386323,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -253.5845184326172,
+                            -14.446205139160156,
+                            -42.82180404663086
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.2573721706867218,
+                            0.0,
+                            0.9663123488426208
+                        ],
+                        "scale": [
+                            0.00470002694055438,
+                            0.004700023680925369,
+                            0.00470002694055438
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "jail",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1339039005,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -65.84606170654297,
+                            71.16275024414063,
+                            0.010304336436092854
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067690849304
+                        ],
+                        "scale": [
+                            802.783203125,
+                            802.7825927734375,
+                            184.69964599609375
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube5.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/jail_texture_3.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube5",
+                "parent_UID": 5386323
+            },
+            {
+                "UID": 821967188,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            680.2423706054688,
+                            171.9608917236328,
+                            -0.10645203292369843
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067690849304
+                        ],
+                        "scale": [
+                            33.47137451171875,
+                            33.471248626708984,
+                            184.6992950439453
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cylinder.004.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/jail_texture_1.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cylinder.004",
+                "parent_UID": 5386323
             }
         ],
         "name": "Level_1",
