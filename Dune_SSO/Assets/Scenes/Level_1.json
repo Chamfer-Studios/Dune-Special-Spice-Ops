@@ -1,7 +1,7 @@
 {
     "Level_1": {
         "active": true,
-        "game_objects_amount": 25,
+        "game_objects_amount": 63,
         "game_objects_list": [
             {
                 "UID": 1855757815,
@@ -1040,7 +1040,7 @@
                         "active": true,
                         "position": [
                             0.0,
-                            0.0,
+                            158.0567169189453,
                             0.0
                         ],
                         "rotation": [
@@ -1070,6 +1070,1952 @@
                 "is3D": true,
                 "name": "camera",
                 "parent_UID": 4294967295
+            },
+            {
+                "UID": 852789928,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "Plane",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 607188679,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            -14.874935150146484,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            4.000000476837158,
+                            4.000000476837158,
+                            4.000000476837158
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Plane1.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/cliff_rock.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 0.9100000262260437,
+                                    "z": 0.6000000238418579
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 4,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Plane1",
+                "parent_UID": 852789928
+            },
+            {
+                "UID": 52767333,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "rocks_blockout",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1517454423,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            19.521936416625977,
+                            -4.8572468757629395,
+                            -15.045907974243164
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.9838309288024902,
+                            0.0,
+                            -0.17909984290599823
+                        ],
+                        "scale": [
+                            6.731216907501221,
+                            4.459706783294678,
+                            2.0086562633514404
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.175.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/Grey.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.175",
+                "parent_UID": 52767333
+            },
+            {
+                "UID": 1236369518,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "walls_blockout",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1842673624,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -159.26663208007813,
+                            4.708437919616699,
+                            203.1212615966797
+                        ],
+                        "rotation": [
+                            0.0,
+                            -0.030389878898859024,
+                            0.0,
+                            0.9995381236076355
+                        ],
+                        "scale": [
+                            1.1861437559127808,
+                            9.445817947387695,
+                            19.0700626373291
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/Grey (Dark).png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube",
+                "parent_UID": 1236369518
+            },
+            {
+                "UID": 1392387201,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_2",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1977495241,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -231.96136474609375,
+                            -6.524631500244141,
+                            231.30287170410156
+                        ],
+                        "rotation": [
+                            -0.7007795572280884,
+                            -0.09438376128673553,
+                            -0.09438370913267136,
+                            0.700779139995575
+                        ],
+                        "scale": [
+                            1.2460455894470215,
+                            13.005027770996094,
+                            1.233323574066162
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.022.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.022",
+                "parent_UID": 1392387201
+            },
+            {
+                "UID": 19564491,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_2_1",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 594795713,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -259.419189453125,
+                            -14.064849853515625,
+                            105.26473999023438
+                        ],
+                        "rotation": [
+                            -0.6887871026992798,
+                            0.15993140637874603,
+                            0.15993505716323853,
+                            0.6887779235839844
+                        ],
+                        "scale": [
+                            1.52994704246521,
+                            15.156993865966797,
+                            1.1260801553726196
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0221.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0221",
+                "parent_UID": 19564491
+            },
+            {
+                "UID": 345169672,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "props_blockout",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 715724382,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            89.51864624023438,
+                            -10.096976280212402,
+                            -104.90280151367188
+                        ],
+                        "rotation": [
+                            0.0,
+                            -0.017857948318123817,
+                            0.0,
+                            0.9998405575752258
+                        ],
+                        "scale": [
+                            1.7205982208251953,
+                            0.7870370745658875,
+                            0.734951913356781
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/ArtilleryGun.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/Grey 2.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "ArtilleryGun",
+                "parent_UID": 345169672
+            },
+            {
+                "UID": 1384137881,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_3",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1029721270,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -92.53297424316406,
+                            -42.799739837646484,
+                            7.14288330078125
+                        ],
+                        "rotation": [
+                            -0.7049310803413391,
+                            -0.05542930215597153,
+                            -0.055428504943847656,
+                            0.7049307823181152
+                        ],
+                        "scale": [
+                            6.171868801116943,
+                            37.91328048706055,
+                            5.7345194816589355
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.001.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.001",
+                "parent_UID": 1384137881
+            },
+            {
+                "UID": 991406360,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_2",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 430291333,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -189.33229064941406,
+                            -3.6962127685546875,
+                            3.494913101196289
+                        ],
+                        "rotation": [
+                            0.4934055507183075,
+                            0.5064952373504639,
+                            0.5065172910690308,
+                            -0.4934103190898895
+                        ],
+                        "scale": [
+                            21.5231876373291,
+                            11.684016227722168,
+                            24.4753475189209
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Low.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Low",
+                "parent_UID": 991406360
+            },
+            {
+                "UID": 2063502790,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_2_2",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 766725584,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -302.1054992675781,
+                            -9.730377197265625,
+                            -3.2849979400634766
+                        ],
+                        "rotation": [
+                            -0.7028958797454834,
+                            0.0770588144659996,
+                            0.07705829292535782,
+                            0.7028949856758118
+                        ],
+                        "scale": [
+                            1.437507152557373,
+                            9.354790687561035,
+                            1.611924409866333
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0222.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0222",
+                "parent_UID": 2063502790
+            },
+            {
+                "UID": 1193624779,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "rock_cliff",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 176050800,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -195.50967407226563,
+                            -25.716815948486328,
+                            -76.852783203125
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.08648490160703659,
+                            0.0,
+                            0.9962531328201294
+                        ],
+                        "scale": [
+                            0.09386982023715973,
+                            0.24433116614818573,
+                            0.06942255049943924
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/CliffRock_low.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/cliff_rock.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "CliffRock_low",
+                "parent_UID": 1193624779
+            },
+            {
+                "UID": 270608314,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "rock_cliff_1",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 147393863,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -262.68310546875,
+                            -31.842483520507813,
+                            -51.248512268066406
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.39905887842178345,
+                            0.0,
+                            0.916925311088562
+                        ],
+                        "scale": [
+                            0.0744296982884407,
+                            0.3962409198284149,
+                            0.07949043065309525
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/CliffRock_low1.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/cliff_rock.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "CliffRock_low1",
+                "parent_UID": 270608314
+            },
+            {
+                "UID": 257443238,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "small_rock_4",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 557154936,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -236.90989685058594,
+                            -3.4604544639587402,
+                            -73.74722290039063
+                        ],
+                        "rotation": [
+                            -0.06450308114290237,
+                            0.997324526309967,
+                            0.03439338132739067,
+                            -0.00047965827980078757
+                        ],
+                        "scale": [
+                            14.840274810791016,
+                            30.155982971191406,
+                            3.618654251098633
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Circle.005.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/small_rock_4_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Circle.005",
+                "parent_UID": 257443238
+            },
+            {
+                "UID": 1932558903,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_2_1",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 390450272,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -190.75865173339844,
+                            2.3226890563964844,
+                            -117.62522888183594
+                        ],
+                        "rotation": [
+                            -0.517720639705658,
+                            0.4634670615196228,
+                            0.5047327876091003,
+                            0.5122581720352173
+                        ],
+                        "scale": [
+                            15.089888572692871,
+                            13.269026756286621,
+                            19.00071144104004
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Low1.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Low1",
+                "parent_UID": 1932558903
+            },
+            {
+                "UID": 877544143,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_3_1",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1738506300,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -225.51881408691406,
+                            -5.453291416168213,
+                            -201.4836883544922
+                        ],
+                        "rotation": [
+                            -0.7000421285629272,
+                            -0.09971348941326141,
+                            -0.09971324354410172,
+                            0.7000396251678467
+                        ],
+                        "scale": [
+                            1.8579919338226318,
+                            18.061777114868164,
+                            4.760834217071533
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0011.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0011",
+                "parent_UID": 877544143
+            },
+            {
+                "UID": 73800086,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_31",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1254903782,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -147.72073364257813,
+                            -29.983245849609375,
+                            -276.33013916015625
+                        ],
+                        "rotation": [
+                            -0.6229186654090881,
+                            -0.33463212847709656,
+                            -0.33462995290756226,
+                            0.622909665107727
+                        ],
+                        "scale": [
+                            5.285614013671875,
+                            17.18461799621582,
+                            5.6979079246521
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0012.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0012",
+                "parent_UID": 73800086
+            },
+            {
+                "UID": 1578995721,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_32",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1573201811,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -107.54014587402344,
+                            -11.140613555908203,
+                            -128.80020141601563
+                        ],
+                        "rotation": [
+                            -0.3912479281425476,
+                            0.5890014171600342,
+                            0.5890073180198669,
+                            0.39124512672424316
+                        ],
+                        "scale": [
+                            4.446920394897461,
+                            33.614532470703125,
+                            4.3000102043151855
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0013.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0013",
+                "parent_UID": 1578995721
+            },
+            {
+                "UID": 1922319337,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_33",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 466196590,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            115.30284118652344,
+                            -7.298294544219971,
+                            87.39186096191406
+                        ],
+                        "rotation": [
+                            -0.7025566101074219,
+                            0.08011096715927124,
+                            0.08011097460985184,
+                            0.702551543712616
+                        ],
+                        "scale": [
+                            3.132753849029541,
+                            69.11486053466797,
+                            6.758544921875
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.0014.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.0014",
+                "parent_UID": 1922319337
+            },
+            {
+                "UID": 4951632,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_21",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1140187952,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            29.314579010009766,
+                            4.737947940826416,
+                            38.800132751464844
+                        ],
+                        "rotation": [
+                            0.12581689655780792,
+                            0.6958253383636475,
+                            0.6958218216896057,
+                            -0.1258147656917572
+                        ],
+                        "scale": [
+                            16.879894256591797,
+                            13.835589408874512,
+                            21.200227737426758
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Low2.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_2_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "Low2",
+                "parent_UID": 4951632
+            },
+            {
+                "UID": 2110985119,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_3",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1556620160,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -56.42829895019531,
+                            57.9771614074707,
+                            79.2984390258789
+                        ],
+                        "rotation": [
+                            -0.232334166765213,
+                            0.6678454875946045,
+                            0.6678498983383179,
+                            0.23233546316623688
+                        ],
+                        "scale": [
+                            17.069231033325195,
+                            12.977228164672852,
+                            60.08860778808594
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/lowpo.001.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "active": true,
+                        "collider_type": 3,
+                        "is_trigger": false,
+                        "type": "collider"
+                    }
+                ],
+                "is3D": true,
+                "name": "lowpo.001",
+                "parent_UID": 2110985119
             }
         ],
         "name": "Level_1",
