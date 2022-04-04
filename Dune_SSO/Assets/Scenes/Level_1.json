@@ -1,12 +1,16 @@
 {
     "Level_1": {
         "active": true,
-        "game_objects_amount": 121,
+        "game_objects_amount": 122,
         "game_objects_list": [
             {
                 "UID": 1855757815,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -40,12 +44,17 @@
                 ],
                 "is3D": false,
                 "name": "Canvas",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 656183654,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -80,12 +89,17 @@
                 ],
                 "is3D": false,
                 "name": "Radar",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 738051600,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -120,12 +134,17 @@
                 ],
                 "is3D": false,
                 "name": "CharacterInfo",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1400160254,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -199,12 +218,17 @@
                 ],
                 "is3D": false,
                 "name": "Unit_1",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1101703704,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -278,12 +302,17 @@
                 ],
                 "is3D": false,
                 "name": "Unit_2",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 40156285,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -357,12 +386,17 @@
                 ],
                 "is3D": false,
                 "name": "Unit_3",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1025753550,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -397,12 +431,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_Slot_1",
-                "parent_UID": 738051600
+                "parent_UID": 738051600,
+                "tag": 0
             },
             {
                 "UID": 1566707212,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -437,12 +476,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_Slot_2",
-                "parent_UID": 738051600
+                "parent_UID": 738051600,
+                "tag": 0
             },
             {
                 "UID": 733408228,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -477,12 +521,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_Slot_3",
-                "parent_UID": 738051600
+                "parent_UID": 738051600,
+                "tag": 0
             },
             {
                 "UID": 337521856,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -523,12 +572,17 @@
                 ],
                 "is3D": false,
                 "name": "HealthBarBase",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1299219865,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -569,12 +623,17 @@
                 ],
                 "is3D": false,
                 "name": "HealthBar_1",
-                "parent_UID": 337521856
+                "parent_UID": 337521856,
+                "tag": 0
             },
             {
                 "UID": 975009525,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -615,12 +674,17 @@
                 ],
                 "is3D": false,
                 "name": "HealthBar_2",
-                "parent_UID": 1299219865
+                "parent_UID": 1299219865,
+                "tag": 0
             },
             {
                 "UID": 1327542002,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -655,12 +719,17 @@
                 ],
                 "is3D": false,
                 "name": "Mission_Banner",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 930782199,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -695,12 +764,17 @@
                 ],
                 "is3D": false,
                 "name": "Portrait",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1668428354,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -735,12 +809,17 @@
                 ],
                 "is3D": false,
                 "name": "DialogWindow",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1498331491,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -775,12 +854,17 @@
                 ],
                 "is3D": false,
                 "name": "Text",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1318581886,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -815,12 +899,17 @@
                 ],
                 "is3D": false,
                 "name": "Text1",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 1583141216,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -855,12 +944,17 @@
                 ],
                 "is3D": false,
                 "name": "Worm_Timer",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 276416861,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -895,12 +989,17 @@
                 ],
                 "is3D": false,
                 "name": "Timer",
-                "parent_UID": 1583141216
+                "parent_UID": 1583141216,
+                "tag": 0
             },
             {
                 "UID": 1247261016,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -941,7 +1040,8 @@
                 ],
                 "is3D": false,
                 "name": "Character_Portrait",
-                "parent_UID": 1855757815
+                "parent_UID": 1855757815,
+                "tag": 0
             },
             {
                 "UID": 127643080,
@@ -973,6 +1073,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "file_name": "Assets/Scripts/GameState.lua",
                         "script_number": 1,
                         "type": "script"
@@ -980,7 +1084,8 @@
                 ],
                 "is3D": true,
                 "name": "GameState",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1797772735,
@@ -1012,6 +1117,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_frustum": true,
                         "far_plane_distance": 100.0,
                         "frustum_culling": false,
@@ -1023,7 +1132,8 @@
                 ],
                 "is3D": true,
                 "name": "camera",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 852789928,
@@ -1052,11 +1162,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "Plane",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 607188679,
@@ -1088,8 +1203,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Plane1.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1105,18 +1225,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/cliff_rock.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 0.9100000262260437,
-                                    "z": 0.6000000238418579
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1127,7 +1236,8 @@
                 ],
                 "is3D": true,
                 "name": "Plane1",
-                "parent_UID": 852789928
+                "parent_UID": 852789928,
+                "tag": 0
             },
             {
                 "UID": 1392387201,
@@ -1156,11 +1266,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_2",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1977495241,
@@ -1192,8 +1307,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.022.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1209,18 +1329,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1231,7 +1340,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.022",
-                "parent_UID": 1392387201
+                "parent_UID": 1392387201,
+                "tag": 0
             },
             {
                 "UID": 19564491,
@@ -1260,11 +1370,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_2_1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 594795713,
@@ -1296,8 +1411,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0221.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1313,18 +1433,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1335,7 +1444,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0221",
-                "parent_UID": 19564491
+                "parent_UID": 19564491,
+                "tag": 0
             },
             {
                 "UID": 1384137881,
@@ -1364,11 +1474,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_3",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1029721270,
@@ -1394,14 +1509,19 @@
                         "scale": [
                             6.171868801116943,
                             37.91328048706055,
-                            5.734493732452393
+                            5.734492778778076
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.001.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1417,18 +1537,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1439,7 +1548,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.001",
-                "parent_UID": 1384137881
+                "parent_UID": 1384137881,
+                "tag": 0
             },
             {
                 "UID": 991406360,
@@ -1468,11 +1578,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_2",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 430291333,
@@ -1498,14 +1613,19 @@
                         "scale": [
                             21.5231876373291,
                             11.684016227722168,
-                            24.475244522094727
+                            24.47524070739746
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Low.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1521,18 +1641,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1543,7 +1652,8 @@
                 ],
                 "is3D": true,
                 "name": "Low",
-                "parent_UID": 991406360
+                "parent_UID": 991406360,
+                "tag": 0
             },
             {
                 "UID": 2063502790,
@@ -1572,11 +1682,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_2_2",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 766725584,
@@ -1608,8 +1723,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0222.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1625,18 +1745,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1647,7 +1756,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0222",
-                "parent_UID": 2063502790
+                "parent_UID": 2063502790,
+                "tag": 0
             },
             {
                 "UID": 1193624779,
@@ -1676,11 +1786,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "rock_cliff",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 176050800,
@@ -1712,8 +1827,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/CliffRock_low.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1729,18 +1849,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/cliff_rock.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1751,7 +1860,8 @@
                 ],
                 "is3D": true,
                 "name": "CliffRock_low",
-                "parent_UID": 1193624779
+                "parent_UID": 1193624779,
+                "tag": 0
             },
             {
                 "UID": 270608314,
@@ -1780,11 +1890,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "rock_cliff_1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 147393863,
@@ -1816,8 +1931,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/CliffRock_low1.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1833,18 +1953,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/cliff_rock.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -1855,7 +1964,8 @@
                 ],
                 "is3D": true,
                 "name": "CliffRock_low1",
-                "parent_UID": 270608314
+                "parent_UID": 270608314,
+                "tag": 0
             },
             {
                 "UID": 257443238,
@@ -1884,11 +1994,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "small_rock_4",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 557154936,
@@ -1920,8 +2035,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Circle.005.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -1937,23 +2057,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/small_rock_4_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Circle.005",
-                "parent_UID": 257443238
+                "parent_UID": 257443238,
+                "tag": 0
             },
             {
                 "UID": 1932558903,
@@ -1982,11 +2092,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_2_1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 390450272,
@@ -2011,15 +2126,20 @@
                         ],
                         "scale": [
                             15.089888572692871,
-                            13.269078254699707,
+                            13.26908016204834,
                             19.00071144104004
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Low1.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2035,18 +2155,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2057,7 +2166,8 @@
                 ],
                 "is3D": true,
                 "name": "Low1",
-                "parent_UID": 1932558903
+                "parent_UID": 1932558903,
+                "tag": 0
             },
             {
                 "UID": 877544143,
@@ -2086,11 +2196,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_3_1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1738506300,
@@ -2122,8 +2237,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0011.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2139,18 +2259,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2161,7 +2270,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0011",
-                "parent_UID": 877544143
+                "parent_UID": 877544143,
+                "tag": 0
             },
             {
                 "UID": 73800086,
@@ -2190,11 +2300,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_31",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1254903782,
@@ -2226,8 +2341,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0012.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2243,23 +2363,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0012",
-                "parent_UID": 73800086
+                "parent_UID": 73800086,
+                "tag": 0
             },
             {
                 "UID": 1578995721,
@@ -2288,11 +2398,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_32",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1573201811,
@@ -2324,8 +2439,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0013.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2341,18 +2461,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2363,7 +2472,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0013",
-                "parent_UID": 1578995721
+                "parent_UID": 1578995721,
+                "tag": 0
             },
             {
                 "UID": 1922319337,
@@ -2392,11 +2502,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_33",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 466196590,
@@ -2415,8 +2530,8 @@
                         ],
                         "rotation": [
                             -0.7025566101074219,
-                            0.08011099696159363,
-                            0.08011102676391602,
+                            0.08011100441217422,
+                            0.08011103421449661,
                             0.702551543712616
                         ],
                         "scale": [
@@ -2428,8 +2543,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0014.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2445,18 +2565,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2467,7 +2576,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0014",
-                "parent_UID": 1922319337
+                "parent_UID": 1922319337,
+                "tag": 0
             },
             {
                 "UID": 4951632,
@@ -2496,11 +2606,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_21",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1140187952,
@@ -2524,16 +2639,21 @@
                             -0.1258147656917572
                         ],
                         "scale": [
-                            16.88009262084961,
-                            13.83570671081543,
-                            21.20049285888672
+                            16.88010025024414,
+                            13.835712432861328,
+                            21.200504302978516
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Low2.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2549,18 +2669,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2571,7 +2680,8 @@
                 ],
                 "is3D": true,
                 "name": "Low2",
-                "parent_UID": 4951632
+                "parent_UID": 4951632,
+                "tag": 0
             },
             {
                 "UID": 2110985119,
@@ -2600,11 +2710,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_3",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1556620160,
@@ -2636,8 +2751,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/lowpo.001.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2653,18 +2773,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2675,7 +2784,8 @@
                 ],
                 "is3D": true,
                 "name": "lowpo.001",
-                "parent_UID": 2110985119
+                "parent_UID": 2110985119,
+                "tag": 0
             },
             {
                 "UID": 1392609856,
@@ -2704,11 +2814,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_21",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 299089820,
@@ -2740,8 +2855,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0223.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2757,18 +2877,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2779,7 +2888,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0223",
-                "parent_UID": 1392609856
+                "parent_UID": 1392609856,
+                "tag": 0
             },
             {
                 "UID": 930916908,
@@ -2808,11 +2918,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_34",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 309585408,
@@ -2844,8 +2959,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0015.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2861,18 +2981,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2883,7 +2992,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0015",
-                "parent_UID": 930916908
+                "parent_UID": 930916908,
+                "tag": 0
             },
             {
                 "UID": 87112891,
@@ -2912,11 +3022,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "metallic_box",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 392765183,
@@ -2942,14 +3057,19 @@
                         "scale": [
                             5.21999979019165,
                             2.2600033283233643,
-                            1.5399415493011475
+                            1.5399413108825684
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube1.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -2965,18 +3085,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/metallic_box_textures.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -2987,7 +3096,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube1",
-                "parent_UID": 87112891
+                "parent_UID": 87112891,
+                "tag": 0
             },
             {
                 "UID": 795528392,
@@ -3016,11 +3126,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "metallic_box1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1878923302,
@@ -3052,8 +3167,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube2.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3069,18 +3189,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/metallic_box_textures.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -3091,7 +3200,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube2",
-                "parent_UID": 795528392
+                "parent_UID": 795528392,
+                "tag": 0
             },
             {
                 "UID": 700335184,
@@ -3120,11 +3230,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "small_rock_3",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1567123776,
@@ -3156,8 +3271,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Circle.002.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3173,23 +3293,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/small_rock_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Circle.002",
-                "parent_UID": 700335184
+                "parent_UID": 700335184,
+                "tag": 0
             },
             {
                 "UID": 1817723061,
@@ -3218,11 +3328,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "still_tent",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 485912171,
@@ -3240,22 +3355,27 @@
                             -61.12946319580078
                         ],
                         "rotation": [
-                            -0.021933095529675484,
+                            -0.021933093667030334,
                             0.7067665457725525,
                             0.7067665457725525,
-                            0.02193332463502884
+                            0.021933330222964287
                         ],
                         "scale": [
-                            1.0000256299972534,
-                            0.9999915957450867,
-                            0.9999954700469971
+                            1.0000258684158325,
+                            0.9999917149543762,
+                            0.9999957084655762
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube3.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3271,18 +3391,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/still_tent_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -3293,7 +3402,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube3",
-                "parent_UID": 1817723061
+                "parent_UID": 1817723061,
+                "tag": 0
             },
             {
                 "UID": 5386323,
@@ -3322,11 +3432,16 @@
                             0.00470002694055438
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "jail",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1339039005,
@@ -3351,15 +3466,20 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.7796630859375,
-                            184.69891357421875
+                            802.779541015625,
+                            184.69888305664063
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube5.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3375,23 +3495,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube5",
-                "parent_UID": 5386323
+                "parent_UID": 5386323,
+                "tag": 0
             },
             {
                 "UID": 821967188,
@@ -3416,15 +3526,20 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.471065521240234,
-                            184.6985626220703
+                            33.4710578918457,
+                            184.6985321044922
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cylinder.004.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3440,23 +3555,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cylinder.004",
-                "parent_UID": 5386323
+                "parent_UID": 5386323,
+                "tag": 0
             },
             {
                 "UID": 74320046,
@@ -3485,11 +3590,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "door_rock_h",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 947816943,
@@ -3521,8 +3631,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Door.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3538,18 +3653,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/door_rock_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -3560,7 +3664,8 @@
                 ],
                 "is3D": true,
                 "name": "Door",
-                "parent_UID": 74320046
+                "parent_UID": 74320046,
+                "tag": 0
             },
             {
                 "UID": 85883587,
@@ -3589,11 +3694,16 @@
                             0.02190002053976059
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "watch_tower",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 706737279,
@@ -3618,15 +3728,20 @@
                         ],
                         "scale": [
                             100.0,
-                            99.9996566772461,
-                            99.9996566772461
+                            99.99964141845703,
+                            99.99964141845703
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube4.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3642,23 +3757,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/watch_tower_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube4",
-                "parent_UID": 85883587
+                "parent_UID": 85883587,
+                "tag": 0
             },
             {
                 "UID": 610781195,
@@ -3683,15 +3788,20 @@
                         ],
                         "scale": [
                             100.0,
-                            99.9996566772461,
-                            99.9996566772461
+                            99.99964141845703,
+                            99.99964141845703
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0016.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3707,23 +3817,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/watch_tower_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0016",
-                "parent_UID": 85883587
+                "parent_UID": 85883587,
+                "tag": 0
             },
             {
                 "UID": 873882848,
@@ -3748,15 +3848,20 @@
                         ],
                         "scale": [
                             0.04796108976006508,
-                            0.04796091094613075,
-                            0.04796091094613075
+                            0.047960903495550156,
+                            0.047960903495550156
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.002.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3772,23 +3877,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.002",
-                "parent_UID": 85883587
+                "parent_UID": 85883587,
+                "tag": 0
             },
             {
                 "UID": 1074053823,
@@ -3817,11 +3912,16 @@
                             0.013824034482240677
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_22",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1320622543,
@@ -3846,15 +3946,20 @@
                         ],
                         "scale": [
                             80.6787109375,
-                            767.5523071289063,
-                            97.4876937866211
+                            767.5521850585938,
+                            97.48767852783203
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0224.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3870,18 +3975,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -3892,7 +3986,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0224",
-                "parent_UID": 1074053823
+                "parent_UID": 1074053823,
+                "tag": 0
             },
             {
                 "UID": 1181287998,
@@ -3921,11 +4016,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_22",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 270479599,
@@ -3957,8 +4057,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Low3.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -3974,18 +4079,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/small_rock_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -3996,7 +4090,8 @@
                 ],
                 "is3D": true,
                 "name": "Low3",
-                "parent_UID": 1181287998
+                "parent_UID": 1181287998,
+                "tag": 0
             },
             {
                 "UID": 1923545083,
@@ -4025,11 +4120,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_23",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 2051996623,
@@ -4061,8 +4161,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Low4.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4078,18 +4183,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_2_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4100,7 +4194,8 @@
                 ],
                 "is3D": true,
                 "name": "Low4",
-                "parent_UID": 1923545083
+                "parent_UID": 1923545083,
+                "tag": 0
             },
             {
                 "UID": 706345022,
@@ -4129,11 +4224,16 @@
                             0.01628105901181698
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "tent",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1218744009,
@@ -4158,15 +4258,20 @@
                         ],
                         "scale": [
                             112.7684326171875,
-                            110.97920227050781,
-                            99.99970245361328
+                            110.97918701171875,
+                            99.99968719482422
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube6.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4182,18 +4287,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/tent_texture_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4204,7 +4298,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube6",
-                "parent_UID": 706345022
+                "parent_UID": 706345022,
+                "tag": 0
             },
             {
                 "UID": 950273972,
@@ -4229,15 +4324,20 @@
                         ],
                         "scale": [
                             487.72540283203125,
-                            487.7242431640625,
-                            99.99971008300781
+                            487.72418212890625,
+                            99.99969482421875
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0017.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4253,18 +4353,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/tent_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4275,7 +4364,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0017",
-                "parent_UID": 706345022
+                "parent_UID": 706345022,
+                "tag": 0
             },
             {
                 "UID": 1602173300,
@@ -4304,11 +4394,16 @@
                             0.0057106101885437965
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "weapon_stand",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 311726826,
@@ -4340,8 +4435,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube7.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4357,23 +4457,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/weapon_stand_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube7",
-                "parent_UID": 1602173300
+                "parent_UID": 1602173300,
+                "tag": 0
             },
             {
                 "UID": 263616364,
@@ -4398,15 +4488,20 @@
                         ],
                         "scale": [
                             52.379886627197266,
-                            197.9547882080078,
-                            99.99971771240234
+                            197.9547576904297,
+                            99.99970245361328
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0018.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4422,23 +4517,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/weapon_stand_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0018",
-                "parent_UID": 1602173300
+                "parent_UID": 1602173300,
+                "tag": 0
             },
             {
                 "UID": 839630782,
@@ -4463,15 +4548,20 @@
                         ],
                         "scale": [
                             11.124163627624512,
-                            99.99974060058594,
-                            99.99974060058594
+                            99.99972534179688,
+                            99.99972534179688
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0021.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4487,23 +4577,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/weapon_stand_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0021",
-                "parent_UID": 1602173300
+                "parent_UID": 1602173300,
+                "tag": 0
             },
             {
                 "UID": 510459551,
@@ -4522,7 +4602,7 @@
                         ],
                         "rotation": [
                             0.0,
-                            -0.0273402389138937,
+                            -0.027340248227119446,
                             0.0,
                             0.9996262192726135
                         ],
@@ -4532,11 +4612,16 @@
                             0.018800023943185806
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "floating_platform",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 2145009615,
@@ -4561,15 +4646,20 @@
                         ],
                         "scale": [
                             300.2073059082031,
-                            513.0479125976563,
-                            71.25118255615234
+                            513.0477905273438,
+                            71.25116729736328
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube8.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4585,18 +4675,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/floating_platform_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4607,7 +4686,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube8",
-                "parent_UID": 510459551
+                "parent_UID": 510459551,
+                "tag": 0
             },
             {
                 "UID": 1701593535,
@@ -4632,15 +4712,20 @@
                         ],
                         "scale": [
                             16.808149337768555,
-                            19.276430130004883,
-                            30.183917999267578
+                            19.276426315307617,
+                            30.183914184570313
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.004.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4656,23 +4741,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/floating_platform_texture_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.004",
-                "parent_UID": 510459551
+                "parent_UID": 510459551,
+                "tag": 0
             },
             {
                 "UID": 708113480,
@@ -4697,15 +4772,20 @@
                         ],
                         "scale": [
                             100.0,
-                            9.34411907196045,
-                            99.9997329711914
+                            9.344117164611816,
+                            99.99971771240234
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0019.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4721,18 +4801,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/floating_platform_texture_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4743,7 +4812,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube.0019",
-                "parent_UID": 510459551
+                "parent_UID": 510459551,
+                "tag": 0
             },
             {
                 "UID": 254614476,
@@ -4772,11 +4842,16 @@
                             0.0028050036635249853
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "dinning_table_l_v2_texturized",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1184411258,
@@ -4808,8 +4883,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube9.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4825,18 +4905,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/dinning_table_texture_v2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -4847,7 +4916,8 @@
                 ],
                 "is3D": true,
                 "name": "Cube9",
-                "parent_UID": 254614476
+                "parent_UID": 254614476,
+                "tag": 0
             },
             {
                 "UID": 1375942417,
@@ -4876,11 +4946,16 @@
                             0.02167200855910778
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "water_tank",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1683972228,
@@ -4901,19 +4976,24 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             100.0,
-                            99.999755859375,
-                            99.999755859375
+                            99.99974060058594,
+                            99.99974060058594
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cylinder.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4929,23 +5009,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/water_tank_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cylinder",
-                "parent_UID": 1375942417
+                "parent_UID": 1375942417,
+                "tag": 0
             },
             {
                 "UID": 108261270,
@@ -4970,15 +5040,20 @@
                         ],
                         "scale": [
                             70.88108825683594,
-                            70.88082885742188,
-                            99.99974060058594
+                            70.88081359863281,
+                            99.99972534179688
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cylinder.001.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -4994,18 +5069,7 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/water_tank_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     },
                     {
                         "active": true,
@@ -5016,7 +5080,8 @@
                 ],
                 "is3D": true,
                 "name": "Cylinder.001",
-                "parent_UID": 1375942417
+                "parent_UID": 1375942417,
+                "tag": 0
             },
             {
                 "UID": 1737761347,
@@ -5048,8 +5113,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0022.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5065,23 +5135,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/water_tank_1.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0022",
-                "parent_UID": 1375942417
+                "parent_UID": 1375942417,
+                "tag": 0
             },
             {
                 "UID": 695245289,
@@ -5110,11 +5170,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "watch_tower1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1944519655,
@@ -5139,15 +5204,20 @@
                         ],
                         "scale": [
                             100.0,
-                            99.99974060058594,
-                            99.99974060058594
+                            99.99972534179688,
+                            99.99972534179688
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.0023.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5163,23 +5233,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/watch_tower_texture_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.0023",
-                "parent_UID": 695245289
+                "parent_UID": 695245289,
+                "tag": 0
             },
             {
                 "UID": 2033793875,
@@ -5208,11 +5268,16 @@
                             0.012486474588513374
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "jail1",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 429106430,
@@ -5237,15 +5302,20 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.7806396484375,
-                            184.69915771484375
+                            802.780517578125,
+                            184.69912719726563
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube10.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5261,23 +5331,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube10",
-                "parent_UID": 2033793875
+                "parent_UID": 2033793875,
+                "tag": 0
             },
             {
                 "UID": 1173749613,
@@ -5302,15 +5362,20 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.470638275146484,
-                            184.69683837890625
+                            33.47063064575195,
+                            184.69680786132813
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cylinder.0041.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5326,23 +5391,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cylinder.0041",
-                "parent_UID": 2033793875
+                "parent_UID": 2033793875,
+                "tag": 0
             },
             {
                 "UID": 290582165,
@@ -5374,6 +5429,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "file_name": "Assets/Scripts/GameState.lua",
                         "script_number": 1,
                         "type": "script"
@@ -5381,7 +5440,8 @@
                 ],
                 "is3D": true,
                 "name": "GameState_Script",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1324954725,
@@ -5413,6 +5473,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "file_name": "Assets/Scripts/TemporaryPlayer.lua",
                         "script_number": 1,
                         "type": "script"
@@ -5420,12 +5484,17 @@
                 ],
                 "is3D": true,
                 "name": "Player_Script",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1660335987,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -5460,12 +5529,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_1",
-                "parent_UID": 1025753550
+                "parent_UID": 1025753550,
+                "tag": 0
             },
             {
                 "UID": 1649483858,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -5500,12 +5574,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_2",
-                "parent_UID": 1566707212
+                "parent_UID": 1566707212,
+                "tag": 0
             },
             {
                 "UID": 2027654493,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -5540,12 +5619,17 @@
                 ],
                 "is3D": false,
                 "name": "Skill_3",
-                "parent_UID": 733408228
+                "parent_UID": 733408228,
+                "tag": 0
             },
             {
                 "UID": 346275239,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -5580,12 +5664,17 @@
                 ],
                 "is3D": false,
                 "name": "Spice_Icon",
-                "parent_UID": 656183654
+                "parent_UID": 656183654,
+                "tag": 0
             },
             {
                 "UID": 376993197,
                 "active": true,
                 "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
                     {
                         "active": true,
                         "type": "info"
@@ -5620,7 +5709,8 @@
                 ],
                 "is3D": false,
                 "name": "Spice_Counter",
-                "parent_UID": 656183654
+                "parent_UID": 656183654,
+                "tag": 0
             },
             {
                 "UID": 301361706,
@@ -5652,6 +5742,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "file_name": "Assets/Scripts/TemporaryPlayer2.lua",
                         "script_number": 1,
                         "type": "script"
@@ -5659,7 +5753,8 @@
                 ],
                 "is3D": true,
                 "name": "Player_Script_2",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 188102236,
@@ -5691,6 +5786,10 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "file_name": "Assets/Scripts/TemporaryPlayer3.lua",
                         "script_number": 1,
                         "type": "script"
@@ -5698,7 +5797,8 @@
                 ],
                 "is3D": true,
                 "name": "Player_Script_3",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 75750038,
@@ -5727,11 +5827,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "mountain_wall_35",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1721042213,
@@ -5757,14 +5862,19 @@
                         "scale": [
                             4.814944744110107,
                             17.454294204711914,
-                            4.3591532707214355
+                            4.359152317047119
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube.00111.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5780,23 +5890,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube.00111",
-                "parent_UID": 75750038
+                "parent_UID": 75750038,
+                "tag": 0
             },
             {
                 "UID": 1829826908,
@@ -5825,11 +5925,16 @@
                             0.015007998794317245
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "jail2",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1354254534,
@@ -5854,15 +5959,20 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.7831420898438,
-                            184.6997833251953
+                            802.7830200195313,
+                            184.6997528076172
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cube11.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5878,23 +5988,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_2.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cube11",
-                "parent_UID": 1829826908
+                "parent_UID": 1829826908,
+                "tag": 0
             },
             {
                 "UID": 1432873726,
@@ -5919,15 +6019,20 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.471370697021484,
-                            184.6997833251953
+                            33.47136306762695,
+                            184.6997528076172
                         ],
                         "type": "transform"
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/Cylinder.0042.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -5943,23 +6048,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/jail_texture_3.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "Cylinder.0042",
-                "parent_UID": 1829826908
+                "parent_UID": 1829826908,
+                "tag": 0
             },
             {
                 "UID": 1043823755,
@@ -5988,11 +6083,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_31",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1207032375,
@@ -6024,8 +6124,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/lowpo.0011.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -6041,23 +6146,13 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "lowpo.0011",
-                "parent_UID": 1043823755
+                "parent_UID": 1043823755,
+                "tag": 0
             },
             {
                 "UID": 1618389118,
@@ -6086,11 +6181,16 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "type": "info"
                     }
                 ],
                 "is3D": true,
                 "name": "medium_rock_32",
-                "parent_UID": 4294967295
+                "parent_UID": 4294967295,
+                "tag": 0
             },
             {
                 "UID": 1844277129,
@@ -6109,8 +6209,8 @@
                         ],
                         "rotation": [
                             -0.6236499547958374,
-                            -0.3332730531692505,
-                            -0.333268404006958,
+                            -0.33327311277389526,
+                            -0.3332684338092804,
                             0.6236360669136047
                         ],
                         "scale": [
@@ -6122,8 +6222,13 @@
                     },
                     {
                         "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
+                        "isAnimated": false,
                         "path": "Library/Meshes/lowpo.0012.sugar",
                         "shape_type": 0,
                         "type": "mesh"
@@ -6139,23 +6244,70 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "Assets/Textures/medium_rock_3_texture.png",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
                 "name": "lowpo.0012",
-                "parent_UID": 1618389118
+                "parent_UID": 1618389118,
+                "tag": 0
+            },
+            {
+                "UID": 2039917140,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "ambientValue": 0.5,
+                        "diffuseValue": 0.6000000238418579,
+                        "lightColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "lightDirection": [
+                            -1.899999976158142,
+                            -0.800000011920929,
+                            -2.5
+                        ],
+                        "lightPosition": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "sourceType": 0,
+                        "specularValue": 0.0,
+                        "type": "lightSource"
+                    }
+                ],
+                "is3D": true,
+                "name": "DirectLight",
+                "parent_UID": 4294967295,
+                "tag": 0
             }
         ],
         "name": "Level_1",
