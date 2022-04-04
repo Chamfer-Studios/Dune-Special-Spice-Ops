@@ -1,7 +1,7 @@
 {
     "Level_1": {
         "active": true,
-        "game_objects_amount": 119,
+        "game_objects_amount": 121,
         "game_objects_list": [
             {
                 "UID": 1855757815,
@@ -1130,208 +1130,6 @@
                 "parent_UID": 852789928
             },
             {
-                "UID": 52767333,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ],
-                        "scale": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "type": "transform"
-                    }
-                ],
-                "is3D": true,
-                "name": "rocks_blockout",
-                "parent_UID": 4294967295
-            },
-            {
-                "UID": 1517454423,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            19.521936416625977,
-                            -4.8572468757629395,
-                            -15.045907974243164
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.9838309288024902,
-                            0.0,
-                            -0.17909984290599823
-                        ],
-                        "scale": [
-                            6.731216907501221,
-                            4.459706783294678,
-                            2.0086562633514404
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cube.175.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/Grey.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "is3D": true,
-                "name": "Cube.175",
-                "parent_UID": 52767333
-            },
-            {
-                "UID": 1236369518,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ],
-                        "scale": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "type": "transform"
-                    }
-                ],
-                "is3D": true,
-                "name": "walls_blockout",
-                "parent_UID": 4294967295
-            },
-            {
-                "UID": 1842673624,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            -159.26663208007813,
-                            4.708437919616699,
-                            203.1212615966797
-                        ],
-                        "rotation": [
-                            0.0,
-                            -0.03038979135453701,
-                            0.0,
-                            0.9995381236076355
-                        ],
-                        "scale": [
-                            1.1861437559127808,
-                            9.445817947387695,
-                            19.07005500793457
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cube.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/Grey (Dark).png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "active": true,
-                        "file_name": "Assets/Scripts/GameState.lua",
-                        "script_number": 1,
-                        "type": "script"
-                    }
-                ],
-                "is3D": true,
-                "name": "Cube",
-                "parent_UID": 1236369518
-            },
-            {
                 "UID": 1392387201,
                 "active": true,
                 "components": [
@@ -1540,104 +1338,6 @@
                 "parent_UID": 19564491
             },
             {
-                "UID": 345169672,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ],
-                        "scale": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ],
-                        "type": "transform"
-                    }
-                ],
-                "is3D": true,
-                "name": "props_blockout",
-                "parent_UID": 4294967295
-            },
-            {
-                "UID": 715724382,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            89.51864624023438,
-                            -13.097000122070313,
-                            -104.90280151367188
-                        ],
-                        "rotation": [
-                            0.0,
-                            -0.017857948318123817,
-                            0.0,
-                            0.9998405575752258
-                        ],
-                        "scale": [
-                            1.7205982208251953,
-                            0.7870370745658875,
-                            0.734951913356781
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/ArtilleryGun.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/Grey 2.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "is3D": true,
-                "name": "ArtilleryGun",
-                "parent_UID": 345169672
-            },
-            {
                 "UID": 1384137881,
                 "active": true,
                 "components": [
@@ -1694,7 +1394,7 @@
                         "scale": [
                             6.171868801116943,
                             37.91328048706055,
-                            5.734494686126709
+                            5.734493732452393
                         ],
                         "type": "transform"
                     },
@@ -1798,7 +1498,7 @@
                         "scale": [
                             21.5231876373291,
                             11.684016227722168,
-                            24.475248336791992
+                            24.475244522094727
                         ],
                         "type": "transform"
                     },
@@ -2311,7 +2011,7 @@
                         ],
                         "scale": [
                             15.089888572692871,
-                            13.269076347351074,
+                            13.269078254699707,
                             19.00071144104004
                         ],
                         "type": "transform"
@@ -2709,19 +2409,19 @@
                     {
                         "active": true,
                         "position": [
-                            115.30284118652344,
-                            -7.298294544219971,
-                            87.39186096191406
+                            104.95452880859375,
+                            -7.29829740524292,
+                            47.39263916015625
                         ],
                         "rotation": [
                             -0.7025566101074219,
-                            0.08011096715927124,
-                            0.08011101931333542,
+                            0.08011099696159363,
+                            0.08011102676391602,
                             0.702551543712616
                         ],
                         "scale": [
                             3.132753849029541,
-                            69.11486053466797,
+                            34.26023864746094,
                             6.758544921875
                         ],
                         "type": "transform"
@@ -2824,9 +2524,9 @@
                             -0.1258147656917572
                         ],
                         "scale": [
-                            16.880084991455078,
-                            13.835702896118164,
-                            21.200481414794922
+                            16.88009262084961,
+                            13.83570671081543,
+                            21.20049285888672
                         ],
                         "type": "transform"
                     },
@@ -3242,7 +2942,7 @@
                         "scale": [
                             5.21999979019165,
                             2.2600033283233643,
-                            1.5399417877197266
+                            1.5399415493011475
                         ],
                         "type": "transform"
                     },
@@ -3543,12 +3243,12 @@
                             -0.021933095529675484,
                             0.7067665457725525,
                             0.7067665457725525,
-                            0.02193331904709339
+                            0.02193332463502884
                         ],
                         "scale": [
-                            1.0000253915786743,
-                            0.9999914765357971,
-                            0.999995231628418
+                            1.0000256299972534,
+                            0.9999915957450867,
+                            0.9999954700469971
                         ],
                         "type": "transform"
                     },
@@ -3651,8 +3351,8 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.77978515625,
-                            184.69894409179688
+                            802.7796630859375,
+                            184.69891357421875
                         ],
                         "type": "transform"
                     },
@@ -3716,8 +3416,8 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.471073150634766,
-                            184.69859313964844
+                            33.471065521240234,
+                            184.6985626220703
                         ],
                         "type": "transform"
                     },
@@ -3914,12 +3614,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             100.0,
-                            99.99967193603516,
-                            99.99967193603516
+                            99.9996566772461,
+                            99.9996566772461
                         ],
                         "type": "transform"
                     },
@@ -3979,12 +3679,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             100.0,
-                            99.99967193603516,
-                            99.99967193603516
+                            99.9996566772461,
+                            99.9996566772461
                         ],
                         "type": "transform"
                     },
@@ -4048,8 +3748,8 @@
                         ],
                         "scale": [
                             0.04796108976006508,
-                            0.04796091839671135,
-                            0.04796091839671135
+                            0.04796091094613075,
+                            0.04796091094613075
                         ],
                         "type": "transform"
                     },
@@ -4146,8 +3846,8 @@
                         ],
                         "scale": [
                             80.6787109375,
-                            767.5524291992188,
-                            97.48770904541016
+                            767.5523071289063,
+                            97.4876937866211
                         ],
                         "type": "transform"
                     },
@@ -4458,8 +4158,8 @@
                         ],
                         "scale": [
                             112.7684326171875,
-                            110.97921752929688,
-                            99.99971771240234
+                            110.97920227050781,
+                            99.99970245361328
                         ],
                         "type": "transform"
                     },
@@ -4529,8 +4229,8 @@
                         ],
                         "scale": [
                             487.72540283203125,
-                            487.72430419921875,
-                            99.99972534179688
+                            487.7242431640625,
+                            99.99971008300781
                         ],
                         "type": "transform"
                     },
@@ -4698,8 +4398,8 @@
                         ],
                         "scale": [
                             52.379886627197266,
-                            197.95481872558594,
-                            99.9997329711914
+                            197.9547882080078,
+                            99.99971771240234
                         ],
                         "type": "transform"
                     },
@@ -4759,12 +4459,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             11.124163627624512,
-                            99.999755859375,
-                            99.999755859375
+                            99.99974060058594,
+                            99.99974060058594
                         ],
                         "type": "transform"
                     },
@@ -4822,7 +4522,7 @@
                         ],
                         "rotation": [
                             0.0,
-                            -0.027340229600667953,
+                            -0.0273402389138937,
                             0.0,
                             0.9996262192726135
                         ],
@@ -4861,8 +4561,8 @@
                         ],
                         "scale": [
                             300.2073059082031,
-                            513.0480346679688,
-                            71.2511978149414
+                            513.0479125976563,
+                            71.25118255615234
                         ],
                         "type": "transform"
                     },
@@ -4932,8 +4632,8 @@
                         ],
                         "scale": [
                             16.808149337768555,
-                            19.27643394470215,
-                            30.183921813964844
+                            19.276430130004883,
+                            30.183917999267578
                         ],
                         "type": "transform"
                     },
@@ -4997,8 +4697,8 @@
                         ],
                         "scale": [
                             100.0,
-                            9.344120979309082,
-                            99.99974822998047
+                            9.34411907196045,
+                            99.9997329711914
                         ],
                         "type": "transform"
                     },
@@ -5201,12 +4901,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067094802856
+                            0.7071067690849304
                         ],
                         "scale": [
                             100.0,
-                            99.99976348876953,
-                            99.99976348876953
+                            99.999755859375,
+                            99.999755859375
                         ],
                         "type": "transform"
                     },
@@ -5270,8 +4970,8 @@
                         ],
                         "scale": [
                             70.88108825683594,
-                            70.88084411621094,
-                            99.999755859375
+                            70.88082885742188,
+                            99.99974060058594
                         ],
                         "type": "transform"
                     },
@@ -5417,71 +5117,6 @@
                 "parent_UID": 4294967295
             },
             {
-                "UID": 1864042872,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "position": [
-                            0.0,
-                            112.44750213623047,
-                            345.40826416015625
-                        ],
-                        "rotation": [
-                            -0.7071068286895752,
-                            0.0,
-                            0.0,
-                            0.7071067690849304
-                        ],
-                        "scale": [
-                            100.0,
-                            99.999755859375,
-                            99.999755859375
-                        ],
-                        "type": "transform"
-                    },
-                    {
-                        "active": true,
-                        "draw_face_normals": false,
-                        "draw_vertex_normals": false,
-                        "path": "Library/Meshes/Cube.00110.sugar",
-                        "shape_type": 0,
-                        "type": "mesh"
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            0.800000011920929,
-                            0.800000011920929,
-                            0.800000011920929,
-                            1.0
-                        ],
-                        "shader_path": "Assets/Shaders/default_shader.glsl",
-                        "texture_path": "Assets/Textures/watch_tower_texture_1.png",
-                        "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "is3D": true,
-                "name": "Cube.00110",
-                "parent_UID": 695245289
-            },
-            {
                 "UID": 1944519655,
                 "active": true,
                 "components": [
@@ -5500,12 +5135,12 @@
                             -0.7071068286895752,
                             0.0,
                             0.0,
-                            0.7071067690849304
+                            0.7071067094802856
                         ],
                         "scale": [
                             100.0,
-                            99.999755859375,
-                            99.999755859375
+                            99.99974060058594,
+                            99.99974060058594
                         ],
                         "type": "transform"
                     },
@@ -5602,8 +5237,8 @@
                         ],
                         "scale": [
                             802.783203125,
-                            802.78076171875,
-                            184.69918823242188
+                            802.7806396484375,
+                            184.69915771484375
                         ],
                         "type": "transform"
                     },
@@ -5667,8 +5302,8 @@
                         ],
                         "scale": [
                             33.47137451171875,
-                            33.470645904541016,
-                            184.69686889648438
+                            33.470638275146484,
+                            184.69683837890625
                         ],
                         "type": "transform"
                     },
@@ -6064,6 +5699,463 @@
                 "is3D": true,
                 "name": "Player_Script_3",
                 "parent_UID": 4294967295
+            },
+            {
+                "UID": 75750038,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "mountain_wall_35",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1721042213,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -112.70882415771484,
+                            -12.284759521484375,
+                            -278.97235107421875
+                        ],
+                        "rotation": [
+                            -0.6297435164451599,
+                            0.32160425186157227,
+                            0.3216017484664917,
+                            0.6297349333763123
+                        ],
+                        "scale": [
+                            4.814944744110107,
+                            17.454294204711914,
+                            4.3591532707214355
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube.00111.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/mountain_wall_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube.00111",
+                "parent_UID": 75750038
+            },
+            {
+                "UID": 1829826908,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -158.3350830078125,
+                            -13.190435409545898,
+                            -191.5692901611328
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            0.015007998794317245,
+                            0.015007998794317245,
+                            0.015007998794317245
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "jail2",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1354254534,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            -65.84606170654297,
+                            71.16275024414063,
+                            0.010304336436092854
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067094802856
+                        ],
+                        "scale": [
+                            802.783203125,
+                            802.7831420898438,
+                            184.6997833251953
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cube11.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/jail_texture_2.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cube11",
+                "parent_UID": 1829826908
+            },
+            {
+                "UID": 1432873726,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            680.2423706054688,
+                            171.9608917236328,
+                            -0.10645203292369843
+                        ],
+                        "rotation": [
+                            -0.7071068286895752,
+                            0.0,
+                            0.0,
+                            0.7071067094802856
+                        ],
+                        "scale": [
+                            33.47137451171875,
+                            33.471370697021484,
+                            184.6997833251953
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/Cylinder.0042.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/jail_texture_3.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "Cylinder.0042",
+                "parent_UID": 1829826908
+            },
+            {
+                "UID": 1043823755,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_31",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1207032375,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            52.52090072631836,
+                            57.71501159667969,
+                            114.86688232421875
+                        ],
+                        "rotation": [
+                            -0.7063879370689392,
+                            -0.031872816383838654,
+                            -0.03187279775738716,
+                            0.7063882350921631
+                        ],
+                        "scale": [
+                            11.772425651550293,
+                            24.077964782714844,
+                            48.036285400390625
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/lowpo.0011.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "lowpo.0011",
+                "parent_UID": 1043823755
+            },
+            {
+                "UID": 1618389118,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": "transform"
+                    }
+                ],
+                "is3D": true,
+                "name": "medium_rock_32",
+                "parent_UID": 4294967295
+            },
+            {
+                "UID": 1844277129,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": "info"
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            31.893695831298828,
+                            34.33385467529297,
+                            192.04083251953125
+                        ],
+                        "rotation": [
+                            -0.6236499547958374,
+                            -0.3332730531692505,
+                            -0.333268404006958,
+                            0.6236360669136047
+                        ],
+                        "scale": [
+                            8.09466552734375,
+                            16.72398567199707,
+                            35.12724304199219
+                        ],
+                        "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "path": "Library/Meshes/lowpo.0012.sugar",
+                        "shape_type": 0,
+                        "type": "mesh"
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            0.25294259190559387,
+                            1.0
+                        ],
+                        "shader_path": "Assets/Shaders/default_shader.glsl",
+                        "texture_path": "Assets/Textures/medium_rock_3_texture.png",
+                        "type": "material",
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "is3D": true,
+                "name": "lowpo.0012",
+                "parent_UID": 1618389118
             }
         ],
         "name": "Level_1",
