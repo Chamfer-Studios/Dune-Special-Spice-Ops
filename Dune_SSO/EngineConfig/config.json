@@ -1,7 +1,6 @@
 {
     "Audio": null,
     "Camera": null,
-    "CollisionDetector": null,
     "Editor": null,
     "Engine": {
         "Authors": "Alejandro Avila & Bosco Barber",
@@ -10,8 +9,8 @@
         "Organization": "Ko-Fi Studios",
         "Title": "Ko-Fi Engine"
     },
+    "FileSystem": null,
     "Input": null,
-    "ModelLoader": null,
     "Navigation": null,
     "Physics": {
         "Filter_matrix": [
@@ -20,23 +19,33 @@
             true,
             true,
             true,
-            false,
-            false,
             true,
             true,
-            false,
+            true,
             false,
             true,
             true,
+            false,
             true,
             true,
-            true
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
         ],
         "Filters": [
             "default",
             "enemy",
             "player",
-            "terrain"
+            "terrain",
+            "projectile"
         ],
         "Gravity": 9.8100004196167,
         "Number_threads": 4
@@ -44,8 +53,9 @@
     "Renderer3D": {
         "Vsync": true
     },
+    "ResourceManager": null,
     "SceneManager": {
-        "DefaultScene": "Level_1"
+        "DefaultScene": "IntroMenu"
     },
     "UI": null,
     "Window": {
@@ -56,7 +66,7 @@
         "Icon": "Assets/Icons/icon.bmp",
         "Resizable": true,
         "Scale": 0,
-        "Title": "Ko-Fi Engine",
+        "Title": "Ko-Fi Engine  - IntroMenu",
         "Width": 1024
     }
 }
