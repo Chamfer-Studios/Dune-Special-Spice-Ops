@@ -7,21 +7,23 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Bug severity:** (put an [x] on your selection without leaving space between brackets)
+- [ ] Crash / Unplayable
+- [ ] Lagging / Gameplay slower
+- [ ] Visual / Cosmetic
 
-**To Reproduce**
-Steps to reproduce the behavior:
+**Describe the bug:** A clear and concise description of what the bug is.
+_(Write here)_
+
+**To Reproduce:** Steps to reproduce the behavior.
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
-4. See error
+4. '....'
+5. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Expected behavior:** A clear and concise description of what you expected to happen. 
+_(Write here)_
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Additional context**
-Add any other context about the problem here.
+**Additional context:** Add any other context about the problem here. If applicable, add screenshots to help explain your problem.
+_(Write here)_
