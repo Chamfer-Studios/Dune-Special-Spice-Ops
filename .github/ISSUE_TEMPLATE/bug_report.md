@@ -7,11 +7,6 @@ assignees: ''
 
 ---
 
-**Bug severity:** (put an [x] on your selection without leaving space between brackets)
-- [ ] Crash / Unplayable
-- [ ] Lagging / Gameplay slower
-- [ ] Visual / Cosmetic
-
 **Describe the bug:** A clear and concise description of what the bug is.
 _(Write here)_
 
