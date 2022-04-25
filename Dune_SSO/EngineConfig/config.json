@@ -60,7 +60,7 @@
   },
   "ResourceManager": null,
   "SceneManager": {
-    "DefaultScene": "0_level"
+    "DefaultScene": "TransitionScreen"
   },
   "UI": null,
   "Window": {
