@@ -47,7 +47,7 @@ decoyCooldown = 10.0
 drawDecoy = false
 
 -- Ultimate ability --
-ultimateRange = 5000.0
+ultimateRange = 50.0
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
@@ -55,40 +55,40 @@ ultimateRangeExtension = ultimateRange * 0.5
 
 ------------------- Inspector setter --------------------
 -- Globals --
---characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
---characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
---NewVariable(characterIDIV)
---
---speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---speedIV = InspectorVariable.new("speed", speedIVT, speed)
---NewVariable(speedIV)
---
----- Primary ability --
---knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
---NewVariable(knifeCastRangeIV)
---
---maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
---maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
---NewVariable(maxKnivesIV)
+local characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
+NewVariable(characterIDIV)
+
+local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+speedIV = InspectorVariable.new("speed", speedIVT, speed)
+NewVariable(speedIV)
+
+-- Primary ability --
+local knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
+NewVariable(knifeCastRangeIV)
+
+local maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+NewVariable(maxKnivesIV)
 
 -- Secondary ability --
---decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
---NewVariable(decoyCastRangeIV)
---
---drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
---drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
---NewVariable(drawDecoyIV)
---
----- Ultimate ability --
---ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
---NewVariable(ultimateRangeIV)
---
---drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
---drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
---NewVariable(drawUltimateIV)
+local decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
+NewVariable(decoyCastRangeIV)
+
+local drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
+NewVariable(drawDecoyIV)
+
+-- Ultimate ability --
+local ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
+NewVariable(ultimateRangeIV)
+
+local drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
+NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
 ------------------- Animation setter --------------------
@@ -190,7 +190,6 @@ function Update(dt)
 	
 	-- Actions
 	if (destination ~= nil)	then
-		
 		MoveToDestination(dt)
 		DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
 		DispatchGlobalEvent("Player_Position", { componentTransform:GetPosition(), gameObject })
@@ -199,7 +198,6 @@ function Update(dt)
 
 	--Gather Inputs
 	if (IsSelected() == true) then 
-		
 		-- Left Click
 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
@@ -229,7 +227,6 @@ function Update(dt)
 				if (target.tag == Tag.ENEMY) then
 					if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateRange) then
 						mousePos = GetLastMouseClick()
-						
 						Ultimate(mousePos)
 					else
 						print("Out of range")
@@ -357,7 +354,7 @@ function MoveToDestination(dt)
 		end
 	
 		-- Adapt speed on arrive
-		if (d < 2) then
+		if (d < 10) then
 			s = s * 0.5
 		end
 	
@@ -374,9 +371,6 @@ function MoveToDestination(dt)
 		end
 		componentTransform:SetRotation(float3.new(componentTransform:GetRotation().x, rad, componentTransform:GetRotation().z))
 	else
-		if (componentAnimator ~= nil) then
-			componentAnimator:SetSelectedClip("Idle")
-		end
 		StopMovement()
 	end
 	-- Add ChangeAnimation() to check the speed of the rigid body
@@ -464,11 +458,11 @@ function Ultimate(mousePos)
 		end		
 	end
 
-	deathMarkDuration = 0.75
+	deathMarkDuration = 0.3
 	-- Set IN ORDER the death mark
 	for i = 1, #enemiesInRange do
 		SetLuaVariableFromGameObject(enemiesInRange[i], "deathMarkDuration", deathMarkDuration)
-		deathMarkDuration = deathMarkDuration + 0.2
+		deathMarkDuration = deathMarkDuration + 0.3
 	end
 
 	-- final pos = final target pos + Normalized(final target pos - initial pos) * d
@@ -511,18 +505,10 @@ end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
-function OnCollisionEnter(go)
+function OnTriggerEnter(go)
 	if (go.tag == Tag.PROJECTILE) then
 		knifeCount = knifeCount + 1
 	end
-end
-
-function OnCollisionRepeat(go)
-	
-end
-
-function OnCollisionExit(go)
-	
 end
 --------------------------------------------------
 
