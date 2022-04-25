@@ -60,7 +60,7 @@
   },
   "ResourceManager": null,
   "SceneManager": {
-    "DefaultScene": "cuatrecasas"
+    "DefaultScene": "0_level"
   },
   "UI": null,
   "Window": {

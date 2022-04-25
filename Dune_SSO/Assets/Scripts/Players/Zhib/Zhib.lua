@@ -190,7 +190,7 @@ function Update(dt)
 	
 	-- Actions
 	if (destination ~= nil)	then
-		--MoveToDestination(dt)
+		MoveToDestination(dt)
 		DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
 		DispatchGlobalEvent("Player_Position", { componentTransform:GetPosition(), gameObject })
 	end
