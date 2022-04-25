@@ -89,7 +89,7 @@
             },
             {
                 "UID": 656183654,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -236,6 +236,25 @@
                             }
                         ],
                         "type": "audio_switch"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 1434512216,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 1
+                            }
+                        ],
+                        "type": "script"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 1447640840,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -279,6 +298,56 @@
                         "idleTexture": "Assets/HUD/character_nebala_normal_v1.3.png",
                         "pressedTexture": "Assets/HUD/character_nebala_select_v1.3.png",
                         "type": "button"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 521467877,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 2
+                            }
+                        ],
+                        "type": "script"
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/click_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/hover_fx.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": "audio_switch"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 355280002,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -353,6 +422,25 @@
                             }
                         ],
                         "type": "audio_switch"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 1697332519,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 3
+                            }
+                        ],
+                        "type": "script"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 858452247,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -394,6 +482,12 @@
                         "active": true,
                         "texture": "Assets/HUD/ability_slot_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_1.lua",
+                        "id": 2111332217,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -435,6 +529,12 @@
                         "active": true,
                         "texture": "Assets/HUD/ability_slot_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_2.lua",
+                        "id": 40675030,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -476,6 +576,12 @@
                         "active": true,
                         "texture": "Assets/HUD/ability_slot_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_3.lua",
+                        "id": 743747518,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -640,6 +746,12 @@
                         "active": true,
                         "texture": "Assets/HUD/slider_segments_hp2_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Lives_3.lua",
+                        "id": 1486776946,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -649,7 +761,7 @@
             },
             {
                 "UID": 1327542002,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -690,7 +802,7 @@
             },
             {
                 "UID": 930782199,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -731,7 +843,7 @@
             },
             {
                 "UID": 1668428354,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -772,7 +884,7 @@
             },
             {
                 "UID": 1498331491,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -813,7 +925,7 @@
             },
             {
                 "UID": 1318581886,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -936,7 +1048,7 @@
             },
             {
                 "UID": 1583141216,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -968,6 +1080,12 @@
                         "active": true,
                         "texture": "Assets/HUD/warning_banner_extended_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Disable.lua",
+                        "id": 1683408006,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -977,7 +1095,7 @@
             },
             {
                 "UID": 276416861,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1009,6 +1127,12 @@
                         "active": true,
                         "type": "text",
                         "value": "2:59"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Timer.lua",
+                        "id": 2024177000,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -1050,6 +1174,29 @@
                         "active": true,
                         "texture": "Assets/HUD/hud_portrait_main_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterAssetsChange.lua",
+                        "id": 1906486548,
+                        "inspector_variables": [
+                            {
+                                "name": "path1",
+                                "type": "string",
+                                "value": "Assets/HUD/hud_portrait_main_v1.0.png"
+                            },
+                            {
+                                "name": "path2",
+                                "type": "string",
+                                "value": "Assets/HUD/hud_portrait_nerala_v1.1.png"
+                            },
+                            {
+                                "name": "path3",
+                                "type": "string",
+                                "value": "Assets/HUD/hud_portrait_omozra_v1.1.png"
+                            }
+                        ],
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
@@ -1185,6 +1332,12 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/GameState.lua",
+                        "id": 333919294,
+                        "type": "script"
                     }
                 ],
                 "is3D": true,
