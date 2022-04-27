@@ -9,9 +9,9 @@
         {
             "active": true,
             "position": [
-                0.0,
-                0.0,
-                0.0
+                18.021902084350586,
+                19.515430450439453,
+                22.681644439697266
             ],
             "rotation": [
                 0.0,
@@ -20,9 +20,9 @@
                 1.0
             ],
             "scale": [
-                0.20000000298023224,
-                0.19999830424785614,
-                0.19999998807907104
+                0.25000035762786865,
+                0.25000035762786865,
+                0.25
             ],
             "type": "transform"
         },
@@ -63,13 +63,19 @@
         },
         {
             "active": true,
+            "file_name": "Assets/Scripts/Players/Zhib/Knife.lua",
+            "id": 1637631948,
+            "type": "script"
+        },
+        {
+            "active": true,
             "center": [
-                0.0,
+                -2.299999952316284,
                 0.0,
                 0.0
             ],
-            "filter": "mamahuevo",
-            "is_trigger": false,
+            "filter": "projectile",
+            "is_trigger": true,
             "scale_factor": [
                 1.0,
                 1.0,

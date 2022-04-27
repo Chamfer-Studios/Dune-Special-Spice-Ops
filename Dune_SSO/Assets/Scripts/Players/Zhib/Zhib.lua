@@ -37,7 +37,7 @@ characterID = 1
 speed = 500.0
 
 -- Primary ability --
-knifeCastRange = 30.0
+knifeCastRange = 100.0
 maxKnives = 2 -- Move to a Start() func!!!
 knifeCount = maxKnives
 
@@ -47,7 +47,7 @@ decoyCooldown = 10.0
 drawDecoy = false
 
 -- Ultimate ability --
-ultimateRange = 5000.0
+ultimateRange = 100.0
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
@@ -55,40 +55,40 @@ ultimateRangeExtension = ultimateRange * 0.5
 
 ------------------- Inspector setter --------------------
 -- Globals --
---characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
---characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
---NewVariable(characterIDIV)
---
---speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---speedIV = InspectorVariable.new("speed", speedIVT, speed)
---NewVariable(speedIV)
---
----- Primary ability --
---knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
---NewVariable(knifeCastRangeIV)
---
---maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
---maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
---NewVariable(maxKnivesIV)
+	--characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+	--characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
+	--NewVariable(characterIDIV)
 
--- Secondary ability --
---decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
---NewVariable(decoyCastRangeIV)
---
---drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
---drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
---NewVariable(drawDecoyIV)
---
----- Ultimate ability --
---ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
---NewVariable(ultimateRangeIV)
---
---drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
---drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
---NewVariable(drawUltimateIV)
+	--speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+	--speedIV = InspectorVariable.new("speed", speedIVT, speed)
+	--NewVariable(speedIV)
+
+	-- Primary ability --
+	--knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+	--knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
+	--NewVariable(knifeCastRangeIV)
+
+	--maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+	--maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+	--NewVariable(maxKnivesIV)
+
+	-- Secondary ability --
+	--decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+	--decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
+	--NewVariable(decoyCastRangeIV)
+
+	--drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+	--drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
+	--NewVariable(drawDecoyIV)
+
+	-- Ultimate ability --
+	--ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+	--ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
+	--NewVariable(ultimateRangeIV)
+
+	--drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+	--drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
+	--NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
 ------------------- Animation setter --------------------
@@ -107,6 +107,7 @@ componentSwitch = gameObject:GetAudioSwitch()
 
 ------------------- Physics setter ----------------------
 componentRigidBody = gameObject:GetRigidBody()
+componentBoxCollider = gameObject:GetBoxCollider()
 rigidBodyFlag = true
 ---------------------------------------------------------
 
@@ -127,12 +128,12 @@ isDoubleClicking = false
 -- Called each loop iteration
 function Update(dt)
 	-- Set Starting Position
-	if (rigidBodyFlag == true) then 
-		if (componentRigidBody ~= nil) then
-			rigidBodyFlag = false
-			componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 10, componentTransform:GetPosition().z))
-		end
-	end
+	--if (rigidBodyFlag == true) then 
+	--	if (componentRigidBody ~= nil) then
+	--		rigidBodyFlag = false
+	--		componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 10, componentTransform:GetPosition().z))
+	--	end
+	--end
 
 	-- Animation timer
 	if (isAttacking == true and componentAnimator ~= nil) then
@@ -184,13 +185,20 @@ function Update(dt)
 			-- Reappear
 			invisibilityDuration = nil
 			gameObject.active = true
+			if (componentRigidBody ~= nil) then
+				if (componentBoxCollider ~= nil) then
+					componentBoxCollider:SetTrigger(false)
+					componentBoxCollider:UpdateIsTrigger()
+				end
+				componentRigidBody:SetUseGravity(true)
+				componentRigidBody:UpdateEnableGravity()
+			end
 		end
 		return
 	end
 	
 	-- Actions
 	if (destination ~= nil)	then
-		
 		MoveToDestination(dt)
 		DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
 		DispatchGlobalEvent("Player_Position", { componentTransform:GetPosition(), gameObject })
@@ -199,7 +207,7 @@ function Update(dt)
 
 	--Gather Inputs
 	if (IsSelected() == true) then 
-		
+
 		-- Left Click
 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
@@ -229,7 +237,6 @@ function Update(dt)
 				if (target.tag == Tag.ENEMY) then
 					if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateRange) then
 						mousePos = GetLastMouseClick()
-						
 						Ultimate(mousePos)
 					else
 						print("Out of range")
@@ -464,11 +471,11 @@ function Ultimate(mousePos)
 		end		
 	end
 
-	deathMarkDuration = 0.75
+	deathMarkDuration = 0.3
 	-- Set IN ORDER the death mark
 	for i = 1, #enemiesInRange do
 		SetLuaVariableFromGameObject(enemiesInRange[i], "deathMarkDuration", deathMarkDuration)
-		deathMarkDuration = deathMarkDuration + 0.2
+		deathMarkDuration = deathMarkDuration + 0.3
 	end
 
 	-- final pos = final target pos + Normalized(final target pos - initial pos) * d
@@ -487,7 +494,15 @@ function Ultimate(mousePos)
 	invisibilityTimer = 0
 	invisibilityDuration = deathMarkDuration
 
-	gameObject:GetRigidBody():SetRigidBodyPos(reappearPosition)
+	if (componentRigidBody ~= nil) then
+		if (componentBoxCollider ~= nil) then
+			componentBoxCollider:SetTrigger(true)
+			componentBoxCollider:UpdateIsTrigger()
+		end
+		componentRigidBody:SetRigidBodyPos(reappearPosition)
+		componentRigidBody:SetUseGravity(false)
+		componentRigidBody:UpdateEnableGravity()
+	end
 
 	StopMovement()
 
@@ -511,18 +526,12 @@ end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
-function OnCollisionEnter(go)
+function OnTriggerEnter(go)
+	
 	if (go.tag == Tag.PROJECTILE) then
+		print("+1 knives")
 		knifeCount = knifeCount + 1
 	end
-end
-
-function OnCollisionRepeat(go)
-	
-end
-
-function OnCollisionExit(go)
-	
 end
 --------------------------------------------------
 
