@@ -34,7 +34,7 @@ currentAction = Action.IDLE
 
 -- Globals --
 characterID = 1
-speed = 500.0
+speed = 2500.0
 
 -- Primary ability --
 knifeCastRange = 100.0
@@ -125,6 +125,14 @@ isDoubleClicking = false
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
+
+function Start()
+	mouseParticles = Find("Mouse Particles")
+	if (mouseParticles ~= nil) then
+		mouseParticles:GetComponentParticle():StopParticleSpawn()
+	end
+end
+
 -- Called each loop iteration
 function Update(dt)
 	-- Set Starting Position
@@ -191,14 +199,12 @@ function Update(dt)
 	if (componentAnimator ~= nil) then
 		
 		local loop = componentAnimator:IsCurrentClipLooping()
-		local playing = componentAnimator:IsCurrentClipPlaying()
-		print("Loop is: ", loop)
-		print("Playing is: ", playing)
-		if (loop == false) then
+		if (not loop) then
+			local playing = componentAnimator:IsCurrentClipPlaying()
 			if (playing == true) then
 				return
 			else
-				--componentAnimator:SetSelectedClip("Idle")
+				componentAnimator:SetSelectedClip("Idle")
 			end
 		end
 	end
