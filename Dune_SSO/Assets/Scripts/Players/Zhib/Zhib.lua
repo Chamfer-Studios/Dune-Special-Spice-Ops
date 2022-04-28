@@ -55,40 +55,40 @@ ultimateRangeExtension = ultimateRange * 0.5
 
 ------------------- Inspector setter --------------------
 -- Globals --
-characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
-NewVariable(characterIDIV)
-
-speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
-
--- Primary ability --
-knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
-NewVariable(knifeCastRangeIV)
-
-maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
-NewVariable(maxKnivesIV)
-
--- Secondary ability --
-decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
-NewVariable(decoyCastRangeIV)
-
-drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
-drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
-NewVariable(drawDecoyIV)
-
--- Ultimate ability --
-ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
-NewVariable(ultimateRangeIV)
-
-drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
-drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
-NewVariable(drawUltimateIV)
+--characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+--characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
+--NewVariable(characterIDIV)
+--
+--speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--speedIV = InspectorVariable.new("speed", speedIVT, speed)
+--NewVariable(speedIV)
+--
+---- Primary ability --
+--knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
+--NewVariable(knifeCastRangeIV)
+--
+--maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+--maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+--NewVariable(maxKnivesIV)
+--
+---- Secondary ability --
+--decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
+--NewVariable(decoyCastRangeIV)
+--
+--drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+--drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
+--NewVariable(drawDecoyIV)
+--
+---- Ultimate ability --
+--ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
+--NewVariable(ultimateRangeIV)
+--
+--drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+--drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
+--NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
 ------------------- Animation setter --------------------

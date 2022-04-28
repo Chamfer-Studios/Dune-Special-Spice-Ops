@@ -38,40 +38,40 @@ ultimateCooldown = 10.0
 
 ------------------- Inspector setter --------------------
 -- Globals --
-local characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
-NewVariable(characterIDIV)
-
-local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
-
--- Primary ability --
-local dartCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-dartCastRangeIV = InspectorVariable.new("dartCastRange", dartCastRangeIVT, dartCastRange)
-NewVariable(dartCastRangeIV)
-
-local dartCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-dartCooldownIV = InspectorVariable.new("dartCooldown", dartCooldownIVT, dartCooldown)
-NewVariable(dartCooldownIV)
-
-local drawDartIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
-drawDartIV = InspectorVariable.new("drawDart", drawDartIVT, drawDart)
-NewVariable(drawDartIV)
-
--- Secondary ability --
-local smokebombCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-smokebombCastRangeIV = InspectorVariable.new("smokebombCastRange", smokebombCastRangeIVT, smokebombCastRange)
-NewVariable(smokebombCastRangeIV)
-
-local smokebombCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-smokebombCooldownIV = InspectorVariable.new("smokebombCooldown", smokebombCooldownIVT, smokebombCooldown)
-NewVariable(smokebombCooldownIV)
-
--- Ultimate ability --
-local ultimateCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-ultimateCooldownIV = InspectorVariable.new("ultimateCooldown", ultimateCooldownIVT, ultimateCooldown)
-NewVariable(ultimateCooldownIV)
+--local characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+--characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
+--NewVariable(characterIDIV)
+--
+--local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--speedIV = InspectorVariable.new("speed", speedIVT, speed)
+--NewVariable(speedIV)
+--
+---- Primary ability --
+--local dartCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--dartCastRangeIV = InspectorVariable.new("dartCastRange", dartCastRangeIVT, dartCastRange)
+--NewVariable(dartCastRangeIV)
+--
+--local dartCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--dartCooldownIV = InspectorVariable.new("dartCooldown", dartCooldownIVT, dartCooldown)
+--NewVariable(dartCooldownIV)
+--
+--local drawDartIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+--drawDartIV = InspectorVariable.new("drawDart", drawDartIVT, drawDart)
+--NewVariable(drawDartIV)
+--
+---- Secondary ability --
+--local smokebombCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--smokebombCastRangeIV = InspectorVariable.new("smokebombCastRange", smokebombCastRangeIVT, smokebombCastRange)
+--NewVariable(smokebombCastRangeIV)
+--
+--local smokebombCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--smokebombCooldownIV = InspectorVariable.new("smokebombCooldown", smokebombCooldownIVT, smokebombCooldown)
+--NewVariable(smokebombCooldownIV)
+--
+---- Ultimate ability --
+--local ultimateCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--ultimateCooldownIV = InspectorVariable.new("ultimateCooldown", ultimateCooldownIVT, ultimateCooldown)
+--NewVariable(ultimateCooldownIV)
 ------------------------------------------------------
 
 ------------------- Animation setter --------------------
