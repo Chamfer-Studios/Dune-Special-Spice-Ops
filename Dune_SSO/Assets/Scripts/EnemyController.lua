@@ -24,9 +24,9 @@ hearingRangeIV = InspectorVariable.new("hearingRange", hearingRangeIVT, hearingR
 NewVariable(hearingRangeIV)
 
 awarenessSpeed = 0.4
-local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
-awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
-NewVariable(awarenessSpeedIV)
+--local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
+--NewVariable(awarenessSpeedIV)
 
 pingpong = false
 local pingpongIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
@@ -316,6 +316,7 @@ function Update(dt)
         awareness = awareness - awarenessSpeed * dt
     end
 
+    --Log(tostring(awareness) .. "\n")
     if awareness < 1.1 and awareness > 0.9 and state ~= STATE.SUS then
         if seeingSource ~= nil then
             DispatchEvent("State_Suspicious", { seeingPosition })
