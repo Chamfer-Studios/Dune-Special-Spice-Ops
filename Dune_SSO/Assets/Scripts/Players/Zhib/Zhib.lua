@@ -126,7 +126,10 @@ end
 -- Called each loop iteration
 function Update(dt)
 	-- TODO: Move all timers & helpers to a bool function
-	
+	if (lastRotation ~= nil) then
+		componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
+	end
+
 	if (ManageTimers(dt) == false) then
 		return
 	end
@@ -151,8 +154,7 @@ function Update(dt)
 					target = GetGameObjectHovered()
 					if (target.tag == Tag.ENEMY and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= knifeCastRange) then
 						if (componentAnimator ~= nil) then
-							componentAnimator:SetSelectedClip("Knife")
-							StopMovement()
+							CastPrimary(target:GetTransform():GetPosition())
 						end
 					end
 				end
@@ -164,8 +166,7 @@ function Update(dt)
 				if (Distance3D(mouse, componentTransform:GetPosition()) <= decoyCastRange) then
 					target = mouse 
 					if (componentAnimator ~= nil) then
-						componentAnimator:SetSelectedClip("Decoy")
-						StopMovement()
+						CastSecondary(mouse)
 					end
 				else
 					print("Out of range")
@@ -177,10 +178,7 @@ function Update(dt)
 				if (target.tag == Tag.ENEMY) then
 					if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateRange) then
 						if (componentAnimator ~= nil) then
-							componentAnimator:SetSelectedClip("Ultimate_start")
-							StopMovement()
-							ultimateTimer = 0.0		
-							DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
+							CastUltimate(target:GetTransform():GetPosition())
 						end
 					else
 						print("Out of range")
@@ -410,18 +408,23 @@ function MoveToDestination(dt)
 		end
 	
 		-- Rotation
-		local rad = math.acos(vec2[2])
-		if (vec2[1] < 0) then
-			rad = rad * (-1)
-		end
-		componentTransform:SetRotation(float3.new(componentTransform:GetRotation().x, rad, componentTransform:GetRotation().z))
+		lastRotation = float3.new(vec2[1], 0, vec2[2])
+		componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
 	else
 		if (componentAnimator ~= nil) then
 			componentAnimator:SetSelectedClip("Idle")
 		end
 		StopMovement()
 	end
-	-- Add ChangeAnimation() to check the speed of the rigid body
+end
+
+function LookAtTarget(lookAt)
+	local targetPos2D = { lookAt.x, lookAt.z }
+	local pos2D = { componentTransform:GetPosition().x, componentTransform:GetPosition().z }
+	local d = Distance2D(pos2D, targetPos2D)
+	local vec2 = { targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2] }
+	lastRotation = float3.new(vec2[1], 0, vec2[2])
+	componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
 end
 
 function ReloadKnives() -- For debugging purposes only
@@ -440,6 +443,12 @@ function IsSelected()
 end
 
 -- Primary ability
+function CastPrimary(position)
+	componentAnimator:SetSelectedClip("Knife")
+	StopMovement()
+	LookAtTarget(position)
+end
+
 function FireKnife()
 
 	InstantiatePrefab("Knife") -- This should instance the prefab
@@ -453,7 +462,14 @@ function FireKnife()
 	currentAction = Action.IDLE
 end
 
+
 -- Secondary ability
+function CastSecondary(position)
+	componentAnimator:SetSelectedClip("Decoy")
+	StopMovement()
+	LookAtTarget(position)
+end
+
 function PlaceDecoy() 
 	InstantiatePrefab("Decoy")
 	if (componentSwitch ~= nil) then
@@ -464,7 +480,16 @@ function PlaceDecoy()
 	DispatchGlobalEvent("Player_Ability", { characterID, 2, 2 })
 end
 
+
 -- Ultimate ability
+function CastUltimate(position)
+	componentAnimator:SetSelectedClip("Ultimate_start")
+	StopMovement()
+	ultimateTimer = 0.0		
+	DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
+	LookAtTarget(position)
+end
+
 function Ultimate()
 	
 	-- Get all enemies in range of the Mouse
@@ -536,6 +561,7 @@ function Ultimate()
 		componentRigidBody:UpdateEnableGravity()
 	end
 end
+
 
 function StopMovement()
 	currentMovement = Movement.IDLE -- Stops aimings and all actions
