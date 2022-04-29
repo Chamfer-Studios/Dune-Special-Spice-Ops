@@ -51,6 +51,7 @@ ultimateRange = 100.0
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
+
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
@@ -93,12 +94,6 @@ ultimateRangeExtension = ultimateRange * 0.5
 
 ------------------- Animation setter --------------------
 componentAnimator = gameObject:GetComponentAnimator()
-if (componentAnimator ~= nil) then
-	componentAnimator:SetSelectedClip("Idle")
-end
-animationDuration = 0.8
-animationTimer = 0.0
-isAttacking = false -- This should go, just here for animations
 ---------------------------------------------------------
 
 --------------------- Audio setter ----------------------
@@ -108,14 +103,6 @@ componentSwitch = gameObject:GetAudioSwitch()
 ------------------- Physics setter ----------------------
 componentRigidBody = gameObject:GetRigidBody()
 componentBoxCollider = gameObject:GetBoxCollider()
-rigidBodyFlag = true
----------------------------------------------------------
-
-------------------- Particles setter --------------------
-mouseParticles = Find("Mouse Particles")
-if (mouseParticles ~= nil) then
-	mouseParticles:GetComponentParticle():StopParticleSpawn()
-end
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -127,6 +114,9 @@ isDoubleClicking = false
 ----------------------- Methods -------------------------
 
 function Start()
+	if (componentAnimator ~= nil) then
+		componentAnimator:SetSelectedClip("Idle")
+	end
 	mouseParticles = Find("Mouse Particles")
 	if (mouseParticles ~= nil) then
 		mouseParticles:GetComponentParticle():StopParticleSpawn()
@@ -135,80 +125,12 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-	-- Set Starting Position
-	--if (rigidBodyFlag == true) then 
-	--	if (componentRigidBody ~= nil) then
-	--		rigidBodyFlag = false
-	--		componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 10, componentTransform:GetPosition().z))
-	--	end
-	--end
-
-	-- Running state logic
-	if (isDoubleClicking == true) then
-		if (doubleClickTimer < doubleClickDuration) then
-			doubleClickTimer = doubleClickTimer + dt
-		else 
-			isDoubleClicking = false
-			doubleClickTimer = 0.0
-		end
-	end
-
-	-- Click particles logic
-	if (mouseParticles ~= nil) then
-		mouseParticles:GetComponentParticle():StopParticleSpawn()
-	end
-
-	-- Primary ability cooldown
-
-	-- Secondary ability cooldown
-	if (decoyTimer ~= nil) then
-		decoyTimer = decoyTimer + dt
-		if (decoyTimer >= decoyCooldown) then
-			decoyTimer = nil
-		end
-	end
-
-	-- Ultimate ability cooldown
-	if (ultimateTimer ~= nil) then
-		ultimateTimer = ultimateTimer + dt
-		if (ultimateTimer >= ultimateCooldown) then
-			ultimateTimer = nil
-		end
-	end
+	-- TODO: Move all timers & helpers to a bool function
 	
-	-- Invisible logic
-	if (invisibilityDuration ~= nil) then -- While invis he shouldn't be able to do anything
-		invisibilityTimer = invisibilityTimer + dt
-		if (invisibilityTimer >= invisibilityDuration) then
-			-- Reappear
-			invisibilityDuration = nil
-			gameObject.active = true
-			if (componentRigidBody ~= nil) then
-				if (componentBoxCollider ~= nil) then
-					componentBoxCollider:SetTrigger(false)
-					componentBoxCollider:UpdateIsTrigger()
-				end
-				componentRigidBody:SetUseGravity(true)
-				componentRigidBody:UpdateEnableGravity()
-			end
-		end
+	if (ManageTimers(dt) == false) then
 		return
 	end
 
-	-- Animation timer
-	if (componentAnimator ~= nil) then
-		
-		local loop = componentAnimator:IsCurrentClipLooping()
-		if (not loop) then
-			local playing = componentAnimator:IsCurrentClipPlaying()
-			if (playing == true) then
-				return
-			else
-				componentAnimator:SetSelectedClip("Idle")
-			end
-		end
-	end
-	
 	-- Actions
 	if (destination ~= nil)	then
 		MoveToDestination(dt)
@@ -228,17 +150,23 @@ function Update(dt)
 				if (knifeCount > 0) then
 					target = GetGameObjectHovered()
 					if (target.tag == Tag.ENEMY and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= knifeCastRange) then
-						FireKnife()
+						if (componentAnimator ~= nil) then
+							componentAnimator:SetSelectedClip("Knife")
+							StopMovement()
+						end
 					end
 				end
 			
 			-- Secondary ability (Decoy)
 			elseif (decoyTimer == nil and currentAction == Action.AIM_SECONDARY) then
 				GetGameObjectHovered() -- This is for the decoy to go to the mouse Pos (it uses the target var)
-				mousePos = GetLastMouseClick()
-				if (Distance3D(mousePos, componentTransform:GetPosition()) <= decoyCastRange) then
-					target = mousePos
-					PlaceDecoy()
+				local mouse = GetLastMouseClick()
+				if (Distance3D(mouse, componentTransform:GetPosition()) <= decoyCastRange) then
+					target = mouse 
+					if (componentAnimator ~= nil) then
+						componentAnimator:SetSelectedClip("Decoy")
+						StopMovement()
+					end
 				else
 					print("Out of range")
 				end
@@ -248,8 +176,12 @@ function Update(dt)
 				target = GetGameObjectHovered()
 				if (target.tag == Tag.ENEMY) then
 					if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateRange) then
-						mousePos = GetLastMouseClick()
-						Ultimate(mousePos)
+						if (componentAnimator ~= nil) then
+							componentAnimator:SetSelectedClip("Ultimate_start")
+							StopMovement()
+							ultimateTimer = 0.0		
+							DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
+						end
 					else
 						print("Out of range")
 					end
@@ -266,7 +198,9 @@ function Update(dt)
 				if (currentMovement == Movement.WALK and isDoubleClicking == true) then
 					currentMovement = Movement.RUN
 				else
-					currentMovement = Movement.WALK
+					if (currentMovement == Movement.IDLE) then
+						currentMovement = Movement.WALK
+					end
 					isDoubleClicking = true
 				end
 				if (mouseParticles ~= nil) then
@@ -279,21 +213,25 @@ function Update(dt)
 		-- H
 		if (GetInput(5) == KEY_STATE.KEY_DOWN) then 
 			currentAction = Action.IDLE
+			DispatchGlobalEvent("Player_Ability", { characterID, 0, 0 })
 		end
 
 		-- K
 		if (GetInput(6) == KEY_STATE.KEY_DOWN) then 
 			currentAction = Action.AIM_PRIMARY
+			DispatchGlobalEvent("Player_Ability", { characterID, 1, 1 })
 		end	
 
 		-- D
 		if (GetInput(12) == KEY_STATE.KEY_DOWN) then
 			currentAction = Action.AIM_SECONDARY
+			DispatchGlobalEvent("Player_Ability", { characterID, 2, 1 })
 		end	
 
 		-- SPACE
 		if (GetInput(4) == KEY_STATE.KEY_DOWN) then 
 			currentAction = Action.AIM_ULTIMATE
+			DispatchGlobalEvent("Player_Ability", { characterID, 3, 1 })
 		end
 
 		-- C -> Toggle crouch
@@ -334,6 +272,91 @@ end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function ManageTimers(dt)
+	local ret = true
+
+	-- Running state logic
+	if (isDoubleClicking == true) then
+		if (doubleClickTimer < doubleClickDuration) then
+			doubleClickTimer = doubleClickTimer + dt
+		else 
+			isDoubleClicking = false
+			doubleClickTimer = 0.0
+		end
+	end
+
+	-- Click particles logic
+	if (mouseParticles ~= nil) then
+		mouseParticles:GetComponentParticle():StopParticleSpawn()
+	end
+
+	-- Primary ability cooldown
+
+	-- Secondary ability cooldown
+	if (decoyTimer ~= nil) then
+		decoyTimer = decoyTimer + dt
+		if (decoyTimer >= decoyCooldown) then
+			decoyTimer = nil
+			DispatchGlobalEvent("Player_Ability", { characterID, 2, 0 })
+		end
+	end
+
+	-- Ultimate ability cooldown
+	if (ultimateTimer ~= nil) then
+		ultimateTimer = ultimateTimer + dt
+		if (ultimateTimer >= ultimateCooldown) then
+			ultimateTimer = nil
+			DispatchGlobalEvent("Player_Ability", { characterID, 3, 0 })
+		end
+	end
+
+	-- Invisible logic
+	if (invisibilityDuration ~= nil) then -- While invis he shouldn't be able to do anything
+		invisibilityTimer = invisibilityTimer + dt
+		if (invisibilityTimer >= invisibilityDuration) then
+			-- Reappear
+			invisibilityDuration = nil
+			gameObject.active = true
+			if (componentRigidBody ~= nil) then
+				if (componentBoxCollider ~= nil) then
+					componentBoxCollider:SetTrigger(false)
+					componentBoxCollider:UpdateIsTrigger()
+				end
+				componentRigidBody:SetUseGravity(true)
+				componentRigidBody:UpdateEnableGravity()
+			end
+			if (componentAnimator ~= nil) then
+				componentAnimator:SetSelectedClip("Ultimate_end")
+			end
+		end
+		ret = false
+	end
+
+	-- Animation timer
+	if (componentAnimator ~= nil) then
+		if (componentAnimator:IsCurrentClipLooping() == false) then
+			if (componentAnimator:IsCurrentClipPlaying() == true) then
+				ret = false
+			else
+				if (currentAction == Action.AIM_PRIMARY) then
+					FireKnife()
+				elseif (currentAction == Action.AIM_SECONDARY) then
+					PlaceDecoy()
+					componentAnimator:SetSelectedClip("DecoyToIdle")
+					currentAction = Action.IDLE
+				elseif (currentAction == Action.AIM_ULTIMATE) then
+					Ultimate()
+					currentAction = Action.IDLE
+				else 
+					componentAnimator:SetSelectedClip("Idle")
+				end
+			end
+		end
+	end
+
+	return ret
+end
+
 function MoveToDestination(dt)
 	local targetPos2D = { destination.x, destination.z }
 	local pos2D = { componentTransform:GetPosition().x, componentTransform:GetPosition().z }
@@ -407,7 +430,7 @@ end
 
 function IsSelected()
 	
-	id = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+	local id = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
 	if (id == characterID) then	
 		return true
@@ -424,34 +447,31 @@ function FireKnife()
 	if (componentSwitch ~= nil) then
 		componentSwitch:PlayTrack(0)
 	end
-	if (componentAnimator ~= nil) then
-		componentAnimator:SetSelectedClip("Knife")
-	end
 
-	StopMovement()
+	DispatchGlobalEvent("Player_Ability", { characterID, 1, 2 })
+	componentAnimator:SetSelectedClip("KnifeToIdle")
+	currentAction = Action.IDLE
 end
 
 -- Secondary ability
-function PlaceDecoy(mousePos) 
+function PlaceDecoy() 
 	InstantiatePrefab("Decoy")
 	if (componentSwitch ~= nil) then
 		--componentSwitch:PlayTrack(0)
 	end
-	if (componentAnimator ~= nil) then
-		componentAnimator:SetSelectedClip("Decoy")
-	end
+
 	decoyTimer = 0.0
-	StopMovement()
+	DispatchGlobalEvent("Player_Ability", { characterID, 2, 2 })
 end
 
 -- Ultimate ability
-function Ultimate(mousePos)
+function Ultimate()
 	
 	-- Get all enemies in range of the Mouse
-	enemiesInRange = {}
+	enemiesInRange = { target }
 	enemies = GetObjectsByTag(Tag.ENEMY)
 	for i = 1, #enemies do
-		if (Distance3D(enemies[i]:GetTransform():GetPosition(), mousePos) <= ultimateRange) then
+		if (enemies[i] ~= target and Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <= ultimateRange) then
 			enemiesInRange[#enemiesInRange + 1] = enemies[i]
 		end
 	end
@@ -498,7 +518,7 @@ function Ultimate(mousePos)
 	vec2 = Normalize(vec2, d)
 
 	-- Add as reappear position the position from the last enemy who's gonna die
-	local dist = 25
+	local dist = 15
 	reappearPosition = float3.new(enemiesInRange[#enemiesInRange]:GetTransform():GetPosition().x + vec2[1] * dist, componentTransform:GetPosition().y, enemiesInRange[#enemiesInRange]:GetTransform():GetPosition().z + vec2[2] * dist)
 
 	-- Set timer equal to the longest dath mark timer to reappear
@@ -515,10 +535,6 @@ function Ultimate(mousePos)
 		componentRigidBody:SetUseGravity(false)
 		componentRigidBody:UpdateEnableGravity()
 	end
-
-	StopMovement()
-
-	ultimateTimer = 0.0
 end
 
 function StopMovement()

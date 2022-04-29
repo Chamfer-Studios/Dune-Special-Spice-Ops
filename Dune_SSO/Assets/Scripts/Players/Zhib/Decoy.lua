@@ -1,6 +1,6 @@
 ------------------- Variables --------------------
 
-speed = 1000
+speed = 100
 destination = nil
 lifeTime = 10.0	-- secs --iv required
 lifeTimer = 0
@@ -10,7 +10,6 @@ effectFlag = true
 -------------------- Methods ---------------------
 
 function Start()
-	componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
 	destination = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
 	player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
 	local playerPos = player:GetTransform():GetPosition()
@@ -19,9 +18,7 @@ function Start()
 	local d = Distance(pos2D, targetPos2D)
 	local vec2 = { targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2] }
 	vec2 = Normalize(vec2, d)
-	if (componentRigidBody ~= nil) then		
-		componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, 0, playerPos.z + vec2[2] * 3))
-	end
+	componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
 end
 
 -- Called each loop iteration
@@ -52,14 +49,10 @@ function MoveToDestination(dt)
 		vec.x = vec.x / d
 		vec.y = vec.y / d
 		vec.z = vec.z / d
-		if (componentRigidBody ~= nil) then
-			componentRigidBody:SetLinearVelocity(float3.new(vec.x * speed * dt, 0, vec.z * speed * dt))
-		end
+		
+		componentTransform:SetPosition(float3.new(pos.x + vec.x * speed * dt, pos.y + vec.y * speed * dt, pos.z + vec.z * speed * dt))
 	else
 		destination = nil
-		if (componentRigidBody ~= nil) then
-			componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
-		end
 	end
 end
 
