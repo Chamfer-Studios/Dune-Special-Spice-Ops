@@ -73,18 +73,18 @@
     },
     "ResourceManager": null,
     "SceneManager": {
-        "DefaultScene": "tutorial_level"
+        "DefaultScene": ""
     },
     "UI": null,
     "Window": {
         "Borderless": false,
         "Fullscreen": false,
         "FullscreenDesktop": false,
-        "Height": 768,
+        "Height": 1017,
         "Icon": "Assets/Icons/icon.bmp",
         "Resizable": true,
         "Scale": 0,
         "Title": "Ko-Fi Engine - tutorial_level",
-        "Width": 1024
+        "Width": 1920
     }
 }
