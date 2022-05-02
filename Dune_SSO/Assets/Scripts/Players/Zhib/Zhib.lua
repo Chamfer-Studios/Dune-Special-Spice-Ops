@@ -34,7 +34,7 @@ currentAction = Action.IDLE
 
 -- Globals --
 characterID = 1
-speed = 2500.0
+speed = 2000.0
 
 -- Primary ability --
 knifeCastRange = 100.0
@@ -125,7 +125,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-	-- TODO: Move all timers & helpers to a bool function
+
 	if (lastRotation ~= nil) then
 		componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
 	end
@@ -237,14 +237,12 @@ function Update(dt)
 			if (currentMovement == Movement.CROUCH) then
 				currentMovement = Movement.WALK
 				if (componentSwitch ~= nil) then
-					componentSwitch:StopTrack(2)
-					componentSwitch:PlayAudio(1)
+					componentSwitch:PlayTrack(0)
 				end
 			else
 				currentMovement = Movement.CROUCH
 				if (componentSwitch ~= nil) then
-					componentSwitch:StopTrack(1)
-					componentSwitch:PlayAudio(2)
+					componentSwitch:StopTrack(0)
 				end
 			end
 		end
@@ -340,11 +338,8 @@ function ManageTimers(dt)
 					FireKnife()
 				elseif (currentAction == Action.AIM_SECONDARY) then
 					PlaceDecoy()
-					componentAnimator:SetSelectedClip("DecoyToIdle")
-					currentAction = Action.IDLE
 				elseif (currentAction == Action.AIM_ULTIMATE) then
 					Ultimate()
-					currentAction = Action.IDLE
 				else 
 					componentAnimator:SetSelectedClip("Idle")
 				end
@@ -366,15 +361,13 @@ function MoveToDestination(dt)
 		if (currentMovement ~= Movement.IDLE) then
 			if (currentMovement == Movement.WALK) then
 				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(1)
+					componentSwitch:PlayTrack(0)
 				end
 				if (componentAnimator ~= nil) then
 					componentAnimator:SetSelectedClip("Walk")
 				end
 			elseif (currentMovement == Movement.CROUCH) then
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(2)
-				end
+				-- No audio as of now
 				if (componentAnimator ~= nil) then
 					componentAnimator:SetSelectedClip("Crouch")
 				end
@@ -444,20 +437,22 @@ end
 
 -- Primary ability
 function CastPrimary(position)
+
 	componentAnimator:SetSelectedClip("Knife")
 	StopMovement()
+
+	DispatchGlobalEvent("Player_Ability", { characterID, 1, 2 })
 	LookAtTarget(position)
 end
 
 function FireKnife()
 
-	InstantiatePrefab("Knife") -- This should instance the prefab
+	InstantiatePrefab("Knife")
 	knifeCount = knifeCount - 1
 	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(0)
+		componentSwitch:PlayTrack(2)
 	end
 
-	DispatchGlobalEvent("Player_Ability", { characterID, 1, 2 })
 	componentAnimator:SetSelectedClip("KnifeToIdle")
 	currentAction = Action.IDLE
 end
@@ -465,27 +460,34 @@ end
 
 -- Secondary ability
 function CastSecondary(position)
+
 	componentAnimator:SetSelectedClip("Decoy")
+	decoyTimer = 0.0
 	StopMovement()
+
+	DispatchGlobalEvent("Player_Ability", { characterID, 2, 2 })
 	LookAtTarget(position)
 end
 
 function PlaceDecoy() 
+
 	InstantiatePrefab("Decoy")
 	if (componentSwitch ~= nil) then
-		--componentSwitch:PlayTrack(0)
+		componentSwitch:PlayTrack(3)
 	end
 
-	decoyTimer = 0.0
-	DispatchGlobalEvent("Player_Ability", { characterID, 2, 2 })
+	componentAnimator:SetSelectedClip("DecoyToIdle")
+	currentAction = Action.IDLE
 end
 
 
 -- Ultimate ability
 function CastUltimate(position)
+
 	componentAnimator:SetSelectedClip("Ultimate_start")
-	StopMovement()
 	ultimateTimer = 0.0		
+	StopMovement()
+
 	DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
 	LookAtTarget(position)
 end
@@ -560,6 +562,12 @@ function Ultimate()
 		componentRigidBody:SetUseGravity(false)
 		componentRigidBody:UpdateEnableGravity()
 	end
+
+	if (componentSwitch ~= nil) then
+		componentSwitch:PlayTrack(4)
+	end
+	
+	currentAction = Action.IDLE
 end
 
 
@@ -571,11 +579,12 @@ function StopMovement()
 		componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
 	end
 	if (componentSwitch ~= nil) then
-		componentSwitch:StopTrack(1) -- Sprint & crouch should stop here too
+		if (currentMovement == Move.WALK) then
+			componentSwitch:StopTrack(0)
+		elseif (currentMovement == Move.RUN) then
+			componentSwitch:StopTrack(1)
+		end
 	end
-	--if (componentAnimator ~= nil) then
-	--	componentAnimator:SetSelectedClip("Idle")
-	--end
 end
 --------------------------------------------------
 

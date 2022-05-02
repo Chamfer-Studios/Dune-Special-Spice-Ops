@@ -11,6 +11,7 @@ effectFlag = true
 
 function Start()
 	destination = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
+	destination.y = 0.0
 	player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
 	local playerPos = player:GetTransform():GetPosition()
 	local targetPos2D = { destination.x, destination.z }
@@ -43,7 +44,7 @@ end
 function MoveToDestination(dt)
 	local pos = componentTransform:GetPosition()
 	local d = Distance3D(destination, pos)
-	if (d > 5.0) then
+	if (d > 2.0) then
 		-- Movement
 		local vec = float3.new(destination.x - pos.x, destination.y - pos.y, destination.z - pos.z)
 		vec.x = vec.x / d
@@ -52,6 +53,7 @@ function MoveToDestination(dt)
 		
 		componentTransform:SetPosition(float3.new(pos.x + vec.x * speed * dt, pos.y + vec.y * speed * dt, pos.z + vec.z * speed * dt))
 	else
+		componentTransform:SetPosition(float3.new(pos.x, 0, pos.z))
 		destination = nil
 	end
 end
