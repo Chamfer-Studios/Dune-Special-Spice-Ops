@@ -18,7 +18,7 @@ Movement = {
 	RUN = 3,
 	CROUCH = 4,
 }
-Action = {
+State = {
 	IDLE = 1,
 	ATTACK = 2,
 	AIM_PRIMARY = 3,
@@ -31,7 +31,11 @@ Action = {
 ------------------- Variables setter --------------------
 target = nil
 currentMovement = Movement.IDLE
-currentAction = Action.IDLE
+currentState = State.IDLE
+maxHP = 3
+currentHP = maxHP
+iFrames = 1.5
+iFramesTimer = nil
 
 -- Globals --
 characterID = 2
@@ -52,6 +56,12 @@ ultimateCastRange = 100.0
 ultimateCooldown = 30.0
 drawUltimate = false
 
+---------------------------------------------------------
+
+-------------------- Movement logic ---------------------
+doubleClickDuration = 0.5
+doubleClickTimer = 0.0
+isDoubleClicking = false
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
@@ -92,28 +102,12 @@ drawUltimate = false
 --NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
-------------------- Animation setter --------------------
-componentAnimator = gameObject:GetComponentAnimator()
----------------------------------------------------------
-
---------------------- Audio setter ----------------------
-componentSwitch = gameObject:GetAudioSwitch()
----------------------------------------------------------
-
-------------------- Physics setter ----------------------
-componentRigidBody = gameObject:GetRigidBody()
-componentBoxCollider = gameObject:GetBoxCollider()
----------------------------------------------------------
-
--------------------- Movement logic ---------------------
-doubleClickDuration = 0.5
-doubleClickTimer = 0.0
-isDoubleClicking = false
----------------------------------------------------------
 
 ----------------------- Methods -------------------------
 
 function Start()
+
+	componentAnimator = gameObject:GetComponentAnimator()
 	if (componentAnimator ~= nil) then
 		componentAnimator:SetSelectedClip("Idle")
 	end
@@ -122,6 +116,15 @@ function Start()
 	if (mouseParticles ~= nil) then
 		mouseParticles:GetComponentParticle():StopParticleSpawn()
 	end
+
+	componentRigidBody = gameObject:GetRigidBody()
+
+	componentBoxCollider = gameObject:GetBoxCollider()
+
+	componentSwitch = gameObject:GetAudioSwitch()
+	currentTrackID = -1
+
+	currentHP = maxHP
 end
 
 -- Called each loop iteration
@@ -129,7 +132,7 @@ function Update(dt)
 
 	if (lastRotation ~= nil) then
 		componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
-		if (currentAction == Action.AIM_PRIMARY) then
+		if (currentState == State.AIM_PRIMARY) then
 			componentTransform:SetRotation(float3:new(componentTransform:GetRotation().x, componentTransform:GetRotation().y - 90, componentTransform:GetRotation().z))
 		end
 	end
@@ -138,7 +141,7 @@ function Update(dt)
 		return
 	end
 
-	-- Actions
+	-- States
 	if (destination ~= nil)	then
 		MoveToDestination(dt)
 		DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
@@ -153,7 +156,7 @@ function Update(dt)
 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
 			-- Primary ability (Dart)
-			if (dartTimer == nil and currentAction == Action.AIM_PRIMARY) then
+			if (dartTimer == nil and currentState == State.AIM_PRIMARY) then
 				target = GetGameObjectHovered()
 				if (target.tag == Tag.ENEMY and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= dartCastRange) then
 					if (componentAnimator ~= nil) then
@@ -162,7 +165,7 @@ function Update(dt)
 				end
 			
 			-- Secondary ability (Smokebomb)
-			elseif (smokebombTimer == nil and currentAction == Action.AIM_SECONDARY) then
+			elseif (smokebombTimer == nil and currentState == State.AIM_SECONDARY) then
 				GetGameObjectHovered() -- This is for the smokebomb to go to the mouse Pos (it uses the target var)
 				local mouse = GetLastMouseClick()
 				if (Distance3D(mouse, componentTransform:GetPosition()) <= smokebombCastRange) then
@@ -175,7 +178,7 @@ function Update(dt)
 				end
 
 			-- Ultimate ability (mosquito)
-			elseif (ultimateTimer == nil and currentAction == Action.AIM_ULTIMATE) then
+			elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
 				GetGameObjectHovered() -- This is for the mosquito to spawn on the mouse Pos (it uses the target var)
 				local mouse = GetLastMouseClick()
 				if (Distance3D(mouse, componentTransform:GetPosition()) <= ultimateCastRange) then
@@ -196,10 +199,28 @@ function Update(dt)
 				destination = GetLastMouseClick()
 				DispatchEvent("Pathfinder_UpdatePath", { { destination }, true, componentTransform:GetPosition() })
 				if (currentMovement == Movement.WALK and isDoubleClicking == true) then
+
 					currentMovement = Movement.RUN
+
+					if (componentSwitch ~= nil) then
+						if (currentTrackID ~= -1) then
+							componentSwitch:StopTrack(currentTrackID)
+						end
+						currentTrackID = 1
+						componentSwitch:PlayTrack(currentTrackID)
+					end
 				else
 					if (currentMovement == Movement.IDLE) then
+
 						currentMovement = Movement.WALK
+
+						if (componentSwitch ~= nil) then
+							if (currentTrackID ~= -1) then
+								componentSwitch:StopTrack(currentTrackID)
+							end
+							currentTrackID = 0
+							componentSwitch:PlayTrack(currentTrackID)
+						end
 					end
 					isDoubleClicking = true
 				end
@@ -212,40 +233,51 @@ function Update(dt)
 		
 		-- H
 		if (GetInput(5) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.IDLE
+			currentState = State.IDLE
 			DispatchGlobalEvent("Player_Ability", { characterID, 0, 0 })
 		end
 
 		-- K
 		if (GetInput(6) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.AIM_PRIMARY
+			currentState = State.AIM_PRIMARY
 			DispatchGlobalEvent("Player_Ability", { characterID, 1, 1 })
 		end	
 
 		-- D
 		if (GetInput(12) == KEY_STATE.KEY_DOWN) then
-			currentAction = Action.AIM_SECONDARY
+			currentState = State.AIM_SECONDARY
 			DispatchGlobalEvent("Player_Ability", { characterID, 2, 1 })
 		end	
 
 		-- SPACE
 		if (GetInput(4) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.AIM_ULTIMATE
+			currentState = State.AIM_ULTIMATE
 			DispatchGlobalEvent("Player_Ability", { characterID, 3, 1 })
 		end
 
 		-- C -> Toggle crouch
 		if (GetInput(9) == KEY_STATE.KEY_DOWN) then 
 			if (currentMovement == Movement.CROUCH) then
-				currentMovement = Movement.WALK
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(0)
+				if (destination ~= nil) then
+					currentMovement = Movement.WALK
+					if (componentSwitch ~= nil) then
+						if (currentTrackID ~= -1) then
+							componentSwitch:StopTrack(currentTrackID)
+						end
+						currentTrackID = 0
+						componentSwitch:PlayTrack(currentTrackID)
+					end
+				else
+					currentMovement = Movement.IDLE
 				end
 			else
-				currentMovement = Movement.CROUCH
-				if (componentSwitch ~= nil) then
-					componentSwitch:StopTrack(0)
+				if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
+					if (currentTrackID ~= -1) then
+						componentSwitch:StopTrack(currentTrackID)
+						currentTrackID = -1
+					end
 				end
+				currentMovement = Movement.CROUCH
 			end
 		end
 	end
@@ -318,13 +350,13 @@ function ManageTimers(dt)
 			if (componentAnimator:IsCurrentClipPlaying() == true) then
 				ret = false
 			else
-				if (currentAction == Action.AIM_PRIMARY) then
+				if (currentState == State.AIM_PRIMARY) then
 					FireDart()
-				elseif (currentAction == Action.AIM_SECONDARY) then
+				elseif (currentState == State.AIM_SECONDARY) then
 					PlaceSmokebomb()
-				elseif (currentAction == Action.AIM_ULTIMATE) then
+				elseif (currentState == State.AIM_ULTIMATE) then
 					Ultimate()
-				elseif (currentAction == Action.MOSQUITO) then
+				elseif (currentState == State.MOSQUITO) then
 					ret = false
 				else 
 					componentAnimator:SetSelectedClip("Idle")
@@ -344,26 +376,13 @@ function MoveToDestination(dt)
 	
 	if (d > 5.0) then
 	
-		if (currentMovement ~= Movement.IDLE) then
+		if (componentAnimator ~= nil) then
 			if (currentMovement == Movement.WALK) then
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(0)
-				end
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Walk")
-				end
+				componentAnimator:SetSelectedClip("Walk")
 			elseif (currentMovement == Movement.CROUCH) then
-				-- No audio as of now
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Crouch")
-				end
+				componentAnimator:SetSelectedClip("Crouch")
 			elseif (currentMovement == Movement.RUN) then
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(1)
-				end
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Run")
-				end
+				componentAnimator:SetSelectedClip("Run")
 			end
 		end
 		
@@ -397,6 +416,21 @@ function MoveToDestination(dt)
 	end
 end
 
+function StopMovement()
+
+	if (componentSwitch ~= nil and currentTrackID ~= -1) then
+		componentSwitch:StopTrack(currentTrackID)
+		currentTrackID = -1
+	end
+
+	currentMovement = Movement.IDLE
+	
+	destination = nil
+	if (componentRigidBody ~= nil) then
+		componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
+	end
+end
+
 function LookAtTarget(lookAt)
 	local targetPos2D = { lookAt.x, lookAt.z }
 	local pos2D = { componentTransform:GetPosition().x, componentTransform:GetPosition().z }
@@ -405,7 +439,7 @@ function LookAtTarget(lookAt)
 	lastRotation = float3.new(vec2[1], 0, vec2[2])
 	componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
 
-	if (currentAction == Action.AIM_PRIMARY) then
+	if (currentState == State.AIM_PRIMARY) then -- The model rotates when firing
 		componentTransform:SetRotation(float3:new(componentTransform:GetRotation().x, componentTransform:GetRotation().y - 90, componentTransform:GetRotation().z))
 	end
 end
@@ -436,11 +470,15 @@ function FireDart()
 	
 	InstantiatePrefab("Dart")
 	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(2)
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
+		end
+		currentTrackID = 2
+		componentSwitch:PlayTrack(currentTrackID)
 	end
 
 	componentAnimator:SetSelectedClip("DartToIdle")
-	currentAction = Action.IDLE
+	currentState = State.IDLE
 end
 
 
@@ -459,11 +497,15 @@ function PlaceSmokebomb()
 
 	InstantiatePrefab("Smokebomb")
 	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(3)
-	end
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
+		end
+		currentTrackID = 3
+		componentSwitch:PlayTrack(currentTrackID)
+	end	
 	
 	componentAnimator:SetSelectedClip("SmokebombToIdle")
-	currentAction = Action.IDLE
+	currentState = State.IDLE
 end
 
 
@@ -481,29 +523,49 @@ end
 function Ultimate()
 	
 	InstantiatePrefab("Mosquito")
-	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(4)
-	end
 
 	-- No new clip, the last clip has to last until the mosquito dies
-	currentAction = Action.MOSQUITO
+	currentState = State.MOSQUITO
 end
 
+function TakeDamage(damage)
+	if (damage == nil) then
+		damage = 1
+	end
 
-function StopMovement()
+	iFramesTimer = 0.0
 
-	destination = nil
-	if (componentRigidBody ~= nil) then
-		componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
+	if (currentHP > 1) then
+		currentHP = currentHP - damage
+		if (componentSwitch ~= nil) then
+			if (currentTrackID ~= -1) then
+				componentSwitch:StopTrack(currentTrackID)
+			end
+			currentTrackID = 4 -- Should be 5
+			componentSwitch:PlayTrack(currentTrackID)
+		end
+	else
+		Die()
+	end
+end
+
+function Die()
+
+	StopMovement()
+	
+	currentState = State.DEAD
+	currentHP = 0
+	
+	if (componentAnimator ~= nil) then
+		componentAnimator:SetSelectedClip("Death")
 	end
 	if (componentSwitch ~= nil) then
-		if (currentMovement == Move.WALK) then
-			componentSwitch:StopTrack(0)
-		elseif (currentMovement == Move.RUN) then
-			componentSwitch:StopTrack(1)
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
 		end
+		currentTrackID = 5 -- Should be 6
+		componentSwitch:PlayTrack(currentTrackID)
 	end
-	currentMovement = Movement.IDLE
 end
 --------------------------------------------------
 
@@ -512,14 +574,23 @@ function EventHandler(key, fields)
 	
 	if (key == "Mosquito_Death") then
 		ultimateTimer = 0.0
-		currentAction = Action.IDLE
+		currentState = State.IDLE
 	end
 end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
+	if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+		TakeDamage(1)
+	end
+end
 
+function OnCollisionEnter(go)
+	
+	if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+		TakeDamage(1)
+	end
 end
 --------------------------------------------------
 
@@ -561,7 +632,7 @@ print("Nerala.lua compiled succesfully")
 -- 	RUN = 3,
 -- 	CROUCH = 4,
 -- }
--- Action = {
+-- State = {
 -- 	IDLE = 1,
 -- 	ATTACK = 2,
 -- 	AIM_PRIMARY = 3,
@@ -573,7 +644,7 @@ print("Nerala.lua compiled succesfully")
 -- ------------------- Variables setter --------------------
 -- target = nil
 -- currentMovement = Movement.IDLE
--- currentAction = Action.IDLE
+-- currentState = State.IDLE
 
 -- -- Globals --
 -- characterID = 2
@@ -727,7 +798,7 @@ print("Nerala.lua compiled succesfully")
 -- 		end
 -- 	end
 
--- 	-- Actions
+-- 	-- States
 -- 	if (destination ~= nil)	then
 -- 		MoveToDestination(dt)
 -- 	end
@@ -738,7 +809,7 @@ print("Nerala.lua compiled succesfully")
 -- 		-- Left Click
 -- 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 -- 			-- Primary ability (Dart)
--- 			if (currentAction == Action.AIM_PRIMARY and dartTimer == nil) then
+-- 			if (currentState == State.AIM_PRIMARY and dartTimer == nil) then
 -- 				target = GetGameObjectHovered()
 -- 				if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= dartCastRange) then
 -- 					if (target.tag == Tag.ENEMY) then
@@ -751,7 +822,7 @@ print("Nerala.lua compiled succesfully")
 -- 				end
 
 -- 			-- Secondary ability (Smoke bomb)
--- 			elseif (smokebombTimer == nil and currentAction == Action.AIM_SECONDARY) then
+-- 			elseif (smokebombTimer == nil and currentState == State.AIM_SECONDARY) then
 -- 				GetGameObjectHovered() -- This is for the smokebomb to go to the mouse Pos (it uses the target var)
 -- 				mousePos = GetLastMouseClick()
 -- 				if (Distance3D(mousePos, componentTransform:GetPosition()) <= smokebombCastRange) then
@@ -762,7 +833,7 @@ print("Nerala.lua compiled succesfully")
 -- 				end
 
 -- 			-- Ultimate ability (hunter-seeker)
--- 			elseif (ultimateTimer == nil and currentAction == Action.AIM_ULTIMATE) then
+-- 			elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
 -- 				Ultimate()
 -- 			end
 -- 		end
@@ -787,22 +858,22 @@ print("Nerala.lua compiled succesfully")
 	
 -- 		-- H
 -- 		if (GetInput(5) == KEY_STATE.KEY_DOWN) then 
--- 			currentAction = Action.IDLE
+-- 			currentState = State.IDLE
 -- 		end
 
 -- 		-- K
 -- 		if (GetInput(6) == KEY_STATE.KEY_DOWN) then 
--- 			currentAction = Action.AIM_PRIMARY
+-- 			currentState = State.AIM_PRIMARY
 -- 		end	
 
 -- 		-- D
 -- 		if (GetInput(12) == KEY_STATE.KEY_DOWN) then 
--- 			currentAction = Action.AIM_SECONDARY
+-- 			currentState = State.AIM_SECONDARY
 -- 		end	
 
 -- 		-- SPACE
 -- 		if (GetInput(4) == KEY_STATE.KEY_DOWN) then 
--- 			currentAction = Action.AIM_ULTIMATE
+-- 			currentState = State.AIM_ULTIMATE
 -- 		end
 
 -- 		-- C -> Toggle crouch
@@ -958,7 +1029,7 @@ print("Nerala.lua compiled succesfully")
 -- end
 
 -- function StopMovement()
--- 	currentMovement = Movement.IDLE -- Stops aimings and all actions
+-- 	currentMovement = Movement.IDLE -- Stops aimings and all States
 
 -- 	destination = nil
 -- 	if (componentRigidBody ~= nil) then

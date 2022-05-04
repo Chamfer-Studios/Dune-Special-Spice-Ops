@@ -34,7 +34,7 @@ target = nil
 currentMovement = Movement.IDLE
 currentState = State.IDLE
 maxHP = 3
-currentHP = nil
+currentHP = maxHP
 iFrames = 1.5
 iFramesTimer = nil
 
@@ -57,6 +57,8 @@ ultimateRange = 100.0
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
+
+---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
 doubleClickDuration = 0.5
@@ -114,23 +116,24 @@ NewVariable(currentHPIV)
 --NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
-
-
 ----------------------- Methods -------------------------
 
 function Start()
+
+	componentAnimator = gameObject:GetComponentAnimator()
 	if (componentAnimator ~= nil) then
 		componentAnimator:SetSelectedClip("Idle")
 	end
+
 	mouseParticles = Find("Mouse Particles")
 	if (mouseParticles ~= nil) then
 		mouseParticles:GetComponentParticle():StopParticleSpawn()
 	end
 
-	componentAnimator = gameObject:GetComponentAnimator()
-
 	componentRigidBody = gameObject:GetRigidBody()
+
 	componentBoxCollider = gameObject:GetBoxCollider()
+
 	componentSwitch = gameObject:GetAudioSwitch()
 	currentTrackID = -1
 
@@ -208,17 +211,25 @@ function Update(dt)
 				destination = GetLastMouseClick()
 				DispatchEvent("Pathfinder_UpdatePath", { { destination }, true, componentTransform:GetPosition() })
 				if (currentMovement == Movement.WALK and isDoubleClicking == true) then
+
 					currentMovement = Movement.RUN
 
-					if (componentSwitch ~= nil and currentTrackID ~= 1) then
-						componentSwitch:StopTrack(currentTrackID)
+					if (componentSwitch ~= nil) then
+						if (currentTrackID ~= -1) then
+							componentSwitch:StopTrack(currentTrackID)
+						end
 						currentTrackID = 1
 						componentSwitch:PlayTrack(currentTrackID)
 					end
 				else
 					if (currentMovement == Movement.IDLE) then
+
 						currentMovement = Movement.WALK
-						if (componentSwitch ~= nil and currentTrackID ~= 0) then
+						
+						if (componentSwitch ~= nil) then
+							if (currentTrackID ~= -1) then
+								componentSwitch:StopTrack(currentTrackID)
+							end
 							currentTrackID = 0
 							componentSwitch:PlayTrack(currentTrackID)
 						end
@@ -261,7 +272,10 @@ function Update(dt)
 			if (currentMovement == Movement.CROUCH) then
 				if (destination ~= nil) then
 					currentMovement = Movement.WALK
-					if (componentSwitch ~= nil and currentTrackID ~= 0) then
+					if (componentSwitch ~= nil) then
+						if (currentTrackID ~= -1) then
+							componentSwitch:StopTrack(currentTrackID)
+						end
 						currentTrackID = 0
 						componentSwitch:PlayTrack(currentTrackID)
 					end
@@ -270,8 +284,10 @@ function Update(dt)
 				end
 			else
 				if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-					componentSwitch:StopTrack(currentTrackID)
-					currentTrackID = -1
+					if (currentTrackID ~= -1) then
+						componentSwitch:StopTrack(currentTrackID)
+						currentTrackID = -1
+					end
 				end
 				currentMovement = Movement.CROUCH
 			end
@@ -438,7 +454,7 @@ end
 
 function StopMovement()
 
-	if (componentSwitch ~= nil) then
+	if (componentSwitch ~= nil and currentTrackID ~= -1) then
 		componentSwitch:StopTrack(currentTrackID)
 		currentTrackID = -1
 	end
@@ -490,7 +506,11 @@ function FireKnife()
 	InstantiatePrefab("Knife")
 	knifeCount = knifeCount - 1
 	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(2)
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
+		end
+		currentTrackID = 2
+		componentSwitch:PlayTrack(currentTrackID)
 	end
 
 	componentAnimator:SetSelectedClip("KnifeToIdle")
@@ -513,7 +533,11 @@ function PlaceDecoy()
 
 	InstantiatePrefab("Decoy")
 	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(3)
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
+		end
+		currentTrackID = 3
+		componentSwitch:PlayTrack(currentTrackID)
 	end
 
 	componentAnimator:SetSelectedClip("DecoyToIdle")
@@ -603,9 +627,13 @@ function Ultimate()
 		componentRigidBody:UpdateEnableGravity()
 	end
 
-	if (componentSwitch ~= nil) then
-		componentSwitch:PlayTrack(4)
-	end
+	--if (componentSwitch ~= nil) then -- Commented cause the audio is sh*t
+	--	if (currentTrackID ~= -1) then
+	--		componentSwitch:StopTrack(currentTrackID)
+	--	end
+	--	currentTrackID = 4
+	--	componentSwitch:PlayTrack(currentTrackID)
+	--end
 	
 	currentState = State.IDLE
 end
@@ -619,6 +647,13 @@ function TakeDamage(damage)
 
 	if (currentHP > 1) then
 		currentHP = currentHP - damage
+		if (componentSwitch ~= nil) then
+			if (currentTrackID ~= -1) then
+				componentSwitch:StopTrack(currentTrackID)
+			end
+			currentTrackID = 4 -- Should be 5
+			componentSwitch:PlayTrack(currentTrackID)
+		end
 	else
 		Die()
 	end
@@ -635,7 +670,10 @@ function Die()
 		componentAnimator:SetSelectedClip("Death")
 	end
 	if (componentSwitch ~= nil) then
-		currentTrackID = 5 -- (?)
+		if (currentTrackID ~= -1) then
+			componentSwitch:StopTrack(currentTrackID)
+		end
+		currentTrackID = 5 -- Should be 6
 		componentSwitch:PlayTrack(currentTrackID)
 	end
 end
