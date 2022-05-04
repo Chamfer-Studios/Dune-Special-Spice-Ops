@@ -18,19 +18,25 @@ Movement = {
 	RUN = 3,
 	CROUCH = 4,
 }
-Action = {
+State = {
 	IDLE = 1,
 	ATTACK = 2,
 	AIM_PRIMARY = 3,
 	AIM_SECONDARY = 4,
 	AIM_ULTIMATE = 5,
+	DEAD = 6,
 }
+
 ---------------------------------------------------------
 
 ------------------- Variables setter --------------------
 target = nil
 currentMovement = Movement.IDLE
-currentAction = Action.IDLE
+currentState = State.IDLE
+maxHP = 3
+currentHP = nil
+iFrames = 1.5
+iFramesTimer = nil
 
 -- Globals --
 characterID = 1
@@ -52,6 +58,10 @@ ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
 
+-------------------- Movement logic ---------------------
+doubleClickDuration = 0.5
+doubleClickTimer = 0.0
+isDoubleClicking = false
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
@@ -63,6 +73,18 @@ ultimateRangeExtension = ultimateRange * 0.5
 --speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
 --speedIV = InspectorVariable.new("speed", speedIVT, speed)
 --NewVariable(speedIV)
+--
+maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
+NewVariable(maxHPIV)
+
+currentHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT -- For debugging purposes
+currentHPIV = InspectorVariable.new("currentHP", currentHPIVT, currentHP)
+NewVariable(currentHPIV)
+
+--currentTrackIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT -- For debugging purposes
+--currentTrackIDIV = InspectorVariable.new("currentTrackID", currentTrackIDIVT, currentTrackID)
+--NewVariable(currentTrackIDIV)
 --
 ---- Primary ability --
 --knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
@@ -92,24 +114,7 @@ ultimateRangeExtension = ultimateRange * 0.5
 --NewVariable(drawUltimateIV)
 ---------------------------------------------------------
 
-------------------- Animation setter --------------------
-componentAnimator = gameObject:GetComponentAnimator()
----------------------------------------------------------
 
---------------------- Audio setter ----------------------
-componentSwitch = gameObject:GetAudioSwitch()
----------------------------------------------------------
-
-------------------- Physics setter ----------------------
-componentRigidBody = gameObject:GetRigidBody()
-componentBoxCollider = gameObject:GetBoxCollider()
----------------------------------------------------------
-
--------------------- Movement logic ---------------------
-doubleClickDuration = 0.5
-doubleClickTimer = 0.0
-isDoubleClicking = false
----------------------------------------------------------
 
 ----------------------- Methods -------------------------
 
@@ -121,6 +126,15 @@ function Start()
 	if (mouseParticles ~= nil) then
 		mouseParticles:GetComponentParticle():StopParticleSpawn()
 	end
+
+	componentAnimator = gameObject:GetComponentAnimator()
+
+	componentRigidBody = gameObject:GetRigidBody()
+	componentBoxCollider = gameObject:GetBoxCollider()
+	componentSwitch = gameObject:GetAudioSwitch()
+	currentTrackID = -1
+
+	currentHP = maxHP
 end
 
 -- Called each loop iteration
@@ -134,7 +148,7 @@ function Update(dt)
 		return
 	end
 
-	-- Actions
+	-- States
 	if (destination ~= nil)	then
 		MoveToDestination(dt)
 		DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
@@ -149,7 +163,7 @@ function Update(dt)
 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
 			-- Primary ability (Knife)
-			if (currentAction == Action.AIM_PRIMARY) then
+			if (currentState == State.AIM_PRIMARY) then
 				if (knifeCount > 0) then
 					target = GetGameObjectHovered()
 					if (target.tag == Tag.ENEMY and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= knifeCastRange) then
@@ -160,7 +174,7 @@ function Update(dt)
 				end
 			
 			-- Secondary ability (Decoy)
-			elseif (decoyTimer == nil and currentAction == Action.AIM_SECONDARY) then
+			elseif (decoyTimer == nil and currentState == State.AIM_SECONDARY) then
 				GetGameObjectHovered() -- This is for the decoy to go to the mouse Pos (it uses the target var)
 				local mouse = GetLastMouseClick()
 				if (Distance3D(mouse, componentTransform:GetPosition()) <= decoyCastRange) then
@@ -173,7 +187,7 @@ function Update(dt)
 				end
 
 			-- Ultimate ability (master yi)
-			elseif (ultimateTimer == nil and currentAction == Action.AIM_ULTIMATE) then
+			elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
 				target = GetGameObjectHovered()
 				if (target.tag == Tag.ENEMY) then
 					if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateRange) then
@@ -195,9 +209,19 @@ function Update(dt)
 				DispatchEvent("Pathfinder_UpdatePath", { { destination }, true, componentTransform:GetPosition() })
 				if (currentMovement == Movement.WALK and isDoubleClicking == true) then
 					currentMovement = Movement.RUN
+
+					if (componentSwitch ~= nil and currentTrackID ~= 1) then
+						componentSwitch:StopTrack(currentTrackID)
+						currentTrackID = 1
+						componentSwitch:PlayTrack(currentTrackID)
+					end
 				else
 					if (currentMovement == Movement.IDLE) then
 						currentMovement = Movement.WALK
+						if (componentSwitch ~= nil and currentTrackID ~= 0) then
+							currentTrackID = 0
+							componentSwitch:PlayTrack(currentTrackID)
+						end
 					end
 					isDoubleClicking = true
 				end
@@ -210,40 +234,46 @@ function Update(dt)
 		
 		-- H
 		if (GetInput(5) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.IDLE
+			currentState = State.IDLE
 			DispatchGlobalEvent("Player_Ability", { characterID, 0, 0 })
 		end
 
 		-- K
 		if (GetInput(6) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.AIM_PRIMARY
+			currentState = State.AIM_PRIMARY
 			DispatchGlobalEvent("Player_Ability", { characterID, 1, 1 })
 		end	
 
 		-- D
 		if (GetInput(12) == KEY_STATE.KEY_DOWN) then
-			currentAction = Action.AIM_SECONDARY
+			currentState = State.AIM_SECONDARY
 			DispatchGlobalEvent("Player_Ability", { characterID, 2, 1 })
 		end	
 
 		-- SPACE
 		if (GetInput(4) == KEY_STATE.KEY_DOWN) then 
-			currentAction = Action.AIM_ULTIMATE
+			currentState = State.AIM_ULTIMATE
 			DispatchGlobalEvent("Player_Ability", { characterID, 3, 1 })
 		end
 
 		-- C -> Toggle crouch
 		if (GetInput(9) == KEY_STATE.KEY_DOWN) then 
 			if (currentMovement == Movement.CROUCH) then
-				currentMovement = Movement.WALK
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(0)
+				if (destination ~= nil) then
+					currentMovement = Movement.WALK
+					if (componentSwitch ~= nil and currentTrackID ~= 0) then
+						currentTrackID = 0
+						componentSwitch:PlayTrack(currentTrackID)
+					end
+				else
+					currentMovement = Movement.IDLE
 				end
 			else
-				currentMovement = Movement.CROUCH
-				if (componentSwitch ~= nil) then
-					componentSwitch:StopTrack(0)
+				if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
+					componentSwitch:StopTrack(currentTrackID)
+					currentTrackID = -1
 				end
+				currentMovement = Movement.CROUCH
 			end
 		end
 
@@ -284,6 +314,14 @@ function ManageTimers(dt)
 	-- Click particles logic
 	if (mouseParticles ~= nil) then
 		mouseParticles:GetComponentParticle():StopParticleSpawn()
+	end
+
+	-- Invencibility timer
+	if (iFramesTimer ~= nil) then
+		iFramesTimer = iFramesTimer + dt
+		if (iFramesTimer >= iFrames) then
+			iFramesTimer = nil
+		end
 	end
 
 	-- Primary ability cooldown
@@ -334,11 +372,11 @@ function ManageTimers(dt)
 			if (componentAnimator:IsCurrentClipPlaying() == true) then
 				ret = false
 			else
-				if (currentAction == Action.AIM_PRIMARY) then
+				if (currentState == State.AIM_PRIMARY) then
 					FireKnife()
-				elseif (currentAction == Action.AIM_SECONDARY) then
+				elseif (currentState == State.AIM_SECONDARY) then
 					PlaceDecoy()
-				elseif (currentAction == Action.AIM_ULTIMATE) then
+				elseif (currentState == State.AIM_ULTIMATE) then
 					Ultimate()
 				else 
 					componentAnimator:SetSelectedClip("Idle")
@@ -358,26 +396,13 @@ function MoveToDestination(dt)
 	
 	if (d > 5.0) then
 	
-		if (currentMovement ~= Movement.IDLE) then
+		if (componentAnimator ~= nil) then
 			if (currentMovement == Movement.WALK) then
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(0)
-				end
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Walk")
-				end
+				componentAnimator:SetSelectedClip("Walk")
 			elseif (currentMovement == Movement.CROUCH) then
-				-- No audio as of now
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Crouch")
-				end
+				componentAnimator:SetSelectedClip("Crouch")
 			elseif (currentMovement == Movement.RUN) then
-				if (componentSwitch ~= nil) then
-					componentSwitch:PlayTrack(1)
-				end
-				if (componentAnimator ~= nil) then
-					componentAnimator:SetSelectedClip("Run")
-				end
+				componentAnimator:SetSelectedClip("Run")
 			end
 		end
 		
@@ -408,6 +433,21 @@ function MoveToDestination(dt)
 			componentAnimator:SetSelectedClip("Idle")
 		end
 		StopMovement()
+	end
+end
+
+function StopMovement()
+
+	if (componentSwitch ~= nil) then
+		componentSwitch:StopTrack(currentTrackID)
+		currentTrackID = -1
+	end
+
+	currentMovement = Movement.IDLE -- Stops aimings and all States
+
+	destination = nil
+	if (componentRigidBody ~= nil) then
+		componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
 	end
 end
 
@@ -454,7 +494,7 @@ function FireKnife()
 	end
 
 	componentAnimator:SetSelectedClip("KnifeToIdle")
-	currentAction = Action.IDLE
+	currentState = State.IDLE
 end
 
 
@@ -477,7 +517,7 @@ function PlaceDecoy()
 	end
 
 	componentAnimator:SetSelectedClip("DecoyToIdle")
-	currentAction = Action.IDLE
+	currentState = State.IDLE
 end
 
 
@@ -567,23 +607,36 @@ function Ultimate()
 		componentSwitch:PlayTrack(4)
 	end
 	
-	currentAction = Action.IDLE
+	currentState = State.IDLE
 end
 
+function TakeDamage(damage)
+	if (damage == nil) then
+		damage = 1
+	end
 
-function StopMovement()
-	currentMovement = Movement.IDLE -- Stops aimings and all actions
+	iFramesTimer = 0.0
 
-	destination = nil
-	if (componentRigidBody ~= nil) then
-		componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
+	if (currentHP > 1) then
+		currentHP = currentHP - damage
+	else
+		Die()
+	end
+end
+
+function Die()
+
+	StopMovement()
+	
+	currentState = State.DEAD
+	currentHP = 0
+	
+	if (componentAnimator ~= nil) then
+		componentAnimator:SetSelectedClip("Death")
 	end
 	if (componentSwitch ~= nil) then
-		if (currentMovement == Move.WALK) then
-			componentSwitch:StopTrack(0)
-		elseif (currentMovement == Move.RUN) then
-			componentSwitch:StopTrack(1)
-		end
+		currentTrackID = 5 -- (?)
+		componentSwitch:PlayTrack(currentTrackID)
 	end
 end
 --------------------------------------------------
@@ -594,6 +647,16 @@ function OnTriggerEnter(go)
 	if (go.tag == Tag.PROJECTILE) then
 		print("+1 knives")
 		knifeCount = knifeCount + 1
+
+	elseif (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+		TakeDamage(1)
+	end
+end
+
+function OnCollisionEnter(go)
+	
+	if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+		TakeDamage(1)
 	end
 end
 --------------------------------------------------
