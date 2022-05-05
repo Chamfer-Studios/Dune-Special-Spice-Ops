@@ -125,6 +125,7 @@ function Start()
 	currentTrackID = -1
 
 	currentHP = maxHP
+	DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
 end
 
 -- Called each loop iteration
@@ -537,6 +538,8 @@ function TakeDamage(damage)
 
 	if (currentHP > 1) then
 		currentHP = currentHP - damage
+		DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
+
 		if (componentSwitch ~= nil) then
 			if (currentTrackID ~= -1) then
 				componentSwitch:StopTrack(currentTrackID)
@@ -555,7 +558,8 @@ function Die()
 	
 	currentState = State.DEAD
 	currentHP = 0
-	
+	DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
+
 	if (componentAnimator ~= nil) then
 		componentAnimator:SetSelectedClip("Death")
 	end
