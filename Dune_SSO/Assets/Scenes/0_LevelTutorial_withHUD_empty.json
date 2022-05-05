@@ -1216,7 +1216,18 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": null
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
                     }
                 ],
                 "is3D": true,
@@ -1293,6 +1304,12 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/Players/Nerala/Nerala.lua",
+                        "id": 2083680838,
+                        "type": "script"
                     }
                 ],
                 "is3D": true,
@@ -1349,7 +1366,18 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": null
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
                     }
                 ],
                 "is3D": true,
@@ -1441,7 +1469,18 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": null
+                        "uniforms": [
+                            {
+                                "name": "albedoTint",
+                                "type": 35666,
+                                "value": {
+                                    "w": 1.0,
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ]
                     }
                 ],
                 "is3D": true,

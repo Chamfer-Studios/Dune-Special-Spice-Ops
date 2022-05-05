@@ -8,7 +8,7 @@ pathRedHP =  "Assets/HUD/slider_segments_hp1_v1.0.png"
 pathGreyHP = "Assets/HUD/slider_segments_hp3_v1.0.png"
 pathRed =  "Assets/HUD/slider_segments_hp2_v1.0.png"
 pathGrey = "Assets/HUD/slider_segments_none_v1.0.png"
-pathBlank = "blank_asset_v1.0.png"
+pathBlank = "Assets/HUD/blank_asset_v1.0.png"
 
 -- Called each loop iteration
 function Update(dt)
