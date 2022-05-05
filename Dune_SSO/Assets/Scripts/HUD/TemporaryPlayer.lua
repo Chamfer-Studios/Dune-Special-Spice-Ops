@@ -17,20 +17,20 @@ lives = maxLives
 maxBullets = 2
 bulletCount = maxBullets
 
-local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT			-- IVT == Inspector Variable Type
-local speedIV = InspectorVariable.new("speed", speedIVT, speed)
+speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT			-- IVT == Inspector Variable Type
+ speedIV = InspectorVariable.new("speed", speedIVT, speed)
 NewVariable(speedIV)
 
-local maxBulletsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-local maxBulletsIV = InspectorVariable.new("maxBullets", maxBulletsIVT, maxBullets)
+ maxBulletsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ maxBulletsIV = InspectorVariable.new("maxBullets", maxBulletsIVT, maxBullets)
 NewVariable(maxBulletsIV)
 
-local maxLivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ maxLivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxLivesIVT = InspectorVariable.new("maxLives", maxLivesIVT, maxLives)
 NewVariable(maxLivesIVT)
 
-local currentItemType = ItemType.ITEM_HAND
-local currentItemDamage = 5
+ currentItemType = ItemType.ITEM_HAND
+ currentItemDamage = 5
 currentItem = Item.new(currentItemType, currentItemDamage)
 
 componentAnimator = gameObject:GetComponentAnimator()

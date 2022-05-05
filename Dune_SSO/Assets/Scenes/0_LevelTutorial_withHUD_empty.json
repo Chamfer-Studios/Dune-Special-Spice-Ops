@@ -1,7 +1,7 @@
 {
     "0_LevelTutorial_withHUD_empty": {
         "active": true,
-        "game_objects_amount": 32,
+        "game_objects_amount": 29,
         "game_objects_list": [
             {
                 "UID": 658759807,
@@ -43,6 +43,7 @@
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "camera",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -83,6 +84,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Canvas",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -124,6 +126,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Radar",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -165,6 +168,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "CharacterInfo",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -258,6 +262,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Unit_1",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -351,6 +356,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Unit_2",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -444,6 +450,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Unit_3",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -480,7 +487,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/ability_slot_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
                     },
                     {
@@ -491,6 +498,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Skill_Slot_1",
                 "parent_UID": 738051600,
                 "tag": 0
@@ -527,7 +535,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/ability_slot_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
                     },
                     {
@@ -538,6 +546,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Skill_Slot_2",
                 "parent_UID": 738051600,
                 "tag": 0
@@ -574,7 +583,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/ability_slot_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
                     },
                     {
@@ -585,49 +594,9 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Skill_Slot_3",
                 "parent_UID": 738051600,
-                "tag": 0
-            },
-            {
-                "UID": 2043050516,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 2,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -27.5,
-                            -5.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            153.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "Q 1"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter",
-                "parent_UID": 1025753550,
                 "tag": 0
             },
             {
@@ -662,11 +631,18 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/slider_segments_hp1_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Lives.lua",
+                        "id": 1943809142,
+                        "type": "script"
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "HealthBarBase",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -703,11 +679,12 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/slider_segments_hp2_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "HealthBar_1",
                 "parent_UID": 337521856,
                 "tag": 0
@@ -744,17 +721,12 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/slider_segments_hp2_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
-                    },
-                    {
-                        "active": true,
-                        "file_name": "Assets/Scripts/HUD/UI_Lives_3.lua",
-                        "id": 1486776946,
-                        "type": "script"
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "HealthBar_2",
                 "parent_UID": 1299219865,
                 "tag": 0
@@ -796,6 +768,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Mission_Banner",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -837,6 +810,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Zhibb",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -878,6 +852,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "DialogWindow",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -919,6 +894,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Text",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -960,90 +936,9 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Text1",
                 "parent_UID": 1855757815,
-                "tag": 0
-            },
-            {
-                "UID": 1721936553,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 2,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -27.0,
-                            -7.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            255.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "E 100"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter1",
-                "parent_UID": 733408228,
-                "tag": 0
-            },
-            {
-                "UID": 1817646285,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": "info"
-                    },
-                    {
-                        "active": true,
-                        "anchor": 1,
-                        "pivot": [
-                            1.0,
-                            1.0
-                        ],
-                        "position": [
-                            -13.0,
-                            -6.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            51.0,
-                            75.0
-                        ],
-                        "type": "transform2D"
-                    },
-                    {
-                        "active": true,
-                        "type": "text",
-                        "value": "W"
-                    }
-                ],
-                "is3D": false,
-                "name": "Counter2",
-                "parent_UID": 1566707212,
                 "tag": 0
             },
             {
@@ -1089,6 +984,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Worm_Timer",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -1136,6 +1032,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Timer",
                 "parent_UID": 1583141216,
                 "tag": 0
@@ -1172,7 +1069,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/HUD/hud_portrait_main_v1.0.png",
+                        "texture": "Assets/HUD/blank_asset_v1.0.png",
                         "type": "image"
                     },
                     {
@@ -1200,6 +1097,7 @@
                     }
                 ],
                 "is3D": false,
+                "is_prefab": false,
                 "name": "Character_Portrait",
                 "parent_UID": 1855757815,
                 "tag": 0
@@ -1231,9 +1129,41 @@
                             1.0
                         ],
                         "type": "transform"
+                    },
+                    {
+                        "active": true,
+                        "body_type": "Dynamic",
+                        "freeze_position_x": false,
+                        "freeze_position_y": true,
+                        "freeze_position_z": false,
+                        "freeze_rotation_x": false,
+                        "freeze_rotation_y": false,
+                        "freeze_rotation_z": false,
+                        "mass": 1.0,
+                        "type": "rigidBody",
+                        "use_gravity": false
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/Players/Zhib/Zhib.lua",
+                        "id": 1132445530,
+                        "inspector_variables": [
+                            {
+                                "name": "maxHP",
+                                "type": "int",
+                                "value": 3
+                            },
+                            {
+                                "name": "currentHP",
+                                "type": "int",
+                                "value": 3
+                            }
+                        ],
+                        "type": "script"
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "ball",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -1286,21 +1216,11 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "Sphere",
                 "parent_UID": 1889180301,
                 "tag": 0
@@ -1341,6 +1261,7 @@
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "GameState",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -1375,6 +1296,7 @@
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "ball1",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -1427,21 +1349,11 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "Sphere1",
                 "parent_UID": 878635075,
                 "tag": 0
@@ -1476,6 +1388,7 @@
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "ball2",
                 "parent_UID": 1447595035,
                 "tag": 0
@@ -1528,21 +1441,11 @@
                         "shader_path": "Assets/Shaders/default_shader.glsl",
                         "texture_path": "",
                         "type": "material",
-                        "uniforms": [
-                            {
-                                "name": "albedoTint",
-                                "type": 35666,
-                                "value": {
-                                    "w": 1.0,
-                                    "x": 1.0,
-                                    "y": 1.0,
-                                    "z": 1.0
-                                }
-                            }
-                        ]
+                        "uniforms": null
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "Sphere2",
                 "parent_UID": 1693605871,
                 "tag": 0
@@ -1577,6 +1480,7 @@
                     }
                 ],
                 "is3D": true,
+                "is_prefab": false,
                 "name": "Already in the scene",
                 "parent_UID": 4294967295,
                 "tag": 0
