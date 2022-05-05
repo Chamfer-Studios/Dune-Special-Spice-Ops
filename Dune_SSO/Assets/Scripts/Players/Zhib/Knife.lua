@@ -26,6 +26,7 @@ end
 function Update(dt)
 
 	if (destination ~= nil) then
+		destination = target:GetTransform():GetPosition()
 		MoveToDestination(dt)
 	end
 end
@@ -67,8 +68,7 @@ function MoveToDestination(dt)
 		destination = nil
 		if (componentRigidBody ~= nil) then
 			componentRigidBody:SetLinearVelocity(float3.new(0,0,0))
-			componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 0, componentTransform:GetPosition().z))
-			
+			componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y, componentTransform:GetPosition().z))
 		end
 	end
 end
