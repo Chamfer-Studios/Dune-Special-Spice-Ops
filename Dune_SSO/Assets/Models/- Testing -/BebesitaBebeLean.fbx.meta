@@ -1,0 +1,47 @@
+{
+    "asset_file": "BebesitaBebeLean.fbx",
+    "asset_path": "Assets/Models/- Testing -/BebesitaBebeLean.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Ch47_Body1.sugar",
+            "library_path": "Library/Meshes/2133026809.sugar",
+            "type": 0,
+            "uid": 2133026809
+        },
+        {
+            "asset_file": "Ch47_Eye.sugar",
+            "library_path": "Library/Meshes/1197489303.sugar",
+            "type": 0,
+            "uid": 1197489303
+        },
+        {
+            "asset_file": "Ch47_Face.sugar",
+            "library_path": "Library/Meshes/1280131997.sugar",
+            "type": 0,
+            "uid": 1280131997
+        },
+        {
+            "asset_file": "Ch47_eyelashes.sugar",
+            "library_path": "Library/Meshes/1833408778.sugar",
+            "type": 0,
+            "uid": 1833408778
+        },
+        {
+            "asset_file": "Ch47_hair1.sugar",
+            "library_path": "Library/Meshes/1312114904.sugar",
+            "type": 0,
+            "uid": 1312114904
+        },
+        {
+            "asset_file": "mixamo.com.cake",
+            "library_path": "Library/Animations/670312045.cake",
+            "type": 5,
+            "uid": 670312045
+        }
+    ],
+    "library_file": "1308053346.tea",
+    "library_path": "Library/Models/1308053346.tea",
+    "mod_time": 411347752,
+    "type": 3,
+    "uid": 1308053346
+}

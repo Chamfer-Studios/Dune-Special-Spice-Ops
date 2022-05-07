@@ -1,0 +1,23 @@
+{
+    "asset_file": "raban_painting_04.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_group_8_paintings/props/raban_painting_04.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "what-can-it-do-2B.sugar",
+            "library_path": "Library/Meshes/1417204729.sugar",
+            "type": 0,
+            "uid": 1417204729
+        },
+        {
+            "asset_file": "what-can-it-do-2B.001.sugar",
+            "library_path": "Library/Meshes/1776890505.sugar",
+            "type": 0,
+            "uid": 1776890505
+        }
+    ],
+    "library_file": "1118038467.tea",
+    "library_path": "Library/Models/1118038467.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 1118038467
+}

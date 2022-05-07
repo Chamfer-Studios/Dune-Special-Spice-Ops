@@ -1,0 +1,23 @@
+{
+    "asset_file": "raban_statue_04.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/rabban_statues/statues/props/raban_statue_04.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Raban.sugar",
+            "library_path": "Library/Meshes/2146833461.sugar",
+            "type": 0,
+            "uid": 2146833461
+        },
+        {
+            "asset_file": "axe.sugar",
+            "library_path": "Library/Meshes/1489692919.sugar",
+            "type": 0,
+            "uid": 1489692919
+        }
+    ],
+    "library_file": "1035646862.tea",
+    "library_path": "Library/Models/1035646862.tea",
+    "mod_time": 411347759,
+    "type": 3,
+    "uid": 1035646862
+}

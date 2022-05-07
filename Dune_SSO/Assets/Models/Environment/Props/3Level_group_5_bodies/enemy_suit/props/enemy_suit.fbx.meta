@@ -1,0 +1,23 @@
+{
+    "asset_file": "enemy_suit.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_group_5_bodies/enemy_suit/props/enemy_suit.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "desinflao.sugar",
+            "library_path": "Library/Meshes/1842051002.sugar",
+            "type": 0,
+            "uid": 1842051002
+        },
+        {
+            "asset_file": "desinflao.004.sugar",
+            "library_path": "Library/Meshes/1214328509.sugar",
+            "type": 0,
+            "uid": 1214328509
+        }
+    ],
+    "library_file": "803914269.tea",
+    "library_path": "Library/Models/803914269.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 803914269
+}

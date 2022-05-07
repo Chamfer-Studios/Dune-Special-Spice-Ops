@@ -1,0 +1,17 @@
+{
+    "asset_file": "nerala_mosquito.fbx",
+    "asset_path": "Assets/Models/Characters/Players/Nerala/nerala_mosquito.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "nerala_mosquito.sugar",
+            "library_path": "Library/Meshes/1349786506.sugar",
+            "type": 0,
+            "uid": 1349786506
+        }
+    ],
+    "library_file": "994689679.tea",
+    "library_path": "Library/Models/994689679.tea",
+    "mod_time": 411347755,
+    "type": 3,
+    "uid": 994689679
+}

@@ -1,0 +1,23 @@
+{
+    "asset_file": "ChavalRefachero.fbx",
+    "asset_path": "Assets/Models/- Testing -/ChavalRefachero.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Vampire.sugar",
+            "library_path": "Library/Meshes/1456093354.sugar",
+            "type": 0,
+            "uid": 1456093354
+        },
+        {
+            "asset_file": "mixamo.com.cake",
+            "library_path": "Library/Animations/562358552.cake",
+            "type": 5,
+            "uid": 562358552
+        }
+    ],
+    "library_file": "1092355298.tea",
+    "library_path": "Library/Models/1092355298.tea",
+    "mod_time": 411347755,
+    "type": 3,
+    "uid": 1092355298
+}

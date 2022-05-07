@@ -1,0 +1,17 @@
+{
+    "asset_file": "ranged_target.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/ranged_targets/props/ranged_target.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "target.sugar",
+            "library_path": "Library/Meshes/1856344563.sugar",
+            "type": 0,
+            "uid": 1856344563
+        }
+    ],
+    "library_file": "313589018.tea",
+    "library_path": "Library/Models/313589018.tea",
+    "mod_time": 411347761,
+    "type": 3,
+    "uid": 313589018
+}

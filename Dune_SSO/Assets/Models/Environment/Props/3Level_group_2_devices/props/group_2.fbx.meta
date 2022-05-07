@@ -1,0 +1,29 @@
+{
+    "asset_file": "group_2.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_group_2_devices/props/group_2.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Cube.002.sugar",
+            "library_path": "Library/Meshes/1142109062.sugar",
+            "type": 0,
+            "uid": 1142109062
+        },
+        {
+            "asset_file": "Cube.003.sugar",
+            "library_path": "Library/Meshes/945686122.sugar",
+            "type": 0,
+            "uid": 945686122
+        },
+        {
+            "asset_file": "Cube.004.sugar",
+            "library_path": "Library/Meshes/2008893343.sugar",
+            "type": 0,
+            "uid": 2008893343
+        }
+    ],
+    "library_file": "314136661.tea",
+    "library_path": "Library/Models/314136661.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 314136661
+}

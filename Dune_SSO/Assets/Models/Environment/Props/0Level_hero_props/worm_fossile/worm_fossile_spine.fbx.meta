@@ -1,0 +1,23 @@
+{
+    "asset_file": "worm_fossile_spine.fbx",
+    "asset_path": "Assets/Models/Environment/Props/0Level_hero_props/worm_fossile/worm_fossile_spine.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "worm_spine_l.sugar",
+            "library_path": "Library/Meshes/416587532.sugar",
+            "type": 0,
+            "uid": 416587532
+        },
+        {
+            "asset_file": "worm_fossile_base_color.png",
+            "library_path": "Library/Textures/1473912637.cacao",
+            "type": 1,
+            "uid": 1473912637
+        }
+    ],
+    "library_file": "1208917119.tea",
+    "library_path": "Library/Models/1208917119.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 1208917119
+}

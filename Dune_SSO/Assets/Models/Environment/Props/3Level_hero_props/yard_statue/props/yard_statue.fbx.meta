@@ -1,0 +1,17 @@
+{
+    "asset_file": "yard_statue.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/yard_statue/props/yard_statue.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "yard_statue.sugar",
+            "library_path": "Library/Meshes/881870504.sugar",
+            "type": 0,
+            "uid": 881870504
+        }
+    ],
+    "library_file": "63330943.tea",
+    "library_path": "Library/Models/63330943.tea",
+    "mod_time": 411347762,
+    "type": 3,
+    "uid": 63330943
+}

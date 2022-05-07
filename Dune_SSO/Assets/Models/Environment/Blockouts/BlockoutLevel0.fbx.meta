@@ -1,0 +1,119 @@
+{
+    "asset_file": "BlockoutLevel0.fbx",
+    "asset_path": "Assets/Models/Environment/Blockouts/BlockoutLevel0.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Plane.sugar",
+            "library_path": "Library/Meshes/354464434.sugar",
+            "type": 0,
+            "uid": 354464434
+        },
+        {
+            "asset_file": "Cube.sugar",
+            "library_path": "Library/Meshes/1294183923.sugar",
+            "type": 0,
+            "uid": 1294183923
+        },
+        {
+            "asset_file": "Cube.169.sugar",
+            "library_path": "Library/Meshes/498867225.sugar",
+            "type": 0,
+            "uid": 498867225
+        },
+        {
+            "asset_file": "Box.047.sugar",
+            "library_path": "Library/Meshes/829541402.sugar",
+            "type": 0,
+            "uid": 829541402
+        },
+        {
+            "asset_file": "Cube.181.sugar",
+            "library_path": "Library/Meshes/3893514.sugar",
+            "type": 0,
+            "uid": 3893514
+        },
+        {
+            "asset_file": "Box.sugar",
+            "library_path": "Library/Meshes/2090968280.sugar",
+            "type": 0,
+            "uid": 2090968280
+        },
+        {
+            "asset_file": "StonePilePlatform.sugar",
+            "library_path": "Library/Meshes/157962534.sugar",
+            "type": 0,
+            "uid": 157962534
+        },
+        {
+            "asset_file": "StonePile.sugar",
+            "library_path": "Library/Meshes/1168666124.sugar",
+            "type": 0,
+            "uid": 1168666124
+        },
+        {
+            "asset_file": "Water Tank.sugar",
+            "library_path": "Library/Meshes/650904131.sugar",
+            "type": 0,
+            "uid": 650904131
+        },
+        {
+            "asset_file": "Tent.sugar",
+            "library_path": "Library/Meshes/471890218.sugar",
+            "type": 0,
+            "uid": 471890218
+        },
+        {
+            "asset_file": "Spaceship.sugar",
+            "library_path": "Library/Meshes/1688187799.sugar",
+            "type": 0,
+            "uid": 1688187799
+        },
+        {
+            "asset_file": "Stilltent.sugar",
+            "library_path": "Library/Meshes/1672508944.sugar",
+            "type": 0,
+            "uid": 1672508944
+        },
+        {
+            "asset_file": "Button.sugar",
+            "library_path": "Library/Meshes/797625366.sugar",
+            "type": 0,
+            "uid": 797625366
+        },
+        {
+            "asset_file": "ArtilleryGun.sugar",
+            "library_path": "Library/Meshes/1997973080.sugar",
+            "type": 0,
+            "uid": 1997973080
+        },
+        {
+            "asset_file": "Dummy.sugar",
+            "library_path": "Library/Meshes/1210119601.sugar",
+            "type": 0,
+            "uid": 1210119601
+        },
+        {
+            "asset_file": "RocketLauncher.sugar",
+            "library_path": "Library/Meshes/823080514.sugar",
+            "type": 0,
+            "uid": 823080514
+        },
+        {
+            "asset_file": "Watchtower.sugar",
+            "library_path": "Library/Meshes/298233589.sugar",
+            "type": 0,
+            "uid": 298233589
+        },
+        {
+            "asset_file": "WeaponStand.sugar",
+            "library_path": "Library/Meshes/703837624.sugar",
+            "type": 0,
+            "uid": 703837624
+        }
+    ],
+    "library_file": "271625998.tea",
+    "library_path": "Library/Models/271625998.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 271625998
+}

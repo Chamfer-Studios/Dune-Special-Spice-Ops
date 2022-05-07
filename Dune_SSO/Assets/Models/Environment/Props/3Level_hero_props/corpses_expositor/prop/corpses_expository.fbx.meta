@@ -1,0 +1,17 @@
+{
+    "asset_file": "corpses_expository.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/corpses_expositor/prop/corpses_expository.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Cube.315.sugar",
+            "library_path": "Library/Meshes/661935822.sugar",
+            "type": 0,
+            "uid": 661935822
+        }
+    ],
+    "library_file": "1361848178.tea",
+    "library_path": "Library/Models/1361848178.tea",
+    "mod_time": 411347757,
+    "type": 3,
+    "uid": 1361848178
+}

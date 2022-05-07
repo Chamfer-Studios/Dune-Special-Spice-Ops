@@ -1,0 +1,17 @@
+{
+    "asset_file": "spice_sack_big.fbx",
+    "asset_path": "Assets/Models/Environment/Props/0Level_group_3_sacks/props/spice_sack_big.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Plane.002.sugar",
+            "library_path": "Library/Meshes/1861554689.sugar",
+            "type": 0,
+            "uid": 1861554689
+        }
+    ],
+    "library_file": "1374972281.tea",
+    "library_path": "Library/Models/1374972281.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 1374972281
+}

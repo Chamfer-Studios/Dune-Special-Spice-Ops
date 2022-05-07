@@ -1,0 +1,17 @@
+{
+    "asset_file": "arch_statue.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/yard_statue/props/arch_statue.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "arch.sugar",
+            "library_path": "Library/Meshes/1596494189.sugar",
+            "type": 0,
+            "uid": 1596494189
+        }
+    ],
+    "library_file": "1070392074.tea",
+    "library_path": "Library/Models/1070392074.tea",
+    "mod_time": 411347762,
+    "type": 3,
+    "uid": 1070392074
+}

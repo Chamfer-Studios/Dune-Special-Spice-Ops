@@ -1,0 +1,23 @@
+{
+    "asset_file": "corpse_01.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_group_5_bodies/corpses/props/corpse_01.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Corpulent.005.sugar",
+            "library_path": "Library/Meshes/1638711786.sugar",
+            "type": 0,
+            "uid": 1638711786
+        },
+        {
+            "asset_file": "Plane.005.sugar",
+            "library_path": "Library/Meshes/2086674301.sugar",
+            "type": 0,
+            "uid": 2086674301
+        }
+    ],
+    "library_file": "1863921805.tea",
+    "library_path": "Library/Models/1863921805.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 1863921805
+}

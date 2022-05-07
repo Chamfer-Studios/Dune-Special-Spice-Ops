@@ -4,14 +4,14 @@
     "components": [
         {
             "active": true,
-            "type": "info"
+            "type": 23
         },
         {
             "active": true,
             "position": [
                 0.0,
                 0.0,
-                0.0
+                36.57600021362305
             ],
             "rotation": [
                 0.0,
@@ -24,7 +24,7 @@
                 1.0,
                 1.0
             ],
-            "type": "transform"
+            "type": 21
         },
         {
             "active": true,
@@ -36,7 +36,7 @@
             "freeze_rotation_y": false,
             "freeze_rotation_z": false,
             "mass": 1.0,
-            "type": "rigidBody",
+            "type": 6,
             "use_gravity": true
         },
         {
@@ -49,14 +49,27 @@
             "filter": "win_trigger",
             "is_trigger": true,
             "scale_factor": [
-                60.0,
-                40.0,
-                12.0
+                14.600000381469727,
+                4.900000095367432,
+                2.0999999046325684
             ],
-            "type": "boxCollider"
+            "type": 7
+        },
+        {
+            "active": true,
+            "file_name": "Assets/Scripts/WinTrigger.lua",
+            "id": 843379159,
+            "inspector_variables": [
+                {
+                    "name": "sceneName",
+                    "type": "string",
+                    "value": "TransitionScreen"
+                }
+            ],
+            "type": 5
         }
     ],
     "isPrefab": true,
-    "name": "Win_Trigger",
+    "name": "win_trigger",
     "tag": 0
 }

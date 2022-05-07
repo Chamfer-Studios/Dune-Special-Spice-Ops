@@ -1,0 +1,17 @@
+{
+    "asset_file": "artillery_gun.fbx",
+    "asset_path": "Assets/Models/Environment/Props/0Level_group_7_other/props/artillery_gun.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Cube.002.sugar",
+            "library_path": "Library/Meshes/1675195028.sugar",
+            "type": 0,
+            "uid": 1675195028
+        }
+    ],
+    "library_file": "1833548413.tea",
+    "library_path": "Library/Models/1833548413.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 1833548413
+}

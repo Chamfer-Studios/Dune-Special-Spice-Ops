@@ -1,0 +1,47 @@
+{
+    "asset_file": "statues.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_group_6_statues/prop/statues.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Box001.sugar",
+            "library_path": "Library/Meshes/1161628144.sugar",
+            "type": 0,
+            "uid": 1161628144
+        },
+        {
+            "asset_file": "Box001.001.sugar",
+            "library_path": "Library/Meshes/2111233596.sugar",
+            "type": 0,
+            "uid": 2111233596
+        },
+        {
+            "asset_file": "Box002.sugar",
+            "library_path": "Library/Meshes/1205645723.sugar",
+            "type": 0,
+            "uid": 1205645723
+        },
+        {
+            "asset_file": "Box001.002.sugar",
+            "library_path": "Library/Meshes/1560017914.sugar",
+            "type": 0,
+            "uid": 1560017914
+        },
+        {
+            "asset_file": "Box002.001.sugar",
+            "library_path": "Library/Meshes/1560694121.sugar",
+            "type": 0,
+            "uid": 1560694121
+        },
+        {
+            "asset_file": "Box003.sugar",
+            "library_path": "Library/Meshes/24868059.sugar",
+            "type": 0,
+            "uid": 24868059
+        }
+    ],
+    "library_file": "628909993.tea",
+    "library_path": "Library/Models/628909993.tea",
+    "mod_time": 411347756,
+    "type": 3,
+    "uid": 628909993
+}

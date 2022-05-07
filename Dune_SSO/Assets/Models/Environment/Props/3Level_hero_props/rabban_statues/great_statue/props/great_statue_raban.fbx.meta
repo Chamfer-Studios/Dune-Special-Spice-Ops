@@ -1,0 +1,23 @@
+{
+    "asset_file": "great_statue_raban.fbx",
+    "asset_path": "Assets/Models/Environment/Props/3Level_hero_props/rabban_statues/great_statue/props/great_statue_raban.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "Raban.004.sugar",
+            "library_path": "Library/Meshes/2061104998.sugar",
+            "type": 0,
+            "uid": 2061104998
+        },
+        {
+            "asset_file": "axe.004.sugar",
+            "library_path": "Library/Meshes/1432314098.sugar",
+            "type": 0,
+            "uid": 1432314098
+        }
+    ],
+    "library_file": "2121415748.tea",
+    "library_path": "Library/Models/2121415748.tea",
+    "mod_time": 411347759,
+    "type": 3,
+    "uid": 2121415748
+}
