@@ -20,7 +20,6 @@ mono_crash.*
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
-[Rr]eleaseGame/
 [Rr]eleases/
 x64/
 x86/
@@ -70,6 +69,7 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
+*.meta
 *.obj
 *.iobj
 *.pch
@@ -348,6 +348,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# Engine generated files
-Library/
