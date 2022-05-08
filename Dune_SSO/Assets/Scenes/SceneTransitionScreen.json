@@ -1,0 +1,2083 @@
+{
+    "SceneTransitionScreen": {
+        "active": true,
+        "game_objects_amount": 48,
+        "game_objects_list": [
+            {
+                "UID": 357281497,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "far_plane_distance": 500.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.009999999776482582,
+                        "type": 4,
+                        "vertical_fov": 0.3839724361896515
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "Main Camera",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 2139503083,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "ambientValue": 0.5,
+                        "diffuseValue": 0.800000011920929,
+                        "lightColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "lightDirection": [
+                            1.0,
+                            1.0,
+                            0.0
+                        ],
+                        "lightPosition": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "sourceType": 0,
+                        "specularValue": 0.0,
+                        "type": 19
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "Direct Light",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 1934588784,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "logicalSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 13
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Canvas",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 2126358318,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1916.0,
+                            1072.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Background",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1340199819,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            350.0,
+                            150.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            250.0,
+                            70.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Next",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1942058024,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            350.0,
+                            -450.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            250.0,
+                            70.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "MainMenu",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1601885241,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            350.0,
+                            -300.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            250.0,
+                            70.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Settings",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 358255718,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            612.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Next Mission"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text",
+                "parent_UID": 1340199819,
+                "tag": 0
+            },
+            {
+                "UID": 1874804119,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            459.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Main Menu"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text2",
+                "parent_UID": 1942058024,
+                "tag": 0
+            },
+            {
+                "UID": 1643583037,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            408.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Settings"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text3",
+                "parent_UID": 1601885241,
+                "tag": 0
+            },
+            {
+                "UID": 461522334,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            350.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            250.0,
+                            70.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Skills",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 378555417,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            255.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Skils"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text1",
+                "parent_UID": 461522334,
+                "tag": 0
+            },
+            {
+                "UID": 1492747974,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            350.0,
+                            -150.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            250.0,
+                            70.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Quests",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 575257900,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            306.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Quests"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text4",
+                "parent_UID": 1492747974,
+                "tag": 0
+            },
+            {
+                "UID": 745654445,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            330.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1200.0,
+                            1000.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ScreenSkill",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 5030719,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            150.0,
+                            300.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 336441146,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            150.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 1782801865,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            150.0,
+                            -300.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 155509738,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            330.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1200.0,
+                            1000.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ScreenQuest",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 927275546,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            150.0,
+                            120.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "CloseQuest",
+                "parent_UID": 155509738,
+                "tag": 0
+            },
+            {
+                "UID": 1069057260,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            255.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Close"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text5",
+                "parent_UID": 927275546,
+                "tag": 0
+            },
+            {
+                "UID": 1703525771,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -190.0,
+                            70.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            700.0,
+                            700.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "InfoQuest",
+                "parent_UID": 155509738,
+                "tag": 0
+            },
+            {
+                "UID": 1323948716,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 5,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -230.0,
+                            300.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Mission1",
+                "parent_UID": 155509738,
+                "tag": 0
+            },
+            {
+                "UID": 1045568885,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            612.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Hello world!"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text6",
+                "parent_UID": 1703525771,
+                "tag": 0
+            },
+            {
+                "UID": 123094583,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            459.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Mission 1"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text7",
+                "parent_UID": 1323948716,
+                "tag": 0
+            },
+            {
+                "UID": 817438368,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 5,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -230.0,
+                            150.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Mission2",
+                "parent_UID": 155509738,
+                "tag": 0
+            },
+            {
+                "UID": 1062356787,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            459.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Mission 2"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text8",
+                "parent_UID": 817438368,
+                "tag": 0
+            },
+            {
+                "UID": 769627439,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            -200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib3",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 907349937,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala3",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 2040544952,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            -200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib2",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 141942730,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala2",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 4305415,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            -200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib1",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 2025832789,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala1",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 519733761,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra1",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 1678780332,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra2",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 751918536,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra3",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 1965941543,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            255.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Decoy"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text9",
+                "parent_UID": 2040544952,
+                "tag": 0
+            },
+            {
+                "UID": 502676275,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            663.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Sleeping Dart"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text10",
+                "parent_UID": 141942730,
+                "tag": 0
+            },
+            {
+                "UID": 265519178,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            357.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Ñam Ñam"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text11",
+                "parent_UID": 1678780332,
+                "tag": 0
+            },
+            {
+                "UID": 1459614863,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            867.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Let's go,  Sadiq!"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text12",
+                "parent_UID": 751918536,
+                "tag": 0
+            },
+            {
+                "UID": 628009675,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            510.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Smoke Bomb"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text13",
+                "parent_UID": 2025832789,
+                "tag": 0
+            },
+            {
+                "UID": 288940699,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            612.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Weirding Way"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text14",
+                "parent_UID": 769627439,
+                "tag": 0
+            },
+            {
+                "UID": 28253076,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            612.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Thrown Knife"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text15",
+                "parent_UID": 4305415,
+                "tag": 0
+            },
+            {
+                "UID": 1482677338,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            816.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Seek Them Sadiq!"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text16",
+                "parent_UID": 519733761,
+                "tag": 0
+            },
+            {
+                "UID": 1007796014,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            663.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Hunter-Seeker"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text17",
+                "parent_UID": 907349937,
+                "tag": 0
+            },
+            {
+                "UID": 1635100647,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PopUpZhib1",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 1754854347,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -80.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            561.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "Description"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text19",
+                "parent_UID": 1635100647,
+                "tag": 0
+            },
+            {
+                "UID": 2083656941,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            459.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "blablabla"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text18",
+                "parent_UID": 1635100647,
+                "tag": 0
+            }
+        ],
+        "name": "SceneTransitionScreen",
+        "navmesh": {}
+    }
+}
