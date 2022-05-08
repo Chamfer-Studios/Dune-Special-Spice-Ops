@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 48,
+        "game_objects_amount": 50,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -178,7 +178,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/transition_screen_background_v1.0.png",
                         "type": 14
                     }
                 ],
@@ -190,7 +190,7 @@
             },
             {
                 "UID": 1340199819,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -213,17 +213,30 @@
                             0.0
                         ],
                         "size": [
-                            250.0,
+                            500.0,
                             70.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ChangeScenesTS.lua",
+                        "id": 439534731,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "SceneTutorial"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -234,7 +247,7 @@
             },
             {
                 "UID": 1942058024,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -257,17 +270,30 @@
                             0.0
                         ],
                         "size": [
-                            250.0,
+                            500.0,
                             70.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ChangeScenesTS.lua",
+                        "id": 1699314173,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "SceneMainMenu"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -278,7 +304,7 @@
             },
             {
                 "UID": 1601885241,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -301,16 +327,16 @@
                             0.0
                         ],
                         "size": [
-                            250.0,
+                            500.0,
                             70.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -345,13 +371,19 @@
                             0.0
                         ],
                         "size": [
-                            612.0,
-                            75.0
+                            295.0,
+                            52.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Next Mission"
                     }
@@ -387,13 +419,19 @@
                             0.0
                         ],
                         "size": [
-                            459.0,
-                            75.0
+                            276.0,
+                            52.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Main Menu"
                     }
@@ -429,13 +467,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
-                            75.0
+                            228.0,
+                            52.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Settings"
                     }
@@ -448,7 +492,7 @@
             },
             {
                 "UID": 461522334,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -471,17 +515,23 @@
                             0.0
                         ],
                         "size": [
-                            250.0,
+                            500.0,
                             70.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_OpenSkillsPopUp.lua",
+                        "id": 1353020848,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -515,15 +565,21 @@
                             0.0
                         ],
                         "size": [
-                            255.0,
-                            75.0
+                            200.0,
+                            52.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
-                        "value": "Skils"
+                        "value": "Skills"
                     }
                 ],
                 "is3D": false,
@@ -534,7 +590,7 @@
             },
             {
                 "UID": 1492747974,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -557,17 +613,23 @@
                             0.0
                         ],
                         "size": [
-                            250.0,
+                            500.0,
                             70.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_OpenQuestsPopUp.lua",
+                        "id": 1441766600,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -601,13 +663,19 @@
                             0.0
                         ],
                         "size": [
-                            306.0,
-                            75.0
+                            200.0,
+                            52.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Quests"
                     }
@@ -620,7 +688,7 @@
             },
             {
                 "UID": 745654445,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -650,13 +718,13 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "ScreenSkill",
+                "name": "SkillsMenu",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -692,9 +760,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -736,9 +804,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -780,9 +848,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -824,13 +892,13 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "ScreenQuest",
+                "name": "QuestsMenu",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -866,10 +934,23 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ClosePopUp.lua",
+                        "id": 2076916671,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "UI_OpenQuestsPopUp.lua"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -903,13 +984,19 @@
                             0.0
                         ],
                         "size": [
-                            255.0,
-                            75.0
+                            153.0,
+                            57.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Close"
                     }
@@ -952,13 +1039,13 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/Quest Layout/quest_layout_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "InfoQuest",
+                "name": "Square",
                 "parent_UID": 155509738,
                 "tag": 0
             },
@@ -994,10 +1081,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Mission.lua",
+                        "id": 639173081,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1038,13 +1131,19 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
-                        "value": "Hello world!"
+                        "value": "Mission information goes here"
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Text6",
+                "name": "TextDescription",
                 "parent_UID": 1703525771,
                 "tag": 0
             },
@@ -1073,13 +1172,19 @@
                             0.0
                         ],
                         "size": [
-                            459.0,
-                            75.0
+                            328.0,
+                            66.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Mission 1"
                     }
@@ -1122,10 +1227,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Quest Buttons/quest_button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Mission.lua",
+                        "id": 1860422814,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1159,13 +1270,19 @@
                             0.0
                         ],
                         "size": [
-                            459.0,
-                            75.0
+                            328.0,
+                            68.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Mission 2"
                     }
@@ -1604,6 +1721,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Decoy"
                     }
@@ -1646,6 +1769,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Sleeping Dart"
                     }
@@ -1688,6 +1817,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Ñam Ñam"
                     }
@@ -1730,6 +1865,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Let's go,  Sadiq!"
                     }
@@ -1772,6 +1913,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Smoke Bomb"
                     }
@@ -1814,6 +1961,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Weirding Way"
                     }
@@ -1856,6 +2009,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Thrown Knife"
                     }
@@ -1898,6 +2057,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Seek Them Sadiq!"
                     }
@@ -1940,6 +2105,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Hunter-Seeker"
                     }
@@ -1952,7 +2123,7 @@
             },
             {
                 "UID": 1635100647,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1994,7 +2165,7 @@
             },
             {
                 "UID": 1754854347,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2024,6 +2195,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "Description"
                     }
@@ -2036,7 +2213,7 @@
             },
             {
                 "UID": 2083656941,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2066,6 +2243,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "blablabla"
                     }
@@ -2074,6 +2257,111 @@
                 "isPrefab": false,
                 "name": "Text18",
                 "parent_UID": 1635100647,
+                "tag": 0
+            },
+            {
+                "UID": 1464994984,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -435.0,
+                            -421.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            278.0,
+                            82.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ClosePopUp.lua",
+                        "id": 1338631870,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "UI_OpenSkillsPopUp.lua"
+                            }
+                        ],
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 394108764,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            139.0,
+                            55.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Close"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text20",
+                "parent_UID": 1464994984,
                 "tag": 0
             }
         ],
