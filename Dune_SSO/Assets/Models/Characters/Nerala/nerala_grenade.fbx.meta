@@ -1,0 +1,24 @@
+{
+    "asset_file": "nerala_grenade.fbx",
+    "asset_path": "Assets/Models/Characters/Nerala/nerala_grenade.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "nerala_smoke_grenade.sugar",
+            "library_path": "Library/Meshes/519726155.sugar",
+            "type": 0,
+            "uid": 519726155
+        },
+        {
+            "asset_file": "nerala_base_color.png",
+            "asset_path": "Assets/Textures/Characters/Nerala/nerala_base_color.png",
+            "library_path": "Library/Textures/265682153.cacao",
+            "type": 1,
+            "uid": 265682153
+        }
+    ],
+    "library_file": "358084770.tea",
+    "library_path": "Library/Models/358084770.tea",
+    "mod_time": 411496617,
+    "type": 3,
+    "uid": 358084770
+}

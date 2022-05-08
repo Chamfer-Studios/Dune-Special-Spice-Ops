@@ -1,0 +1,36 @@
+{
+    "asset_file": "nerala.fbx",
+    "asset_path": "Assets/Models/Characters/Nerala/nerala.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "crossbow.sugar",
+            "library_path": "Library/Meshes/723184987.sugar",
+            "type": 0,
+            "uid": 723184987
+        },
+        {
+            "asset_file": "nerala_base_color.png",
+            "asset_path": "Assets/Textures/Characters/Nerala/nerala_base_color.png",
+            "library_path": "Library/Textures/265682153.cacao",
+            "type": 1,
+            "uid": 265682153
+        },
+        {
+            "asset_file": "nerala_low.sugar",
+            "library_path": "Library/Meshes/823945954.sugar",
+            "type": 0,
+            "uid": 823945954
+        },
+        {
+            "asset_file": "nerala_armature|nerala_armature|nerala_armature|nerala_reel.cake",
+            "library_path": "Library/Animations/1107876012.cake",
+            "type": 5,
+            "uid": 1107876012
+        }
+    ],
+    "library_file": "1821246029.tea",
+    "library_path": "Library/Models/1821246029.tea",
+    "mod_time": 411496617,
+    "type": 3,
+    "uid": 1821246029
+}
