@@ -335,8 +335,6 @@ function UpdateAwarenessBars()
     awareness_yellow:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y, position.z + awarenessOffset.z))
     awareness_red:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y, position.z + awarenessOffset.z))
 
-    --Log(tostring(awareness) .. "\n")
-
     if awareness < 1 then
         awareness_green:GetTransform():SetScale(float3.new(awarenessSize.x, awarenessSize.y * awareness, awarenessSize.z))
         awareness_yellow:GetTransform():SetScale(float3.new(0, 0, 0))
@@ -344,14 +342,14 @@ function UpdateAwarenessBars()
     end
 
     if awareness >= 1 and awareness < 2 then
-        awareness_green:GetTransform():SetScale(float3.new(awarenessSize.x * 0.8, awarenessSize.y * 0.8, awarenessSize.z * 0.8))
+        awareness_green:GetTransform():SetScale(float3.new(0, 0, 0))
         awareness_yellow:GetTransform():SetScale(float3.new(awarenessSize.x, awarenessSize.y * (awareness - 1), awarenessSize.z))
         awareness_red:GetTransform():SetScale(float3.new(0, 0, 0))
     end
 
     if awareness == 2 then
-        awareness_green:GetTransform():SetScale(float3.new(awarenessSize.x * 0.6, awarenessSize.y * 0.6, awarenessSize.z * 0.6))
-        awareness_yellow:GetTransform():SetScale(float3.new(awarenessSize.x * 0.8, awarenessSize.y * 0.8, awarenessSize.z * 0.8))
+        awareness_green:GetTransform():SetScale(float3.new(0, 0, 0))
+        awareness_yellow:GetTransform():SetScale(float3.new(0, 0, 0))
         awareness_red:GetTransform():SetScale(float3.new(awarenessSize.x, awarenessSize.y, awarenessSize.z))
     end
 end

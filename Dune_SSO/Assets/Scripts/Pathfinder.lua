@@ -49,15 +49,15 @@ function FollowPath(speed, dt, loop)
 
     currentTarget = _G.finalPath[currentPathIndex]
     currentPosition = componentTransform:GetPosition()
-    if Float3Distance(currentTarget, currentPosition) <= minRetargetingDistance then
-        currentPathIndex = currentPathIndex + 1
+    while Float3Distance(currentTarget, currentPosition) <= minRetargetingDistance do
         if currentPathIndex > #_G.finalPath and loop then
-            currentPathIndex = 1
+            currentPathIndex = 2
         end
-        if currentPathIndex > #finalPath and not loop then
+        if currentPathIndex > #_G.finalPath and not loop then
             currentPathIndex = currentPathIndex - 1
         end
         currentTarget = _G.finalPath[currentPathIndex]
+        currentPathIndex = currentPathIndex + 1
     end
     if Float3Distance(currentTarget, currentPosition) > minRetargetingDistance then
         direction = Float3NormalizedDifference(currentPosition, currentTarget)
