@@ -178,7 +178,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/transition_screen_background_v1.0 - GameOver.png",
                         "type": 14
                     }
                 ],
@@ -220,9 +220,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -264,9 +264,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -308,9 +308,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -345,13 +345,19 @@
                             0.0
                         ],
                         "size": [
-                            204.0,
-                            75.0
+                            75.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "QUIT"
                     }
@@ -379,7 +385,7 @@
                         ],
                         "position": [
                             0.0,
-                            0.0
+                            125.0
                         ],
                         "rotation": [
                             0.0,
@@ -387,13 +393,19 @@
                             0.0
                         ],
                         "size": [
-                            510.0,
-                            75.0
+                            900.0,
+                            175.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "GAME OVER!"
                     }
@@ -429,13 +441,19 @@
                             0.0
                         ],
                         "size": [
-                            459.0,
-                            75.0
+                            150.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "MAIN MENU"
                     }
@@ -471,13 +489,19 @@
                             0.0
                         ],
                         "size": [
-                            459.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TRY AGAIN"
                     }
