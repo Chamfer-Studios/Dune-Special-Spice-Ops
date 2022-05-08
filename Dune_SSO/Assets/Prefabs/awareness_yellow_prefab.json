@@ -1,9 +1,9 @@
 {
-    "UID": 699091473,
+    "UID": 1897305469,
     "active": true,
     "children": [
         {
-            "UID": 878066125,
+            "UID": 584930279,
             "active": true,
             "children": [],
             "components": [
@@ -39,7 +39,7 @@
                         "draw_vertex_normals": false,
                         "is_animated": false,
                         "shape_type": 0,
-                        "uid": 1572193123
+                        "uid": 1380662996
                     },
                     "type": 1
                 },
@@ -64,7 +64,7 @@
             "is3D": true,
             "isPrefab": false,
             "name": "Cylinder",
-            "parent_UID": 699091473,
+            "parent_UID": 1897305469,
             "tag": 0
         }
     ],
