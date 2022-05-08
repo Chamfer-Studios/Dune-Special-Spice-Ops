@@ -41,13 +41,6 @@
             "uid": 1687538905
         },
         {
-            "asset_file": "floor_texture_base_color.png",
-            "asset_path": "Assets/Textures/Environments/Level 2/floor_texture_base_color.png",
-            "library_path": "Library/Textures/1463261282.cacao",
-            "type": 1,
-            "uid": 1463261282
-        },
-        {
             "asset_file": "ThroneBase.003.sugar",
             "library_path": "Library/Meshes/372236108.sugar",
             "type": 0,
@@ -689,7 +682,7 @@
     ],
     "library_file": "1502201759.tea",
     "library_path": "Library/Models/1502201759.tea",
-    "mod_time": 411600976,
+    "mod_time": 411601315,
     "type": 3,
     "uid": 1502201759
 }
