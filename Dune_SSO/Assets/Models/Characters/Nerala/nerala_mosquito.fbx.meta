@@ -4,21 +4,21 @@
     "contained_resources": [
         {
             "asset_file": "nerala_mosquito.sugar",
-            "library_path": "Library/Meshes/1629266437.sugar",
+            "library_path": "Library/Meshes/1611429073.sugar",
             "type": 0,
-            "uid": 1629266437
+            "uid": 1611429073
         },
         {
             "asset_file": "nerala_base_color.png",
             "asset_path": "Assets/Textures/Characters/Nerala/nerala_base_color.png",
-            "library_path": "Library/Textures/686494183.cacao",
+            "library_path": "Library/Textures/2065120969.cacao",
             "type": 1,
-            "uid": 686494183
+            "uid": 2065120969
         }
     ],
     "library_file": "641336407.tea",
     "library_path": "Library/Models/641336407.tea",
     "mod_time": 411600976,
     "type": 3,
-    "uid": 641336407
+    "uid": 1381216199
 }
