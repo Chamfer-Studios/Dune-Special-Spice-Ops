@@ -1,7 +1,7 @@
 {
     "SceneMainMenu": {
         "active": true,
-        "game_objects_amount": 62,
+        "game_objects_amount": 87,
         "game_objects_list": [
             {
                 "UID": 1588352491,
@@ -107,7 +107,7 @@
             },
             {
                 "UID": 2006424621,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -148,7 +148,7 @@
             },
             {
                 "UID": 776828730,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -178,7 +178,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
                         "type": 14
                     }
                 ],
@@ -190,7 +190,7 @@
             },
             {
                 "UID": 1376590493,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -220,9 +220,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -234,7 +234,7 @@
             },
             {
                 "UID": 1468409100,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -257,13 +257,19 @@
                             0.0
                         ],
                         "size": [
-                            1683.0,
-                            75.0
+                            650.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "ARE YOU SURE YOU WANT TO PROCEED?"
                     }
@@ -276,7 +282,7 @@
             },
             {
                 "UID": 1959571595,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -306,9 +312,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -320,7 +326,7 @@
             },
             {
                 "UID": 178616963,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -343,13 +349,19 @@
                             0.0
                         ],
                         "size": [
-                            153.0,
+                            75.0,
                             75.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "YES"
                     }
@@ -362,7 +374,7 @@
             },
             {
                 "UID": 210905963,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -385,13 +397,19 @@
                             0.0
                         ],
                         "size": [
-                            102.0,
+                            75.0,
                             75.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "NO"
                     }
@@ -427,14 +445,14 @@
                             0.0
                         ],
                         "size": [
-                            500.0,
-                            125.0
+                            2300.0,
+                            200.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Menu UI/semi-transparent_black_screen.png",
                         "type": 14
                     }
                 ],
@@ -460,8 +478,8 @@
                             0.5
                         ],
                         "position": [
-                            700.0,
-                            -150.0
+                            750.0,
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -476,7 +494,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Menu UI/menuMainBackgroundRight.png",
                         "type": 14
                     }
                 ],
@@ -518,9 +536,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -562,6 +580,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "PLAY"
                     }
@@ -604,9 +628,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -648,9 +672,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -692,9 +716,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -736,9 +760,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -780,9 +804,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -817,13 +841,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "CONTINUE"
                     }
@@ -859,13 +889,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "NEW GAME"
                     }
@@ -901,13 +937,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "SETTINGS"
                     }
@@ -943,13 +985,19 @@
                             0.0
                         ],
                         "size": [
-                            357.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "CREDITS"
                     }
@@ -985,13 +1033,19 @@
                             0.0
                         ],
                         "size": [
-                            204.0,
-                            75.0
+                            200.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "QUIT"
                     }
@@ -1004,7 +1058,7 @@
             },
             {
                 "UID": 726225609,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1027,15 +1081,21 @@
                             0.0
                         ],
                         "size": [
-                            1377.0,
-                            75.0
+                            550.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
-                        "value": "THIS ACTIO CANNOT BE UNDONE"
+                        "value": "THIS ACTION CANNOT BE UNDONE"
                     }
                 ],
                 "is3D": false,
@@ -1076,7 +1136,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Menu UI/menuMainBackgroundLeft.png",
                         "type": 14
                     }
                 ],
@@ -1118,6 +1178,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "CONTINUE"
                     }
@@ -1160,9 +1226,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1189,7 +1255,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -1197,13 +1263,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
+                            300.0,
                             75.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "PLAYER 1"
                     }
@@ -1231,7 +1303,7 @@
                         ],
                         "position": [
                             0.0,
-                            35.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -1239,13 +1311,19 @@
                             0.0
                         ],
                         "size": [
-                            663.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED: "
                     }
@@ -1288,9 +1366,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1317,7 +1395,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -1332,6 +1410,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "EMPTY"
                     }
@@ -1359,7 +1443,7 @@
                         ],
                         "position": [
                             0.0,
-                            35.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -1367,13 +1451,19 @@
                             0.0
                         ],
                         "size": [
-                            663.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED: "
                     }
@@ -1416,9 +1506,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1445,7 +1535,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -1460,6 +1550,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "EMPTY"
                     }
@@ -1487,7 +1583,7 @@
                         ],
                         "position": [
                             0.0,
-                            35.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -1495,13 +1591,19 @@
                             0.0
                         ],
                         "size": [
-                            663.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED: "
                     }
@@ -1544,9 +1646,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1588,6 +1690,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -1630,6 +1738,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -1672,9 +1786,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1716,9 +1830,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1760,6 +1874,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -1802,9 +1922,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1839,13 +1959,19 @@
                             0.0
                         ],
                         "size": [
-                            204.0,
-                            75.0
+                            130.0,
+                            50.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "BACK"
                     }
@@ -1858,7 +1984,7 @@
             },
             {
                 "UID": 502504416,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1888,7 +2014,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Menu UI/menuMainBackgroundLeft.png",
                         "type": 14
                     }
                 ],
@@ -1900,7 +2026,7 @@
             },
             {
                 "UID": 110338433,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1930,6 +2056,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "NEW GAME"
                     }
@@ -1942,7 +2074,7 @@
             },
             {
                 "UID": 323038574,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1972,9 +2104,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1986,7 +2118,7 @@
             },
             {
                 "UID": 1094305137,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2001,7 +2133,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -2009,13 +2141,19 @@
                             0.0
                         ],
                         "size": [
-                            408.0,
+                            300.0,
                             75.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "PLAYER 1"
                     }
@@ -2028,7 +2166,7 @@
             },
             {
                 "UID": 1845901695,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2043,7 +2181,7 @@
                         ],
                         "position": [
                             0.0,
-                            30.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -2051,13 +2189,19 @@
                             0.0
                         ],
                         "size": [
-                            612.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED:"
                     }
@@ -2070,7 +2214,7 @@
             },
             {
                 "UID": 718482261,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2100,9 +2244,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2114,7 +2258,7 @@
             },
             {
                 "UID": 1168651455,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2129,7 +2273,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -2144,6 +2288,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "EMPTY"
                     }
@@ -2156,7 +2306,7 @@
             },
             {
                 "UID": 377772075,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2171,7 +2321,7 @@
                         ],
                         "position": [
                             0.0,
-                            30.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -2179,13 +2329,19 @@
                             0.0
                         ],
                         "size": [
-                            612.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED:"
                     }
@@ -2198,7 +2354,7 @@
             },
             {
                 "UID": 1424745261,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2228,9 +2384,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2242,7 +2398,7 @@
             },
             {
                 "UID": 284028736,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2257,7 +2413,7 @@
                         ],
                         "position": [
                             0.0,
-                            -50.0
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -2272,6 +2428,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "EMPTY"
                     }
@@ -2284,7 +2446,7 @@
             },
             {
                 "UID": 964636956,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2299,7 +2461,7 @@
                         ],
                         "position": [
                             0.0,
-                            30.0
+                            50.0
                         ],
                         "rotation": [
                             0.0,
@@ -2307,13 +2469,19 @@
                             0.0
                         ],
                         "size": [
-                            612.0,
-                            75.0
+                            235.0,
+                            40.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "TIME PLAYED:"
                     }
@@ -2326,7 +2494,7 @@
             },
             {
                 "UID": 583812554,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2356,9 +2524,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2370,7 +2538,7 @@
             },
             {
                 "UID": 221342555,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2400,6 +2568,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -2412,7 +2586,7 @@
             },
             {
                 "UID": 34364659,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2442,9 +2616,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2456,7 +2630,7 @@
             },
             {
                 "UID": 2126456503,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2486,6 +2660,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -2498,7 +2678,7 @@
             },
             {
                 "UID": 1245395547,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2528,9 +2708,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2542,7 +2722,7 @@
             },
             {
                 "UID": 22600690,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2572,6 +2752,12 @@
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "X"
                     }
@@ -2584,7 +2770,7 @@
             },
             {
                 "UID": 350159611,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2614,9 +2800,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -2628,7 +2814,7 @@
             },
             {
                 "UID": 883121553,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2651,13 +2837,19 @@
                             0.0
                         ],
                         "size": [
-                            204.0,
+                            225.0,
                             75.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
                         "type": 16,
                         "value": "BACK"
                     }
@@ -2666,6 +2858,1124 @@
                 "isPrefab": false,
                 "name": "Text31",
                 "parent_UID": 350159611,
+                "tag": 0
+            },
+            {
+                "UID": 1862481782,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1920.0,
+                            1075.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/main_menu.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 2024797330,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            525.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            400.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Logo/title_logo_color.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image1",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 2025657733,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            375.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            750.0,
+                            1080.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/menuMainBackgroundLeft.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Settings",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 1876896351,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -100.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            408.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "SETTINGS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text1",
+                "parent_UID": 2025657733,
+                "tag": 0
+            },
+            {
+                "UID": 1315900315,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button",
+                "parent_UID": 2025657733,
+                "tag": 0
+            },
+            {
+                "UID": 457979683,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            225.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "AUDIO"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text32",
+                "parent_UID": 1315900315,
+                "tag": 0
+            },
+            {
+                "UID": 1313803134,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -125.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button1",
+                "parent_UID": 2025657733,
+                "tag": 0
+            },
+            {
+                "UID": 2074790362,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            300.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "CONTROLS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text33",
+                "parent_UID": 1313803134,
+                "tag": 0
+            },
+            {
+                "UID": 639760994,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -250.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button2",
+                "parent_UID": 2025657733,
+                "tag": 0
+            },
+            {
+                "UID": 297479280,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            300.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "INSTRUCTONS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text34",
+                "parent_UID": 639760994,
+                "tag": 0
+            },
+            {
+                "UID": 472661212,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 8,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -135.0,
+                            75.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            225.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button3",
+                "parent_UID": 2025657733,
+                "tag": 0
+            },
+            {
+                "UID": 408092562,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            130.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "BACK"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text35",
+                "parent_UID": 472661212,
+                "tag": 0
+            },
+            {
+                "UID": 603609192,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            375.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            750.0,
+                            1080.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/menuMainBackgroundLeft.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Credits",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 1745449709,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -50.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            75.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button4",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 1787422293,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            50.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "<-"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text36",
+                "parent_UID": 1745449709,
+                "tag": 0
+            },
+            {
+                "UID": 1892568244,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            50.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            75.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button5",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 2042635095,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            50.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "->"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text37",
+                "parent_UID": 1892568244,
+                "tag": 0
+            },
+            {
+                "UID": 1783361008,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 8,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -135.0,
+                            75.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            225.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button6",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 764274422,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            130.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "BACK"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text38",
+                "parent_UID": 1783361008,
+                "tag": 0
+            },
+            {
+                "UID": 774765631,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -100.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            357.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "CREDITS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text40",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 1611234152,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            650.0,
+                            650.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/Credits/menuMain_credits1.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image2",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 10498922,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            650.0,
+                            650.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/Credits/menuMain_credits2.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image3",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 1163142126,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            650.0,
+                            650.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/Credits/menuMain_credits3.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image4",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 1197804482,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            650.0,
+                            650.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/Credits/menuMain_credits4.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image5",
+                "parent_UID": 603609192,
+                "tag": 0
+            },
+            {
+                "UID": 1863379406,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            650.0,
+                            650.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/Credits/menuMain_credits5.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image6",
+                "parent_UID": 603609192,
                 "tag": 0
             }
         ],
