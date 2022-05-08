@@ -4,45 +4,45 @@
     "contained_resources": [
         {
             "asset_file": "zhib_khopesh.sugar",
-            "library_path": "Library/Meshes/1868466448.sugar",
+            "library_path": "Library/Meshes/845286980.sugar",
             "type": 0,
-            "uid": 1868466448
+            "uid": 845286980
         },
         {
             "asset_file": "zhib_base_color.png",
             "asset_path": "Assets/Textures/Characters/Zhib/zhib_base_color.png",
-            "library_path": "Library/Textures/428437811.cacao",
+            "library_path": "Library/Textures/1824298281.cacao",
             "type": 1,
-            "uid": 428437811
+            "uid": 1824298281
         },
         {
             "asset_file": "zhib_low.sugar",
-            "library_path": "Library/Meshes/1798824941.sugar",
+            "library_path": "Library/Meshes/2023452449.sugar",
             "type": 0,
-            "uid": 1798824941
+            "uid": 2023452449
         },
         {
             "asset_file": "zhib_khopesh_back001.sugar",
-            "library_path": "Library/Meshes/1406901634.sugar",
+            "library_path": "Library/Meshes/1394379369.sugar",
             "type": 0,
-            "uid": 1406901634
+            "uid": 1394379369
         },
         {
             "asset_file": "zhib_karambit001.sugar",
-            "library_path": "Library/Meshes/542456839.sugar",
+            "library_path": "Library/Meshes/1774079739.sugar",
             "type": 0,
-            "uid": 542456839
+            "uid": 1774079739
         },
         {
             "asset_file": "zhib_armature|zhib_reel.cake",
-            "library_path": "Library/Animations/660651717.cake",
+            "library_path": "Library/Animations/2140477112.cake",
             "type": 5,
-            "uid": 660651717
+            "uid": 2140477112
         }
     ],
-    "library_file": "1901465922.tea",
-    "library_path": "Library/Models/1901465922.tea",
-    "mod_time": 411593273,
+    "library_file": "1738474156.tea",
+    "library_path": "Library/Models/1738474156.tea",
+    "mod_time": 411573692,
     "type": 3,
-    "uid": 1901465922
+    "uid": 1738474156
 }

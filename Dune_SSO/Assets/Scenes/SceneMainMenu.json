@@ -1,0 +1,1051 @@
+{
+    "SceneMainMenu": {
+        "active": true,
+        "game_objects_amount": 24,
+        "game_objects_list": [
+            {
+                "UID": 1588352491,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "far_plane_distance": 500.0,
+                        "frustum_culling": false,
+                        "isMainCamera": true,
+                        "near_plane_distance": 0.009999999776482582,
+                        "type": 4,
+                        "vertical_fov": 0.3839724361896515
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "Main Camera",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 165857293,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "ambientValue": 0.5,
+                        "diffuseValue": 0.800000011920929,
+                        "lightColor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "lightDirection": [
+                            1.0,
+                            1.0,
+                            0.0
+                        ],
+                        "lightPosition": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "sourceType": 0,
+                        "specularValue": 0.0,
+                        "type": 19
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "Direct Light",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 2006424621,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "logicalSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 13
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Canvas",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 776828730,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            700.0,
+                            350.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Confirm",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 1376590493,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            100.0,
+                            75.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button7",
+                "parent_UID": 776828730,
+                "tag": 0
+            },
+            {
+                "UID": 1468409100,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -75.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1683.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "ARE YOU SURE YOU WANT TO PROCEED?"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text6",
+                "parent_UID": 776828730,
+                "tag": 0
+            },
+            {
+                "UID": 1959571595,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 8,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -100.0,
+                            75.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button8",
+                "parent_UID": 776828730,
+                "tag": 0
+            },
+            {
+                "UID": 178616963,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            153.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "YES"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text7",
+                "parent_UID": 1376590493,
+                "tag": 0
+            },
+            {
+                "UID": 210905963,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            102.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "NO"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text8",
+                "parent_UID": 1959571595,
+                "tag": 0
+            },
+            {
+                "UID": 2146069269,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -350.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            125.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Play",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 623588820,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            700.0,
+                            -150.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            450.0,
+                            700.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Main",
+                "parent_UID": 2006424621,
+                "tag": 0
+            },
+            {
+                "UID": 1057022286,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            125.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button9",
+                "parent_UID": 2146069269,
+                "tag": 0
+            },
+            {
+                "UID": 1426987224,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            204.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "PLAY"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text9",
+                "parent_UID": 1057022286,
+                "tag": 0
+            },
+            {
+                "UID": 197409275,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -100.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            350.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button10",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 886601599,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -225.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            350.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button11",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 45568524,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -351.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            350.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button12",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 595836859,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -475.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            350.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button13",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 1335979195,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -600.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            350.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button14",
+                "parent_UID": 623588820,
+                "tag": 0
+            },
+            {
+                "UID": 1621378687,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            408.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "CONTINUE"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text10",
+                "parent_UID": 197409275,
+                "tag": 0
+            },
+            {
+                "UID": 1018458353,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            408.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "NEW GAME"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text11",
+                "parent_UID": 886601599,
+                "tag": 0
+            },
+            {
+                "UID": 53893934,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            408.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "SETTINGS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text12",
+                "parent_UID": 45568524,
+                "tag": 0
+            },
+            {
+                "UID": 552516150,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            357.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "CREDITS"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text13",
+                "parent_UID": 595836859,
+                "tag": 0
+            },
+            {
+                "UID": 273029493,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            204.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "QUIT"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text14",
+                "parent_UID": 1335979195,
+                "tag": 0
+            },
+            {
+                "UID": 726225609,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 1,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -125.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1377.0,
+                            75.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "type": 16,
+                        "value": "THIS ACTIO CANNOT BE UNDONE"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text",
+                "parent_UID": 776828730,
+                "tag": 0
+            }
+        ],
+        "name": "SceneMainMenu",
+        "navmesh": {}
+    }
+}
