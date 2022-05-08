@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 50,
+        "game_objects_amount": 51,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -688,7 +688,7 @@
             },
             {
                 "UID": 745654445,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -730,7 +730,7 @@
             },
             {
                 "UID": 5030719,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -760,9 +760,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
-                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "hoverTexture": "Assets/UI/HUD/Character Buttons/character_zhib_focus_v1.5.png",
+                        "idleTexture": "Assets/UI/HUD/Character Buttons/character_zhib_normal_v1.5.png",
+                        "pressedTexture": "Assets/UI/HUD/Character Buttons/character_zhib_click_v1.5.png",
                         "type": 15
                     }
                 ],
@@ -774,7 +774,7 @@
             },
             {
                 "UID": 336441146,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -804,9 +804,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
-                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "hoverTexture": "Assets/UI/HUD/Character Buttons/character_nerala_hover_v1.5.png",
+                        "idleTexture": "Assets/UI/HUD/Character Buttons/character_nerala_normal_v1.5.png",
+                        "pressedTexture": "Assets/UI/HUD/Character Buttons/character_nerala_click_v1.5.png",
                         "type": 15
                     }
                 ],
@@ -818,7 +818,7 @@
             },
             {
                 "UID": 1782801865,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -848,9 +848,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
-                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "hoverTexture": "Assets/UI/HUD/Character Buttons/character_omozra_hover_v1.5.png",
+                        "idleTexture": "Assets/UI/HUD/Character Buttons/character_omozra_normal_v1.5.png",
+                        "pressedTexture": "Assets/UI/HUD/Character Buttons/character_omozra_click_v1.5.png",
                         "type": 15
                     }
                 ],
@@ -1295,7 +1295,7 @@
             },
             {
                 "UID": 769627439,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1325,9 +1325,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1339,7 +1339,7 @@
             },
             {
                 "UID": 907349937,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1383,7 +1383,7 @@
             },
             {
                 "UID": 2040544952,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1413,9 +1413,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
@@ -1427,7 +1427,7 @@
             },
             {
                 "UID": 141942730,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1471,7 +1471,7 @@
             },
             {
                 "UID": 4305415,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1501,21 +1501,21 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Zhib1",
-                "parent_UID": 745654445,
+                "parent_UID": 1308310632,
                 "tag": 0
             },
             {
                 "UID": 2025832789,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1559,7 +1559,7 @@
             },
             {
                 "UID": 519733761,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1603,7 +1603,7 @@
             },
             {
                 "UID": 1678780332,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1647,7 +1647,7 @@
             },
             {
                 "UID": 751918536,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1691,7 +1691,7 @@
             },
             {
                 "UID": 1965941543,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1739,7 +1739,7 @@
             },
             {
                 "UID": 502676275,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1787,7 +1787,7 @@
             },
             {
                 "UID": 265519178,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1835,7 +1835,7 @@
             },
             {
                 "UID": 1459614863,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1883,7 +1883,7 @@
             },
             {
                 "UID": 628009675,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1931,7 +1931,7 @@
             },
             {
                 "UID": 288940699,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1979,7 +1979,7 @@
             },
             {
                 "UID": 28253076,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2027,7 +2027,7 @@
             },
             {
                 "UID": 1482677338,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2075,7 +2075,7 @@
             },
             {
                 "UID": 1007796014,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2123,7 +2123,7 @@
             },
             {
                 "UID": 1635100647,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2165,7 +2165,7 @@
             },
             {
                 "UID": 1754854347,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2213,7 +2213,7 @@
             },
             {
                 "UID": 2083656941,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2261,7 +2261,7 @@
             },
             {
                 "UID": 1464994984,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2318,7 +2318,7 @@
             },
             {
                 "UID": 394108764,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2362,6 +2362,48 @@
                 "isPrefab": false,
                 "name": "Text20",
                 "parent_UID": 1464994984,
+                "tag": 0
+            },
+            {
+                "UID": 1308310632,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image",
+                "parent_UID": 745654445,
                 "tag": 0
             }
         ],
