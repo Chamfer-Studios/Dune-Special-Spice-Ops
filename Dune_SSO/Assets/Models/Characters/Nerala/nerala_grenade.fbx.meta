@@ -4,21 +4,21 @@
     "contained_resources": [
         {
             "asset_file": "nerala_smoke_grenade.sugar",
-            "library_path": "Library/Meshes/519726155.sugar",
+            "library_path": "Library/Meshes/1503687564.sugar",
             "type": 0,
-            "uid": 519726155
+            "uid": 1503687564
         },
         {
             "asset_file": "nerala_base_color.png",
             "asset_path": "Assets/Textures/Characters/Nerala/nerala_base_color.png",
-            "library_path": "Library/Textures/265682153.cacao",
+            "library_path": "Library/Textures/686494183.cacao",
             "type": 1,
-            "uid": 265682153
+            "uid": 686494183
         }
     ],
-    "library_file": "358084770.tea",
-    "library_path": "Library/Models/358084770.tea",
-    "mod_time": 411496617,
+    "library_file": "630949085.tea",
+    "library_path": "Library/Models/630949085.tea",
+    "mod_time": 411593273,
     "type": 3,
-    "uid": 358084770
+    "uid": 630949085
 }
