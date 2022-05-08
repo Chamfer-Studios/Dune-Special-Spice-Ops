@@ -1,7 +1,7 @@
 {
     "SceneMainMenu": {
         "active": true,
-        "game_objects_amount": 87,
+        "game_objects_amount": 86,
         "game_objects_list": [
             {
                 "UID": 1588352491,
@@ -107,7 +107,7 @@
             },
             {
                 "UID": 2006424621,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -138,6 +138,11 @@
                             200.0
                         ],
                         "type": 13
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Menu UI/main_menu.png",
+                        "type": 14
                     }
                 ],
                 "is3D": false,
@@ -148,7 +153,7 @@
             },
             {
                 "UID": 776828730,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -190,7 +195,7 @@
             },
             {
                 "UID": 1376590493,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -234,7 +239,7 @@
             },
             {
                 "UID": 1468409100,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -282,7 +287,7 @@
             },
             {
                 "UID": 1959571595,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -326,7 +331,7 @@
             },
             {
                 "UID": 178616963,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -374,7 +379,7 @@
             },
             {
                 "UID": 210905963,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -464,7 +469,7 @@
             },
             {
                 "UID": 623588820,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -598,7 +603,7 @@
             },
             {
                 "UID": 197409275,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -642,7 +647,7 @@
             },
             {
                 "UID": 886601599,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -686,7 +691,7 @@
             },
             {
                 "UID": 45568524,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -730,7 +735,7 @@
             },
             {
                 "UID": 595836859,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -774,7 +779,7 @@
             },
             {
                 "UID": 1335979195,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -818,7 +823,7 @@
             },
             {
                 "UID": 1621378687,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -866,7 +871,7 @@
             },
             {
                 "UID": 1018458353,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -914,7 +919,7 @@
             },
             {
                 "UID": 53893934,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -962,7 +967,7 @@
             },
             {
                 "UID": 552516150,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1010,7 +1015,7 @@
             },
             {
                 "UID": 273029493,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1058,7 +1063,7 @@
             },
             {
                 "UID": 726225609,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2861,50 +2866,8 @@
                 "tag": 0
             },
             {
-                "UID": 1862481782,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1920.0,
-                            1075.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/Menu UI/main_menu.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Image",
-                "parent_UID": 2006424621,
-                "tag": 0
-            },
-            {
                 "UID": 2024797330,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2934,7 +2897,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/Logo/title_logo_color.png",
+                        "texture": "Assets/UI/Logo/title_logo_black.png",
                         "type": 14
                     }
                 ],
