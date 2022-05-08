@@ -364,6 +364,8 @@ function Start()
     InstantiateNamedPrefab("awareness_red", awareness_red_name)
 end
 
+oldSourcePos = nil
+
 function Update(dt)
     if awareness_green == nil then
         ConfigAwarenessBars()
@@ -409,6 +411,7 @@ function Update(dt)
         end
     end
 
+    
     if state == STATE.AGGRO then
         s = nil
         if seeingSource ~= nil then
@@ -417,7 +420,7 @@ function Update(dt)
             s = awarenessSource
         end
 
-        if s ~= nil then
+        if s ~= nil and (oldSourcePos == nil or Float3Distance(oldSourcePos, componentTransform:GetPosition()) > 10) then
             if static == true then
                 DispatchEvent(pathfinderUpdateKey, { {}, false, componentTransform:GetPosition() })
                 LookAtDirection(Float3Difference(componentTransform:GetPosition(), s:GetTransform():GetPosition()))
@@ -425,6 +428,8 @@ function Update(dt)
                 DispatchEvent(pathfinderUpdateKey, { { s:GetTransform():GetPosition() }, false, componentTransform:GetPosition() })
             end
         end
+
+        oldSourcePos = s:GetTransform():GetPosition()
     end
 
     _loop = loop

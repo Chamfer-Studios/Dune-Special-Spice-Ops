@@ -1,0 +1,1724 @@
+{
+    "UID": 1547522635,
+    "active": true,
+    "children": [
+        {
+            "UID": 818801345,
+            "active": true,
+            "children": [
+                {
+                    "UID": 815030630,
+                    "active": true,
+                    "children": [
+                        {
+                            "UID": 234807168,
+                            "active": true,
+                            "children": [
+                                {
+                                    "UID": 864322364,
+                                    "active": true,
+                                    "children": [
+                                        {
+                                            "UID": 348031457,
+                                            "active": true,
+                                            "children": [
+                                                {
+                                                    "UID": 240078696,
+                                                    "active": true,
+                                                    "children": [
+                                                        {
+                                                            "UID": 653669615,
+                                                            "active": true,
+                                                            "children": [
+                                                                {
+                                                                    "UID": 1806302338,
+                                                                    "active": true,
+                                                                    "children": [],
+                                                                    "components": [
+                                                                        {
+                                                                            "active": true,
+                                                                            "type": 23
+                                                                        },
+                                                                        {
+                                                                            "active": true,
+                                                                            "position": [
+                                                                                0.0,
+                                                                                38.88182067871094,
+                                                                                0.0
+                                                                            ],
+                                                                            "rotation": [
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "scale": [
+                                                                                1.0,
+                                                                                1.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "type": 21
+                                                                        }
+                                                                    ],
+                                                                    "is3D": true,
+                                                                    "isPrefab": false,
+                                                                    "name": "harkonnen_right_toe_end_end",
+                                                                    "parent_UID": 653669615,
+                                                                    "tag": 0
+                                                                }
+                                                            ],
+                                                            "components": [
+                                                                {
+                                                                    "active": true,
+                                                                    "type": 23
+                                                                },
+                                                                {
+                                                                    "active": true,
+                                                                    "position": [
+                                                                        2.9007438570261e-05,
+                                                                        38.8816032409668,
+                                                                        -1.952052116394043e-06
+                                                                    ],
+                                                                    "rotation": [
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        1.0
+                                                                    ],
+                                                                    "scale": [
+                                                                        1.0,
+                                                                        1.0,
+                                                                        1.0
+                                                                    ],
+                                                                    "type": 21
+                                                                }
+                                                            ],
+                                                            "is3D": true,
+                                                            "isPrefab": false,
+                                                            "name": "harkonnen_right_toe_end",
+                                                            "parent_UID": 240078696,
+                                                            "tag": 0
+                                                        }
+                                                    ],
+                                                    "components": [
+                                                        {
+                                                            "active": true,
+                                                            "type": 23
+                                                        },
+                                                        {
+                                                            "active": true,
+                                                            "position": [
+                                                                2.7915462851524353e-05,
+                                                                100.8884048461914,
+                                                                -7.569789886474609e-06
+                                                            ],
+                                                            "rotation": [
+                                                                0.28675752878189087,
+                                                                -0.005303350742906332,
+                                                                0.0015650937566533685,
+                                                                0.9579872488975525
+                                                            ],
+                                                            "scale": [
+                                                                1.0,
+                                                                1.0,
+                                                                1.0
+                                                            ],
+                                                            "type": 21
+                                                        }
+                                                    ],
+                                                    "is3D": true,
+                                                    "isPrefab": false,
+                                                    "name": "harkonnen_right_toe_base",
+                                                    "parent_UID": 348031457,
+                                                    "tag": 0
+                                                }
+                                            ],
+                                            "components": [
+                                                {
+                                                    "active": true,
+                                                    "type": 23
+                                                },
+                                                {
+                                                    "active": true,
+                                                    "position": [
+                                                        3.314018249511719e-05,
+                                                        173.62933349609375,
+                                                        -3.7670135498046875e-05
+                                                    ],
+                                                    "rotation": [
+                                                        0.6285743117332458,
+                                                        0.04549015313386917,
+                                                        0.036282625049352646,
+                                                        0.7755698561668396
+                                                    ],
+                                                    "scale": [
+                                                        1.0,
+                                                        1.0,
+                                                        0.9999999403953552
+                                                    ],
+                                                    "type": 21
+                                                }
+                                            ],
+                                            "is3D": true,
+                                            "isPrefab": false,
+                                            "name": "harkonnen_right_foot",
+                                            "parent_UID": 864322364,
+                                            "tag": 0
+                                        }
+                                    ],
+                                    "components": [
+                                        {
+                                            "active": true,
+                                            "type": 23
+                                        },
+                                        {
+                                            "active": true,
+                                            "position": [
+                                                1.52587890625e-05,
+                                                196.9711151123047,
+                                                -1.52587890625e-05
+                                            ],
+                                            "rotation": [
+                                                -0.3805880546569824,
+                                                -0.07127555459737778,
+                                                0.026380052790045738,
+                                                0.9216163158416748
+                                            ],
+                                            "scale": [
+                                                1.0,
+                                                1.0,
+                                                0.9999998807907104
+                                            ],
+                                            "type": 21
+                                        }
+                                    ],
+                                    "is3D": true,
+                                    "isPrefab": false,
+                                    "name": "harkonnen_right_leg",
+                                    "parent_UID": 234807168,
+                                    "tag": 0
+                                }
+                            ],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "position": [
+                                        -58.86287307739258,
+                                        -29.263938903808594,
+                                        -6.186537742614746
+                                    ],
+                                    "rotation": [
+                                        -0.14534510672092438,
+                                        0.1855161339044571,
+                                        0.9641982913017273,
+                                        0.1215740516781807
+                                    ],
+                                    "scale": [
+                                        1.0,
+                                        0.9999998807907104,
+                                        1.0
+                                    ],
+                                    "type": 21
+                                }
+                            ],
+                            "is3D": true,
+                            "isPrefab": false,
+                            "name": "harkonnen_right_up_leg",
+                            "parent_UID": 815030630,
+                            "tag": 0
+                        },
+                        {
+                            "UID": 287086549,
+                            "active": true,
+                            "children": [
+                                {
+                                    "UID": 622325300,
+                                    "active": true,
+                                    "children": [
+                                        {
+                                            "UID": 1427133075,
+                                            "active": true,
+                                            "children": [
+                                                {
+                                                    "UID": 364420342,
+                                                    "active": true,
+                                                    "children": [
+                                                        {
+                                                            "UID": 936824724,
+                                                            "active": true,
+                                                            "children": [
+                                                                {
+                                                                    "UID": 1448266567,
+                                                                    "active": true,
+                                                                    "children": [
+                                                                        {
+                                                                            "UID": 1114467163,
+                                                                            "active": true,
+                                                                            "children": [
+                                                                                {
+                                                                                    "UID": 111633339,
+                                                                                    "active": true,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "UID": 281376026,
+                                                                                            "active": true,
+                                                                                            "children": [],
+                                                                                            "components": [
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "type": 23
+                                                                                                },
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "position": [
+                                                                                                        0.0,
+                                                                                                        35.98974609375,
+                                                                                                        0.0
+                                                                                                    ],
+                                                                                                    "rotation": [
+                                                                                                        0.0,
+                                                                                                        0.0,
+                                                                                                        0.0,
+                                                                                                        1.0
+                                                                                                    ],
+                                                                                                    "scale": [
+                                                                                                        1.0,
+                                                                                                        1.0,
+                                                                                                        1.0
+                                                                                                    ],
+                                                                                                    "type": 21
+                                                                                                }
+                                                                                            ],
+                                                                                            "is3D": true,
+                                                                                            "isPrefab": false,
+                                                                                            "name": "harkonnen_weapon_end",
+                                                                                            "parent_UID": 111633339,
+                                                                                            "tag": 0
+                                                                                        }
+                                                                                    ],
+                                                                                    "components": [
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "type": 23
+                                                                                        },
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "position": [
+                                                                                                -22.827926635742188,
+                                                                                                31.673465728759766,
+                                                                                                11.798835754394531
+                                                                                            ],
+                                                                                            "rotation": [
+                                                                                                -0.5681074261665344,
+                                                                                                0.36904677748680115,
+                                                                                                -0.41338589787483215,
+                                                                                                0.6084164381027222
+                                                                                            ],
+                                                                                            "scale": [
+                                                                                                1.0000001192092896,
+                                                                                                1.0000001192092896,
+                                                                                                1.000000238418579
+                                                                                            ],
+                                                                                            "type": 21
+                                                                                        }
+                                                                                    ],
+                                                                                    "is3D": true,
+                                                                                    "isPrefab": false,
+                                                                                    "name": "harkonnen_weapon",
+                                                                                    "parent_UID": 1114467163,
+                                                                                    "tag": 0
+                                                                                },
+                                                                                {
+                                                                                    "UID": 1734189113,
+                                                                                    "active": true,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "UID": 154634539,
+                                                                                            "active": true,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "UID": 475717308,
+                                                                                                    "active": true,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "UID": 1421896234,
+                                                                                                            "active": true,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "UID": 1284031555,
+                                                                                                                    "active": true,
+                                                                                                                    "children": [],
+                                                                                                                    "components": [
+                                                                                                                        {
+                                                                                                                            "active": true,
+                                                                                                                            "type": 23
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "active": true,
+                                                                                                                            "position": [
+                                                                                                                                0.0,
+                                                                                                                                21.094614028930664,
+                                                                                                                                0.0
+                                                                                                                            ],
+                                                                                                                            "rotation": [
+                                                                                                                                0.0,
+                                                                                                                                0.0,
+                                                                                                                                0.0,
+                                                                                                                                1.0
+                                                                                                                            ],
+                                                                                                                            "scale": [
+                                                                                                                                1.0,
+                                                                                                                                1.0,
+                                                                                                                                1.0
+                                                                                                                            ],
+                                                                                                                            "type": 21
+                                                                                                                        }
+                                                                                                                    ],
+                                                                                                                    "is3D": true,
+                                                                                                                    "isPrefab": false,
+                                                                                                                    "name": "harkonnen_right_hand_index_4_end",
+                                                                                                                    "parent_UID": 1421896234,
+                                                                                                                    "tag": 0
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "components": [
+                                                                                                                {
+                                                                                                                    "active": true,
+                                                                                                                    "type": 23
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "active": true,
+                                                                                                                    "position": [
+                                                                                                                        5.343269348144531,
+                                                                                                                        15.800765991210938,
+                                                                                                                        -12.91461181640625
+                                                                                                                    ],
+                                                                                                                    "rotation": [
+                                                                                                                        0.1360725611448288,
+                                                                                                                        0.02842431142926216,
+                                                                                                                        -0.07115160673856735,
+                                                                                                                        0.9877316355705261
+                                                                                                                    ],
+                                                                                                                    "scale": [
+                                                                                                                        0.9999998211860657,
+                                                                                                                        0.9999993443489075,
+                                                                                                                        0.9999994039535522
+                                                                                                                    ],
+                                                                                                                    "type": 21
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "is3D": true,
+                                                                                                            "isPrefab": false,
+                                                                                                            "name": "harkonnen_right_hand_index_4",
+                                                                                                            "parent_UID": 475717308,
+                                                                                                            "tag": 0
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "components": [
+                                                                                                        {
+                                                                                                            "active": true,
+                                                                                                            "type": 23
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "active": true,
+                                                                                                            "position": [
+                                                                                                                9.740842819213867,
+                                                                                                                22.70288848876953,
+                                                                                                                -19.856081008911133
+                                                                                                            ],
+                                                                                                            "rotation": [
+                                                                                                                -0.045167483389377594,
+                                                                                                                -0.13931682705879211,
+                                                                                                                -0.18524771928787231,
+                                                                                                                0.9717170596122742
+                                                                                                            ],
+                                                                                                            "scale": [
+                                                                                                                1.0,
+                                                                                                                1.0,
+                                                                                                                1.0
+                                                                                                            ],
+                                                                                                            "type": 21
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "is3D": true,
+                                                                                                    "isPrefab": false,
+                                                                                                    "name": "harkonnen_right_hand_index_3",
+                                                                                                    "parent_UID": 154634539,
+                                                                                                    "tag": 0
+                                                                                                }
+                                                                                            ],
+                                                                                            "components": [
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "type": 23
+                                                                                                },
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "position": [
+                                                                                                        -0.0001010894775390625,
+                                                                                                        21.038646697998047,
+                                                                                                        -1.1444091796875e-05
+                                                                                                    ],
+                                                                                                    "rotation": [
+                                                                                                        0.1688387244939804,
+                                                                                                        -0.26812052726745605,
+                                                                                                        -0.6517153382301331,
+                                                                                                        0.6891095638275146
+                                                                                                    ],
+                                                                                                    "scale": [
+                                                                                                        1.0,
+                                                                                                        1.0,
+                                                                                                        1.0
+                                                                                                    ],
+                                                                                                    "type": 21
+                                                                                                }
+                                                                                            ],
+                                                                                            "is3D": true,
+                                                                                            "isPrefab": false,
+                                                                                            "name": "harkonnen_right_hand_index_2",
+                                                                                            "parent_UID": 1734189113,
+                                                                                            "tag": 0
+                                                                                        }
+                                                                                    ],
+                                                                                    "components": [
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "type": 23
+                                                                                        },
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "position": [
+                                                                                                -5.340576171875e-05,
+                                                                                                31.114036560058594,
+                                                                                                -2.288818359375e-05
+                                                                                            ],
+                                                                                            "rotation": [
+                                                                                                0.4259321689605713,
+                                                                                                -0.6088288426399231,
+                                                                                                -0.4204499423503876,
+                                                                                                0.5207026600837708
+                                                                                            ],
+                                                                                            "scale": [
+                                                                                                1.0000004768371582,
+                                                                                                1.0000001192092896,
+                                                                                                1.0000007152557373
+                                                                                            ],
+                                                                                            "type": 21
+                                                                                        }
+                                                                                    ],
+                                                                                    "is3D": true,
+                                                                                    "isPrefab": false,
+                                                                                    "name": "harkonnen_right_hand_index_1",
+                                                                                    "parent_UID": 1114467163,
+                                                                                    "tag": 0
+                                                                                }
+                                                                            ],
+                                                                            "components": [
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "type": 23
+                                                                                },
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "position": [
+                                                                                        1.33514404296875e-05,
+                                                                                        116.7431411743164,
+                                                                                        -5.7220458984375e-05
+                                                                                    ],
+                                                                                    "rotation": [
+                                                                                        0.1362011581659317,
+                                                                                        0.027358654886484146,
+                                                                                        -0.0987071543931961,
+                                                                                        0.9853718280792236
+                                                                                    ],
+                                                                                    "scale": [
+                                                                                        0.9999997615814209,
+                                                                                        1.0,
+                                                                                        1.0
+                                                                                    ],
+                                                                                    "type": 21
+                                                                                }
+                                                                            ],
+                                                                            "is3D": true,
+                                                                            "isPrefab": false,
+                                                                            "name": "harkonnen_right_hand",
+                                                                            "parent_UID": 1448266567,
+                                                                            "tag": 0
+                                                                        }
+                                                                    ],
+                                                                    "components": [
+                                                                        {
+                                                                            "active": true,
+                                                                            "type": 23
+                                                                        },
+                                                                        {
+                                                                            "active": true,
+                                                                            "position": [
+                                                                                0.0,
+                                                                                131.30679321289063,
+                                                                                -4.1961669921875e-05
+                                                                            ],
+                                                                            "rotation": [
+                                                                                0.02303352765738964,
+                                                                                0.0048686545342206955,
+                                                                                -0.12314359098672867,
+                                                                                0.9921095967292786
+                                                                            ],
+                                                                            "scale": [
+                                                                                1.0,
+                                                                                0.9999999403953552,
+                                                                                1.0
+                                                                            ],
+                                                                            "type": 21
+                                                                        }
+                                                                    ],
+                                                                    "is3D": true,
+                                                                    "isPrefab": false,
+                                                                    "name": "harkonnen_right_fore_arm",
+                                                                    "parent_UID": 936824724,
+                                                                    "tag": 0
+                                                                }
+                                                            ],
+                                                            "components": [
+                                                                {
+                                                                    "active": true,
+                                                                    "type": 23
+                                                                },
+                                                                {
+                                                                    "active": true,
+                                                                    "position": [
+                                                                        -2.09808349609375e-05,
+                                                                        85.53253173828125,
+                                                                        -2.6702880859375e-05
+                                                                    ],
+                                                                    "rotation": [
+                                                                        0.3598713278770447,
+                                                                        0.05748043209314346,
+                                                                        -0.25803014636039734,
+                                                                        0.8947676420211792
+                                                                    ],
+                                                                    "scale": [
+                                                                        1.0,
+                                                                        1.0,
+                                                                        1.0
+                                                                    ],
+                                                                    "type": 21
+                                                                }
+                                                            ],
+                                                            "is3D": true,
+                                                            "isPrefab": false,
+                                                            "name": "harkonnen_right_arm",
+                                                            "parent_UID": 364420342,
+                                                            "tag": 0
+                                                        }
+                                                    ],
+                                                    "components": [
+                                                        {
+                                                            "active": true,
+                                                            "type": 23
+                                                        },
+                                                        {
+                                                            "active": true,
+                                                            "position": [
+                                                                -41.4479866027832,
+                                                                70.30764770507813,
+                                                                -0.30917876958847046
+                                                            ],
+                                                            "rotation": [
+                                                                0.6195945739746094,
+                                                                -0.4768965542316437,
+                                                                0.47797998785972595,
+                                                                0.4002591669559479
+                                                            ],
+                                                            "scale": [
+                                                                1.0,
+                                                                1.0,
+                                                                1.0
+                                                            ],
+                                                            "type": 21
+                                                        }
+                                                    ],
+                                                    "is3D": true,
+                                                    "isPrefab": false,
+                                                    "name": "harkonnen_right_shoulder",
+                                                    "parent_UID": 1427133075,
+                                                    "tag": 0
+                                                },
+                                                {
+                                                    "UID": 805918826,
+                                                    "active": true,
+                                                    "children": [
+                                                        {
+                                                            "UID": 1569339777,
+                                                            "active": true,
+                                                            "children": [
+                                                                {
+                                                                    "UID": 1479106098,
+                                                                    "active": true,
+                                                                    "children": [
+                                                                        {
+                                                                            "UID": 709807914,
+                                                                            "active": true,
+                                                                            "children": [],
+                                                                            "components": [
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "type": 23
+                                                                                },
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "position": [
+                                                                                        0.0,
+                                                                                        114.85552978515625,
+                                                                                        0.0
+                                                                                    ],
+                                                                                    "rotation": [
+                                                                                        0.0,
+                                                                                        0.0,
+                                                                                        0.0,
+                                                                                        1.0
+                                                                                    ],
+                                                                                    "scale": [
+                                                                                        1.0,
+                                                                                        1.0,
+                                                                                        1.0
+                                                                                    ],
+                                                                                    "type": 21
+                                                                                }
+                                                                            ],
+                                                                            "is3D": true,
+                                                                            "isPrefab": false,
+                                                                            "name": "harkonnen_head_top_end_end",
+                                                                            "parent_UID": 1479106098,
+                                                                            "tag": 0
+                                                                        }
+                                                                    ],
+                                                                    "components": [
+                                                                        {
+                                                                            "active": true,
+                                                                            "type": 23
+                                                                        },
+                                                                        {
+                                                                            "active": true,
+                                                                            "position": [
+                                                                                -9.5367431640625e-07,
+                                                                                110.66747283935547,
+                                                                                30.73345184326172
+                                                                            ],
+                                                                            "rotation": [
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "scale": [
+                                                                                1.0,
+                                                                                1.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "type": 21
+                                                                        }
+                                                                    ],
+                                                                    "is3D": true,
+                                                                    "isPrefab": false,
+                                                                    "name": "harkonnen_head_top_end",
+                                                                    "parent_UID": 1569339777,
+                                                                    "tag": 0
+                                                                }
+                                                            ],
+                                                            "components": [
+                                                                {
+                                                                    "active": true,
+                                                                    "type": 23
+                                                                },
+                                                                {
+                                                                    "active": true,
+                                                                    "position": [
+                                                                        2.592802047729492e-06,
+                                                                        18.962738037109375,
+                                                                        5.265877723693848
+                                                                    ],
+                                                                    "rotation": [
+                                                                        -0.14823198318481445,
+                                                                        0.0004717139818239957,
+                                                                        -0.005447322968393564,
+                                                                        0.988937497138977
+                                                                    ],
+                                                                    "scale": [
+                                                                        1.0,
+                                                                        0.9999996423721313,
+                                                                        0.9999998807907104
+                                                                    ],
+                                                                    "type": 21
+                                                                }
+                                                            ],
+                                                            "is3D": true,
+                                                            "isPrefab": false,
+                                                            "name": "harkonnen_head",
+                                                            "parent_UID": 805918826,
+                                                            "tag": 0
+                                                        }
+                                                    ],
+                                                    "components": [
+                                                        {
+                                                            "active": true,
+                                                            "type": 23
+                                                        },
+                                                        {
+                                                            "active": true,
+                                                            "position": [
+                                                                -1.3113021850585938e-06,
+                                                                79.25660705566406,
+                                                                -9.873416274785995e-05
+                                                            ],
+                                                            "rotation": [
+                                                                0.0508393719792366,
+                                                                0.0008946731104515493,
+                                                                0.006067972630262375,
+                                                                0.9986880421638489
+                                                            ],
+                                                            "scale": [
+                                                                1.0,
+                                                                0.9999999403953552,
+                                                                1.0
+                                                            ],
+                                                            "type": 21
+                                                        }
+                                                    ],
+                                                    "is3D": true,
+                                                    "isPrefab": false,
+                                                    "name": "harkonnen_neck",
+                                                    "parent_UID": 1427133075,
+                                                    "tag": 0
+                                                },
+                                                {
+                                                    "UID": 1790579477,
+                                                    "active": true,
+                                                    "children": [
+                                                        {
+                                                            "UID": 508059867,
+                                                            "active": true,
+                                                            "children": [
+                                                                {
+                                                                    "UID": 432850670,
+                                                                    "active": true,
+                                                                    "children": [
+                                                                        {
+                                                                            "UID": 2005961366,
+                                                                            "active": true,
+                                                                            "children": [
+                                                                                {
+                                                                                    "UID": 1879730582,
+                                                                                    "active": true,
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "UID": 1069401242,
+                                                                                            "active": true,
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "UID": 1673311439,
+                                                                                                    "active": true,
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "UID": 922812163,
+                                                                                                            "active": true,
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "UID": 837332924,
+                                                                                                                    "active": true,
+                                                                                                                    "children": [],
+                                                                                                                    "components": [
+                                                                                                                        {
+                                                                                                                            "active": true,
+                                                                                                                            "type": 23
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "active": true,
+                                                                                                                            "position": [
+                                                                                                                                0.0,
+                                                                                                                                25.129833221435547,
+                                                                                                                                0.0
+                                                                                                                            ],
+                                                                                                                            "rotation": [
+                                                                                                                                0.0,
+                                                                                                                                0.0,
+                                                                                                                                0.0,
+                                                                                                                                1.0
+                                                                                                                            ],
+                                                                                                                            "scale": [
+                                                                                                                                1.0,
+                                                                                                                                1.0,
+                                                                                                                                1.0
+                                                                                                                            ],
+                                                                                                                            "type": 21
+                                                                                                                        }
+                                                                                                                    ],
+                                                                                                                    "is3D": true,
+                                                                                                                    "isPrefab": false,
+                                                                                                                    "name": "harkonnen_left_hand_index_4_end",
+                                                                                                                    "parent_UID": 922812163,
+                                                                                                                    "tag": 0
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "components": [
+                                                                                                                {
+                                                                                                                    "active": true,
+                                                                                                                    "type": 23
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "active": true,
+                                                                                                                    "position": [
+                                                                                                                        -9.354729652404785,
+                                                                                                                        21.176822662353516,
+                                                                                                                        -9.77444076538086
+                                                                                                                    ],
+                                                                                                                    "rotation": [
+                                                                                                                        0.0,
+                                                                                                                        0.0,
+                                                                                                                        0.0,
+                                                                                                                        1.0
+                                                                                                                    ],
+                                                                                                                    "scale": [
+                                                                                                                        1.0,
+                                                                                                                        1.0,
+                                                                                                                        1.0
+                                                                                                                    ],
+                                                                                                                    "type": 21
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "is3D": true,
+                                                                                                            "isPrefab": false,
+                                                                                                            "name": "harkonnen_left_hand_index_4",
+                                                                                                            "parent_UID": 1673311439,
+                                                                                                            "tag": 0
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "components": [
+                                                                                                        {
+                                                                                                            "active": true,
+                                                                                                            "type": 23
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "active": true,
+                                                                                                            "position": [
+                                                                                                                -8.340450286865234,
+                                                                                                                25.495529174804688,
+                                                                                                                -16.795997619628906
+                                                                                                            ],
+                                                                                                            "rotation": [
+                                                                                                                -0.10174931585788727,
+                                                                                                                0.045592233538627625,
+                                                                                                                0.15205629169940948,
+                                                                                                                0.982062816619873
+                                                                                                            ],
+                                                                                                            "scale": [
+                                                                                                                0.9999996423721313,
+                                                                                                                0.9999998211860657,
+                                                                                                                0.9999997019767761
+                                                                                                            ],
+                                                                                                            "type": 21
+                                                                                                        }
+                                                                                                    ],
+                                                                                                    "is3D": true,
+                                                                                                    "isPrefab": false,
+                                                                                                    "name": "harkonnen_left_hand_index_3",
+                                                                                                    "parent_UID": 1069401242,
+                                                                                                    "tag": 0
+                                                                                                }
+                                                                                            ],
+                                                                                            "components": [
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "type": 23
+                                                                                                },
+                                                                                                {
+                                                                                                    "active": true,
+                                                                                                    "position": [
+                                                                                                        0.0,
+                                                                                                        21.882091522216797,
+                                                                                                        2.288818359375e-05
+                                                                                                    ],
+                                                                                                    "rotation": [
+                                                                                                        0.1400732547044754,
+                                                                                                        0.16929937899112701,
+                                                                                                        0.5064479112625122,
+                                                                                                        0.8338031768798828
+                                                                                                    ],
+                                                                                                    "scale": [
+                                                                                                        0.9999997019767761,
+                                                                                                        1.0000001192092896,
+                                                                                                        0.9999998807907104
+                                                                                                    ],
+                                                                                                    "type": 21
+                                                                                                }
+                                                                                            ],
+                                                                                            "is3D": true,
+                                                                                            "isPrefab": false,
+                                                                                            "name": "harkonnen_left_hand_index_2",
+                                                                                            "parent_UID": 1879730582,
+                                                                                            "tag": 0
+                                                                                        }
+                                                                                    ],
+                                                                                    "components": [
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "type": 23
+                                                                                        },
+                                                                                        {
+                                                                                            "active": true,
+                                                                                            "position": [
+                                                                                                0.000102996826171875,
+                                                                                                26.70413589477539,
+                                                                                                8.392333984375e-05
+                                                                                            ],
+                                                                                            "rotation": [
+                                                                                                0.47263413667678833,
+                                                                                                0.8776786923408508,
+                                                                                                -0.015387660823762417,
+                                                                                                -0.07784818112850189
+                                                                                            ],
+                                                                                            "scale": [
+                                                                                                1.0,
+                                                                                                1.0,
+                                                                                                1.0
+                                                                                            ],
+                                                                                            "type": 21
+                                                                                        }
+                                                                                    ],
+                                                                                    "is3D": true,
+                                                                                    "isPrefab": false,
+                                                                                    "name": "harkonnen_left_hand_index_1",
+                                                                                    "parent_UID": 2005961366,
+                                                                                    "tag": 0
+                                                                                }
+                                                                            ],
+                                                                            "components": [
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "type": 23
+                                                                                },
+                                                                                {
+                                                                                    "active": true,
+                                                                                    "position": [
+                                                                                        -7.62939453125e-05,
+                                                                                        116.7104263305664,
+                                                                                        0.000102996826171875
+                                                                                    ],
+                                                                                    "rotation": [
+                                                                                        0.3843253552913666,
+                                                                                        -0.6984536051750183,
+                                                                                        0.08077220618724823,
+                                                                                        0.5982745885848999
+                                                                                    ],
+                                                                                    "scale": [
+                                                                                        0.9999998807907104,
+                                                                                        0.9999999403953552,
+                                                                                        1.0
+                                                                                    ],
+                                                                                    "type": 21
+                                                                                }
+                                                                            ],
+                                                                            "is3D": true,
+                                                                            "isPrefab": false,
+                                                                            "name": "harkonnen_left_hand_index",
+                                                                            "parent_UID": 432850670,
+                                                                            "tag": 0
+                                                                        }
+                                                                    ],
+                                                                    "components": [
+                                                                        {
+                                                                            "active": true,
+                                                                            "type": 23
+                                                                        },
+                                                                        {
+                                                                            "active": true,
+                                                                            "position": [
+                                                                                4.9591064453125e-05,
+                                                                                139.0620574951172,
+                                                                                -2.288818359375e-05
+                                                                            ],
+                                                                            "rotation": [
+                                                                                0.026498178020119667,
+                                                                                -0.004923552740365267,
+                                                                                0.18910609185695648,
+                                                                                0.981586754322052
+                                                                            ],
+                                                                            "scale": [
+                                                                                0.9999998807907104,
+                                                                                0.9999995827674866,
+                                                                                0.9999991655349731
+                                                                            ],
+                                                                            "type": 21
+                                                                        }
+                                                                    ],
+                                                                    "is3D": true,
+                                                                    "isPrefab": false,
+                                                                    "name": "harkonnen_left_fore_arm",
+                                                                    "parent_UID": 508059867,
+                                                                    "tag": 0
+                                                                }
+                                                            ],
+                                                            "components": [
+                                                                {
+                                                                    "active": true,
+                                                                    "type": 23
+                                                                },
+                                                                {
+                                                                    "active": true,
+                                                                    "position": [
+                                                                        -7.486343383789063e-05,
+                                                                        84.87823486328125,
+                                                                        6.4849853515625e-05
+                                                                    ],
+                                                                    "rotation": [
+                                                                        0.2728959321975708,
+                                                                        0.0368410162627697,
+                                                                        0.2887978255748749,
+                                                                        0.9169331789016724
+                                                                    ],
+                                                                    "scale": [
+                                                                        0.9999998211860657,
+                                                                        1.0000001192092896,
+                                                                        1.0
+                                                                    ],
+                                                                    "type": 21
+                                                                }
+                                                            ],
+                                                            "is3D": true,
+                                                            "isPrefab": false,
+                                                            "name": "harkonnen_left_arm",
+                                                            "parent_UID": 1790579477,
+                                                            "tag": 0
+                                                        }
+                                                    ],
+                                                    "components": [
+                                                        {
+                                                            "active": true,
+                                                            "type": 23
+                                                        },
+                                                        {
+                                                            "active": true,
+                                                            "position": [
+                                                                41.44794845581055,
+                                                                70.31926727294922,
+                                                                -0.5437217950820923
+                                                            ],
+                                                            "rotation": [
+                                                                0.6291375756263733,
+                                                                0.47741931676864624,
+                                                                -0.4831721782684326,
+                                                                0.3778906762599945
+                                                            ],
+                                                            "scale": [
+                                                                1.0,
+                                                                1.0,
+                                                                1.0
+                                                            ],
+                                                            "type": 21
+                                                        }
+                                                    ],
+                                                    "is3D": true,
+                                                    "isPrefab": false,
+                                                    "name": "harkonnen_left_shoulder",
+                                                    "parent_UID": 1427133075,
+                                                    "tag": 0
+                                                }
+                                            ],
+                                            "components": [
+                                                {
+                                                    "active": true,
+                                                    "type": 23
+                                                },
+                                                {
+                                                    "active": true,
+                                                    "position": [
+                                                        2.0954757928848267e-08,
+                                                        70.94879150390625,
+                                                        2.0641833543777466e-05
+                                                    ],
+                                                    "rotation": [
+                                                        0.07194699347019196,
+                                                        0.0013705258024856448,
+                                                        0.00016356713604182005,
+                                                        0.9974074959754944
+                                                    ],
+                                                    "scale": [
+                                                        1.0,
+                                                        0.9999998807907104,
+                                                        1.0
+                                                    ],
+                                                    "type": 21
+                                                }
+                                            ],
+                                            "is3D": true,
+                                            "isPrefab": false,
+                                            "name": "harkonnen_spine_2",
+                                            "parent_UID": 622325300,
+                                            "tag": 0
+                                        }
+                                    ],
+                                    "components": [
+                                        {
+                                            "active": true,
+                                            "type": 23
+                                        },
+                                        {
+                                            "active": true,
+                                            "position": [
+                                                4.0046870708465576e-08,
+                                                62.080989837646484,
+                                                1.7178390407934785e-06
+                                            ],
+                                            "rotation": [
+                                                0.0719478651881218,
+                                                0.0013095231261104345,
+                                                0.00021554550039581954,
+                                                0.9974075555801392
+                                            ],
+                                            "scale": [
+                                                1.0,
+                                                0.9999997019767761,
+                                                0.9999998211860657
+                                            ],
+                                            "type": 21
+                                        }
+                                    ],
+                                    "is3D": true,
+                                    "isPrefab": false,
+                                    "name": "harkonnen_spine_1",
+                                    "parent_UID": 287086549,
+                                    "tag": 0
+                                }
+                            ],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "position": [
+                                        -2.60770320892334e-08,
+                                        52.778255462646484,
+                                        -2.516310691833496
+                                    ],
+                                    "rotation": [
+                                        0.0484679751098156,
+                                        0.0009570728871040046,
+                                        0.0006710501038469374,
+                                        0.9988240599632263
+                                    ],
+                                    "scale": [
+                                        0.9999991655349731,
+                                        0.9999999403953552,
+                                        0.9999999403953552
+                                    ],
+                                    "type": 21
+                                }
+                            ],
+                            "is3D": true,
+                            "isPrefab": false,
+                            "name": "harkonnen_spine",
+                            "parent_UID": 815030630,
+                            "tag": 0
+                        },
+                        {
+                            "UID": 334478212,
+                            "active": true,
+                            "children": [
+                                {
+                                    "UID": 1542413231,
+                                    "active": true,
+                                    "children": [
+                                        {
+                                            "UID": 1579270863,
+                                            "active": true,
+                                            "children": [
+                                                {
+                                                    "UID": 1401510170,
+                                                    "active": true,
+                                                    "children": [
+                                                        {
+                                                            "UID": 1472560478,
+                                                            "active": true,
+                                                            "children": [
+                                                                {
+                                                                    "UID": 263731058,
+                                                                    "active": true,
+                                                                    "children": [],
+                                                                    "components": [
+                                                                        {
+                                                                            "active": true,
+                                                                            "type": 23
+                                                                        },
+                                                                        {
+                                                                            "active": true,
+                                                                            "position": [
+                                                                                0.0,
+                                                                                39.626670837402344,
+                                                                                0.0
+                                                                            ],
+                                                                            "rotation": [
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "scale": [
+                                                                                1.0,
+                                                                                1.0,
+                                                                                1.0
+                                                                            ],
+                                                                            "type": 21
+                                                                        }
+                                                                    ],
+                                                                    "is3D": true,
+                                                                    "isPrefab": false,
+                                                                    "name": "harkonnen_left_toe_end_end",
+                                                                    "parent_UID": 1472560478,
+                                                                    "tag": 0
+                                                                }
+                                                            ],
+                                                            "components": [
+                                                                {
+                                                                    "active": true,
+                                                                    "type": 23
+                                                                },
+                                                                {
+                                                                    "active": true,
+                                                                    "position": [
+                                                                        -7.64802098274231e-05,
+                                                                        39.62664031982422,
+                                                                        -4.76837158203125e-07
+                                                                    ],
+                                                                    "rotation": [
+                                                                        0.12347322702407837,
+                                                                        0.04740123450756073,
+                                                                        0.03664090111851692,
+                                                                        0.990537703037262
+                                                                    ],
+                                                                    "scale": [
+                                                                        1.0,
+                                                                        0.9999997019767761,
+                                                                        1.0
+                                                                    ],
+                                                                    "type": 21
+                                                                }
+                                                            ],
+                                                            "is3D": true,
+                                                            "isPrefab": false,
+                                                            "name": "harkonnen_left_toe_end",
+                                                            "parent_UID": 1401510170,
+                                                            "tag": 0
+                                                        }
+                                                    ],
+                                                    "components": [
+                                                        {
+                                                            "active": true,
+                                                            "type": 23
+                                                        },
+                                                        {
+                                                            "active": true,
+                                                            "position": [
+                                                                4.762411117553711e-05,
+                                                                100.0634765625,
+                                                                -9.5367431640625e-06
+                                                            ],
+                                                            "rotation": [
+                                                                0.29062649607658386,
+                                                                0.007174232043325901,
+                                                                -0.0021355615463107824,
+                                                                0.9568073153495789
+                                                            ],
+                                                            "scale": [
+                                                                1.0,
+                                                                1.0,
+                                                                1.0
+                                                            ],
+                                                            "type": 21
+                                                        }
+                                                    ],
+                                                    "is3D": true,
+                                                    "isPrefab": false,
+                                                    "name": "harkonnen_left_toe_base",
+                                                    "parent_UID": 1579270863,
+                                                    "tag": 0
+                                                }
+                                            ],
+                                            "components": [
+                                                {
+                                                    "active": true,
+                                                    "type": 23
+                                                },
+                                                {
+                                                    "active": true,
+                                                    "position": [
+                                                        0.604912519454956,
+                                                        176.8376922607422,
+                                                        -0.9601974487304688
+                                                    ],
+                                                    "rotation": [
+                                                        0.6304828524589539,
+                                                        0.03624619171023369,
+                                                        -0.02569691091775894,
+                                                        0.774930477142334
+                                                    ],
+                                                    "scale": [
+                                                        1.0,
+                                                        1.0,
+                                                        0.999999463558197
+                                                    ],
+                                                    "type": 21
+                                                }
+                                            ],
+                                            "is3D": true,
+                                            "isPrefab": false,
+                                            "name": "harkonnen_left_foot",
+                                            "parent_UID": 1542413231,
+                                            "tag": 0
+                                        }
+                                    ],
+                                    "components": [
+                                        {
+                                            "active": true,
+                                            "type": 23
+                                        },
+                                        {
+                                            "active": true,
+                                            "position": [
+                                                4.298337936401367,
+                                                204.8344268798828,
+                                                35.24272918701172
+                                            ],
+                                            "rotation": [
+                                                -0.3732568919658661,
+                                                0.05780286341905594,
+                                                -0.09098167717456818,
+                                                0.9214447736740112
+                                            ],
+                                            "scale": [
+                                                0.9999999403953552,
+                                                0.9999998807907104,
+                                                1.0
+                                            ],
+                                            "type": 21
+                                        }
+                                    ],
+                                    "is3D": true,
+                                    "isPrefab": false,
+                                    "name": "harkonnen_left_leg",
+                                    "parent_UID": 334478212,
+                                    "tag": 0
+                                }
+                            ],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "position": [
+                                        58.862884521484375,
+                                        -29.26355743408203,
+                                        -4.967061996459961
+                                    ],
+                                    "rotation": [
+                                        0.11832123249769211,
+                                        0.17459943890571594,
+                                        0.9664142727851868,
+                                        -0.14682845771312714
+                                    ],
+                                    "scale": [
+                                        1.0000014305114746,
+                                        1.0000017881393433,
+                                        0.9999998211860657
+                                    ],
+                                    "type": 21
+                                }
+                            ],
+                            "is3D": true,
+                            "isPrefab": false,
+                            "name": "harkonnen_left_up_leg",
+                            "parent_UID": 815030630,
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "position": [
+                                -0.18123507499694824,
+                                419.1922607421875,
+                                6.491641521453857
+                            ],
+                            "rotation": [
+                                -0.015613008290529251,
+                                0.004085394088178873,
+                                -0.0010132011957466602,
+                                0.9998692870140076
+                            ],
+                            "scale": [
+                                0.9999999403953552,
+                                0.9999991655349731,
+                                0.9999999403953552
+                            ],
+                            "type": 21
+                        }
+                    ],
+                    "is3D": true,
+                    "isPrefab": false,
+                    "name": "harkonnen_hips",
+                    "parent_UID": 818801345,
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 21
+                }
+            ],
+            "is3D": true,
+            "isPrefab": false,
+            "name": "harkonnen_armature",
+            "parent_UID": 1547522635,
+            "tag": 0
+        },
+        {
+            "UID": 2080189225,
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1377.626708984375,
+                        -9.984098434448242,
+                        21.35887908935547
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.019999999552965164,
+                        0.019999999552965164,
+                        0.019999999552965164
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/harkonnen.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": true,
+                        "root_node_UID": 0,
+                        "shape_type": 0,
+                        "uid": 704363692
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "animation": {
+                        "asset_path": "Assets/Models/Enemies/harkonnen_armature|harkonnen_reel.cake",
+                        "uid": 715521487
+                    },
+                    "clips": [
+                        {
+                            "clipDuration": 289.0,
+                            "clipDurationInSeconds": 0.4166666567325592,
+                            "clipEndFrame": 289.0,
+                            "clipFinished": false,
+                            "clipLoop": true,
+                            "clipName": "Default clip",
+                            "clipStartFrame": 0.0,
+                            "mapString": "Default clip"
+                        }
+                    ],
+                    "selectedClip": "Default clip",
+                    "type": 12
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": "Assets/Textures/Characters/Enemies/Harkonnen/harkonnen_base_color.png"
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 2088773514,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/EnemyController.lua",
+                    "id": 1350694295,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 90
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 50
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 900.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": [
+                                -1374.0,
+                                -9.0,
+                                21.0,
+                                -1500.0,
+                                -8.0,
+                                107.0,
+                                -1681.0,
+                                -10.0,
+                                20.0
+                            ]
+                        }
+                    ],
+                    "type": 5
+                }
+            ],
+            "is3D": true,
+            "isPrefab": false,
+            "name": "harkonnen1",
+            "parent_UID": 1547522635,
+            "tag": 0
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "position": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "type": 21
+        }
+    ],
+    "is3D": true,
+    "isPrefab": true,
+    "name": "harkonnen",
+    "parent_UID": 0,
+    "tag": 0
+}
