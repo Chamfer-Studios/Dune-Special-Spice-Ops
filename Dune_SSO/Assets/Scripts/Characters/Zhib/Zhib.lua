@@ -398,7 +398,7 @@ function ManageTimers(dt)
 				elseif (currentState == State.AIM_ULTIMATE) then
 					DoUltimate()
 				else 
-					--componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
+					componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
 				end
 			end
 		end
