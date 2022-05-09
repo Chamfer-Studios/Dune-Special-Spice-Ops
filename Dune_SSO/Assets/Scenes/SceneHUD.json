@@ -1018,24 +1018,7 @@
                     {
                         "active": true,
                         "file_name": "Assets/Scripts/HUD/UI_CharacterAssetsChange.lua",
-                        "id": 1504588850,
-                        "inspector_variables": [
-                            {
-                                "name": "path1",
-                                "type": "string",
-                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_zhib_v1.2.png"
-                            },
-                            {
-                                "name": "path2",
-                                "type": "string",
-                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_nebala_v1.1.png"
-                            },
-                            {
-                                "name": "path3",
-                                "type": "string",
-                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_omozra_v1.1.png"
-                            }
-                        ],
+                        "id": 803254828,
                         "type": 5
                     }
                 ],
