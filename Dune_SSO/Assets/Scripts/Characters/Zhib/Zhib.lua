@@ -379,7 +379,7 @@ function ManageTimers(dt)
 				componentRigidBody:UpdateEnableGravity()
 			end
 			if (componentAnimator ~= nil) then
-				componentAnimator:SetSelectedClip("Ultimate_end")
+				componentAnimator:SetSelectedClip("UltimateEnd")
 			end
 		end
 		ret = false
@@ -398,7 +398,7 @@ function ManageTimers(dt)
 				elseif (currentState == State.AIM_ULTIMATE) then
 					DoUltimate()
 				else 
-					componentAnimator:SetSelectedClip("Idle")
+					--componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
 				end
 			end
 		end
@@ -551,7 +551,7 @@ end
 -- Ultimate ability
 function CastUltimate(position)
 
-	componentAnimator:SetSelectedClip("Ultimate_start")
+	componentAnimator:SetSelectedClip("UltimateStart")
 	ultimateTimer = 0.0		
 	StopMovement()
 
