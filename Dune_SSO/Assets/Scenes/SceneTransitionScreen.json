@@ -1871,6 +1871,19 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1324430488,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO1"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1938,6 +1951,19 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1669653809,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO2"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2002,6 +2028,19 @@
                                 "name": "price",
                                 "type": "int",
                                 "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1825507926,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO3"
                             }
                         ],
                         "type": 5
@@ -3977,6 +4016,19 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1310119292,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO4"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -4041,6 +4093,19 @@
                                 "name": "price",
                                 "type": "int",
                                 "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1742289301,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO5"
                             }
                         ],
                         "type": 5
@@ -4111,6 +4176,19 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1457107773,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO7"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -4175,6 +4253,19 @@
                                 "name": "price",
                                 "type": "int",
                                 "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 320263400,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO6"
                             }
                         ],
                         "type": 5
@@ -4245,6 +4336,19 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1882948246,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO8"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -4309,6 +4413,19 @@
                                 "name": "price",
                                 "type": "int",
                                 "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1748087298,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PO9"
                             }
                         ],
                         "type": 5
@@ -7408,7 +7525,7 @@
                         ],
                         "size": [
                             500.0,
-                            50.0
+                            500.0
                         ],
                         "type": 22
                     },
