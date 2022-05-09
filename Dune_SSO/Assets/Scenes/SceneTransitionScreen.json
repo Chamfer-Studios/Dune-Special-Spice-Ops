@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 108,
+        "game_objects_amount": 137,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -745,7 +745,7 @@
                         ],
                         "position": [
                             150.0,
-                            300.0
+                            315.0
                         ],
                         "rotation": [
                             0.0,
@@ -764,6 +764,19 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_zhib_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_zhib_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterTS.lua",
+                        "id": 1903974095,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 1
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -789,7 +802,7 @@
                         ],
                         "position": [
                             150.0,
-                            0.0
+                            67.0
                         ],
                         "rotation": [
                             0.0,
@@ -808,6 +821,19 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_nerala_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_nerala_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterTS.lua",
+                        "id": 1004873273,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 2
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -833,7 +859,7 @@
                         ],
                         "position": [
                             150.0,
-                            -300.0
+                            -188.0
                         ],
                         "rotation": [
                             0.0,
@@ -852,6 +878,19 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_omozra_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_omozra_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterTS.lua",
+                        "id": 1707371214,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 3
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1295,7 +1334,7 @@
             },
             {
                 "UID": 769627439,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1329,6 +1368,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 475242817,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ3"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1850289842,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ3"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1373,6 +1448,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1449571673,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN3"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1782938815,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN3"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1383,7 +1494,7 @@
             },
             {
                 "UID": 2040544952,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1417,6 +1528,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1651601129,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ2"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1257807141,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ2"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1461,6 +1608,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 340520109,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN2"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1278529456,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN2"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1471,7 +1654,7 @@
             },
             {
                 "UID": 4305415,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1505,6 +1688,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 145586645,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ1"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1805130170,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ1"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1549,6 +1768,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 970761447,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN1"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1924846850,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN1"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1593,6 +1848,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 57100883,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO1"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1637,6 +1915,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 428344746,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO2"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1681,6 +1982,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1831639024,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO3"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1934,7 +2258,7 @@
             },
             {
                 "UID": 1700522174,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1968,6 +2292,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 27908472,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ4"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1690512224,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ4"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1978,7 +2338,7 @@
             },
             {
                 "UID": 1714392152,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2012,6 +2372,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 162789622,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ5"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1305068043,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ5"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2022,7 +2418,7 @@
             },
             {
                 "UID": 592085002,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2056,6 +2452,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 109117133,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ6"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1194257154,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ6"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2066,7 +2498,7 @@
             },
             {
                 "UID": 1740565838,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2114,7 +2546,7 @@
             },
             {
                 "UID": 1726974482,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2162,7 +2594,7 @@
             },
             {
                 "UID": 375983086,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2210,7 +2642,7 @@
             },
             {
                 "UID": 640257123,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2240,14 +2672,14 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "ZhibSkills",
-                "parent_UID": 745654445,
+                "parent_UID": 535600172,
                 "tag": 0
             },
             {
@@ -2282,14 +2714,14 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "NeralaSkills",
-                "parent_UID": 745654445,
+                "parent_UID": 535600172,
                 "tag": 0
             },
             {
@@ -2324,19 +2756,19 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "OmozraSkills",
-                "parent_UID": 745654445,
+                "parent_UID": 535600172,
                 "tag": 0
             },
             {
                 "UID": 347391995,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2370,6 +2802,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1252957735,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ7"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1384727295,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ7"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2380,7 +2848,7 @@
             },
             {
                 "UID": 813213805,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2414,6 +2882,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1263124071,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ8"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 505602441,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ8"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2424,7 +2928,7 @@
             },
             {
                 "UID": 946510069,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2472,7 +2976,7 @@
             },
             {
                 "UID": 1441805654,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2520,7 +3024,7 @@
             },
             {
                 "UID": 123325413,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2554,6 +3058,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1143086884,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyZ9"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1402960438,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PZ9"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2564,7 +3104,7 @@
             },
             {
                 "UID": 683015490,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2646,6 +3186,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1133475221,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN4"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 96784932,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN4"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2690,6 +3266,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1607550133,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN5"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 990062541,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN5"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2734,6 +3346,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1361549202,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN6"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 341330215,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN6"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2778,6 +3426,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1844344460,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN7"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 615944589,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN7"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2822,6 +3506,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1724767473,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN8"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1340632081,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN8"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2866,6 +3586,42 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 64361740,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyN9"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_HoverSkill.lua",
+                        "id": 1277812898,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "PN9"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3198,6 +3954,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 814047397,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO4"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3242,6 +4021,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 552898560,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO5"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3286,6 +4088,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 939145366,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO7"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": true
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 5
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3330,6 +4155,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1853756932,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO6"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3374,6 +4222,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1952409724,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO8"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 10
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3418,6 +4289,29 @@
                         "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skill.lua",
+                        "id": 1592474092,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "ShadyO9"
+                            },
+                            {
+                                "name": "starts",
+                                "type": "bool",
+                                "value": false
+                            },
+                            {
+                                "name": "price",
+                                "type": "int",
+                                "value": 20
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -4004,7 +4898,7 @@
             },
             {
                 "UID": 671146838,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -4052,7 +4946,7 @@
             },
             {
                 "UID": 964816972,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -4100,7 +4994,7 @@
             },
             {
                 "UID": 381413099,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -4148,7 +5042,7 @@
             },
             {
                 "UID": 469090363,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -4182,17 +5076,23 @@
                         "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_RestartButton.lua",
+                        "id": 2072385719,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "ResetSkills",
-                "parent_UID": 1714392152,
+                "parent_UID": 745654445,
                 "tag": 0
             },
             {
                 "UID": 15897516,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -4576,7 +5476,7 @@
             },
             {
                 "UID": 524765747,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4618,7 +5518,7 @@
             },
             {
                 "UID": 1004745083,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4660,7 +5560,7 @@
             },
             {
                 "UID": 200493399,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4702,7 +5602,7 @@
             },
             {
                 "UID": 631580435,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4744,7 +5644,7 @@
             },
             {
                 "UID": 564877935,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4786,7 +5686,7 @@
             },
             {
                 "UID": 588896955,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4828,7 +5728,7 @@
             },
             {
                 "UID": 681523558,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4870,7 +5770,7 @@
             },
             {
                 "UID": 1463940577,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4912,7 +5812,7 @@
             },
             {
                 "UID": 817157511,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4950,6 +5850,1242 @@
                 "isPrefab": false,
                 "name": "PN9",
                 "parent_UID": 2125246283,
+                "tag": 0
+            },
+            {
+                "UID": 332944681,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 2,
+                        "pivot": [
+                            1.0,
+                            1.0
+                        ],
+                        "position": [
+                            -43.0,
+                            -40.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            161.0,
+                            71.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Spice"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_OoSpicy.lua",
+                        "id": 3150183,
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Spice",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 535600172,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SkillSet.lua",
+                        "id": 1242881727,
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "SkillsSets",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 599613028,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ3",
+                "parent_UID": 769627439,
+                "tag": 0
+            },
+            {
+                "UID": 1912481352,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ1",
+                "parent_UID": 4305415,
+                "tag": 0
+            },
+            {
+                "UID": 437603617,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ2",
+                "parent_UID": 2040544952,
+                "tag": 0
+            },
+            {
+                "UID": 1695377778,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ4",
+                "parent_UID": 1700522174,
+                "tag": 0
+            },
+            {
+                "UID": 1487137571,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ5",
+                "parent_UID": 1714392152,
+                "tag": 0
+            },
+            {
+                "UID": 406449366,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ6",
+                "parent_UID": 592085002,
+                "tag": 0
+            },
+            {
+                "UID": 503526585,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ7",
+                "parent_UID": 347391995,
+                "tag": 0
+            },
+            {
+                "UID": 1541229953,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ8",
+                "parent_UID": 813213805,
+                "tag": 0
+            },
+            {
+                "UID": 1749755044,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyZ9",
+                "parent_UID": 123325413,
+                "tag": 0
+            },
+            {
+                "UID": 1159035369,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN1",
+                "parent_UID": 2025832789,
+                "tag": 0
+            },
+            {
+                "UID": 1248730871,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN2",
+                "parent_UID": 141942730,
+                "tag": 0
+            },
+            {
+                "UID": 423497044,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN3",
+                "parent_UID": 907349937,
+                "tag": 0
+            },
+            {
+                "UID": 63064783,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN4",
+                "parent_UID": 491033769,
+                "tag": 0
+            },
+            {
+                "UID": 1772796166,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN5",
+                "parent_UID": 2137129959,
+                "tag": 0
+            },
+            {
+                "UID": 21323278,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN6",
+                "parent_UID": 1909780918,
+                "tag": 0
+            },
+            {
+                "UID": 1948293007,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN7",
+                "parent_UID": 1385388013,
+                "tag": 0
+            },
+            {
+                "UID": 30762052,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN8",
+                "parent_UID": 1872742177,
+                "tag": 0
+            },
+            {
+                "UID": 508189391,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyN9",
+                "parent_UID": 2125246283,
+                "tag": 0
+            },
+            {
+                "UID": 743772826,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO1",
+                "parent_UID": 519733761,
+                "tag": 0
+            },
+            {
+                "UID": 527828587,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO2",
+                "parent_UID": 1678780332,
+                "tag": 0
+            },
+            {
+                "UID": 449225825,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO3",
+                "parent_UID": 751918536,
+                "tag": 0
+            },
+            {
+                "UID": 586673487,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO4",
+                "parent_UID": 1857834368,
+                "tag": 0
+            },
+            {
+                "UID": 973467006,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO5",
+                "parent_UID": 1232691904,
+                "tag": 0
+            },
+            {
+                "UID": 509790823,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO6",
+                "parent_UID": 1065433851,
+                "tag": 0
+            },
+            {
+                "UID": 757041982,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO7",
+                "parent_UID": 909969673,
+                "tag": 0
+            },
+            {
+                "UID": 1626901336,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO8",
+                "parent_UID": 1784548114,
+                "tag": 0
+            },
+            {
+                "UID": 1328566830,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Information Window/infomation_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ShadyO9",
+                "parent_UID": 1241844361,
                 "tag": 0
             }
         ],
