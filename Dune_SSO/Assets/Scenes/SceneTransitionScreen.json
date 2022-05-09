@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 137,
+        "game_objects_amount": 146,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -6712,7 +6712,7 @@
             },
             {
                 "UID": 743772826,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6754,7 +6754,7 @@
             },
             {
                 "UID": 527828587,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6796,7 +6796,7 @@
             },
             {
                 "UID": 449225825,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6838,7 +6838,7 @@
             },
             {
                 "UID": 586673487,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6880,7 +6880,7 @@
             },
             {
                 "UID": 973467006,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6922,7 +6922,7 @@
             },
             {
                 "UID": 509790823,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -6964,7 +6964,7 @@
             },
             {
                 "UID": 757041982,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -7006,7 +7006,7 @@
             },
             {
                 "UID": 1626901336,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -7048,7 +7048,7 @@
             },
             {
                 "UID": 1328566830,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -7085,6 +7085,384 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "ShadyO9",
+                "parent_UID": 1241844361,
+                "tag": 0
+            },
+            {
+                "UID": 2038102811,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO1",
+                "parent_UID": 519733761,
+                "tag": 0
+            },
+            {
+                "UID": 1253772277,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO2",
+                "parent_UID": 1678780332,
+                "tag": 0
+            },
+            {
+                "UID": 1486254699,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO3",
+                "parent_UID": 751918536,
+                "tag": 0
+            },
+            {
+                "UID": 1066038724,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO4",
+                "parent_UID": 1857834368,
+                "tag": 0
+            },
+            {
+                "UID": 1528245564,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO5",
+                "parent_UID": 1232691904,
+                "tag": 0
+            },
+            {
+                "UID": 1446220633,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO6",
+                "parent_UID": 1065433851,
+                "tag": 0
+            },
+            {
+                "UID": 1706097191,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO7",
+                "parent_UID": 909969673,
+                "tag": 0
+            },
+            {
+                "UID": 635281291,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO8",
+                "parent_UID": 1784548114,
+                "tag": 0
+            },
+            {
+                "UID": 887537878,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PO9",
                 "parent_UID": 1241844361,
                 "tag": 0
             }
