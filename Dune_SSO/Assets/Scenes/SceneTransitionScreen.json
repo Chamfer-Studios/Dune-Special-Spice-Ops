@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 89,
+        "game_objects_amount": 108,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -1295,7 +1295,7 @@
             },
             {
                 "UID": 769627439,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1383,7 +1383,7 @@
             },
             {
                 "UID": 2040544952,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1471,7 +1471,7 @@
             },
             {
                 "UID": 4305415,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1706,7 +1706,7 @@
                         ],
                         "position": [
                             0.0,
-                            0.0
+                            -400.0
                         ],
                         "rotation": [
                             0.0,
@@ -1721,14 +1721,14 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "PopUpZhib1",
-                "parent_UID": 745654445,
+                "name": "PZ1",
+                "parent_UID": 4305415,
                 "tag": 0
             },
             {
@@ -1843,8 +1843,8 @@
                             0.5
                         ],
                         "position": [
-                            -435.0,
-                            -421.0
+                            -440.0,
+                            -430.0
                         ],
                         "rotation": [
                             0.0,
@@ -1852,8 +1852,8 @@
                             0.0
                         ],
                         "size": [
-                            278.0,
-                            82.0
+                            270.0,
+                            80.0
                         ],
                         "type": 22
                     },
@@ -1880,7 +1880,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Button",
+                "name": "CloseSkills",
                 "parent_UID": 745654445,
                 "tag": 0
             },
@@ -1909,8 +1909,8 @@
                             0.0
                         ],
                         "size": [
-                            139.0,
-                            55.0
+                            140.0,
+                            50.0
                         ],
                         "type": 22
                     },
@@ -1934,7 +1934,7 @@
             },
             {
                 "UID": 1700522174,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1978,7 +1978,7 @@
             },
             {
                 "UID": 1714392152,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2022,7 +2022,7 @@
             },
             {
                 "UID": 592085002,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2066,7 +2066,7 @@
             },
             {
                 "UID": 1740565838,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2114,7 +2114,7 @@
             },
             {
                 "UID": 1726974482,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2162,7 +2162,7 @@
             },
             {
                 "UID": 375983086,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2336,7 +2336,7 @@
             },
             {
                 "UID": 347391995,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2380,7 +2380,7 @@
             },
             {
                 "UID": 813213805,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2424,7 +2424,7 @@
             },
             {
                 "UID": 946510069,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2472,7 +2472,7 @@
             },
             {
                 "UID": 1441805654,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2520,7 +2520,7 @@
             },
             {
                 "UID": 123325413,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -2564,7 +2564,7 @@
             },
             {
                 "UID": 683015490,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4004,7 +4004,7 @@
             },
             {
                 "UID": 671146838,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4052,7 +4052,7 @@
             },
             {
                 "UID": 964816972,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4100,7 +4100,7 @@
             },
             {
                 "UID": 381413099,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -4144,6 +4144,812 @@
                 "isPrefab": false,
                 "name": "Text15",
                 "parent_UID": 769627439,
+                "tag": 0
+            },
+            {
+                "UID": 469090363,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            440.0,
+                            -430.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            270.0,
+                            80.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Menu UI/Buttons/button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ResetSkills",
+                "parent_UID": 1714392152,
+                "tag": 0
+            },
+            {
+                "UID": 15897516,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            140.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Reset"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text38",
+                "parent_UID": 469090363,
+                "tag": 0
+            },
+            {
+                "UID": 846883231,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ3",
+                "parent_UID": 769627439,
+                "tag": 0
+            },
+            {
+                "UID": 1743156981,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ4",
+                "parent_UID": 1700522174,
+                "tag": 0
+            },
+            {
+                "UID": 2127739247,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ5",
+                "parent_UID": 1714392152,
+                "tag": 0
+            },
+            {
+                "UID": 811049890,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ6",
+                "parent_UID": 592085002,
+                "tag": 0
+            },
+            {
+                "UID": 396272435,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ7",
+                "parent_UID": 347391995,
+                "tag": 0
+            },
+            {
+                "UID": 1266868082,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ8",
+                "parent_UID": 813213805,
+                "tag": 0
+            },
+            {
+                "UID": 1715638147,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ9",
+                "parent_UID": 123325413,
+                "tag": 0
+            },
+            {
+                "UID": 1152340139,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PZ2",
+                "parent_UID": 2040544952,
+                "tag": 0
+            },
+            {
+                "UID": 524765747,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN1",
+                "parent_UID": 2025832789,
+                "tag": 0
+            },
+            {
+                "UID": 1004745083,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN2",
+                "parent_UID": 141942730,
+                "tag": 0
+            },
+            {
+                "UID": 200493399,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            -400.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN3",
+                "parent_UID": 907349937,
+                "tag": 0
+            },
+            {
+                "UID": 631580435,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN4",
+                "parent_UID": 491033769,
+                "tag": 0
+            },
+            {
+                "UID": 564877935,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN5",
+                "parent_UID": 2137129959,
+                "tag": 0
+            },
+            {
+                "UID": 588896955,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN6",
+                "parent_UID": 1909780918,
+                "tag": 0
+            },
+            {
+                "UID": 681523558,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN7",
+                "parent_UID": 1385388013,
+                "tag": 0
+            },
+            {
+                "UID": 1463940577,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN8",
+                "parent_UID": 1872742177,
+                "tag": 0
+            },
+            {
+                "UID": 817157511,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -200.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            500.0,
+                            500.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "PN9",
+                "parent_UID": 2125246283,
                 "tag": 0
             }
         ],
