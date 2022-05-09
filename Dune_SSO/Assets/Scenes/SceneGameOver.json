@@ -163,7 +163,7 @@
                         ],
                         "position": [
                             0.0,
-                            0.0
+                            4.0
                         ],
                         "rotation": [
                             0.0,
@@ -172,7 +172,7 @@
                         ],
                         "size": [
                             1916.0,
-                            1072.0
+                            1083.0
                         ],
                         "type": 22
                     },
@@ -234,7 +234,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Button",
+                "name": "Quit",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -291,7 +291,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Button1",
+                "name": "Main Menu",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -348,7 +348,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Button2",
+                "name": "Try Again",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
