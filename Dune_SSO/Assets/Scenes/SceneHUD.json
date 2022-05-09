@@ -1,7 +1,7 @@
 {
     "SceneHUD": {
         "active": true,
-        "game_objects_amount": 21,
+        "game_objects_amount": 24,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -421,7 +421,7 @@
                         ],
                         "position": [
                             60.0,
-                            210.0
+                            340.0
                         ],
                         "rotation": [
                             0.0,
@@ -465,7 +465,7 @@
                         ],
                         "position": [
                             60.0,
-                            -110.0
+                            20.0
                         ],
                         "rotation": [
                             0.0,
@@ -509,7 +509,7 @@
                         ],
                         "position": [
                             60.0,
-                            -110.0
+                            20.0
                         ],
                         "rotation": [
                             0.0,
@@ -553,7 +553,7 @@
                         ],
                         "position": [
                             60.0,
-                            50.0
+                            180.0
                         ],
                         "rotation": [
                             0.0,
@@ -597,7 +597,7 @@
                         ],
                         "position": [
                             60.0,
-                            210.0
+                            340.0
                         ],
                         "rotation": [
                             0.0,
@@ -641,7 +641,7 @@
                         ],
                         "position": [
                             60.0,
-                            50.0
+                            180.0
                         ],
                         "rotation": [
                             0.0,
@@ -685,7 +685,7 @@
                         ],
                         "position": [
                             60.0,
-                            210.0
+                            340.0
                         ],
                         "rotation": [
                             0.0,
@@ -729,7 +729,7 @@
                         ],
                         "position": [
                             60.0,
-                            -110.0
+                            20.0
                         ],
                         "rotation": [
                             0.0,
@@ -773,7 +773,7 @@
                         ],
                         "position": [
                             60.0,
-                            50.0
+                            180.0
                         ],
                         "rotation": [
                             0.0,
@@ -817,7 +817,7 @@
                         ],
                         "position": [
                             60.0,
-                            -20.0
+                            270.0
                         ],
                         "rotation": [
                             0.0,
@@ -838,7 +838,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Image",
+                "name": "textability1",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -859,7 +859,7 @@
                         ],
                         "position": [
                             60.0,
-                            140.0
+                            110.0
                         ],
                         "rotation": [
                             0.0,
@@ -880,7 +880,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Image1",
+                "name": "textAbility2",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -901,7 +901,7 @@
                         ],
                         "position": [
                             60.0,
-                            -180.0
+                            -50.0
                         ],
                         "rotation": [
                             0.0,
@@ -922,7 +922,133 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Image2",
+                "name": "TextAbility3",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1286540631,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            220.0,
+                            194.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            400.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_omozra_v1.1.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "OmozraPortrait",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1258350991,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            220.0,
+                            194.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            400.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_nebala_v1.1.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "NeralaPortrait",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 944382409,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            222.0,
+                            194.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            400.0,
+                            400.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_zhib_v1.2.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ZhibPortrait",
                 "parent_UID": 1934588784,
                 "tag": 0
             }
