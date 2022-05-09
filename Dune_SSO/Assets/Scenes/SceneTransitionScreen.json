@@ -1,7 +1,7 @@
 {
     "SceneTransitionScreen": {
         "active": true,
-        "game_objects_amount": 51,
+        "game_objects_amount": 89,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -688,7 +688,7 @@
             },
             {
                 "UID": 745654445,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -730,7 +730,7 @@
             },
             {
                 "UID": 5030719,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -774,7 +774,7 @@
             },
             {
                 "UID": 336441146,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -818,7 +818,7 @@
             },
             {
                 "UID": 1782801865,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1295,7 +1295,7 @@
             },
             {
                 "UID": 769627439,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1334,7 +1334,7 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Zhib3",
-                "parent_UID": 745654445,
+                "parent_UID": 640257123,
                 "tag": 0
             },
             {
@@ -1347,14 +1347,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             430.0,
-                            0.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1369,21 +1369,21 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Nerala3",
-                "parent_UID": 745654445,
+                "parent_UID": 1007033730,
                 "tag": 0
             },
             {
                 "UID": 2040544952,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1422,7 +1422,7 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Zhib2",
-                "parent_UID": 745654445,
+                "parent_UID": 640257123,
                 "tag": 0
             },
             {
@@ -1435,14 +1435,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             140.0,
-                            0.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1457,21 +1457,21 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Nerala2",
-                "parent_UID": 745654445,
+                "parent_UID": 1007033730,
                 "tag": 0
             },
             {
                 "UID": 4305415,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1510,7 +1510,7 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Zhib1",
-                "parent_UID": 1308310632,
+                "parent_UID": 640257123,
                 "tag": 0
             },
             {
@@ -1523,14 +1523,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             -150.0,
-                            0.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1545,16 +1545,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Nerala1",
-                "parent_UID": 745654445,
+                "parent_UID": 1007033730,
                 "tag": 0
             },
             {
@@ -1567,14 +1567,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 7,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             -150.0,
-                            200.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1589,16 +1589,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Omozra1",
-                "parent_UID": 745654445,
+                "parent_UID": 916458285,
                 "tag": 0
             },
             {
@@ -1611,14 +1611,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 7,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             140.0,
-                            200.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1633,16 +1633,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Omozra2",
-                "parent_UID": 745654445,
+                "parent_UID": 916458285,
                 "tag": 0
             },
             {
@@ -1655,14 +1655,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 7,
+                        "anchor": 1,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
                             430.0,
-                            200.0
+                            -200.0
                         ],
                         "rotation": [
                             0.0,
@@ -1677,448 +1677,16 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
                         "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Omozra3",
-                "parent_UID": 745654445,
-                "tag": 0
-            },
-            {
-                "UID": 1965941543,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            255.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Decoy"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text9",
-                "parent_UID": 2040544952,
-                "tag": 0
-            },
-            {
-                "UID": 502676275,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            663.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Sleeping Dart"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text10",
-                "parent_UID": 141942730,
-                "tag": 0
-            },
-            {
-                "UID": 265519178,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            357.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Ñam Ñam"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text11",
-                "parent_UID": 1678780332,
-                "tag": 0
-            },
-            {
-                "UID": 1459614863,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            867.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Let's go,  Sadiq!"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text12",
-                "parent_UID": 751918536,
-                "tag": 0
-            },
-            {
-                "UID": 628009675,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            510.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Smoke Bomb"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text13",
-                "parent_UID": 2025832789,
-                "tag": 0
-            },
-            {
-                "UID": 288940699,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            612.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Weirding Way"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text14",
-                "parent_UID": 769627439,
-                "tag": 0
-            },
-            {
-                "UID": 28253076,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            612.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Thrown Knife"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text15",
-                "parent_UID": 4305415,
-                "tag": 0
-            },
-            {
-                "UID": 1482677338,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            816.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Seek Them Sadiq!"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text16",
-                "parent_UID": 519733761,
-                "tag": 0
-            },
-            {
-                "UID": 1007796014,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            663.0,
-                            75.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "type": 16,
-                        "value": "Hunter-Seeker"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text17",
-                "parent_UID": 907349937,
+                "parent_UID": 916458285,
                 "tag": 0
             },
             {
@@ -2261,7 +1829,7 @@
             },
             {
                 "UID": 1464994984,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2318,7 +1886,7 @@
             },
             {
                 "UID": 394108764,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -2365,7 +1933,283 @@
                 "tag": 0
             },
             {
-                "UID": 1308310632,
+                "UID": 1700522174,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib4",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 1714392152,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib5",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 592085002,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib6",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 1740565838,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Decoy"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text6",
+                "parent_UID": 1700522174,
+                "tag": 0
+            },
+            {
+                "UID": 1726974482,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Decoy"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text21",
+                "parent_UID": 1714392152,
+                "tag": 0
+            },
+            {
+                "UID": 375983086,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Decoy"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text22",
+                "parent_UID": 592085002,
+                "tag": 0
+            },
+            {
+                "UID": 640257123,
                 "active": false,
                 "components": [
                     {
@@ -2389,6 +2233,132 @@
                             0.0
                         ],
                         "size": [
+                            1200.0,
+                            1000.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "ZhibSkills",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 1007033730,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1200.0,
+                            1000.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "NeralaSkills",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 916458285,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1200.0,
+                            1000.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/Transition Screen/Popup Window/popup_window_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "OmozraSkills",
+                "parent_UID": 745654445,
+                "tag": 0
+            },
+            {
+                "UID": 347391995,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
                             200.0,
                             200.0
                         ],
@@ -2396,14 +2366,1784 @@
                     },
                     {
                         "active": true,
-                        "texture": "",
-                        "type": 14
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Image",
-                "parent_UID": 745654445,
+                "name": "Zhib7",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 813213805,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib8",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 946510069,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Weirding Way"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text24",
+                "parent_UID": 813213805,
+                "tag": 0
+            },
+            {
+                "UID": 1441805654,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Weirding Way"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text25",
+                "parent_UID": 347391995,
+                "tag": 0
+            },
+            {
+                "UID": 123325413,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Zhib9",
+                "parent_UID": 640257123,
+                "tag": 0
+            },
+            {
+                "UID": 683015490,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Weirding Way"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text23",
+                "parent_UID": 123325413,
+                "tag": 0
+            },
+            {
+                "UID": 491033769,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala4",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 2137129959,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala5",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 1909780918,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala6",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 1385388013,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala7",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 1872742177,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala8",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 2125246283,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Nerala9",
+                "parent_UID": 1007033730,
+                "tag": 0
+            },
+            {
+                "UID": 2010768431,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Sleeping Dart"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text26",
+                "parent_UID": 491033769,
+                "tag": 0
+            },
+            {
+                "UID": 1544954015,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Sleeping Dart"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text27",
+                "parent_UID": 2137129959,
+                "tag": 0
+            },
+            {
+                "UID": 230051026,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Sleeping Dart"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text28",
+                "parent_UID": 1909780918,
+                "tag": 0
+            },
+            {
+                "UID": 449441820,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Hunter-Seeker"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text29",
+                "parent_UID": 1872742177,
+                "tag": 0
+            },
+            {
+                "UID": 1752213430,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Hunter-Seeker"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text30",
+                "parent_UID": 1385388013,
+                "tag": 0
+            },
+            {
+                "UID": 895158548,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Hunter-Seeker"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text31",
+                "parent_UID": 2125246283,
+                "tag": 0
+            },
+            {
+                "UID": 1857834368,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra4",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 1232691904,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra5",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 909969673,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra7",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 1065433851,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra6",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 1784548114,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            140.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra8",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 1241844361,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            430.0,
+                            200.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_hover_v1.0.png",
+                        "idleTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_normal_v1.0.png",
+                        "pressedTexture": "Assets/UI/Transition Screen/Skill Buttons/skill_button_click_v1.0.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Omozra9",
+                "parent_UID": 916458285,
+                "tag": 0
+            },
+            {
+                "UID": 250553466,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Ñam Ñam"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text32",
+                "parent_UID": 1857834368,
+                "tag": 0
+            },
+            {
+                "UID": 1920675452,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Ñam Ñam"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text33",
+                "parent_UID": 1232691904,
+                "tag": 0
+            },
+            {
+                "UID": 1981395943,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Let's go"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text34",
+                "parent_UID": 909969673,
+                "tag": 0
+            },
+            {
+                "UID": 1007398911,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Ñam Ñam"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text35",
+                "parent_UID": 1065433851,
+                "tag": 0
+            },
+            {
+                "UID": 1451155358,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Let's go"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text36",
+                "parent_UID": 1784548114,
+                "tag": 0
+            },
+            {
+                "UID": 371522556,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Let's go"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text37",
+                "parent_UID": 1241844361,
+                "tag": 0
+            },
+            {
+                "UID": 1665061515,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Seek Them"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text11",
+                "parent_UID": 519733761,
+                "tag": 0
+            },
+            {
+                "UID": 2080470755,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Seek Them"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text12",
+                "parent_UID": 751918536,
+                "tag": 0
+            },
+            {
+                "UID": 359616002,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Seek Them"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text16",
+                "parent_UID": 1678780332,
+                "tag": 0
+            },
+            {
+                "UID": 1309414795,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Smoke Bomb"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text10",
+                "parent_UID": 2025832789,
+                "tag": 0
+            },
+            {
+                "UID": 2086627545,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Smoke Bomb"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text13",
+                "parent_UID": 141942730,
+                "tag": 0
+            },
+            {
+                "UID": 122558189,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Smoke Bomb"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text17",
+                "parent_UID": 907349937,
+                "tag": 0
+            },
+            {
+                "UID": 671146838,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Throwable Knife"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text9",
+                "parent_UID": 4305415,
+                "tag": 0
+            },
+            {
+                "UID": 964816972,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Throwable Knife"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text14",
+                "parent_UID": 2040544952,
+                "tag": 0
+            },
+            {
+                "UID": 381413099,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            150.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "type": 16,
+                        "value": "Throwable Knife"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text15",
+                "parent_UID": 769627439,
                 "tag": 0
             }
         ],
