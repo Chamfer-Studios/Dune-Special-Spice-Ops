@@ -30,11 +30,11 @@ function Update(dt)
     id = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
  
     if (id == 1) then
-        target = Find("zhib_low"):GetTransform():GetPosition()
-    --elseif (id == 2) then 
-    --target = Find("nerala_low"):GetTransform():GetPosition()
+        target = Find("Zhib"):GetTransform():GetPosition()
+    elseif (id == 2) then 
+        target = Find("Nerala"):GetTransform():GetPosition()
     else
-    target = 0
+        target = 0
     end
     
     if(start) then
