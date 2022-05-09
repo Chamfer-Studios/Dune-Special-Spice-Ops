@@ -230,6 +230,43 @@
                         "file_name": "Assets/Scripts/HUD/UI_Quit.lua",
                         "id": 1821551780,
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 2011662129,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -287,6 +324,43 @@
                             }
                         ],
                         "type": 5
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 1488076710,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -343,6 +417,43 @@
                                 "value": "SceneTutorial"
                             }
                         ],
+                        "type": 5
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 1.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SFX.lua",
+                        "id": 335044689,
                         "type": 5
                     }
                 ],
