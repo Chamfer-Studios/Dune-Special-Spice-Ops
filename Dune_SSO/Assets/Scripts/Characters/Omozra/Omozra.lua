@@ -120,6 +120,8 @@ function Start()
 	componentSwitch = gameObject:GetAudioSwitch()
 	currentTrackID = -1
 
+	InstantiatePrefab("Worm")
+
 	currentHP = maxHP
 	DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
 end
@@ -161,7 +163,7 @@ function Update(dt)
 				target = GetGameObjectHovered()
 				if (target.tag == Tag.ENEMY and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= secondaryCastRange) then
 					if (componentAnimator ~= nil) then
-						CastSecondary(target)
+						CastSecondary()
 					end
 				else
 					print("Out of range")
@@ -172,7 +174,7 @@ function Update(dt)
 				target = GetGameObjectHovered()
 				if (target.tag == Tag.PLAYER and Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateCastRange) then
 					if (componentAnimator ~= nil) then
-						CastUltimate(target) -- Ult step 2
+						CastUltimate() -- Ult step 2
 					end
 				else
 					print("Out of range")
@@ -349,7 +351,7 @@ function ManageTimers(dt)
 				if (currentState == State.AIM_PRIMARY) then
 					
 				elseif (currentState == State.AIM_SECONDARY) then
-					PlaceSecondary()
+					DoSecondary()
 				elseif (currentState == State.AIM_ULTIMATE) then
 					if (isWormDone == nil) then
 						DoUltimate()
@@ -468,7 +470,7 @@ function CastSecondary(position)
 	LookAtTarget(position)
 end
 
-function PlaceSecondary() 
+function DoSecondary() 
 
 	if (componentSwitch ~= nil) then
 		if (currentTrackID ~= -1) then
@@ -478,26 +480,25 @@ function PlaceSecondary()
 		componentSwitch:PlayTrack(currentTrackID)
 	end	
 	
-	componentAnimator:SetSelectedClip("SecondaryToIdle")
+	DispatchGlobalEvent("Worm_State", { 5, target })
 	currentState = State.IDLE
 end
 
 
 -- Ultimate ability
-function CastUltimate(position) -- Ult step 3
+function CastUltimate() -- Ult step 3
 
 	componentAnimator:SetSelectedClip("UltimateStart")
 	-- CD will start when recasting		
 	StopMovement()
 	
 	DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
-	LookAtTarget(position)
+	LookAtTarget(target:GetTransform():GetPosition())
 end
 
 function DoUltimate() -- Ult step 4
 	-- This event is just for the player affected
 	DispatchGlobalEvent("Omozra_Ultimate_Target", { target }) -- Target player has to stop all actions
-	InstantiatePrefab("Worm") -- Will use target to know where to spawn
 
 	currentState = State.AIM_ULTIMATE_RECAST
 end
