@@ -245,7 +245,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             },
                             {
@@ -256,7 +256,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             }
                         ],
@@ -339,7 +339,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             },
                             {
@@ -350,7 +350,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             }
                         ],
@@ -433,7 +433,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             },
                             {
@@ -444,7 +444,7 @@
                                 "pan": 0.0,
                                 "play_on_start": false,
                                 "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
-                                "transpose": 1.0,
+                                "transpose": 0.0,
                                 "volume": 100.0
                             }
                         ],

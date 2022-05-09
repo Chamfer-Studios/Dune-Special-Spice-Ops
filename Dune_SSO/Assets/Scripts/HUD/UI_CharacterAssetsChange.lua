@@ -3,7 +3,7 @@
 path1 =  "Assets/HUD/hud_portrait_main_v1.0.png"
 path2 =  "Assets/HUD/hud_portrait_nerala_v1.1.png"
 path3 =  "Assets/HUD/hud_portrait_omozra_v1.1.png"
-pathBlank = "Assets/HUD/blank_asset_v1.0.png"
+pathBlank = "Assets/UI/HUD/blank_asset_v1.0.png"
 
 --local characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 --characterIDIV = InspectorVariable.new("lives", characterIDIVT, characterID)

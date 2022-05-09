@@ -1,7 +1,7 @@
 {
     "SceneHUD": {
         "active": true,
-        "game_objects_amount": 28,
+        "game_objects_amount": 26,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -148,7 +148,7 @@
             },
             {
                 "UID": 669215006,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -246,8 +246,8 @@
                             0.5
                         ],
                         "position": [
-                            250.0,
-                            500.0
+                            229.0,
+                            507.0
                         ],
                         "rotation": [
                             0.0,
@@ -255,8 +255,8 @@
                             0.0
                         ],
                         "size": [
-                            500.0,
-                            1000.0
+                            457.0,
+                            1020.0
                         ],
                         "type": 22
                     },
@@ -308,11 +308,55 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_nerala_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_nerala_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 464575809,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 2
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Nerala",
+                "name": "NeralaButton",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -341,7 +385,7 @@
                             0.0
                         ],
                         "size": [
-                            100.0,
+                            87.0,
                             100.0
                         ],
                         "type": 22
@@ -352,11 +396,55 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_omozra_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_omozra_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 981190922,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 3
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Omozra",
+                "name": "OmozraButton",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -377,7 +465,7 @@
                         ],
                         "position": [
                             100.0,
-                            45.0
+                            42.0
                         ],
                         "rotation": [
                             0.0,
@@ -385,8 +473,8 @@
                             0.0
                         ],
                         "size": [
-                            60.0,
-                            80.0
+                            56.0,
+                            84.0
                         ],
                         "type": 22
                     },
@@ -396,275 +484,55 @@
                         "idleTexture": "Assets/UI/HUD/Character Buttons/character_zhib_normal_v1.5.png",
                         "pressedTexture": "Assets/UI/HUD/Character Buttons/character_zhib_click_v1.5.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "fade_time": 2.0,
+                        "offset_sync": false,
+                        "total_tracks": 2,
+                        "tracks": [
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_click.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            },
+                            {
+                                "bypass": false,
+                                "loop": false,
+                                "mute": false,
+                                "offset": 0.0,
+                                "pan": 0.0,
+                                "play_on_start": false,
+                                "track_path": "Assets/Audio/SFX/UI/sfx_ui_hover.wav",
+                                "transpose": 0.0,
+                                "volume": 100.0
+                            }
+                        ],
+                        "type": 11
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterSelected.lua",
+                        "id": 1022992484,
+                        "inspector_variables": [
+                            {
+                                "name": "characterID",
+                                "type": "int",
+                                "value": 1
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Zhib",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 1157526782,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            340.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/hunter_worm_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/hunter_worm_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/hunter_worm_cooldown_v1.0.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "HunterWorm",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 1424306241,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            20.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/nerala_ultimate_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/nerala_ultimate_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/nerala_ultimate_cooldown_v1.0.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "UltiNerala",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 692608173,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            20.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/omozra_ultimate_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/omozra_ultimate_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/omozra_ultimate_cooldown_v1.0.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "UltiOmozra",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 1476382158,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            180.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/radar_worm_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/radar_worm_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/radar_worm_cooldown_v1.0.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "RadarOmozra",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 720961045,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            340.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/sleeping_dart_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/sleeping_dart_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/sleeping_dart_cooldown_v1.1.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "DartNerala",
-                "parent_UID": 1934588784,
-                "tag": 0
-            },
-            {
-                "UID": 1079440777,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            60.0,
-                            180.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            100.0,
-                            100.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/smoke_bomb_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/smoke_bomb_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/smoke_bomb_cooldown_v1.0.png",
-                        "type": 15
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "BombNerala",
+                "name": "ZhibButton",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -700,15 +568,19 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/throwable_knife_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/throwable_knife_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/throwable_knife_cooldown_v1.0.png",
-                        "type": 15
+                        "texture": "Assets/UI/HUD/Abilities/throwable_knife_normal_v1.0.png",
+                        "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_1.lua",
+                        "id": 146751535,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "KnifeZhib",
+                "name": "Ability1",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -744,15 +616,19 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/zhib_ultimate_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/zhib_ultimate_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/zhib_ultimate_cooldown_v1.0.png",
-                        "type": 15
+                        "texture": "Assets/UI/HUD/Abilities/zhib_ultimate_normal_v1.0.png",
+                        "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_3.lua",
+                        "id": 372243711,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "UltiZhib",
+                "name": "Ability3",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
@@ -788,21 +664,25 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "Assets/UI/HUD/Abilities/decoy_active_v1.0.png",
-                        "idleTexture": "Assets/UI/HUD/Abilities/decoy_normal_v1.0.png",
-                        "pressedTexture": "Assets/UI/HUD/Abilities/decoy_cooldown_v1.0.png",
-                        "type": 15
+                        "texture": "Assets/UI/HUD/Abilities/decoy_normal_v1.0.png",
+                        "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_AbilitySlot_2.lua",
+                        "id": 1222175804,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "DecoyZhib",
+                "name": "Ability2",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
             {
                 "UID": 962459061,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -838,13 +718,13 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "textability1",
+                "name": "TextAbility1",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
             {
                 "UID": 612232606,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -880,13 +760,13 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "textAbility2",
+                "name": "TextAbility2",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
             {
                 "UID": 241621862,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -927,8 +807,8 @@
                 "tag": 0
             },
             {
-                "UID": 1286540631,
-                "active": true,
+                "UID": 761049333,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -936,14 +816,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 6,
+                        "anchor": 4,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            220.0,
-                            194.0
+                            0.0,
+                            0.0
                         ],
                         "rotation": [
                             0.0,
@@ -951,25 +831,25 @@
                             0.0
                         ],
                         "size": [
-                            400.0,
-                            400.0
+                            200.0,
+                            200.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_omozra_v1.1.png",
+                        "texture": "Assets/UI/HUD/Spice Icon/spice_icon_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "OmozraPortrait",
+                "name": "SpiceIcon",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
             {
-                "UID": 1258350991,
+                "UID": 511937616,
                 "active": true,
                 "components": [
                     {
@@ -980,12 +860,12 @@
                         "active": true,
                         "anchor": 6,
                         "pivot": [
-                            0.5,
-                            0.5
+                            0.0,
+                            0.0
                         ],
                         "position": [
-                            220.0,
-                            194.0
+                            19.0,
+                            215.0
                         ],
                         "rotation": [
                             0.0,
@@ -993,25 +873,115 @@
                             0.0
                         ],
                         "size": [
-                            400.0,
-                            400.0
+                            70.0,
+                            120.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_nebala_v1.1.png",
+                        "texture": "Assets/UI/HUD/Slider Segments/slider_segments_hp3_v1.0.png",
+                        "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Lives.lua",
+                        "id": 1002112784,
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "HealthBar",
+                "parent_UID": 805759997,
+                "tag": 0
+            },
+            {
+                "UID": 289325620,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 2,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            35.0,
+                            -4.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            70.0,
+                            120.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Slider Segments/slider_segments_none_v1.0.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "NeralaPortrait",
-                "parent_UID": 1934588784,
+                "name": "HealthBar_1",
+                "parent_UID": 511937616,
                 "tag": 0
             },
             {
-                "UID": 944382409,
+                "UID": 102160104,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 2,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            37.0,
+                            -3.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            70.0,
+                            120.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Slider Segments/slider_segments_none_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "HealthBar_2",
+                "parent_UID": 289325620,
+                "tag": 0
+            },
+            {
+                "UID": 1998260281,
                 "active": true,
                 "components": [
                     {
@@ -1026,7 +996,7 @@
                             0.5
                         ],
                         "position": [
-                            222.0,
+                            197.0,
                             194.0
                         ],
                         "rotation": [
@@ -1044,16 +1014,39 @@
                         "active": true,
                         "texture": "Assets/UI/HUD/Hud Portraits/hud_portrait_zhib_v1.2.png",
                         "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_CharacterAssetsChange.lua",
+                        "id": 1504588850,
+                        "inspector_variables": [
+                            {
+                                "name": "path1",
+                                "type": "string",
+                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_zhib_v1.2.png"
+                            },
+                            {
+                                "name": "path2",
+                                "type": "string",
+                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_nebala_v1.1.png"
+                            },
+                            {
+                                "name": "path3",
+                                "type": "string",
+                                "value": "Assets/UI/HUD/Hud Portraits/hud_portrait_omozra_v1.1.png"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "ZhibPortrait",
+                "name": "CharacterPortrait",
                 "parent_UID": 1934588784,
                 "tag": 0
             },
             {
-                "UID": 761049333,
+                "UID": 1644600278,
                 "active": true,
                 "components": [
                     {
@@ -1062,41 +1055,160 @@
                     },
                     {
                         "active": true,
-                        "anchor": 0,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
                         "position": [
-                            60.0,
-                            -55.0
-                        ],
-                        "rotation": [
                             0.0,
                             0.0,
                             0.0
                         ],
-                        "size": [
-                            100.0,
-                            100.0
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
                         ],
-                        "type": 22
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
                     },
                     {
                         "active": true,
-                        "texture": "Assets/UI/HUD/Spice Icon/spice_icon_v1.0.png",
-                        "type": 14
+                        "file_name": "Assets/Scripts/GameState.lua",
+                        "id": 1330347539,
+                        "type": 5
                     }
                 ],
-                "is3D": false,
+                "is3D": true,
                 "isPrefab": false,
-                "name": "SpiceIcon",
-                "parent_UID": 1934588784,
+                "name": "GameState",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 1303801256,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "body_type": "Dynamic",
+                        "freeze_position_x": false,
+                        "freeze_position_y": true,
+                        "freeze_position_z": false,
+                        "freeze_rotation_x": false,
+                        "freeze_rotation_y": false,
+                        "freeze_rotation_z": false,
+                        "mass": 1.0,
+                        "type": 6,
+                        "use_gravity": false
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/Characters/Zhib/Zhib.lua",
+                        "id": 2108452580,
+                        "inspector_variables": [
+                            {
+                                "name": "maxHP",
+                                "type": "int",
+                                "value": 3
+                            },
+                            {
+                                "name": "currentHP",
+                                "type": "int",
+                                "value": 3
+                            }
+                        ],
+                        "type": 5
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "tempzhib",
+                "parent_UID": 0,
+                "tag": 0
+            },
+            {
+                "UID": 1332381495,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "body_type": "Dynamic",
+                        "freeze_position_x": false,
+                        "freeze_position_y": true,
+                        "freeze_position_z": false,
+                        "freeze_rotation_x": false,
+                        "freeze_rotation_y": false,
+                        "freeze_rotation_z": false,
+                        "mass": 1.0,
+                        "type": 6,
+                        "use_gravity": false
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/Characters/Nerala/Nerala.lua",
+                        "id": 1175931230,
+                        "type": 5
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "tempnerala",
+                "parent_UID": 0,
                 "tag": 0
             },
             {
                 "UID": 1137951444,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1138,7 +1250,7 @@
             },
             {
                 "UID": 303255916,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
@@ -1180,7 +1292,7 @@
             },
             {
                 "UID": 280055020,
-                "active": true,
+                "active": false,
                 "components": [
                     {
                         "active": true,
