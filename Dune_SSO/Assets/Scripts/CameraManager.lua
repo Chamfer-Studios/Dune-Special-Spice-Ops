@@ -1,7 +1,7 @@
 -- Variables Publicas
 -- Radio, Angulo de Rotacion, Altura de la Camara
  
-rotationAngle =  124
+rotationAngle =  20
 --rotationSpeed = 2 --Not Working For Now
  
 local rotationAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT          -- IVT == Inspector Variable Type

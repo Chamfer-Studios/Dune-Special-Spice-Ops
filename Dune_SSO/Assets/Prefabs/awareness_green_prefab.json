@@ -1,9 +1,9 @@
 {
-    "UID": 1897305469,
+    "UID": 732312619,
     "active": true,
     "children": [
         {
-            "UID": 584930279,
+            "UID": 927583972,
             "active": true,
             "children": [],
             "components": [
@@ -64,7 +64,7 @@
             "is3D": true,
             "isPrefab": false,
             "name": "Cylinder",
-            "parent_UID": 1897305469,
+            "parent_UID": 732312619,
             "tag": 0
         }
     ],
