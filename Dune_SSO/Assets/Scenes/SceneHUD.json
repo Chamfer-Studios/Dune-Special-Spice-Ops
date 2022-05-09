@@ -1,7 +1,7 @@
 {
     "SceneHUD": {
         "active": true,
-        "game_objects_amount": 25,
+        "game_objects_amount": 28,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -289,7 +289,7 @@
                         ],
                         "position": [
                             200.0,
-                            38.0
+                            43.0
                         ],
                         "rotation": [
                             0.0,
@@ -377,7 +377,7 @@
                         ],
                         "position": [
                             100.0,
-                            40.0
+                            45.0
                         ],
                         "rotation": [
                             0.0,
@@ -385,7 +385,7 @@
                             0.0
                         ],
                         "size": [
-                            80.0,
+                            60.0,
                             80.0
                         ],
                         "type": 22
@@ -1054,7 +1054,7 @@
             },
             {
                 "UID": 761049333,
-                "active": false,
+                "active": true,
                 "components": [
                     {
                         "active": true,
@@ -1062,14 +1062,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 0,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            0.0,
-                            0.0
+                            60.0,
+                            -55.0
                         ],
                         "rotation": [
                             0.0,
@@ -1077,8 +1077,8 @@
                             0.0
                         ],
                         "size": [
-                            200.0,
-                            200.0
+                            100.0,
+                            100.0
                         ],
                         "type": 22
                     },
@@ -1091,6 +1091,132 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "SpiceIcon",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 1137951444,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            120.0,
+                            340.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            30.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Abilities/abilitiy_level_meter_extended_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Ability1Level",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 303255916,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            120.0,
+                            180.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            30.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Abilities/abilitiy_level_meter_extended_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Ability2Level",
+                "parent_UID": 1934588784,
+                "tag": 0
+            },
+            {
+                "UID": 280055020,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 3,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            120.0,
+                            20.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            30.0,
+                            100.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/Abilities/abilitiy_level_meter_extended_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Ablity3Level",
                 "parent_UID": 1934588784,
                 "tag": 0
             }
