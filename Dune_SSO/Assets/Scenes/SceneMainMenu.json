@@ -3515,6 +3515,12 @@
                         "active": true,
                         "texture": "Assets/UI/Menu UI/menuMainBackgroundLeft.png",
                         "type": 14
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Skip.lua",
+                        "id": 1467384083,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3559,6 +3565,12 @@
                         "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SkipBackwards.lua",
+                        "id": 86295502,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -3651,6 +3663,12 @@
                         "idleTexture": "Assets/UI/Menu UI/Buttons/button_normal_v1.0.png",
                         "pressedTexture": "Assets/UI/Menu UI/Buttons/button_select_v1.0.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_SkipForward.lua",
+                        "id": 348765970,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
