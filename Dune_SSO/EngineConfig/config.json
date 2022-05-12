@@ -80,11 +80,11 @@
         "Borderless": false,
         "Fullscreen": false,
         "FullscreenDesktop": false,
-        "Height": 1017,
+        "Height": 801,
         "Icon": "Assets/Icons/icon.bmp",
         "Resizable": true,
         "Scale": 0,
         "Title": "Ko-Fi Engine - SceneTutorial",
-        "Width": 1920
+        "Width": 1536
     }
 }

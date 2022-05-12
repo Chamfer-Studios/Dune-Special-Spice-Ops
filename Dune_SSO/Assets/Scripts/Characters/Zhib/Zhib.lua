@@ -440,17 +440,24 @@ function ManageTimers(dt)
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
             else
-                if (currentState == State.AIM_PRIMARY) then
+                if (currentState == State.ATTACK) then
+                    DoAttack()
+                elseif (currentState == State.AIM_PRIMARY) then
                     FireKnife()
                 elseif (currentState == State.AIM_SECONDARY) then
                     PlaceDecoy()
                 elseif (currentState == State.AIM_ULTIMATE) then
                     DoUltimate()
-                else
+                elseif (currentState ~= State.DEAD) then
                     componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
                 end
             end
         end
+    end
+
+    -- If he's dead he can't do anything
+    if (currentState == State.DEAD) then
+        ret = false
     end
 
     return ret
@@ -504,7 +511,7 @@ function MoveToDestination(dt)
     end
 end
 
-function StopMovement()
+function StopMovement(resetTarget)
 
     if (componentSwitch ~= nil and currentTrackID ~= -1) then
         componentSwitch:StopTrack(currentTrackID)
@@ -514,7 +521,10 @@ function StopMovement()
     currentMovement = Movement.IDLE -- Stops aimings and all States
 
     destination = nil
-    target = nil
+
+    if (resetTarget == nil) then -- Default case
+        target = nil
+    end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
@@ -547,13 +557,26 @@ end
 -- Basic Attack
 function Attack()
 
-    componentAnimator:SetSelectedClip("Attack")
-    StopMovement()
+    currentState = State.ATTACK
 
-    DispatchGlobalEvent("Player_Attack", {characterID, target})
+    componentAnimator:SetSelectedClip("Attack")
+
+    StopMovement(false)
+
+    LookAtTarget(target:GetTransform():GetPosition())
+end
+
+function DoAttack()
+
+    componentAnimator:SetSelectedClip("AttackToIdle")
+
+    DispatchGlobalEvent("Player_Attack", {target, characterID})
+
     LookAtTarget(target:GetTransform():GetPosition())
 
     attackTimer = 0.0
+
+    target = nil
 
     currentState = State.IDLE
 end
