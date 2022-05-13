@@ -131,6 +131,12 @@ end
 -- Called each loop iteration
 function Update(dt)
 
+    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+        Log("OMOZRA => ACTIVE ABILITY\n")
+    else
+        Log("OMOZRA => NOT ACTIVE ABILITY\n")
+    end
+
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
         if (currentState == State.AIM_PRIMARY) then
@@ -241,32 +247,32 @@ function Update(dt)
             end
         end
 
-        -- H
+        -- H --------- TO DELETE -----------
         if (GetInput(5) == KEY_STATE.KEY_DOWN) then
             currentState = State.IDLE
             DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
         end
 
-        -- K
-        if (GetInput(6) == KEY_STATE.KEY_DOWN) then
+        -- 1
+        if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
         end
 
-        -- D
-        if (GetInput(12) == KEY_STATE.KEY_DOWN) then
+        -- 2
+        if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
         end
 
-        -- SPACE
-        if (GetInput(4) == KEY_STATE.KEY_DOWN) then -- Ult step 1
+        -- 3
+        if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
         end
 
-        -- C -> Toggle crouch
-        if (GetInput(9) == KEY_STATE.KEY_DOWN) then
+        -- LSHIFT -> Toggle crouch
+        if (GetInput(12) == KEY_STATE.KEY_DOWN) then
             if (currentMovement == Movement.CROUCH) then
                 if (destination ~= nil) then
                     currentMovement = Movement.WALK

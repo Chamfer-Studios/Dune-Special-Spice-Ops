@@ -152,6 +152,12 @@ end
 -- Called each loop iteration
 function Update(dt)
 
+    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+        Log("ZHIB => ACTIVE ABILITY\n")
+    else
+        Log("ZHIB => NOT ACTIVE ABILITY\n")
+    end
+
     if (knifeCount == 1) then
 
     end
@@ -232,81 +238,88 @@ function Update(dt)
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then
             goHit = GetGameObjectHovered()
             if (goHit ~= gameObject) then
-
-                if (goHit.tag == Tag.ENEMY and
-                    Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
-                    target = goHit
-                    Attack()
+                if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+                    State.AIM_ULTIMATE) then
+                    currentState = State.IDLE
+                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
                 else
-                    if (goHit.tag == Tag.ENEMY) then
+                    if (goHit.tag == Tag.ENEMY and
+                        Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
                         target = goHit
-                        destination = target:GetTransform():GetPosition()
-                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                        Attack()
                     else
-                        destination = GetLastMouseClick()
-                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
-                    end
-
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true) then
-
-                        currentMovement = Movement.RUN
-
-                        if (componentSwitch ~= nil) then
-                            if (currentTrackID ~= -1) then
-                                componentSwitch:StopTrack(currentTrackID)
-                            end
-                            currentTrackID = 1
-                            componentSwitch:PlayTrack(currentTrackID)
+                        if (goHit.tag == Tag.ENEMY) then
+                            target = goHit
+                            destination = target:GetTransform():GetPosition()
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
+                        else
+                            destination = GetLastMouseClick()
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
                         end
-                    else
-                        if (currentMovement == Movement.IDLE) then
 
-                            currentMovement = Movement.WALK
+                        if (currentMovement == Movement.WALK and isDoubleClicking == true) then
+
+                            currentMovement = Movement.RUN
 
                             if (componentSwitch ~= nil) then
                                 if (currentTrackID ~= -1) then
                                     componentSwitch:StopTrack(currentTrackID)
                                 end
-                                currentTrackID = 0
+                                currentTrackID = 1
                                 componentSwitch:PlayTrack(currentTrackID)
                             end
+                        else
+                            if (currentMovement == Movement.IDLE) then
+
+                                currentMovement = Movement.WALK
+
+                                if (componentSwitch ~= nil) then
+                                    if (currentTrackID ~= -1) then
+                                        componentSwitch:StopTrack(currentTrackID)
+                                    end
+                                    currentTrackID = 0
+                                    componentSwitch:PlayTrack(currentTrackID)
+                                end
+                            end
+                            isDoubleClicking = true
                         end
-                        isDoubleClicking = true
-                    end
-                    if (mouseParticles ~= nil) then
-                        mouseParticles:GetComponentParticle():ResumeParticleSpawn()
-                        mouseParticles:GetTransform():SetPosition(destination)
+                        if (mouseParticles ~= nil) then
+                            mouseParticles:GetComponentParticle():ResumeParticleSpawn()
+                            mouseParticles:GetTransform():SetPosition(destination)
+                        end
                     end
                 end
             end
         end
 
-        -- H
+        -- H --------- TO DELETE -----------
         if (GetInput(5) == KEY_STATE.KEY_DOWN) then
             currentState = State.IDLE
             DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
         end
 
-        -- K
-        if (GetInput(6) == KEY_STATE.KEY_DOWN) then
+        -- 1
+        if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
         end
 
-        -- D
-        if (GetInput(12) == KEY_STATE.KEY_DOWN) then
+        -- 2
+        if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
         end
 
-        -- SPACE
-        if (GetInput(4) == KEY_STATE.KEY_DOWN) then
+        -- 3
+        if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
         end
 
-        -- C -> Toggle crouch
-        if (GetInput(9) == KEY_STATE.KEY_DOWN) then
+        -- LSHIFT -> Toggle crouch
+        if (GetInput(12) == KEY_STATE.KEY_DOWN) then
             if (currentMovement == Movement.CROUCH) then
                 if (destination ~= nil) then
                     currentMovement = Movement.WALK
