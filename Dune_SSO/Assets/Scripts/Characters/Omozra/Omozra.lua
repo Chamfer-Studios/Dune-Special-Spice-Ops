@@ -212,37 +212,44 @@ function Update(dt)
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then
             goHit = GetGameObjectHovered()
             if (goHit ~= gameObject) then
-                destination = GetLastMouseClick()
-                DispatchEvent("Pathfinder_UpdatePath", {{destination}, true, componentTransform:GetPosition()})
-                if (currentMovement == Movement.WALK and isDoubleClicking == true) then
-
-                    currentMovement = Movement.RUN
-
-                    if (componentSwitch ~= nil) then
-                        if (currentTrackID ~= -1) then
-                            componentSwitch:StopTrack(currentTrackID)
-                        end
-                        currentTrackID = 1
-                        componentSwitch:PlayTrack(currentTrackID)
-                    end
+                if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+                    State.AIM_ULTIMATE) then
+                    currentState = State.IDLE
+                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+                    StopMovement()
                 else
-                    if (currentMovement == Movement.IDLE) then
+                    destination = GetLastMouseClick()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true) then
 
-                        currentMovement = Movement.WALK
+                        currentMovement = Movement.RUN
 
                         if (componentSwitch ~= nil) then
                             if (currentTrackID ~= -1) then
                                 componentSwitch:StopTrack(currentTrackID)
                             end
-                            currentTrackID = 0
+                            currentTrackID = 1
                             componentSwitch:PlayTrack(currentTrackID)
                         end
+                    else
+                        if (currentMovement == Movement.IDLE) then
+
+                            currentMovement = Movement.WALK
+
+                            if (componentSwitch ~= nil) then
+                                if (currentTrackID ~= -1) then
+                                    componentSwitch:StopTrack(currentTrackID)
+                                end
+                                currentTrackID = 0
+                                componentSwitch:PlayTrack(currentTrackID)
+                            end
+                        end
+                        isDoubleClicking = true
                     end
-                    isDoubleClicking = true
-                end
-                if (mouseParticles ~= nil) then
-                    mouseParticles:GetComponentParticle():ResumeParticleSpawn()
-                    mouseParticles:GetTransform():SetPosition(destination)
+                    if (mouseParticles ~= nil) then
+                        mouseParticles:GetComponentParticle():ResumeParticleSpawn()
+                        mouseParticles:GetTransform():SetPosition(destination)
+                    end
                 end
             end
         end

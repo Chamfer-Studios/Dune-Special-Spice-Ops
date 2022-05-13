@@ -242,6 +242,7 @@ function Update(dt)
                     State.AIM_ULTIMATE) then
                     currentState = State.IDLE
                     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+                    StopMovement()
                 else
                     if (goHit.tag == Tag.ENEMY and
                         Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
