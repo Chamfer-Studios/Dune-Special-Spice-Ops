@@ -123,7 +123,7 @@ NewVariable(currentHPIV)
 
 function Start()
 
-    componentAnimator = gameObject:GetComponentAnimator()
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
     end
@@ -151,12 +151,6 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-
-    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
-        Log("ZHIB => ACTIVE ABILITY\n")
-    else
-        Log("ZHIB => NOT ACTIVE ABILITY\n")
-    end
 
     if (knifeCount == 1) then
 
@@ -635,6 +629,7 @@ end
 function PlaceDecoy()
 
     InstantiatePrefab("Decoy")
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)

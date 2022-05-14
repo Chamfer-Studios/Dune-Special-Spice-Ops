@@ -1,5 +1,4 @@
 {
-    "UID": 1226097951,
     "active": true,
     "children": [],
     "components": [
@@ -10,9 +9,9 @@
         {
             "active": true,
             "position": [
-                -1490.6585693359375,
                 0.0,
-                3000.0
+                0.0,
+                0.0
             ],
             "rotation": [
                 0.0,
@@ -59,13 +58,12 @@
         {
             "active": true,
             "file_name": "Assets/Scripts/Characters/Zhib/Decoy.lua",
-            "id": 1477884667,
+            "id": 760591411,
             "type": 5
         }
     ],
     "is3D": true,
     "isPrefab": true,
     "name": "Decoy",
-    "parent_UID": 1714802782,
     "tag": 4
 }
