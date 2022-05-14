@@ -46,22 +46,21 @@ attackRange = 25.0
 attackTime = 2.5
 
 -- Primary ability --
-knifeCastRange = 100
-maxKnives = 2 -- Move to a Start() func!!!
+primaryCastRange = 100
+maxKnives = 2
 knifePickupTime = 0.5
-drawKnife = false
+drawPrimary = false
 
 -- Secondary ability --
-decoyCastRange = 75
-decoyCooldown = 10.0
-drawDecoy = false
+secondaryCastRange = 75
+secondaryCooldown = 10.0
+drawSecondary = false
 
 -- Ultimate ability --
-ultimateRange = 50
+ultimateCastRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
-ultimateRangeExtension = ultimateRange * 0.5
-
+ultimateCastRangeExtension = ultimateCastRange * 0.5
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -72,52 +71,32 @@ isDoubleClicking = false
 
 ------------------- Inspector setter --------------------
 -- Globals --
--- characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
--- characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
--- NewVariable(characterIDIV)
---
--- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
---
 maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
 NewVariable(maxHPIV)
 
-currentHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT -- For debugging purposes
-currentHPIV = InspectorVariable.new("currentHP", currentHPIVT, currentHP)
-NewVariable(currentHPIV)
+-- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
 
--- currentTrackIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT -- For debugging purposes
--- currentTrackIDIV = InspectorVariable.new("currentTrackID", currentTrackIDIVT, currentTrackID)
--- NewVariable(currentTrackIDIV)
---
 ---- Primary ability --
--- knifeCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- knifeCastRangeIV = InspectorVariable.new("knifeCastRange", knifeCastRangeIVT, knifeCastRange)
--- NewVariable(knifeCastRangeIV)
---
--- maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
--- maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
--- NewVariable(maxKnivesIV)
---
+primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+NewVariable(primaryCastRangeIV)
+
+maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+NewVariable(maxKnivesIV)
+
 ---- Secondary ability --
--- decoyCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- decoyCastRangeIV = InspectorVariable.new("decoyCastRange", decoyCastRangeIVT, decoyCastRange)
--- NewVariable(decoyCastRangeIV)
---
--- drawDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
--- drawDecoyIV = InspectorVariable.new("drawDecoy", drawDecoyIVT, drawDecoy)
--- NewVariable(drawDecoyIV)
---
+secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+NewVariable(secondaryCastRangeIV)
+
 ---- Ultimate ability --
--- ultimateRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- ultimateRangeIV = InspectorVariable.new("ultimateRange", ultimateRangeIVT, ultimateRange)
--- NewVariable(ultimateRangeIV)
---
--- drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
--- drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
--- NewVariable(drawUltimateIV)
+ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
+NewVariable(ultimateCastRangeIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -197,7 +176,7 @@ function Update(dt)
                     target = GetGameObjectHovered()
                     if (target.tag == Tag.ENEMY and
                         Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                        knifeCastRange) then
+                        primaryCastRange) then
                         if (componentAnimator ~= nil) then
                             CastPrimary(target:GetTransform():GetPosition())
                         end
@@ -205,10 +184,10 @@ function Update(dt)
                 end
 
                 -- Secondary ability (Decoy)
-            elseif (decoyTimer == nil and currentState == State.AIM_SECONDARY) then
+            elseif (secondaryTimer == nil and currentState == State.AIM_SECONDARY) then
                 GetGameObjectHovered() -- This is for the decoy to go to the mouse Pos (it uses the target var)
                 local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= decoyCastRange) then
+                if (Distance3D(mouse, componentTransform:GetPosition()) <= secondaryCastRange) then
                     target = mouse
                     if (componentAnimator ~= nil) then
                         CastSecondary(mouse)
@@ -222,7 +201,7 @@ function Update(dt)
                 target = GetGameObjectHovered()
                 if (target.tag == Tag.ENEMY) then
                     if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                        ultimateRange) then
+                        ultimateCastRange) then
                         if (componentAnimator ~= nil) then
                             CastUltimate(target:GetTransform():GetPosition())
                         end
@@ -242,8 +221,8 @@ function Update(dt)
                     currentState = State.IDLE
                     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
                     StopMovement()
-                    drawKnife = false
-                    drawDecoy = false
+                    drawPrimary = false
+                    drawSecondary = false
                     drawUltimate = false
                 else
                     if (goHit.tag == Tag.ENEMY and
@@ -307,8 +286,8 @@ function Update(dt)
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-            drawKnife = true
-            drawDecoy = false
+            drawPrimary = true
+            drawSecondary = false
             drawUltimate = false
         end
 
@@ -316,8 +295,8 @@ function Update(dt)
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-            drawKnife = false
-            drawDecoy = true
+            drawPrimary = false
+            drawSecondary = true
             drawUltimate = false
         end
 
@@ -325,8 +304,8 @@ function Update(dt)
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-            drawKnife = false
-            drawDecoy = false
+            drawPrimary = false
+            drawSecondary = false
             drawUltimate = true
         end
 
@@ -370,14 +349,14 @@ function DrawActiveAbilities()
         radiusLight = gameObject:GetLight()
     end
     if radiusLight ~= nil then
-        if (drawKnife == true) then
-            radiusLight:SetRange(knifeCastRange)
+        if (drawPrimary == true) then
+            radiusLight:SetRange(primaryCastRange)
             radiusLight:SetAngle(360 / 2)
-        elseif (drawDecoy == true) then
-            radiusLight:SetRange(decoyCastRange)
+        elseif (drawSecondary == true) then
+            radiusLight:SetRange(secondaryCastRange)
             radiusLight:SetAngle(360 / 2)
         elseif (drawUltimate == true) then
-            radiusLight:SetRange(ultimateRange)
+            radiusLight:SetRange(ultimateCastRange)
             radiusLight:SetAngle(360 / 2)
         else
             radiusLight:SetAngle(0)
@@ -428,10 +407,10 @@ function ManageTimers(dt)
     end
 
     -- Secondary ability cooldown
-    if (decoyTimer ~= nil) then
-        decoyTimer = decoyTimer + dt
-        if (decoyTimer >= decoyCooldown) then
-            decoyTimer = nil
+    if (secondaryTimer ~= nil) then
+        secondaryTimer = secondaryTimer + dt
+        if (secondaryTimer >= secondaryCooldown) then
+            secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
     end
@@ -623,8 +602,8 @@ function CastPrimary(position)
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
     LookAtTarget(position)
 
-    drawKnife = false
-    drawDecoy = false
+    drawPrimary = false
+    drawSecondary = false
     drawUltimate = false
 end
 
@@ -648,14 +627,14 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Decoy")
-    decoyTimer = 0.0
+    secondaryTimer = 0.0
     StopMovement()
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
 
-    drawKnife = false
-    drawDecoy = false
+    drawPrimary = false
+    drawSecondary = false
     drawUltimate = false
 end
 
@@ -685,8 +664,8 @@ function CastUltimate(position)
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)
 
-    drawKnife = false
-    drawDecoy = false
+    drawPrimary = false
+    drawSecondary = false
     drawUltimate = false
 end
 
@@ -697,7 +676,8 @@ function DoUltimate()
     enemies = GetObjectsByTag(Tag.ENEMY)
     for i = 1, #enemies do
         if (enemies[i] ~= target and
-            Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <= ultimateRange) then
+            Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <=
+            ultimateCastRange) then
             enemiesInRange[#enemiesInRange + 1] = enemies[i]
         end
     end
@@ -713,7 +693,7 @@ function DoUltimate()
         for j = 1, #enemies do
             if (enemiesInRange[i] ~= enemies[j]) then
                 if (Distance3D(enemiesInRange[i]:GetTransform():GetPosition(), enemies[j]:GetTransform():GetPosition()) <=
-                    ultimateRangeExtension) then
+                    ultimateCastRangeExtension) then
 
                     isAlreadyInArray = false
                     for k = 1, #enemiesInRange do

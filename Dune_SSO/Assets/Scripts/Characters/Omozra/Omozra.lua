@@ -43,7 +43,7 @@ speed = 2000.0
 
 -- Primary ability --
 primaryCastRange = 100
-primaryCooldown = 10
+primaryCooldown = 10.0
 drawPrimary = false
 
 -- Secondary ability --
@@ -68,40 +68,28 @@ isDoubleClicking = false
 
 ------------------- Inspector setter --------------------
 -- Globals --
--- characterIDIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
--- characterIDIV = InspectorVariable.new("characterID", characterIDIVT, characterID)
--- NewVariable(characterIDIV)
---
--- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
-
 maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
 NewVariable(maxHPIV)
 
---
+-- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
+
 ---- Primary ability --
---
---
---
+primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+NewVariable(primaryCastRangeIV)
+
 ---- Secondary ability --
--- secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
--- NewVariable(secondaryCastRangeIV)
---
--- drawSecondaryIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
--- drawSecondaryIV = InspectorVariable.new("drawSecondary", drawSecondaryIVT, drawSecondary)
--- NewVariable(drawSecondaryIV)
---
+secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+NewVariable(secondaryCastRangeIV)
+
 ---- Ultimate ability --
--- ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
--- NewVariable(ultimateCastRangeIV)
---
--- drawUltimateIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
--- drawUltimateIV = InspectorVariable.new("drawUltimate", drawUltimateIVT, drawUltimate)
--- NewVariable(drawUltimateIV)
+ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
+NewVariable(ultimateCastRangeIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
