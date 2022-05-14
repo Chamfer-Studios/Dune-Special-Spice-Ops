@@ -46,17 +46,18 @@ attackRange = 25.0
 attackTime = 2.5
 
 -- Primary ability --
-knifeCastRange = 100.0
+knifeCastRange = 100
 maxKnives = 2 -- Move to a Start() func!!!
 knifePickupTime = 0.5
+drawKnife = false
 
 -- Secondary ability --
-decoyCastRange = 100.0
+decoyCastRange = 75
 decoyCooldown = 10.0
 drawDecoy = false
 
 -- Ultimate ability --
-ultimateRange = 100.0
+ultimateRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRangeExtension = ultimateRange * 0.5
@@ -140,6 +141,8 @@ function Start()
     componentSwitch = gameObject:GetAudioSwitch()
     currentTrackID = -1
 
+    radiusLight = gameObject:GetLight()
+
     currentHP = maxHP
 
     knifeCount = maxKnives
@@ -151,6 +154,8 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+
+    DrawActiveAbilities()
 
     if (knifeCount == 1) then
 
@@ -237,6 +242,9 @@ function Update(dt)
                     currentState = State.IDLE
                     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
                     StopMovement()
+                    drawKnife = false
+                    drawDecoy = false
+                    drawUltimate = false
                 else
                     if (goHit.tag == Tag.ENEMY and
                         Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
@@ -299,18 +307,27 @@ function Update(dt)
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+            drawKnife = true
+            drawDecoy = false
+            drawUltimate = false
         end
 
         -- 2
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+            drawKnife = false
+            drawDecoy = true
+            drawUltimate = false
         end
 
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+            drawKnife = false
+            drawDecoy = false
+            drawUltimate = true
         end
 
         -- LSHIFT -> Toggle crouch
@@ -344,22 +361,30 @@ function Update(dt)
             ReloadKnives()
         end
     end
-
-    -- Draw primary ability range
-
-    -- Draw secondary ability range
-    if (drawDecoy == true) then
-
-    end
-
-    -- Draw ultimate ability range
-    if (drawUltimate == true) then
-
-    end
 end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function DrawActiveAbilities()
+    if radiusLight == nil then
+        radiusLight = gameObject:GetLight()
+    end
+    if radiusLight ~= nil then
+        if (drawKnife == true) then
+            radiusLight:SetRange(knifeCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawDecoy == true) then
+            radiusLight:SetRange(decoyCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawUltimate == true) then
+            radiusLight:SetRange(ultimateRange)
+            radiusLight:SetAngle(360 / 2)
+        else
+            radiusLight:SetAngle(0)
+        end
+    end
+end
+
 function ManageTimers(dt)
     local ret = true
 
@@ -597,6 +622,10 @@ function CastPrimary(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
     LookAtTarget(position)
+
+    drawKnife = false
+    drawDecoy = false
+    drawUltimate = false
 end
 
 function FireKnife()
@@ -624,6 +653,10 @@ function CastSecondary(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
+
+    drawKnife = false
+    drawDecoy = false
+    drawUltimate = false
 end
 
 function PlaceDecoy()
@@ -651,6 +684,10 @@ function CastUltimate(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)
+
+    drawKnife = false
+    drawDecoy = false
+    drawUltimate = false
 end
 
 function DoUltimate()

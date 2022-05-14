@@ -42,14 +42,17 @@ characterID = 3
 speed = 2000.0
 
 -- Primary ability --
+primaryCastRange = 100
+primaryCooldown = 10
+drawPrimary = false
 
 -- Secondary ability --
-secondaryCastRange = 100.0
+secondaryCastRange = 75
 secondaryCooldown = 10.0
 drawSecondary = false
 
 -- Ultimate ability --
-ultimateCastRange = 100.0
+ultimateCastRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateRecastRange = 100.0
@@ -126,16 +129,14 @@ function Start()
 
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+
+    radiusLight = gameObject:GetLight()
 end
 
 -- Called each loop iteration
 function Update(dt)
 
-    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
-        Log("OMOZRA => ACTIVE ABILITY\n")
-    else
-        Log("OMOZRA => NOT ACTIVE ABILITY\n")
-    end
+    DrawActiveAbilities()
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
@@ -217,6 +218,9 @@ function Update(dt)
                     currentState = State.IDLE
                     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
                     StopMovement()
+                    drawPrimary = false
+                    drawSecondary = false
+                    drawUltimate = false
                 else
                     destination = GetLastMouseClick()
                     DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
@@ -264,18 +268,27 @@ function Update(dt)
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+            drawPrimary = true
+            drawSecondary = false
+            drawUltimate = false
         end
 
         -- 2
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+            drawPrimary = false
+            drawSecondary = true
+            drawUltimate = false
         end
 
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+            drawPrimary = false
+            drawSecondary = false
+            drawUltimate = true
         end
 
         -- LSHIFT -> Toggle crouch
@@ -304,22 +317,30 @@ function Update(dt)
             end
         end
     end
-
-    -- Draw primary ability range
-
-    -- Draw secondary ability range
-    if (drawSecondary == true) then
-
-    end
-
-    -- Draw ultimate ability range
-    if (drawUltimate == true) then
-
-    end
 end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function DrawActiveAbilities()
+    if radiusLight == nil then
+        radiusLight = gameObject:GetLight()
+    end
+    if radiusLight ~= nil then
+        if (drawPrimary == true) then
+            radiusLight:SetRange(primaryCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawSecondary == true) then
+            radiusLight:SetRange(secondaryCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawUltimate == true) then
+            radiusLight:SetRange(ultimateCastRange)
+            radiusLight:SetAngle(360 / 2)
+        else
+            radiusLight:SetAngle(0)
+        end
+    end
+end
+
 function ManageTimers(dt)
     local ret = true
 
@@ -489,7 +510,9 @@ end
 
 -- Primary ability
 function CastPrimary(position)
-
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 -- Secondary ability
@@ -501,6 +524,10 @@ function CastSecondary(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 function DoSecondary()
@@ -526,6 +553,10 @@ function CastUltimate() -- Ult step 3
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(target:GetTransform():GetPosition())
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 function DoUltimate() -- Ult step 4

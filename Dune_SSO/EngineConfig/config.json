@@ -67,7 +67,7 @@
             -9.8100004196167,
             0.0
         ],
-        "debugPhysics": true
+        "debugPhysics": false
     },
     "Renderer3D": {
         "Vsync": true
@@ -81,11 +81,11 @@
         "Borderless": false,
         "Fullscreen": false,
         "FullscreenDesktop": false,
-        "Height": 1017,
+        "Height": 793,
         "Icon": "Assets/Icons/icon.bmp",
         "Resizable": true,
         "Scale": 0,
         "Title": "Ko-Fi Engine - SceneTutorial",
-        "Width": 1920
+        "Width": 1536
     }
 }

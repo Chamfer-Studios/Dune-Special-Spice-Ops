@@ -46,20 +46,19 @@ attackRange = 50.0
 attackTime = 2.5
 
 -- Primary ability --
-dartCastRange = 100.0
-dartCooldown = 1.0
-drawDart = false
+primaryCastRange = 100
+primaryCooldown = 1.0
+drawPrimary = false
 
 -- Secondary ability --
-smokebombCastRange = 100.0
-smokebombCooldown = 10.0
-drawSmokebomb = false
+secondaryCastRange = 75
+secondaryCooldown = 10.0
+drawSecondary = false
 
 -- Ultimate ability --
-ultimateCastRange = 100.0
+ultimateCastRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
-
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -79,22 +78,22 @@ isDoubleClicking = false
 -- NewVariable(speedIV)
 --
 ---- Primary ability --
--- dartCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- dartCastRangeIV = InspectorVariable.new("dartCastRange", dartCastRangeIVT, dartCastRange)
--- NewVariable(dartCastRangeIV)
+-- primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+-- primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+-- NewVariable(primaryCastRangeIV)
 --
 -- maxDartsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 -- maxDartsIV = InspectorVariable.new("maxDarts", maxDartsIVT, maxDarts)
 -- NewVariable(maxDartsIV)
 --
 ---- Secondary ability --
--- smokebombCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- smokebombCastRangeIV = InspectorVariable.new("smokebombCastRange", smokebombCastRangeIVT, smokebombCastRange)
--- NewVariable(smokebombCastRangeIV)
+-- secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+-- secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+-- NewVariable(secondaryCastRangeIV)
 --
--- drawSmokebombIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
--- drawsmokebombIV = InspectorVariable.new("drawSmokebomb", drawSmokebombIVT, drawSmokebomb)
--- NewVariable(drawSmokebombIV)
+-- drawSecondaryIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
+-- drawSecondaryIV = InspectorVariable.new("drawSecondary", drawSecondaryIVT, drawSecondary)
+-- NewVariable(drawSecondaryIV)
 --
 ---- Ultimate ability --
 -- ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
@@ -129,23 +128,17 @@ function Start()
 
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+
+    radiusLight = gameObject:GetLight()
 end
 
 -- Called each loop iteration
 function Update(dt)
 
-    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
-        Log("NERALA => ACTIVE ABILITY\n")
-    else
-        Log("NERALA => NOT ACTIVE ABILITY\n")
-    end
+    DrawActiveAbilities()
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
-        if (currentState == State.AIM_PRIMARY) then
-            componentTransform:SetRotation(float3:new(componentTransform:GetRotation().x,
-                componentTransform:GetRotation().y - 90, componentTransform:GetRotation().z))
-        end
     end
 
     if (ManageTimers(dt) == false) then
@@ -175,20 +168,20 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
             -- Primary ability (Dart)
-            if (dartTimer == nil and currentState == State.AIM_PRIMARY) then
+            if (primaryTimer == nil and currentState == State.AIM_PRIMARY) then
                 target = GetGameObjectHovered()
                 if (target.tag == Tag.ENEMY and
-                    Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= dartCastRange) then
+                    Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= primaryCastRange) then
                     if (componentAnimator ~= nil) then
                         CastPrimary(target:GetTransform():GetPosition())
                     end
                 end
 
                 -- Secondary ability (Smokebomb)
-            elseif (smokebombTimer == nil and currentState == State.AIM_SECONDARY) then
+            elseif (secondaryTimer == nil and currentState == State.AIM_SECONDARY) then
                 GetGameObjectHovered() -- This is for the smokebomb to go to the mouse Pos (it uses the target var)
                 local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= smokebombCastRange) then
+                if (Distance3D(mouse, componentTransform:GetPosition()) <= secondaryCastRange) then
                     target = mouse
                     if (componentAnimator ~= nil) then
                         CastSecondary(mouse)
@@ -221,6 +214,10 @@ function Update(dt)
                     currentState = State.IDLE
                     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
                     StopMovement()
+                    drawPrimary = false
+                    drawSecondary = false
+                    drawUltimate = false
+                else
                     if (goHit.tag == Tag.ENEMY and
                         Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
                         target = goHit
@@ -282,18 +279,27 @@ function Update(dt)
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_PRIMARY
             DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+            drawPrimary = true
+            drawSecondary = false
+            drawUltimate = false
         end
 
         -- 2
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_SECONDARY
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+            drawPrimary = false
+            drawSecondary = true
+            drawUltimate = false
         end
 
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             currentState = State.AIM_ULTIMATE
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+            drawPrimary = false
+            drawSecondary = false
+            drawUltimate = true
         end
 
         -- LSHIFT -> Toggle crouch
@@ -322,22 +328,30 @@ function Update(dt)
             end
         end
     end
-
-    -- Draw primary ability range
-
-    -- Draw secondary ability range
-    if (drawSmokebomb == true) then
-
-    end
-
-    -- Draw ultimate ability range
-    if (drawUltimate == true) then
-
-    end
 end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function DrawActiveAbilities()
+    if radiusLight == nil then
+        radiusLight = gameObject:GetLight()
+    end
+    if radiusLight ~= nil then
+        if (drawPrimary == true) then
+            radiusLight:SetRange(primaryCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawSecondary == true) then
+            radiusLight:SetRange(secondaryCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawUltimate == true) then
+            radiusLight:SetRange(ultimateCastRange)
+            radiusLight:SetAngle(360 / 2)
+        else
+            radiusLight:SetAngle(0)
+        end
+    end
+end
+
 function ManageTimers(dt)
     local ret = true
 
@@ -373,21 +387,21 @@ function ManageTimers(dt)
     end
 
     -- Primary ability cooldown
-    if (dartTimer ~= nil) then
+    if (primaryTimer ~= nil) then
 
-        dartTimer = dartTimer + dt
-        if (dartTimer >= dartCooldown) then
-            dartTimer = nil
+        primaryTimer = primaryTimer + dt
+        if (primaryTimer >= primaryCooldown) then
+            primaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
 
     end
 
     -- Secondary ability cooldown
-    if (smokebombTimer ~= nil) then
-        smokebombTimer = smokebombTimer + dt
-        if (smokebombTimer >= smokebombCooldown) then
-            smokebombTimer = nil
+    if (secondaryTimer ~= nil) then
+        secondaryTimer = secondaryTimer + dt
+        if (secondaryTimer >= secondaryCooldown) then
+            secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
     end
@@ -543,7 +557,7 @@ end
 function CastPrimary(position)
 
     componentAnimator:SetSelectedClip("Dart")
-    dartTimer = 0.0
+    primaryTimer = 0.0
     StopMovement()
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
@@ -569,7 +583,7 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Smokebomb")
-    smokebombTimer = 0.0
+    secondaryTimer = 0.0
     StopMovement()
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
