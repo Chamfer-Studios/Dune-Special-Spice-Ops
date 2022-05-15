@@ -96,7 +96,8 @@ NewVariable(ultimateCastRangeIV)
 
 function Start()
 
-    componentAnimator = gameObject:GetComponentAnimator()
+    Log("Starting The Script!")
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
     end
@@ -116,7 +117,7 @@ function Start()
     InstantiatePrefab("Worm")
 
     currentHP = maxHP
-    DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+    DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
 
     radiusLight = gameObject:GetLight()
 end
@@ -141,8 +142,8 @@ function Update(dt)
     -- Manage States
     if (destination ~= nil) then
         MoveToDestination(dt)
-        DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+        DispatchEvent("Pathfinder_FollowPath", { speed, dt, false })
+        DispatchGlobalEvent("Player_Position", { componentTransform:GetPosition(), gameObject })
     end
 
     -- Gather Inputs
@@ -157,14 +158,18 @@ function Update(dt)
                 -- Secondary ability
             elseif (secondaryTimer == nil and currentState == State.AIM_SECONDARY) then
                 target = GetGameObjectHovered()
+                if (target == nil) then
+                    Log("Target Inexistent")
+                end
                 if (target.tag == Tag.ENEMY and
                     Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
                     secondaryCastRange) then
                     if (componentAnimator ~= nil) then
-                        CastSecondary()
+                        CastSecondary(target:GetTransform():GetPosition())
+                        Log("Casting Secondary Hab!")
                     end
                 else
-                    print("Out of range")
+                    Log("Out of range")
                 end
 
                 -- Ultimate ability
@@ -204,18 +209,18 @@ function Update(dt)
                 if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
                     State.AIM_ULTIMATE) then
                     currentState = State.IDLE
-                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+                    DispatchGlobalEvent("Player_Ability", { characterID, 0, 0 })
                     StopMovement()
                     drawPrimary = false
                     drawSecondary = false
                     drawUltimate = false
                 else
                     destination = GetLastMouseClick()
-                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    DispatchEvent("Pathfinder_UpdatePath", { { destination }, false, componentTransform:GetPosition() })
                     if (currentMovement == Movement.WALK and isDoubleClicking == true) then
 
-                        currentMovement = Movement.RUN
 
+                        currentMovement = Movement.RUN
                         if (componentSwitch ~= nil) then
                             if (currentTrackID ~= -1) then
                                 componentSwitch:StopTrack(currentTrackID)
@@ -227,7 +232,6 @@ function Update(dt)
                         if (currentMovement == Movement.IDLE) then
 
                             currentMovement = Movement.WALK
-
                             if (componentSwitch ~= nil) then
                                 if (currentTrackID ~= -1) then
                                     componentSwitch:StopTrack(currentTrackID)
@@ -253,7 +257,7 @@ function Update(dt)
             else
                 CancelAbilities()
                 currentState = State.AIM_PRIMARY
-                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                DispatchGlobalEvent("Player_Ability", { characterID, 1, 1 })
                 drawPrimary = true
                 drawSecondary = false
                 drawUltimate = false
@@ -267,7 +271,7 @@ function Update(dt)
             else
                 CancelAbilities()
                 currentState = State.AIM_SECONDARY
-                DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+                DispatchGlobalEvent("Player_Ability", { characterID, 2, 1 })
                 drawPrimary = false
                 drawSecondary = true
                 drawUltimate = false
@@ -281,7 +285,7 @@ function Update(dt)
             else
                 CancelAbilities()
                 currentState = State.AIM_ULTIMATE
-                DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+                DispatchGlobalEvent("Player_Ability", { characterID, 3, 1 })
                 drawPrimary = false
                 drawSecondary = false
                 drawUltimate = true
@@ -315,12 +319,13 @@ function Update(dt)
         end
     end
 end
+
 --------------------------------------------------
 
 ------------------- Functions --------------------
 function CancelAbilities()
     currentState = State.IDLE
-    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+    DispatchGlobalEvent("Player_Ability", { characterID, 0, 0 })
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
@@ -378,8 +383,9 @@ function ManageTimers(dt)
     if (secondaryTimer ~= nil) then
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
+            Log("Cooldown Ended")
             secondaryTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
+            DispatchGlobalEvent("Player_Ability", { characterID, 2, 0 })
         end
     end
 
@@ -388,7 +394,7 @@ function ManageTimers(dt)
         ultimateTimer = ultimateTimer + dt
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, 3, 0})
+            DispatchGlobalEvent("Player_Ability", { characterID, 3, 0 })
         end
     end
 
@@ -401,7 +407,7 @@ function ManageTimers(dt)
                 if (currentState == State.AIM_PRIMARY) then
 
                 elseif (currentState == State.AIM_SECONDARY) then
-                    DoSecondary()
+                       WormAttack()
                 elseif (currentState == State.AIM_ULTIMATE) then
                     if (isWormDone == nil) then
                         DoUltimate()
@@ -427,10 +433,10 @@ function ManageTimers(dt)
 end
 
 function MoveToDestination(dt)
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {componentTransform:GetPosition().x, componentTransform:GetPosition().z}
+    local targetPos2D = { destination.x, destination.z }
+    local pos2D = { componentTransform:GetPosition().x, componentTransform:GetPosition().z }
     local d = Distance2D(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+    local vec2 = { targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2] }
 
     if (d > 5.0) then
 
@@ -494,10 +500,10 @@ function StopMovement(resetTarget)
 end
 
 function LookAtTarget(lookAt)
-    local targetPos2D = {lookAt.x, lookAt.z}
-    local pos2D = {componentTransform:GetPosition().x, componentTransform:GetPosition().z}
+    local targetPos2D = { lookAt.x, lookAt.z }
+    local pos2D = { componentTransform:GetPosition().x, componentTransform:GetPosition().z }
     local d = Distance2D(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+    local vec2 = { targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2] }
     lastRotation = float3.new(vec2[1], 0, vec2[2])
     componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
 end
@@ -527,16 +533,21 @@ function CastSecondary(position)
     secondaryTimer = 0.0
     StopMovement()
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
-    LookAtTarget(position)
+    DispatchGlobalEvent("Player_Ability", { characterID, 2, 2 })
+    if (position == nil) then
+        Log("Position Null")
+    else
+        LookAtTarget(position)
+    end
 
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
 end
 
-function DoSecondary()
+function WormAttack()
 
+    --Tap warm
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
@@ -545,7 +556,8 @@ function DoSecondary()
         componentSwitch:PlayTrack(currentTrackID)
     end
 
-    DispatchGlobalEvent("Worm_State", {5, target})
+    DispatchGlobalEvent("Worm_State", { 5, target })
+    --Set selected Warm Clip
     currentState = State.IDLE
 end
 
@@ -553,10 +565,10 @@ end
 function CastUltimate() -- Ult step 3
 
     componentAnimator:SetSelectedClip("UltimateStart")
-    -- CD will start when recasting		
+    -- CD will start when recasting
     StopMovement()
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
+    DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
     LookAtTarget(target:GetTransform():GetPosition())
 
     drawPrimary = false
@@ -566,7 +578,7 @@ end
 
 function DoUltimate() -- Ult step 4
     -- This event is just for the player affected
-    DispatchGlobalEvent("Omozra_Ultimate_Target", {target}) -- Target player has to stop all actions
+    DispatchGlobalEvent("Omozra_Ultimate_Target", { target }) -- Target player has to stop all actions
 
     currentState = State.AIM_ULTIMATE_RECAST
 end
@@ -577,13 +589,13 @@ function RecastUltimate(position)
     ultimateTimer = 0.0
     isWormDone = nil
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
+    DispatchGlobalEvent("Player_Ability", { characterID, 3, 2 })
     LookAtTarget(position)
 end
 
 function DoUltimateRecast() -- Ult step 7
     -- This event is for the worm
-    DispatchGlobalEvent("Omozra_Ultimate_Recast", {target}) -- Mouse position is the target this time
+    DispatchGlobalEvent("Omozra_Ultimate_Recast", { target }) -- Mouse position is the target this time
     currentState = State.IDLE
 end
 
@@ -596,7 +608,7 @@ function TakeDamage(damage)
 
     if (currentHP > 1) then
         currentHP = currentHP - damage
-        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+        DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
 
         if (componentSwitch ~= nil) then
             if (currentTrackID ~= -1) then
@@ -616,7 +628,7 @@ function Die()
 
     currentState = State.DEAD
     currentHP = 0
-    DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+    DispatchGlobalEvent("Player_Health", { characterID, currentHP, maxHP })
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
@@ -629,6 +641,7 @@ function Die()
         componentSwitch:PlayTrack(currentTrackID)
     end
 end
+
 --------------------------------------------------
 
 -------------------- Events ----------------------
@@ -650,6 +663,7 @@ function EventHandler(key, fields)
         end
     end
 end
+
 --------------------------------------------------
 
 ------------------ Collisions --------------------
@@ -665,6 +679,7 @@ function OnCollisionEnter(go)
         TakeDamage(1)
     end
 end
+
 --------------------------------------------------
 
 ----------------- Math Functions -----------------
@@ -688,6 +703,7 @@ function Distance3D(a, b)
     }
     return math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z)
 end
+
 --------------------------------------------------
 
 print("Omozra.lua compiled succesfully")
