@@ -74,7 +74,7 @@
     },
     "ResourceManager": null,
     "SceneManager": {
-        "DefaultScene": "SceneMainMenu"
+        "DefaultScene": "SceneTutorial"
     },
     "UI": null,
     "Window": {
