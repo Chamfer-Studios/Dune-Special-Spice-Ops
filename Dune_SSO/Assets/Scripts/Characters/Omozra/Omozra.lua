@@ -246,12 +246,6 @@ function Update(dt)
             end
         end
 
-        -- H --------- TO DELETE -----------
-        if (GetInput(5) == KEY_STATE.KEY_DOWN) then
-            currentState = State.IDLE
-            DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
-        end
-
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             if (currentState == State.AIM_PRIMARY) then
