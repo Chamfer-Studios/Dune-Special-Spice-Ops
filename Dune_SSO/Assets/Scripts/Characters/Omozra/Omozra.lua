@@ -254,29 +254,44 @@ function Update(dt)
 
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
-            currentState = State.AIM_PRIMARY
-            DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-            drawPrimary = true
-            drawSecondary = false
-            drawUltimate = false
+            if (currentState == State.AIM_PRIMARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                currentState = State.AIM_PRIMARY
+                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                drawPrimary = true
+                drawSecondary = false
+                drawUltimate = false
+            end
         end
 
         -- 2
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
-            currentState = State.AIM_SECONDARY
-            DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-            drawPrimary = false
-            drawSecondary = true
-            drawUltimate = false
+            if (currentState == State.AIM_SECONDARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                currentState = State.AIM_SECONDARY
+                DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+                drawPrimary = false
+                drawSecondary = true
+                drawUltimate = false
+            end
         end
 
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
-            currentState = State.AIM_ULTIMATE
-            DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-            drawPrimary = false
-            drawSecondary = false
-            drawUltimate = true
+            if (currentState == State.AIM_ULTIMATE) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                currentState = State.AIM_ULTIMATE
+                DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+                drawPrimary = false
+                drawSecondary = false
+                drawUltimate = true
+            end
         end
 
         -- LSHIFT -> Toggle crouch
@@ -309,6 +324,14 @@ end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function CancelAbilities()
+    currentState = State.IDLE
+    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
+end
+
 function DrawActiveAbilities()
     if radiusLight == nil then
         radiusLight = gameObject:GetLight()
