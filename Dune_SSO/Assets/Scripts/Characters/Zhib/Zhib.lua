@@ -106,6 +106,8 @@ function Start()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
+    else
+        Log("[ERROR] Component Animator not found!\n")
     end
 
     mouseParticles = Find("Mouse Particles")
@@ -126,14 +128,11 @@ function Start()
 
     knifeCount = maxKnives
 
-    knifeCounter = Find("KnifeCounter")
-
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 end
 
 -- Called each loop iteration
 function Update(dt)
-
     DrawActiveAbilities()
 
     if (knifeCount == 1) then
@@ -172,41 +171,57 @@ function Update(dt)
 
             -- Primary ability (Knife)
             if (currentState == State.AIM_PRIMARY) then
-                if (knifeCount > 0) then
-                    target = GetGameObjectHovered()
-                    if (target.tag == Tag.ENEMY and
-                        Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                        primaryCastRange) then
-                        if (componentAnimator ~= nil) then
-                            CastPrimary(target:GetTransform():GetPosition())
+                if (knifeCount <= 0) then
+                    Log("[FAIL] Ability Primary: You don't have enough knives!\n")
+                else
+                    if (target.tag ~= Tag.ENEMY) then
+                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                    else
+                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                            primaryCastRange) then
+                            Log("[FAIL] Ability Primary: Ability out of range!\n")
+                        else
+                            if (componentAnimator ~= nil) then
+                                CastPrimary(target:GetTransform():GetPosition())
+                            end
                         end
                     end
                 end
 
                 -- Secondary ability (Decoy)
-            elseif (secondaryTimer == nil and currentState == State.AIM_SECONDARY) then
-                GetGameObjectHovered() -- This is for the decoy to go to the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= secondaryCastRange) then
-                    target = mouse
-                    if (componentAnimator ~= nil) then
-                        CastSecondary(mouse)
-                    end
+            elseif (currentState == State.AIM_SECONDARY) then
+                if (secondaryTimer ~= nil) then
+                    Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
                 else
-                    print("Out of range")
+                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    local mouse = GetLastMouseClick()
+                    if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
+                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                    else
+                        target = mouse
+                        if (componentAnimator ~= nil) then
+                            CastSecondary(mouse)
+                        end
+                    end
                 end
 
                 -- Ultimate ability (master yi)
-            elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
-                target = GetGameObjectHovered()
-                if (target.tag == Tag.ENEMY) then
-                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                        ultimateCastRange) then
-                        if (componentAnimator ~= nil) then
-                            CastUltimate(target:GetTransform():GetPosition())
-                        end
+            elseif (currentState == State.AIM_ULTIMATE) then
+                if (ultimateTimer ~= nil) then
+                    Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
+                else
+                    target = GetGameObjectHovered()
+                    if (target.tag ~= Tag.ENEMY) then
+                        Log("[FAIL] Ability Ultimate: You have to select an enemy first!\n")
                     else
-                        print("Out of range")
+                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                            ultimateCastRange) then
+                            Log("[FAIL] Ability Ultimate: Ability out of range!\n")
+                        else
+                            if (componentAnimator ~= nil) then
+                                CastUltimate(target:GetTransform():GetPosition())
+                            end
+                        end
                     end
                 end
             end
@@ -343,6 +358,8 @@ function Update(dt)
         if (GetInput(10) == KEY_STATE.KEY_DOWN) then
             ReloadKnives()
         end
+    else
+        Log("[FAIL] You have to select a character first!\n")
     end
 end
 --------------------------------------------------

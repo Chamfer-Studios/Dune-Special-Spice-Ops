@@ -100,6 +100,8 @@ function Start()
     componentAnimator = gameObject:GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
+    else
+        Log("[ERROR] Component Animator not found!\n")
     end
 
     mouseParticles = Find("Mouse Particles")
@@ -156,41 +158,59 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
             -- Primary ability (Dart)
-            if (primaryTimer == nil and currentState == State.AIM_PRIMARY) then
-                target = GetGameObjectHovered()
-                if (target.tag == Tag.ENEMY and
-                    Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                    primaryCastRange) then
-                    if (componentAnimator ~= nil) then
-                        CastPrimary(target:GetTransform():GetPosition())
+            if (currentState == State.AIM_PRIMARY) then
+                if (primaryTimer ~= nil) then
+                    Log("[FAIL] Ability Primary: Ability in cooldown!\n")
+                else
+                    target = GetGameObjectHovered()
+                    if (target.tag ~= Tag.ENEMY) then
+                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                    else
+                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
+                            primaryCastRange) then
+                            Log("[FAIL] Ability Primary: Ability out of range!\n")
+                        else
+                            if (componentAnimator ~= nil) then
+                                CastPrimary(target:GetTransform():GetPosition())
+                            end
+                        end
                     end
                 end
 
                 -- Secondary ability (Smokebomb)
-            elseif (secondaryTimer == nil and currentState == State.AIM_SECONDARY) then
-                GetGameObjectHovered() -- This is for the smokebomb to go to the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= secondaryCastRange) then
-                    target = mouse
-                    if (componentAnimator ~= nil) then
-                        CastSecondary(mouse)
-                    end
+            elseif (currentState == State.AIM_SECONDARY) then
+                if (secondaryTimer ~= nil) then
+                    Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
                 else
-                    print("Out of range")
+                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    local mouse = GetLastMouseClick()
+                    if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
+                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                    else
+                        target = mouse
+                        if (componentAnimator ~= nil) then
+                            CastSecondary(mouse)
+                        end
+                    end
                 end
 
                 -- Ultimate ability (mosquito)
-            elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
-                GetGameObjectHovered() -- This is for the mosquito to spawn on the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= ultimateCastRange) then
-                    target = mouse
-                    if (componentAnimator ~= nil) then
-                        CastUltimate(mouse)
-                    end
+            elseif (currentState == State.AIM_ULTIMATE) then
+                if (ultimateTimer ~= nil) then
+                    Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
                 else
-                    print("Out of range")
+                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    local mouse = GetLastMouseClick()
+                    if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateCastRange) then
+                        Log("[FAIL] Ability Ultimate: Ability out of range!\n")
+                    else
+                        target = mouse
+                        if (componentAnimator ~= nil) then
+                            CastUltimate(mouse)
+                        end
+                    end
                 end
+
             end
         end
 
