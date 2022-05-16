@@ -388,7 +388,7 @@
                         ],
                         "position": [
                             0.0,
-                            4.0
+                            2.0
                         ],
                         "rotation": [
                             0.0,
@@ -396,8 +396,8 @@
                             0.0
                         ],
                         "size": [
-                            164.0,
-                            48.0
+                            150.0,
+                            40.0
                         ],
                         "type": 22
                     },
@@ -409,6 +409,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "Continue"
                     }
@@ -547,6 +548,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "New Game"
                     }
@@ -639,6 +641,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "Settings"
                     }
@@ -731,6 +734,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "Credits"
                     }
@@ -823,6 +827,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "Quit"
                     }
