@@ -166,7 +166,7 @@ function Update(dt)
                     if (target.tag ~= Tag.ENEMY) then
                         Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
                     else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
+                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             primaryCastRange) then
                             Log("[FAIL] Ability Primary: Ability out of range!\n")
                         else
