@@ -321,8 +321,6 @@ function Update(dt)
                 currentMovement = Movement.CROUCH
             end
         end
-    else
-        Log("[FAIL] You have to select a character first!\n")
     end
 end
 

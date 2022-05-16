@@ -358,8 +358,6 @@ function Update(dt)
         if (GetInput(10) == KEY_STATE.KEY_DOWN) then
             ReloadKnives()
         end
-    else
-        Log("[FAIL] You have to select a character first!\n")
     end
 end
 --------------------------------------------------
