@@ -97,7 +97,7 @@ NewVariable(ultimateCastRangeIV)
 
 function Start()
 
-    componentAnimator = gameObject:GetComponentAnimator()
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
     else
@@ -136,7 +136,7 @@ function Update(dt)
     end
 
     -- States
-    if (target ~= nil) then
+    if (currentState == State.ATTACK) then
         if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
             Attack()
         else
@@ -217,57 +217,67 @@ function Update(dt)
         -- Right Click
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then
             goHit = GetGameObjectHovered()
-            if (goHit ~= gameObject) then
+            if (goHit ~= gameObject) then -- Check you are not right-clicking yourself
                 if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
                     State.AIM_ULTIMATE) then
-                    CancelAbilities()
+                    currentState = State.IDLE
+                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
+                    StopMovement()
+                    drawKnife = false
+                    drawDecoy = false
+                    drawUltimate = false
                 else
-                    if (goHit.tag == Tag.ENEMY and
-                        Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <= attackRange) then
+                    local isMoving = true
+                    if (goHit.tag == Tag.ENEMY) then
+                        currentState = State.ATTACK
                         target = goHit
-                        Attack()
-                    else
-                        if (goHit.tag == Tag.ENEMY) then
-                            target = goHit
+                        if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
+                            attackRange) then
+                            isMoving = false
+                            Attack()
+                        else
                             destination = target:GetTransform():GetPosition()
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
-                        else
-                            destination = GetLastMouseClick()
-                            DispatchEvent("Pathfinder_UpdatePath",
-                                {{destination}, false, componentTransform:GetPosition()})
                         end
+                    else
+                        destination = GetLastMouseClick()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    end
 
-                        if (currentMovement == Movement.WALK and isDoubleClicking == true) then
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true) then
 
-                            currentMovement = Movement.RUN
+                        currentMovement = Movement.RUN
+                        if (componentAnimator ~= nil) then
+                            componentAnimator:SetSelectedClip("Run")
+                        end
+                        if (componentSwitch ~= nil) then
+                            if (currentTrackID ~= -1) then
+                                componentSwitch:StopTrack(currentTrackID)
+                            end
+                            currentTrackID = 1
+                            componentSwitch:PlayTrack(currentTrackID)
+                        end
+                    else
+                        if (currentMovement == Movement.IDLE and isMoving == true) then
 
+                            currentMovement = Movement.WALK
+                            if (componentAnimator ~= nil) then
+                                componentAnimator:SetSelectedClip("Walk")
+                            end
                             if (componentSwitch ~= nil) then
                                 if (currentTrackID ~= -1) then
                                     componentSwitch:StopTrack(currentTrackID)
                                 end
-                                currentTrackID = 1
+                                currentTrackID = 0
                                 componentSwitch:PlayTrack(currentTrackID)
                             end
-                        else
-                            if (currentMovement == Movement.IDLE) then
-
-                                currentMovement = Movement.WALK
-
-                                if (componentSwitch ~= nil) then
-                                    if (currentTrackID ~= -1) then
-                                        componentSwitch:StopTrack(currentTrackID)
-                                    end
-                                    currentTrackID = 0
-                                    componentSwitch:PlayTrack(currentTrackID)
-                                end
-                            end
-                            isDoubleClicking = true
                         end
-                        if (mouseParticles ~= nil) then
-                            mouseParticles:GetComponentParticle():ResumeParticleSpawn()
-                            mouseParticles:GetTransform():SetPosition(destination)
-                        end
+                        isDoubleClicking = true
+                    end
+                    if (mouseParticles ~= nil) then
+                        mouseParticles:GetComponentParticle():ResumeParticleSpawn()
+                        mouseParticles:GetTransform():SetPosition(destination)
                     end
                 end
             end
@@ -475,16 +485,6 @@ function MoveToDestination(dt)
 
     if (d > 5.0) then
 
-        if (componentAnimator ~= nil) then
-            if (currentMovement == Movement.WALK) then
-                componentAnimator:SetSelectedClip("Walk")
-            elseif (currentMovement == Movement.CROUCH) then
-                componentAnimator:SetSelectedClip("Crouch")
-            elseif (currentMovement == Movement.RUN) then
-                componentAnimator:SetSelectedClip("Run")
-            end
-        end
-
         -- Adapt speed
         local s = speed
         if (currentMovement == Movement.CROUCH) then
@@ -579,7 +579,7 @@ function CastPrimary(position)
 
     componentAnimator:SetSelectedClip("Dart")
     primaryTimer = 0.0
-    StopMovement()
+    StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
     LookAtTarget(position)
@@ -605,7 +605,7 @@ function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Smokebomb")
     secondaryTimer = 0.0
-    StopMovement()
+    StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
@@ -631,7 +631,7 @@ function CastUltimate(position)
 
     componentAnimator:SetSelectedClip("Mosquito")
     -- CD will start when the mosquito dies		
-    StopMovement()
+    StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)

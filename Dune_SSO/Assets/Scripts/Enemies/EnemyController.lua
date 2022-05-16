@@ -366,6 +366,10 @@ function EventHandler(key, fields)
             deathMarkTime = fields[2]
             deathMarkTimer = 0.0
         end
+    elseif key == "Knife_Hit" then
+        if (fields[1] == gameObject) then
+            DeleteGameObject()
+        end
     end
 end
 
