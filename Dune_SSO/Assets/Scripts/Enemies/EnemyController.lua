@@ -411,7 +411,6 @@ end
 
 function Start()
     CheckAndRecalculatePath(true)
-
     InstantiateNamedPrefab("awareness_green", awareness_green_name)
     InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
     InstantiateNamedPrefab("awareness_red", awareness_red_name)

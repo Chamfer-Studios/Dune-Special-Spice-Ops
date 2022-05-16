@@ -19,6 +19,7 @@ function Start()
     currentState = STATE.UNAWARE
     currentAttack = nil
     target = nil
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
 end
 
 function Update(dt)
@@ -28,7 +29,7 @@ function Update(dt)
     end
 
     if (currentState == STATE.UNAWARE) then
-
+        componentAnimator:SetSelectedClip("Idle")
     elseif (currentState == STATE.AWARE) then
 
     elseif (currentState == STATE.SUS) then
@@ -67,7 +68,7 @@ function ManageTimers(dt)
             else
                 if (currentAttack == ATTACK_FASE.BEGIN_ATTACK) then
                     DoAttack()
-                elseif (currentState ~= State.DEAD) then
+                elseif (currentState ~= STATE.DEAD) then
                     componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
                     currentAttack = nil
                 end
@@ -76,7 +77,7 @@ function ManageTimers(dt)
     end
 
     -- If he's dead he can't do anything
-    if (currentState == State.DEAD) then
+    if (currentState == STATE.DEAD) then
         ret = false
     end
 
