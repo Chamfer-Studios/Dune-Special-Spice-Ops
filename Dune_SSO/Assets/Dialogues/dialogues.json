@@ -2,19 +2,59 @@
   "dialogues": [
     {
       "id": 1,
-      "targetID": 2,
-      "src": "Assets/UI/HUD/Hud Portraits/hud_portrait_zhib_v1.2.png",
-      "char": "Zhib",
-      "line1": "Hello, I'm Zhib.",
-      "line2": "loreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsum"
+      "targetID": -1,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "You can move by right clicking where you want to go.",
+      "line2": " "
     },
     {
       "id": 2,
+      "targetID": 3,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "An enemy! You can attack by right clicking on them",
+      "line2": "be careful when approaching them, if they detect you,"
+    },
+    {
+      "id": 3,
+      "targetID": 4,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "they will strike back!                               ",
+      "line2": " "
+    },
+    {
+      "id": 4,
       "targetID": -1,
-      "src": "Assets/UI/HUD/Hud Portraits/hud_portrait_nebala_v1.1.png",
-      "char": "Nerala",
-      "line1": "Hi! I am Nerala, the best....",
-      "line2": "loreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsumloreipsum"
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "To better avoid being detected, you can enter stealth ",
+      "line2": "by pressing shift.                                    "
+    },
+    {
+      "id": 5,
+      "targetID": 6,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "To deal with this encounter you will have to use your knife,",
+      "line2": "press 1 and then click on the enemy to throw your knife."
+    },
+    {
+      "id": 6,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "You have three abilities and you can use them with the numbers.",
+      "line2": "Your ultimate consumes spice to cast.                          "
+    },
+    {
+      "id": 7,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "You have access to a new character.                             ",
+      "line2": "Press Z to select Zhib and X to select Nerala.                  "
     }
   ]
 }
