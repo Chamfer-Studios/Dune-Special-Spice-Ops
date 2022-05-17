@@ -359,7 +359,7 @@ function EventHandler(key, fields)
         ProcessVisualTrigger(fields[1], fields[2])
     elseif key == "Player_Attack" then
         if (fields[1] == gameObject) then
-            DeleteGameObject()
+            Die()
         end
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then
@@ -368,7 +368,7 @@ function EventHandler(key, fields)
         end
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
-            DeleteGameObject()
+            Die()
         end
     end
 end
@@ -424,7 +424,7 @@ function Update(dt)
     if (deathMarkTimer ~= nil) then
         deathMarkTimer = deathMarkTimer + dt
         if (deathMarkTimer >= deathMarkTime) then
-            DeleteGameObject()
+            Die()
             return
         end
     end
@@ -501,3 +501,21 @@ function Update(dt)
     end
     DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
 end
+
+------------------- Functions --------------------
+function Die()
+
+    DispatchEvent("Die", {})
+
+    --currentState = STATE.DEAD
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Death")
+    end
+
+    
+end
+
+--------------------------------------------------
+
+print ("EnemyController.lua compiled successfully!")

@@ -128,7 +128,26 @@ function EventHandler(key, fields)
         currentState = fields[2]
     elseif key == "Target_Update" then
         target = fields[1] -- fields[1] -> new Target;
+    elseif key == "Die" then
+        Die()
     end
+end
+
+function Die() 
+    
+    -- Chance to spawn, if spawn dispatch event
+    math.randomseed(os.time())
+    rng = math.random(100)
+    if (rng >= 1) then
+        InstantiatePrefab("SpiceLoot")
+        str = "Harkonnen"
+        DispatchGlobalEvent("Spice_Drop", {gameObject, str})
+        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+    else
+        Log("The drop rate has not been good :( " .. rng .. "\n")
+    end
+
+    DeleteGameObject()
 end
 
 -- Math
