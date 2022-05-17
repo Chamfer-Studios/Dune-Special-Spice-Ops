@@ -364,6 +364,8 @@ function Update(dt)
                 currentMovement = Movement.CROUCH
             end
         end
+    else
+        CancelAbilities()
     end
 end
 --------------------------------------------------
