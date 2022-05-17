@@ -26,7 +26,6 @@ end
 function Update(dt)
 
     if (destination ~= nil) then
-        destination = target:GetTransform():GetPosition()
         MoveToDestination(dt)
     end
 end
