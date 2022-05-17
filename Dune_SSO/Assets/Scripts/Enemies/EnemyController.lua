@@ -370,6 +370,14 @@ function EventHandler(key, fields)
         if (fields[1] == gameObject) then
             Die()
         end
+    elseif key == "Sadiq_Devour" then
+        if (fields[1] == gameObject) then
+            if (fields[2] == 0) then
+                -- TODO: Stop Movement and/or block enemy
+            elseif (fields[2] == 1) then
+                Die()
+            end
+        end
     end
 end
 
@@ -507,15 +515,14 @@ function Die()
 
     DispatchEvent("Die", {})
 
-    --currentState = STATE.DEAD
+    -- currentState = STATE.DEAD
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
 
-    
 end
 
 --------------------------------------------------
 
-print ("EnemyController.lua compiled successfully!")
+print("EnemyController.lua compiled successfully!")

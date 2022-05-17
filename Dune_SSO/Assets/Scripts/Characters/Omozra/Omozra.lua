@@ -131,10 +131,6 @@ function Update(dt)
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
-        if (currentState == State.AIM_PRIMARY) then
-            componentTransform:SetRotation(float3:new(componentTransform:GetRotation().x,
-                componentTransform:GetRotation().y - 90, componentTransform:GetRotation().z))
-        end
     end
 
     if (ManageTimers(dt) == false) then
@@ -180,14 +176,17 @@ function Update(dt)
                 -- Ultimate ability (needs to be refactored a bit :D)
             elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
                 target = GetGameObjectHovered()
-                if (target.tag == Tag.PLAYER and
-                    Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <=
-                    ultimateCastRange) then
-                    if (componentAnimator ~= nil) then
-                        CastUltimate() -- Ult step 2
-                    end
+                if (target.tag ~= Tag.PLAYER) then
+                    Log("[FAIL] Ability Primary: You have to select an ally first!\n")
                 else
-                    print("Out of range")
+                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                        ultimateCastRange) then
+                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                    else
+                        if (componentAnimator ~= nil) then
+                            CastUltimate(target:GetTransform():GetPosition())
+                        end
+                    end
                 end
             elseif (currentState == State.AIM_ULTIMATE_RECAST) then
                 GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
@@ -225,6 +224,9 @@ function Update(dt)
                     if (currentMovement == Movement.WALK and isDoubleClicking == true) then
 
                         currentMovement = Movement.RUN
+                        if (componentAnimator ~= nil) then
+                            componentAnimator:SetSelectedClip("Run")
+                        end
                         if (componentSwitch ~= nil) then
                             if (currentTrackID ~= -1) then
                                 componentSwitch:StopTrack(currentTrackID)
@@ -236,6 +238,9 @@ function Update(dt)
                         if (currentMovement == Movement.IDLE) then
 
                             currentMovement = Movement.WALK
+                            if (componentAnimator ~= nil) then
+                                componentAnimator:SetSelectedClip("Walk")
+                            end
                             if (componentSwitch ~= nil) then
                                 if (currentTrackID ~= -1) then
                                     componentSwitch:StopTrack(currentTrackID)
@@ -301,6 +306,9 @@ function Update(dt)
             if (currentMovement == Movement.CROUCH) then
                 if (destination ~= nil) then
                     currentMovement = Movement.WALK
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
                     if (componentSwitch ~= nil) then
                         if (currentTrackID ~= -1) then
                             componentSwitch:StopTrack(currentTrackID)
@@ -310,15 +318,21 @@ function Update(dt)
                     end
                 else
                     currentMovement = Movement.IDLE
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Idle")
+                    end
                 end
             else
+                currentMovement = Movement.CROUCH
                 if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
                     if (currentTrackID ~= -1) then
                         componentSwitch:StopTrack(currentTrackID)
                         currentTrackID = -1
                     end
                 end
-                currentMovement = Movement.CROUCH
+                if (componentAnimator ~= nil) then
+                    componentAnimator:SetSelectedClip("Crouch")
+                end
             end
         end
     else
@@ -350,6 +364,9 @@ function DrawActiveAbilities()
             radiusLight:SetAngle(360 / 2)
         elseif (drawUltimate == true) then
             radiusLight:SetRange(ultimateCastRange)
+            radiusLight:SetAngle(360 / 2)
+        elseif (drawUltimateRecast == true) then
+            radiusLight:SetRange(ultimateRecastRange)
             radiusLight:SetAngle(360 / 2)
         else
             radiusLight:SetAngle(0)
@@ -389,7 +406,6 @@ function ManageTimers(dt)
     if (secondaryTimer ~= nil) then
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
-            Log("Cooldown Ended")
             secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
@@ -413,7 +429,7 @@ function ManageTimers(dt)
                 if (currentState == State.AIM_PRIMARY) then
 
                 elseif (currentState == State.AIM_SECONDARY) then
-                    WormAttack()
+                    DoSecondary()
                 elseif (currentState == State.AIM_ULTIMATE) then
                     if (isWormDone == nil) then
                         DoUltimate()
@@ -446,16 +462,6 @@ function MoveToDestination(dt)
 
     if (d > 5.0) then
 
-        if (componentAnimator ~= nil) then
-            if (currentMovement == Movement.WALK) then
-                componentAnimator:SetSelectedClip("Walk")
-            elseif (currentMovement == Movement.CROUCH) then
-                componentAnimator:SetSelectedClip("Crouch")
-            elseif (currentMovement == Movement.RUN) then
-                componentAnimator:SetSelectedClip("Run")
-            end
-        end
-
         -- Adapt speed
         local s = speed
         if (currentMovement == Movement.CROUCH) then
@@ -486,7 +492,7 @@ function MoveToDestination(dt)
     end
 end
 
-function StopMovement(resetTarget)
+function StopMovement()
 
     if (componentSwitch ~= nil and currentTrackID ~= -1) then
         componentSwitch:StopTrack(currentTrackID)
@@ -497,9 +503,6 @@ function StopMovement(resetTarget)
 
     destination = nil
 
-    if (resetTarget == nil) then -- Default case
-        target = nil
-    end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
@@ -535,7 +538,7 @@ end
 -- Secondary ability
 function CastSecondary(position)
 
-    componentAnimator:SetSelectedClip("Secondary")
+    componentAnimator:SetSelectedClip("Point")
     secondaryTimer = 0.0
     StopMovement()
 
@@ -551,9 +554,8 @@ function CastSecondary(position)
     drawUltimate = false
 end
 
-function WormAttack()
+function DoSecondary()
 
-    -- Tap warm
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
@@ -562,15 +564,17 @@ function WormAttack()
         componentSwitch:PlayTrack(currentTrackID)
     end
 
-    DispatchGlobalEvent("Worm_State", {5, target})
-    -- Set selected Warm Clip
+    DispatchGlobalEvent("Worm_Update_Target", {target})
+
+    componentAnimator:SetSelectedClip("PointToIdle")
+
     currentState = State.IDLE
 end
 
 -- Ultimate ability
 function CastUltimate() -- Ult step 3
 
-    componentAnimator:SetSelectedClip("UltimateStart")
+    componentAnimator:SetSelectedClip("Point")
     -- CD will start when recasting
     StopMovement()
 
@@ -591,7 +595,7 @@ end
 
 function RecastUltimate(position)
 
-    componentAnimator:SetSelectedClip("Worm_Recast")
+    componentAnimator:SetSelectedClip("Point")
     ultimateTimer = 0.0
     isWormDone = nil
 

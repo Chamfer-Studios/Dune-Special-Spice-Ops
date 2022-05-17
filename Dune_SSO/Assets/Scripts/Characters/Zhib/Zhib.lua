@@ -344,6 +344,9 @@ function Update(dt)
             if (currentMovement == Movement.CROUCH) then
                 if (destination ~= nil) then
                     currentMovement = Movement.WALK
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
                     if (componentSwitch ~= nil) then
                         if (currentTrackID ~= -1) then
                             componentSwitch:StopTrack(currentTrackID)
@@ -353,15 +356,21 @@ function Update(dt)
                     end
                 else
                     currentMovement = Movement.IDLE
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Idle")
+                    end
                 end
             else
+                currentMovement = Movement.CROUCH
                 if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
                     if (currentTrackID ~= -1) then
                         componentSwitch:StopTrack(currentTrackID)
                         currentTrackID = -1
                     end
                 end
-                currentMovement = Movement.CROUCH
+                if (componentAnimator ~= nil) then
+                    componentAnimator:SetSelectedClip("Crouch")
+                end
             end
         end
     else
@@ -574,10 +583,6 @@ function LookAtTarget(lookAt)
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     lastRotation = float3.new(vec2[1], 0, vec2[2])
     componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
-end
-
-function ReloadKnives() -- For debugging purposes only
-    knifeCount = maxKnives
 end
 
 function IsSelected()

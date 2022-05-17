@@ -330,6 +330,9 @@ function Update(dt)
             if (currentMovement == Movement.CROUCH) then
                 if (destination ~= nil) then
                     currentMovement = Movement.WALK
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
                     if (componentSwitch ~= nil) then
                         if (currentTrackID ~= -1) then
                             componentSwitch:StopTrack(currentTrackID)
@@ -339,15 +342,21 @@ function Update(dt)
                     end
                 else
                     currentMovement = Movement.IDLE
+                    if (componentAnimator ~= nil) then
+                        componentAnimator:SetSelectedClip("Idle")
+                    end
                 end
             else
+                currentMovement = Movement.CROUCH
                 if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
                     if (currentTrackID ~= -1) then
                         componentSwitch:StopTrack(currentTrackID)
                         currentTrackID = -1
                     end
                 end
-                currentMovement = Movement.CROUCH
+                if (componentAnimator ~= nil) then
+                    componentAnimator:SetSelectedClip("Crouch")
+                end
             end
         end
     else
