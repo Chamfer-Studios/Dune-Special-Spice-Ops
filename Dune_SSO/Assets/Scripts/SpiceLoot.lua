@@ -26,8 +26,14 @@ end
 function EventHandler(key, fields)
     if key == "Spice_Drop" then --fields[1] = enemyGameObject fields[2] = enemyType string
         enemyType = fields[2]
-        --enemyGo = fields[1]
-        
+        enemyGo = fields[1]
+        goPos = enemyGo:GetTransform():GetPosition()
+        Log("goPos = " .. goPos .. "\n")
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(goPos.x, goPos.y, goPos.z))
+        end
+
+        gameObject:GetTransform():SetPosition(enemyGo:GetTransform():GetPosition().x)
         if (enemyType == "Harkonnen") then
             math.randomseed()
             rng = math.random(40,80)
