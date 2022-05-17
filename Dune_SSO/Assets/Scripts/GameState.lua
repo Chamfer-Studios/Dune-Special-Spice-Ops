@@ -1,16 +1,19 @@
 ------------------- Variables --------------------
 
 characterSelected = 1
+spiceAmount = 1000
 
 -------------------- Methods ---------------------
 function Start()
 	characters = { Find("Zhib"), Find("Nerala"), Find("Omozra") }
 	characterSelectedMesh = Find("CharacterSelectedMesh")
+
+	str = "Spice Amount ".. spiceAmount.."\n"
+	Log(str)
 end
 
 -- Called each loop iteration
 function Update(dt)
-
 	currentState = GetRuntimeState()
 	if (currentState == RuntimeState.PLAYING) then
 		if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -61,6 +64,10 @@ function EventHandler(key, fields)
     if key == "Character_Selected" then -- fields[1] -> characterSelected;
 		characterSelected = fields[1]
 		--characterSelected = 1
+	elseif (key == "Spice_Reward") then
+		spiceAmount = spiceAmount + fields[1]
+		str = "Spice Amount ".. spiceAmount.."\n"
+		Log(str)
     end
 end
 --------------------------------------------------
