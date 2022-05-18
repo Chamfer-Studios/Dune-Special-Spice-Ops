@@ -299,16 +299,17 @@ function Update(dt)
 
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
-            if (currentState == State.AIM_PRIMARY) then
-                CancelAbilities()
-            else
-                CancelAbilities()
-                currentState = State.AIM_PRIMARY
-                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-                drawPrimary = true
-                drawSecondary = false
-                drawUltimate = false
-            end
+            Die()
+            -- if (currentState == State.AIM_PRIMARY) then
+            --    CancelAbilities()
+            -- else
+            --    CancelAbilities()
+            --    currentState = State.AIM_PRIMARY
+            --    DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+            --    drawPrimary = true
+            --    drawSecondary = false
+            --    drawUltimate = false
+            -- end
         end
 
         -- 2
@@ -381,7 +382,9 @@ end
 
 ------------------- Functions --------------------
 function CancelAbilities()
-    currentState = State.IDLE
+    if (currentState ~= State.WORM) then
+        currentState = State.IDLE
+    end
     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
     drawSecondary = false
@@ -512,7 +515,7 @@ function ManageTimers(dt)
     end
 
     -- If he's dead he can't do anything
-    if (currentState == State.DEAD) then
+    if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
     end
 
@@ -816,7 +819,7 @@ function Die()
 
     currentState = State.DEAD
     currentHP = 0
-    DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+    DispatchGlobalEvent("Player_Death", {characterID})
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
@@ -833,16 +836,34 @@ end
 
 -------------------- Events ----------------------
 function EventHandler(key, fields)
-    if (key == "Omozra_Ultimate_Target" and fields[1] == gameObject) then -- fields[1] -> go;
-        StopMovement()
-        if (componentAnimator ~= nil) then
-            componentAnimator:SetSelectedClip("Idle") -- (?)
-        end
-        currentState = State.WORM
-    elseif (key == "Stop_Movement") then
+    if (key == "Stop_Movement") then
         StopMovement()
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
+        end
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+        if (fields[1] == gameObject) then
+            if (fields[2] == 1) then
+                StopMovement()
+                currentState = State.WORM
+                if (componentAnimator ~= nil) then
+                    componentAnimator:SetSelectedClip("Idle")
+                end
+            elseif (fields[2] == 2) then
+                if (componentRigidBody ~= nil) then
+                    componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, -40,
+                        componentTransform:GetPosition().z))
+                end
+                gameObject.active = false
+            end
+        elseif (currentState == State.WORM and fields[2] == nil) then
+
+            if (componentRigidBody ~= nil) then
+                componentRigidBody:SetRigidBodyPos(fields[1])
+            end
+            gameObject.active = true
+            currentState = State.IDLE
         end
     end
 end

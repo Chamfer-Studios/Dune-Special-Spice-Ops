@@ -10,13 +10,13 @@ State = {
 
 target = nil
 currentState = State.IDLE
+startCalled = false
 
 -------------------- Methods ---------------------
 
 function Start()
-
     omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -20,
+    componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -40,
         omozra:GetTransform():GetPosition().z))
 
     if (particles ~= null) then
@@ -24,7 +24,7 @@ function Start()
         particles:StopParticleSpawn()
     end
 
-    componentAnimator = gameObject:GetComponentAnimator()
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle") -- Doesn't exists but I need it to be different
     end
@@ -32,7 +32,10 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-
+    if (startCalled == false) then
+        Start()
+        startCalled = true
+    end
     -- Animation timer
     if (componentAnimator ~= nil) then
         if (componentAnimator:IsCurrentClipLooping() == false) then
@@ -40,35 +43,61 @@ function Update(dt)
                 if (currentState == State.DEVOUR) then
                     DoDevour()
                 elseif (currentState == State.EAT) then
-                    currentState = State.AWAIT
+                    DoUltimate()
                 elseif (currentState == State.SPIT) then
-                    DeleteGameObject()
+                    DoSpit()
+                else
+                    componentTransform:SetPosition(float3.new(0, -40, 0))
                 end
             end
         end
     end
 end
 
--- Devour
+-- Devour/Eat
 function CastDevour(castedOn)
 
     target = castedOn
 
     local targetPos = target:GetTransform():GetPosition()
-    componentTransform:SetPosition(float3.new(targetPos.x, -20, targetPos.z))
+    componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Devour")
     end
 
     currentState = State.DEVOUR
-
-    DispatchGlobalEvent("Sadiq_Devour", {target, 0}) -- fields[1] -> target; fields[2] -> step of devour ability (0 -> warning; 1 -> devour)
 end
 
 function DoDevour()
-    Log("Event\n")
-    DispatchGlobalEvent("Sadiq_Devour", {target, 1}) -- fields[1] -> target; fields[2] -> step of devour ability (0 -> warning; 1 -> devour)
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+    componentAnimator:SetSelectedClip("DevourToIdle")
+
+    -- TODO: Add particles, audio, etc.
+
+    currentState = State.IDLE
+end
+
+-- Ultimate
+function CastUltimate(castedOn)
+
+    target = castedOn
+
+    local targetPos = target:GetTransform():GetPosition()
+    componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Devour")
+    end
+
+    currentState = State.EAT
+end
+
+function DoUltimate()
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit)
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("DevourToIdle")
@@ -79,16 +108,47 @@ function DoDevour()
     currentState = State.IDLE
 end
 
+-- Spit
+function CastSpit(position)
+
+    target = position
+    componentTransform:SetPosition(position)
+
+    -- This is just to stop the movement
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit)
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Spit")
+    end
+
+    currentState = State.SPIT
+end
+
+function DoSpit()
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit) -- No need for fields[2] cause we will check for state.work
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("SpitToIdle")
+    end
+
+    -- TODO: Add particles, audio, etc.
+    currentState = State.IDLE
+end
+
 -------------------- Events ----------------------
 function EventHandler(key, fields)
 
-    if (key == "Worm_Update_Target") then -- fields[1] -> state, fields[2] -> target;
-        CastDevour(fields[1])
-    elseif (key == "Omozra_Ultimate_Recast") then -- fields[1] -> go;
-
-        componentTransform:SetPosition(fields[1])
-        currentState = State.SPIT
-        componentAnimator:SetSelectedClip("Spit")
+    if (key == "Sadiq_Update_Target" and currentState ~= State.SPIT) then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+        if (fields[2] == 1) then
+            if (fields[1].tag == Tag.ENEMY) then
+                CastDevour(fields[1])
+            elseif (fields[1].tag == Tag.PLAYER) then
+                CastUltimate(fields[1])
+            end
+        elseif (fields[2] == 3) then
+            CastSpit(fields[1])
+        end
     end
 end
 --------------------------------------------------

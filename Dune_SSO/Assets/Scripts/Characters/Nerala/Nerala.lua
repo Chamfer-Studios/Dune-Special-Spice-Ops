@@ -142,13 +142,9 @@ function Update(dt)
         else
             destination = target:GetTransform():GetPosition()
             MoveToDestination(dt)
-            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-            DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
         end
     elseif (destination ~= nil) then
         MoveToDestination(dt)
-        DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
     end
 
     -- Gather Inputs
@@ -367,7 +363,9 @@ end
 
 ------------------- Functions --------------------
 function CancelAbilities()
-    currentState = State.IDLE
+    if (currentState ~= State.WORM) then
+        currentState = State.IDLE
+    end
     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
     drawSecondary = false
@@ -481,7 +479,7 @@ function ManageTimers(dt)
     end
 
     -- If she's dead she can't do anything
-    if (currentState == State.DEAD) then
+    if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
     end
 
@@ -513,7 +511,9 @@ function MoveToDestination(dt)
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
             -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
+            DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
         -- Rotation
         lastRotation = float3.new(vec2[1], 0, vec2[2])
@@ -706,6 +706,30 @@ function EventHandler(key, fields)
     if (key == "Mosquito_Death") then
         ultimateTimer = 0.0
         currentState = State.IDLE
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+        if (fields[1] == gameObject) then
+            if (fields[2] == 1) then
+                StopMovement()
+                currentState = State.WORM
+                if (componentAnimator ~= nil) then
+                    componentAnimator:SetSelectedClip("Idle")
+                end
+            elseif (fields[2] == 2) then
+                if (componentRigidBody ~= nil) then
+                    componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, -40,
+                        componentTransform:GetPosition().z))
+                end
+                gameObject.active = false
+            end
+        elseif (currentState == State.WORM and fields[2] == nil) then
+
+            if (componentRigidBody ~= nil) then
+                componentRigidBody:SetRigidBodyPos(fields[1])
+            end
+            gameObject.active = true
+            currentState = State.IDLE
+        end
     end
 end
 --------------------------------------------------

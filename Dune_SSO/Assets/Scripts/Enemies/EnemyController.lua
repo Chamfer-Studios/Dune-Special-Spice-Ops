@@ -370,11 +370,11 @@ function EventHandler(key, fields)
         if (fields[1] == gameObject) then
             Die()
         end
-    elseif key == "Sadiq_Devour" then
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
-            if (fields[2] == 0) then
+            if (fields[2] == 1) then
                 -- TODO: Stop Movement and/or block enemy
-            elseif (fields[2] == 1) then
+            elseif (fields[2] == 2) then
                 Die()
             end
         end

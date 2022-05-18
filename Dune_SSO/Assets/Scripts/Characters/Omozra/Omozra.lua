@@ -96,7 +96,6 @@ NewVariable(ultimateCastRangeIV)
 
 function Start()
 
-    Log("Starting The Script!")
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
@@ -202,10 +201,6 @@ function Update(dt)
             end
         end
 
-        if (currentState == State.AIM_ULTIMATE_RECAST) then -- Ult step 5
-            return -- Chech if this breaks the compilation
-        end
-
         -- Right Click
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then
             goHit = GetGameObjectHovered()
@@ -260,7 +255,7 @@ function Update(dt)
         end
 
         -- 1
-        if (GetInput(21) == KEY_STATE.KEY_DOWN) then
+        if (GetInput(21) == KEY_STATE.KEY_DOWN and currentState ~= State.AIM_ULTIMATE_RECAST) then
             if (currentState == State.AIM_PRIMARY) then
                 CancelAbilities()
             else
@@ -274,7 +269,7 @@ function Update(dt)
         end
 
         -- 2
-        if (GetInput(22) == KEY_STATE.KEY_DOWN) then
+        if (GetInput(22) == KEY_STATE.KEY_DOWN and currentState ~= State.AIM_ULTIMATE_RECAST) then
             if (currentState == State.AIM_SECONDARY) then
                 CancelAbilities()
             else
@@ -288,7 +283,7 @@ function Update(dt)
         end
 
         -- 3
-        if (GetInput(23) == KEY_STATE.KEY_DOWN) then
+        if (GetInput(23) == KEY_STATE.KEY_DOWN and currentState ~= State.AIM_ULTIMATE_RECAST) then
             if (currentState == State.AIM_ULTIMATE) then
                 CancelAbilities()
             else
@@ -344,7 +339,9 @@ end
 
 ------------------- Functions --------------------
 function CancelAbilities()
-    currentState = State.IDLE
+    if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+        currentState = State.IDLE
+    end
     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
     drawSecondary = false
@@ -419,6 +416,9 @@ function ManageTimers(dt)
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 0})
         end
     end
+    if (currentState == State.AIM_ULTIMATE) then
+        DispatchGlobalEvent("Omozra_Ultimate", {})
+    end
 
     -- Animation timer
     if (componentAnimator ~= nil) then
@@ -431,12 +431,10 @@ function ManageTimers(dt)
                 elseif (currentState == State.AIM_SECONDARY) then
                     DoSecondary()
                 elseif (currentState == State.AIM_ULTIMATE) then
-                    if (isWormDone == nil) then
-                        DoUltimate()
-                        isWormDone = false
-                    end
+                    DoUltimate()
                 elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-                    if (isWormDone == nil) then
+                    -- First pass will be the PointToIdle animation from the first ultimate cast
+                    if (ultimateTimer ~= nil) then -- Second pass will get in here
                         DoUltimateRecast()
                     end
                 elseif (currentState ~= State.DEAD) then
@@ -564,7 +562,7 @@ function DoSecondary()
         componentSwitch:PlayTrack(currentTrackID)
     end
 
-    DispatchGlobalEvent("Worm_Update_Target", {target})
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
     componentAnimator:SetSelectedClip("PointToIdle")
 
@@ -587,8 +585,18 @@ function CastUltimate() -- Ult step 3
 end
 
 function DoUltimate() -- Ult step 4
-    -- This event is just for the player affected
-    DispatchGlobalEvent("Omozra_Ultimate_Target", {target}) -- Target player has to stop all actions
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 3
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+    componentAnimator:SetSelectedClip("PointToIdle")
 
     currentState = State.AIM_ULTIMATE_RECAST
 end
@@ -597,15 +605,15 @@ function RecastUltimate(position)
 
     componentAnimator:SetSelectedClip("Point")
     ultimateTimer = 0.0
-    isWormDone = nil
+    StopMovement(false)
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)
 end
 
 function DoUltimateRecast() -- Ult step 7
-    -- This event is for the worm
-    DispatchGlobalEvent("Omozra_Ultimate_Recast", {target}) -- Mouse position is the target this time
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+    componentAnimator:SetSelectedClip("PointToIdle")
     currentState = State.IDLE
 end
 
