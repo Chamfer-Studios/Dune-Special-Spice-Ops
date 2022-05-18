@@ -68,6 +68,11 @@ function EventHandler(key, fields)
 		spiceAmount = spiceAmount + fields[1]
 		str = "Spice Amount ".. spiceAmount.."\n"
 		Log(str)
+	elseif (key == "Spice_Spawn") then
+		deadEnemyPos = fields[1]
+		deadEnemyType = fields[2]
+	elseif (key == "Spice_Has_Spawned") then
+		DispatchGlobalEvent("Spice_Drop", {deadEnemyPos.x, deadEnemyPos.y, deadEnemyPos.z, deadEnemyType})
     end
 end
 --------------------------------------------------

@@ -13,7 +13,7 @@ function Start()
     boxCollider = gameObject:GetBoxCollider()
 	componentRigidBody = gameObject:GetRigidBody()
 
-
+    DispatchGlobalEvent("Spice_Has_Spawned", {})
 end
 
 ---------------------------------------------------------
@@ -24,30 +24,19 @@ end
 
 -------------------- Events -----------------------------
 function EventHandler(key, fields)
-    if key == "Spice_Drop" then --fields[1] = enemyGameObject fields[2] = enemyType string
-        enemyType = fields[2]
-        enemyGo = fields[1]
-        goPos = enemyGo:GetTransform():GetPosition()
-        Log("goPos = " .. goPos .. "\n")
-        if (componentRigidBody ~= nil) then
-            componentRigidBody:SetRigidBodyPos(float3.new(goPos.x, goPos.y, goPos.z))
-        end
-
-        gameObject:GetTransform():SetPosition(enemyGo:GetTransform():GetPosition().x)
+    if key == "Spice_Drop" then
+        gameObject:GetTransform():SetPosition(float3.new(fields[1], fields[2], fields[3]))
+        
+        enemyType = fields[4]
         if (enemyType == "Harkonnen") then
             math.randomseed()
-            rng = math.random(40,80)
-            Log("Harkonnen reward with rng = " .. rng .. "\n")
+            spiceLoot = math.random(40,80)
         elseif (enemyType == "Sardaukar") then
             math.randomseed()
-            rng = math.random(80,160)
-            Log("Sardaukar reward with rng = " .. rng .. "\n")
+            spiceLoot = math.random(80,160)
         elseif (enemyType == "Mentat") then
             math.randomseed()
-            rng = math.random(100,200)
-            Log("Mentat reward with rng = " .. rng .. "\n")
-        else
-            Log("There has been an error selecting enemy type :( \n")
+            spiceLoot = math.random(100,200)
         end
     end
 end

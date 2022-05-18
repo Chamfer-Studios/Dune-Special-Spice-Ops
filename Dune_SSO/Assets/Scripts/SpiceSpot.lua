@@ -31,3 +31,4 @@ end
 ---------------------------------------------------------
 
 print("SpiceSpot.lua compiled succesfully")
+Log("SpiceSpot.lua compiled succesfully\n")

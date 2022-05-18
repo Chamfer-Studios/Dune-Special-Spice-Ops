@@ -138,10 +138,10 @@ function Die()
     -- Chance to spawn, if spawn dispatch event
     math.randomseed(os.time())
     rng = math.random(100)
-    if (rng >= 1) then
+    if (rng >= 50) then
         InstantiatePrefab("SpiceLoot")
         str = "Harkonnen"
-        DispatchGlobalEvent("Spice_Drop", {gameObject, str})
+        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
         Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
