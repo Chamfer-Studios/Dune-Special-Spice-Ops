@@ -366,10 +366,6 @@ function EventHandler(key, fields)
             deathMarkTime = fields[2]
             deathMarkTimer = 0.0
         end
-    elseif key == "Knife_Hit" then
-        if (fields[1] == gameObject) then
-            Die()
-        end
     elseif key == "Sadiq_Devour" then
         if (fields[1] == gameObject) then
             if (fields[2] == 0) then
@@ -513,7 +509,7 @@ end
 ------------------- Functions --------------------
 function Die()
 
-    DispatchEvent("Die", {})
+    DispatchEvent("Die", {gameObject})
 
     -- currentState = STATE.DEAD
 

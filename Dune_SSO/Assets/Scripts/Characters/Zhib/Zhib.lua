@@ -49,6 +49,9 @@ attackTime = 2.5
 primaryCastRange = 100
 maxKnives = 2
 knifePickupTime = 0.5
+knifeSpeed = 3000
+awareChanceHarkKnife = 25
+unawareChanceSardKnife = 25
 drawPrimary = false
 
 -- Secondary ability --
@@ -75,9 +78,9 @@ maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
 NewVariable(maxHPIV)
 
--- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
+speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+speedIV = InspectorVariable.new("speed", speedIVT, speed)
+NewVariable(speedIV)
 
 ---- Primary ability --
 primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -87,6 +90,19 @@ NewVariable(primaryCastRangeIV)
 maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
 NewVariable(maxKnivesIV)
+
+knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
+NewVariable(knifeSpeedIV)
+
+awareChanceHarkKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+awareChanceHarkKnifeIV = InspectorVariable.new("awareChanceHarkKnife", awareChanceHarkKnifeIVT, awareChanceHarkKnife)
+NewVariable(awareChanceHarkKnife)
+
+unawareChanceSardKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+unawareChanceSardKnifeIV = InspectorVariable.new("unawareChanceSardKnife", unawareChanceSardKnifeIVT,
+    unawareChanceSardKnife)
+NewVariable(unawareChanceSardKnifeIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -154,13 +170,9 @@ function Update(dt)
         else
             destination = target:GetTransform():GetPosition()
             MoveToDestination(dt)
-            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-            DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
         end
     elseif (destination ~= nil) then
         MoveToDestination(dt)
-        DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
     end
 
     -- Gather Inputs
@@ -234,12 +246,7 @@ function Update(dt)
             if (goHit ~= gameObject) then -- Check you are not right-clicking yourself
                 if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
                     State.AIM_ULTIMATE) then
-                    currentState = State.IDLE
-                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
-                    StopMovement()
-                    drawKnife = false
-                    drawDecoy = false
-                    drawUltimate = false
+                    CancelAbilities()
                 else
                     local isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
@@ -544,7 +551,9 @@ function MoveToDestination(dt)
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
             -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
+            DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
         -- Rotation
         lastRotation = float3.new(vec2[1], 0, vec2[2])

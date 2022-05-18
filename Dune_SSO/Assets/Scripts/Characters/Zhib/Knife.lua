@@ -9,6 +9,7 @@ function Start()
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
     target = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    speed = GetVariable("Zhib.lua", "knifeSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     playerPos = player:GetTransform():GetPosition()
     destination = target:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
@@ -60,14 +61,15 @@ function MoveToDestination(dt)
         if (vec2[1] < 0) then
             rad = rad * (-1)
         end
-        componentTransform:SetRotation(float3.new(componentTransform:GetRotation().x,
-            componentTransform:GetRotation().y, rad))
+        rotateKnife = componentTransform:GetRotation().x + 10
+        rot = float3.new(rotateKnife, componentTransform:GetRotation().y, rad)
+        componentTransform:SetRotation(rot)
     else
 
         destination = nil
         if (componentRigidBody ~= nil) then
             componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
-            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y,
+            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 3,
                 componentTransform:GetPosition().z))
         end
     end

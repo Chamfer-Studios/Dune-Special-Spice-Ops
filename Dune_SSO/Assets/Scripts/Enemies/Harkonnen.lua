@@ -15,6 +15,8 @@ ATTACK_FASE = {
 meleeRange = 25.0
 attackTime = 1.5
 
+knifeHitChance = 100
+
 function Start()
     currentState = STATE.UNAWARE
     currentAttack = nil
@@ -129,12 +131,33 @@ function EventHandler(key, fields)
     elseif key == "Target_Update" then
         target = fields[1] -- fields[1] -> new Target;
     elseif key == "Die" then
-        Die()
+        if (fields[1] == gameObject) then
+            Die()
+        end
+    elseif key == "Knife_Hit" then
+        if (fields[1] == gameObject) then
+            if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
+                Log("Enemy was unaware of you, so it was insta-killed :) \n")
+                Die()
+            elseif (currentState == STATE.SUS) then
+                knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the enemy has dodged the knife :( \n")
+                end
+            elseif (currentState == STATE.AGGRO) then
+                Log("Enemy was aggroing you, so he dodged the knife :( \n")
+            end
+        end
     end
 end
 
-function Die() 
-    
+function Die()
+
     -- Chance to spawn, if spawn dispatch event
     math.randomseed(os.time())
     rng = math.random(100)
