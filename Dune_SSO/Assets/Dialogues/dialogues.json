@@ -14,18 +14,10 @@
       "src": "Assets/UI/HUD/blank_asset_v1.0.png",
       "char": " ",
       "line1": "An enemy! You can attack by right clicking on them",
-      "line2": "be careful when approaching them, if they detect you,"
+      "line2": "be careful when approaching them, if they detect you, they will strike back!"
     },
     {
       "id": 3,
-      "targetID": 4,
-      "src": "Assets/UI/HUD/blank_asset_v1.0.png",
-      "char": " ",
-      "line1": "they will strike back!                               ",
-      "line2": " "
-    },
-    {
-      "id": 4,
       "targetID": -1,
       "src": "Assets/UI/HUD/blank_asset_v1.0.png",
       "char": " ",
@@ -38,15 +30,15 @@
       "src": "Assets/UI/HUD/blank_asset_v1.0.png",
       "char": " ",
       "line1": "To deal with this encounter you will have to use your knife,",
-      "line2": "press 1 and then click on the enemy to throw your knife."
+      "line2": "Press 1 and then click on the enemy to throw your knife. This will kill them instantly!"
     },
     {
       "id": 6,
       "targetID": -1,
       "src": "Assets/UI/HUD/blank_asset_v1.0.png",
       "char": " ",
-      "line1": "You have three abilities and you can use them with the numbers.",
-      "line2": "Your ultimate consumes spice to cast.                          "
+      "line1": "You have three abilities and you can use them with the numbers 1, 2 and 3 of your keyboard.",
+      "line2": "Your ultimate consumes spice to cast. So think before using it           "
     },
     {
       "id": 7,
