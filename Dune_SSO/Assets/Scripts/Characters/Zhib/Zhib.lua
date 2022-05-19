@@ -242,7 +242,8 @@ function Update(dt)
                     drawUltimate = false
                 else
                     local isMoving = true
-                    if (goHit.tag == Tag.ENEMY) then
+                    if (goHit.tag == Tag.ENEMY and currentState == State.AIM_PRIMARY or currentState ==
+                        State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
                         currentState = State.ATTACK
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
@@ -299,17 +300,17 @@ function Update(dt)
 
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
-            Die()
-            -- if (currentState == State.AIM_PRIMARY) then
-            --    CancelAbilities()
-            -- else
-            --    CancelAbilities()
-            --    currentState = State.AIM_PRIMARY
-            --    DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-            --    drawPrimary = true
-            --    drawSecondary = false
-            --    drawUltimate = false
-            -- end
+
+            if (currentState == State.AIM_PRIMARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                currentState = State.AIM_PRIMARY
+                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                drawPrimary = true
+                drawSecondary = false
+                drawUltimate = false
+            end
         end
 
         -- 2
