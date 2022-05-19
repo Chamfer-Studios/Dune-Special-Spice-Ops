@@ -263,7 +263,6 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_PRIMARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-                drawPrimary = true
             end
         end
 
@@ -275,7 +274,6 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_SECONDARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-                drawSecondary = true
             end
         end
 
@@ -287,7 +285,6 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_ULTIMATE)
                 DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-                drawUltimate = true
             end
         end
 
@@ -322,15 +319,19 @@ function SetState(newState)
         currentState = State.IDLE
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
+        drawPrimary = true
         StopMovement()
     elseif (newState == State.AIM_SECONDARY) then
         currentState = State.AIM_SECONDARY
+        drawSecondary = true
         StopMovement()
     elseif (newState == State.AIM_ULTIMATE) then
         currentState = State.AIM_ULTIMATE
+        drawUltimate = true
         StopMovement()
     elseif (newState == State.AIM_ULTIMATE_RECAST) then
         currentState = State.AIM_ULTIMATE_RECAST
+        drawUltimateRecast = true
         StopMovement()
     elseif (newState == State.DEAD) then
         currentState = State.DEAD
@@ -403,6 +404,7 @@ function CancelAbilities()
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
+    drawUltimateRecast = false
 end
 
 function DrawActiveAbilities()
@@ -615,6 +617,7 @@ function CastPrimary(position)
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
+    drawUltimateRecast = false
 end
 
 -- Secondary ability
@@ -634,6 +637,7 @@ function CastSecondary(position)
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
+    drawUltimateRecast = false
 end
 
 function DoSecondary()
@@ -666,6 +670,7 @@ function CastUltimate() -- Ult step 3
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
+    drawUltimateRecast = false
 end
 
 function DoUltimate() -- Ult step 4
@@ -692,6 +697,11 @@ function RecastUltimate(position)
     StopMovement()
 
     LookAtTarget(position)
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
+    drawUltimateRecast = false
 end
 
 function DoUltimateRecast() -- Ult step 7
@@ -746,16 +756,7 @@ end
 -------------------- Events ----------------------
 function EventHandler(key, fields)
 
-    if (key == "Omozra_Ultimate_Target" and fields[1] == gameObject) then -- fields[1] -> go;
-        StopMovement()
-        if (componentAnimator ~= nil) then
-            componentAnimator:SetSelectedClip("Idle") -- (?)
-        end
-        SetState(State.WORM)
-    elseif (key == "Worm_Start_Animation_Done") then -- fields[1] -> nil;
-        SetState(State.AIM_ULTIMATE_RECAST)
-
-    elseif (key == "Stop_Movement") then
+    if (key == "Stop_Movement") then
         StopMovement()
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
