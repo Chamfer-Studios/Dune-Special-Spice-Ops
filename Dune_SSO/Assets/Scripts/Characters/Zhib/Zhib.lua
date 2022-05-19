@@ -39,7 +39,11 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 1
-speed = 2000.0
+speed = 2000
+staminaSeconds = 7
+recoveryTime = 6
+staminaTimer = staminaSeconds
+isTired = false
 
 -- Basic Attack --
 attackRange = 25.0
@@ -48,7 +52,6 @@ attackTime = 2.5
 -- Primary ability --
 primaryCastRange = 100
 maxKnives = 2
--- knifePickupTime = 0.5
 knifeSpeed = 3000
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
@@ -85,6 +88,14 @@ NewVariable(maxHPIV)
 speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 speedIV = InspectorVariable.new("speed", speedIVT, speed)
 NewVariable(speedIV)
+
+staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
+NewVariable(staminaSecondsIV)
+
+recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
+NewVariable(recoveryTimeIV)
 
 ---- Primary ability --
 primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -263,8 +274,8 @@ function Update(dt)
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true) then
-
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
+                        false) then
                         currentMovement = Movement.RUN
                         if (componentAnimator ~= nil) then
                             componentAnimator:SetSelectedClip("Run")
@@ -420,13 +431,13 @@ function DrawActiveAbilities()
     if radiusLight ~= nil then
         if (drawPrimary == true) then
             radiusLight:SetRange(primaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         elseif (drawSecondary == true) then
             radiusLight:SetRange(secondaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         elseif (drawUltimate == true) then
             radiusLight:SetRange(ultimateCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         else
             radiusLight:SetAngle(0)
         end
@@ -435,6 +446,39 @@ end
 
 function ManageTimers(dt)
     local ret = true
+
+    if (currentMovement == Movement.RUN) then
+        staminaTimer = staminaTimer - dt
+        if (staminaTimer < 0.0) then
+            staminaTimer = 0.0
+            isTired = true
+
+            currentMovement = Movement.WALK
+            if (componentAnimator ~= nil) then
+                componentAnimator:SetSelectedClip("Walk")
+            end
+            if (componentSwitch ~= nil) then
+                if (currentTrackID ~= -1) then
+                    componentSwitch:StopTrack(currentTrackID)
+                end
+                currentTrackID = 0
+                componentSwitch:PlayTrack(currentTrackID)
+            end
+
+            -- Log("I am tired :( \n")
+        else
+            Log("Stamina timer: " .. staminaTimer .. "\n")
+        end
+    else
+        staminaTimer = staminaTimer + dt
+        if (staminaTimer > recoveryTime) then
+            staminaTimer = staminaSeconds
+            isTired = false
+            -- Log("I am recovered! :) \n")
+        else
+            Log("Stamina timer: " .. staminaTimer .. "\n")
+        end
+    end
 
     -- Running state logic
     if (isDoubleClicking == true) then
@@ -838,9 +882,6 @@ function TakeDamage(damage)
 end
 
 function Die()
-
-    StopMovement()
-
     SetState(State.DEAD)
     currentHP = 0
     DispatchGlobalEvent("Player_Death", {characterID})

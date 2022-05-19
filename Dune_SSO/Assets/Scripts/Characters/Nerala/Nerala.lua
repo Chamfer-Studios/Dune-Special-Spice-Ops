@@ -39,7 +39,11 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 2
-speed = 2500.0
+speed = 2500
+staminaSeconds = 7
+recoveryTime = 6
+staminaTimer = staminaSeconds
+isTired = false
 
 -- Basic Attack --
 attackRange = 50.0
@@ -83,6 +87,14 @@ NewVariable(maxHPIV)
 speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 speedIV = InspectorVariable.new("speed", speedIVT, speed)
 NewVariable(speedIV)
+
+staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
+NewVariable(staminaSecondsIV)
+
+recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
+NewVariable(recoveryTimeIV)
 
 -- Primary ability --
 primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -235,7 +247,7 @@ function Update(dt)
                 else
                     local isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
-                        currentState = State.ATTACK
+                        SetState(State.ATTACK)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
@@ -251,8 +263,8 @@ function Update(dt)
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true) then
-
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
+                        false) then
                         currentMovement = Movement.RUN
                         if (componentAnimator ~= nil) then
                             componentAnimator:SetSelectedClip("Run")
@@ -295,11 +307,9 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_PRIMARY
+                SetState(State.AIM_PRIMARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
                 drawPrimary = true
-                drawSecondary = false
-                drawUltimate = false
             end
         end
 
@@ -309,11 +319,9 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_SECONDARY
+                SetState(State.AIM_SECONDARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-                drawPrimary = false
                 drawSecondary = true
-                drawUltimate = false
             end
         end
 
@@ -323,10 +331,8 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_ULTIMATE
+                SetState(State.AIM_ULTIMATE)
                 DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-                drawPrimary = false
-                drawSecondary = false
                 drawUltimate = true
             end
         end
@@ -372,9 +378,36 @@ end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function SetState(newState)
+    if (newState == State.IDLE) then
+        currentState = State.IDLE
+    elseif (newState == State.ATTACK) then
+        currentState = State.ATTACK
+        StopMovement(false)
+    elseif (newState == State.AIM_PRIMARY) then
+        currentState = State.AIM_PRIMARY
+        StopMovement(false)
+    elseif (newState == State.AIM_SECONDARY) then
+        currentState = State.AIM_SECONDARY
+        StopMovement(false)
+    elseif (newState == State.AIM_ULTIMATE) then
+        currentState = State.AIM_ULTIMATE
+        StopMovement(false)
+    elseif (newState == State.DEAD) then
+        currentState = State.DEAD
+        StopMovement()
+    elseif (newState == State.WORM) then
+        currentState = State.WORM
+        StopMovement()
+    elseif (newState == State.MOSQUITO) then
+        currentState = State.MOSQUITO
+        StopMovement(false)
+    end
+end
+
 function CancelAbilities()
     if (currentState ~= State.WORM) then
-        currentState = State.IDLE
+        SetState(State.IDLE)
     end
     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
@@ -389,13 +422,13 @@ function DrawActiveAbilities()
     if radiusLight ~= nil then
         if (drawPrimary == true) then
             radiusLight:SetRange(primaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         elseif (drawSecondary == true) then
             radiusLight:SetRange(secondaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         elseif (drawUltimate == true) then
             radiusLight:SetRange(ultimateCastRange)
-            radiusLight:SetAngle(360 / 2)
+            radiusLight:SetAngle(358 / 2)
         else
             radiusLight:SetAngle(0)
         end
@@ -404,6 +437,39 @@ end
 
 function ManageTimers(dt)
     local ret = true
+
+    if (currentMovement == Movement.RUN) then
+        staminaTimer = staminaTimer - dt
+        if (staminaTimer < 0.0) then
+            staminaTimer = 0.0
+            isTired = true
+
+            currentMovement = Movement.WALK
+            if (componentAnimator ~= nil) then
+                componentAnimator:SetSelectedClip("Walk")
+            end
+            if (componentSwitch ~= nil) then
+                if (currentTrackID ~= -1) then
+                    componentSwitch:StopTrack(currentTrackID)
+                end
+                currentTrackID = 0
+                componentSwitch:PlayTrack(currentTrackID)
+            end
+
+            -- Log("I am tired :( \n")
+        else
+            Log("Stamina timer: " .. staminaTimer .. "\n")
+        end
+    else
+        staminaTimer = staminaTimer + dt
+        if (staminaTimer > recoveryTime) then
+            staminaTimer = staminaSeconds
+            isTired = false
+            -- Log("I am recovered! :) \n")
+        else
+            Log("Stamina timer: " .. staminaTimer .. "\n")
+        end
+    end
 
     -- Running state logic
     if (isDoubleClicking == true) then
@@ -553,8 +619,6 @@ function StopMovement(resetTarget)
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
-
-    DispatchEvent("Stop_Movement", {})
 end
 
 function LookAtTarget(lookAt)
@@ -580,7 +644,7 @@ end
 -- Basic Attack
 function Attack()
 
-    currentState = State.ATTACK
+    SetState(State.ATTACK)
     componentAnimator:SetSelectedClip("Attack")
 
     StopMovement(false)
@@ -594,7 +658,7 @@ function DoAttack()
     LookAtTarget(target:GetTransform():GetPosition())
     attackTimer = 0.0
     target = nil
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Primary ability
@@ -605,6 +669,10 @@ function CastPrimary(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
     LookAtTarget(position)
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 function FireDart()
@@ -620,7 +688,7 @@ function FireDart()
     end
 
     componentAnimator:SetSelectedClip("DartToIdle")
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Secondary ability
@@ -632,6 +700,10 @@ function CastSecondary(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 function PlaceSmokebomb()
@@ -646,7 +718,7 @@ function PlaceSmokebomb()
     end
 
     componentAnimator:SetSelectedClip("SmokebombToIdle")
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Ultimate ability
@@ -658,6 +730,10 @@ function CastUltimate(position)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)
+
+    drawPrimary = false
+    drawSecondary = false
+    drawUltimate = false
 end
 
 function DoUltimate()
@@ -665,7 +741,7 @@ function DoUltimate()
     InstantiatePrefab("Mosquito")
 
     -- No new clip, the last clip has to last until the mosquito dies
-    currentState = State.MOSQUITO
+    SetState(State.MOSQUITO)
 end
 
 function TakeDamage(damage)
@@ -692,10 +768,7 @@ function TakeDamage(damage)
 end
 
 function Die()
-
-    StopMovement()
-
-    currentState = State.DEAD
+    SetState(State.DEAD)
     currentHP = 0
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
@@ -717,13 +790,12 @@ function EventHandler(key, fields)
 
     if (key == "Mosquito_Death") then
         ultimateTimer = 0.0
-        currentState = State.IDLE
+        SetState(State.IDLE)
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
-                StopMovement()
-                currentState = State.WORM
+                SetState(State.WORM)
                 if (componentAnimator ~= nil) then
                     componentAnimator:SetSelectedClip("Idle")
                 end
@@ -740,7 +812,12 @@ function EventHandler(key, fields)
                 componentRigidBody:SetRigidBodyPos(fields[1])
             end
             gameObject.active = true
-            currentState = State.IDLE
+            SetState(State.IDLE)
+        end
+    elseif (key == "Stop_Movement") then
+        StopMovement()
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("Idle")
         end
     end
 end
@@ -785,6 +862,7 @@ end
 --------------------------------------------------
 
 print("Nerala.lua compiled succesfully")
+Log("Nerala.lua compiled succesfully")
 
 -------- Scraps --------
 -- local components = gameObject:GetComponents()
