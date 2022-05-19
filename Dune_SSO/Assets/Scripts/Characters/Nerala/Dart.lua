@@ -9,7 +9,8 @@ function Start()
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
     target = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    local playerPos = player:GetTransform():GetPosition()
+    speed = GetVariable("Nerala.lua", "dartSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    playerPos = player:GetTransform():GetPosition()
     destination = target:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
     local pos2D = {playerPos.x, playerPos.z}
@@ -33,7 +34,7 @@ end
 -- Collision Handler
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
-        DeleteGameObject()
+        DispatchGlobalEvent("Dart_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
     end
 end
 
@@ -86,4 +87,5 @@ function Distance(a, b)
 
 end
 
-print("All good")
+print("Dart.lua compiled succesfully\n")
+Log("Dart.lua compiled succesfully\n")

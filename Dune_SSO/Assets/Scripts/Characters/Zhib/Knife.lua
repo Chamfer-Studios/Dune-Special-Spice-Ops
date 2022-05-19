@@ -91,5 +91,5 @@ function Distance(a, b)
 
 end
 
-print("Knife.lua compiled succesfully")
-Log("Knife.lua compiled succesfully")
+print("Knife.lua compiled succesfully\n")
+Log("Knife.lua compiled succesfully\n")
