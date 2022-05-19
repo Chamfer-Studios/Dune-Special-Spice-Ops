@@ -14,7 +14,8 @@ Movement = {
     IDLE = 1,
     WALK = 2,
     RUN = 3,
-    CROUCH = 4
+    IDLE_CROUCH = 4,
+    CROUCH = 5
 }
 State = {
     IDLE = 1,
@@ -269,38 +270,19 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    else
+                    elseif (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    else
+                        isMoving = false
                     end
 
                     if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
                         false) then
-                        currentMovement = Movement.RUN
-                        if (componentAnimator ~= nil) then
-                            componentAnimator:SetSelectedClip("Run")
-                        end
-                        if (componentSwitch ~= nil) then
-                            if (currentTrackID ~= -1) then
-                                componentSwitch:StopTrack(currentTrackID)
-                            end
-                            currentTrackID = 1
-                            componentSwitch:PlayTrack(currentTrackID)
-                        end
+                        SetMovement(Movement.RUN)
                     else
                         if (currentMovement == Movement.IDLE and isMoving == true) then
-
-                            currentMovement = Movement.WALK
-                            if (componentAnimator ~= nil) then
-                                componentAnimator:SetSelectedClip("Walk")
-                            end
-                            if (componentSwitch ~= nil) then
-                                if (currentTrackID ~= -1) then
-                                    componentSwitch:StopTrack(currentTrackID)
-                                end
-                                currentTrackID = 0
-                                componentSwitch:PlayTrack(currentTrackID)
-                            end
+                            SetMovement(Movement.WALK)
                         end
                         isDoubleClicking = true
                     end
@@ -351,35 +333,19 @@ function Update(dt)
 
         -- LSHIFT -> Toggle crouch
         if (GetInput(12) == KEY_STATE.KEY_DOWN) then
+
             if (currentMovement == Movement.CROUCH) then
-                if (destination ~= nil) then
-                    currentMovement = Movement.WALK
-                    if (componentAnimator ~= nil) then
-                        componentAnimator:SetSelectedClip("Walk")
-                    end
-                    if (componentSwitch ~= nil) then
-                        if (currentTrackID ~= -1) then
-                            componentSwitch:StopTrack(currentTrackID)
-                        end
-                        currentTrackID = 0
-                        componentSwitch:PlayTrack(currentTrackID)
-                    end
-                else
-                    currentMovement = Movement.IDLE
+                SetMovement(Movement.WALK)
+            elseif (currentMovement == Movement.WALK or currentMovement == Movement.RUN) then
+                SetMovement(Movement.CROUCH)
+            elseif (destination == nil) then
+                if (currentMovement == Movement.IDLE) then
+                    SetMovement(Movement.IDLE_CROUCH)
+                elseif (currentMovement == Movement.IDLE_CROUCH) then
+                    SetMovement(Movement.IDLE)
                     if (componentAnimator ~= nil) then
                         componentAnimator:SetSelectedClip("Idle")
                     end
-                end
-            else
-                currentMovement = Movement.CROUCH
-                if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-                    if (currentTrackID ~= -1) then
-                        componentSwitch:StopTrack(currentTrackID)
-                        currentTrackID = -1
-                    end
-                end
-                if (componentAnimator ~= nil) then
-                    componentAnimator:SetSelectedClip("Crouch")
                 end
             end
         end
@@ -414,6 +380,60 @@ function SetState(newState)
     end
 end
 
+function SetMovement(newMovement)
+    if (newMovement == Movement.IDLE) then
+        currentMovement = Movement.IDLE
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+            currentTrackID = -1
+        end
+    elseif (newMovement == Movement.WALK) then
+        currentMovement = Movement.WALK
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("Walk")
+        end
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 0
+            componentSwitch:PlayTrack(currentTrackID)
+        end
+    elseif (newMovement == Movement.RUN) then
+        currentMovement = Movement.RUN
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("Run")
+        end
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 1
+            componentSwitch:PlayTrack(currentTrackID)
+        end
+    elseif (newMovement == Movement.IDLE_CROUCH) then
+        currentMovement = Movement.IDLE_CROUCH
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("IdleCrouch")
+        end
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+            currentTrackID = -1
+        end
+    elseif (newMovement == Movement.CROUCH) then
+        currentMovement = Movement.CROUCH
+        if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+                currentTrackID = -1
+            end
+        end
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("Crouch")
+        end
+    end
+end
+
 function CancelAbilities()
     if (currentState ~= State.WORM) then
         SetState(State.IDLE)
@@ -431,13 +451,13 @@ function DrawActiveAbilities()
     if radiusLight ~= nil then
         if (drawPrimary == true) then
             radiusLight:SetRange(primaryCastRange)
-            radiusLight:SetAngle(358 / 2)
+            radiusLight:SetAngle(360 / 2)
         elseif (drawSecondary == true) then
             radiusLight:SetRange(secondaryCastRange)
-            radiusLight:SetAngle(358 / 2)
+            radiusLight:SetAngle(360 / 2)
         elseif (drawUltimate == true) then
             radiusLight:SetRange(ultimateCastRange)
-            radiusLight:SetAngle(358 / 2)
+            radiusLight:SetAngle(360 / 2)
         else
             radiusLight:SetAngle(0)
         end
@@ -453,19 +473,7 @@ function ManageTimers(dt)
             staminaTimer = 0.0
             isTired = true
 
-            currentMovement = Movement.WALK
-            if (componentAnimator ~= nil) then
-                componentAnimator:SetSelectedClip("Walk")
-            end
-            if (componentSwitch ~= nil) then
-                if (currentTrackID ~= -1) then
-                    componentSwitch:StopTrack(currentTrackID)
-                end
-                currentTrackID = 0
-                componentSwitch:PlayTrack(currentTrackID)
-            end
-
-            -- Log("I am tired :( \n")
+            SetMovement(Movement.WALK)
         else
             Log("Stamina timer: " .. staminaTimer .. "\n")
         end
@@ -599,7 +607,10 @@ function MoveToDestination(dt)
 
         -- Adapt speed
         local s = speed
-        if (currentMovement == Movement.CROUCH) then
+        if (currentMovement == Movement.IDLE_CROUCH) then
+            SetMovement(Movement.CROUCH)
+            s = speed * 0.66
+        elseif (currentMovement == Movement.CROUCH) then
             s = speed * 0.66
         elseif (currentMovement == Movement.RUN) then
             s = speed * 1.5
@@ -618,8 +629,6 @@ function MoveToDestination(dt)
         end
         DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
-
         -- Rotation
         lastRotation = float3.new(vec2[1], 0, vec2[2])
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
@@ -633,12 +642,11 @@ end
 
 function StopMovement(resetTarget)
 
-    if (componentSwitch ~= nil and currentTrackID ~= -1) then
-        componentSwitch:StopTrack(currentTrackID)
-        currentTrackID = -1
+    if (currentMovement == Movement.CROUCH) then
+        SetMovement(Movement.IDLE_CROUCH)
+    else
+        SetMovement(Movement.IDLE)
     end
-
-    currentMovement = Movement.IDLE -- Stops aimings and all States
 
     destination = nil
 
@@ -916,7 +924,7 @@ function EventHandler(key, fields)
                 end
             elseif (fields[2] == 2) then
                 if (componentRigidBody ~= nil) then
-                    componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, -40,
+                    componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, -50,
                         componentTransform:GetPosition().z))
                 end
                 gameObject.active = false

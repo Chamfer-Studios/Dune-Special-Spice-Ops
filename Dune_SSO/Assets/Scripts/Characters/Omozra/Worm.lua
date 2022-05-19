@@ -16,7 +16,7 @@ startCalled = false
 
 function Start()
     omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -40,
+    componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -50,
         omozra:GetTransform():GetPosition().z))
 
     if (particles ~= null) then
@@ -47,7 +47,7 @@ function Update(dt)
                 elseif (currentState == State.SPIT) then
                     DoSpit()
                 else
-                    componentTransform:SetPosition(float3.new(0, -40, 0))
+                    componentTransform:SetPosition(float3.new(0, -50, 0))
                 end
             end
         end
