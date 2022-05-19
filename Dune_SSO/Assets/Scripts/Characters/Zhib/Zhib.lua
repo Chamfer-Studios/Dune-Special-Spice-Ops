@@ -48,7 +48,14 @@ attackTime = 2.5
 -- Primary ability --
 primaryCastRange = 100
 maxKnives = 2
-knifePickupTime = 0.5
+-- knifePickupTime = 0.5
+knifeSpeed = 3000
+unawareChanceHarkKnife = 100
+awareChanceHarkKnife = 80
+aggroChanceHarkKnife = 20
+unawareChanceSardKnife = 75
+awareChanceSardKnife = 25
+aggroChanceSardKnife = 0
 drawPrimary = false
 
 -- Secondary ability --
@@ -75,9 +82,9 @@ maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
 NewVariable(maxHPIV)
 
--- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
+speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+speedIV = InspectorVariable.new("speed", speedIVT, speed)
+NewVariable(speedIV)
 
 ---- Primary ability --
 primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -87,6 +94,10 @@ NewVariable(primaryCastRangeIV)
 maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
 NewVariable(maxKnivesIV)
+
+knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
+NewVariable(knifeSpeedIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -457,17 +468,18 @@ function ManageTimers(dt)
     end
 
     -- Primary ability cooldown
-    if (knifePickupTimer ~= nil) then
-        knifePickupTimer = knifePickupTimer + dt
-        if (knifePickupTimer >= knifePickupTime) then
-            knifePickupTimer = nil
-        end
-    end
+    -- if (knifePickupTimer ~= nil) then
+    --     knifePickupTimer = knifePickupTimer + dt
+    --     if (knifePickupTimer >= knifePickupTime) then
+    --         knifePickupTimer = nil
+    --     end
+    -- end
 
     -- Secondary ability cooldown
     if (secondaryTimer ~= nil) then
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
+            Log("Decoy available!\n")
             secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
@@ -558,8 +570,9 @@ function MoveToDestination(dt)
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
             -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
-            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
+            DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
         DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -672,7 +685,6 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Decoy")
-    secondaryTimer = 0.0
     StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
@@ -876,17 +888,19 @@ function EventHandler(key, fields)
             gameObject.active = true
             SetState(State.IDLE)
         end
+    elseif (key == "Decoy_Grabbed") then
+        Log("I have grabbed the decoy! \n")
+        secondaryTimer = 0.0
+    elseif (key == "Knife_Grabbed") then
+        Log("I have grabbed a knife! \n")
+        knifeCount = knifeCount + 1
     end
 end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
-
-    if (go.tag == Tag.PROJECTILE and knifePickupTimer == nil) then
-        knifeCount = knifeCount + 1
-        knifePickupTimer = 0.0
-    elseif (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+    if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         TakeDamage(1)
     end
 end
@@ -926,3 +940,4 @@ end
 --------------------------------------------------
 
 print("Zhib.lua compiled succesfully")
+Log("Zhib.lua compiled succesfully")

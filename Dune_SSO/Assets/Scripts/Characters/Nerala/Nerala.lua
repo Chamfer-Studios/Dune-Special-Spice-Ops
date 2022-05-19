@@ -47,7 +47,14 @@ attackTime = 2.5
 
 -- Primary ability --
 primaryCastRange = 100
-primaryCooldown = 5.0
+primaryCooldown = 5
+dartSpeed = 3000
+unawareChanceHarkDart = 100
+awareChanceHarkDart = 90
+aggroChanceHarkDart = 0
+unawareChanceSardDart = 100
+awareChanceSardDart = 80
+aggroChanceSardDart = 0
 drawPrimary = false
 
 -- Secondary ability --
@@ -73,14 +80,22 @@ maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
 NewVariable(maxHPIV)
 
--- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
+speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+speedIV = InspectorVariable.new("speed", speedIVT, speed)
+NewVariable(speedIV)
 
 -- Primary ability --
 primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
 NewVariable(primaryCastRangeIV)
+
+primaryCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+primaryCooldownIV = InspectorVariable.new("primaryCooldown", primaryCooldownIVT, primaryCooldown)
+NewVariable(primaryCooldownIV)
+
+dartSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+dartSpeedIV = InspectorVariable.new("dartSpeed", dartSpeedIVT, dartSpeed)
+NewVariable(dartSpeedIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -216,12 +231,7 @@ function Update(dt)
             if (goHit ~= gameObject) then -- Check you are not right-clicking yourself
                 if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
                     State.AIM_ULTIMATE) then
-                    currentState = State.IDLE
-                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
-                    StopMovement()
-                    drawKnife = false
-                    drawDecoy = false
-                    drawUltimate = false
+                    CancelAbilities()
                 else
                     local isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
@@ -591,7 +601,6 @@ end
 function CastPrimary(position)
 
     componentAnimator:SetSelectedClip("Dart")
-    primaryTimer = 0.0
     StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
@@ -600,7 +609,8 @@ end
 
 function FireDart()
 
-    -- InstantiatePrefab("Dart")
+    primaryTimer = 0.0
+    InstantiatePrefab("Dart")
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)

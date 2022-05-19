@@ -1,14 +1,15 @@
 ------------------- Variables --------------------
 speed = 3000
 destination = nil
+isGrabbable = false
 
 -------------------- Methods ---------------------
-
 function Start()
     boxCollider = gameObject:GetBoxCollider() -- This is here instead of at "awake" so the order of component creation does not affect
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
     target = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    speed = GetVariable("Zhib.lua", "knifeSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     playerPos = player:GetTransform():GetPosition()
     destination = target:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
@@ -27,6 +28,8 @@ function Update(dt)
 
     if (destination ~= nil) then
         MoveToDestination(dt)
+    else
+        isGrabbable = true
     end
 end
 
@@ -34,7 +37,8 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
         DispatchGlobalEvent("Knife_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
-    elseif (destination == nil and go.tag == Tag.PLAYER) then -- Using direct name instead of tags so other players can't pick it up
+    elseif (destination == nil and go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
+        DispatchGlobalEvent("Knife_Grabbed", {})
         DeleteGameObject()
     end
 end
@@ -60,14 +64,15 @@ function MoveToDestination(dt)
         if (vec2[1] < 0) then
             rad = rad * (-1)
         end
-        componentTransform:SetRotation(float3.new(componentTransform:GetRotation().x,
-            componentTransform:GetRotation().y, rad))
+        rotateKnife = componentTransform:GetRotation().x + 10
+        rot = float3.new(rotateKnife, componentTransform:GetRotation().y, rad)
+        componentTransform:SetRotation(rot)
     else
 
         destination = nil
         if (componentRigidBody ~= nil) then
             componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
-            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y,
+            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 5,
                 componentTransform:GetPosition().z))
         end
     end
@@ -90,4 +95,5 @@ function Distance(a, b)
 
 end
 
-print("All good")
+print("Knife.lua compiled succesfully\n")
+Log("Knife.lua compiled succesfully\n")

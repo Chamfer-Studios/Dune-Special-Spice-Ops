@@ -531,7 +531,7 @@ end
 ------------------- Functions --------------------
 function Die()
 
-    DispatchEvent("Die", {})
+    DispatchEvent("Die", {gameObject})
 
     -- currentState = STATE.DEAD
 
