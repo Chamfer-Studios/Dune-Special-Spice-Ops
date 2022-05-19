@@ -167,6 +167,11 @@ function EventHandler(key, fields)
         UpdatePath(fields[1], fields[2], fields[3])
     elseif key == "Pathfinder_FollowPath" then -- fields[1] -> speed; fields[2] -> dt; fields[3] -> loop;
         FollowPath(fields[1], fields[2], fields[3])
+    elseif key == "Stop_Movement" then
+        _G.finalPath = {}
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetLinearVelocity(float3.new(0.0, 0.0, 0.0))
+        end
     end
 end
 

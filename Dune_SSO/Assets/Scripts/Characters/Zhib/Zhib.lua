@@ -149,18 +149,15 @@ function Update(dt)
 
     -- States
     if (currentState == State.ATTACK) then
+
         if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
             Attack()
         else
             destination = target:GetTransform():GetPosition()
             MoveToDestination(dt)
-            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-            DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
         end
     elseif (destination ~= nil) then
         MoveToDestination(dt)
-        DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
     end
 
     -- Gather Inputs
@@ -234,17 +231,12 @@ function Update(dt)
             if (goHit ~= gameObject) then -- Check you are not right-clicking yourself
                 if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
                     State.AIM_ULTIMATE) then
-                    currentState = State.IDLE
-                    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
-                    StopMovement()
-                    drawKnife = false
-                    drawDecoy = false
-                    drawUltimate = false
+                    CancelAbilities()
                 else
                     local isMoving = true
                     if (goHit.tag == Tag.ENEMY and currentState == State.AIM_PRIMARY or currentState ==
                         State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
-                        currentState = State.ATTACK
+                        SetState(State.ATTACK)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
@@ -305,11 +297,9 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_PRIMARY
+                SetState(State.AIM_PRIMARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
                 drawPrimary = true
-                drawSecondary = false
-                drawUltimate = false
             end
         end
 
@@ -319,11 +309,9 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_SECONDARY
+                SetState(State.AIM_SECONDARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-                drawPrimary = false
                 drawSecondary = true
-                drawUltimate = false
             end
         end
 
@@ -333,10 +321,8 @@ function Update(dt)
                 CancelAbilities()
             else
                 CancelAbilities()
-                currentState = State.AIM_ULTIMATE
+                SetState(State.AIM_ULTIMATE)
                 DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-                drawPrimary = false
-                drawSecondary = false
                 drawUltimate = true
             end
         end
@@ -382,9 +368,33 @@ end
 --------------------------------------------------
 
 ------------------- Functions --------------------
+function SetState(newState)
+    if (newState == State.IDLE) then
+        currentState = State.IDLE
+    elseif (newState == State.ATTACK) then
+        currentState = State.ATTACK
+        StopMovement(false)
+    elseif (newState == State.AIM_PRIMARY) then
+        currentState = State.AIM_PRIMARY
+        StopMovement(false)
+    elseif (newState == State.AIM_SECONDARY) then
+        currentState = State.AIM_SECONDARY
+        StopMovement(false)
+    elseif (newState == State.AIM_ULTIMATE) then
+        currentState = State.AIM_ULTIMATE
+        StopMovement(false)
+    elseif (newState == State.DEAD) then
+        currentState = State.DEAD
+        StopMovement()
+    elseif (newState == State.WORM) then
+        currentState = State.WORM
+        StopMovement()
+    end
+end
+
 function CancelAbilities()
     if (currentState ~= State.WORM) then
-        currentState = State.IDLE
+        SetState(State.IDLE)
     end
     DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
@@ -548,7 +558,10 @@ function MoveToDestination(dt)
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
             -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
+            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
         end
+
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
         -- Rotation
         lastRotation = float3.new(vec2[1], 0, vec2[2])
@@ -603,11 +616,9 @@ end
 -- Basic Attack
 function Attack()
 
-    currentState = State.ATTACK
+    SetState(State.ATTACK)
 
     componentAnimator:SetSelectedClip("Attack")
-
-    StopMovement(false)
 
     LookAtTarget(target:GetTransform():GetPosition())
 end
@@ -624,7 +635,7 @@ function DoAttack()
 
     target = nil
 
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Primary ability
@@ -654,7 +665,7 @@ function FireKnife()
     end
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Secondary ability
@@ -685,7 +696,7 @@ function PlaceDecoy()
     end
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 -- Ultimate ability
@@ -788,7 +799,7 @@ function DoUltimate()
     --	componentSwitch:PlayTrack(currentTrackID)
     -- end
 
-    currentState = State.IDLE
+    SetState(State.IDLE)
 end
 
 function TakeDamage(damage)
@@ -818,7 +829,7 @@ function Die()
 
     StopMovement()
 
-    currentState = State.DEAD
+    SetState(State.DEAD)
     currentHP = 0
     DispatchGlobalEvent("Player_Death", {characterID})
 
@@ -846,8 +857,7 @@ function EventHandler(key, fields)
 
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
-                StopMovement()
-                currentState = State.WORM
+                SetState(State.WORM)
                 if (componentAnimator ~= nil) then
                     componentAnimator:SetSelectedClip("Idle")
                 end
@@ -864,7 +874,7 @@ function EventHandler(key, fields)
                 componentRigidBody:SetRigidBodyPos(fields[1])
             end
             gameObject.active = true
-            currentState = State.IDLE
+            SetState(State.IDLE)
         end
     end
 end
@@ -916,11 +926,3 @@ end
 --------------------------------------------------
 
 print("Zhib.lua compiled succesfully")
-
--------- Scraps --------
--- local components = gameObject:GetComponents()
--- print(components[3].type) -- return it as an int, can't associate back to enum (I don't know how to anyway)
-
--- GameState = require "Assets.Scripts.GameState"
--- GameState:Update(1)
--- print(GameState:GetGameState())

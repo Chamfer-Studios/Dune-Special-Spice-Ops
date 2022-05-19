@@ -543,6 +543,8 @@ function StopMovement(resetTarget)
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
+
+    DispatchEvent("Stop_Movement", {})
 end
 
 function LookAtTarget(lookAt)
@@ -598,7 +600,7 @@ end
 
 function FireDart()
 
-    InstantiatePrefab("Dart")
+    -- InstantiatePrefab("Dart")
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)

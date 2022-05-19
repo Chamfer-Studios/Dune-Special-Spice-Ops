@@ -133,8 +133,9 @@ STATE = {
     AWARE = 2,
     SUS = 3,
     AGGRO = 4,
-    DEAD = 5,
-    VICTORY = 6
+    WORM = 5,
+    DEAD = 6,
+    VICTORY = 7
 }
 
 state = STATE.UNAWARE
@@ -346,6 +347,12 @@ function SetStateToAGGRO(source)
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
 end
 
+function SetStateToWORM()
+    local oldState = state
+    state = STATE.WORM
+    DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
+end
+
 function EventHandler(key, fields)
     if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
@@ -373,12 +380,19 @@ function EventHandler(key, fields)
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
-                -- TODO: Stop Movement and/or block enemy
+                StopMovement()
             elseif (fields[2] == 2) then
                 Die()
             end
         end
     end
+end
+
+function StopMovement()
+    if (componentRigidbody ~= nil) then
+        componentRigidbody:SetLinearVelocity(float3.new(0, 0, 0))
+    end
+    SetStateToWORM()
 end
 
 function ConfigAwarenessBars()
@@ -422,6 +436,8 @@ function Start()
     InstantiateNamedPrefab("awareness_green", awareness_green_name)
     InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
     InstantiateNamedPrefab("awareness_red", awareness_red_name)
+
+    componentRigidbody = gameObject:GetRigidBody()
 end
 
 oldSourcePos = nil
@@ -507,7 +523,9 @@ function Update(dt)
     if state == STATE.SUS or state == STATE.AGGRO then
         _loop = false
     end
-    DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
+    if (state ~= STATE.WORM) then
+        DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
+    end
 end
 
 ------------------- Functions --------------------
