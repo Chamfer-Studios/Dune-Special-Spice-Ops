@@ -3,10 +3,10 @@ local staticIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
 staticIV = InspectorVariable.new("static", staticIVT, static)
 NewVariable(staticIV)
 
-speed = 20
-local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
+speed = 2000
+-- local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
 
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -23,10 +23,10 @@ local hearingRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 hearingRangeIV = InspectorVariable.new("hearingRange", hearingRangeIVT, hearingRange)
 NewVariable(hearingRangeIV)
 
-awarenessOffset = float3.new(0, 900, 0)
-local awarenessOffsetIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
-awarenessOffsetIV = InspectorVariable.new("awarenessOffset", awarenessOffsetIVT, awarenessOffset)
-NewVariable(awarenessOffsetIV)
+awarenessOffset = float3.new(0, 50, 0)
+-- local awarenessOffsetIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
+-- awarenessOffsetIV = InspectorVariable.new("awarenessOffset", awarenessOffsetIVT, awarenessOffset)
+-- NewVariable(awarenessOffsetIV)
 
 awarenessSize = float3.new(0.15, 0.3, 0.15)
 local awarenessSizeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
@@ -366,11 +366,15 @@ function EventHandler(key, fields)
             deathMarkTime = fields[2]
             deathMarkTimer = 0.0
         end
-    elseif key == "Sadiq_Devour" then
+    elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
-            if (fields[2] == 0) then
+            Die()
+        end
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+        if (fields[1] == gameObject) then
+            if (fields[2] == 1) then
                 -- TODO: Stop Movement and/or block enemy
-            elseif (fields[2] == 1) then
+            elseif (fields[2] == 2) then
                 Die()
             end
         end
