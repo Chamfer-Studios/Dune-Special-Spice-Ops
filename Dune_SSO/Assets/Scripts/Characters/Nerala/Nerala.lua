@@ -50,10 +50,10 @@ primaryCastRange = 100
 primaryCooldown = 5
 dartSpeed = 3000
 unawareChanceHarkDart = 100
-awareChanceHarkDart = 80
-aggroChanceHarkDart = 20
-unawareChanceSardDart = 75
-awareChanceSardDart = 25
+awareChanceHarkDart = 90
+aggroChanceHarkDart = 0
+unawareChanceSardDart = 100
+awareChanceSardDart = 80
 aggroChanceSardDart = 0
 drawPrimary = false
 
