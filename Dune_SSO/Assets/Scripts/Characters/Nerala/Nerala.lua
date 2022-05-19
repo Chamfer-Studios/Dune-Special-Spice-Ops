@@ -40,6 +40,8 @@ iFramesTimer = nil
 -- Globals --
 characterID = 2
 speed = 2500
+crouchMultiplierPercentage = 66
+runMultiplierPercentage = 150
 staminaSeconds = 7
 recoveryTime = 6
 staminaTimer = staminaSeconds
@@ -87,6 +89,16 @@ NewVariable(maxHPIV)
 speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 speedIV = InspectorVariable.new("speed", speedIVT, speed)
 NewVariable(speedIV)
+
+crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
+    crouchMultiplierPercentage)
+NewVariable(crouchMultiplierPercentageIV)
+
+runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
+    runMultiplierPercentage)
+NewVariable(runMultiplierPercentageIV)
 
 staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
@@ -573,9 +585,9 @@ function MoveToDestination(dt)
         -- Adapt speed
         local s = speed
         if (currentMovement == Movement.CROUCH) then
-            s = speed * 0.66
+            s = speed * crouchMultiplierPercentage / 100
         elseif (currentMovement == Movement.RUN) then
-            s = speed * 1.5
+            s = speed * runMultiplierPercentage / 100
         end
 
         -- Adapt speed on arrive
