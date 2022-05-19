@@ -3,7 +3,6 @@ speed = 3000
 destination = nil
 
 -------------------- Methods ---------------------
-
 function Start()
     boxCollider = gameObject:GetBoxCollider() -- This is here instead of at "awake" so the order of component creation does not affect
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
@@ -92,4 +91,5 @@ function Distance(a, b)
 
 end
 
-print("All good")
+print("Knife.lua compiled succesfully")
+Log("Knife.lua compiled succesfully")

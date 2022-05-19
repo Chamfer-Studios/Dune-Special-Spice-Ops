@@ -5,9 +5,10 @@ lifeTime = 10.0 -- secs --iv required
 lifeTimer = 0
 effectRadius = 250.0
 effectFlag = true
+isGrabbable = false
+--------------------------------------------------
 
 -------------------- Methods ---------------------
-
 function Start()
     destination = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
     destination.y = 0.0
@@ -36,11 +37,11 @@ function Update(dt)
             effectFlag = false
         end
     else
-        DeleteGameObject()
+        --Log("Decoy is grabbable! \n")
+        isGrabbable = true
     end
 end
 
--- Move to destination
 function MoveToDestination(dt)
     local pos = componentTransform:GetPosition()
     local d = Distance3D(destination, pos)
@@ -59,6 +60,16 @@ function MoveToDestination(dt)
     end
 end
 
+function OnTriggerEnter(go)
+
+    if (go.tag == Tag.PLAYER and isGrabbable == true) then
+        DispatchGlobalEvent("Decoy_Grabbed", {})
+        DeleteGameObject()
+    end
+end
+--------------------------------------------------
+
+----------------- Math Functions -----------------
 function Distance3D(a, b)
 
     diff = {
@@ -83,7 +94,7 @@ function Distance(a, b)
     return math.sqrt(dx * dx + dy * dy)
 
 end
-
 --------------------------------------------------
 
 print("Decoy.lua compiled succesfully")
+Log("Decoy.lua compiled succesfully")

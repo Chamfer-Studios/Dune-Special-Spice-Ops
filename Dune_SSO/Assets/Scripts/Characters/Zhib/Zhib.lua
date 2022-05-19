@@ -460,6 +460,7 @@ function ManageTimers(dt)
     if (secondaryTimer ~= nil) then
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
+            Log("Decoy available!\n")
             secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
         end
@@ -665,7 +666,6 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Decoy")
-    secondaryTimer = 0.0
     StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
@@ -870,6 +870,9 @@ function EventHandler(key, fields)
             gameObject.active = true
             currentState = State.IDLE
         end
+    elseif (key == "Decoy_Grabbed") then
+        Log("I have grabbed the decoy! \n")
+        secondaryTimer = 0.0
     end
 end
 --------------------------------------------------
