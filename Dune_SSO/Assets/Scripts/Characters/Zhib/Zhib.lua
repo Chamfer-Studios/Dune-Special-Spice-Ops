@@ -50,8 +50,12 @@ primaryCastRange = 100
 maxKnives = 2
 knifePickupTime = 0.5
 knifeSpeed = 3000
-awareChanceHarkKnife = 25
-unawareChanceSardKnife = 25
+unawareChanceHarkKnife = 100
+awareChanceHarkKnife = 75
+aggroChanceHarkKnife = 0
+unawareChanceSardKnife = 75
+awareChanceSardKnife = 25
+aggroChanceSardKnife = 0
 drawPrimary = false
 
 -- Secondary ability --
@@ -95,14 +99,35 @@ knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
 NewVariable(knifeSpeedIV)
 
+unawareChanceHarkKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+unawareChanceHarkKnifeIV = InspectorVariable.new("unawareChanceHarkKnife", unawareChanceHarkKnifeIVT,
+unawareChanceHarkKnife)
+NewVariable(unawareChanceHarkKnifeIV)
+
 awareChanceHarkKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-awareChanceHarkKnifeIV = InspectorVariable.new("awareChanceHarkKnife", awareChanceHarkKnifeIVT, awareChanceHarkKnife)
-NewVariable(awareChanceHarkKnife)
+awareChanceHarkKnifeIV = InspectorVariable.new("awareChanceHarkKnife", awareChanceHarkKnifeIVT,
+awareChanceHarkKnife)
+NewVariable(awareChanceHarkKnifeIV)
+
+aggroChanceHarkKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+aggroChanceHarkKnifeIV = InspectorVariable.new("aggroChanceHarkKnife", aggroChanceHarkKnifeIVT,
+aggroChanceHarkKnife)
+NewVariable(aggroChanceHarkKnifeIV)
 
 unawareChanceSardKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 unawareChanceSardKnifeIV = InspectorVariable.new("unawareChanceSardKnife", unawareChanceSardKnifeIVT,
     unawareChanceSardKnife)
 NewVariable(unawareChanceSardKnifeIV)
+
+awareChanceSardKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+awareChanceSardKnifeIV = InspectorVariable.new("awareChanceSardKnife", awareChanceSardKnifeIVT,
+awareChanceSardKnife)
+NewVariable(awareChanceSardKnifeIV)
+
+aggroChanceSardKnifeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+aggroChanceSardKnifeIV = InspectorVariable.new("aggroChanceSardKnife", aggroChanceSardKnifeIVT,
+aggroChanceSardKnife)
+NewVariable(aggroChanceSardKnifeIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT

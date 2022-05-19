@@ -137,20 +137,35 @@ function EventHandler(key, fields)
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
-                Log("Enemy was unaware of you, so it was insta-killed :) \n")
-                Die()
+                knifeHitChance = GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
+                end
             elseif (currentState == STATE.SUS) then
                 knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the enemy is dead! \n")
+                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
                     Die()
                 else
-                    Log("Knife's D100 roll has been " .. rng .. " so the enemy has dodged the knife :( \n")
+                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
                 end
             elseif (currentState == STATE.AGGRO) then
-                Log("Enemy was aggroing you, so he dodged the knife :( \n")
+                knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
+                end
             end
         end
     end
