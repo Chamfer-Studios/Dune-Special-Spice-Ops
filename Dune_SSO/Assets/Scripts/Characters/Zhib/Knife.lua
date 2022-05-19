@@ -1,6 +1,7 @@
 ------------------- Variables --------------------
 speed = 3000
 destination = nil
+isGrabbable = false
 
 -------------------- Methods ---------------------
 function Start()
@@ -27,6 +28,8 @@ function Update(dt)
 
     if (destination ~= nil) then
         MoveToDestination(dt)
+    else
+        isGrabbable = true
     end
 end
 
@@ -34,7 +37,8 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
         DispatchGlobalEvent("Knife_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
-    elseif (destination == nil and go.tag == Tag.PLAYER) then -- Using direct name instead of tags so other players can't pick it up
+    elseif (destination == nil and go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
+        DispatchGlobalEvent("Knife_Grabbed", {})
         DeleteGameObject()
     end
 end
@@ -68,7 +72,7 @@ function MoveToDestination(dt)
         destination = nil
         if (componentRigidBody ~= nil) then
             componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
-            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 3,
+            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 5,
                 componentTransform:GetPosition().z))
         end
     end

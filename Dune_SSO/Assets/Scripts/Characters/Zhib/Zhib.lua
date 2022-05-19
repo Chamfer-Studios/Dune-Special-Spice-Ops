@@ -48,7 +48,7 @@ attackTime = 2.5
 -- Primary ability --
 primaryCastRange = 100
 maxKnives = 2
-knifePickupTime = 0.5
+-- knifePickupTime = 0.5
 knifeSpeed = 3000
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
@@ -449,12 +449,12 @@ function ManageTimers(dt)
     end
 
     -- Primary ability cooldown
-    if (knifePickupTimer ~= nil) then
-        knifePickupTimer = knifePickupTimer + dt
-        if (knifePickupTimer >= knifePickupTime) then
-            knifePickupTimer = nil
-        end
-    end
+    -- if (knifePickupTimer ~= nil) then
+    --     knifePickupTimer = knifePickupTimer + dt
+    --     if (knifePickupTimer >= knifePickupTime) then
+    --         knifePickupTimer = nil
+    --     end
+    -- end
 
     -- Secondary ability cooldown
     if (secondaryTimer ~= nil) then
@@ -873,17 +873,16 @@ function EventHandler(key, fields)
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
+    elseif (key == "Knife_Grabbed") then
+        Log("I have grabbed a knife! \n")
+        knifeCount = knifeCount + 1
     end
 end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
-
-    if (go.tag == Tag.PROJECTILE and knifePickupTimer == nil) then
-        knifeCount = knifeCount + 1
-        knifePickupTimer = 0.0
-    elseif (go.tag == Tag.ENEMY and iFramesTimer == nil) then
+    if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         TakeDamage(1)
     end
 end
@@ -923,6 +922,7 @@ end
 --------------------------------------------------
 
 print("Zhib.lua compiled succesfully")
+Log("Zhib.lua compiled succesfully")
 
 -------- Scraps --------
 -- local components = gameObject:GetComponents()
