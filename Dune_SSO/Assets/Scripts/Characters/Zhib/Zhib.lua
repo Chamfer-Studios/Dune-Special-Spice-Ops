@@ -43,8 +43,8 @@ characterID = 1
 speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
-staminaSeconds = 7
-recoveryTime = 6
+staminaSeconds = 5
+recoveryTime = 7
 staminaTimer = staminaSeconds
 isTired = false
 
@@ -164,11 +164,16 @@ function Start()
     knifeCount = maxKnives
 
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+
+    characterSelectedMesh = Find("CharacterSelectedMesh")
+    staminaBarSizeY = characterSelectedMesh:GetTransform():GetScale().y
 end
 
 -- Called each loop iteration
 function Update(dt)
     DrawActiveAbilities()
+
+    UpdateStaminaBar()
 
     if (knifeCount == 1) then
 
@@ -474,6 +479,11 @@ function DrawActiveAbilities()
             radiusLight:SetAngle(0)
         end
     end
+end
+
+function UpdateStaminaBar()
+    characterSelectedMesh:GetTransform():SetScale(
+        float3.new(characterSelectedMesh:GetTransform():GetScale().x, staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
 
 function ManageTimers(dt)

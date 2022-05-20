@@ -41,8 +41,8 @@ characterID = 3
 speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
-staminaSeconds = 7
-recoveryTime = 6
+staminaSeconds = 5
+recoveryTime = 7
 staminaTimer = staminaSeconds
 isTired = false
 
@@ -144,12 +144,17 @@ function Start()
     radiusLight = gameObject:GetLight()
 
     InstantiatePrefab("Worm")
+
+    characterSelectedMesh = Find("CharacterSelectedMesh")
+    staminaBarSizeY = characterSelectedMesh:GetTransform():GetScale().y
 end
 
 -- Called each loop iteration
 function Update(dt)
 
     DrawActiveAbilities()
+
+    UpdateStaminaBar()
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
@@ -428,6 +433,11 @@ function DrawActiveAbilities()
             radiusLight:SetAngle(0)
         end
     end
+end
+
+function UpdateStaminaBar()
+    characterSelectedMesh:GetTransform():SetScale(
+        float3.new(characterSelectedMesh:GetTransform():GetScale().x, staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
 
 function ManageTimers(dt)
