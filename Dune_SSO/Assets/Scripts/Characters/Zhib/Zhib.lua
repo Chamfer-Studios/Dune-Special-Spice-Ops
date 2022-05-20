@@ -44,7 +44,7 @@ speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
 staminaSeconds = 5
-recoveryTime = 7
+recoveryTime = 3
 staminaTimer = staminaSeconds
 isTired = false
 
@@ -173,8 +173,6 @@ end
 function Update(dt)
     DrawActiveAbilities()
 
-    UpdateStaminaBar()
-
     if (knifeCount == 1) then
 
     end
@@ -202,6 +200,8 @@ function Update(dt)
 
     -- Gather Inputs
     if (IsSelected() == true) then
+
+        UpdateStaminaBar()
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -482,6 +482,8 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
+    Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
+    Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
     characterSelectedMesh:GetTransform():SetScale(
         float3.new(characterSelectedMesh:GetTransform():GetScale().x, staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
