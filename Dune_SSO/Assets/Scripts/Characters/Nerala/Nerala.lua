@@ -185,6 +185,10 @@ function Update(dt)
             destination = target:GetTransform():GetPosition()
             MoveToDestination(dt)
         end
+    elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+        State.AIM_ULTIMATE) then
+        StopMovement()
+        componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
         MoveToDestination(dt)
     end
@@ -475,8 +479,8 @@ end
 function UpdateStaminaBar()
     Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
     Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
-    characterSelectedMesh:GetTransform():SetScale(
-        float3.new(characterSelectedMesh:GetTransform():GetScale().x, staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
+    characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
+        staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
 
 function ManageTimers(dt)
@@ -490,7 +494,7 @@ function ManageTimers(dt)
 
             SetMovement(Movement.WALK)
         else
-            Log("Stamina timer: " .. staminaTimer .. "\n")
+            -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
     else
         staminaTimer = staminaTimer + dt
@@ -499,7 +503,7 @@ function ManageTimers(dt)
             isTired = false
             -- Log("I am recovered! :) \n")
         else
-            Log("Stamina timer: " .. staminaTimer .. "\n")
+            -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
     end
 
