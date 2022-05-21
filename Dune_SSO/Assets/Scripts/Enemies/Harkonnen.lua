@@ -24,6 +24,9 @@ function Start()
     currentAttack = nil
     target = nil
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1
+    dieSFXOnce = true;
 end
 
 function Update(dt)
@@ -122,6 +125,12 @@ function DoAttack()
 
     DispatchGlobalEvent("Enemy_Attack", {target, gameObject})
 
+    if (currentTrackID ~= -1) then
+        componentSwitch:StopTrack(currentTrackID)
+    end
+    currentTrackID = 0
+    componentSwitch:PlayTrack(currentTrackID)
+
     LookAtTarget(target:GetTransform():GetPosition())
     attackTimer = 0.0
     currentAttack = ATTACK_FASE.DO_ATTACK
@@ -215,15 +224,24 @@ end
 function Die()
 
     -- Chance to spawn, if spawn dispatch event
-    math.randomseed(os.time())
-    rng = math.random(100)
-    if (rng >= 50) then
-        InstantiatePrefab("SpiceLoot")
-        str = "Harkonnen"
-        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
-        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
-    else
-        Log("The drop rate has not been good :( " .. rng .. "\n")
+    if(dieSFXOnce == true) then
+        math.randomseed(os.time())
+        rng = math.random(100)
+        if (rng >= 50) then
+            InstantiatePrefab("SpiceLoot")
+            str = "Harkonnen"
+            DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
+            Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+        else
+            Log("The drop rate has not been good :( " .. rng .. "\n")
+        end
+
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 1
+        componentSwitch:PlayTrack(currentTrackID)
+        dieSFXOnce = false;
     end
 
     DeleteGameObject()
