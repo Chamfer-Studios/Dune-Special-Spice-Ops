@@ -1,11 +1,15 @@
 filter = "terrain"
 
+-- children[1]:AddComponentByType(ComponentType.BOX_COLLIDER)
+
 function Start()
     children = gameObject:GetChildren()
+
     for i = 1, #children do
-        if (children[i]:GetBoxCollider() == nil) then
-            children[i]:AddComponentByType(ComponentType.BOX_COLLIDER)
-        end
+        children[i]:AddComponentByType(ComponentType.BOX_COLLIDER)
+        children[i]:GetRigidBody():SetStatic()
+        children[i]:GetBoxCollider():SetFilter(filter)
+        children[i]:GetBoxCollider():UpdateFilter()
     end
 end
 

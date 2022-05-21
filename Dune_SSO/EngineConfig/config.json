@@ -82,7 +82,7 @@
             -9.8100004196167,
             0.0
         ],
-        "debugPhysics": false
+        "debugPhysics": true
     },
     "Renderer3D": {
         "Vsync": true
@@ -96,11 +96,11 @@
         "Borderless": false,
         "Fullscreen": false,
         "FullscreenDesktop": false,
-        "Height": 768,
+        "Height": 801,
         "Icon": "Assets/Icons/icon.bmp",
         "Resizable": true,
         "Scale": 0,
         "Title": "Ko-Fi Engine - SceneTutorial_backup",
-        "Width": 1024
+        "Width": 1536
     }
 }
