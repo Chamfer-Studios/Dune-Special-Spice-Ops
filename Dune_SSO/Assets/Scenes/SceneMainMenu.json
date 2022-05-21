@@ -19,15 +19,15 @@
                             0.0
                         ],
                         "rotation": [
-                            0.2705981135368347,
-                            -0.653281569480896,
-                            0.2705981135368347,
-                            0.6532813906669617
+                            0.27059805393218994,
+                            -0.6532815098762512,
+                            0.27059805393218994,
+                            0.6532815098762512
                         ],
                         "scale": [
-                            1.0000001192092896,
+                            1.0,
                             0.9999999403953552,
-                            1.0
+                            0.9999999403953552
                         ],
                         "type": 21
                     },
@@ -502,6 +502,19 @@
                         "idleTexture": "Assets/New UI/button_a_default.png",
                         "pressedTexture": "Assets/New UI/button_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ChangeScenes.lua",
+                        "id": 1348187397,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "SceneTutorial"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
