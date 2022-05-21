@@ -4,9 +4,14 @@ staticIV = InspectorVariable.new("static", staticIVT, static)
 NewVariable(staticIV)
 
 speed = 2000
--- local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
--- speedIV = InspectorVariable.new("speed", speedIVT, speed)
--- NewVariable(speedIV)
+local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+speedIV = InspectorVariable.new("speed", speedIVT, speed)
+NewVariable(speedIV)
+
+chaseSpeed = 3000
+local chaseSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+chaseSpeedIV = InspectorVariable.new("chaseSpeed", chaseSpeedIVT, chaseSpeed)
+NewVariable(chaseSpeedIV)
 
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -24,9 +29,9 @@ hearingRangeIV = InspectorVariable.new("hearingRange", hearingRangeIVT, hearingR
 NewVariable(hearingRangeIV)
 
 awarenessOffset = float3.new(0, 50, 0)
--- local awarenessOffsetIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
--- awarenessOffsetIV = InspectorVariable.new("awarenessOffset", awarenessOffsetIVT, awarenessOffset)
--- NewVariable(awarenessOffsetIV)
+local awarenessOffsetIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
+awarenessOffsetIV = InspectorVariable.new("awarenessOffset", awarenessOffsetIVT, awarenessOffset)
+NewVariable(awarenessOffsetIV)
 
 awarenessSize = float3.new(0.15, 0.3, 0.15)
 local awarenessSizeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
@@ -34,9 +39,10 @@ awarenessSizeIV = InspectorVariable.new("awarenessSize", awarenessSizeIVT, aware
 NewVariable(awarenessSizeIV)
 
 awarenessSpeed = 0.4
--- local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
--- awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
--- NewVariable(awarenessSpeedIV)
+awarenessVisualSpeed = 0.7
+--local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+--awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
+--NewVariable(awarenessSpeedIV)
 
 pingpong = false
 local pingpongIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
@@ -181,12 +187,6 @@ function CheckIfPointInCone(position)
 end
 
 function ProcessVisualTrigger(position, gameObject)
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     if not CheckIfPointInCone(position) then
         if isSeeingPlayer then
             seeingPosition = nil
@@ -245,14 +245,8 @@ hadRepeatedAuditoryTriggerLastFrame = false
 auditoryTriggerIsRepeating = false
 
 function ProcessRepeatedAuditoryTrigger(position, source)
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     hadRepeatedAuditoryTriggerLastFrame = true
-    if state == STATE.UNAWARE then
+    if state == state.UNAWARE then
         SetTargetStateToSUS()
     elseif state == STATE.SUS then
         SetTargetStateToAGGRO()
@@ -442,7 +436,18 @@ end
 
 oldSourcePos = nil
 
+coneLight = gameObject:GetLight()
+
 function Update(dt)
+    if coneLight == nil then
+        coneLight = gameObject:GetLight()
+    end
+
+    if coneLight ~= nil then
+        coneLight:SetDirection(float3.new(-componentTransform:GetFront().x, -componentTransform:GetFront().y, -componentTransform:GetFront().z))
+        coneLight:SetRange(visionConeRadius)
+        coneLight:SetAngle(visionConeAngle / 2)
+    end
 
     -- Death Mark (Weirding way)
     if (deathMarkTimer ~= nil) then
@@ -459,7 +464,11 @@ function Update(dt)
         UpdateAwarenessBars()
     end
 
-    if awareness < targetAwareness then
+    Log(tostring(awareness) .. " " .. tostring(targetAwareness) .. " " .. tostring(isSeeingPlayer) .. "\n")
+
+    if awareness < targetAwareness and isSeeingPlayer == true then
+        awareness = awareness + awarenessVisualSpeed * dt
+    elseif awareness < targetAwareness and isSeeingPlayer == false then
         awareness = awareness + awarenessSpeed * dt
     elseif awareness > targetAwareness then
         awareness = awareness - awarenessSpeed * dt
@@ -524,7 +533,11 @@ function Update(dt)
         _loop = false
     end
     if (state ~= STATE.WORM) then
-        DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
+        if (state ~= STATE.AGGRO) then
+            DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
+        else
+            DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, _loop})
+        end
     end
 end
 

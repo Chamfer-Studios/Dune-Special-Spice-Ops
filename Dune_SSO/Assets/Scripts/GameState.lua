@@ -8,7 +8,6 @@ function Start()
     characterSelectedMesh = Find("CharacterSelectedMesh")
 
     str = "Spice Amount " .. spiceAmount .. "\n"
-    Log(str)
 end
 
 -- Called each loop iteration
@@ -69,7 +68,6 @@ function EventHandler(key, fields)
     elseif (key == "Spice_Reward") then
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
-        Log(str)
     elseif (key == "Spice_Spawn") then
         deadEnemyPos = fields[1]
         deadEnemyType = fields[2]

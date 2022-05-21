@@ -477,8 +477,6 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
-    Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
     characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
         staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end

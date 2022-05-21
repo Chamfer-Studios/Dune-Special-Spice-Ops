@@ -6,6 +6,7 @@ STATE = { -- Importat to add changes to the state enum in EnemyController.lua an
     DEAD = 5,
     VICTORY = 6
 }
+
 ATTACK_FASE = {
     IDLE = 1,
     BEGIN_ATTACK = 2,
