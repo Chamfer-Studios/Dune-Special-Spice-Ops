@@ -138,43 +138,51 @@
     },
     {
       "id": 18,
-      "targetID": -1,
-      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "targetID": 19,
+      "src": "Assets/UI/HUD/Portraits/nebala_v1.0.png",
       "char": " ",
-      "line1": "There are sounds of a struggle going on coming from there, I think",
-      "line2": "Nerala finally got angry with her captors, better go find her quickly."
+      "line1": "(Through the speaking device) It's too late, when I arrived they",
+      "line2": "were already dead. We need to move, Rabaan is still in the camp."
     },
     {
       "id": 19,
-      "targetID": -1,
+      "targetID": 20,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": " ",
-      "line1": "There are sounds of a struggle going on coming from there, I think",
-      "line2": "Nerala finally got angry with her captors, better go find her quickly."
+      "line1": "This is unacceptable, two of our men are dead because of some outburst",
+      "line2": "of bravery. This can not be overlooked Nerala, not at a time like this."
     },
     {
       "id": 20,
-      "targetID": -1,
-      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "targetID": 21,
+      "src": "Assets/UI/HUD/Portraits/nebala_v1.0.png",
       "char": " ",
-      "line1": "There are sounds of a struggle going on coming from there, I think",
-      "line2": "Nerala finally got angry with her captors, better go find her quickly."
+      "line1": "There are necessary sacrifices in a war. I will take full responsibility",
+      "line2": "for my actions.                                                         "
     },
     {
       "id": 21,
-      "targetID": -1,
-      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "targetID": 22,
+      "src": "Assets/UI/HUD/Portraits/nebala_v1.0.png",
       "char": " ",
-      "line1": "There are sounds of a struggle going on coming from there, I think",
-      "line2": "Nerala finally got angry with her captors, better go find her quickly."
+      "line1": "But I will finish what I came to do, I wont let the death of these men ",
+      "line2": "be in vain."
     },
     {
       "id": 22,
+      "targetID": 22,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": " ",
+      "line1": "We will finish what you started. Give me all the intel.            ",
+      "line2": " "
+    },
+    {
+      "id": 23,
       "targetID": -1,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": " ",
-      "line1": "There are sounds of a struggle going on coming from there, I think",
-      "line2": "Nerala finally got angry with her captors, better go find her quickly."
+      "line1": "Putting it simply, Rabban was sighted nearby supervising the reconnaissance",
+      "line2": "mission himself, they are too close to our home, now is the time to end this."
     }
   ]
 }
