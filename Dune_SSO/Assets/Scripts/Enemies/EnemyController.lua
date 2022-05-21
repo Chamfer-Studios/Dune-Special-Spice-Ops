@@ -169,7 +169,7 @@ function CheckIfPointInCone(position)
         end
     end
 
-    Log(tostring(componentTransform:GetFront()) .. "\n")
+    --Log(tostring(componentTransform:GetFront()) .. "\n")
 
     angle = Float3Angle(Float3Difference(componentTransform:GetPosition(), position), componentTransform:GetFront())
 
@@ -191,6 +191,7 @@ function ProcessVisualTrigger(position, gameObject)
         if isSeeingPlayer then
             seeingPosition = nil
             seeingSource = nil
+            isSeeingPlayer = false
             SetTargetStateToUNAWARE()
         end
         do
@@ -465,7 +466,8 @@ function Update(dt)
         UpdateAwarenessBars()
     end
 
-    Log(tostring(awareness) .. " " .. tostring(targetAwareness) .. " " .. tostring(isSeeingPlayer) .. "\n")
+    --Log(tostring(componentTransform:GetFront()) .. "\n")
+    --Log(tostring(awareness) .. " " .. tostring(targetAwareness) .. " " .. tostring(isSeeingPlayer) .. "\n")
 
     if awareness < targetAwareness and isSeeingPlayer == true then
         awareness = awareness + awarenessVisualSpeed * dt
