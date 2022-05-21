@@ -611,10 +611,18 @@ function MoveToDestination(dt)
         if (currentMovement == Movement.IDLE_CROUCH) then
             SetMovement(Movement.CROUCH)
             s = speed * crouchMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.CROUCH) then
             s = speed * crouchMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.RUN) then
             s = speed * runMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * runMultiplierPercentage / 100, "repeated", gameObject})
+        elseif (currentMovement == Movement.WALK) then
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", gameObject})
         end
 
         -- Adapt speed on arrive
@@ -692,10 +700,16 @@ end
 function DoAttack()
 
     componentAnimator:SetSelectedClip("AttackToIdle")
+
     DispatchGlobalEvent("Player_Attack", {target, characterID})
+    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
+
     LookAtTarget(target:GetTransform():GetPosition())
+
     attackTimer = 0.0
+
     target = nil
+
     SetState(State.IDLE)
 end
 

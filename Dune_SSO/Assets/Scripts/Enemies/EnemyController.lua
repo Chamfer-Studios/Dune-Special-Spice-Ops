@@ -448,6 +448,7 @@ function Update(dt)
     if (deathMarkTimer ~= nil) then
         deathMarkTimer = deathMarkTimer + dt
         if (deathMarkTimer >= deathMarkTime) then
+            -- Audio here
             Die()
             return
         end

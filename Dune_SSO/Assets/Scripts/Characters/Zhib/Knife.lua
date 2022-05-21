@@ -37,6 +37,7 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
         DispatchGlobalEvent("Knife_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
+        DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
     elseif (destination == nil and go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
         DispatchGlobalEvent("Knife_Grabbed", {})
         DeleteGameObject()
