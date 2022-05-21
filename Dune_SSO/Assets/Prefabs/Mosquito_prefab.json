@@ -21,8 +21,8 @@
             ],
             "scale": [
                 5.0,
-                5.0000152587890625,
-                5.000021934509277
+                5.00001335144043,
+                5.0000200271606445
             ],
             "type": 21
         },
@@ -105,7 +105,7 @@
             "active": true,
             "fade_time": 2.0,
             "offset_sync": false,
-            "total_tracks": 5,
+            "total_tracks": 4,
             "tracks": [
                 {
                     "bypass": false,
@@ -120,23 +120,12 @@
                 },
                 {
                     "bypass": false,
-                    "loop": false,
+                    "loop": true,
                     "mute": false,
                     "offset": 0.0,
                     "pan": 0.0,
                     "play_on_start": false,
                     "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_float_fx.wav",
-                    "transpose": 0.0,
-                    "volume": 100.0
-                },
-                {
-                    "bypass": false,
-                    "loop": false,
-                    "mute": false,
-                    "offset": 0.0,
-                    "pan": 0.0,
-                    "play_on_start": false,
-                    "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_move_fx.wav",
                     "transpose": 0.0,
                     "volume": 100.0
                 },
