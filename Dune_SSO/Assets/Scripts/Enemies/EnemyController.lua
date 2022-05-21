@@ -169,11 +169,15 @@ function CheckIfPointInCone(position)
         end
     end
 
-    --Log(tostring(componentTransform:GetFront()) .. "\n")
+    diff = Float3Difference(componentTransform:GetPosition(), position)
 
-    angle = Float3Angle(Float3Difference(componentTransform:GetPosition(), position), componentTransform:GetFront())
+    diff.y = 0
+
+    angle = Float3Angle(diff, componentTransform:GetFront())
 
     angle = math.abs(math.deg(angle))
+    
+    Log(tostring(diff) .. " " .. tostring(componentTransform:GetFront()) .. " " .. tostring(angle) .. "\n")
 
     if angle < visionConeAngle / 2 then
         do
