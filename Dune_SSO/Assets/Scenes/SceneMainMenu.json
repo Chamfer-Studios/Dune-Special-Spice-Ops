@@ -60,7 +60,7 @@
                         "frustum_culling": false,
                         "isMainCamera": false,
                         "near_plane_distance": 0.30000001192092896,
-                        "sCullingRadius": 500,
+                        "sCullingRadius": 499,
                         "sphere_culling": false,
                         "type": 4,
                         "vertical_fov": 585.0
@@ -106,7 +106,7 @@
                         "frustum_culling": true,
                         "isMainCamera": false,
                         "near_plane_distance": 0.30000001192092896,
-                        "sCullingRadius": 500,
+                        "sCullingRadius": 499,
                         "sphere_culling": true,
                         "type": 4,
                         "vertical_fov": 0.44688403606414795
@@ -409,7 +409,7 @@
                             255,
                             255
                         ],
-                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                        "fontPath": "Assets/Fonts/Inter/Inter-SemiBold.otf",
                         "type": 16,
                         "value": "Continue"
                     }
@@ -454,7 +454,7 @@
                         "frustum_culling": true,
                         "isMainCamera": true,
                         "near_plane_distance": 0.30000001192092896,
-                        "sCullingRadius": 500,
+                        "sCullingRadius": 499,
                         "sphere_culling": true,
                         "type": 4,
                         "vertical_fov": 0.44688403606414795
@@ -527,7 +527,7 @@
                         ],
                         "position": [
                             0.0,
-                            0.0
+                            3.0
                         ],
                         "rotation": [
                             0.0,
@@ -536,7 +536,7 @@
                         ],
                         "size": [
                             160.0,
-                            39.0
+                            40.0
                         ],
                         "type": 22
                     },
@@ -548,7 +548,7 @@
                             255,
                             255
                         ],
-                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                        "fontPath": "Assets/Fonts/Inter/Inter-SemiBold.otf",
                         "type": 16,
                         "value": "New Game"
                     }
@@ -641,7 +641,7 @@
                             255,
                             255
                         ],
-                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                        "fontPath": "Assets/Fonts/Inter/Inter-SemiBold.otf",
                         "type": 16,
                         "value": "Settings"
                     }
@@ -713,7 +713,7 @@
                         ],
                         "position": [
                             0.0,
-                            0.0
+                            1.0
                         ],
                         "rotation": [
                             0.0,
@@ -722,7 +722,7 @@
                         ],
                         "size": [
                             110.0,
-                            35.0
+                            40.0
                         ],
                         "type": 22
                     },
@@ -734,7 +734,7 @@
                             255,
                             255
                         ],
-                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                        "fontPath": "Assets/Fonts/Inter/Inter-SemiBold.otf",
                         "type": 16,
                         "value": "Credits"
                     }
@@ -805,7 +805,7 @@
                             0.5
                         ],
                         "position": [
-                            0.0,
+                            -4.0,
                             0.0
                         ],
                         "rotation": [
@@ -814,8 +814,8 @@
                             0.0
                         ],
                         "size": [
-                            109.0,
-                            37.0
+                            71.0,
+                            38.0
                         ],
                         "type": 22
                     },
@@ -827,7 +827,7 @@
                             255,
                             255
                         ],
-                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                        "fontPath": "Assets/Fonts/Inter/Inter-SemiBold.otf",
                         "type": 16,
                         "value": "Quit"
                     }
