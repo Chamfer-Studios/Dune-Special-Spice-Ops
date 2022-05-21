@@ -446,8 +446,9 @@ function SetMovement(newMovement)
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
-                currentTrackID = -1
             end
+            currentTrackID = 0
+            componentSwitch:PlayTrack(currentTrackID)
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -486,8 +487,8 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
-    Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
+    --Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
+    --Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
     characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
         staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
@@ -586,6 +587,15 @@ function ManageTimers(dt)
                     componentBoxCollider:SetTrigger(false)
                     componentBoxCollider:UpdateIsTrigger()
                 end
+
+                if (componentSwitch ~= nil) then
+                    if (currentTrackID ~= -1) then
+    	             componentSwitch:StopTrack(currentTrackID)
+                    end
+                    currentTrackID = 7
+                    componentSwitch:PlayTrack(currentTrackID)
+                end
+
                 componentRigidBody:SetUseGravity(true)
                 componentRigidBody:UpdateEnableGravity()
             end
@@ -638,18 +648,10 @@ function MoveToDestination(dt)
         if (currentMovement == Movement.IDLE_CROUCH) then
             SetMovement(Movement.CROUCH)
             s = speed * crouchMultiplierPercentage / 100
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
-                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.CROUCH) then
             s = speed * crouchMultiplierPercentage / 100
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
-                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.RUN) then
             s = speed * runMultiplierPercentage / 100
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
-                                                     100 * runMultiplierPercentage / 100, "repeated", gameObject})
-        elseif (currentMovement == Movement.WALK) then
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", gameObject})
         end
 
         -- Adapt speed on arrive
@@ -729,9 +731,16 @@ function DoAttack()
     componentAnimator:SetSelectedClip("AttackToIdle")
 
     DispatchGlobalEvent("Player_Attack", {target, characterID})
-    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
 
     LookAtTarget(target:GetTransform():GetPosition())
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 
     attackTimer = 0.0
 
@@ -757,13 +766,12 @@ end
 function FireKnife()
 
     InstantiatePrefab("Knife")
-
     knifeCount = knifeCount - 1
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 2
+        currentTrackID = 5
         componentSwitch:PlayTrack(currentTrackID)
     end
 
@@ -793,7 +801,7 @@ function PlaceDecoy()
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 3
+        currentTrackID = 6
         componentSwitch:PlayTrack(currentTrackID)
     end
 
@@ -817,7 +825,7 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
-
+    
     -- Get all enemies in range of the Mouse
     enemiesInRange = {target}
     enemies = GetObjectsByTag(Tag.ENEMY)
@@ -893,14 +901,6 @@ function DoUltimate()
         componentRigidBody:UpdateEnableGravity()
     end
 
-    -- if (componentSwitch ~= nil) then -- Commented cause the audio is doodoo
-    --	if (currentTrackID ~= -1) then
-    --		componentSwitch:StopTrack(currentTrackID)
-    --	end
-    --	currentTrackID = 4
-    --	componentSwitch:PlayTrack(currentTrackID)
-    -- end
-
     SetState(State.IDLE)
 end
 
@@ -919,7 +919,7 @@ function TakeDamage(damage)
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
-            currentTrackID = 4 -- Should be 5
+            currentTrackID = 2
             componentSwitch:PlayTrack(currentTrackID)
         end
     else
@@ -939,7 +939,7 @@ function Die()
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 5 -- Should be 6
+        currentTrackID = 3
         componentSwitch:PlayTrack(currentTrackID)
     end
 end
