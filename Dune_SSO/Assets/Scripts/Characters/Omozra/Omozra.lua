@@ -480,7 +480,7 @@ function ManageTimers(dt)
     end
 
     -- Click particles logic
-    if (mouseParticles ~= nil) then
+    if (mouseParticles ~= nil and IsSelected() == true) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
 
