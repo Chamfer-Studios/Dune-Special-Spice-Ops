@@ -7,6 +7,8 @@ isGrabbable = false
 function Start()
     boxCollider = gameObject:GetBoxCollider() -- This is here instead of at "awake" so the order of component creation does not affect
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1
     target = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     speed = GetVariable("Zhib.lua", "knifeSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -38,6 +40,11 @@ function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
         DispatchGlobalEvent("Knife_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
         DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
+        if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 0
+            componentSwitch:PlayTrack(currentTrackID)
     elseif (destination == nil and go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
         DispatchGlobalEvent("Knife_Grabbed", {})
         DeleteGameObject()

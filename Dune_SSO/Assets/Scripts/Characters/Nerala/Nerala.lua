@@ -437,7 +437,7 @@ function SetMovement(newMovement)
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
-                currentTrackID = -1
+                currentTrackID = 0
             end
         end
         if (componentAnimator ~= nil) then
@@ -704,6 +704,14 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
+    if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 4
+            componentSwitch:PlayTrack(currentTrackID)
+        end
+
     attackTimer = 0.0
 
     target = nil
@@ -729,11 +737,12 @@ function FireDart()
 
     primaryTimer = 0.0
     InstantiatePrefab("Dart")
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 2
+        currentTrackID = 5
         componentSwitch:PlayTrack(currentTrackID)
     end
 
@@ -763,7 +772,7 @@ function PlaceSmokebomb()
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 3
+        currentTrackID = 6
         componentSwitch:PlayTrack(currentTrackID)
     end
 
@@ -781,6 +790,14 @@ function CastUltimate(position)
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(position)
 
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 7
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
@@ -789,6 +806,7 @@ end
 function DoUltimate()
 
     InstantiatePrefab("Mosquito")
+    
 
     -- No new clip, the last clip has to last until the mosquito dies
     SetState(State.MOSQUITO)
@@ -809,7 +827,7 @@ function TakeDamage(damage)
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
-            currentTrackID = 4 -- Should be 5
+            currentTrackID = 7
             componentSwitch:PlayTrack(currentTrackID)
         end
     else
@@ -829,7 +847,7 @@ function Die()
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 5 -- Should be 6
+        currentTrackID = 3
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

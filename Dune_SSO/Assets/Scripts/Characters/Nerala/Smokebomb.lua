@@ -12,6 +12,8 @@ function Start()
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
     destination.y = 0.0
     player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1
     local playerPos = player:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
     local pos2D = {playerPos.x, playerPos.z}
@@ -28,7 +30,7 @@ function Update(dt)
         MoveToDestination(dt)
     elseif (lifeTimer <= lifeTime) then
 
-        lifeTimer = lifeTimer + dt
+        lifeTimer = lifeTimer + dt     
 
         if (effectFlag) then
             -- DispatchGlobalEvent("Auditory_Trigger", { componentTransform:GetPosition(), effectRadius, "single", gameObject })
@@ -55,6 +57,14 @@ function MoveToDestination(dt)
     else
         componentTransform:SetPosition(float3.new(pos.x, 0, pos.z))
         destination = nil
+
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 0
+            componentSwitch:PlayTrack(currentTrackID)
+        end
     end
 end
 
