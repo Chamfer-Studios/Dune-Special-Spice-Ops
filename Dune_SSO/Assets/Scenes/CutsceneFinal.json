@@ -37,7 +37,7 @@
                         "frustum_culling": false,
                         "isMainCamera": true,
                         "near_plane_distance": 0.009999999776482582,
-                        "sCullingRadius": 500,
+                        "sCullingRadius": 249,
                         "sphere_culling": true,
                         "type": 4,
                         "vertical_fov": 0.3839724361896515
@@ -106,7 +106,7 @@
                         "frustum_culling": false,
                         "isMainCamera": false,
                         "near_plane_distance": 0.30000001192092896,
-                        "sCullingRadius": 500,
+                        "sCullingRadius": 499,
                         "sphere_culling": false,
                         "type": 4,
                         "vertical_fov": 378.0
@@ -247,7 +247,7 @@
                         ],
                         "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
-                        "value": "Press k to skip"
+                        "value": "Press enter to skip"
                     }
                 ],
                 "is3D": false,
