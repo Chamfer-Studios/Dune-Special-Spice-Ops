@@ -31,7 +31,7 @@ function Update(dt)
 	-- if (GetVariable("UI_RestartButton.lua", "restart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
 	-- 	isStarting = true
 	-- end
-	if (GetVariable("UI_GameState.lua", skillName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == lvlNumber) then
+	if (GetVariable("UI_GameState.lua", skillName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= lvlNumber) then
 		purchased = true
 	end
 	if (gameObject.active == true) then
