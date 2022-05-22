@@ -19,6 +19,32 @@ attackTime = 1.5
 knifeHitChance = 100
 dartHitChance = 100
 
+function Float3Length(v)
+    return math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
+end
+
+function Float3Normalized(v)
+    len = Float3Length(v)
+    return {
+        x = v.x / len,
+        y = v.y / len,
+        z = v.z / len
+    }
+end
+
+function Float3Difference(a, b)
+    return {
+        x = b.x - a.x,
+        y = b.y - a.y,
+        z = b.z - a.z
+    }
+end
+
+function Float3Distance(a, b)
+    diff = Float3Difference(a, b)
+    return Float3Length(diff)
+end
+
 function Start()
     currentState = STATE.UNAWARE
     currentAttack = nil
@@ -33,7 +59,7 @@ function Update(dt)
     end
 
     if (currentState == STATE.UNAWARE) then
-        componentAnimator:SetSelectedClip("Idle")
+
     elseif (currentState == STATE.AWARE) then
 
     elseif (currentState == STATE.SUS) then
@@ -43,7 +69,7 @@ function Update(dt)
             if (WithinMeleeRange() == true) then
                 MeleeAttack()
             elseif (target ~= nil) then
-                MoveTowardsTarget()
+                --MoveTowardsTarget()
             else
                 -- Keep doing whatever it was doing
             end
@@ -73,7 +99,7 @@ function ManageTimers(dt)
                 if (currentAttack == ATTACK_FASE.BEGIN_ATTACK) then
                     DoAttack()
                 elseif (currentState ~= STATE.DEAD) then
-                    componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
+                    --componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
                     currentAttack = nil
                 end
             end
@@ -134,7 +160,14 @@ function EventHandler(key, fields)
         target = fields[1] -- fields[1] -> new Target;
     elseif key == "Die" then
         if (fields[1] == gameObject) then
-            Die()
+            Die() 
+        end
+    elseif key == "IsWalking" then
+        is = fields[1]
+        if is == true then
+            componentAnimator:SetSelectedClip("Walk")
+        else
+            componentAnimator:SetSelectedClip("Idle")
         end
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then

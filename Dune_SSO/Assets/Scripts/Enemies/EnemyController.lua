@@ -176,8 +176,6 @@ function CheckIfPointInCone(position)
     angle = Float3Angle(diff, componentTransform:GetFront())
 
     angle = math.abs(math.deg(angle))
-    
-    Log(tostring(diff) .. " " .. tostring(componentTransform:GetFront()) .. " " .. tostring(angle) .. "\n")
 
     if angle < visionConeAngle / 2 then
         do
@@ -193,8 +191,6 @@ end
 function ProcessVisualTrigger(position, gameObject)
     if not CheckIfPointInCone(position) then
         if isSeeingPlayer then
-            seeingPosition = nil
-            seeingSource = nil
             isSeeingPlayer = false
             SetTargetStateToUNAWARE()
         end
@@ -343,6 +339,7 @@ function SetStateToAGGRO(source)
     state = STATE.AGGRO
     awareness = 2
     targetAwareness = 2
+    isSeeingPlayer = true
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
 end
 
@@ -444,16 +441,17 @@ oldSourcePos = nil
 coneLight = gameObject:GetLight()
 
 function Update(dt)
+    
     if coneLight == nil then
         coneLight = gameObject:GetLight()
     end
-
+    
     if coneLight ~= nil then
         coneLight:SetDirection(float3.new(-componentTransform:GetFront().x, -componentTransform:GetFront().y, -componentTransform:GetFront().z))
         coneLight:SetRange(visionConeRadius)
         coneLight:SetAngle(visionConeAngle / 2)
     end
-
+    
     -- Death Mark (Weirding way)
     if (deathMarkTimer ~= nil) then
         deathMarkTimer = deathMarkTimer + dt
@@ -463,16 +461,13 @@ function Update(dt)
             return
         end
     end
-
+    
     if awareness_green == nil then
         ConfigAwarenessBars()
     else
         UpdateAwarenessBars()
     end
-
-    --Log(tostring(componentTransform:GetFront()) .. "\n")
-    --Log(tostring(awareness) .. " " .. tostring(targetAwareness) .. " " .. tostring(isSeeingPlayer) .. "\n")
-
+    
     if awareness < targetAwareness and isSeeingPlayer == true then
         awareness = awareness + awarenessVisualSpeed * dt
     elseif awareness < targetAwareness and isSeeingPlayer == false then
@@ -481,6 +476,8 @@ function Update(dt)
         awareness = awareness - awarenessSpeed * dt
     end
 
+    Log(tostring(awareness) .. "\n")
+    
     if awareness < 1.1 and awareness > 0.9 and state ~= STATE.SUS then
         if seeingSource ~= nil then
             DispatchEvent("State_Suspicious", {seeingPosition})
@@ -541,9 +538,9 @@ function Update(dt)
     end
     if (state ~= STATE.WORM) then
         if (state ~= STATE.AGGRO) then
-            DispatchEvent(pathfinderFollowKey, {speed, dt, _loop})
+            DispatchEvent(pathfinderFollowKey, {speed, dt, _loop, false})
         else
-            DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, _loop})
+            DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, _loop, false})
         end
     end
 end
