@@ -1,7 +1,7 @@
 {
-    "SceneHUD": {
+    "SceneLoading": {
         "active": true,
-        "game_objects_amount": 11,
+        "game_objects_amount": 6,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -206,7 +206,7 @@
                 "tag": 0
             },
             {
-                "UID": 1595518592,
+                "UID": 1015535968,
                 "active": true,
                 "components": [
                     {
@@ -215,14 +215,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 6,
+                        "anchor": 4,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            245.0,
-                            173.0
+                            0.0,
+                            0.0
                         ],
                         "rotation": [
                             0.0,
@@ -230,25 +230,25 @@
                             0.0
                         ],
                         "size": [
-                            156.0,
-                            156.0
+                            1920.0,
+                            1080.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "texture": "Assets/New UI/Zhib_Image.png",
+                        "texture": "Assets/UI/Menu UI/main_menu.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Zhib Image",
+                "name": "Image",
                 "parent_UID": 833363227,
                 "tag": 0
             },
             {
-                "UID": 2061113575,
+                "UID": 196176278,
                 "active": true,
                 "components": [
                     {
@@ -257,14 +257,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 6,
+                        "anchor": 8,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            82.0,
-                            132.0
+                            -184.0,
+                            114.0
                         ],
                         "rotation": [
                             0.0,
@@ -272,235 +272,25 @@
                             0.0
                         ],
                         "size": [
-                            76.0,
-                            76.0
+                            223.05999755859375,
+                            132.6199951171875
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "texture": "Assets/New UI/Nerala_Image.png",
+                        "texture": "Assets/New UI/loading_icon_1.png",
                         "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Nerala Image",
-                "parent_UID": 833363227,
-                "tag": 0
-            },
-            {
-                "UID": 1732780682,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            399.0,
-                            132.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            76.0,
-                            76.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/New UI/Omozra_Image.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Omozra Image",
-                "parent_UID": 833363227,
-                "tag": 0
-            },
-            {
-                "UID": 1557959980,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            144.0,
-                            39.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            57.0,
-                            22.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/New UI/hp_diamond_filled.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "HP Fill 1",
-                "parent_UID": 833363227,
-                "tag": 0
-            },
-            {
-                "UID": 1123489194,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            210.0,
-                            40.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            57.86000061035156,
-                            22.860000610351563
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/New UI/hp_diamond_filled.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "HP Fill 2",
-                "parent_UID": 833363227,
-                "tag": 0
-            },
-            {
-                "UID": 227090917,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            274.0,
-                            39.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            57.86000061035156,
-                            22.860000610351563
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/New UI/hp_diamond_filled.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "HP Fill 3",
-                "parent_UID": 833363227,
-                "tag": 0
-            },
-            {
-                "UID": 286608134,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            144.0,
-                            39.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            57.86000061035156,
-                            22.860000610351563
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/New UI/hp_diamond.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "HP Marquee 1",
+                "name": "Image1",
                 "parent_UID": 833363227,
                 "tag": 0
             }
         ],
-        "name": "SceneHUD",
+        "name": "SceneLoading",
         "navmesh": {
             "basic": {
                 "areas": [
