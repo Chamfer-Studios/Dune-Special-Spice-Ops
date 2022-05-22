@@ -1,5 +1,5 @@
 {
-    "": {
+    "CutsceneLevel1Level2": {
         "active": true,
         "game_objects_amount": 75,
         "game_objects_list": [
@@ -3533,7 +3533,7 @@
                 "tag": 0
             }
         ],
-        "name": "",
+        "name": "CutsceneLevel1Level2",
         "navmesh": {
             "basic": {
                 "areas": [
