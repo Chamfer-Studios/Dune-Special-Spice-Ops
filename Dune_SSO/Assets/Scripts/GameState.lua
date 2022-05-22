@@ -1,11 +1,12 @@
 ------------------- Variables --------------------
 characterSelected = 1
 spiceAmount = 1000
+particleActive = false
 
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
-    characterSelectedMesh = Find("CharacterSelectedMesh")
+    characterSelectedParticle = Find("Selected Character")
 
     str = "Spice Amount " .. spiceAmount .. "\n"
 end
@@ -49,11 +50,19 @@ function Update(dt)
         end
         if (characterSelected ~= 0) then
             playerPos = characters[characterSelected]:GetTransform():GetPosition()
-            characterSelectedMesh:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
+            if (characterSelectedParticle ~= nil) then
+                characterSelectedParticle:GetTransform():SetPosition(
+                    float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+                if (particleActive == false) then
+                    particleActive = true
+                    characterSelectedParticle:GetComponentParticle():ResumeParticleSpawn()
+                    characterSelectedParticle:GetComponentParticle():SetLoop(true)
+                end
+            end
         else
-            characterSelectedMesh:GetTransform():SetPosition(float3.new(
-                characterSelectedMesh:GetTransform():GetPosition().x, -20,
-                characterSelectedMesh:GetTransform():GetPosition().z))
+            characterSelectedParticle:GetTransform():SetPosition(float3.new(
+                characterSelectedParticle:GetTransform():GetPosition().x, -20,
+                characterSelectedParticle:GetTransform():GetPosition().z))
         end
     else
         characterSelected = 0

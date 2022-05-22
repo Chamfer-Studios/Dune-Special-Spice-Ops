@@ -146,6 +146,8 @@ function Start()
     end
 
     mouseParticles = Find("Mouse Particles")
+    choosingTargetParticle = Find("Choosing Target")
+
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
@@ -172,6 +174,7 @@ end
 -- Called each loop iteration
 function Update(dt)
     DrawActiveAbilities()
+    DrawHoverParticle()
 
     if (knifeCount == 1) then
 
@@ -307,6 +310,7 @@ function Update(dt)
                         isDoubleClicking = true
                     end
                     if (mouseParticles ~= nil) then
+                        mouseParticles:GetComponentParticle():SetLoop(true)
                         mouseParticles:GetComponentParticle():ResumeParticleSpawn()
                         mouseParticles:GetTransform():SetPosition(destination)
                     end
@@ -465,6 +469,16 @@ function CancelAbilities()
     drawUltimate = false
 end
 
+function DrawHoverParticle()
+    if (IsSelected() and
+        (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
+        drawingTarget = GetGameObjectHovered
+        if (drawingTarget.tag == Tag.ENEMY) then
+            choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+        end
+    end
+end
+
 function DrawActiveAbilities()
     if radiusLight == nil then
         radiusLight = gameObject:GetLight()
@@ -524,11 +538,6 @@ function ManageTimers(dt)
             isDoubleClicking = false
             doubleClickTimer = 0.0
         end
-    end
-
-    -- Click particles logic
-    if (mouseParticles ~= nil and IsSelected() == true) then
-        mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
 
     -- Invencibility timer
