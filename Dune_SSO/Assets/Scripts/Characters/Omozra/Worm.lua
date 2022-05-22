@@ -24,6 +24,9 @@ function Start()
         particles:StopParticleSpawn()
     end
 
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1
+
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle") -- Doesn't exists but I need it to be different
@@ -76,6 +79,13 @@ function DoDevour()
     componentAnimator:SetSelectedClip("DevourToIdle")
 
     -- TODO: Add particles, audio, etc.
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 2
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 
     currentState = State.IDLE
 end
@@ -104,6 +114,13 @@ function DoUltimate()
     end
 
     -- TODO: Add particles, audio, etc.
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 3
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 
     currentState = State.IDLE
 end
@@ -133,6 +150,14 @@ function DoSpit()
     end
 
     -- TODO: Add particles, audio, etc.
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
     currentState = State.IDLE
 end
 

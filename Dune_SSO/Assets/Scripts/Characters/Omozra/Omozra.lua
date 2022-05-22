@@ -395,7 +395,7 @@ function SetMovement(newMovement)
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
-                currentTrackID = -1
+                currentTrackID = 0
             end
         end
         if (componentAnimator ~= nil) then
@@ -655,6 +655,14 @@ function CastSecondary(position)
         LookAtTarget(position)
     end
 
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
@@ -662,14 +670,6 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 3
-        componentSwitch:PlayTrack(currentTrackID)
-    end
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -688,6 +688,14 @@ function CastUltimate() -- Ult step 3
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(target:GetTransform():GetPosition())
 
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
@@ -695,14 +703,6 @@ function CastUltimate() -- Ult step 3
 end
 
 function DoUltimate() -- Ult step 4
-
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 3
-        componentSwitch:PlayTrack(currentTrackID)
-    end
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -718,6 +718,14 @@ function RecastUltimate(position)
     StopMovement()
 
     LookAtTarget(position)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 
     drawPrimary = false
     drawSecondary = false
@@ -747,7 +755,7 @@ function TakeDamage(damage)
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
-            currentTrackID = 4 -- Should be 5
+            currentTrackID = 2
             componentSwitch:PlayTrack(currentTrackID)
         end
     else
@@ -767,7 +775,7 @@ function Die()
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = 5 -- Should be 6
+        currentTrackID = 3
         componentSwitch:PlayTrack(currentTrackID)
     end
 end
