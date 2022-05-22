@@ -146,11 +146,10 @@ function Start()
     end
 
     mouseParticles = Find("Mouse Particles")
-    choosingTargetParticle = Find("Choosing Target")
-
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
+    choosingTargetParticle = Find("Choosing Target")
 
     componentRigidBody = gameObject:GetRigidBody()
 

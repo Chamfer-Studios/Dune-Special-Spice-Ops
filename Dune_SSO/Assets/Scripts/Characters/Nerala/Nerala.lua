@@ -147,6 +147,7 @@ function Start()
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
+    choosingTargetParticle = Find("Choosing Target")
 
     componentRigidBody = gameObject:GetRigidBody()
 
@@ -168,6 +169,8 @@ end
 function Update(dt)
 
     DrawActiveAbilities()
+
+    DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -299,6 +302,7 @@ function Update(dt)
                         isDoubleClicking = true
                     end
                     if (mouseParticles ~= nil) then
+                        mouseParticles:GetComponentParticle():SetLoop(true)
                         mouseParticles:GetComponentParticle():ResumeParticleSpawn()
                         mouseParticles:GetTransform():SetPosition(destination)
                     end
@@ -478,6 +482,16 @@ function DrawActiveAbilities()
     end
 end
 
+function DrawHoverParticle()
+    if (IsSelected() and
+        (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
+        drawingTarget = GetGameObjectHovered
+        if (drawingTarget.tag == Tag.ENEMY) then
+            choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+        end
+    end
+end
+
 function UpdateStaminaBar()
     characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
         staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
@@ -515,11 +529,6 @@ function ManageTimers(dt)
             isDoubleClicking = false
             doubleClickTimer = 0.0
         end
-    end
-
-    -- Click particles logic
-    if (mouseParticles ~= nil and IsSelected() == true) then
-        mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
 
     -- Invencibility timer
@@ -706,12 +715,12 @@ function DoAttack()
     LookAtTarget(target:GetTransform():GetPosition())
 
     if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 4
-            componentSwitch:PlayTrack(currentTrackID)
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
         end
+        currentTrackID = 4
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 
     attackTimer = 0.0
 
@@ -807,7 +816,6 @@ end
 function DoUltimate()
 
     InstantiatePrefab("Mosquito")
-    
 
     -- No new clip, the last clip has to last until the mosquito dies
     SetState(State.MOSQUITO)
