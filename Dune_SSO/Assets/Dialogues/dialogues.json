@@ -183,6 +183,54 @@
       "char": " ",
       "line1": "Putting it simply, Rabban was sighted nearby supervising the reconnaissance",
       "line2": "mission himself, they are too close to our home, now is the time to end this."
+    },
+    {
+      "id": 24,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": " ",
+      "line1": "Hmm,  don't think we can face these enemies head on, follow me,    ",
+      "line2": "I saw something from the thopter, I think I know a way around them."
+    },
+    {
+      "id": 26,
+      "targetID": 27,
+      "src": "Assets/UI/HUD/Portraits/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "I thought that after all those attacks, your kind you would be a force",
+      "line2": "to be reckoned. But you are nothing more than insects. Rats trying to steal"
+    },
+    {
+      "id": 27,
+      "targetID": 28,
+      "src": "Assets/UI/HUD/Portraits/blank_asset_v1.0.png",
+      "char": " ",
+      "line1": "the food from us, the great harkonnen. I will enjoy killing every single",
+      "line2": "ant in that filthy burrow of yours.                                     "
+    },
+    {
+      "id": 28,
+      "targetID": 29,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": " ",
+      "line1": "No... It's a trap! Make haste! we are in serious problems. We should have ",
+      "line2": "thought about this, now due to our own stupidity we led them straight to our home."
+    },
+    {
+      "id": 29,
+      "targetID": 30,
+      "src": "Assets/UI/HUD/Portraits/nebala_v1.0.png",
+      "char": " ",
+      "line1": "That is not possible, they would have to follow us to find Sannara, or ",
+      "line2": "get the information from the source... oh no, our man.                 "
+    },
+    {
+      "id": 30,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": " ",
+      "line1": "They just needed directions and few indications. They tortured our brothers,",
+      "line2": "and they plan to do the same thing to our families. To the thopter, now!  "
     }
   ]
 }
