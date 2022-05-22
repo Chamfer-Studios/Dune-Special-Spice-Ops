@@ -278,8 +278,7 @@ function Update(dt)
                     CancelAbilities()
                 else
                     local isMoving = true
-                    if (goHit.tag == Tag.ENEMY and currentState == State.AIM_PRIMARY or currentState ==
-                        State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+                    if (goHit.tag == Tag.ENEMY) then
                         SetState(State.ATTACK)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
@@ -487,8 +486,8 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    --Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
-    --Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
+    -- Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
+    -- Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
     characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
         staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
 end
@@ -590,7 +589,7 @@ function ManageTimers(dt)
 
                 if (componentSwitch ~= nil) then
                     if (currentTrackID ~= -1) then
-    	             componentSwitch:StopTrack(currentTrackID)
+                        componentSwitch:StopTrack(currentTrackID)
                     end
                     currentTrackID = 7
                     componentSwitch:PlayTrack(currentTrackID)
@@ -648,10 +647,18 @@ function MoveToDestination(dt)
         if (currentMovement == Movement.IDLE_CROUCH) then
             SetMovement(Movement.CROUCH)
             s = speed * crouchMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.CROUCH) then
             s = speed * crouchMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.RUN) then
             s = speed * runMultiplierPercentage / 100
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
+                                                     100 * runMultiplierPercentage / 100, "repeated", gameObject})
+        elseif (currentMovement == Movement.WALK) then
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", gameObject})
         end
 
         -- Adapt speed on arrive
@@ -731,6 +738,7 @@ function DoAttack()
     componentAnimator:SetSelectedClip("AttackToIdle")
 
     DispatchGlobalEvent("Player_Attack", {target, characterID})
+    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
 
     LookAtTarget(target:GetTransform():GetPosition())
 
@@ -825,7 +833,7 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
-    
+
     -- Get all enemies in range of the Mouse
     enemiesInRange = {target}
     enemies = GetObjectsByTag(Tag.ENEMY)
@@ -905,11 +913,15 @@ function DoUltimate()
 end
 
 function TakeDamage(damage)
+    if (iFramesTimer ~= nil or currentHP == 0) then
+        return
+    end
+
+    iFramesTimer = 0
+
     if (damage == nil) then
         damage = 1
     end
-
-    iFramesTimer = 0.0
 
     if (currentHP > 1) then
         currentHP = currentHP - damage
@@ -923,6 +935,8 @@ function TakeDamage(damage)
             componentSwitch:PlayTrack(currentTrackID)
         end
     else
+        currentHP = 0
+        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
         Die()
     end
 end
@@ -981,6 +995,12 @@ function EventHandler(key, fields)
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
         knifeCount = knifeCount + 1
+    elseif (key == "Enemy_Attack") then
+        if (fields[1] == gameObject) then
+            if (fields[2] == "Harkonnen") then
+                TakeDamage()
+            end
+        end
     end
 end
 --------------------------------------------------
@@ -988,7 +1008,7 @@ end
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
-        TakeDamage(1)
+        -- TakeDamage(1)
     end
 end
 
@@ -998,7 +1018,7 @@ function OnCollisionEnter(go)
         return
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
-        TakeDamage(1)
+        -- TakeDamage(1)
     end
 end
 --------------------------------------------------

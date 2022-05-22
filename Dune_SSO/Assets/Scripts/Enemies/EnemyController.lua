@@ -40,9 +40,9 @@ NewVariable(awarenessSizeIV)
 
 awarenessSpeed = 0.4
 awarenessVisualSpeed = 0.7
---local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
---awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
---NewVariable(awarenessSpeedIV)
+-- local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
+-- awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
+-- NewVariable(awarenessSpeedIV)
 
 pingpong = false
 local pingpongIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
@@ -247,7 +247,7 @@ auditoryTriggerIsRepeating = false
 
 function ProcessRepeatedAuditoryTrigger(position, source)
     hadRepeatedAuditoryTriggerLastFrame = true
-    if state == state.UNAWARE then
+    if state == STATE.UNAWARE then
         SetTargetStateToSUS()
     elseif state == STATE.SUS then
         SetTargetStateToAGGRO()
@@ -332,15 +332,24 @@ function SetStateToSUS(position)
     awareness = 1
     targetAwareness = 0
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Walk")
+    end
 end
 
 function SetStateToAGGRO(source)
+
     local oldState = state
     state = STATE.AGGRO
     awareness = 2
     targetAwareness = 2
     isSeeingPlayer = true
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
+    if (componentAnimator ~= nil) then
+        Log("Change to run\n")
+        componentAnimator:SetSelectedClip("Walk")
+    end
 end
 
 function SetStateToWORM()
@@ -434,6 +443,10 @@ function Start()
     InstantiateNamedPrefab("awareness_red", awareness_red_name)
 
     componentRigidbody = gameObject:GetRigidBody()
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Walk")
+    end
 end
 
 oldSourcePos = nil
@@ -441,17 +454,18 @@ oldSourcePos = nil
 coneLight = gameObject:GetLight()
 
 function Update(dt)
-    
+
     if coneLight == nil then
         coneLight = gameObject:GetLight()
     end
-    
+
     if coneLight ~= nil then
-        coneLight:SetDirection(float3.new(-componentTransform:GetFront().x, -componentTransform:GetFront().y, -componentTransform:GetFront().z))
+        coneLight:SetDirection(float3.new(-componentTransform:GetFront().x, -componentTransform:GetFront().y,
+            -componentTransform:GetFront().z))
         coneLight:SetRange(visionConeRadius)
         coneLight:SetAngle(visionConeAngle / 2)
     end
-    
+
     -- Death Mark (Weirding way)
     if (deathMarkTimer ~= nil) then
         deathMarkTimer = deathMarkTimer + dt
@@ -461,13 +475,13 @@ function Update(dt)
             return
         end
     end
-    
+
     if awareness_green == nil then
         ConfigAwarenessBars()
     else
         UpdateAwarenessBars()
     end
-    
+
     if awareness < targetAwareness and isSeeingPlayer == true then
         awareness = awareness + awarenessVisualSpeed * dt
     elseif awareness < targetAwareness and isSeeingPlayer == false then
@@ -476,8 +490,8 @@ function Update(dt)
         awareness = awareness - awarenessSpeed * dt
     end
 
-    Log(tostring(awareness) .. "\n")
-    
+    -- Log(tostring(awareness) .. "\n")
+
     if awareness < 1.1 and awareness > 0.9 and state ~= STATE.SUS then
         if seeingSource ~= nil then
             DispatchEvent("State_Suspicious", {seeingPosition})
@@ -546,15 +560,12 @@ function Update(dt)
 end
 
 ------------------- Functions --------------------
+
 function Die()
 
     DispatchEvent("Die", {gameObject})
 
-    -- currentState = STATE.DEAD
-
-    if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Death")
-    end
+    currentState = STATE.DEAD
 
 end
 

@@ -7,14 +7,10 @@ STATE = { -- Importat to add changes to the state enum in EnemyController.lua an
     VICTORY = 6
 }
 
-ATTACK_FASE = {
-    IDLE = 1,
-    BEGIN_ATTACK = 2,
-    DO_ATTACK = 3
-}
+isAttacking = false
 
 meleeRange = 25.0
-attackTime = 1.5
+attackTime = 2.5
 
 knifeHitChance = 100
 dartHitChance = 100
@@ -69,7 +65,7 @@ function Update(dt)
             if (WithinMeleeRange() == true) then
                 MeleeAttack()
             elseif (target ~= nil) then
-                --MoveTowardsTarget()
+                -- MoveTowardsTarget()
             else
                 -- Keep doing whatever it was doing
             end
@@ -96,11 +92,10 @@ function ManageTimers(dt)
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
             else
-                if (currentAttack == ATTACK_FASE.BEGIN_ATTACK) then
+                if (isAttacking == true) then
                     DoAttack()
                 elseif (currentState ~= STATE.DEAD) then
-                    --componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
-                    currentAttack = nil
+                    componentAnimator:SetSelectedClip("Idle")
                 end
             end
         end
@@ -134,23 +129,27 @@ function WithinMeleeRange()
 end
 
 function MeleeAttack()
+    if (attackTimer ~= nil) then
+        return
+    end
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Attack")
     end
     LookAtTarget(target:GetTransform():GetPosition())
-    currentAttack = ATTACK_FASE.BEGIN_ATTACK
+    isAttacking = true
 end
 
 function DoAttack()
 
     componentAnimator:SetSelectedClip("AttackToIdle")
 
-    DispatchGlobalEvent("Enemy_Attack", {target, gameObject})
+    DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
 
     LookAtTarget(target:GetTransform():GetPosition())
     attackTimer = 0.0
-    currentAttack = ATTACK_FASE.DO_ATTACK
+
+    isAttacking = false
 end
 
 function EventHandler(key, fields)
@@ -160,14 +159,7 @@ function EventHandler(key, fields)
         target = fields[1] -- fields[1] -> new Target;
     elseif key == "Die" then
         if (fields[1] == gameObject) then
-            Die() 
-        end
-    elseif key == "IsWalking" then
-        is = fields[1]
-        if is == true then
-            componentAnimator:SetSelectedClip("Walk")
-        else
-            componentAnimator:SetSelectedClip("Idle")
+            Die()
         end
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then

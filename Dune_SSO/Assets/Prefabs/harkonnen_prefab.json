@@ -17,15 +17,15 @@
                         450.7228088378906
                     ],
                     "rotation": [
-                        -8.659425657242537e-05,
+                        -8.659435843583196e-05,
                         0.7071068286895752,
-                        -8.659264130983502e-05,
-                        0.7071067094802856
+                        -8.659264858579263e-05,
+                        0.7071067690849304
                     ],
                     "scale": [
                         0.03000018745660782,
                         0.030000001192092896,
-                        0.02999955229461193
+                        0.029999522492289543
                     ],
                     "type": 21
                 },
@@ -181,11 +181,6 @@
                             "name": "chaseSpeed",
                             "type": "int",
                             "value": 30
-                        },
-                        {
-                            "name": "attackRange",
-                            "type": "int",
-                            "value": 20
                         }
                     ],
                     "type": 5
@@ -206,16 +201,16 @@
                 {
                     "active": true,
                     "center": [
-                        0.10000000149011612,
+                        0.0,
                         13.399999618530273,
-                        1.2999999523162842
+                        0.0
                     ],
                     "filter": "",
                     "is_trigger": false,
                     "scale_factor": [
-                        2.130000114440918,
-                        0.9300000071525574,
-                        0.4300000071525574
+                        0.5,
+                        1.0,
+                        0.5
                     ],
                     "type": 7
                 }
@@ -1574,11 +1569,11 @@
                                     "rotation": [
                                         0.04846788942813873,
                                         0.000957084761466831,
-                                        0.0006710784509778023,
+                                        0.0006710800225846469,
                                         0.9988240599632263
                                     ],
                                     "scale": [
-                                        0.9999775886535645,
+                                        0.9999765157699585,
                                         0.9999998211860657,
                                         0.9999999403953552
                                     ],
@@ -1604,14 +1599,14 @@
                                 6.491641521453857
                             ],
                             "rotation": [
-                                -0.015614274889230728,
-                                0.004085625056177378,
-                                -0.0010132754687219858,
+                                -0.015614308416843414,
+                                0.004085633438080549,
+                                -0.0010132777970284224,
                                 0.9998692274093628
                             ],
                             "scale": [
-                                0.9999836683273315,
-                                0.9999819993972778,
+                                0.9999825954437256,
+                                0.9999809265136719,
                                 0.9999987483024597
                             ],
                             "type": 21
@@ -1688,6 +1683,36 @@
             },
             "clips": [
                 {
+                    "clipDuration": 23.0,
+                    "clipDurationInSeconds": 0.9583333134651184,
+                    "clipEndFrame": 186.0,
+                    "clipFinished": false,
+                    "clipLoop": false,
+                    "clipName": "Attack",
+                    "clipStartFrame": 163.0,
+                    "mapString": "Attack"
+                },
+                {
+                    "clipDuration": 4.0,
+                    "clipDurationInSeconds": 0.1666666716337204,
+                    "clipEndFrame": 191.0,
+                    "clipFinished": false,
+                    "clipLoop": false,
+                    "clipName": "AttackToIdle",
+                    "clipStartFrame": 187.0,
+                    "mapString": "AttackToIdle"
+                },
+                {
+                    "clipDuration": 90.0,
+                    "clipDurationInSeconds": 3.75,
+                    "clipEndFrame": 281.0,
+                    "clipFinished": false,
+                    "clipLoop": false,
+                    "clipName": "Death",
+                    "clipStartFrame": 191.0,
+                    "mapString": "Death"
+                },
+                {
                     "clipDuration": 289.0,
                     "clipDurationInSeconds": 12.041666984558105,
                     "clipEndFrame": 289.0,
@@ -1698,27 +1723,27 @@
                     "mapString": "Default clip"
                 },
                 {
-                    "clipDuration": 97.0,
-                    "clipDurationInSeconds": 4.041666507720947,
+                    "clipDuration": 96.0,
+                    "clipDurationInSeconds": 4.0,
                     "clipEndFrame": 97.0,
                     "clipFinished": true,
                     "clipLoop": true,
                     "clipName": "Idle",
-                    "clipStartFrame": 0.0,
+                    "clipStartFrame": 1.0,
                     "mapString": "Idle"
                 },
                 {
                     "clipDuration": 32.0,
                     "clipDurationInSeconds": 1.3333333730697632,
                     "clipEndFrame": 135.0,
-                    "clipFinished": false,
+                    "clipFinished": true,
                     "clipLoop": true,
                     "clipName": "Walk",
                     "clipStartFrame": 103.0,
                     "mapString": "Walk"
                 }
             ],
-            "selectedClip": "Walk",
+            "selectedClip": "AttackToIdle",
             "type": 12
         }
     ],
