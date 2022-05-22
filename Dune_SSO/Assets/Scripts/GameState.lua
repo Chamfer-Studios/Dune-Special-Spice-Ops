@@ -8,7 +8,8 @@ function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Character")
 
-    str = "Spice Amount " .. spiceAmount .. "\n"
+    LoadGameState()
+	spiceAmount = GetGameJsonInt("spice")
 end
 
 -- Called each loop iteration
