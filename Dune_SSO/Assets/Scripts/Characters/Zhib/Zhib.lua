@@ -65,8 +65,9 @@ aggroChanceSardKnife = 0
 drawPrimary = false
 
 -- Secondary ability --
+maxDecoy = 1
 secondaryCastRange = 75
-secondaryCooldown = 10.0
+secondaryCooldown = 10
 drawSecondary = false
 
 -- Ultimate ability --
@@ -128,6 +129,10 @@ secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
 NewVariable(secondaryCastRangeIV)
 
+maxDecoyIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+maxDecoyIV = InspectorVariable.new("maxDecoy", maxDecoyIVT, maxDecoy)
+NewVariable(maxDecoyIV)
+
 ---- Ultimate ability --
 ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
@@ -163,6 +168,7 @@ function Start()
     currentHP = maxHP
 
     knifeCount = maxKnives
+    decoyCount = maxDecoy
 
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
@@ -239,14 +245,18 @@ function Update(dt)
                 if (secondaryTimer ~= nil) then
                     Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
                 else
-                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
-                    local mouse = GetLastMouseClick()
-                    if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
-                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                    if (decoyCount <= 0) then
+                        Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            CastSecondary(mouse)
+                        GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                        local mouse = GetLastMouseClick()
+                        if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
+                            Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                CastSecondary(mouse)
+                            end
                         end
                     end
                 end
@@ -473,9 +483,9 @@ end
 function DrawHoverParticle()
     if (IsSelected() and
         (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
-        drawingTarget = GetGameObjectHovered
+        drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
-            choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+            -- choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
         end
     end
 end
@@ -802,7 +812,6 @@ function CastSecondary(position)
     componentAnimator:SetSelectedClip("Decoy")
     StopMovement(false)
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     LookAtTarget(position)
 
     drawPrimary = false
@@ -813,6 +822,8 @@ end
 function PlaceDecoy()
 
     InstantiatePrefab("Decoy")
+
+    decoyCount = decoyCount - 1
 
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
@@ -1001,6 +1012,8 @@ function EventHandler(key, fields)
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
+        DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
+        decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
         knifeCount = knifeCount + 1
