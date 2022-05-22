@@ -173,6 +173,8 @@ end
 function Update(dt)
     DrawActiveAbilities()
 
+    DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+
     if (knifeCount == 1) then
 
     end
@@ -672,7 +674,6 @@ function MoveToDestination(dt)
             -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
             DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
         -- Rotation
         lastRotation = float3.new(vec2[1], 0, vec2[2])

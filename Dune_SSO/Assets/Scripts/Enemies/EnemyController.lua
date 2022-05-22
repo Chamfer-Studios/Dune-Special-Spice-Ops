@@ -38,7 +38,7 @@ local awarenessSizeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3
 awarenessSizeIV = InspectorVariable.new("awarenessSize", awarenessSizeIVT, awarenessSize)
 NewVariable(awarenessSizeIV)
 
-awarenessSpeed = 0.4
+awarenessSpeed = 0.1
 awarenessVisualSpeed = 0.7
 -- local awarenessSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT
 -- awarenessSpeedIV = InspectorVariable.new("awarenessSpeed", awarenessSpeedIVT, awarenessSpeed)
@@ -188,8 +188,10 @@ function CheckIfPointInCone(position)
     end
 end
 
+isAnyPlayerInConeThisFrame = false
+
 function ProcessVisualTrigger(position, gameObject)
-    if not CheckIfPointInCone(position) then
+    if not CheckIfPointInCone(position) and not isAnyPlayerInConeThisFrame then
         if isSeeingPlayer then
             isSeeingPlayer = false
             SetTargetStateToUNAWARE()
@@ -198,15 +200,22 @@ function ProcessVisualTrigger(position, gameObject)
             return
         end
     end
+    
+    if not isAnyPlayerInConeThisFrame then
+        isAnyPlayerInConeThisFrame = true
 
-    isSeeingPlayer = true
+        isSeeingPlayer = true
 
-    seeingPosition = position
-    seeingSource = gameObject
-    if state == STATE.UNAWARE then
-        SetTargetStateToSUS()
-    elseif state == STATE.SUS then
-        SetTargetStateToAGGRO()
+        seeingPosition = position
+        seeingSource = gameObject
+
+        if state == STATE.UNAWARE then
+            SetTargetStateToSUS()
+        elseif state == STATE.SUS then
+            SetTargetStateToAGGRO()
+        elseif state == STATE.AGGRO then
+            SetStateToAGGRO(gameObject)
+        end
     end
 end
 
@@ -275,22 +284,10 @@ function ProcessAuditoryTrigger(position, range, type, source)
 end
 
 function SetTargetStateToUNAWARE()
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     targetAwareness = 0
 end
 
 function SetTargetStateToSUS()
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     targetAwareness = 1
 end
 
@@ -299,27 +296,23 @@ function SetTargetStateToAGGRO()
 end
 
 function SetStateToUNAWARE()
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     CheckAndRecalculatePath(true)
     local oldState = state
     state = STATE.UNAWARE
     awareness = 0
     targetAwareness = 0
+
+    awarenessSource = nil
+    awarenessPosition = nil
+
+    isSeeingPlayer = false
+    seeingPosition = nil
+    seeingSource = nil
+
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
 end
 
 function SetStateToSUS(position)
-    if state == STATE.AGGRO then
-        do
-            return
-        end
-    end
-
     if static == true then
         DispatchEvent(pathfinderUpdateKey, {{}, false, componentTransform:GetPosition()})
         LookAtDirection(Float3Difference(componentTransform:GetPosition(), position))
@@ -339,7 +332,6 @@ function SetStateToSUS(position)
 end
 
 function SetStateToAGGRO(source)
-
     local oldState = state
     state = STATE.AGGRO
     awareness = 2
@@ -359,7 +351,7 @@ function SetStateToWORM()
 end
 
 function EventHandler(key, fields)
-    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+   if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "State_Suspicious" then
         SetStateToSUS(fields[1])
@@ -455,6 +447,8 @@ coneLight = gameObject:GetLight()
 
 function Update(dt)
 
+    isAnyPlayerInConeThisFrame = false
+
     if coneLight == nil then
         coneLight = gameObject:GetLight()
     end
@@ -490,13 +484,19 @@ function Update(dt)
         awareness = awareness - awarenessSpeed * dt
     end
 
-    -- Log(tostring(awareness) .. "\n")
-
     if awareness < 1.1 and awareness > 0.9 and state ~= STATE.SUS then
-        if seeingSource ~= nil then
+        if seeingPosition ~= nil then
             DispatchEvent("State_Suspicious", {seeingPosition})
         else
             DispatchEvent("State_Suspicious", {awarenessPosition})
+        end
+    end
+
+    if state == STATE.SUS then
+        if seeingPosition ~= nil then
+            DispatchEvent(pathfinderUpdateKey, {{seeingPosition}, false, componentTransform:GetPosition()})
+        else
+            DispatchEvent(pathfinderUpdateKey, {{awarenessPosition}, false, componentTransform:GetPosition()})
         end
     end
 
@@ -532,7 +532,8 @@ function Update(dt)
             s = awarenessSource
         end
 
-        if s ~= nil and (oldSourcePos == nil or Float3Distance(oldSourcePos, s:GetTransform():GetPosition()) > 10) then
+        --if s ~= nil and (oldSourcePos == nil or Float3Distance(oldSourcePos, s:GetTransform():GetPosition()) > 10) then
+        if s ~= nil then
             if static == true then
                 DispatchEvent(pathfinderUpdateKey, {{}, false, componentTransform:GetPosition()})
                 LookAtDirection(Float3Difference(componentTransform:GetPosition(), s:GetTransform():GetPosition()))
@@ -541,9 +542,9 @@ function Update(dt)
                     {{s:GetTransform():GetPosition()}, false, componentTransform:GetPosition()})
             end
             DispatchEvent("Target_Update", {s})
+            --oldSourcePos = s:GetTransform():GetPosition()
         end
 
-        oldSourcePos = s:GetTransform():GetPosition()
     end
 
     _loop = loop
