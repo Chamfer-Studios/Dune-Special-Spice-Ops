@@ -1,6 +1,7 @@
 ------------------- Variables --------------------
 characterSelected = 1
 spiceAmount = 1000
+spiceMaxLvl1 = 9480
 particleActive = false
 gameOverTime = 5
 
