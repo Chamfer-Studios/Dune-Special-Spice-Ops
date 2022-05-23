@@ -311,6 +311,8 @@ function Update(dt)
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
                     elseif (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
+                        target = nil
+                        currentState = State.IDLE
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
