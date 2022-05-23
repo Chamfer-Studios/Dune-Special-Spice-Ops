@@ -20,7 +20,6 @@ function Start()
 end
 function Update(dt)
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
- 
 
     if currentCharacterId == 1 then -- zhib
         zhibImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
@@ -57,7 +56,6 @@ function Update(dt)
 end
 
 function EventHandler(key, fields)
-
 
     if key == "Player_Ability" then -- fields[1] -> characterID; fields[2] -> ability n; fields[3] -> ability state
         characterID = fields[1] -- 1: zhib, 2: Nerala, 3: Omozra
@@ -98,11 +96,11 @@ function EventHandler(key, fields)
             end
         end
     elseif key == "Player_Health" then
-       -- fields[1] = characterID
-       -- fields[2] = currentHP
-        --fields[3] = maxHP
-        Log("Fields "..tostring(fields[1]).."\n")
-        Log("cID "..tostring(currentCharacterId).."\n")
+        -- fields[1] = characterID
+        -- fields[2] = currentHP
+        -- fields[3] = maxHP
+        -- Log("Fields "..tostring(fields[1]).."\n")
+        -- Log("cID "..tostring(currentCharacterId).."\n")
         if currentCharacterId == fields[1] then
             if fields[2] == 0 then
                 hpFill1.active = false
