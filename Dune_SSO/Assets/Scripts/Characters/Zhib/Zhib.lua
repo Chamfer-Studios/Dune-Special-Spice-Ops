@@ -481,11 +481,13 @@ function CancelAbilities()
 end
 
 function DrawHoverParticle()
-    if (IsSelected() and
+    if (IsSelected() == true and
         (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
         drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
-            -- choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+            choosingTargetParticle:GetTransform():SetPosition(
+                float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 1,
+                    componentTransform:GetPosition().z))
         end
     end
 end
@@ -966,6 +968,10 @@ function Die()
     currentHP = 0
     DispatchGlobalEvent("Player_Death", {characterID})
 
+    if (componentRigidBody ~= nil) then
+        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
+            componentTransform:GetPosition().z))
+    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
