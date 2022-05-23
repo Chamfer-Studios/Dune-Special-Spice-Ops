@@ -369,7 +369,7 @@ function Update(dt)
             end
         end
     else
-        CancelAbilities()
+        -- CancelAbilities()
     end
 end
 --------------------------------------------------
@@ -837,6 +837,39 @@ function EventHandler(key, fields)
     if (key == "Mosquito_Death") then
         ultimateTimer = 0.0
         SetState(State.IDLE)
+    elseif (key == "Cast_Primary") then
+        if fields[1] == characterID then
+            if (currentState == State.AIM_PRIMARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                SetState(State.AIM_PRIMARY)
+                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                drawPrimary = true
+            end
+        end
+    elseif (key == "Cast_Secondary") then
+        if fields[1] == characterID then
+            if (currentState == State.AIM_SECONDARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                SetState(State.AIM_SECONDARY)
+                DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+                drawSecondary = true
+            end
+    end
+    elseif (key == "Cast_Ultimate") then
+        if(fields[1] == characterID) then
+            if (currentState == State.AIM_ULTIMATE) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                SetState(State.AIM_ULTIMATE)
+                DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+                drawUltimate = true
+            end
+    end
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
         if (fields[1] == gameObject) then

@@ -352,7 +352,6 @@ function Update(dt)
 
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
-
             if (currentState == State.AIM_PRIMARY) then
                 CancelAbilities()
             else
@@ -409,7 +408,7 @@ function Update(dt)
             end
         end
     else
-        CancelAbilities()
+        -- CancelAbilities()
     end
 end
 --------------------------------------------------
@@ -1003,6 +1002,42 @@ function EventHandler(key, fields)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
         end
+    elseif (key == "Cast_Primary") then
+        if fields[1] == characterID then
+            if (currentState == State.AIM_PRIMARY) then
+                CancelAbilities()
+            else
+                CancelAbilities()
+                SetState(State.AIM_PRIMARY)
+                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
+                drawPrimary = true
+            end
+        end
+    elseif (key == "Cast_Secondary") then
+        if fields[1] == characterID then
+        if (currentState == State.AIM_SECONDARY) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_SECONDARY)
+            DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
+            drawSecondary = true
+        end
+    end
+    elseif (key == "Cast_Ultimate") then
+        if(fields[1] == characterID) then
+        if (currentState == State.AIM_ULTIMATE) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_ULTIMATE)
+            DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
+            drawUltimate = true
+        end
+    end
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
         if (fields[1] == gameObject) then

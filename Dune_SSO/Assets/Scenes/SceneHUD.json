@@ -1,7 +1,7 @@
 {
     "SceneHUD": {
         "active": true,
-        "game_objects_amount": 39,
+        "game_objects_amount": 43,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -1083,7 +1083,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Skill Mask Q",
+                "name": "Skill Mask CD Q",
                 "parent_UID": 2071979755,
                 "tag": 0
             },
@@ -1125,7 +1125,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Skill Mask W",
+                "name": "Skill Mask CD W",
                 "parent_UID": 2071979755,
                 "tag": 0
             },
@@ -1167,7 +1167,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Skill Mask E",
+                "name": "Skill Mask CD E",
                 "parent_UID": 2071979755,
                 "tag": 0
             },
@@ -1331,7 +1331,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Skill Masks",
+                "name": "Skill Masks CD",
                 "parent_UID": 833363227,
                 "tag": 0
             },
@@ -1674,6 +1674,173 @@
                 "isPrefab": false,
                 "name": "Right Character Frame",
                 "parent_UID": 833363227,
+                "tag": 0
+            },
+            {
+                "UID": 1059564891,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -150.0,
+                            119.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            70.1500015258789,
+                            70.1500015258789
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/New UI/ability_active_mask.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Skill Mask Active Q",
+                "parent_UID": 322347774,
+                "tag": 0
+            },
+            {
+                "UID": 322347774,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "logicalSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 13
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Skill Masks Active",
+                "parent_UID": 833363227,
+                "tag": 0
+            },
+            {
+                "UID": 970262504,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            119.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            70.1500015258789,
+                            70.1500015258789
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/New UI/ability_active_mask.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Skill Mask Active W",
+                "parent_UID": 322347774,
+                "tag": 0
+            },
+            {
+                "UID": 661268754,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 7,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            150.0,
+                            119.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            70.1500015258789,
+                            70.1500015258789
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/New UI/ability_active_mask.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Skill Mask Active E",
+                "parent_UID": 322347774,
                 "tag": 0
             }
         ],
