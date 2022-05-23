@@ -1,7 +1,7 @@
 {
     "SceneGameOver": {
         "active": true,
-        "game_objects_amount": 11,
+        "game_objects_amount": 12,
         "game_objects_list": [
             {
                 "UID": 357281497,
@@ -20,9 +20,9 @@
                         ],
                         "rotation": [
                             0.0,
+                            1.0,
                             0.0,
-                            0.0,
-                            1.0
+                            0.0
                         ],
                         "scale": [
                             1.0,
@@ -37,6 +37,8 @@
                         "frustum_culling": false,
                         "isMainCamera": true,
                         "near_plane_distance": 0.009999999776482582,
+                        "sCullingRadius": 249,
+                        "sphere_culling": false,
                         "type": 4,
                         "vertical_fov": 0.3839724361896515
                     }
@@ -63,15 +65,15 @@
                             0.0
                         ],
                         "rotation": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
+                            0.27059805393218994,
+                            -0.6532815098762512,
+                            0.27059805393218994,
+                            0.6532815098762512
                         ],
                         "scale": [
                             1.0,
-                            1.0,
-                            1.0
+                            0.9999999403953552,
+                            0.9999999403953552
                         ],
                         "type": 21
                     },
@@ -97,6 +99,17 @@
                         "sourceType": 0,
                         "specularValue": 0.0,
                         "type": 19
+                    },
+                    {
+                        "active": true,
+                        "far_plane_distance": 1000.0,
+                        "frustum_culling": false,
+                        "isMainCamera": false,
+                        "near_plane_distance": 0.30000001192092896,
+                        "sCullingRadius": 499,
+                        "sphere_culling": false,
+                        "type": 4,
+                        "vertical_fov": 382.0
                     }
                 ],
                 "is3D": true,
@@ -501,6 +514,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "QUIT"
                     }
@@ -549,6 +563,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "GAME OVER!"
                     }
@@ -597,6 +612,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "MAIN MENU"
                     }
@@ -645,6 +661,7 @@
                             255,
                             255
                         ],
+                        "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
                         "type": 16,
                         "value": "TRY AGAIN"
                     }
@@ -653,6 +670,55 @@
                 "isPrefab": false,
                 "name": "Text3",
                 "parent_UID": 1601885241,
+                "tag": 0
+            },
+            {
+                "UID": 57863387,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "type": 21
+                    },
+                    {
+                        "active": true,
+                        "bypass": false,
+                        "loop": true,
+                        "mute": false,
+                        "offset": 0.0,
+                        "pan": 0.0,
+                        "play_on_start": true,
+                        "state": true,
+                        "track_path": "Assets/Audio/Music/Main Theme (Main Menu).mp3",
+                        "transpose": 0.0,
+                        "type": 10,
+                        "volume": 100.0
+                    }
+                ],
+                "is3D": true,
+                "isPrefab": false,
+                "name": "Music",
+                "parent_UID": 0,
                 "tag": 0
             }
         ],
