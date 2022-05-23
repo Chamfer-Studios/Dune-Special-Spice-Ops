@@ -448,8 +448,13 @@ function Start()
 
     componentRigidbody = gameObject:GetRigidBody()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+
     if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Walk")
+        if (static == true) then
+            componentAnimator:SetSelectedClip("Idle")
+        else
+            componentAnimator:SetSelectedClip("Walk")
+        end
     end
 end
 
