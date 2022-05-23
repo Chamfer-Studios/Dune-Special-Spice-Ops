@@ -1,5 +1,5 @@
 {
-    "SceneGameOver": {
+    "SceneWin": {
         "active": true,
         "game_objects_amount": 9,
         "game_objects_list": [
@@ -217,7 +217,7 @@
                     {
                         "active": true,
                         "file_name": "Assets/Scripts/New HUD Scripts/space_to_main_menu.lua",
-                        "id": 1911298973,
+                        "id": 1486835017,
                         "inspector_variables": [
                             {
                                 "name": "name",
@@ -266,7 +266,7 @@
                     },
                     {
                         "active": true,
-                        "texture": "Assets/New UI/game_over_background.png",
+                        "texture": "Assets/New UI/win_screen_background.png",
                         "type": 14
                     }
                 ],
@@ -385,8 +385,8 @@
                             0.0
                         ],
                         "size": [
-                            622.0,
-                            133.0
+                            583.0,
+                            134.0
                         ],
                         "type": 22
                     },
@@ -400,7 +400,7 @@
                         ],
                         "fontPath": "Assets/Fonts/Fonseca/Fonseca-Medium.otf",
                         "type": 16,
-                        "value": "GAME OVER"
+                        "value": "YOU WON!"
                     }
                 ],
                 "is3D": false,
@@ -459,7 +459,7 @@
                 "tag": 0
             }
         ],
-        "name": "SceneGameOver",
+        "name": "SceneWin",
         "navmesh": {
             "basic": {
                 "areas": [
