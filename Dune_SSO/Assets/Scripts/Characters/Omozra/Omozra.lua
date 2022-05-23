@@ -140,6 +140,7 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Choosing Target")
+    footstepsParticle = Find("Footsteps Particles")
 
     -- Audio
     currentTrackID = -1
@@ -188,8 +189,10 @@ function Update(dt)
         UpdateStaminaBar()
         DrawHoverParticle()
 
-        footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-            componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        if (footstepsParticle ~= nil) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -256,11 +259,15 @@ function Update(dt)
                 else
                     local isMoving = true
                     if (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
-                        footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
-                        footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                        end
                         isMoving = false
                     end
 

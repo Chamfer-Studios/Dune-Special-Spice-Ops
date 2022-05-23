@@ -238,8 +238,10 @@ function Update(dt)
         UpdateStaminaBar()
         DrawHoverParticle()
 
-        footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-            componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        if (footstepsParticle ~= nil) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -324,7 +326,9 @@ function Update(dt)
                             isMoving = false
                             Attack()
                         else
-                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            if (footstepsParticle ~= nil) then
+                                footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            end
                             destination = target:GetTransform():GetPosition()
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
@@ -335,7 +339,9 @@ function Update(dt)
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
-                        footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                        end
                         isMoving = false
                     end
 
