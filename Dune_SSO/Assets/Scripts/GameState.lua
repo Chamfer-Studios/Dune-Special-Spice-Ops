@@ -8,6 +8,7 @@ gameOverTime = 5
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Character")
+    staminaBar = Find("Stamina Bar")
 
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
@@ -60,6 +61,7 @@ function Update(dt)
         end
         if (characterSelected ~= 0) then
             playerPos = characters[characterSelected]:GetTransform():GetPosition()
+            staminaBar:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
             if (characterSelectedParticle ~= nil) then
                 characterSelectedParticle:GetTransform():SetPosition(
                     float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
@@ -70,6 +72,8 @@ function Update(dt)
                 end
             end
         else
+            staminaBar:GetTransform():SetPosition(float3.new(staminaBar:GetTransform():GetPosition().x, -20,
+                staminaBar:GetTransform():GetPosition().z))
             characterSelectedParticle:GetTransform():SetPosition(float3.new(
                 characterSelectedParticle:GetTransform():GetPosition().x, -20,
                 characterSelectedParticle:GetTransform():GetPosition().z))
