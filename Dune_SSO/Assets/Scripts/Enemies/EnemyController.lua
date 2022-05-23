@@ -359,6 +359,8 @@ function SetStateToWORM()
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
 end
 
+wasWalking = false
+
 function EventHandler(key, fields)
     if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
@@ -370,6 +372,18 @@ function EventHandler(key, fields)
         LookAtDirection(fields[1])
     elseif key == "Player_Position" then
         ProcessVisualTrigger(fields[1], fields[2])
+    elseif key == "IsWalking" then
+        if fields[1] == true and wasWalking == false then
+            wasWalking = true
+            if (componentAnimator ~= nil) then
+                componentAnimator:SetSelectedClip("Walk")
+            end
+        elseif fields[1] == false and wasWalking == true and state ~= STATE.AGGRO then
+            wasWalking = false
+            if (componentAnimator ~= nil) then
+                componentAnimator:SetSelectedClip("Idle")
+            end
+        end
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then
             deathMarkTime = fields[2]
