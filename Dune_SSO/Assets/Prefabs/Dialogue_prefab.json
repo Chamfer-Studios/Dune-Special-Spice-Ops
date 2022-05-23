@@ -267,7 +267,7 @@
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "DialogueContinueButton",
+            "name": "DialogueSkipButton",
             "tag": 0
         },
         {
@@ -315,7 +315,7 @@
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "DialogueContinueText",
+            "name": "DialgoueSkipText",
             "tag": 0
         }
     ],
