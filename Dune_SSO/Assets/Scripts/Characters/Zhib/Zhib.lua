@@ -1065,7 +1065,7 @@ function EventHandler(key, fields)
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
             -- If zhib is being changed, CancelAbilities
-            CancelAbilities()
+            -- CancelAbilities() -- Montu, me comes los huevos
         end
         if (fields[2] == characterID) then
             -- If game changed to Zhib, update HUD events depending on Abilities

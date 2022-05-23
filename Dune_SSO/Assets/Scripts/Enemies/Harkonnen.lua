@@ -153,6 +153,10 @@ function EventHandler(key, fields)
                 Die(false)
             end
         end
+    elseif key == "Mosquito_Hit" then
+        if (fields[1] == gameObject) then
+            Die()
+        end
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
