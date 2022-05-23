@@ -29,13 +29,13 @@ function EventHandler(key, fields)
         
         enemyType = fields[4]
         if (enemyType == "Harkonnen") then
-            math.randomseed()
+            math.randomseed(os.time)
             spiceLoot = math.random(40,80)
         elseif (enemyType == "Sardaukar") then
-            math.randomseed()
+            math.randomseed(os.time)
             spiceLoot = math.random(80,160)
         elseif (enemyType == "Mentat") then
-            math.randomseed()
+            math.randomseed(os.time)
             spiceLoot = math.random(100,200)
         end
     end

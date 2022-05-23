@@ -4,6 +4,18 @@ spiceAmount = 1000
 particleActive = false
 gameOverTime = 5
 
+nerala_primary_level = 0
+nerala_secondary_level = 0
+nerala_ultimate_level = 0
+
+zhib_primary_level = 0
+zhib_secondary_level = 0
+zhib_ultimate_level = 0
+
+omozra_primary_level = 0
+omozra_secondary_level = 0
+omozra_ultimate_level = 0
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -12,6 +24,21 @@ function Start()
 
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
+
+    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
+    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
+    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
+
+    zhib_primary_level = GetGameJsonInt("zhib_primary_level")
+    zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
+    zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
+
+    omozra_primary_level = GetGameJsonInt("omozra_primary_level")
+    omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
+    omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
+
+    str = "Spice Amount " .. spiceAmount .. "\n"
+    Log(str)
 end
 
 -- Called each loop iteration
@@ -20,6 +47,22 @@ function Update(dt)
         if (gameOverTimer < gameOverTime) then
             gameOverTimer = gameOverTimer + dt
         else
+            SetGameJsonInt("spice", spiceAmount)
+
+            SetGameJsonInt("nerala_primary_level", nerala_primary_level)
+            SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
+            SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
+    
+            SetGameJsonInt("zhib_primary_level", zhib_primary_level)
+            SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
+            SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
+    
+            SetGameJsonInt("omozra_primary_level", omozra_primary_level)
+            SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
+            SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
+    
+            SaveGameState()
+
             gameObject:ChangeScene(true, "SceneGameOver")
         end
     end
@@ -91,6 +134,7 @@ function EventHandler(key, fields)
     elseif (key == "Spice_Reward") then
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
+        Log(str)
     elseif (key == "Spice_Spawn") then
         deadEnemyPos = fields[1]
         deadEnemyType = fields[2]
