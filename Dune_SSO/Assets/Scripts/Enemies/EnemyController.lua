@@ -585,7 +585,10 @@ end
 
 ------------------- Functions --------------------
 
-function Die()
+function Die(leaveBody)
+    if (leaveBody == nil) then
+        leaveBody = true
+    end
     SetStateToDEAD()
     if (awareness_green ~= nil) then
         DeleteGameObjectByUID(awareness_green:GetUID())
@@ -598,6 +601,9 @@ function Die()
     if (awareness_yellow ~= nil) then
         DeleteGameObjectByUID(awareness_yellow:GetUID())
         awareness_yellow = nil
+    end
+    if (leaveBody == false) then
+        DeleteGameObject()
     end
 end
 
