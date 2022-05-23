@@ -342,15 +342,15 @@ function SetState(newState)
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
         drawPrimary = true
-        StopMovement()
+        StopMovement(false)
     elseif (newState == State.AIM_SECONDARY) then
         currentState = State.AIM_SECONDARY
         drawSecondary = true
-        StopMovement()
+        StopMovement(false)
     elseif (newState == State.AIM_ULTIMATE) then
         currentState = State.AIM_ULTIMATE
         drawUltimate = true
-        StopMovement()
+        StopMovement(false)
     elseif (newState == State.AIM_ULTIMATE_RECAST) then
         currentState = State.AIM_ULTIMATE_RECAST
         drawUltimateRecast = true
@@ -388,9 +388,11 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("IdleCrouch")
         end
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-            currentTrackID = -1
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+                currentTrackID = -1
+            end
         end
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
@@ -413,11 +415,13 @@ function CancelAbilities()
 end
 
 function DrawHoverParticle()
-    if (IsSelected() and
+    if (IsSelected() == true and
         (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
-        drawingTarget = GetGameObjectHovered
+        drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
-            choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+            choosingTargetParticle:GetTransform():SetPosition(
+                float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 1,
+                    componentTransform:GetPosition().z))
         end
     end
 end
