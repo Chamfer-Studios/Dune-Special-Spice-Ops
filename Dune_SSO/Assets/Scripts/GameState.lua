@@ -19,6 +19,8 @@ omozra_ultimate_level = 0
 
 changedCharacter = false
 
+GodMode = false
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -116,6 +118,13 @@ function Update(dt)
             else
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                 characterSelected = 3
+            end
+             -- F3
+        elseif (GetInput(12) == KEY_STATE.KEY_DOWN) then
+            if (GodMode == false) then
+                GodMode = true
+            elseif (GodMode == true) then
+                GodMode = false
             end
         end
         if (characterSelected ~= 0) then
