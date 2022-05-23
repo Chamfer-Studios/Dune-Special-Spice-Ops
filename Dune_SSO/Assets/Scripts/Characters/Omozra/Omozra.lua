@@ -421,12 +421,27 @@ end
 function DrawHoverParticle()
     if (IsSelected() == true and
         (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
-        drawingTarget = GetGameObjectHovered()
+        local drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
+            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
+            if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
+                (currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
+                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
+            end
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
             choosingTargetParticle:GetTransform():SetPosition(
-                float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 1,
-                    componentTransform:GetPosition().z))
+                float3.new(drawingTarget:GetTransform():GetPosition().x,
+                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+        else
+            choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
+
         end
+    else
+        choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
+
     end
 end
 
@@ -778,7 +793,8 @@ function EventHandler(key, fields)
         end
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            if (fields[2] == "Harkonnen" and
+                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
                 TakeDamage()
             end
         end

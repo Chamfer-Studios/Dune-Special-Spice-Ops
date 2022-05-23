@@ -472,10 +472,8 @@ function DrawHoverParticle()
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
-                Log("INSIDE RANGE\n")
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
             else
-                Log("OUT OF RANGE\n")
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
             choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
@@ -821,7 +819,8 @@ end
 -- Ultimate ability
 function ActiveUltimate()
     -- TODO: CHECK IF ULTIMATE ABILITY IS NOT IN COOLDOWN AND NOT IN MOSQUITO
-    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
+    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >=
+        ultimateSpiceCost) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -951,7 +950,8 @@ function EventHandler(key, fields)
         end
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            if (fields[2] == "Harkonnen" and
+                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
                 TakeDamage()
             end
         end
