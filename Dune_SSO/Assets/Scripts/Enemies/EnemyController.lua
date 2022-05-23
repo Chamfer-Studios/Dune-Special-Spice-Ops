@@ -200,7 +200,7 @@ function ProcessVisualTrigger(position, gameObject)
             return
         end
     end
-    
+
     if not isAnyPlayerInConeThisFrame then
         isAnyPlayerInConeThisFrame = true
 
@@ -332,6 +332,10 @@ function SetStateToSUS(position)
 end
 
 function SetStateToAGGRO(source)
+    if (state == STATE.AGGRO or state == STATE.DEAD) then
+        return
+    end
+
     local oldState = state
     state = STATE.AGGRO
     awareness = 2
@@ -339,9 +343,14 @@ function SetStateToAGGRO(source)
     isSeeingPlayer = true
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
     if (componentAnimator ~= nil) then
-        Log("Change to run\n")
-        componentAnimator:SetSelectedClip("Walk")
+        componentAnimator:SetSelectedClip("Run")
     end
+end
+
+function SetStateToDEAD()
+    local oldState = state
+    state = STATE.DEAD
+    DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
 end
 
 function SetStateToWORM()
@@ -351,7 +360,7 @@ function SetStateToWORM()
 end
 
 function EventHandler(key, fields)
-   if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "State_Suspicious" then
         SetStateToSUS(fields[1])
@@ -361,19 +370,13 @@ function EventHandler(key, fields)
         LookAtDirection(fields[1])
     elseif key == "Player_Position" then
         ProcessVisualTrigger(fields[1], fields[2])
-    elseif key == "Player_Attack" then
-        if (fields[1] == gameObject) then
-            Die()
-        end
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then
             deathMarkTime = fields[2]
             deathMarkTimer = 0.0
         end
-    elseif key == "Knife_Hit" then
-        if (fields[1] == gameObject) then
-            Die()
-        end
+    elseif key == "Die" then
+        Die()
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
@@ -447,6 +450,10 @@ coneLight = gameObject:GetLight()
 
 function Update(dt)
 
+    if (state == STATE.DEAD) then
+        return
+    end
+
     isAnyPlayerInConeThisFrame = false
 
     if coneLight == nil then
@@ -466,6 +473,7 @@ function Update(dt)
         if (deathMarkTimer >= deathMarkTime) then
             -- Audio here
             Die()
+            DispatchEvent("DeathMark_Death", {})
             return
         end
     end
@@ -532,7 +540,7 @@ function Update(dt)
             s = awarenessSource
         end
 
-        --if s ~= nil and (oldSourcePos == nil or Float3Distance(oldSourcePos, s:GetTransform():GetPosition()) > 10) then
+        -- if s ~= nil and (oldSourcePos == nil or Float3Distance(oldSourcePos, s:GetTransform():GetPosition()) > 10) then
         if s ~= nil then
             if static == true then
                 DispatchEvent(pathfinderUpdateKey, {{}, false, componentTransform:GetPosition()})
@@ -542,7 +550,7 @@ function Update(dt)
                     {{s:GetTransform():GetPosition()}, false, componentTransform:GetPosition()})
             end
             DispatchEvent("Target_Update", {s})
-            --oldSourcePos = s:GetTransform():GetPosition()
+            -- oldSourcePos = s:GetTransform():GetPosition()
         end
 
     end
@@ -563,11 +571,19 @@ end
 ------------------- Functions --------------------
 
 function Die()
-
-    DispatchEvent("Die", {gameObject})
-
-    currentState = STATE.DEAD
-
+    SetStateToDEAD()
+    if (awareness_green ~= nil) then
+        DeleteGameObjectByUID(awareness_green:GetUID())
+        awareness_green = nil
+    end
+    if (awareness_red ~= nil) then
+        DeleteGameObjectByUID(awareness_red:GetUID())
+        awareness_red = nil
+    end
+    if (awareness_yellow ~= nil) then
+        DeleteGameObjectByUID(awareness_yellow:GetUID())
+        awareness_yellow = nil
+    end
 end
 
 --------------------------------------------------
