@@ -120,7 +120,7 @@ function Update(dt)
                 characterSelected = 3
             end
              -- F3
-        elseif (GetInput(12) == KEY_STATE.KEY_DOWN) then
+        elseif (GetInput(42) == KEY_STATE.KEY_DOWN) then
             if (GodMode == false) then
                 GodMode = true
             elseif (GodMode == true) then
