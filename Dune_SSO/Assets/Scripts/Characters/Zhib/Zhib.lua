@@ -475,14 +475,18 @@ function CancelAbilities()
 end
 
 function DrawHoverParticle()
-    if (IsSelected() == true and
-        (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
-        drawingTarget = GetGameObjectHovered()
+    if (IsSelected() == true and (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE)) then
+        local drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
             choosingTargetParticle:GetTransform():SetPosition(
-                float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 1,
-                    componentTransform:GetPosition().z))
+                float3.new(drawingTarget:GetTransform():GetPosition().x,
+                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+        else
+            choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end
+    else
+        choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 
