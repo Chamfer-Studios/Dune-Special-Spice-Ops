@@ -1,7 +1,7 @@
 ------------------- Variables --------------------
 characterSelected = 1
 spiceAmount = 1000
-spiceMaxLvl1 = 9480
+spiceMaxLvl1 = 10000
 particleActive = false
 gameOverTime = 5
 
@@ -25,6 +25,10 @@ function Start()
 
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
+    
+    if(spiceAmount == 0) then
+        spiceAmount = 1000
+    end
 
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
     nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
