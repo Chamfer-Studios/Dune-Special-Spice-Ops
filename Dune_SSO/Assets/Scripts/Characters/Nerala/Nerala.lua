@@ -85,6 +85,7 @@ drawSecondary = false
 ultimateCastRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
+ultimateSpiceCost = 1500
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -143,6 +144,10 @@ NewVariable(secondaryCastRangeIV)
 ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
 NewVariable(ultimateCastRangeIV)
+
+ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -816,7 +821,7 @@ end
 -- Ultimate ability
 function ActiveUltimate()
     -- TODO: CHECK IF ULTIMATE ABILITY IS NOT IN COOLDOWN AND NOT IN MOSQUITO
-    if (ultimateTimer == nil) then
+    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -844,6 +849,13 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
+    -- Subtracts spice cost when using ultimate ability
+    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    NewSpice = OGSpice - ultimateSpiceCost
+    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+    str = "Spice Amount " .. NewSpice .. "\n"
+    Log(str)
 
     InstantiatePrefab("Mosquito")
 

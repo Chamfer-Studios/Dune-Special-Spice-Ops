@@ -86,6 +86,7 @@ ultimateCastRange = 50
 ultimateCooldown = 30.0
 drawUltimate = false
 ultimateCastRangeExtension = ultimateCastRange * 0.5
+ultimateSpiceCost = 2000
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -148,6 +149,10 @@ NewVariable(maxDecoyIV)
 ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
 NewVariable(ultimateCastRangeIV)
+
+ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -848,7 +853,7 @@ end
 
 -- Ultimate ability
 function ActiveUltimate()
-    if (ultimateTimer == nil) then
+    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -876,6 +881,13 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
+    -- Subtracts spice cost when using ultimate ability
+    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    NewSpice = OGSpice - ultimateSpiceCost
+    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    
+    str = "Spice Amount " .. NewSpice .. "\n"
+    Log(str)
 
     -- Get all enemies in range of the Mouse
     enemiesInRange = {target}
