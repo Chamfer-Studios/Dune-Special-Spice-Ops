@@ -89,7 +89,7 @@
     },
     "ResourceManager": null,
     "SceneManager": {
-        "DefaultScene": "SceneGameOver"
+        "DefaultScene": "SceneMainMenu"
     },
     "UI": null,
     "Window": {
