@@ -110,6 +110,19 @@
                         "sphere_culling": false,
                         "type": 4,
                         "vertical_fov": 675.0
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/ChangeSceneDebugKey.lua",
+                        "id": 310974084,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "SceneTransitionScreen"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": true,
