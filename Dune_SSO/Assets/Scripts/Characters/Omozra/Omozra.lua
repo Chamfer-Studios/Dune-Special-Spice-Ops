@@ -119,35 +119,40 @@ NewVariable(ultimateCastRangeIV)
 
 function Start()
 
+    -- Components
+    componentRigidBody = gameObject:GetRigidBody()
+    componentBoxCollider = gameObject:GetBoxCollider()
+    componentSwitch = gameObject:GetAudioSwitch()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    componentLight = gameObject:GetLight()
+
+    -- Animation
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
     else
         Log("[ERROR] Component Animator not found!\n")
     end
 
+    -- Particles
     mouseParticles = Find("Mouse Particles")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Choosing Target")
 
-    componentRigidBody = gameObject:GetRigidBody()
-
-    componentBoxCollider = gameObject:GetBoxCollider()
-
-    componentSwitch = gameObject:GetAudioSwitch()
+    -- Audio
     currentTrackID = -1
 
+    -- HP
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-    radiusLight = gameObject:GetLight()
-
-    InstantiatePrefab("Worm")
-
+    -- Stamina
     staminaBar = Find("Stamina Bar")
     staminaBarSizeY = staminaBar:GetTransform():GetScale().y
+
+    -- Abilities
+    InstantiatePrefab("Worm")
 end
 
 -- Called each loop iteration
@@ -277,6 +282,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_PRIMARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                drawPrimary = true
             end
         end
 
@@ -288,6 +294,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_SECONDARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+                drawSecondary = true
             end
         end
 
@@ -299,6 +306,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_ULTIMATE)
                 DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+                drawUltimate = true
             end
         end
 
@@ -404,35 +412,35 @@ function CancelAbilities()
     drawUltimateRecast = false
 end
 
-function DrawActiveAbilities()
-    if radiusLight == nil then
-        radiusLight = gameObject:GetLight()
-    end
-    if radiusLight ~= nil then
-        if (drawPrimary == true) then
-            radiusLight:SetRange(primaryCastRange)
-            radiusLight:SetAngle(360 / 2)
-        elseif (drawSecondary == true) then
-            radiusLight:SetRange(secondaryCastRange)
-            radiusLight:SetAngle(360 / 2)
-        elseif (drawUltimate == true) then
-            radiusLight:SetRange(ultimateCastRange)
-            radiusLight:SetAngle(360 / 2)
-        elseif (drawUltimateRecast == true) then
-            radiusLight:SetRange(ultimateRecastRange)
-            radiusLight:SetAngle(360 / 2)
-        else
-            radiusLight:SetAngle(0)
-        end
-    end
-end
-
 function DrawHoverParticle()
     if (IsSelected() and
         (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE)) then
         drawingTarget = GetGameObjectHovered
         if (drawingTarget.tag == Tag.ENEMY) then
             choosingTargetParticle:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
+        end
+    end
+end
+
+function DrawActiveAbilities()
+    if componentLight == nil then
+        componentLight = gameObject:GetLight()
+    end
+    if componentLight ~= nil then
+        if (drawPrimary == true) then
+            componentLight:SetRange(primaryCastRange)
+            componentLight:SetAngle(360 / 2)
+        elseif (drawSecondary == true) then
+            componentLight:SetRange(secondaryCastRange)
+            componentLight:SetAngle(360 / 2)
+        elseif (drawUltimate == true) then
+            componentLight:SetRange(ultimateCastRange)
+            componentLight:SetAngle(360 / 2)
+        elseif (drawUltimateRecast == true) then
+            componentLight:SetRange(ultimateRecastRange)
+            componentLight:SetAngle(360 / 2)
+        else
+            componentLight:SetAngle(0)
         end
     end
 end
@@ -452,8 +460,6 @@ function ManageTimers(dt)
             isTired = true
 
             SetMovement(Movement.WALK)
-
-            -- Log("I am tired :( \n")
         else
             -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
@@ -591,7 +597,7 @@ function MoveToDestination(dt)
     end
 end
 
-function StopMovement()
+function StopMovement(resetTarget)
 
     if (currentMovement == Movement.CROUCH) then
         SetMovement(Movement.IDLE_CROUCH)
@@ -601,6 +607,9 @@ function StopMovement()
 
     destination = nil
 
+    if (resetTarget == nil) then -- Default case
+        target = nil
+    end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
@@ -639,7 +648,7 @@ function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Point")
     secondaryTimer = 0.0
-    StopMovement()
+    StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     if (position == nil) then
@@ -670,7 +679,7 @@ function CastUltimate() -- Ult step 3
 
     componentAnimator:SetSelectedClip("Point")
     -- CD will start when recasting
-    StopMovement()
+    StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(target:GetTransform():GetPosition())
@@ -716,11 +725,15 @@ function DoUltimateRecast() -- Ult step 7
 end
 
 function TakeDamage(damage)
+    if (iFramesTimer ~= nil or currentHP == 0) then
+        return
+    end
+
+    iFramesTimer = 0
+
     if (damage == nil) then
         damage = 1
     end
-
-    iFramesTimer = 0.0
 
     if (currentHP > 1) then
         currentHP = currentHP - damage
@@ -728,6 +741,8 @@ function TakeDamage(damage)
 
         ChangeTrack(2)
     else
+        currentHP = 0
+        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
         Die()
     end
 end
@@ -735,14 +750,17 @@ end
 function Die()
     SetState(State.DEAD)
     currentHP = 0
-    DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+    DispatchGlobalEvent("Player_Death", {characterID})
 
+    if (componentRigidBody ~= nil) then
+        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
+            componentTransform:GetPosition().z))
+    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-   ChangeTrack(3)
+    ChangeTrack(3)
 end
-
 --------------------------------------------------
 
 -------------------- Events ----------------------
@@ -753,22 +771,29 @@ function EventHandler(key, fields)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
         end
+    elseif (key == "Enemy_Attack") then
+        if (fields[1] == gameObject) then
+            if (fields[2] == "Harkonnen") then
+                TakeDamage()
+            end
+        end
     end
 end
-
 --------------------------------------------------
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
-        TakeDamage(1)
+        -- TakeDamage(1)
     end
 end
 
 function OnCollisionEnter(go)
-
+    if (currentState == State.DEAD) then
+        return
+    end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
-        TakeDamage(1)
+        -- TakeDamage(1)
     end
 end
 
@@ -808,13 +833,5 @@ function ChangeTrack(index)
     end
 end
 
-print("Omozra.lua compiled succesfully")
-Log("Nerala.lua compiled succesfully")
-
--------- Scraps --------
--- local components = gameObject:GetComponents()
--- print(components[3].type) -- return it as an int, can't associate back to enum (I don't know how to anyway)
-
--- GameState = require "Assets.Scripts.GameState"
--- GameState:Update(1)
--- print(GameState:GetGameState())
+print("Omozra.lua compiled succesfully!\n")
+Log("Nerala.lua compiled succesfully!\n")

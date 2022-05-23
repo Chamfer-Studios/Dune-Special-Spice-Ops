@@ -143,42 +143,48 @@ NewVariable(ultimateCastRangeIV)
 
 function Start()
 
+    -- Components
+    componentRigidBody = gameObject:GetRigidBody()
+    componentBoxCollider = gameObject:GetBoxCollider()
+    componentSwitch = gameObject:GetAudioSwitch()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    componentLight = gameObject:GetLight()
+
+    -- Animation
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle")
     else
         Log("[ERROR] Component Animator not found!\n")
     end
 
+    -- Particles
     mouseParticles = Find("Mouse Particles")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Choosing Target")
 
-    componentRigidBody = gameObject:GetRigidBody()
-
-    componentBoxCollider = gameObject:GetBoxCollider()
-
-    componentSwitch = gameObject:GetAudioSwitch()
+    -- Audio
     currentTrackID = -1
 
-    radiusLight = gameObject:GetLight()
-
+    -- HP
     currentHP = maxHP
-
-    knifeCount = maxKnives
-    decoyCount = maxDecoy
-
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
+    -- Stamina
     staminaBar = Find("Stamina Bar")
     staminaBarSizeY = staminaBar:GetTransform():GetScale().y
+
+    -- Abilities
+    knifeCount = maxKnives
+    decoyCount = maxDecoy
 end
 
 -- Called each loop iteration
 function Update(dt)
+
     DrawActiveAbilities()
+
     DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
@@ -450,7 +456,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-           ChangeTrack(0)
+            ChangeTrack(0)
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -481,21 +487,21 @@ function DrawHoverParticle()
 end
 
 function DrawActiveAbilities()
-    if radiusLight == nil then
-        radiusLight = gameObject:GetLight()
+    if componentLight == nil then
+        componentLight = gameObject:GetLight()
     end
-    if radiusLight ~= nil then
+    if componentLight ~= nil then
         if (drawPrimary == true) then
-            radiusLight:SetRange(primaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            componentLight:SetRange(primaryCastRange)
+            componentLight:SetAngle(360 / 2)
         elseif (drawSecondary == true) then
-            radiusLight:SetRange(secondaryCastRange)
-            radiusLight:SetAngle(360 / 2)
+            componentLight:SetRange(secondaryCastRange)
+            componentLight:SetAngle(360 / 2)
         elseif (drawUltimate == true) then
-            radiusLight:SetRange(ultimateCastRange)
-            radiusLight:SetAngle(360 / 2)
+            componentLight:SetRange(ultimateCastRange)
+            componentLight:SetAngle(360 / 2)
         else
-            radiusLight:SetAngle(0)
+            componentLight:SetAngle(0)
         end
     end
 end
@@ -618,9 +624,9 @@ function ManageTimers(dt)
                 if (currentState == State.ATTACK) then
                     DoAttack()
                 elseif (currentState == State.AIM_PRIMARY) then
-                    FireKnife()
+                    DoPrimary()
                 elseif (currentState == State.AIM_SECONDARY) then
-                    PlaceDecoy()
+                    DoSecondary()
                 elseif (currentState == State.AIM_ULTIMATE) then
                     DoUltimate()
                 elseif (currentState ~= State.DEAD) then
@@ -768,7 +774,7 @@ function CastPrimary(position)
     drawUltimate = false
 end
 
-function FireKnife()
+function DoPrimary()
 
     InstantiatePrefab("Knife")
     knifeCount = knifeCount - 1
@@ -792,7 +798,7 @@ function CastSecondary(position)
     drawUltimate = false
 end
 
-function PlaceDecoy()
+function DoSecondary()
 
     InstantiatePrefab("Decoy")
 
@@ -934,7 +940,7 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-   ChangeTrack(3)
+    ChangeTrack(3)
 end
 --------------------------------------------------
 
@@ -1037,5 +1043,5 @@ function ChangeTrack(index)
     end
 end
 
-print("Zhib.lua compiled succesfully")
-Log("Zhib.lua compiled succesfully")
+print("Zhib.lua compiled succesfully!\n")
+Log("Zhib.lua compiled succesfully!\n")
