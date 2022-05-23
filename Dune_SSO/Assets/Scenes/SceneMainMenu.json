@@ -22,7 +22,7 @@
                             0.2705981135368347,
                             -0.653281569480896,
                             0.2705981135368347,
-                            0.6532813906669617
+                            0.6532813310623169
                         ],
                         "scale": [
                             1.0000001192092896,
@@ -807,6 +807,12 @@
                         "idleTexture": "Assets/New UI/button_a_default.png",
                         "pressedTexture": "Assets/New UI/button_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Quit.lua",
+                        "id": 1031594,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
