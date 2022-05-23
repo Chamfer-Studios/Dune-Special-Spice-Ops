@@ -378,14 +378,8 @@ function EventHandler(key, fields)
     elseif key == "IsWalking" then
         if fields[1] == true and wasWalking == false then
             wasWalking = true
-            if (componentAnimator ~= nil) then
-                componentAnimator:SetSelectedClip("Walk")
-            end
         elseif fields[1] == false and wasWalking == true and state ~= STATE.AGGRO then
             wasWalking = false
-            if (componentAnimator ~= nil) then
-                componentAnimator:SetSelectedClip("Idle")
-            end
         end
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then

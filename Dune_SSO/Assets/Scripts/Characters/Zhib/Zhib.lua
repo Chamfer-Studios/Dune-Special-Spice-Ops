@@ -481,10 +481,8 @@ function DrawHoverParticle()
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
-                Log("INSIDE RANGE\n")
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
             else
-                Log("OUT OF RANGE\n")
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
             choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
