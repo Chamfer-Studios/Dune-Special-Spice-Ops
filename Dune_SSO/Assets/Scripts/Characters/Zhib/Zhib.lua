@@ -853,7 +853,8 @@ end
 
 -- Ultimate ability
 function ActiveUltimate()
-    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
+    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >=
+        ultimateSpiceCost) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -885,7 +886,7 @@ function DoUltimate()
     OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     NewSpice = OGSpice - ultimateSpiceCost
     SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    
+
     str = "Spice Amount " .. NewSpice .. "\n"
     Log(str)
 
@@ -1058,7 +1059,8 @@ function EventHandler(key, fields)
         knifeCount = knifeCount + 1
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            if (fields[2] == "Harkonnen" and
+                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
                 TakeDamage()
             end
         end

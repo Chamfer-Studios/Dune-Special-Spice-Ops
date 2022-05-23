@@ -254,9 +254,11 @@ function Update(dt)
                 else
                     local isMoving = true
                     if (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
+                        footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
+                        footstepsParticle:GetComponentParticle():StopParticleSpawn()
                         isMoving = false
                     end
 
