@@ -478,6 +478,16 @@ function DrawHoverParticle()
     if (IsSelected() == true and (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE)) then
         local drawingTarget = GetGameObjectHovered()
         if (drawingTarget.tag == Tag.ENEMY) then
+            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
+            Log("ITS AN ENEMY\n")
+            if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
+                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+                Log("INSIDE RANGE\n")
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 150, 0, 255)
+            else
+                Log("OUT OF RANGE\n")
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 25, 0, 255)
+            end
             choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
             choosingTargetParticle:GetTransform():SetPosition(
                 float3.new(drawingTarget:GetTransform():GetPosition().x,
