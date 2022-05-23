@@ -146,8 +146,8 @@ function Start()
 
     InstantiatePrefab("Worm")
 
-    characterSelectedMesh = Find("CharacterSelectedMesh")
-    staminaBarSizeY = characterSelectedMesh:GetTransform():GetScale().y
+    staminaBar = Find("Stamina Bar")
+    staminaBarSizeY = staminaBar:GetTransform():GetScale().y
 end
 
 -- Called each loop iteration
@@ -455,8 +455,8 @@ function DrawHoverParticle()
 end
 
 function UpdateStaminaBar()
-    characterSelectedMesh:GetTransform():SetScale(float3.new(characterSelectedMesh:GetTransform():GetScale().x,
-        staminaBarSizeY * (staminaTimer / staminaSeconds), characterSelectedMesh:GetTransform():GetScale().z))
+    staminaBar:GetTransform():SetScale(float3.new(staminaBar:GetTransform():GetScale().x,
+        staminaBarSizeY * (staminaTimer / staminaSeconds), staminaBar:GetTransform():GetScale().z))
 end
 
 function ManageTimers(dt)
