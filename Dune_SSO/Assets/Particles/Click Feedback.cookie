@@ -7,10 +7,10 @@
                 "modules": [
                     {
                         "maxParticleLife": 3.0,
-                        "minParticleLife": 0.800000011920929,
+                        "minParticleLife": 0.5,
                         "particlesPerSpawn": 1,
                         "randomParticleLife": false,
-                        "spawnTime": 0.8500000238418579,
+                        "spawnTime": 0.550000011920929,
                         "type": 1
                     },
                     {
@@ -66,9 +66,9 @@
                         "colors": [
                             {
                                 "color": [
-                                    1.0,
-                                    0.0,
-                                    0.0,
+                                    0.07058823853731155,
+                                    0.5254902243614197,
+                                    0.5529412031173706,
                                     1.0
                                 ],
                                 "position": 0.5
@@ -94,10 +94,10 @@
                 "modules": [
                     {
                         "maxParticleLife": 3.0,
-                        "minParticleLife": 0.800000011920929,
+                        "minParticleLife": 0.5,
                         "particlesPerSpawn": 1,
                         "randomParticleLife": false,
-                        "spawnTime": 0.8500000238418579,
+                        "spawnTime": 0.550000011920929,
                         "type": 1
                     },
                     {
@@ -126,9 +126,9 @@
                         "colors": [
                             {
                                 "color": [
-                                    1.0,
-                                    0.0,
-                                    0.0,
+                                    0.07058823853731155,
+                                    0.5254902243614197,
+                                    0.5529412031173706,
                                     1.0
                                 ],
                                 "position": 0.5
