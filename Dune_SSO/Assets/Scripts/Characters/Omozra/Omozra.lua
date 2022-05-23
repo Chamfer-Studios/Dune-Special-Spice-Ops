@@ -164,8 +164,6 @@ function Update(dt)
     end
     DrawActiveAbilities()
 
-    DrawHoverParticle()
-
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
     if (lastRotation ~= nil) then
@@ -188,6 +186,10 @@ function Update(dt)
     if (IsSelected() == true) then
 
         UpdateStaminaBar()
+        DrawHoverParticle()
+
+        footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
