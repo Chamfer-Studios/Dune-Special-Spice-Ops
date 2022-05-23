@@ -1058,7 +1058,7 @@ function EventHandler(key, fields)
         knifeCount = knifeCount + 1
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen") then
+            if (fields[2] == "Harkonnen" and GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
                 TakeDamage()
             end
         end

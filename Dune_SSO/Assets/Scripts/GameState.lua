@@ -1,7 +1,9 @@
 ------------------- Variables --------------------
 characterSelected = 1
 spiceAmount = 1000
+startingSpiceAmount = 1000
 spiceMaxLvl1 = 10000
+deadAllyPenalization = 2000
 particleActive = false
 gameOverTime = 5
 
@@ -19,6 +21,17 @@ omozra_ultimate_level = 0
 
 changedCharacter = false
 
+GodMode = false
+
+--- Inspector Variables
+deadAllyPenalizationIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+deadAllyPenalizationIV = InspectorVariable.new("deadAllyPenalization", deadAllyPenalizationIVT, deadAllyPenalization)
+NewVariable(deadAllyPenalizationIV)
+
+startingSpiceAmountIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+startingSpiceAmountIV = InspectorVariable.new("startingSpiceAmount", startingSpiceAmountIVT, startingSpiceAmount)
+NewVariable(startingSpiceAmountIV)
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -27,9 +40,14 @@ function Start()
 
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
-    
+
+    str = "STARTING Spice Amount " .. spiceAmount .. "\n"
+    Log(str)
+
     if(spiceAmount == 0) then
-        spiceAmount = 1000
+        spiceAmount = startingSpiceAmount
+        str = "Spice Amount " .. spiceAmount .. "\n"
+        Log(str)
     end
 
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
@@ -44,8 +62,6 @@ function Start()
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
 
-    str = "Spice Amount " .. spiceAmount .. "\n"
-    Log(str)
 end
 
 -- Called each loop iteration
@@ -54,7 +70,11 @@ function Update(dt)
         if (gameOverTimer < gameOverTime) then
             gameOverTimer = gameOverTimer + dt
         else
+            spiceAmount = spiceAmount - deadAllyPenalization
             SetGameJsonInt("spice", spiceAmount)
+
+            str = "Spice Amount " .. spiceAmount .. "\n"
+            Log(str)
 
             SetGameJsonInt("nerala_primary_level", nerala_primary_level)
             SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
@@ -79,13 +99,13 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
-                if (goHovered:GetName() == "Zhib") then
+                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                     characterSelected = 1
-                elseif (goHovered:GetName() == "Nerala") then
+                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                     characterSelected = 2
-                elseif (goHovered:GetName() == "Omozra") then
+                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                     characterSelected = 3
                 end
@@ -116,6 +136,13 @@ function Update(dt)
             else
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                 characterSelected = 3
+            end
+             -- F3
+        elseif (GetInput(12) == KEY_STATE.KEY_DOWN) then
+            if (GodMode == false) then
+                GodMode = true
+            elseif (GodMode == true) then
+                GodMode = false
             end
         end
         if (characterSelected ~= 0) then
