@@ -1,7 +1,9 @@
 ------------------- Variables --------------------
 characterSelected = 1
 spiceAmount = 1000
+startingSpiceAmount = 1000
 spiceMaxLvl1 = 10000
+deadAllyPenalization = 2000
 particleActive = false
 gameOverTime = 5
 
@@ -21,6 +23,15 @@ changedCharacter = false
 
 GodMode = false
 
+--- Inspector Variables
+deadAllyPenalizationIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+deadAllyPenalizationIV = InspectorVariable.new("deadAllyPenalization", deadAllyPenalizationIVT, deadAllyPenalization)
+NewVariable(deadAllyPenalizationIV)
+
+startingSpiceAmountIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+startingSpiceAmountIV = InspectorVariable.new("startingSpiceAmount", startingSpiceAmountIVT, startingSpiceAmount)
+NewVariable(startingSpiceAmountIV)
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -30,8 +41,13 @@ function Start()
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
 
-    if (spiceAmount == 0) then
-        spiceAmount = 1000
+    str = "STARTING Spice Amount " .. spiceAmount .. "\n"
+    Log(str)
+
+    if(spiceAmount == 0) then
+        spiceAmount = startingSpiceAmount
+        str = "Spice Amount " .. spiceAmount .. "\n"
+        Log(str)
     end
 
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
@@ -46,8 +62,6 @@ function Start()
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
 
-    str = "Spice Amount " .. spiceAmount .. "\n"
-    Log(str)
 end
 
 -- Called each loop iteration
@@ -56,7 +70,11 @@ function Update(dt)
         if (gameOverTimer < gameOverTime) then
             gameOverTimer = gameOverTimer + dt
         else
+            spiceAmount = spiceAmount - deadAllyPenalization
             SetGameJsonInt("spice", spiceAmount)
+
+            str = "Spice Amount " .. spiceAmount .. "\n"
+            Log(str)
 
             SetGameJsonInt("nerala_primary_level", nerala_primary_level)
             SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
