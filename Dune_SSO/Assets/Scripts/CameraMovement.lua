@@ -1,7 +1,7 @@
 rotSpeed = 150.0
 angle = 45.0
 remainingAngle = 0.0
-offset = float3.new(0, 240, -270)
+offset = float3.new(0, 240, 270)
 scrollspeed = 15.0
 targetAngle = 0.0
 newZoomedPos = float3.new(0, 0, 0)
