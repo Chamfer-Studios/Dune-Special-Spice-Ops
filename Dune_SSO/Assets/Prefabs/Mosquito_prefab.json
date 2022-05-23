@@ -21,8 +21,8 @@
             ],
             "scale": [
                 5.0,
-                5.00001335144043,
-                5.0000200271606445
+                5.000012397766113,
+                5.000019073486328
             ],
             "type": 21
         },
@@ -115,18 +115,18 @@
                     "pan": 0.0,
                     "play_on_start": false,
                     "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_startup_fx.wav",
-                    "transpose": 0.0,
+                    "transpose": 1.0,
                     "volume": 100.0
                 },
                 {
                     "bypass": false,
-                    "loop": true,
+                    "loop": false,
                     "mute": false,
                     "offset": 0.0,
                     "pan": 0.0,
                     "play_on_start": false,
-                    "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_float_fx.wav",
-                    "transpose": 0.0,
+                    "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_move_1_fx.wav",
+                    "transpose": 1.0,
                     "volume": 100.0
                 },
                 {
@@ -137,7 +137,7 @@
                     "pan": 0.0,
                     "play_on_start": false,
                     "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_stab_1_fx.wav",
-                    "transpose": 0.0,
+                    "transpose": 1.0,
                     "volume": 100.0
                 },
                 {
@@ -147,8 +147,8 @@
                     "offset": 0.0,
                     "pan": 0.0,
                     "play_on_start": false,
-                    "track_path": "Assets/Audio/SFX/Nerala/nerala_mosquito_destruction_fx.wav",
-                    "transpose": 0.0,
+                    "track_path": "Assets/Audio/SFX/Nerala/nerala_smoke_detonation_fx.wav",
+                    "transpose": 1.0,
                     "volume": 100.0
                 }
             ],

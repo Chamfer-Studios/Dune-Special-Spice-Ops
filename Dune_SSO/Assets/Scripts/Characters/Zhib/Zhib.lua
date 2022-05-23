@@ -418,51 +418,39 @@ end
 function SetMovement(newMovement)
     if (newMovement == Movement.IDLE) then
         currentMovement = Movement.IDLE
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-            currentTrackID = -1
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+                currentTrackID = -1
+            end
         end
     elseif (newMovement == Movement.WALK) then
         currentMovement = Movement.WALK
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(0)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 1
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(1)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("IdleCrouch")
         end
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-            currentTrackID = -1
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+                currentTrackID = -1
+            end
         end
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
+           ChangeTrack(0)
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -609,13 +597,7 @@ function ManageTimers(dt)
                     componentBoxCollider:UpdateIsTrigger()
                 end
 
-                if (componentSwitch ~= nil) then
-                    if (currentTrackID ~= -1) then
-                        componentSwitch:StopTrack(currentTrackID)
-                    end
-                    currentTrackID = 7
-                    componentSwitch:PlayTrack(currentTrackID)
-                end
+                ChangeTrack(7)
 
                 componentRigidBody:SetUseGravity(true)
                 componentRigidBody:UpdateEnableGravity()
@@ -763,13 +745,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 4
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(4)
 
     attackTimer = 0.0
 
@@ -796,13 +772,8 @@ function FireKnife()
 
     InstantiatePrefab("Knife")
     knifeCount = knifeCount - 1
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 5
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+
+    ChangeTrack(5)
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
     SetState(State.IDLE)
@@ -827,13 +798,7 @@ function PlaceDecoy()
 
     decoyCount = decoyCount - 1
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 6
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(6)
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
     SetState(State.IDLE)
@@ -949,13 +914,7 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 2
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(2)
     else
         currentHP = 0
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -975,13 +934,7 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 3
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+   ChangeTrack(3)
 end
 --------------------------------------------------
 
@@ -1073,6 +1026,16 @@ function Distance3D(a, b)
     return math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z)
 end
 --------------------------------------------------
+
+function ChangeTrack(index)
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = index
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("Zhib.lua compiled succesfully")
 Log("Zhib.lua compiled succesfully")

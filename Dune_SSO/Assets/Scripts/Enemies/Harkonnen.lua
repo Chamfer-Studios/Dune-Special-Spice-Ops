@@ -126,13 +126,8 @@ function DoAttack()
 
     DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 0
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(0)
+
     LookAtTarget(target:GetTransform():GetPosition())
     attackTimer = 0.0
 
@@ -164,6 +159,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
+                    ChangeTrack(2)
                 end
             elseif (currentState == STATE.SUS) then
                 knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -174,6 +170,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
+                    ChangeTrack(2)
                 end
             elseif (currentState == STATE.AGGRO) then
                 knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -184,6 +181,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
+                    ChangeTrack(2)
                 end
             end
         end
@@ -200,6 +198,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
+                    ChangeTrack(2)
                 end
             elseif (currentState == STATE.SUS) then
                 dartHitChance = GetVariable("Nerala.lua", "awareChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -211,6 +210,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
+                    ChangeTrack(2)
                 end
             elseif (currentState == STATE.AGGRO) then
                 dartHitChance = GetVariable("Nerala.lua", "aggroChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -222,6 +222,7 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
+                    ChangeTrack(2)
                 end
             end
         end
@@ -242,13 +243,8 @@ function Die()
             Log("The drop rate has not been good :( " .. rng .. "\n")
         end
 
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 1
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(1)
+
         dieSFXOnce = false;
     end
 
@@ -308,6 +304,16 @@ end
 function Float3Distance(a, b)
     diff = Float3Difference(a, b)
     return Float3Length(diff)
+end
+
+function ChangeTrack(index)
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = index
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 end
 
 Log("Harkonnen.lua compiled succesfully\n")

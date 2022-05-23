@@ -368,25 +368,13 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(0)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 1
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(1)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -398,12 +386,7 @@ function SetMovement(newMovement)
         end
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
-        if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-                currentTrackID = 0
-            end
-        end
+        ChangeTrack(0)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
         end
@@ -665,13 +648,7 @@ function CastSecondary(position)
         LookAtTarget(position)
     end
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 4
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(4)
 
     drawPrimary = false
     drawSecondary = false
@@ -698,13 +675,7 @@ function CastUltimate() -- Ult step 3
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(target:GetTransform():GetPosition())
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 4
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(4)
 
     drawPrimary = false
     drawSecondary = false
@@ -729,13 +700,7 @@ function RecastUltimate(position)
 
     LookAtTarget(position)
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 4
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    ChangeTrack(4)
 
     drawPrimary = false
     drawSecondary = false
@@ -761,13 +726,7 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 2
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        ChangeTrack(2)
     else
         Die()
     end
@@ -781,13 +740,7 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = 3
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+   ChangeTrack(3)
 end
 
 --------------------------------------------------
@@ -844,6 +797,16 @@ function Distance3D(a, b)
 end
 
 --------------------------------------------------
+
+function ChangeTrack(index)
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = index
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("Omozra.lua compiled succesfully")
 Log("Nerala.lua compiled succesfully")

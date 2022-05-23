@@ -36,12 +36,14 @@ end
 -- Collision Handler
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
-
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
+        
+        if (componentSwitch ~= nil) then
+            if (currentTrackID ~= -1) then
+                componentSwitch:StopTrack(currentTrackID)
+            end
+            currentTrackID = 2
+            componentSwitch:PlayTrack(currentTrackID)
         end
-        currentTrackID = 2
-        componentSwitch:PlayTrack(currentTrackID)
 
         DispatchGlobalEvent("Dart_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
         DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
