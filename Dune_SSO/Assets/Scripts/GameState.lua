@@ -2,6 +2,7 @@
 characterSelected = 1
 spiceAmount = 1000
 particleActive = false
+gameOverTime = 5
 
 -------------------- Methods ---------------------
 function Start()
@@ -9,11 +10,19 @@ function Start()
     characterSelectedParticle = Find("Selected Character")
 
     LoadGameState()
-	spiceAmount = GetGameJsonInt("spice")
+    spiceAmount = GetGameJsonInt("spice")
 end
 
 -- Called each loop iteration
 function Update(dt)
+    if (gameOverTimer ~= nil) then
+        if (gameOverTimer < gameOverTime) then
+            gameOverTimer = gameOverTimer + dt
+        else
+            gameObject:ChangeScene(true, "SceneGameOver")
+        end
+    end
+
     currentState = GetRuntimeState()
     if (currentState == RuntimeState.PLAYING) then
         if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false) then
@@ -85,6 +94,10 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Spice_Drop", {deadEnemyPos.x, deadEnemyPos.y, deadEnemyPos.z, deadEnemyType})
     elseif (key == "Omozra_Ultimate") then
         omozraUltimate = true
+    elseif (key == "Player_Death") then
+        if (gameOverTimer == nil) then
+            gameOverTimer = 0
+        end
     end
 end
 --------------------------------------------------
