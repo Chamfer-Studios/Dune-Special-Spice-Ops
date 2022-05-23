@@ -27,6 +27,17 @@ State = {
     WORM = 7
 }
 
+Ability = {
+    Primary = 1,
+    Secondary = 2,
+    Ultimate = 3
+}
+
+AbilityStatus = {
+    Normal = 1,
+    Active = 2,
+    Cooldown = 3
+}
 ---------------------------------------------------------
 
 ------------------- Variables setter --------------------
@@ -344,6 +355,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_PRIMARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
+                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
                 drawPrimary = true
             end
         end
@@ -356,6 +368,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_SECONDARY)
                 DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
+                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
                 drawSecondary = true
             end
         end
@@ -368,6 +381,7 @@ function Update(dt)
                 CancelAbilities()
                 SetState(State.AIM_ULTIMATE)
                 DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
+                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
                 drawUltimate = true
             end
         end
@@ -465,6 +479,14 @@ function SetMovement(newMovement)
 end
 
 function CancelAbilities()
+    if (currentState == State.AIM_PRIMARY) then
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+    elseif (currentState == State.AIM_SECONDARY) then
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+    elseif (currentState == State.AIM_ULTIMATE) then
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+    end
+
     if (currentState ~= State.WORM) then
         SetState(State.IDLE)
     end
@@ -592,6 +614,8 @@ function ManageTimers(dt)
             Log("Decoy available!\n")
             secondaryTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
+
+            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
         end
     end
 
@@ -601,6 +625,8 @@ function ManageTimers(dt)
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
             DispatchGlobalEvent("Player_Ability", {characterID, 3, 0})
+            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+
         end
     end
 
@@ -781,6 +807,7 @@ function CastPrimary(position)
     StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
+
     LookAtTarget(position)
 
     drawPrimary = false
@@ -792,6 +819,12 @@ function DoPrimary()
 
     InstantiatePrefab("Knife")
     knifeCount = knifeCount - 1
+
+    if (knifeCount > 0) then
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+    else
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
+    end
 
     ChangeTrack(5)
 
@@ -832,6 +865,8 @@ function CastUltimate(position)
     StopMovement(false)
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
+    -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+
     LookAtTarget(position)
 
     drawPrimary = false
@@ -992,9 +1027,11 @@ function EventHandler(key, fields)
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
         DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
         knifeCount = knifeCount + 1
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
