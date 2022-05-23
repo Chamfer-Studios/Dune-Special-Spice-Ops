@@ -27,8 +27,8 @@ function Start()
 
     LoadGameState()
     spiceAmount = GetGameJsonInt("spice")
-    
-    if(spiceAmount == 0) then
+
+    if (spiceAmount == 0) then
         spiceAmount = 1000
     end
 
@@ -79,13 +79,13 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
-                if (goHovered:GetName() == "Zhib") then
+                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                     characterSelected = 1
-                elseif (goHovered:GetName() == "Nerala") then
+                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                     characterSelected = 2
-                elseif (goHovered:GetName() == "Omozra") then
+                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                     characterSelected = 3
                 end
