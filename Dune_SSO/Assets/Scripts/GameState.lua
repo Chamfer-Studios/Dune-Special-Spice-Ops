@@ -17,6 +17,8 @@ omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
 
+changedCharacter = false
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -57,15 +59,15 @@ function Update(dt)
             SetGameJsonInt("nerala_primary_level", nerala_primary_level)
             SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
             SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
-    
+
             SetGameJsonInt("zhib_primary_level", zhib_primary_level)
             SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
             SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
-    
+
             SetGameJsonInt("omozra_primary_level", omozra_primary_level)
             SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
             SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
-    
+
             SaveGameState()
 
             gameObject:ChangeScene(true, "SceneGameOver")
@@ -78,32 +80,41 @@ function Update(dt)
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
                 if (goHovered:GetName() == "Zhib") then
+                    DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                     characterSelected = 1
                 elseif (goHovered:GetName() == "Nerala") then
+                    DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                     characterSelected = 2
                 elseif (goHovered:GetName() == "Omozra") then
+                    DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                     characterSelected = 3
                 end
             end
             -- Z
         elseif (GetInput(6) == KEY_STATE.KEY_DOWN) then
             if (characterSelected == 1) then
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 1 to 0
                 characterSelected = 0
             else
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                 characterSelected = 1
             end
             -- X
         elseif (GetInput(8) == KEY_STATE.KEY_DOWN) then
             if (characterSelected == 2) then
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 2 to 0
                 characterSelected = 0
             else
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                 characterSelected = 2
             end
             -- C
         elseif (GetInput(9) == KEY_STATE.KEY_DOWN) then
             if (characterSelected == 3) then
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 3 to 0
                 characterSelected = 0
             else
+                DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                 characterSelected = 3
             end
         end

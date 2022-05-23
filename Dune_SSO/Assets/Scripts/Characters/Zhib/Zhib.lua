@@ -352,41 +352,17 @@ function Update(dt)
 
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
-            if (currentState == State.AIM_PRIMARY) then
-                CancelAbilities()
-            else
-                CancelAbilities()
-                SetState(State.AIM_PRIMARY)
-                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
-                drawPrimary = true
-            end
+            ActivePrimary()
         end
 
         -- 2
         if (GetInput(22) == KEY_STATE.KEY_DOWN) then
-            if (currentState == State.AIM_SECONDARY) then
-                CancelAbilities()
-            else
-                CancelAbilities()
-                SetState(State.AIM_SECONDARY)
-                DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
-                drawSecondary = true
-            end
+            ActiveSecondary()
         end
 
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
-            if (currentState == State.AIM_ULTIMATE) then
-                CancelAbilities()
-            else
-                CancelAbilities()
-                SetState(State.AIM_ULTIMATE)
-                DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
-                drawUltimate = true
-            end
+            ActiveUltimate()
         end
 
         -- LSHIFT -> Toggle crouch
@@ -483,17 +459,16 @@ end
 
 function CancelAbilities()
     if (currentState == State.AIM_PRIMARY) then
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_SECONDARY) then
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_ULTIMATE) then
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     end
 
     if (currentState ~= State.WORM) then
         SetState(State.IDLE)
     end
-    DispatchGlobalEvent("Player_Ability", {characterID, 0, 0})
     drawPrimary = false
     drawSecondary = false
     drawUltimate = false
@@ -601,23 +576,14 @@ function ManageTimers(dt)
         end
     end
 
-    -- Primary ability cooldown
-    -- if (knifePickupTimer ~= nil) then
-    --     knifePickupTimer = knifePickupTimer + dt
-    --     if (knifePickupTimer >= knifePickupTime) then
-    --         knifePickupTimer = nil
-    --     end
-    -- end
-
     -- Secondary ability cooldown
     if (secondaryTimer ~= nil) then
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
             Log("Decoy available!\n")
             secondaryTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, 2, 0})
 
-            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
         end
     end
 
@@ -626,8 +592,7 @@ function ManageTimers(dt)
         ultimateTimer = ultimateTimer + dt
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, 3, 0})
-            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
 
         end
     end
@@ -803,12 +768,23 @@ function DoAttack()
 end
 
 -- Primary ability
+function ActivePrimary()
+    if (knifeCount > 0) then
+        if (currentState == State.AIM_PRIMARY) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_PRIMARY)
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
+            drawPrimary = true
+        end
+    end
+end
+
 function CastPrimary(position)
 
     componentAnimator:SetSelectedClip("Knife")
     StopMovement(false)
-
-    DispatchGlobalEvent("Player_Ability", {characterID, 1, 2})
 
     LookAtTarget(position)
 
@@ -823,9 +799,9 @@ function DoPrimary()
     knifeCount = knifeCount - 1
 
     if (knifeCount > 0) then
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     else
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
     end
 
     ChangeTrack(5)
@@ -835,6 +811,19 @@ function DoPrimary()
 end
 
 -- Secondary ability
+function ActiveSecondary()
+    if (decoyCount > 0 and secondaryTimer == nil) then
+        if (currentState == State.AIM_SECONDARY) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_SECONDARY)
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
+            drawSecondary = true
+        end
+    end
+end
+
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Decoy")
@@ -860,14 +849,26 @@ function DoSecondary()
 end
 
 -- Ultimate ability
+function ActiveUltimate()
+    if (ultimateTimer == nil) then
+        if (currentState == State.AIM_ULTIMATE) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_ULTIMATE)
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
+            drawUltimate = true
+        end
+    end
+end
+
 function CastUltimate(position)
 
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0
     StopMovement(false)
 
-    DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
-    -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
 
     LookAtTarget(position)
 
@@ -1002,44 +1003,19 @@ function EventHandler(key, fields)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
         end
-    elseif (key == "Cast_Primary") then
+    elseif (key == "Active_Primary") then
         if fields[1] == characterID then
-            if (currentState == State.AIM_PRIMARY) then
-                CancelAbilities()
-            else
-                CancelAbilities()
-                SetState(State.AIM_PRIMARY)
-                DispatchGlobalEvent("Player_Ability", {characterID, 1, 1})
-                -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
-                drawPrimary = true
-            end
+            ActivePrimary()
         end
-    elseif (key == "Cast_Secondary") then
+    elseif (key == "Active_Secondary") then
         if fields[1] == characterID then
-        if (currentState == State.AIM_SECONDARY) then
-            CancelAbilities()
-        else
-            CancelAbilities()
-            SetState(State.AIM_SECONDARY)
-            DispatchGlobalEvent("Player_Ability", {characterID, 2, 1})
-            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
-            drawSecondary = true
+            ActiveSecondary()
         end
-    end
-    elseif (key == "Cast_Ultimate") then
-        if(fields[1] == characterID) then
-        if (currentState == State.AIM_ULTIMATE) then
-            CancelAbilities()
-        else
-            CancelAbilities()
-            SetState(State.AIM_ULTIMATE)
-            DispatchGlobalEvent("Player_Ability", {characterID, 3, 1})
-            -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
-            drawUltimate = true
+    elseif (key == "Active_Ultimate") then
+        if (fields[1] == characterID) then
+            ActiveUltimate()
         end
-    end
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
-
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
                 SetState(State.WORM)
@@ -1064,17 +1040,39 @@ function EventHandler(key, fields)
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
-        DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
         knifeCount = knifeCount + 1
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
             if (fields[2] == "Harkonnen") then
                 TakeDamage()
+            end
+        end
+    elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
+        if (fields[1] == characterID) then
+            -- If zhib is being changed, CancelAbilities
+            CancelAbilities()
+        end
+        if (fields[2] == characterID) then
+            -- If game changed to Zhib, update HUD events depending on Abilities
+            if (knifeCount > 0) then
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+            else
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
+            end
+            if (decoyCount > 0 and secondaryTimer == nil) then
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+            else
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+            end
+            if (ultimateTimer == nil) then
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+            else
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
             end
         end
     end

@@ -78,14 +78,14 @@ function EventHandler(key, fields)
             end
         elseif ability == 3 then
             if abilityState == 1 then
-                cooldownMaskW.active = false
-                activeMaskW.active = false
+                cooldownMaskE.active = false
+                activeMaskE.active = false
             elseif abilityState == 2 then
-                cooldownMaskW.active = false
-                activeMaskW.active = true
+                cooldownMaskE.active = false
+                activeMaskE.active = true
             elseif abilityState == 3 then
-                cooldownMaskW.active = true
-                activeMaskW.active = false
+                cooldownMaskE.active = true
+                activeMaskE.active = false
             end
         end
     end
