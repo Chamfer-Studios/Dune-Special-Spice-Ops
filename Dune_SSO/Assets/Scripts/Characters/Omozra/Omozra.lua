@@ -14,7 +14,8 @@ Movement = {
     IDLE = 1,
     WALK = 2,
     RUN = 3,
-    CROUCH = 4
+    IDLE_CROUCH = 4,
+    CROUCH = 5
 }
 State = {
     IDLE = 1,
@@ -158,6 +159,9 @@ end
 -- Called each loop iteration
 function Update(dt)
 
+    if (ultimateTimer ~= nil and currentState == State.AIM_ULTIMATE_RECAST) then
+        StopMovement()
+    end
     DrawActiveAbilities()
 
     DrawHoverParticle()
@@ -342,15 +346,15 @@ function SetState(newState)
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
         drawPrimary = true
-        StopMovement(false)
+        StopMovement()
     elseif (newState == State.AIM_SECONDARY) then
         currentState = State.AIM_SECONDARY
         drawSecondary = true
-        StopMovement(false)
+        StopMovement()
     elseif (newState == State.AIM_ULTIMATE) then
         currentState = State.AIM_ULTIMATE
         drawUltimate = true
-        StopMovement(false)
+        StopMovement()
     elseif (newState == State.AIM_ULTIMATE_RECAST) then
         currentState = State.AIM_ULTIMATE_RECAST
         drawUltimateRecast = true
@@ -532,7 +536,6 @@ function ManageTimers(dt)
                 elseif (currentState == State.AIM_ULTIMATE) then
                     DoUltimate()
                 elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-                    -- First pass will be the PointToIdle animation from the first ultimate cast
                     if (ultimateTimer ~= nil) then -- Second pass will get in here
                         DoUltimateRecast()
                     end
@@ -601,7 +604,7 @@ function MoveToDestination(dt)
     end
 end
 
-function StopMovement(resetTarget)
+function StopMovement()
 
     if (currentMovement == Movement.CROUCH) then
         SetMovement(Movement.IDLE_CROUCH)
@@ -611,9 +614,6 @@ function StopMovement(resetTarget)
 
     destination = nil
 
-    if (resetTarget == nil) then -- Default case
-        target = nil
-    end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
@@ -652,7 +652,7 @@ function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Point")
     secondaryTimer = 0.0
-    StopMovement(false)
+    StopMovement()
 
     DispatchGlobalEvent("Player_Ability", {characterID, 2, 2})
     if (position == nil) then
@@ -683,7 +683,7 @@ function CastUltimate() -- Ult step 3
 
     componentAnimator:SetSelectedClip("Point")
     -- CD will start when recasting
-    StopMovement(false)
+    StopMovement()
 
     DispatchGlobalEvent("Player_Ability", {characterID, 3, 2})
     LookAtTarget(target:GetTransform():GetPosition())
@@ -724,6 +724,7 @@ end
 function DoUltimateRecast() -- Ult step 7
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+    StopMovement()
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
 end

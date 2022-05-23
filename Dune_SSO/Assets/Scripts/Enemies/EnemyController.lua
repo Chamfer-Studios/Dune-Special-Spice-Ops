@@ -357,6 +357,9 @@ function SetStateToWORM()
     local oldState = state
     state = STATE.WORM
     DispatchEvent("Change_State", {oldState, state}) -- fields[1] -> fromState; fields[2] -> toState;
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Idle")
+    end
 end
 
 wasWalking = false
@@ -390,13 +393,11 @@ function EventHandler(key, fields)
             deathMarkTimer = 0.0
         end
     elseif key == "Die" then
-        Die()
+        Die(fields[1])
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
                 StopMovement()
-            elseif (fields[2] == 2) then
-                Die()
             end
         end
     end

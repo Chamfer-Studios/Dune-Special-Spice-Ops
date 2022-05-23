@@ -147,6 +147,12 @@ function EventHandler(key, fields)
         if (fields[1] == gameObject) then
             Die()
         end
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+        if (fields[1] == gameObject) then
+            if (fields[2] == 2) then
+                Die(false)
+            end
+        end
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
@@ -229,7 +235,11 @@ function EventHandler(key, fields)
     end
 end
 
-function Die()
+function Die(leaveBody)
+    if (leaveBody == nil) then
+        leaveBody = true
+    end
+
     -- Chance to spawn, if spawn dispatch event
     if (dieSFXOnce == true) then
         math.randomseed(os.time())
@@ -249,7 +259,7 @@ function Die()
     end
 
     gameObject.tag = Tag.UNTAGGED
-    DispatchEvent("Die", {})
+    DispatchEvent("Die", {leaveBody})
     currentState = STATE.DEAD
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
