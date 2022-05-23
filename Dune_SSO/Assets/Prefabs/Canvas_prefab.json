@@ -126,89 +126,6 @@
         },
         {
             "active": true,
-            "children": [
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 4,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                0.0,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                57.0,
-                                22.0
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "texture": "Assets/New UI/hp_diamond_filled.png",
-                            "type": 14
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "HP Fill 1",
-                    "tag": 0
-                }
-            ],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        130.0,
-                        42.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        57.86000061035156,
-                        22.860000610351563
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/hp_diamond.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "HP Frame 1",
-            "tag": 0
-        },
-        {
-            "active": true,
             "children": [],
             "components": [
                 {
@@ -241,6 +158,12 @@
                     "active": true,
                     "texture": "Assets/New UI/spice_bar_fill.png",
                     "type": 14
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/New HUD Scripts/spice_bar.lua",
+                    "id": 2040907340,
+                    "type": 5
                 }
             ],
             "is3D": false,
@@ -287,172 +210,6 @@
             "is3D": false,
             "isPrefab": false,
             "name": "Spice Bar Frame",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 4,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                0.0,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                57.86000061035156,
-                                22.860000610351563
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "texture": "Assets/New UI/hp_diamond_filled.png",
-                            "type": 14
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "HP Fill 2",
-                    "tag": 0
-                }
-            ],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        210.0,
-                        42.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        57.86000061035156,
-                        22.860000610351563
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/hp_diamond.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "HP Frame 2",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 4,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                0.0,
-                                0.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                57.86000061035156,
-                                22.860000610351563
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "texture": "Assets/New UI/hp_diamond_filled.png",
-                            "type": 14
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "HP Fill 3",
-                    "tag": 0
-                }
-            ],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        290.0,
-                        42.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        57.86000061035156,
-                        22.860000610351563
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/hp_diamond.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "HP Frame 3",
             "tag": 0
         },
         {
@@ -1112,6 +869,317 @@
             "tag": 0
         },
         {
+            "active": true,
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                -150.0,
+                                129.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                74.0,
+                                96.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "hoverTexture": "Assets/New UI/ability_hover.png",
+                            "idleTexture": "Assets/New UI/ability_default.png",
+                            "pressedTexture": "Assets/New UI/ability_pressed.png",
+                            "type": 15
+                        },
+                        {
+                            "active": true,
+                            "file_name": "Assets/Scripts/New HUD Scripts/primary_skill_button.lua",
+                            "id": 29862008,
+                            "type": 5
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Skill Frame Q",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                129.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                74.0,
+                                96.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "hoverTexture": "Assets/New UI/ability_hover.png",
+                            "idleTexture": "Assets/New UI/ability_default.png",
+                            "pressedTexture": "Assets/New UI/ability_pressed.png",
+                            "type": 15
+                        },
+                        {
+                            "active": true,
+                            "file_name": "Assets/Scripts/New HUD Scripts/secondary_skill_button.lua",
+                            "id": 258688672,
+                            "type": 5
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Skill Frame W",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                150.0,
+                                130.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                74.0,
+                                96.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "hoverTexture": "Assets/New UI/ability_hover.png",
+                            "idleTexture": "Assets/New UI/ability_default.png",
+                            "pressedTexture": "Assets/New UI/ability_pressed.png",
+                            "type": 15
+                        },
+                        {
+                            "active": true,
+                            "file_name": "Assets/Scripts/New HUD Scripts/ultimate_skill_button.lua",
+                            "id": 1366169570,
+                            "type": 5
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Skill Frame E",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 4,
+                    "logicalSize": [
+                        1920.0,
+                        1080.0
+                    ],
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 13
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Skill Frames",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        212.0,
+                        158.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        201.85000610351563,
+                        199.44000244140625
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/square_frame_a.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Selected Character Frame",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        70.0,
+                        120.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        76.25,
+                        76.25
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/square_frame_c.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Left Character Frame",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        350.0,
+                        120.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        76.25,
+                        76.25
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/square_frame_c.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Right Character Frame",
+            "tag": 0
+        },
+        {
             "active": false,
             "children": [
                 {
@@ -1288,14 +1356,14 @@
                         },
                         {
                             "active": true,
-                            "anchor": 7,
+                            "anchor": 4,
                             "pivot": [
                                 0.5,
                                 0.5
                             ],
                             "position": [
-                                -150.0,
-                                129.0
+                                0.0,
+                                0.0
                             ],
                             "rotation": [
                                 0.0,
@@ -1303,108 +1371,20 @@
                                 0.0
                             ],
                             "size": [
-                                74.0,
-                                96.0
+                                57.86000061035156,
+                                22.860000610351563
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "hoverTexture": "Assets/New UI/ability_hover.png",
-                            "idleTexture": "Assets/New UI/ability_default.png",
-                            "pressedTexture": "Assets/New UI/ability_pressed.png",
-                            "type": 15
+                            "texture": "Assets/New UI/hp_diamond_filled.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
                     "isPrefab": false,
-                    "name": "Skill Frame Q",
-                    "tag": 0
-                },
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 7,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                0.0,
-                                129.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                74.0,
-                                96.0
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "hoverTexture": "Assets/New UI/ability_hover.png",
-                            "idleTexture": "Assets/New UI/ability_default.png",
-                            "pressedTexture": "Assets/New UI/ability_pressed.png",
-                            "type": 15
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "Skill Frame W",
-                    "tag": 0
-                },
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 7,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                150.0,
-                                130.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                74.0,
-                                96.0
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "hoverTexture": "Assets/New UI/ability_hover.png",
-                            "idleTexture": "Assets/New UI/ability_default.png",
-                            "pressedTexture": "Assets/New UI/ability_pressed.png",
-                            "type": 15
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "Skill Frame E",
+                    "name": "HP Fill 1",
                     "tag": 0
                 }
             ],
@@ -1415,18 +1395,14 @@
                 },
                 {
                     "active": true,
-                    "anchor": 4,
-                    "logicalSize": [
-                        1920.0,
-                        1080.0
-                    ],
+                    "anchor": 6,
                     "pivot": [
                         0.5,
                         0.5
                     ],
                     "position": [
-                        0.0,
-                        0.0
+                        130.0,
+                        42.0
                     ],
                     "rotation": [
                         0.0,
@@ -1434,15 +1410,186 @@
                         0.0
                     ],
                     "size": [
-                        200.0,
-                        200.0
+                        57.86000061035156,
+                        25.860000610351563
                     ],
-                    "type": 13
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/hp_diamond.png",
+                    "type": 14
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Frames",
+            "name": "HP Frame 1",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                57.86000061035156,
+                                22.860000610351563
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/New UI/hp_diamond_filled.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "HP Fill 2",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        210.0,
+                        42.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        57.86000061035156,
+                        22.860000610351563
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/hp_diamond.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "HP Frame 2",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                57.86000061035156,
+                                22.860000610351563
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/New UI/hp_diamond_filled.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "HP Fill 3",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        290.0,
+                        42.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        57.86000061035156,
+                        22.860000610351563
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/hp_diamond.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "HP Frame 3",
             "tag": 0
         },
         {
@@ -1457,12 +1604,12 @@
                     "active": true,
                     "anchor": 2,
                     "pivot": [
-                        0.27000001072883606,
-                        1.0
+                        0.5,
+                        0.5
                     ],
                     "position": [
-                        0.0,
-                        -56.0
+                        92.0,
+                        -363.0
                     ],
                     "rotation": [
                         0.0,
@@ -1477,136 +1624,21 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/missions_popup.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/missions_popup.png",
+                    "idleTexture": "Assets/New UI/missions_popup.png",
+                    "pressedTexture": "Assets/New UI/missions_popup.png",
+                    "type": 15
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/New HUD Scripts/quest_button.lua",
+                    "id": 473691346,
+                    "type": 5
                 }
             ],
             "is3D": false,
             "isPrefab": false,
             "name": "Quest Frame",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        212.0,
-                        158.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        201.85000610351563,
-                        199.44000244140625
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/square_frame_a.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "Selected Character Frame",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        70.0,
-                        120.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        76.25,
-                        76.25
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/square_frame_c.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "Left Character Frame",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 6,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        350.0,
-                        120.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        76.25,
-                        76.25
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/square_frame_c.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "Right Character Frame",
             "tag": 0
         }
     ],
@@ -1640,6 +1672,12 @@
                 200.0
             ],
             "type": 13
+        },
+        {
+            "active": true,
+            "file_name": "Assets/Scripts/New HUD Scripts/hud_selected_character.lua",
+            "id": 187694343,
+            "type": 5
         }
     ],
     "is3D": false,
