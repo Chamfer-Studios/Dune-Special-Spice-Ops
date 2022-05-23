@@ -22,6 +22,8 @@ function Start()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
     componentSwitch = gameObject:GetAudioSwitch()
     componentBoxCollider = gameObject:GetBoxCollider()
+    componentLight = gameObject:GetLight()
+
     currentTrackID = -1
     dieSFXOnce = true;
 end
@@ -260,7 +262,10 @@ function Die()
         gameObject:DeleteComponent(componentBoxCollider)
         componentBoxCollider = nil
     end
-
+    if (componentLight ~= nil) then
+        gameObject:DeleteComponent(componentLight)
+        componentLight = nil
+    end
 end
 
 -- Math
