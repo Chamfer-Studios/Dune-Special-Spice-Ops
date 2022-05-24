@@ -38,7 +38,8 @@ AbilityStatus = {
     Active = 2,
     Cooldown = 3,
     Using = 4,
-    Pickable = 5
+    Pickable = 5,
+    Casting = 6 -- Casting is for intern code
 }
 abilities = {
     AbilityPrimary = AbilityStatus.Normal,
@@ -474,20 +475,22 @@ function SetMovement(newMovement)
     end
 end
 
-function CancelAbilities()
-    if (currentState == State.AIM_PRIMARY) then
+function CancelAbilities(onlyAbilities)
+    if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_SECONDARY) then
+    elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_ULTIMATE) then
+    elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     end
 
-    if (currentState ~= State.WORM) then
-        SetState(State.IDLE)
+    if (onlyAbilities == nil) then
+        if (currentState ~= State.WORM) then
+            SetState(State.IDLE)
+        end
     end
 end
 
@@ -818,6 +821,7 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
+    abilities.AbilityPrimary = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Knife")
     StopMovement(false)
@@ -834,7 +838,7 @@ function DoPrimary()
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     else
-        abilities.AbilityPrimary = AbilityStatus.Cooldown
+        abilities.AbilityPrimary = AbilityStatus.Cooldown -- Should be state disabled 
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
     end
 
@@ -859,6 +863,7 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
+    abilities.AbilitySecondary = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Decoy")
     StopMovement(false)
@@ -868,7 +873,7 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-
+    abilities.AbilitySecondary = AbilityStatus.Using
     InstantiatePrefab("Decoy")
 
     decoyCount = decoyCount - 1
@@ -881,8 +886,9 @@ end
 
 -- Ultimate ability
 function ActiveUltimate()
-    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >=
-        ultimateSpiceCost) then
+    if (ultimateTimer == nil and
+        (GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost or
+            GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true)) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -895,26 +901,29 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
+    abilities.AbilityUltimate = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0
     StopMovement(false)
 
-    abilities.AbilityUltimate = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
-
     LookAtTarget(position)
-
 end
 
 function DoUltimate()
-    -- Subtracts spice cost when using ultimate ability
-    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    NewSpice = OGSpice - ultimateSpiceCost
-    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    abilities.AbilityUltimate = AbilityStatus.Cooldown
 
-    str = "Spice Amount " .. NewSpice .. "\n"
-    Log(str)
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+
+    if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        -- Subtracts spice cost when using ultimate ability
+        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        NewSpice = OGSpice - ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+        str = "Spice Amount " .. NewSpice .. "\n"
+        Log(str)
+    end
 
     -- Get all enemies in range of the Mouse
     enemiesInRange = {target}
@@ -1062,12 +1071,16 @@ function EventHandler(key, fields)
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
             -- If zhib is being changed
+            CancelAbilities(true)
         end
         if (fields[2] == characterID) then
             -- If game changed to Zhib, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            -- Log("Zhib: Primary = " .. abilities.AbilityPrimary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            -- Log("Zhib: Secondary = " .. abilities.AbilitySecondary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            -- Log("Zhib: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")

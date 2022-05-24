@@ -34,7 +34,7 @@ function Update(dt)
         lifeTimer = lifeTimer + dt
 
         if (effectFlag) then
-             if (currentTrackID ~= -1) then
+            if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
             currentTrackID = 0
@@ -44,10 +44,10 @@ function Update(dt)
             effectFlag = false
         end
     else
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-        --Log("Decoy is grabbable! \n")
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        -- Log("Decoy is grabbable! \n")
         isGrabbable = true
     end
 end
@@ -72,7 +72,7 @@ end
 
 function OnTriggerEnter(go)
 
-    if (go.tag == Tag.PLAYER and isGrabbable == true) then
+    if (go.tag == Tag.PLAYER and isGrabbable == true and go:GetName() == "Zhib") then
         DispatchGlobalEvent("Decoy_Grabbed", {})
         DeleteGameObject()
     end

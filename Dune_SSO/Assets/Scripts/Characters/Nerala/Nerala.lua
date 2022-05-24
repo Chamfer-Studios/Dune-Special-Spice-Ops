@@ -39,7 +39,8 @@ AbilityStatus = {
     Active = 2,
     Cooldown = 3,
     Using = 4,
-    Pickable = 5
+    Pickable = 5,
+    Casting = 6 -- Casting is for intern code
 }
 abilities = {
     AbilityPrimary = AbilityStatus.Normal,
@@ -85,6 +86,8 @@ aggroChanceSardDart = 0
 -- Secondary ability --
 secondaryCastRange = 75
 secondaryCooldown = 10.0
+maxSmokeBombCount = 3
+smokeBombCount = maxSmokeBombCount
 
 -- Ultimate ability --
 ultimateCastRange = 50
@@ -259,8 +262,8 @@ function Update(dt)
 
                 -- Secondary ability (Smokebomb)
             elseif (currentState == State.AIM_SECONDARY) then
-                if (secondaryTimer ~= nil) then
-                    Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
+                if (smokeBombCount <= 0) then -- secondaryTimer ~= nil
+                    Log("[FAIL] Ability Secondary: You don't have enough smoke bombs!\n")
                 else
                     GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
                     local mouse = GetLastMouseClick()
@@ -458,20 +461,22 @@ function SetMovement(newMovement)
     end
 end
 
-function CancelAbilities()
-    if (currentState == State.AIM_PRIMARY) then
+function CancelAbilities(onlyAbilities)
+    if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_SECONDARY) then
+    elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_ULTIMATE) then
+    elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     end
 
-    if (currentState ~= State.WORM) then
-        SetState(State.IDLE)
+    if (onlyAbilities == nil) then
+        if (currentState ~= State.WORM) then
+            SetState(State.IDLE)
+        end
     end
 end
 
@@ -605,14 +610,14 @@ function ManageTimers(dt)
     end
 
     -- Secondary ability cooldown
-    if (secondaryTimer ~= nil) then
-        secondaryTimer = secondaryTimer + dt
-        if (secondaryTimer >= secondaryCooldown) then
-            secondaryTimer = nil
-            abilities.AbilitySecondary = AbilityStatus.Normal
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-        end
-    end
+    -- if (secondaryTimer ~= nil) then
+    --     secondaryTimer = secondaryTimer + dt
+    --     if (secondaryTimer >= secondaryCooldown) then
+    --         secondaryTimer = nil
+    --         abilities.AbilitySecondary = AbilityStatus.Normal
+    --         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    --     end
+    -- end
 
     -- Ultimate ability cooldown
     if (ultimateTimer ~= nil) then
@@ -786,6 +791,7 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
+    abilities.AbilityPrimary = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Dart")
     StopMovement(false)
@@ -809,7 +815,7 @@ end
 
 -- Secondary ability
 function ActiveSecondary()
-    if (secondaryTimer == nil) then
+    if (smokeBombCount > 0) then
         if (currentState == State.AIM_SECONDARY) then
             CancelAbilities()
         else
@@ -822,6 +828,7 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
+    abilities.AbilitySecondary = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Smokebomb")
     StopMovement(false)
@@ -832,10 +839,16 @@ end
 function PlaceSmokebomb()
 
     InstantiatePrefab("Smokebomb")
+    smokeBombCount = smokeBombCount - 1
 
-    secondaryTimer = 0.0
-    abilities.AbilitySecondary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    if (smokeBombCount > 0) then
+        abilities.AbilitySecondary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    else
+        abilities.AbilitySecondary = AbilityStatus.Cooldown -- Should be state disabled 
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    end
+    -- secondaryTimer = 0.0
 
     ChangeTrack(6)
 
@@ -846,7 +859,8 @@ end
 -- Ultimate ability
 function ActiveUltimate()
     if (ultimateTimer == nil and currentState ~= State.MOSQUITO and
-        GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
+        (GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost or
+            GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true)) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -859,6 +873,7 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
+    abilities.AbilityUltimate = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Mosquito")
 
@@ -870,13 +885,17 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
-    -- Subtracts spice cost when using ultimate ability
-    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    NewSpice = OGSpice - ultimateSpiceCost
-    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    abilities.AbilityUltimate = AbilityStatus.Using
 
-    str = "Spice Amount " .. NewSpice .. "\n"
-    Log(str)
+    if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        -- Subtracts spice cost when using ultimate ability
+        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        NewSpice = OGSpice - ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+        str = "Spice Amount " .. NewSpice .. "\n"
+        Log(str)
+    end
 
     InstantiatePrefab("Mosquito")
 
@@ -954,12 +973,16 @@ function EventHandler(key, fields)
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
             -- If nerala is being changed
+            CancelAbilities(true)
         end
         if (fields[2] == characterID) then
             -- If game changed to nerala, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            -- Log("Nerala: Primary = " .. abilities.AbilityPrimary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            -- Log("Nerala: Secondary = " .. abilities.AbilitySecondary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
         ultimateTimer = 0.0
