@@ -36,8 +36,11 @@ Ability = {
 AbilityStatus = {
     Normal = 1,
     Active = 2,
-    Cooldown = 3
+    Cooldown = 3,
+    Using = 4,
+    Disabled = 5
 }
+abilities = { AbilityPrimary = AbilityStatus.Normal,  AbilitySecondary = AbilityStatus.Normal, AbilityUltimate = AbilityStatus.Normal }
 ---------------------------------------------------------
 
 ------------------- Variables setter --------------------
@@ -73,18 +76,15 @@ aggroChanceHarkKnife = 20
 unawareChanceSardKnife = 75
 awareChanceSardKnife = 25
 aggroChanceSardKnife = 0
-drawPrimary = false
 
 -- Secondary ability --
 maxDecoy = 1
 secondaryCastRange = 75
 secondaryCooldown = 10
-drawSecondary = false
 
 -- Ultimate ability --
 ultimateCastRange = 50
 ultimateCooldown = 30.0
-drawUltimate = false
 ultimateCastRangeExtension = ultimateCastRange * 0.5
 ultimateSpiceCost = 2000
 ---------------------------------------------------------
@@ -472,19 +472,19 @@ end
 
 function CancelAbilities()
     if (currentState == State.AIM_PRIMARY) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_SECONDARY) then
+        abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_ULTIMATE) then
+        abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     end
 
     if (currentState ~= State.WORM) then
         SetState(State.IDLE)
     end
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DrawHoverParticle()
@@ -515,13 +515,13 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if componentLight ~= nil then
-        if (drawPrimary == true) then
+        if (abilities.AbilityPrimary == AbilityStatus.Active) then
             componentLight:SetRange(primaryCastRange)
             componentLight:SetAngle(360 / 2)
-        elseif (drawSecondary == true) then
+        elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
             componentLight:SetRange(secondaryCastRange)
             componentLight:SetAngle(360 / 2)
-        elseif (drawUltimate == true) then
+        elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
             componentLight:SetRange(ultimateCastRange)
             componentLight:SetAngle(360 / 2)
         else
@@ -593,7 +593,7 @@ function ManageTimers(dt)
         if (secondaryTimer >= secondaryCooldown) then
             Log("Decoy available!\n")
             secondaryTimer = nil
-
+            abilities.AbilitySecondary = AbilityStatus.Normal
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
         end
     end
@@ -603,6 +603,7 @@ function ManageTimers(dt)
         ultimateTimer = ultimateTimer + dt
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
+            abilities.AbilityUltimate = AbilityStatus.Normal
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
 
         end
@@ -786,9 +787,8 @@ function ActivePrimary()
         else
             CancelAbilities()
             SetState(State.AIM_PRIMARY)
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
-            drawPrimary = true
-        end
+            abilities.AbilityPrimary = AbilityStatus.Active
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})        end
     end
 end
 
@@ -798,10 +798,6 @@ function CastPrimary(position)
     StopMovement(false)
 
     LookAtTarget(position)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DoPrimary()
@@ -810,8 +806,10 @@ function DoPrimary()
     knifeCount = knifeCount - 1
 
     if (knifeCount > 0) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     else
+        abilities.AbilityPrimary = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
     end
 
@@ -829,8 +827,8 @@ function ActiveSecondary()
         else
             CancelAbilities()
             SetState(State.AIM_SECONDARY)
+            abilities.AbilitySecondary = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
-            drawSecondary = true
         end
     end
 end
@@ -842,9 +840,6 @@ function CastSecondary(position)
 
     LookAtTarget(position)
 
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DoSecondary()
@@ -868,8 +863,8 @@ function ActiveUltimate()
         else
             CancelAbilities()
             SetState(State.AIM_ULTIMATE)
+            abilities.AbilityUltimate = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
-            drawUltimate = true
         end
     end
 end
@@ -880,13 +875,11 @@ function CastUltimate(position)
     ultimateTimer = 0.0
     StopMovement(false)
 
+    abilities.AbilityUltimate = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
 
     LookAtTarget(position)
 
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DoUltimate()
@@ -1059,10 +1052,12 @@ function EventHandler(key, fields)
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
+        abilities.AbilitySecondary = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
+        abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
         knifeCount = knifeCount + 1
     elseif (key == "Enemy_Attack") then
