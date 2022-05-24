@@ -309,7 +309,8 @@ function Update(dt)
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
-                            end                            destination = target:GetTransform():GetPosition()
+                            end
+                            destination = target:GetTransform():GetPosition()
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
@@ -472,12 +473,15 @@ function CancelAbilities()
 end
 
 function DrawHoverParticle()
-    if (IsSelected() == true and (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE)) then
+    if (choosingTargetParticle == nil) then
+        return
+    end
+
+    if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (drawingTarget.tag == Tag.ENEMY) then
+        if (currentState == State.AIM_PRIMARY) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-            if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
-                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+            if (dist <= primaryCastRange and drawingTarget.tag == Tag.ENEMY) then
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
@@ -486,6 +490,17 @@ function DrawHoverParticle()
             choosingTargetParticle:GetTransform():SetPosition(
                 float3.new(drawingTarget:GetTransform():GetPosition().x,
                     drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+        elseif (currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+            local mouseClick = GetLastMouseClick()
+            local dist = Distance3D(mouseClick, componentTransform:GetPosition())
+            if ((currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
+                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
+            end
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+            choosingTargetParticle:GetTransform():SetPosition(float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z))
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end

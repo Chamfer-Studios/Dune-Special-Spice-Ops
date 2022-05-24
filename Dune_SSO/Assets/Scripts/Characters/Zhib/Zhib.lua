@@ -38,9 +38,13 @@ AbilityStatus = {
     Active = 2,
     Cooldown = 3,
     Using = 4,
-    Disabled = 5
+    Pickable = 5
 }
-abilities = { AbilityPrimary = AbilityStatus.Normal,  AbilitySecondary = AbilityStatus.Normal, AbilityUltimate = AbilityStatus.Normal }
+abilities = {
+    AbilityPrimary = AbilityStatus.Normal,
+    AbilitySecondary = AbilityStatus.Normal,
+    AbilityUltimate = AbilityStatus.Normal
+}
 ---------------------------------------------------------
 
 ------------------- Variables setter --------------------
@@ -488,12 +492,16 @@ function CancelAbilities()
 end
 
 function DrawHoverParticle()
-    if (IsSelected() == true and (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE)) then
+    if (choosingTargetParticle == nil) then
+        return
+    end
+
+    if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (drawingTarget.tag == Tag.ENEMY) then
+        if (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-            if ((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
-                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+            if (((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
+                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) and drawingTarget.tag == Tag.ENEMY) then
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
@@ -502,6 +510,16 @@ function DrawHoverParticle()
             choosingTargetParticle:GetTransform():SetPosition(
                 float3.new(drawingTarget:GetTransform():GetPosition().x,
                     drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+        elseif (currentState == State.AIM_SECONDARY) then
+            local mouseClick = GetLastMouseClick()
+            local dist = Distance3D(mouseClick, componentTransform:GetPosition())
+            if (dist <= secondaryCastRange) then
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
+            end
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+            choosingTargetParticle:GetTransform():SetPosition(float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z))
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end
@@ -788,7 +806,8 @@ function ActivePrimary()
             CancelAbilities()
             SetState(State.AIM_PRIMARY)
             abilities.AbilityPrimary = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})        end
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
+        end
     end
 end
 

@@ -242,7 +242,7 @@ function Update(dt)
                         ultimateCastRange) then
                         Log("[FAIL] Ability Secondary: Ability out of range!\n")
                     else
-                        if (componentAnimator ~= nil) then
+                        if (componentAnimator ~= nil and target ~= gameObject) then
                             CastUltimate(target:GetTransform():GetPosition())
                         end
                     end
@@ -431,34 +431,31 @@ function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
         return
     end
+
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (drawingTarget.tag == Tag.ENEMY) then
-            if (currentState == State.AIM_SECONDARY) then
-                local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-                if (currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) then
-                    choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
-                else
-                    choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
-                end
-                choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
-                choosingTargetParticle:GetTransform():SetPosition(float3.new(
-                    drawingTarget:GetTransform():GetPosition().x, drawingTarget:GetTransform():GetPosition().y + 1,
-                    drawingTarget:GetTransform():GetPosition().z))
+        if (currentState == State.AIM_SECONDARY) then
+            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
+            if (dist <= secondaryCastRange and drawingTarget.tag == Tag.ENEMY) then
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-        elseif (drawingTarget.tag == Tag.PLAYER and currentState == State.AIM_ULTIMATE) then
-            if (currentState == State.AIM_ULTIMATE) then
-                local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-                if (dist <= ultimateCastRange) then
-                    choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
-                else
-                    choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
-                end
-                choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
-                choosingTargetParticle:GetTransform():SetPosition(float3.new(
-                    drawingTarget:GetTransform():GetPosition().x, drawingTarget:GetTransform():GetPosition().y + 1,
-                    drawingTarget:GetTransform():GetPosition().z))
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+            choosingTargetParticle:GetTransform():SetPosition(
+                float3.new(drawingTarget:GetTransform():GetPosition().x,
+                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+        elseif (currentState == State.AIM_ULTIMATE) then
+            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
+            if (dist <= ultimateCastRange and drawingTarget ~= gameObject and drawingTarget.tag == Tag.PLAYER) then
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+            choosingTargetParticle:GetTransform():SetPosition(
+                float3.new(drawingTarget:GetTransform():GetPosition().x,
+                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
         elseif (currentState == State.AIM_ULTIMATE_RECAST) then
             local mouseClick = GetLastMouseClick()
             local dist = Distance3D(mouseClick, componentTransform:GetPosition())
@@ -883,13 +880,6 @@ function EventHandler(key, fields)
     elseif (key == "Active_Ultimate") then
         if (fields[1] == characterID) then
             ActiveUltimate()
-        end
-    elseif (key == "Enemy_Attack") then
-        if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and
-                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-                TakeDamage()
-            end
         end
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
