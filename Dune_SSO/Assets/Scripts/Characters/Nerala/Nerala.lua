@@ -37,7 +37,14 @@ Ability = {
 AbilityStatus = {
     Normal = 1,
     Active = 2,
-    Cooldown = 3
+    Cooldown = 3,
+    Using = 4,
+    Pickable = 5
+}
+abilities = {
+    AbilityPrimary = AbilityStatus.Normal,
+    AbilitySecondary = AbilityStatus.Normal,
+    AbilityUltimate = AbilityStatus.Normal
 }
 ---------------------------------------------------------
 
@@ -74,17 +81,14 @@ aggroChanceHarkDart = 0
 unawareChanceSardDart = 100
 awareChanceSardDart = 80
 aggroChanceSardDart = 0
-drawPrimary = false
 
 -- Secondary ability --
 secondaryCastRange = 75
 secondaryCooldown = 10.0
-drawSecondary = false
 
 -- Ultimate ability --
 ultimateCastRange = 50
 ultimateCooldown = 30.0
-drawUltimate = false
 ultimateSpiceCost = 1500
 ---------------------------------------------------------
 
@@ -456,20 +460,19 @@ end
 
 function CancelAbilities()
     if (currentState == State.AIM_PRIMARY) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_SECONDARY) then
+        abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_ULTIMATE) then
+        abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     end
 
     if (currentState ~= State.WORM) then
         SetState(State.IDLE)
     end
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DrawHoverParticle()
@@ -479,7 +482,7 @@ function DrawHoverParticle()
 
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (currentState == State.AIM_PRIMARY) then
+        if (currentState == State.AIM_PRIMARY and (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.PLAYER)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if (dist <= primaryCastRange and drawingTarget.tag == Tag.ENEMY) then
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
@@ -514,15 +517,19 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if componentLight ~= nil then
-        if (drawPrimary == true) then
-            componentLight:SetRange(primaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (drawSecondary == true) then
-            componentLight:SetRange(secondaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (drawUltimate == true) then
-            componentLight:SetRange(ultimateCastRange)
-            componentLight:SetAngle(360 / 2)
+        if (IsSelected() == true) then
+            if (abilities.AbilityPrimary == AbilityStatus.Active) then
+                componentLight:SetRange(primaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
+                componentLight:SetRange(secondaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
+                componentLight:SetRange(ultimateCastRange)
+                componentLight:SetAngle(360 / 2)
+            else
+                componentLight:SetAngle(0)
+            end
         else
             componentLight:SetAngle(0)
         end
@@ -537,7 +544,8 @@ end
 function ManageTimers(dt)
     local ret = true
 
-    if (currentMovement == Movement.RUN) then
+    if (currentMovement == Movement.RUN and
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         staminaTimer = staminaTimer - dt
         if (staminaTimer < 0.0) then
             staminaTimer = 0.0
@@ -590,7 +598,8 @@ function ManageTimers(dt)
         primaryTimer = primaryTimer + dt
         if (primaryTimer >= primaryCooldown) then
             primaryTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+            abilities.AbilityPrimary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         end
 
     end
@@ -600,7 +609,8 @@ function ManageTimers(dt)
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
             secondaryTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+            abilities.AbilitySecondary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 
@@ -609,7 +619,8 @@ function ManageTimers(dt)
         ultimateTimer = ultimateTimer + dt
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+            abilities.AbilityUltimate = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
 
@@ -768,8 +779,8 @@ function ActivePrimary()
         else
             CancelAbilities()
             SetState(State.AIM_PRIMARY)
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
-            drawPrimary = true
+            abilities.AbilityPrimary = AbilityStatus.Active
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         end
     end
 end
@@ -780,18 +791,15 @@ function CastPrimary(position)
     StopMovement(false)
 
     LookAtTarget(position)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function FireDart()
 
-    primaryTimer = 0.0
     InstantiatePrefab("Dart")
 
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
+    primaryTimer = 0.0
+    abilities.AbilityPrimary = AbilityStatus.Cooldown
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     ChangeTrack(5)
 
@@ -807,8 +815,8 @@ function ActiveSecondary()
         else
             CancelAbilities()
             SetState(State.AIM_SECONDARY)
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
-            drawSecondary = true
+            abilities.AbilitySecondary = AbilityStatus.Active
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 end
@@ -816,22 +824,20 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Smokebomb")
-    secondaryTimer = 0.0
     StopMovement(false)
 
     LookAtTarget(position)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function PlaceSmokebomb()
 
     InstantiatePrefab("Smokebomb")
-    ChangeTrack(6)
 
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+    secondaryTimer = 0.0
+    abilities.AbilitySecondary = AbilityStatus.Cooldown
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+
+    ChangeTrack(6)
 
     componentAnimator:SetSelectedClip("SmokebombToIdle")
     SetState(State.IDLE)
@@ -839,16 +845,15 @@ end
 
 -- Ultimate ability
 function ActiveUltimate()
-    -- TODO: CHECK IF ULTIMATE ABILITY IS NOT IN COOLDOWN AND NOT IN MOSQUITO
-    if (ultimateTimer == nil and GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >=
-        ultimateSpiceCost) then
+    if (ultimateTimer == nil and currentState ~= State.MOSQUITO and
+        GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
             CancelAbilities()
             SetState(State.AIM_ULTIMATE)
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
-            drawUltimate = true
+            abilities.AbilityUltimate = AbilityStatus.Active
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
 end
@@ -856,16 +861,12 @@ end
 function CastUltimate(position)
 
     componentAnimator:SetSelectedClip("Mosquito")
-    -- CD will start when the mosquito dies		
+
     StopMovement(false)
 
     LookAtTarget(position)
 
     ChangeTrack(7)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
 end
 
 function DoUltimate()
@@ -884,7 +885,8 @@ function DoUltimate()
 end
 
 function TakeDamage(damage)
-    if (iFramesTimer ~= nil or currentHP == 0) then
+    if (iFramesTimer ~= nil or currentHP == 0 or
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
         return
     end
 
@@ -925,10 +927,18 @@ end
 -------------------- Events ----------------------
 function EventHandler(key, fields)
 
-    if (key == "Mosquito_Death") then
-        ultimateTimer = 0.0
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
-        SetState(State.IDLE)
+    if (key == "Stop_Movement") then
+        StopMovement()
+        if (componentAnimator ~= nil) then
+            componentAnimator:SetSelectedClip("Idle")
+        end
+    elseif (key == "Enemy_Attack") then
+        if (fields[1] == gameObject) then
+            if (fields[2] == "Harkonnen" and
+                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+                TakeDamage()
+            end
+        end
     elseif (key == "Active_Primary") then
         if fields[1] == characterID then
             ActivePrimary()
@@ -941,8 +951,22 @@ function EventHandler(key, fields)
         if (fields[1] == characterID) then
             ActiveUltimate()
         end
+    elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
+        if (fields[1] == characterID) then
+            -- If nerala is being changed
+        end
+        if (fields[2] == characterID) then
+            -- If game changed to nerala, update HUD events depending on Abilities
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        end
+    elseif (key == "Mosquito_Death") then
+        ultimateTimer = 0.0
+        abilities.AbilityUltimate = AbilityStatus.Cooldown
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        SetState(State.IDLE)
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
-
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
                 SetState(State.WORM)
@@ -963,41 +987,6 @@ function EventHandler(key, fields)
             end
             gameObject.active = true
             SetState(State.IDLE)
-        end
-    elseif (key == "Stop_Movement") then
-        StopMovement()
-        if (componentAnimator ~= nil) then
-            componentAnimator:SetSelectedClip("Idle")
-        end
-    elseif (key == "Enemy_Attack") then
-        if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and
-                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-                TakeDamage()
-            end
-        end
-    elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
-        if (fields[1] == characterID) then
-            -- If nerala is being changed, CancelAbilities
-            -- CancelAbilities() -- Montu, me comes los huevos
-        end
-        if (fields[2] == characterID) then
-            -- If game changed to Nerala, update HUD events depending on Abilities
-            if (primaryTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
-            end
-            if (secondaryTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
-            end
-            if (ultimateTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
-            end
         end
     end
 end

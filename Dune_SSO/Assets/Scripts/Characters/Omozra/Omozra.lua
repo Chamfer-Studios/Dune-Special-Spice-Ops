@@ -36,7 +36,15 @@ Ability = {
 AbilityStatus = {
     Normal = 1,
     Active = 2,
-    Cooldown = 3
+    Cooldown = 3,
+    Using = 4,
+    Pickable = 5
+}
+abilities = {
+    AbilityPrimary = AbilityStatus.Normal,
+    AbilitySecondary = AbilityStatus.Normal,
+    AbilityUltimate = AbilityStatus.Normal,
+    AbilityUltimateRecast = AbilityStatus.Normal
 }
 ---------------------------------------------------------
 
@@ -62,19 +70,16 @@ isTired = false
 -- Primary ability --
 primaryCastRange = 100
 primaryCooldown = 10
-drawPrimary = false
 
 -- Secondary ability --
 secondaryCastRange = 75
 secondaryCooldown = 10
-drawSecondary = false
 
 -- Ultimate ability --
 ultimateCastRange = 50
 ultimateCooldown = 30
-drawUltimate = false
+ultimateCost = 1000
 ultimateRecastRange = 100
-drawUltimateRecast = false
 
 ---------------------------------------------------------
 
@@ -126,6 +131,10 @@ NewVariable(secondaryCastRangeIV)
 ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
 NewVariable(ultimateCastRangeIV)
+
+ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -347,19 +356,15 @@ function SetState(newState)
         currentState = State.IDLE
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
-        drawPrimary = true
         StopMovement(false)
     elseif (newState == State.AIM_SECONDARY) then
         currentState = State.AIM_SECONDARY
-        drawSecondary = true
-        StopMovementfalse()
+        StopMovementfalse(false)
     elseif (newState == State.AIM_ULTIMATE) then
         currentState = State.AIM_ULTIMATE
-        drawUltimate = true
         StopMovement(false)
     elseif (newState == State.AIM_ULTIMATE_RECAST) then
         currentState = State.AIM_ULTIMATE_RECAST
-        drawUltimateRecast = true
         StopMovement(false)
     elseif (newState == State.DEAD) then
         currentState = State.DEAD
@@ -411,20 +416,22 @@ end
 
 function CancelAbilities()
     if (currentState == State.AIM_PRIMARY) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_SECONDARY) then
+        abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
     elseif (currentState == State.AIM_ULTIMATE) then
+        abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+    elseif (currentState == State.AIM_ULTIMATE_RECAST) then
+        abilities.AbilityUltimateRecast = AbilityStatus.Normal
+
     end
 
     if (currentState ~= State.AIM_ULTIMATE_RECAST) then
         SetState(State.IDLE)
     end
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
-    drawUltimateRecast = false
 end
 
 function DrawHoverParticle()
@@ -434,7 +441,8 @@ function DrawHoverParticle()
 
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (currentState == State.AIM_SECONDARY) then
+        if ((currentState == State.AIM_SECONDARY) and
+            (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.PLAYER)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if (dist <= secondaryCastRange and drawingTarget.tag == Tag.ENEMY) then
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
@@ -479,18 +487,22 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if componentLight ~= nil then
-        if (drawPrimary == true) then
-            componentLight:SetRange(primaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (drawSecondary == true) then
-            componentLight:SetRange(secondaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (drawUltimate == true) then
-            componentLight:SetRange(ultimateCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (drawUltimateRecast == true) then
-            componentLight:SetRange(ultimateRecastRange)
-            componentLight:SetAngle(360 / 2)
+        if (IsSelected() == true) then
+            if (abilities.AbilityPrimary == AbilityStatus.Active) then
+                componentLight:SetRange(primaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
+                componentLight:SetRange(secondaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
+                componentLight:SetRange(ultimateCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilityUltimateRecast == AbilityStatus.Active) then
+                componentLight:SetRange(ultimateRecastRange)
+                componentLight:SetAngle(360 / 2)
+            else
+                componentLight:SetAngle(0)
+            end
         else
             componentLight:SetAngle(0)
         end
@@ -505,7 +517,8 @@ end
 function ManageTimers(dt)
     local ret = true
 
-    if (currentMovement == Movement.RUN) then
+    if (currentMovement == Movement.RUN and
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         staminaTimer = staminaTimer - dt
         if (staminaTimer < 0.0) then
             staminaTimer = 0.0
@@ -551,7 +564,8 @@ function ManageTimers(dt)
         secondaryTimer = secondaryTimer + dt
         if (secondaryTimer >= secondaryCooldown) then
             secondaryTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+            abilities.AbilitySecondary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 
@@ -560,7 +574,8 @@ function ManageTimers(dt)
         ultimateTimer = ultimateTimer + dt
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+            abilities.AbilityUltimate = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
     if (currentState == State.AIM_ULTIMATE) then
@@ -693,18 +708,13 @@ function ActivePrimary()
     else
         CancelAbilities()
         SetState(State.AIM_PRIMARY)
+        abilities.AbilityPrimary = AbilityStatus.Active
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
-        drawPrimary = true
     end
 end
 
 function CastPrimary(position)
     StopMovement(false)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
-    drawUltimateRecast = false
 end
 
 -- Secondary ability
@@ -715,8 +725,8 @@ function ActiveSecondary()
         else
             CancelAbilities()
             SetState(State.AIM_SECONDARY)
+            abilities.AbilitySecondary = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
-            drawSecondary = true
         end
     end
 end
@@ -724,30 +734,23 @@ end
 function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Point")
-    secondaryTimer = 0.0
     StopMovement(false)
 
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
-    if (position == nil) then
-        Log("Position Null")
-    else
-        LookAtTarget(position)
-    end
+    LookAtTarget(position)
 
-    ChangeTrack(4)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
-    drawUltimateRecast = false
 end
 
 function DoSecondary()
 
+    secondaryTimer = 0.0
+    abilities.AbilitySecondary = AbilityStatus.Cooldown
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+
+    ChangeTrack(4)
+
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
     componentAnimator:SetSelectedClip("PointToIdle")
-
     SetState(State.IDLE)
 end
 
@@ -759,8 +762,8 @@ function ActiveUltimate()
         else
             CancelAbilities()
             SetState(State.AIM_ULTIMATE)
+            abilities.AbilityUltimate = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
-            drawUltimate = true
         end
     end
 end
@@ -768,17 +771,12 @@ end
 function CastUltimate(position) -- Ult step 3
 
     componentAnimator:SetSelectedClip("Point")
-    -- CD will start when recasting
+
     StopMovement(false)
 
     LookAtTarget(target:GetTransform():GetPosition())
 
     ChangeTrack(4)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
-    drawUltimateRecast = false
 end
 
 function DoUltimate() -- Ult step 4
@@ -791,24 +789,30 @@ function DoUltimate() -- Ult step 4
 end
 
 function RecastUltimate(position)
+    -- Subtracts spice cost when using ultimate ability
+    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    NewSpice = OGSpice - ultimateSpiceCost
+    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+    str = "Spice Amount " .. NewSpice .. "\n"
+    Log(str)
 
     componentAnimator:SetSelectedClip("Point")
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+
     ultimateTimer = 0.0
+    abilities.AbilityUltimate = AbilityStatus.Cooldown
+    abilities.AbilityUltimateRecast = AbilityStatus.Active -- Used this only for drawing
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+
     StopMovement(false)
 
     LookAtTarget(position)
 
     ChangeTrack(4)
-
-    drawPrimary = false
-    drawSecondary = false
-    drawUltimate = false
-    drawUltimateRecast = false
 end
 
 function DoUltimateRecast() -- Ult step 7
-
+    abilities.AbilityUltimateRecast = AbilityStatus.Normal -- Used this only for drawing
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
     StopMovement(false)
     componentAnimator:SetSelectedClip("PointToIdle")
@@ -816,7 +820,8 @@ function DoUltimateRecast() -- Ult step 7
 end
 
 function TakeDamage(damage)
-    if (iFramesTimer ~= nil or currentHP == 0) then
+    if (iFramesTimer ~= nil or currentHP == 0 or
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
         return
     end
 
@@ -883,24 +888,13 @@ function EventHandler(key, fields)
         end
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
-            -- If omozra is being changed, CancelAbilities
-            -- CancelAbilities() -- Montu, me comes los huevos
+            -- If omozra is being changed
         end
         if (fields[2] == characterID) then
             -- If game changed to omozra, update HUD events depending on Abilities
-
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-
-            if (secondaryTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
-            end
-            if (ultimateTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
-            end
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
 end

@@ -44,7 +44,7 @@ function Start()
     str = "STARTING Spice Amount " .. spiceAmount .. "\n"
     Log(str)
 
-    if(spiceAmount == 0) then
+    if (spiceAmount == 0) then
         spiceAmount = startingSpiceAmount
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
@@ -137,11 +137,13 @@ function Update(dt)
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                 characterSelected = 3
             end
-             -- F3
+            -- F3
         elseif (GetInput(42) == KEY_STATE.KEY_DOWN) then
             if (GodMode == false) then
+                Log("Character number " .. characterSelected .. " is GOD\n")
                 GodMode = true
             elseif (GodMode == true) then
+                Log("Character nnumber " .. characterSelected .. " is not GOD\n")
                 GodMode = false
             end
         end

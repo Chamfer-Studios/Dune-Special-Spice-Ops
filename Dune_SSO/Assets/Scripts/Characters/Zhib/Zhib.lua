@@ -498,7 +498,8 @@ function DrawHoverParticle()
 
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if (currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE) then
+        if ((currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE) and
+            (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.PLAYER)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if (((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) and drawingTarget.tag == Tag.ENEMY) then
@@ -532,16 +533,20 @@ function DrawActiveAbilities()
     if componentLight == nil then
         componentLight = gameObject:GetLight()
     end
-    if componentLight ~= nil then
-        if (abilities.AbilityPrimary == AbilityStatus.Active) then
-            componentLight:SetRange(primaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
-            componentLight:SetRange(secondaryCastRange)
-            componentLight:SetAngle(360 / 2)
-        elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
-            componentLight:SetRange(ultimateCastRange)
-            componentLight:SetAngle(360 / 2)
+    if (componentLight ~= nil) then
+        if (IsSelected() == true) then
+            if (abilities.AbilityPrimary == AbilityStatus.Active) then
+                componentLight:SetRange(primaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
+                componentLight:SetRange(secondaryCastRange)
+                componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
+                componentLight:SetRange(ultimateCastRange)
+                componentLight:SetAngle(360 / 2)
+            else
+                componentLight:SetAngle(0)
+            end
         else
             componentLight:SetAngle(0)
         end
@@ -558,7 +563,8 @@ end
 function ManageTimers(dt)
     local ret = true
 
-    if (currentMovement == Movement.RUN) then
+    if (currentMovement == Movement.RUN and
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         staminaTimer = staminaTimer - dt
         if (staminaTimer < 0.0) then
             staminaTimer = 0.0
@@ -989,7 +995,8 @@ function DoUltimate()
 end
 
 function TakeDamage(damage)
-    if (iFramesTimer ~= nil or currentHP == 0) then
+    if (iFramesTimer ~= nil or currentHP == 0 or
+        GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
         return
     end
 
@@ -1034,6 +1041,12 @@ function EventHandler(key, fields)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
         end
+    elseif (key == "Enemy_Attack") then
+        if (fields[1] == gameObject) then
+            if (fields[2] == "Harkonnen") then
+                TakeDamage()
+            end
+        end
     elseif (key == "Active_Primary") then
         if fields[1] == characterID then
             ActivePrimary()
@@ -1046,6 +1059,27 @@ function EventHandler(key, fields)
         if (fields[1] == characterID) then
             ActiveUltimate()
         end
+    elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
+        if (fields[1] == characterID) then
+            -- If zhib is being changed
+        end
+        if (fields[2] == characterID) then
+            -- If game changed to Zhib, update HUD events depending on Abilities
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        end
+    elseif (key == "Decoy_Grabbed") then
+        Log("I have grabbed the decoy! \n")
+        secondaryTimer = 0.0
+        abilities.AbilitySecondary = AbilityStatus.Cooldown
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+        decoyCount = decoyCount + 1
+    elseif (key == "Knife_Grabbed") then
+        Log("I have grabbed a knife! \n")
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        knifeCount = knifeCount + 1
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
@@ -1067,47 +1101,6 @@ function EventHandler(key, fields)
             end
             gameObject.active = true
             SetState(State.IDLE)
-        end
-    elseif (key == "Decoy_Grabbed") then
-        Log("I have grabbed the decoy! \n")
-        secondaryTimer = 0.0
-        abilities.AbilitySecondary = AbilityStatus.Cooldown
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
-        decoyCount = decoyCount + 1
-    elseif (key == "Knife_Grabbed") then
-        Log("I have grabbed a knife! \n")
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-        knifeCount = knifeCount + 1
-    elseif (key == "Enemy_Attack") then
-        if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and
-                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-                TakeDamage()
-            end
-        end
-    elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
-        if (fields[1] == characterID) then
-            -- If zhib is being changed, CancelAbilities
-            -- CancelAbilities() -- Montu, me comes los huevos
-        end
-        if (fields[2] == characterID) then
-            -- If game changed to Zhib, update HUD events depending on Abilities
-            if (knifeCount > 0) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
-            end
-            if (decoyCount > 0 and secondaryTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
-            end
-            if (ultimateTimer == nil) then
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
-            else
-                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
-            end
         end
     end
 end
