@@ -280,18 +280,12 @@ function Update(dt)
                     CancelAbilities()
                 else
                     local isMoving = true
-                    if (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
-                        if (footstepsParticle ~= nil) then
-                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
-                        end
-                        destination = GetLastMouseClick()
-                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
-                    else
-                        if (footstepsParticle ~= nil) then
-                            footstepsParticle:GetComponentParticle():StopParticleSpawn()
-                        end
-                        isMoving = false
+
+                    if (footstepsParticle ~= nil) then
+                        footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                     end
+                    destination = GetLastMouseClick()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
 
                     if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
                         false) then

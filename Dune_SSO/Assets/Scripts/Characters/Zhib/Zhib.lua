@@ -339,16 +339,11 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    elseif (Distance3D(componentTransform:GetPosition(), GetLastMouseClick()) > 10) then
+                    else
                         target = nil
                         currentState = State.IDLE
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
-                    else
-                        if (footstepsParticle ~= nil) then
-                            footstepsParticle:GetComponentParticle():StopParticleSpawn()
-                        end
-                        isMoving = false
                     end
 
                     if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
