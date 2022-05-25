@@ -1,6 +1,153 @@
 {
     "active": true,
-    "children": [],
+    "children": [
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "resource": [
+                        {
+                            "emitters": [
+                                {
+                                    "loop": true,
+                                    "maxParticles": 500,
+                                    "modules": [
+                                        {
+                                            "maxParticleLife": 3.0,
+                                            "minParticleLife": 4.0,
+                                            "particlesPerSpawn": 1,
+                                            "randomParticleLife": false,
+                                            "spawnTime": 2.0,
+                                            "type": 1
+                                        },
+                                        {
+                                            "billboardingType": 6,
+                                            "frontAxis": true,
+                                            "maxDegrees": 360,
+                                            "minDegrees": 0,
+                                            "sideAxis": false,
+                                            "topAxis": false,
+                                            "type": 5
+                                        },
+                                        {
+                                            "minFinalSize": [
+                                                300.0,
+                                                300.0,
+                                                300.0
+                                            ],
+                                            "minInitialSize": [
+                                                15.0,
+                                                15.0,
+                                                15.0
+                                            ],
+                                            "type": 4
+                                        },
+                                        {
+                                            "colors": [
+                                                {
+                                                    "color": [
+                                                        1.0,
+                                                        1.0,
+                                                        1.0,
+                                                        1.0
+                                                    ],
+                                                    "position": 0.0
+                                                },
+                                                {
+                                                    "color": [
+                                                        1.0,
+                                                        1.0,
+                                                        1.0,
+                                                        0.0
+                                                    ],
+                                                    "position": 1.0
+                                                }
+                                            ],
+                                            "type": 3
+                                        },
+                                        {
+                                            "followForward": false,
+                                            "maxAcceleration": [
+                                                0.25,
+                                                0.25,
+                                                0.25
+                                            ],
+                                            "maxDirection": [
+                                                -1.0,
+                                                -1.0,
+                                                -1.0
+                                            ],
+                                            "maxPosition": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "maxVelocity": 5.0,
+                                            "minAcceleration": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "minDirection": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "minPosition": [
+                                                0.0,
+                                                0.5,
+                                                0.0
+                                            ],
+                                            "minVelocity": 0.699999988079071,
+                                            "randAcceleration": false,
+                                            "randDirection": false,
+                                            "randPosition": false,
+                                            "randVelocity": false,
+                                            "type": 2
+                                        }
+                                    ],
+                                    "name": "Wave Emitter",
+                                    "texture_path": "Assets/Textures/Particles/wave.png"
+                                }
+                            ],
+                            "name": "Wave"
+                        }
+                    ],
+                    "type": 3
+                }
+            ],
+            "is3D": true,
+            "isPrefab": false,
+            "name": "Decoy Particles",
+            "tag": 0
+        }
+    ],
     "components": [
         {
             "active": true,
@@ -9,20 +156,20 @@
         {
             "active": true,
             "position": [
+                -1546.823974609375,
                 0.0,
-                0.0,
-                0.0
+                764.8303833007813
             ],
             "rotation": [
-                0.0,
+                8.429370268459024e-08,
                 0.0,
                 0.0,
                 1.0
             ],
             "scale": [
-                10.0,
-                10.0,
-                10.0
+                5.0,
+                5.0,
+                5.0
             ],
             "type": 21
         },
@@ -48,18 +195,7 @@
             ],
             "shader": {
                 "asset_path": "Assets/Shaders/default_shader.glsl",
-                "uniforms": [
-                    {
-                        "name": "albedoTint",
-                        "type": 35666,
-                        "value": {
-                            "w": 1.0,
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        }
-                    }
-                ]
+                "uniforms": null
             },
             "texture": {
                 "asset_path": "Assets/Textures/Characters/Zhib/zhib_base_color.png"
@@ -109,7 +245,7 @@
             "tracks": [
                 {
                     "bypass": false,
-                    "loop": true,
+                    "loop": false,
                     "mute": false,
                     "offset": 0.0,
                     "pan": 0.0,
@@ -120,6 +256,33 @@
                 }
             ],
             "type": 11
+        },
+        {
+            "active": true,
+            "ambientValue": 0.0,
+            "constantAttenuationValue": 0.0,
+            "cutOffAngle": 1.0,
+            "diffuseValue": 0.20000000298023224,
+            "lightColor": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "lightDirection": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "lightPosition": [
+                -1546.823974609375,
+                0.0,
+                764.8303833007813
+            ],
+            "linearAttenuationValue": 0.0,
+            "quadraticAttenuationValue": 0.0,
+            "sourceType": 2,
+            "specularValue": 0.0,
+            "type": 19
         }
     ],
     "is3D": true,

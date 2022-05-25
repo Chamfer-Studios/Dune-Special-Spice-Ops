@@ -3,8 +3,8 @@ speed = 100
 destination = nil
 lifeTime = 10.0 -- secs --iv required
 lifeTimer = 0
-effectRadius = 250.0
-effectFlag = true
+effectRadius = 100.0
+effectTime = 2.0
 isGrabbable = false
 --------------------------------------------------
 
@@ -22,6 +22,14 @@ function Start()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
     componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
+    componentParticle = gameObject:GetChildren()[1]:GetComponentParticle()
+    if (componentParticle ~= nil) then
+        componentParticle:StopParticleSpawn()
+    end
+    componentLight = gameObject:GetLight()
+    if (componentLight ~= nil) then
+        componentLight:SetRange(effectRadius)
+    end
 end
 
 -- Called each loop iteration
@@ -31,9 +39,16 @@ function Update(dt)
         MoveToDestination(dt)
     elseif (lifeTimer <= lifeTime) then
 
+        if (componentLight ~= nil) then
+            componentLight:SetAngle(360 / 2)
+        end
+
         lifeTimer = lifeTimer + dt
 
-        if (effectFlag) then
+        if (effectTimer == nil) then
+            if (componentParticle ~= nil) then
+                componentParticle:ResumeParticleSpawn()
+            end
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
@@ -41,9 +56,17 @@ function Update(dt)
             componentSwitch:PlayTrack(currentTrackID)
             DispatchGlobalEvent("Auditory_Trigger",
                 {componentTransform:GetPosition(), effectRadius, "single", gameObject})
-            effectFlag = false
+            effectTimer = 0.0
+        else
+            effectTimer = effectTimer + dt
+            if (effectTimer >= effectTime) then
+                effectTimer = nil
+            end
         end
     else
+        if (componentLight ~= nil) then
+            componentLight:SetAngle(0)
+        end
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
