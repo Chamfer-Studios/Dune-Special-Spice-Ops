@@ -40,7 +40,8 @@ AbilityStatus = {
     Cooldown = 3,
     Using = 4,
     Pickable = 5,
-    Casting = 6 -- Casting is for intern code
+    Disabled = 6,
+    Casting = 7 -- Casting is for intern code
 }
 abilities = {
     AbilityPrimary = AbilityStatus.Normal,

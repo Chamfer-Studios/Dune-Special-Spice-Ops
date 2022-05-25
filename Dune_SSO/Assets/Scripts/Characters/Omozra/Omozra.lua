@@ -38,13 +38,15 @@ AbilityStatus = {
     Active = 2,
     Cooldown = 3,
     Using = 4,
-    Pickable = 5
+    Pickable = 5,
+    Disabled = 6,
+    Casting = 7 -- Casting is for intern code
 }
 abilities = {
     AbilityPrimary = AbilityStatus.Normal,
     AbilitySecondary = AbilityStatus.Normal,
     AbilityUltimate = AbilityStatus.Normal,
-    AbilityUltimateRecast = AbilityStatus.Normal
+    AbilityUltimateRecast = AbilityStatus.Normal -- For intern code
 }
 ---------------------------------------------------------
 
@@ -76,11 +78,10 @@ secondaryCastRange = 75
 secondaryCooldown = 10
 
 -- Ultimate ability --
-ultimateCastRange = 50
+ultimateCastRange = 75
 ultimateCooldown = 30
-ultimateCost = 1000
+ultimateSpiceCost = 1000
 ultimateRecastRange = 100
-
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -414,23 +415,25 @@ function SetMovement(newMovement)
     end
 end
 
-function CancelAbilities()
-    if (currentState == State.AIM_PRIMARY) then
+function CancelAbilities(onlyAbilities)
+    if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_SECONDARY) then
+    elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_ULTIMATE) then
+    elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-        abilities.AbilityUltimateRecast = AbilityStatus.Normal
+    elseif (currentState == State.AIM_ULTIMATE_RECAST and abilities.AbilityUltimateRecast == AbilityStatus.Active) then
+        abilities.AbilityUltimateRecast = AbilityStatus.Active
 
     end
 
-    if (currentState ~= State.AIM_ULTIMATE_RECAST) then
-        SetState(State.IDLE)
+    if (onlyAbilities == nil) then
+        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+            SetState(State.IDLE)
+        end
     end
 end
 
@@ -709,11 +712,14 @@ function ActivePrimary()
         CancelAbilities()
         SetState(State.AIM_PRIMARY)
         abilities.AbilityPrimary = AbilityStatus.Active
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 end
 
 function CastPrimary(position)
+    -- Disabled by now
+    -- abilities.AbilityPrimary = AbilityStatus.Casting 
+
     StopMovement(false)
 end
 
@@ -726,12 +732,13 @@ function ActiveSecondary()
             CancelAbilities()
             SetState(State.AIM_SECONDARY)
             abilities.AbilitySecondary = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 end
 
 function CastSecondary(position)
+    abilities.AbilitySecondary = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
@@ -744,7 +751,7 @@ function DoSecondary()
 
     secondaryTimer = 0.0
     abilities.AbilitySecondary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     ChangeTrack(4)
 
@@ -756,7 +763,9 @@ end
 
 -- Ultimate ability
 function ActiveUltimate()
-    if (ultimateTimer == nil) then
+    if (ultimateTimer == nil and abilities.AbilityUltimate == AbilityStatus.Normal and
+        (GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= ultimateSpiceCost or
+            GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true)) then
         if (currentState == State.AIM_ULTIMATE) then
             CancelAbilities()
         else
@@ -769,6 +778,7 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position) -- Ult step 3
+    abilities.AbilityUltimate = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Point")
 
@@ -780,39 +790,49 @@ function CastUltimate(position) -- Ult step 3
 end
 
 function DoUltimate() -- Ult step 4
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
     componentAnimator:SetSelectedClip("PointToIdle")
 
     SetState(State.AIM_ULTIMATE_RECAST)
+    abilities.AbilityUltimateRecast = AbilityStatus.Active -- Used this only for drawing
 end
 
 function RecastUltimate(position)
-    -- Subtracts spice cost when using ultimate ability
-    OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    NewSpice = OGSpice - ultimateSpiceCost
-    SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    Log("RecastUltimate\n")
 
-    str = "Spice Amount " .. NewSpice .. "\n"
-    Log(str)
+    abilities.AbilityUltimateRecast = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Point")
-
-    ultimateTimer = 0.0
-    abilities.AbilityUltimate = AbilityStatus.Cooldown
-    abilities.AbilityUltimateRecast = AbilityStatus.Active -- Used this only for drawing
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
 
     StopMovement(false)
 
     LookAtTarget(position)
 
     ChangeTrack(4)
+
+    ultimateTimer = 0.0
+    abilities.AbilityUltimate = AbilityStatus.Cooldown
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
 end
 
 function DoUltimateRecast() -- Ult step 7
+    Log("DoUltimateRecast\n")
+    if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        -- Subtracts spice cost when using ultimate ability
+        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        NewSpice = OGSpice - ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+        str = "Spice Amount " .. NewSpice .. "\n"
+        Log(str)
+    end
+
     abilities.AbilityUltimateRecast = AbilityStatus.Normal -- Used this only for drawing
+
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
     StopMovement(false)
     componentAnimator:SetSelectedClip("PointToIdle")
@@ -889,12 +909,16 @@ function EventHandler(key, fields)
     elseif (key == "Changed_Character") then -- fields[1] -> From ////// fields[2] -> To
         if (fields[1] == characterID) then
             -- If omozra is being changed
+            CancelAbilities(true)
         end
         if (fields[2] == characterID) then
             -- If game changed to omozra, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            -- Log("Omozra: Primary = " .. abilities.AbilityPrimary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            -- Log("Omozra: Secondary = " .. abilities.AbilitySecondary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            -- Log("Omozra: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     end
 end
