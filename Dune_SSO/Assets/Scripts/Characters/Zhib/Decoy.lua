@@ -22,9 +22,13 @@ function Start()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
     componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
-    componentParticle = gameObject:GetChildren()[1]:GetComponentParticle()
-    if (componentParticle ~= nil) then
-        componentParticle:StopParticleSpawn()
+    effectParticles = gameObject:GetChildren()[1]:GetComponentParticle()
+    if (effectParticles ~= nil) then
+        effectParticles:StopParticleSpawn()
+    end
+    pickupParticles = gameObject:GetComponentParticle()
+    if (pickupParticles ~= nil) then
+        pickupParticles:StopParticleSpawn()
     end
     componentLight = gameObject:GetLight()
     if (componentLight ~= nil) then
@@ -40,14 +44,14 @@ function Update(dt)
     elseif (lifeTimer <= lifeTime) then
 
         if (componentLight ~= nil) then
-            componentLight:SetAngle(360 / 2)
+            -- componentLight:SetAngle(360 / 2)
         end
 
         lifeTimer = lifeTimer + dt
 
         if (effectTimer == nil) then
-            if (componentParticle ~= nil) then
-                componentParticle:ResumeParticleSpawn()
+            if (effectParticles ~= nil) then
+                effectParticles:ResumeParticleSpawn()
             end
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
@@ -69,6 +73,12 @@ function Update(dt)
         end
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
+        end
+        if (effectParticles ~= nil) then
+            effectParticles:StopParticleSpawn()
+        end
+        if (pickupParticles ~= nil) then
+            pickupParticles:ResumeParticleSpawn()
         end
         -- Log("Decoy is grabbable! \n")
         isGrabbable = true
