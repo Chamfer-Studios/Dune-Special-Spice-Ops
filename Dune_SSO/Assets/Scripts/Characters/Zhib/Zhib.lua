@@ -190,6 +190,7 @@ function Start()
     impactParticle = Find("Zhib Impact Particle") -- not used currently
     slashParticle = Find("Zhib Slash Particle") -- not used currently
     swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
+    waveParticle = Find("Zhib Wave Particle") -- not used currently
     footstepsParticle = Find("Zhib Footstep Particle")
 
     -- Audio
