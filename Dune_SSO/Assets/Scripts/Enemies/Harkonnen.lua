@@ -1,11 +1,9 @@
 STATE = {
     UNAWARE = 1,
-    AWARE = 2,
-    SUS = 3,
-    AGGRO = 4,
-    WORM = 5,
-    DEAD = 6,
-    VICTORY = 7
+    SUS = 2,
+    AGGRO = 3,
+    DEAD = 4,
+    VICTORY = 5
 }
 
 isAttacking = false
