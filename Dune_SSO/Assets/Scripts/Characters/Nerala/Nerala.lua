@@ -100,6 +100,7 @@ ultimateSpiceCost = 1500
 doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
+isDialogueOpen = false
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
@@ -545,6 +546,9 @@ end
 function ManageTimers(dt)
     local ret = true
 
+    if (isDialogueOpen == true) then
+        ret = false
+    end
     if (currentMovement == Movement.RUN and
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         staminaTimer = staminaTimer - dt
@@ -985,7 +989,7 @@ function EventHandler(key, fields)
         abilities.AbilityUltimate = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         SetState(State.IDLE)
-    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+    elseif (key == "Sadiq_Update_Target") then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 1) then
                 SetState(State.WORM)
@@ -1007,6 +1011,13 @@ function EventHandler(key, fields)
             gameObject.active = true
             SetState(State.IDLE)
         end
+    elseif (key == "Dialogue_Opened") then
+        isDialogueOpen = true
+        StopMovement()
+        SetState(State.IDLE)
+        componentAnimator:SetSelectedClip("Idle")
+    elseif (key == "Dialogue_Closed") then
+        isDialogueOpen = false
     end
 end
 --------------------------------------------------

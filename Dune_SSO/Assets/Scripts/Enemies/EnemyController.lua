@@ -394,6 +394,16 @@ function EventHandler(key, fields)
                 StopMovement()
             end
         end
+    elseif (key == "Dialogue_Opened") then
+        isDialogueOpen = true
+        oldSpeed = speed
+        speed = 0
+        oldChaseSpeed = chaseSpeed
+        chaseSpeed = 0
+    elseif (key == "Dialogue_Closed") then
+        isDialogueOpen = false
+        speed = oldSpeed
+        chaseSpeed = oldChaseSpeed
     end
 end
 
