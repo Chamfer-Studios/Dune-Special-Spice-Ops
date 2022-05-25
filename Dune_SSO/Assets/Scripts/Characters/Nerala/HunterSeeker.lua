@@ -1,6 +1,6 @@
 ------------------- Variables --------------------
 characterID = 2
-speed = 3000
+speed = 3500
 lifeTime = 30.0 -- secs --iv required
 lifeTimer = 0
 destination = nil
