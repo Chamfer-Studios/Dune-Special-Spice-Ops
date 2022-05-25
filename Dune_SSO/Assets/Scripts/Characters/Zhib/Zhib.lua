@@ -207,6 +207,7 @@ end
 -- Called each loop iteration
 function Update(dt)
     DrawActiveAbilities()
+    DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -243,7 +244,6 @@ function Update(dt)
     if (IsSelected() == true) then
 
         UpdateStaminaBar()
-        DrawHoverParticle()
 
         if (footstepsParticle ~= nil) then
             footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
@@ -261,10 +261,12 @@ function Update(dt)
                     target = GetGameObjectHovered()
                     if (target.tag ~= Tag.ENEMY) then
                         Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                        target = nil
                     else
                         if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             primaryCastRange) then
                             Log("[FAIL] Ability Primary: Ability out of range!\n")
+                            target = nil
                         else
                             if (componentAnimator ~= nil) then
                                 CastPrimary(target:GetTransform():GetPosition())
@@ -302,10 +304,12 @@ function Update(dt)
                     target = GetGameObjectHovered()
                     if (target.tag ~= Tag.ENEMY) then
                         Log("[FAIL] Ability Ultimate: You have to select an enemy first!\n")
+                        target = nil
                     else
                         if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             ultimateCastRange) then
                             Log("[FAIL] Ability Ultimate: Ability out of range!\n")
+                            target = nil
                         else
                             if (componentAnimator ~= nil) then
                                 CastUltimate(target:GetTransform():GetPosition())
@@ -498,12 +502,27 @@ function DrawHoverParticle()
 
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if ((currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE) and
-            (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.PLAYER)) then
+        if ((currentState == State.ATTACK or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
+            currentState == State.AIM_ULTIMATE) and target ~= nil) then
+            if (target.x == nil) then
+                t = target:GetTransform():GetPosition()
+            else
+                t = target
+            end
+            choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
+            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+            choosingTargetParticle:GetTransform():SetPosition(float3.new(t.x, t.y + 1, t.z))
+        elseif ((currentState == State.AIM_PRIMARY or currentState == State.AIM_ULTIMATE) and
+            (drawingTarget.tag == Tag.ENEMY)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if (((currentState == State.AIM_PRIMARY and dist <= primaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) and drawingTarget.tag == Tag.ENEMY) then
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+                if (target ~= nil) then
+                    choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
+                else
+
+                    choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
+                end
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
@@ -515,7 +534,11 @@ function DrawHoverParticle()
             local mouseClick = GetLastMouseClick()
             local dist = Distance3D(mouseClick, componentTransform:GetPosition())
             if (dist <= secondaryCastRange) then
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+                if (target ~= nil) then
+                    choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
+                else
+                    choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
+                end
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
@@ -524,8 +547,6 @@ function DrawHoverParticle()
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end
-    else
-        choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 
@@ -659,7 +680,6 @@ function ManageTimers(dt)
             end
         end
         ret = false
-        Log("Invisibility false\n")
     end
 
     -- Animation timer
@@ -667,7 +687,6 @@ function ManageTimers(dt)
         if (componentAnimator:IsCurrentClipLooping() == false) then
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
-                Log("Animation false\n")
             else
                 if (currentState == State.ATTACK) then
                     DoAttack()
@@ -687,7 +706,6 @@ function ManageTimers(dt)
     -- If he's dead he can't do anything
     if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
-        Log("Worm false\n")
     end
 
     return ret

@@ -201,6 +201,7 @@ end
 function Update(dt)
 
     DrawActiveAbilities()
+    DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -232,7 +233,6 @@ function Update(dt)
     if (IsSelected() == true) then
 
         UpdateStaminaBar()
-        DrawHoverParticle()
 
         if (footstepsParticle ~= nil) then
             footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
@@ -250,10 +250,12 @@ function Update(dt)
                     target = GetGameObjectHovered()
                     if (target.tag ~= Tag.ENEMY) then
                         Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                        target = nil
                     else
                         if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             primaryCastRange) then
                             Log("[FAIL] Ability Primary: Ability out of range!\n")
+                            target = nil
                         else
                             if (componentAnimator ~= nil) then
                                 CastPrimary(target:GetTransform():GetPosition())
@@ -509,8 +511,6 @@ function DrawHoverParticle()
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end
-    else
-        choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 

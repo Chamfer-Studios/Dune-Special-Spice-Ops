@@ -187,6 +187,7 @@ function Update(dt)
         StopMovement(false)
     end
     DrawActiveAbilities()
+    DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -210,7 +211,6 @@ function Update(dt)
     if (IsSelected() == true) then
 
         UpdateStaminaBar()
-        DrawHoverParticle()
 
         if (footstepsParticle ~= nil) then
             footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
@@ -231,10 +231,12 @@ function Update(dt)
                     target = GetGameObjectHovered()
                     if (target.tag ~= Tag.ENEMY) then
                         Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                        target = nil
                     else
                         if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             secondaryCastRange) then
                             Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                            target = nil
                         else
                             if (componentAnimator ~= nil) then
                                 CastSecondary(target:GetTransform():GetPosition())
@@ -248,10 +250,12 @@ function Update(dt)
                 target = GetGameObjectHovered()
                 if (target.tag ~= Tag.PLAYER) then
                     Log("[FAIL] Ability Primary: You have to select an ally first!\n")
+                    target = nil
                 else
                     if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                         ultimateCastRange) then
                         Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                        target = nil
                     else
                         if (componentAnimator ~= nil and target ~= gameObject) then
                             CastUltimate(target:GetTransform():GetPosition())
@@ -475,8 +479,6 @@ function DrawHoverParticle()
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
         end
-    else
-        choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 
