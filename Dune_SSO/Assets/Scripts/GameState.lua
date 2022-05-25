@@ -191,6 +191,10 @@ function EventHandler(key, fields)
         if (gameOverTimer == nil) then
             gameOverTimer = 0
         end
+    elseif (key == "Dialogue_Opened") then
+        GodMode = true
+    elseif (key == "Dialogue_Closed") then
+        GodMode = false
     end
 end
 --------------------------------------------------
