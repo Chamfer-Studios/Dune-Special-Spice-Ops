@@ -181,12 +181,16 @@ function Start()
     end
 
     -- Particles
-    mouseParticles = Find("Mouse Particles")
+    mouseParticles = Find("Mouse Particle")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
-    choosingTargetParticle = Find("Choosing Target")
-    footstepsParticle = Find("Footsteps Particles")
+    choosingTargetParticle = Find("Target Particle")
+    bloodParticle = Find("Zhib Blood Particle") -- not used currently
+    impactParticle = Find("Zhib Impact Particle") -- not used currently
+    slashParticle = Find("Zhib Slash Particle") -- not used currently
+    swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
+    footstepsParticle = Find("Zhib Footstep Particle")
 
     -- Audio
     currentTrackID = -1

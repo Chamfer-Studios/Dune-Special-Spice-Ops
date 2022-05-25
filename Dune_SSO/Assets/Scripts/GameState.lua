@@ -35,7 +35,7 @@ NewVariable(startingSpiceAmountIV)
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
-    characterSelectedParticle = Find("Selected Character")
+    characterSelectedParticle = Find("Selected Particle")
     staminaBar = Find("Stamina Bar")
 
     LoadGameState()
