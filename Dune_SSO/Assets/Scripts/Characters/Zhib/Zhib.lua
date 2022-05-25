@@ -655,6 +655,7 @@ function ManageTimers(dt)
             end
         end
         ret = false
+        Log("Invisibility false\n")
     end
 
     -- Animation timer
@@ -662,6 +663,7 @@ function ManageTimers(dt)
         if (componentAnimator:IsCurrentClipLooping() == false) then
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
+                Log("Animation false\n")
             else
                 if (currentState == State.ATTACK) then
                     DoAttack()
@@ -681,6 +683,7 @@ function ManageTimers(dt)
     -- If he's dead he can't do anything
     if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
+        Log("Worm false\n")
     end
 
     return ret
