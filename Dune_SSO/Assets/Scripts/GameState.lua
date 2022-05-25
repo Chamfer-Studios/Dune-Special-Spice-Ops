@@ -71,6 +71,11 @@ function Update(dt)
             gameOverTimer = gameOverTimer + dt
         else
             spiceAmount = spiceAmount - deadAllyPenalization
+
+            if(spiceAmount <= 0) then
+                spiceAmount = 0
+            end
+            
             SetGameJsonInt("spice", spiceAmount)
 
             str = "Spice Amount " .. spiceAmount .. "\n"
