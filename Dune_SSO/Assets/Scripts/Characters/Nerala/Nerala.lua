@@ -1023,6 +1023,8 @@ function EventHandler(key, fields)
         componentAnimator:SetSelectedClip("Idle")
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
+    elseif (key == "Spice_Reward") then
+        ChangeTrack(8)
     end
 end
 --------------------------------------------------

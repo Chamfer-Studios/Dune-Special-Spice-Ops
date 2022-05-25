@@ -339,14 +339,14 @@ function Update(dt)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            if(attackTimer == nil)  then
+                            if (attackTimer == nil) then
                                 Log("Already Atacking!\n")
                                 return
                             else
                                 isMoving = false
                                 Attack()
                             end
-                            
+
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
@@ -1144,6 +1144,8 @@ function EventHandler(key, fields)
         componentAnimator:SetSelectedClip("Idle")
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
+    elseif (key == "Spice_Reward") then
+        ChangeTrack(8)
     end
 end
 --------------------------------------------------
