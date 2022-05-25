@@ -24,6 +24,11 @@ function Start()
         componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, playerPos.y + 10,
             playerPos.z + vec2[2] * 3))
     end
+
+    componentParticle = gameObject:GetComponentParticle()
+    if (componentParticle ~= nil) then
+        componentParticle:StopParticleSpawn()
+    end
 end
 
 -- Called each loop iteration
@@ -48,6 +53,7 @@ function OnTriggerEnter(go)
             end
             currentTrackID = 0
             componentSwitch:PlayTrack(currentTrackID)
+            StopMovement()
         end
     elseif (destination == nil and go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
         DispatchGlobalEvent("Knife_Grabbed", {})
@@ -85,16 +91,21 @@ function MoveToDestination(dt)
         rot = float3.new(rotateKnife, componentTransform:GetRotation().y, rad)
         componentTransform:SetRotation(rot)
     else
-
-        destination = nil
-        if (componentRigidBody ~= nil) then
-            componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
-            componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 5,
-                componentTransform:GetPosition().z))
-        end
+        StopMovement()
     end
 end
 
+function StopMovement()
+    destination = nil
+    if (componentRigidBody ~= nil) then
+        componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
+        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, playerPos.y + 5,
+            componentTransform:GetPosition().z))
+    end
+    if (componentParticle ~= nil) then
+        componentParticle:ResumeParticleSpawn()
+    end
+end
 ----------------- Math Functions -----------------
 
 function Normalize(vec, distance)
