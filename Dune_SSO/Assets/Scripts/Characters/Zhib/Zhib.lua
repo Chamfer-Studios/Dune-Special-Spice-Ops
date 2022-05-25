@@ -339,8 +339,14 @@ function Update(dt)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            isMoving = false
-                            Attack()
+                            if(attackTimer == nil)  then
+                                Log("Already Atacking!\n")
+                                return
+                            else
+                                isMoving = false
+                                Attack()
+                            end
+                            
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
