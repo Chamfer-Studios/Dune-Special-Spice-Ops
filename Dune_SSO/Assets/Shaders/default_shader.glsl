@@ -54,9 +54,9 @@ void main() {
 #shader fragment
 #version 330 core
 
-const int MAX_DIR_LIGHTS = 5;
-const int MAX_POINT_LIGHTS = 5;
-const int MAX_FOCAL_LIGHTS = 5; 
+const int MAX_DIR_LIGHTS = 32;
+const int MAX_POINT_LIGHTS = 32;
+const int MAX_FOCAL_LIGHTS = 32; 
 
 in vec4 ourColor;
 in vec2 TexCoord;
