@@ -74,8 +74,8 @@ attackTime = 2.5
 
 -- Primary ability --
 primaryCastRange = 100
-maxKnives = 2
-knifeSpeed = 3000
+maxKnives = 1
+knifeSpeed = 7000
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
@@ -135,13 +135,13 @@ primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
 NewVariable(primaryCastRangeIV)
 
-maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
-NewVariable(maxKnivesIV)
+-- maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+-- NewVariable(maxKnivesIV)
 
-knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
-NewVariable(knifeSpeedIV)
+-- knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
+-- NewVariable(knifeSpeedIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -186,7 +186,10 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Target Particle")
-    bloodParticle = Find("Zhib Blood Particle") -- not used currently
+    bloodParticle = Find("Zhib Blood Particle")
+    if(bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
     impactParticle = Find("Zhib Impact Particle") -- not used currently
     slashParticle = Find("Zhib Slash Particle") -- not used currently
     swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
@@ -214,11 +217,12 @@ function Update(dt)
     DrawActiveAbilities()
     DrawHoverParticle()
 
-    DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
-
-    if (knifeCount == 1) then
-
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z+12))
     end
+
+    DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
@@ -339,14 +343,14 @@ function Update(dt)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            if(attackTimer == nil)  then
+                            if (attackTimer == nil) then
                                 Log("Already Atacking!\n")
                                 return
                             else
                                 isMoving = false
                                 Attack()
                             end
-                            
+
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
@@ -625,6 +629,7 @@ function ManageTimers(dt)
         iFramesTimer = iFramesTimer + dt
         if (iFramesTimer >= iFrames) then
             iFramesTimer = nil
+            bloodParticle:GetComponentParticle():StopParticleSpawn()
         end
     end
 
@@ -1028,10 +1033,11 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
-    end
-
+            return
+        end
+        
     iFramesTimer = 0
+    bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
     if (damage == nil) then
         damage = 1
@@ -1144,6 +1150,8 @@ function EventHandler(key, fields)
         componentAnimator:SetSelectedClip("Idle")
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
+    elseif (key == "Spice_Reward") then
+        ChangeTrack(8)
     end
 end
 --------------------------------------------------

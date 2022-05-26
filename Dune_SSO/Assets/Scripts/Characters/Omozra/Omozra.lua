@@ -361,7 +361,7 @@ function SetState(newState)
         StopMovement(false)
     elseif (newState == State.AIM_SECONDARY) then
         currentState = State.AIM_SECONDARY
-        StopMovementfalse(false)
+        StopMovement(false)
     elseif (newState == State.AIM_ULTIMATE) then
         currentState = State.AIM_ULTIMATE
         StopMovement(false)
@@ -445,42 +445,42 @@ function DrawHoverParticle()
 
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
-        if ((currentState == State.AIM_SECONDARY) and
-            (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.PLAYER)) then
+        local finalPosition
+        if ((currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE or currentState ==
+            State.AIM_ULTIMATE_RECAST) and target ~= nil) then
+
+            if (target.x == nil) then
+                t = target:GetTransform():GetPosition()
+            else
+                t = target
+            end
+            choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
+            finalPosition = float3.new(t.x, t.y + 1, t.z)
+        elseif ((currentState == State.AIM_SECONDARY and drawingTarget.tag == Tag.ENEMY) or
+            (currentState == State.AIM_ULTIMATE and drawingTarget.tag == Tag.PLAYER)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-            if (dist <= secondaryCastRange and drawingTarget.tag == Tag.ENEMY) then
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            if ((currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
+                (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+                choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
-            choosingTargetParticle:GetTransform():SetPosition(
-                float3.new(drawingTarget:GetTransform():GetPosition().x,
-                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
-        elseif (currentState == State.AIM_ULTIMATE) then
-            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
-            if (dist <= ultimateCastRange and drawingTarget ~= gameObject and drawingTarget.tag == Tag.PLAYER) then
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
-            else
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
-            end
-            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
-            choosingTargetParticle:GetTransform():SetPosition(
-                float3.new(drawingTarget:GetTransform():GetPosition().x,
-                    drawingTarget:GetTransform():GetPosition().y + 1, drawingTarget:GetTransform():GetPosition().z))
+            finalPosition = drawingTarget:GetTransform():GetPosition()
+            finalPosition.y = finalPosition.y + 1
         elseif (currentState == State.AIM_ULTIMATE_RECAST) then
             local mouseClick = GetLastMouseClick()
-            local dist = Distance3D(mouseClick, componentTransform:GetPosition())
-            if (dist <= ultimateRecastRange) then
-                choosingTargetParticle:GetComponentParticle():SetColor(255, 255, 0, 255)
+            if (Distance3D(mouseClick, componentTransform:GetPosition()) <= ultimateRecastRange) then
+                choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
-            choosingTargetParticle:GetTransform():SetPosition(float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z))
+            finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
+            return
         end
+        choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
+        choosingTargetParticle:GetTransform():SetPosition(finalPosition)
     end
 end
 
@@ -796,7 +796,7 @@ function DoUltimate() -- Ult step 4
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
-
+    StopMovement()
     componentAnimator:SetSelectedClip("PointToIdle")
 
     SetState(State.AIM_ULTIMATE_RECAST)
@@ -804,7 +804,6 @@ function DoUltimate() -- Ult step 4
 end
 
 function RecastUltimate(position)
-    Log("RecastUltimate\n")
 
     abilities.AbilityUltimateRecast = AbilityStatus.Casting
 
@@ -822,7 +821,7 @@ function RecastUltimate(position)
 end
 
 function DoUltimateRecast() -- Ult step 7
-    Log("DoUltimateRecast\n")
+
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
         OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -929,6 +928,8 @@ function EventHandler(key, fields)
         componentAnimator:SetSelectedClip("Idle")
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
+    elseif (key == "Spice_Reward") then
+        -- ChangeTrack(8)
     end
 end
 --------------------------------------------------

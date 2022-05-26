@@ -240,25 +240,26 @@ end
 function Die(leaveBody)
     if (leaveBody == nil) then
         leaveBody = true
-    end
-
-    -- Chance to spawn, if spawn dispatch event
-    if (dieSFXOnce == true) then
-        math.randomseed(os.time())
-        rng = math.random(100)
-        if (rng >= 50) then
-            InstantiatePrefab("SpiceLoot")
-            str = "Harkonnen"
-            DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
-            Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
-        else
-            Log("The drop rate has not been good :( " .. rng .. "\n")
+    elseif (leaveBody == false) then
+        -- Chance to spawn, if spawn dispatch event
+        if (dieSFXOnce == true) then
+            math.randomseed(os.time())
+            rng = math.random(100)
+            if (rng >= 50) then
+                InstantiatePrefab("SpiceLoot")
+                str = "Harkonnen"
+                DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
+                Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+            else
+                Log("The drop rate has not been good :( " .. rng .. "\n")
+            end
+    
+            ChangeTrack(1)
+    
+            dieSFXOnce = false;
         end
-
-        ChangeTrack(1)
-
-        dieSFXOnce = false;
     end
+
 
     gameObject.tag = Tag.UNTAGGED
     DispatchEvent("Die", {leaveBody})
