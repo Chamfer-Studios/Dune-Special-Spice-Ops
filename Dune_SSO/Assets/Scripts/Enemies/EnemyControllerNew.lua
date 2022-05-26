@@ -40,6 +40,7 @@ NewVariable(awarenessSizeIV)
 
 awarenessSoundSpeed = 0.3
 awarenessVisualSpeed = 1.0
+awarenessDecaySpeed = 0.5
 
 pingpong = false
 local pingpongIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
@@ -82,6 +83,10 @@ state = STATE.UNAWARE
 
 awareness = 0
 targetAwareness = 0
+
+nSingle = 1
+nRepeating = 1
+nVisual = 1
 
 singleAuditoryTriggers = {}
 repeatingAuditoryTriggers = {}
@@ -186,8 +191,15 @@ function CheckIfPointInCone(position)
 end
 
 function ProcessVisualTrigger(position, gameObject)
-    if not CheckIfPointInCone(position) and not isAnyPlayerInConeThisFrame then
+    if not CheckIfPointInCone(position) then
+        do return end
     end
+
+    visualTriggers[nVisual] = {}
+    visualTriggers[nVisual]["position"] = position
+    visualTriggers[nVisual]["source"] = gameObject
+
+    nVisual = nVisual + 1
 end
 
 function CheckAuditoryTriggerInRange(position, range)
@@ -207,16 +219,24 @@ function CheckAuditoryTriggerInRange(position, range)
 end
 
 function ProcessSingleAuditoryTrigger(position, source)
+    singleAuditoryTriggers[nSingle] = {}
+    singleAuditoryTriggers[nSingle]["position"] = position
+    singleAuditoryTriggers[nSingle]["source"] = gameObject
 
+    nSingle = nSingle + 1
 end
 
 function ProcessRepeatedAuditoryTrigger(position, source)
+    repeatingAuditoryTriggers[nRepeating] = {}
+    repeatingAuditoryTriggers[nRepeating]["position"] = position
+    repeatingAuditoryTriggers[nRepeating]["source"] = gameObject
 
+    nRepeating = nRepeating + 1
 end
 
 function ProcessAuditoryTrigger(position, range, type, source)
     if not CheckAuditoryTriggerInRange(position, range) then
-
+        do return end
     end
 
     if type == "single" then
@@ -309,45 +329,136 @@ function Start()
     end
 end
 
-function UpdateAwareness(dt)
-    if awareness < targetAwareness then
-        awareness = awareness + dt * awarenessSoundSpeed
-    elseif awareness > targetAwareness then
-        awareness = awareness - dt * awarenessSoundSpeed
+function UpdateTargetAwareness()
+    awarenessSpeed = awarenessDecaySpeed
+
+    if #visualTriggers ~= 0 then
+        targetAwareness = 2
+        awarenessSpeed = awarenessVisualSpeed
+    elseif #repeatingAuditoryTriggers ~= 0 then
+        targetAwareness = 2
+        awarenessSpeed = awarenessSoundSpeed
+    else
+        targetAwareness = 0
     end
 
-    if math.abs(awareness - targetAwareness) < 0.05 then
-        awareness = targetAwareness
+    do return (awarenessSpeed) end
+end
+
+function UpdateAwareness(dt, awarenessSpeed)
+    if #singleAuditoryTriggers ~= 0 then
+        if state == STATE.UNAWARE then
+            awareness = 1
+            targetAwareness = 1
+        elseif state == STATE.SUS then
+            awareness = 2
+            targetAwareness = 2
+        end
+    end
+
+    if awareness < targetAwareness then
+        awareness = awareness + dt * awarenessSpeed
+    elseif awareness > targetAwareness then
+        awareness = awareness - dt * awarenessSpeed
+    end
+end
+
+function UpdateStateFromAwareness()
+    oldState = state
+
+    if math.abs(awareness) < 0.05 then
+        SwitchState(state, STATE.UNAWARE)
+    end
+
+    if math.abs(awareness - 1) < 0.05 then
+        SwitchState(state, STATE.SUS)
+    end
+
+    if math.abs(awareness - 2) < 0.05 then
+        SwitchState(state, STATE.AGGRO)
+    end
+
+    do return (oldState) end
+end
+
+function GetClosestTrigger(stateCriteria, triggerTable)
+    closestTrigger = nil
+
+    for i=1,#triggerTable do
+        trigger = triggerTable[i]
+
+        -- TODO: Here
+    end
+
+    do return (closestTrigger) end
+end
+
+function UpdateClosestTarget()
+    closestRepeatingTrigger = GetClosestTrigger(state, #repeatingAuditoryTriggers)
+    closestSingleTrigger = GetClosestTrigger(state, #singleAuditoryTriggers)
+    closestVisualTrigger = GetClosestTrigger(state, #visualTriggers)
+end
+
+function UpdatePathIfNecessary(oldState, newState)
+    if oldState ~= STATE.UNAWARE and newState == STATE.UNAWARE then
+        CheckAndRecalculatePath(true)
+    elseif newState == STATE.SUS then
+        DispatchEvent(pathfinderUpdateKey, { {}, pingpong, componentTransform:GetPosition()})
+    elseif newState == STATE.AGGRO then
+        DispatchEvent(pathfinderUpdateKey, { {}, pingpong, componentTransform:GetPosition()})
     end
 end
 
 function SwitchState(from, to)
+    if from == to then
+        do return end
+    end
+
+    state = to
+
     if to == STATE.UNAWARE then
+        targetAwareness = 0
+        awareness = 0
         ClearPerceptionMemory()
-        CheckAndRecalculatePath(true)
+    end
+
+    if to == STATE.SUS then
+        targetAwareness = 1
+        awareness = 1
+    end
+
+    if to == STATE.AGGRO then
+        targetAwareness = 2
+        awareness = 2
     end
 end
 
 function Update(dt)
-    UpdateAwareness(dt)
+    awarenessSpeed = UpdateTargetAwareness()
+    UpdateAwareness(dt, awarenessSpeed)
+    oldState = UpdateStateFromAwareness()
+    UpdateClosestTarget()
+    UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
 
     if state == STATE.UNAWARE then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
+    elseif state == STATE.SUS then
+
     end
-
-
-
-
-
 
     ClearPerceptionMemory()
 end
 
 function ClearPerceptionMemory()
+    nSingle = 1
+    nRepeating = 1
+    nVisual = 1
+
     singleAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
+
     target = nil
 end
 
