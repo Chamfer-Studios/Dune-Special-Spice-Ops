@@ -74,8 +74,8 @@ attackTime = 2.5
 
 -- Primary ability --
 primaryCastRange = 100
-maxKnives = 2
-knifeSpeed = 3000
+maxKnives = 1
+knifeSpeed = 7000
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
@@ -135,13 +135,13 @@ primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
 NewVariable(primaryCastRangeIV)
 
-maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
-NewVariable(maxKnivesIV)
+-- maxKnivesIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- maxKnivesIV = InspectorVariable.new("maxKnives", maxKnivesIVT, maxKnives)
+-- NewVariable(maxKnivesIV)
 
-knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
-NewVariable(knifeSpeedIV)
+-- knifeSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- knifeSpeedIV = InspectorVariable.new("knifeSpeed", knifeSpeedIVT, knifeSpeed)
+-- NewVariable(knifeSpeedIV)
 
 ---- Secondary ability --
 secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -215,10 +215,6 @@ function Update(dt)
     DrawHoverParticle()
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
-
-    if (knifeCount == 1) then
-
-    end
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))

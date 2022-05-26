@@ -22,9 +22,14 @@ end
 -------------------- Events -----------------------------
 function EventHandler(key, fields)
     if key == "Spice_Drop" then
-        gameObject:GetTransform():SetPosition(float3.new(fields[1], fields[2], fields[3]))
-
         math.randomseed(os.time())
+        randomOffsetX = 10
+        randomOffsetZ = 10
+        rngX = math.random(-randomOffsetX, randomOffsetX)
+        rngZ = math.random(-randomOffsetZ, randomOffsetZ)
+        Log ("Spawn loot offset X: " .. rngX .. " offsetZ: " .. rngZ .. "\n")
+        gameObject:GetTransform():SetPosition(float3.new(fields[1] + rngX, fields[2], fields[3] + rngZ))
+
         enemyType = fields[4]
         if (enemyType == "Harkonnen") then
             spiceLoot = math.random(40, 80)
