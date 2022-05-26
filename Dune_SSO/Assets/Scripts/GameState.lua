@@ -72,10 +72,10 @@ function Update(dt)
         else
             spiceAmount = spiceAmount - deadAllyPenalization
 
-            if(spiceAmount <= 0) then
+            if (spiceAmount <= 0) then
                 spiceAmount = 0
             end
-            
+
             SetGameJsonInt("spice", spiceAmount)
 
             str = "Spice Amount " .. spiceAmount .. "\n"
@@ -153,7 +153,13 @@ function Update(dt)
             end
         end
         if (characterSelected ~= 0) then
+            if (characterSelected == 2 and characters[4] ~= nil) then
+                characterSelected = 4
+            end
             playerPos = characters[characterSelected]:GetTransform():GetPosition()
+            if (characterSelected == 4) then
+                characterSelected = 2
+            end
             staminaBar:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
             if (characterSelectedParticle ~= nil) then
                 characterSelectedParticle:GetTransform():SetPosition(
@@ -200,6 +206,10 @@ function EventHandler(key, fields)
         GodMode = true
     elseif (key == "Dialogue_Closed") then
         GodMode = false
+    elseif (key == "Mosquito_Spawn") then
+        characters[4] = fields[1]
+    elseif (key == "Mosquito_Death") then
+        characters[4] = nil
     end
 end
 --------------------------------------------------

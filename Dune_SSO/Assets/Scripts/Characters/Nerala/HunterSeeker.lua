@@ -6,23 +6,18 @@ lifeTimer = 0
 destination = nil
 target = nil
 attackRange = 20.0 -- Maybe too big
-
 -------------------- Methods ---------------------
 
 function Start()
 
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
+
+    maxTetherRange = GetVariable("Nerala.lua", "ultimateMaxDistance", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
-    player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
-    componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
-    if (componentSwitch ~= nil) then
-        currentTrackID = 0
-        componentSwitch:PlayTrack(currentTrackID)
-    end
-    local playerPos = player:GetTransform():GetPosition()
+    local player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
+    neralaPosition = player:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
-    local pos2D = {playerPos.x, playerPos.z}
+    local pos2D = {neralaPosition.x, neralaPosition.z}
     local d = Distance(pos2D, targetPos2D)
     local vec2 = {targetPos2D[1], targetPos2D[2]}
     -- vec2 = Normalize(vec2, d)
@@ -30,10 +25,21 @@ function Start()
         componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 10, vec2[2]))
     end
 
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1
+    if (componentSwitch ~= nil) then
+        currentTrackID = 0
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+
     mouseParticles = Find("Mouse Particles")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
+
+    poisonCount = 2 -- Number of kills left
+
+    DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
 end
 
 -- Called each loop iteration
@@ -48,10 +54,14 @@ function Update(dt)
     end
 
     if (lifeTimer >= lifeTime) then
-        DeleteGameObject()
-        DispatchGlobalEvent("Mosquito_Death", {})
+        Die()
+        return
+    elseif (Distance3D(componentTransform:GetPosition(), neralaPosition) > maxTetherRange) then
+        Die()
         return
     end
+
+    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", gameObject}) -- TODO: Check range
 
     lifeTimer = lifeTimer + dt
 
@@ -94,6 +104,8 @@ function Update(dt)
                     end
                 end
             end
+        elseif (GetInput(23) == KEY_STATE.KEY_DOWN) then
+            lifeTimer = lifeTime + 1
         end
     end
 end
@@ -148,6 +160,11 @@ function StopMovement()
     end
 end
 
+function Die()
+    DeleteGameObject()
+    DispatchGlobalEvent("Mosquito_Death", {})
+end
+
 function EventHandler(key, fields)
     if (key == "Stop_Movement") then
         StopMovement()
@@ -157,6 +174,10 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
         DispatchGlobalEvent("Mosquito_Hit", {go})
+        if (poisonCount == 1) then
+            Die()
+        end
+        poisonCount = poisonCount - 1
     end
 end
 

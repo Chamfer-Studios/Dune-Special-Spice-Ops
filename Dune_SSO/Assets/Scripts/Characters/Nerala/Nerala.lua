@@ -94,6 +94,7 @@ smokeBombCount = maxSmokeBombCount
 ultimateCastRange = 50
 ultimateCooldown = 30.0
 ultimateSpiceCost = 1500
+ultimateMaxDistance = 300 -- Careful changing variable name (HunterSeeker.lua)
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -545,6 +546,10 @@ function DrawActiveAbilities()
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
+            elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
+                componentLight:SetRange(ultimateMaxDistance)
+                componentLight:SetAngle(360 / 2)
+                -- TODO: Lower the color oppacity
             else
                 componentLight:SetAngle(0)
             end
