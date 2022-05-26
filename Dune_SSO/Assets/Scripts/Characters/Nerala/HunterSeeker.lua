@@ -172,7 +172,7 @@ function EventHandler(key, fields)
 end
 
 function OnTriggerEnter(go)
-    if (go.tag == Tag.ENEMY) then
+    if (go.tag == Tag.ENEMY and go == target) then
         DispatchGlobalEvent("Mosquito_Hit", {go})
         if (poisonCount == 1) then
             Die()
