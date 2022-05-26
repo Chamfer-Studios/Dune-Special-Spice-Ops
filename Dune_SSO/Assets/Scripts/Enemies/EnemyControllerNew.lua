@@ -158,9 +158,6 @@ function CheckAndRecalculatePath(force)
 end
 
 function LookAtDirection(direction)
-    position = componentTransform:GetPosition()
-    target = float3.new(position.x + direction.x, position.y + direction.y, position.z + direction.z)
-
     componentTransform:LookAt(direction, float3.new(0, 1, 0))
 end
 
@@ -190,14 +187,14 @@ function CheckIfPointInCone(position)
     end
 end
 
-function ProcessVisualTrigger(position, gameObject)
+function ProcessVisualTrigger(position, source)
     if not CheckIfPointInCone(position) then
         do return end
     end
 
     visualTriggers[nVisual] = {}
     visualTriggers[nVisual]["position"] = position
-    visualTriggers[nVisual]["source"] = gameObject
+    visualTriggers[nVisual]["source"] = source
 
     nVisual = nVisual + 1
 end
@@ -221,7 +218,7 @@ end
 function ProcessSingleAuditoryTrigger(position, source)
     singleAuditoryTriggers[nSingle] = {}
     singleAuditoryTriggers[nSingle]["position"] = position
-    singleAuditoryTriggers[nSingle]["source"] = gameObject
+    singleAuditoryTriggers[nSingle]["source"] = source
 
     nSingle = nSingle + 1
 end
@@ -229,7 +226,7 @@ end
 function ProcessRepeatedAuditoryTrigger(position, source)
     repeatingAuditoryTriggers[nRepeating] = {}
     repeatingAuditoryTriggers[nRepeating]["position"] = position
-    repeatingAuditoryTriggers[nRepeating]["source"] = gameObject
+    repeatingAuditoryTriggers[nRepeating]["source"] = source
 
     nRepeating = nRepeating + 1
 end
@@ -332,12 +329,22 @@ end
 function UpdateTargetAwareness()
     awarenessSpeed = awarenessDecaySpeed
 
+    closestTarget = GetClosestTarget()
+    closestTargetPosition = componentTransform:GetPosition()
+    if (closestTarget ~= nil) then
+        closestTargetPosition = closestTarget["source"]:GetTransform():GetPosition()
+    end
+
+    distance = Float3Distance(componentTransform:GetPosition(), closestTargetPosition)
+
     if #visualTriggers ~= 0 then
         targetAwareness = 2
-        awarenessSpeed = awarenessVisualSpeed
+        prop = 1.2 - (distance / visionConeRadius)
+        awarenessSpeed = awarenessVisualSpeed * prop
     elseif #repeatingAuditoryTriggers ~= 0 then
         targetAwareness = 2
-        awarenessSpeed = awarenessSoundSpeed
+        prop = 1.2 - (distance / hearingRange)
+        awarenessSpeed = awarenessSoundSpeed * prop
     else
         targetAwareness = 0
     end
@@ -387,25 +394,55 @@ function GetClosestTrigger(stateCriteria, triggerTable)
     for i=1,#triggerTable do
         trigger = triggerTable[i]
 
-        -- TODO: Here
+        if stateCriteria == STATE.SUS or stateCriteria == STATE.UNAWARE then
+            position = trigger["position"]
+
+            if closestTrigger == nil then
+                closestTrigger = trigger
+            elseif Float3Distance(position, componentTransform:GetPosition()) < Float3Distance(position, closestTrigger["position"]) then
+                closestTrigger = trigger
+            end
+
+        elseif stateCriteria == STATE.AGGRO then
+            position = trigger["source"]:GetTransform():GetPosition()
+
+            if closestTrigger == nil then
+                closestTrigger = trigger
+            elseif Float3Distance(position, componentTransform:GetPosition()) < Float3Distance(position, closestTrigger["source"]:GetTransform():GetPosition()) then
+                closestTrigger = trigger
+            end
+
+        end
     end
 
     do return (closestTrigger) end
 end
 
-function UpdateClosestTarget()
-    closestRepeatingTrigger = GetClosestTrigger(state, #repeatingAuditoryTriggers)
-    closestSingleTrigger = GetClosestTrigger(state, #singleAuditoryTriggers)
-    closestVisualTrigger = GetClosestTrigger(state, #visualTriggers)
+function GetClosestTarget()
+    closestRepeatingTrigger = GetClosestTrigger(state, repeatingAuditoryTriggers)
+    closestSingleTrigger = GetClosestTrigger(state, singleAuditoryTriggers)
+    closestVisualTrigger = GetClosestTrigger(state, visualTriggers)
+
+    newTarget = target
+
+    if closestVisualTrigger ~= nil then
+        newTarget = closestVisualTrigger
+    elseif closestSingleTrigger ~= nil then
+        newTarget = closestSingleTrigger
+    elseif closestRepeatingTrigger ~= nil then
+        newTarget = closestRepeatingTrigger
+    end
+
+    do return (newTarget) end
 end
 
 function UpdatePathIfNecessary(oldState, newState)
     if oldState ~= STATE.UNAWARE and newState == STATE.UNAWARE then
         CheckAndRecalculatePath(true)
     elseif newState == STATE.SUS then
-        DispatchEvent(pathfinderUpdateKey, { {}, pingpong, componentTransform:GetPosition()})
+        DispatchEvent(pathfinderUpdateKey, { { target["position"] }, pingpong, componentTransform:GetPosition()})
     elseif newState == STATE.AGGRO then
-        DispatchEvent(pathfinderUpdateKey, { {}, pingpong, componentTransform:GetPosition()})
+        DispatchEvent(pathfinderUpdateKey, { { target["source"]:GetTransform():GetPosition() }, pingpong, componentTransform:GetPosition()})
     end
 end
 
@@ -420,6 +457,7 @@ function SwitchState(from, to)
         targetAwareness = 0
         awareness = 0
         ClearPerceptionMemory()
+        target = nil
     end
 
     if to == STATE.SUS then
@@ -437,17 +475,21 @@ function Update(dt)
     awarenessSpeed = UpdateTargetAwareness()
     UpdateAwareness(dt, awarenessSpeed)
     oldState = UpdateStateFromAwareness()
-    UpdateClosestTarget()
+    target = GetClosestTarget()
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
 
     if state == STATE.UNAWARE then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
     elseif state == STATE.SUS then
-
+        DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
+    elseif state == STATE.AGGRO then
+        DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     end
 
     ClearPerceptionMemory()
+
+    DrawDebugger()
 end
 
 function ClearPerceptionMemory()
@@ -458,8 +500,10 @@ function ClearPerceptionMemory()
     singleAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
+end
 
-    target = nil
+function DrawDebugger()
+    DrawCircle(componentTransform:GetPosition(), hearingRange, float3.new(255.0, 0.0, 0.0), 5.0)
 end
 
 print("EnemyController.lua compiled successfully!")
