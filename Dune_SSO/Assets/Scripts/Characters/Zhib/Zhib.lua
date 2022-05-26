@@ -186,7 +186,10 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Target Particle")
-    bloodParticle = Find("Zhib Blood Particle") -- not used currently
+    bloodParticle = Find("Zhib Blood Particle")
+    if(bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
     impactParticle = Find("Zhib Impact Particle") -- not used currently
     slashParticle = Find("Zhib Slash Particle") -- not used currently
     swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
@@ -213,6 +216,11 @@ end
 function Update(dt)
     DrawActiveAbilities()
     DrawHoverParticle()
+
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z+12))
+    end
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -621,6 +629,7 @@ function ManageTimers(dt)
         iFramesTimer = iFramesTimer + dt
         if (iFramesTimer >= iFrames) then
             iFramesTimer = nil
+            bloodParticle:GetComponentParticle():StopParticleSpawn()
         end
     end
 
@@ -1024,10 +1033,11 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
-    end
-
+            return
+        end
+        
     iFramesTimer = 0
+    bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
     if (damage == nil) then
         damage = 1

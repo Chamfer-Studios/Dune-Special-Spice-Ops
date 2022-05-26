@@ -107,11 +107,11 @@
                             "maxParticles": 500,
                             "modules": [
                                 {
-                                    "maxParticleLife": 3.0,
+                                    "maxParticleLife": 3.5,
                                     "minParticleLife": 2.5,
-                                    "particlesPerSpawn": 5,
-                                    "randomParticleLife": false,
-                                    "spawnTime": 0.30000001192092896,
+                                    "particlesPerSpawn": 1,
+                                    "randomParticleLife": true,
+                                    "spawnTime": 0.25,
                                     "type": 1
                                 },
                                 {
@@ -124,20 +124,10 @@
                                     "type": 5
                                 },
                                 {
-                                    "maxFinalSize": [
-                                        5.0,
-                                        5.0,
-                                        5.0
-                                    ],
-                                    "minFinalSize": [
-                                        2.5,
-                                        2.5,
-                                        2.5
-                                    ],
                                     "minInitialSize": [
-                                        5.0,
-                                        5.0,
-                                        5.0
+                                        7.0,
+                                        7.0,
+                                        7.0
                                     ],
                                     "type": 4
                                 },
@@ -149,32 +139,32 @@
                                         0.25
                                     ],
                                     "maxDirection": [
-                                        0.10000000149011612,
+                                        0.20000000298023224,
                                         1.0,
-                                        0.10000000149011612
+                                        0.20000000298023224
                                     ],
                                     "maxPosition": [
                                         10.0,
-                                        10.0,
-                                        5.0
+                                        20.0,
+                                        10.0
                                     ],
-                                    "maxVelocity": 5.0,
+                                    "maxVelocity": 8.0,
                                     "minAcceleration": [
                                         0.0,
-                                        -0.03500000014901161,
+                                        -0.029999999329447746,
                                         0.0
                                     ],
                                     "minDirection": [
-                                        -0.10000000149011612,
+                                        -0.20000000298023224,
                                         1.0,
-                                        -0.10000000149011612
+                                        -0.20000000298023224
                                     ],
                                     "minPosition": [
                                         -10.0,
                                         0.0,
-                                        -5.0
+                                        -10.0
                                     ],
-                                    "minVelocity": 4.0,
+                                    "minVelocity": 6.0,
                                     "randAcceleration": false,
                                     "randDirection": true,
                                     "randPosition": true,
@@ -186,8 +176,8 @@
                                         {
                                             "color": [
                                                 1.0,
-                                                0.5882353186607361,
-                                                0.0,
+                                                1.0,
+                                                1.0,
                                                 1.0
                                             ],
                                             "position": 0.0
@@ -195,8 +185,8 @@
                                         {
                                             "color": [
                                                 1.0,
-                                                0.5882353186607361,
-                                                0.0,
+                                                1.0,
+                                                1.0,
                                                 0.0
                                             ],
                                             "position": 1.0
@@ -206,10 +196,10 @@
                                 }
                             ],
                             "name": "Spark",
-                            "texture_path": "Assets/Textures/Particles/dust_1.png"
+                            "texture_path": "Assets/Textures/Particles/light_2.png"
                         }
                     ],
-                    "name": "Spice"
+                    "name": "Lootable Corpses"
                 }
             ],
             "type": 3
