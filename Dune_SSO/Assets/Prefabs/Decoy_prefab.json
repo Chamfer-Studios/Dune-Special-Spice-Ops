@@ -156,9 +156,9 @@
         {
             "active": true,
             "position": [
-                -1578.2078857421875,
+                -1496.4962158203125,
                 0.0,
-                857.8200073242188
+                527.1190185546875
             ],
             "rotation": [
                 8.42937097900176e-08,
@@ -167,9 +167,9 @@
                 1.0
             ],
             "scale": [
-                7.0,
-                7.0,
-                7.0
+                10.0,
+                10.0,
+                10.0
             ],
             "type": 21
         },
@@ -245,7 +245,9 @@
             "tracks": [
                 {
                     "bypass": false,
+                    "custom_loop": false,
                     "loop": false,
+                    "loop_offset": 0.0,
                     "mute": false,
                     "offset": 0.0,
                     "pan": 0.0,
@@ -274,9 +276,9 @@
                 0.0
             ],
             "lightPosition": [
-                -1578.2078857421875,
+                -1496.4962158203125,
                 0.0,
-                857.8200073242188
+                527.1190185546875
             ],
             "linearAttenuationValue": 0.0,
             "quadraticAttenuationValue": 0.0,

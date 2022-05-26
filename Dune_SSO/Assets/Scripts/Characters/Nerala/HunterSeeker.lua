@@ -27,7 +27,6 @@ function Start()
     local vec2 = {targetPos2D[1], targetPos2D[2]}
     -- vec2 = Normalize(vec2, d)
     if (componentRigidBody ~= nil) then
-        Log(vec2[1] .. vec2[2] .. "\n")
         componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 10, vec2[2]))
     end
 
