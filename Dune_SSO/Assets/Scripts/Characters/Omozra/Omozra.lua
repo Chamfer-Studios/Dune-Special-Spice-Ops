@@ -231,10 +231,7 @@ function Update(dt)
                     Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
                 else
                     target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.ENEMY) then
-                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
-                        target = nil
-                    else
+                    if (target.tag == Tag.ENEMY or target.tag == Tag.CORPSE) then
                         if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                             secondaryCastRange) then
                             Log("[FAIL] Ability Secondary: Ability out of range!\n")
@@ -244,6 +241,9 @@ function Update(dt)
                                 CastSecondary(target:GetTransform():GetPosition())
                             end
                         end
+                    else
+                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                        target = nil
                     end
                 end
 
@@ -265,15 +265,19 @@ function Update(dt)
                     end
                 end
             elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-                GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) <= ultimateRecastRange) then
-                    target = mouse
-                    if (componentAnimator ~= nil) then
-                        RecastUltimate(mouse) -- Ult step 6
+                local floor = GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
+                if (floor ~= nil) then
+                    -- if (floor.tag ~= Tag.WALL) then -- TODO: Check the tag and addapt it on the scene
+                    local mouse = GetLastMouseClick()
+                    if (Distance3D(mouse, componentTransform:GetPosition()) <= ultimateRecastRange) then
+                        target = mouse
+                        if (componentAnimator ~= nil) then
+                            RecastUltimate(mouse) -- Ult step 6
+                        end
+                    else
+                        print("Out of range")
                     end
-                else
-                    print("Out of range")
+                    -- end
                 end
             end
         end
@@ -456,7 +460,8 @@ function DrawHoverParticle()
             end
             choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
             finalPosition = float3.new(t.x, t.y + 1, t.z)
-        elseif ((currentState == State.AIM_SECONDARY and drawingTarget.tag == Tag.ENEMY) or
+        elseif ((currentState == State.AIM_SECONDARY and
+            (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.CORPSE)) or
             (currentState == State.AIM_ULTIMATE and drawingTarget.tag == Tag.PLAYER)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if ((currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
@@ -780,6 +785,16 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position) -- Ult step 3
+    if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        -- Subtracts spice cost when using ultimate ability
+        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        NewSpice = OGSpice - ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+        str = "Spice Amount " .. NewSpice .. "\n"
+        Log(str)
+    end
+
     abilities.AbilityUltimate = AbilityStatus.Casting
 
     componentAnimator:SetSelectedClip("Point")
@@ -821,16 +836,6 @@ function RecastUltimate(position)
 end
 
 function DoUltimateRecast() -- Ult step 7
-
-    if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-        -- Subtracts spice cost when using ultimate ability
-        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        NewSpice = OGSpice - ultimateSpiceCost
-        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-
-        str = "Spice Amount " .. NewSpice .. "\n"
-        Log(str)
-    end
 
     abilities.AbilityUltimateRecast = AbilityStatus.Normal -- Used this only for drawing
 
