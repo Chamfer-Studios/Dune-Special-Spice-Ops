@@ -57,7 +57,7 @@ function Update(dt)
     end
 end
 
--- Devour/Eat
+-- Devour
 function CastDevour(castedOn)
 
     target = castedOn
@@ -154,7 +154,7 @@ function EventHandler(key, fields)
 
     if (key == "Sadiq_Update_Target" and currentState ~= State.SPIT) then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[2] == 1) then
-            if (fields[1].tag == Tag.ENEMY) then
+            if (fields[1].tag == Tag.ENEMY or fields[1].tag == Tag.CORPSE) then
                 CastDevour(fields[1])
             elseif (fields[1].tag == Tag.PLAYER) then
                 CastUltimate(fields[1])
