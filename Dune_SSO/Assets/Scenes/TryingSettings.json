@@ -505,15 +505,8 @@
                     },
                     {
                         "active": true,
-                        "file_name": "Assets/Scripts/HUD/UI_ChangeScenes.lua",
+                        "file_name": "Assets/Scripts/HUD/UI_Fullscreen.lua",
                         "id": 1348187397,
-                        "inspector_variables": [
-                            {
-                                "name": "name",
-                                "type": "string",
-                                "value": "SceneTutorial"
-                            }
-                        ],
                         "type": 5
                     }
                 ],
@@ -568,7 +561,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Text1",
+                "name": "cross1",
                 "parent_UID": 1731811811,
                 "tag": 0
             },
