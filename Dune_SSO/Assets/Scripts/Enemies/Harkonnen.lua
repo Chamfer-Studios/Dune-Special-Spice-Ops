@@ -251,7 +251,7 @@ function Die(leaveBody)
         if (dieSFXOnce == true) then
             math.randomseed(os.time())
             rng = math.random(100)
-            if (rng >= 50) then
+            if (rng >= 101) then
                 InstantiatePrefab("SpiceLoot")
                 str = "Harkonnen"
                 DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})

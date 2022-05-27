@@ -101,7 +101,7 @@ function Update(dt)
 
     currentState = GetRuntimeState()
     if (currentState == RuntimeState.PLAYING) then
-        if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false) then
+        if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false and omozraPrimary == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
                 if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
@@ -181,6 +181,7 @@ function Update(dt)
         characterSelected = 0
     end
     omozraUltimate = false
+    omozraPrimary = false
 end
 
 function EventHandler(key, fields)
@@ -198,6 +199,8 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Spice_Drop", {deadEnemyPos.x, deadEnemyPos.y, deadEnemyPos.z, deadEnemyType})
     elseif (key == "Omozra_Ultimate") then
         omozraUltimate = true
+    elseif (key == "Omozra_Primary") then
+        omozraPrimary = true
     elseif (key == "Player_Death") then
         if (gameOverTimer == nil) then
             gameOverTimer = 0

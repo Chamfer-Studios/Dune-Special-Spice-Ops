@@ -71,9 +71,10 @@ isTired = false
 
 -- Primary ability --
 primaryCastRange = 100
-primaryCooldown = 10
+primaryCooldown = 5
 
 -- Secondary ability --
+maxSpit = 3
 secondaryCastRange = 75
 secondaryCooldown = 10
 
@@ -180,6 +181,7 @@ function Start()
 
     -- Abilities
     InstantiatePrefab("Worm")
+    spitCount = maxSpit
 end
 
 -- Called each loop iteration
@@ -222,8 +224,27 @@ function Update(dt)
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
-            -- Primary ability (ª)
+            -- Primary ability (spit heal)
             if (currentState == State.AIM_PRIMARY) then
+                if (spitCount <= 2) then
+                    Log("[FAIL] Ability Primary: You don't have enough spits!\n")
+                else
+                    target = GetGameObjectHovered()
+                    if (target.tag ~= Tag.PLAYER) then
+                        Log("[FAIL] Ability Primary: You have to select a player first!\n")
+                        target = nil
+                    else
+                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                            primaryCastRange) then
+                            Log("[FAIL] Ability Primary: Ability out of range!\n")
+                            target = nil
+                        else
+                            if (componentAnimator ~= nil) then
+                                CastPrimary(target)
+                            end
+                        end
+                    end
+                end
 
                 -- Secondary ability
             elseif (currentState == State.AIM_SECONDARY) then
@@ -473,8 +494,8 @@ function DrawHoverParticle()
     if (IsSelected() == true) then
         local drawingTarget = GetGameObjectHovered()
         local finalPosition
-        if ((currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE or currentState ==
-            State.AIM_ULTIMATE_RECAST) and target ~= nil) then
+        if ((currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+            State.AIM_ULTIMATE or currentState == State.AIM_ULTIMATE_RECAST) and target ~= nil) then
 
             if (target.x == nil) then
                 t = target:GetTransform():GetPosition()
@@ -489,6 +510,15 @@ function DrawHoverParticle()
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if ((currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
+                choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
+            else
+                choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
+            end
+            finalPosition = drawingTarget:GetTransform():GetPosition()
+            finalPosition.y = finalPosition.y + 1
+        elseif (currentState == State.AIM_PRIMARY and drawingTarget.tag == Tag.PLAYER) then
+            local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
+            if (currentState == State.AIM_PRIMARY and dist <= primaryCastRange) then
                 choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
@@ -521,15 +551,19 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimateRecast == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateRecastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.1)
             else
                 componentLight:SetAngle(0)
             end
@@ -591,6 +625,14 @@ function ManageTimers(dt)
     end
 
     -- Primary ability cooldown
+    if (spitCount > 2 and
+        not (abilities.AbilityPrimary == AbilityStatus.Active or abilities.AbilityPrimary == AbilityStatus.Casting)) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    end
+    if (currentState == State.AIM_PRIMARY) then
+        DispatchGlobalEvent("Omozra_Primary", {})
+    end
 
     -- Secondary ability cooldown
     if (secondaryTimer ~= nil) then
@@ -622,7 +664,7 @@ function ManageTimers(dt)
                 ret = false
             else
                 if (currentState == State.AIM_PRIMARY) then
-
+                    DoPrimary()
                 elseif (currentState == State.AIM_SECONDARY) then
                     DoSecondary()
                 elseif (currentState == State.AIM_ULTIMATE) then
@@ -736,21 +778,44 @@ end
 
 -- Primary ability
 function ActivePrimary()
-    if (currentState == State.AIM_PRIMARY) then
-        CancelAbilities()
-    else
-        CancelAbilities()
-        SetState(State.AIM_PRIMARY)
-        abilities.AbilityPrimary = AbilityStatus.Active
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    if (spitCount > 2) then
+        if (currentState == State.AIM_PRIMARY) then
+            CancelAbilities()
+        else
+            CancelAbilities()
+            SetState(State.AIM_PRIMARY)
+            abilities.AbilityPrimary = AbilityStatus.Active
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        end
     end
 end
 
-function CastPrimary(position)
-    -- Disabled by now
-    -- abilities.AbilityPrimary = AbilityStatus.Casting 
+function CastPrimary(thisTarget)
+    abilities.AbilityPrimary = AbilityStatus.Casting
 
+    componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
+
+    if (thisTarget ~= gameObject) then
+        LookAtTarget(thisTarget:GetTransform():GetPosition())
+    end
+end
+
+function DoPrimary()
+    spitCount = spitCount - 3
+
+    if (spitCount > 2) then
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    else
+        abilities.AbilityPrimary = AbilityStatus.Cooldown -- Should be state disabled 
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    end
+
+    DispatchGlobalEvent("Sadiq_Heal", {target, gameObject:GetTransform():GetPosition()})
+
+    componentAnimator:SetSelectedClip("PointToIdle")
+    SetState(State.IDLE)
 end
 
 -- Secondary ability
@@ -778,6 +843,7 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
+    spitCount = spitCount + 1
 
     secondaryTimer = 0.0
     abilities.AbilitySecondary = AbilityStatus.Cooldown
@@ -957,6 +1023,16 @@ function EventHandler(key, fields)
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
         -- ChangeTrack(8)
+    elseif (key == "Spit_Heal_Hit") then
+        if (fields[1] == gameObject) then
+            if (currentHP < maxHP) then
+                currentHP = currentHP + 1
+                DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+                Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
+            else
+                Log("Sadiq has healed Omozra, but it was already full HP\n")
+            end
+        end
     end
 end
 --------------------------------------------------

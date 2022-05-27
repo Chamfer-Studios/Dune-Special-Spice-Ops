@@ -1072,6 +1072,16 @@ function EventHandler(key, fields)
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
         ChangeTrack(8)
+    elseif (key == "Spit_Heal_Hit") then
+        if (fields[1] == gameObject) then
+            if (currentHP < maxHP) then
+                currentHP = currentHP + 1
+                DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+                Log("Sadiq has healed Nerala. Current HP = " .. currentHP .. "\n")
+            else
+                Log("Sadiq has healed Nerala, but it was already full HP\n")
+            end
+        end
     end
 end
 --------------------------------------------------
