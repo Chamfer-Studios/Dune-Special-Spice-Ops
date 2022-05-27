@@ -145,10 +145,10 @@ function Update(dt)
             -- F3
         elseif (GetInput(42) == KEY_STATE.KEY_DOWN) then
             if (GodMode == false) then
-                Log("Character number " .. characterSelected .. " is GOD\n")
+                Log("I AM GOOODDDDDDDD\n")
                 GodMode = true
             elseif (GodMode == true) then
-                Log("Character nnumber " .. characterSelected .. " is not GOD\n")
+                Log("I am not god:(\n")
                 GodMode = false
             end
         end
@@ -203,9 +203,12 @@ function EventHandler(key, fields)
             gameOverTimer = 0
         end
     elseif (key == "Dialogue_Opened") then
-        GodMode = true
+        auxGodMode = GodMode
+        if (GodMode == false) then
+            GodMode = true
+        end
     elseif (key == "Dialogue_Closed") then
-        GodMode = false
+        GodMode = auxGodMode
     elseif (key == "Mosquito_Spawn") then
         characters[4] = fields[1]
     elseif (key == "Mosquito_Death") then
