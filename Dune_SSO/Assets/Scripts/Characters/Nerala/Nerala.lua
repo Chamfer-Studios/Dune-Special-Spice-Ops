@@ -275,14 +275,20 @@ function Update(dt)
                 if (smokeBombCount <= 0) then -- secondaryTimer ~= nil
                     Log("[FAIL] Ability Secondary: You don't have enough smoke bombs!\n")
                 else
-                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
                     local mouse = GetLastMouseClick()
                     if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
                         Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                        target = nil
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            CastSecondary(mouse)
+                        if (target.tag ~= Tag.FLOOR) then
+                            Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                            target = nil
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                CastSecondary(mouse)
+                            end
                         end
                     end
                 end
@@ -292,14 +298,20 @@ function Update(dt)
                 if (ultimateTimer ~= nil) then
                     Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
                 else
-                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
                     local mouse = GetLastMouseClick()
                     if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateCastRange) then
                         Log("[FAIL] Ability Ultimate: Ability out of range!\n")
+                        target = nil
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            CastUltimate(mouse)
+                        if (target.tag ~= Tag.FLOOR) then
+                            Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                            target = nil
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                CastUltimate(mouse)
+                            end
                         end
                     end
                 end
@@ -526,7 +538,8 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
-        elseif (currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+        elseif ((currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) and drawingTarget.tag ==
+            Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
             if ((currentState == State.AIM_SECONDARY and Distance3D(mouseClick, componentTransform:GetPosition()) <=
                 secondaryCastRange) or
@@ -536,7 +549,8 @@ function DrawHoverParticle()
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
+            -- This is only 1 instead of mouseClick.y + 1 because if hovering game objects with height like characters, the hovering particle will go up
+            finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
             return
@@ -568,7 +582,6 @@ function DrawActiveAbilities()
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
                 componentLight:SetDiffuse(0.05)
-                -- TODO: Lower the color oppacity
             else
                 componentLight:SetAngle(0)
             end

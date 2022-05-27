@@ -292,14 +292,21 @@ function Update(dt)
                     if (decoyCount <= 0) then
                         Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
                     else
-                        GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                        -- GetGameObjectHovered updates the last mouse click
+                        target = GetGameObjectHovered()
                         local mouse = GetLastMouseClick()
                         if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
                             Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                            target = nil
                         else
-                            target = mouse
-                            if (componentAnimator ~= nil) then
-                                CastSecondary(mouse)
+                            if (target.tag ~= Tag.FLOOR) then
+                                Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                                target = nil
+                            else
+                                target = mouse
+                                if (componentAnimator ~= nil) then
+                                    CastSecondary(mouse)
+                                end
                             end
                         end
                     end
@@ -553,14 +560,15 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
-        elseif (currentState == State.AIM_SECONDARY) then
+        elseif (currentState == State.AIM_SECONDARY and drawingTarget.tag == Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
             if (Distance3D(mouseClick, componentTransform:GetPosition()) <= secondaryCastRange) then
                 choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
+            -- This is only 1 instead of mouseClick.y + 1 because if hovering game objects with height like characters, the hovering particle will go up
+            finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
             return

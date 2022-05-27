@@ -242,7 +242,7 @@ function Update(dt)
                             end
                         end
                     else
-                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+                        Log("[FAIL] Ability Secondary: You have to select an enemy or a corpse first!\n")
                         target = nil
                     end
                 end
@@ -251,12 +251,12 @@ function Update(dt)
             elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
                 target = GetGameObjectHovered()
                 if (target.tag ~= Tag.PLAYER) then
-                    Log("[FAIL] Ability Primary: You have to select an ally first!\n")
+                    Log("[FAIL] Ability Ultimate: You have to select an ally first!\n")
                     target = nil
                 else
                     if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
                         ultimateCastRange) then
-                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                        Log("[FAIL] Ability Ultimate: Ability out of range!\n")
                         target = nil
                     else
                         if (componentAnimator ~= nil and target ~= gameObject) then
@@ -265,19 +265,21 @@ function Update(dt)
                     end
                 end
             elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-                local floor = GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
-                if (floor ~= nil) then
-                    -- if (floor.tag ~= Tag.WALL) then -- TODO: Check the tag and addapt it on the scene
-                    local mouse = GetLastMouseClick()
-                    if (Distance3D(mouse, componentTransform:GetPosition()) <= ultimateRecastRange) then
+                target = GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
+                local mouse = GetLastMouseClick()
+                if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateRecastRange) then
+                    Log("[FAIL] Ability Ultimate Recast: Ability out of range!\n")
+                    target = nil
+                else
+                    if (target.tag ~= Tag.FLOOR) then
+                        Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                        target = nil
+                    else
                         target = mouse
                         if (componentAnimator ~= nil) then
                             RecastUltimate(mouse) -- Ult step 6
                         end
-                    else
-                        print("Out of range")
                     end
-                    -- end
                 end
             end
         end
@@ -493,7 +495,7 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
-        elseif (currentState == State.AIM_ULTIMATE_RECAST) then
+        elseif (currentState == State.AIM_ULTIMATE_RECAST and drawingTarget.tag == Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
             if (Distance3D(mouseClick, componentTransform:GetPosition()) <= ultimateRecastRange) then
                 choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
