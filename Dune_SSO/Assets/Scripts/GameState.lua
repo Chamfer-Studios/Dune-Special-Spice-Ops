@@ -101,7 +101,7 @@ function Update(dt)
 
     currentState = GetRuntimeState()
     if (currentState == RuntimeState.PLAYING) then
-        if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false) then
+        if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false and omozraPrimary == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
                 if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
@@ -145,10 +145,10 @@ function Update(dt)
             -- F3
         elseif (GetInput(42) == KEY_STATE.KEY_DOWN) then
             if (GodMode == false) then
-                Log("Character number " .. characterSelected .. " is GOD\n")
+                Log("I AM GOOODDDDDDDD\n")
                 GodMode = true
             elseif (GodMode == true) then
-                Log("Character nnumber " .. characterSelected .. " is not GOD\n")
+                Log("I am not god:(\n")
                 GodMode = false
             end
         end
@@ -181,6 +181,7 @@ function Update(dt)
         characterSelected = 0
     end
     omozraUltimate = false
+    omozraPrimary = false
 end
 
 function EventHandler(key, fields)
@@ -198,14 +199,19 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Spice_Drop", {deadEnemyPos.x, deadEnemyPos.y, deadEnemyPos.z, deadEnemyType})
     elseif (key == "Omozra_Ultimate") then
         omozraUltimate = true
+    elseif (key == "Omozra_Primary") then
+        omozraPrimary = true
     elseif (key == "Player_Death") then
         if (gameOverTimer == nil) then
             gameOverTimer = 0
         end
     elseif (key == "Dialogue_Opened") then
-        GodMode = true
+        auxGodMode = GodMode
+        if (GodMode == false) then
+            GodMode = true
+        end
     elseif (key == "Dialogue_Closed") then
-        GodMode = false
+        GodMode = auxGodMode
     elseif (key == "Mosquito_Spawn") then
         characters[4] = fields[1]
     elseif (key == "Mosquito_Death") then

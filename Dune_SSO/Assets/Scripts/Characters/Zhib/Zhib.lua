@@ -187,7 +187,7 @@ function Start()
     end
     choosingTargetParticle = Find("Target Particle")
     bloodParticle = Find("Zhib Blood Particle")
-    if(bloodParticle ~= nil) then
+    if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     impactParticle = Find("Zhib Impact Particle") -- not used currently
@@ -219,7 +219,7 @@ function Update(dt)
 
     if (bloodParticle ~= nil) then
         bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z+12))
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
     end
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
@@ -292,14 +292,21 @@ function Update(dt)
                     if (decoyCount <= 0) then
                         Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
                     else
-                        GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                        -- GetGameObjectHovered updates the last mouse click
+                        target = GetGameObjectHovered()
                         local mouse = GetLastMouseClick()
                         if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
                             Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                            target = nil
                         else
-                            target = mouse
-                            if (componentAnimator ~= nil) then
-                                CastSecondary(mouse)
+                            if (target.tag ~= Tag.FLOOR) then
+                                Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                                target = nil
+                            else
+                                target = mouse
+                                if (componentAnimator ~= nil) then
+                                    CastSecondary(mouse)
+                                end
                             end
                         end
                     end
@@ -337,7 +344,7 @@ function Update(dt)
                     State.AIM_ULTIMATE) then
                     CancelAbilities()
                 else
-                    local isMoving = true
+                    isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
                         SetState(State.ATTACK)
                         target = goHit
@@ -359,10 +366,25 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    else
+                    elseif (goHit.tag == Tag.PICKUP) then
+                        Log("Going to a pickup\n")
+                        target = nil
+                        currentState = State.IDLE
+                        destination = goHit:GetTransform():GetPosition()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
                         currentState = State.IDLE
                         destination = GetLastMouseClick()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    else
+                        Log("No possible path\n")
+                        target = nil
+                        destination = nil
+                        if (currentState ~= State.IDLE) then
+                            SetState(State.IDLE)
+                        end
+                        isMoving = false
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
@@ -375,7 +397,7 @@ function Update(dt)
                         end
                         isDoubleClicking = true
                     end
-                    if (mouseParticles ~= nil) then
+                    if (mouseParticles ~= nil and destination ~= nil) then
                         mouseParticles:GetComponentParticle():SetLoop(true)
                         mouseParticles:GetComponentParticle():ResumeParticleSpawn()
                         mouseParticles:GetTransform():SetPosition(destination)
@@ -538,14 +560,15 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
-        elseif (currentState == State.AIM_SECONDARY) then
+        elseif (currentState == State.AIM_SECONDARY and drawingTarget.tag == Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
             if (Distance3D(mouseClick, componentTransform:GetPosition()) <= secondaryCastRange) then
                 choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
+            -- This is only 1 instead of mouseClick.y + 1 because if hovering game objects with height like characters, the hovering particle will go up
+            finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
             return
@@ -564,12 +587,15 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             else
                 componentLight:SetAngle(0)
             end
@@ -1033,9 +1059,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-            return
-        end
-        
+        return
+    end
+
     iFramesTimer = 0
     bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
@@ -1152,6 +1178,16 @@ function EventHandler(key, fields)
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
         ChangeTrack(8)
+    elseif (key == "Spit_Heal_Hit") then
+        if (fields[1] == gameObject) then
+            if (currentHP < maxHP) then
+                currentHP = currentHP + 1
+                DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+                Log("Sadiq has healed Zhib. Current HP = " .. currentHP .. "\n")
+            else
+                Log("Sadiq has healed Zhib, but it was already full HP\n")
+            end
+        end
     end
 end
 --------------------------------------------------

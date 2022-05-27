@@ -275,14 +275,20 @@ function Update(dt)
                 if (smokeBombCount <= 0) then -- secondaryTimer ~= nil
                     Log("[FAIL] Ability Secondary: You don't have enough smoke bombs!\n")
                 else
-                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
                     local mouse = GetLastMouseClick()
                     if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
                         Log("[FAIL] Ability Secondary: Ability out of range!\n")
+                        target = nil
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            CastSecondary(mouse)
+                        if (target.tag ~= Tag.FLOOR) then
+                            Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                            target = nil
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                CastSecondary(mouse)
+                            end
                         end
                     end
                 end
@@ -292,14 +298,20 @@ function Update(dt)
                 if (ultimateTimer ~= nil) then
                     Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
                 else
-                    GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
+                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
                     local mouse = GetLastMouseClick()
                     if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateCastRange) then
                         Log("[FAIL] Ability Ultimate: Ability out of range!\n")
+                        target = nil
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            CastUltimate(mouse)
+                        if (target.tag ~= Tag.FLOOR) then
+                            Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                            target = nil
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                CastUltimate(mouse)
+                            end
                         end
                     end
                 end
@@ -315,7 +327,7 @@ function Update(dt)
                     State.AIM_ULTIMATE) then
                     CancelAbilities()
                 else
-                    local isMoving = true
+                    isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
                         SetState(State.ATTACK)
                         target = goHit
@@ -331,10 +343,25 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    else
+                    elseif (goHit.tag == Tag.PICKUP) then
+                        Log("Going to a pickup\n")
+                        target = nil
+                        currentState = State.IDLE
+                        destination = goHit:GetTransform():GetPosition()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
                         currentState = State.IDLE
                         destination = GetLastMouseClick()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    else
+                        Log("No possible path\n")
+                        target = nil
+                        destination = nil
+                        if (currentState ~= State.IDLE) then
+                            SetState(State.IDLE)
+                        end
+                        isMoving = false
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
@@ -347,7 +374,7 @@ function Update(dt)
                         end
                         isDoubleClicking = true
                     end
-                    if (mouseParticles ~= nil) then
+                    if (mouseParticles ~= nil and destination ~= nil) then
                         mouseParticles:GetComponentParticle():SetLoop(true)
                         mouseParticles:GetComponentParticle():ResumeParticleSpawn()
                         mouseParticles:GetTransform():SetPosition(destination)
@@ -511,7 +538,8 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
-        elseif (currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+        elseif ((currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) and drawingTarget.tag ==
+            Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
             if ((currentState == State.AIM_SECONDARY and Distance3D(mouseClick, componentTransform:GetPosition()) <=
                 secondaryCastRange) or
@@ -521,7 +549,8 @@ function DrawHoverParticle()
             else
                 choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 0, 255)
             end
-            finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
+            -- This is only 1 instead of mouseClick.y + 1 because if hovering game objects with height like characters, the hovering particle will go up
+            finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
             return
@@ -540,16 +569,19 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
-                -- TODO: Lower the color oppacity
+                componentLight:SetDiffuse(0.05)
             else
                 componentLight:SetAngle(0)
             end
@@ -974,8 +1006,7 @@ function EventHandler(key, fields)
         end
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
-            if (fields[2] == "Harkonnen" and
-                GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            if (fields[2] == "Harkonnen") then
                 TakeDamage()
             end
         end
@@ -1041,6 +1072,16 @@ function EventHandler(key, fields)
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
         ChangeTrack(8)
+    elseif (key == "Spit_Heal_Hit") then
+        if (fields[1] == gameObject) then
+            if (currentHP < maxHP) then
+                currentHP = currentHP + 1
+                DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+                Log("Sadiq has healed Nerala. Current HP = " .. currentHP .. "\n")
+            else
+                Log("Sadiq has healed Nerala, but it was already full HP\n")
+            end
+        end
     end
 end
 --------------------------------------------------

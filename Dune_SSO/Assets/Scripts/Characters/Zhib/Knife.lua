@@ -53,7 +53,7 @@ function OnTriggerEnter(go)
             componentSwitch:PlayTrack(currentTrackID)
             StopMovement()
         end
-    elseif (go.tag == Tag.PLAYER and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
+    elseif (go:GetName() == "Zhib" and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
         DispatchGlobalEvent("Knife_Grabbed", {})
         DeleteGameObject()
     end

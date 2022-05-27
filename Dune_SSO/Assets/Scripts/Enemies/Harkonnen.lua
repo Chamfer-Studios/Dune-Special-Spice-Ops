@@ -148,7 +148,11 @@ function EventHandler(key, fields)
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 2) then
-                Die(false)
+                if (currentState == STATE.DEAD) then
+                    DeleteGameObject()
+                else
+                    Die(false)
+                end
             end
         end
     elseif key == "Mosquito_Hit" then
@@ -245,7 +249,7 @@ function Die(leaveBody)
         if (dieSFXOnce == true) then
             math.randomseed(os.time())
             rng = math.random(100)
-            if (rng >= 50) then
+            if (rng >= 101) then
                 InstantiatePrefab("SpiceLoot")
                 str = "Harkonnen"
                 DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
@@ -253,15 +257,14 @@ function Die(leaveBody)
             else
                 Log("The drop rate has not been good :( " .. rng .. "\n")
             end
-    
+
             ChangeTrack(1)
-    
+
             dieSFXOnce = false;
         end
     end
 
-
-    gameObject.tag = Tag.UNTAGGED
+    gameObject.tag = Tag.CORPSE
     DispatchEvent("Die", {leaveBody})
     currentState = STATE.DEAD
     if (componentAnimator ~= nil) then
