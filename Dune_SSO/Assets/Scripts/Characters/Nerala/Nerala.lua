@@ -739,8 +739,6 @@ function MoveToDestination(dt)
                                                      100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.CROUCH) then
             s = speed * crouchMultiplierPercentage / 100
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
-                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.RUN) then
             s = speed * runMultiplierPercentage / 100
             DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
