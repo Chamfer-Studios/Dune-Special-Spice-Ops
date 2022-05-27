@@ -555,15 +555,19 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.2)
             elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
+                componentLight:SetDiffuse(0.05)
                 -- TODO: Lower the color oppacity
             else
                 componentLight:SetAngle(0)
