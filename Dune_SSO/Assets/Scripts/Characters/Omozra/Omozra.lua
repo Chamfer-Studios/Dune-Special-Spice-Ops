@@ -326,19 +326,23 @@ function Update(dt)
                     if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
                         Log("Going to a pickup\n")
                         target = nil
-                        currentState = State.IDLE
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+                            SetState(State.IDLE)
+                        end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
-                        currentState = State.IDLE
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+                            SetState(State.IDLE)
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
                         Log("No possible path\n")
                         target = nil
                         destination = nil
-                        if (currentState ~= State.IDLE) then
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
                         end
                         isMoving = false
@@ -404,6 +408,7 @@ function Update(dt)
     else
         -- CancelAbilities()
     end
+    Log(currentState .. "\n")
 end
 
 --------------------------------------------------
@@ -482,9 +487,8 @@ function CancelAbilities(onlyAbilities)
     elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
-    elseif (currentState == State.AIM_ULTIMATE_RECAST and abilities.AbilityUltimateRecast == AbilityStatus.Active) then
+    elseif (currentState == State.AIM_ULTIMATE_RECAST) then
         abilities.AbilityUltimateRecast = AbilityStatus.Active
-
     end
 
     if (onlyAbilities == nil) then
