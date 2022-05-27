@@ -184,7 +184,10 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Target Particle")
-    bloodParticle = Find("Nerala Blood Particle") -- not used currently
+    bloodParticle = Find("Nerala Blood Particle")
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
     impactParticle = Find("Nerala Impact Particle") -- not used currently
     smokeParticle = Find("Nerala Smoke Particle") -- not used currently
     swooshParticle = Find("Nerala Swoosh Particle") -- not used currently
@@ -208,6 +211,11 @@ function Update(dt)
 
     DrawActiveAbilities()
     DrawHoverParticle()
+
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -639,6 +647,7 @@ function ManageTimers(dt)
         iFramesTimer = iFramesTimer + dt
         if (iFramesTimer >= iFrames) then
             iFramesTimer = nil
+            bloodParticle:GetComponentParticle():StopParticleSpawn()
         end
     end
 
@@ -963,6 +972,7 @@ function TakeDamage(damage)
     end
 
     iFramesTimer = 0
+    bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
     if (damage == nil) then
         damage = 1
