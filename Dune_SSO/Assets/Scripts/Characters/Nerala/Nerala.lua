@@ -315,7 +315,7 @@ function Update(dt)
                     State.AIM_ULTIMATE) then
                     CancelAbilities()
                 else
-                    local isMoving = true
+                    isMoving = true
                     if (goHit.tag == Tag.ENEMY) then
                         SetState(State.ATTACK)
                         target = goHit
@@ -331,10 +331,25 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    else
+                    elseif (goHit.tag == Tag.PICKUP) then
+                        Log("Going to a pickup\n")
+                        target = nil
+                        currentState = State.IDLE
+                        destination = goHit:GetTransform():GetPosition()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
                         currentState = State.IDLE
                         destination = GetLastMouseClick()
+                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                    else
+                        Log("No possible path\n")
+                        target = nil
+                        destination = nil
+                        if (currentState ~= State.IDLE) then
+                            SetState(State.IDLE)
+                        end
+                        isMoving = false
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
@@ -347,7 +362,7 @@ function Update(dt)
                         end
                         isDoubleClicking = true
                     end
-                    if (mouseParticles ~= nil) then
+                    if (mouseParticles ~= nil and destination ~= nil) then
                         mouseParticles:GetComponentParticle():SetLoop(true)
                         mouseParticles:GetComponentParticle():ResumeParticleSpawn()
                         mouseParticles:GetTransform():SetPosition(destination)
