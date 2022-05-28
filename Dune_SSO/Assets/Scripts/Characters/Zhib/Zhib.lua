@@ -996,21 +996,16 @@ function DoUltimate()
     for i = 1, #enemies do
         if (enemies[i] ~= target and
             Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <=
-            ultimateCastRange) then
+            ultimateCastRange) and #enemiesInRange < 3 then
             enemiesInRange[#enemiesInRange + 1] = enemies[i]
         end
-    end
-
-    -- If there are none, the ability isn't casted
-    if (#enemiesInRange <= 0) then
-        return
     end
 
     -- Check them all for adjacent enemies, different than the ones on the list and add them if there are anyway
     for i = 1, #enemiesInRange do
 
         for j = 1, #enemies do
-            if (enemiesInRange[i] ~= enemies[j]) then
+            if (enemiesInRange[i] ~= enemies[j] and #enemiesInRange < 3) then
                 if (Distance3D(enemiesInRange[i]:GetTransform():GetPosition(), enemies[j]:GetTransform():GetPosition()) <=
                     ultimateCastRangeExtension) then
 
@@ -1029,11 +1024,11 @@ function DoUltimate()
         end
     end
 
-    deathMarkDuration = 0.3
+    deathMarkDuration = 1
     -- Set IN ORDER the death mark
     for i = 1, #enemiesInRange do
         DispatchGlobalEvent("Death_Mark", {enemiesInRange[i], deathMarkDuration})
-        deathMarkDuration = deathMarkDuration + 0.3
+        deathMarkDuration = deathMarkDuration + 1
     end
 
     -- final pos = final target pos + Normalized(final target pos - initial pos) * d
@@ -1056,7 +1051,7 @@ function DoUltimate()
     -- Set timer equal to the longest dath mark timer to reappear
     gameObject.active = false
     invisibilityTimer = 0
-    invisibilityDuration = deathMarkDuration
+    invisibilityDuration = deathMarkDuration * 0.3
 
     if (componentRigidBody ~= nil) then
         if (componentBoxCollider ~= nil) then
