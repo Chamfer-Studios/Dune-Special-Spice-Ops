@@ -93,51 +93,51 @@ isDialogueOpen = false
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
--- Globals --
-maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
-NewVariable(maxHPIV)
+-- -- Globals --
+-- maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
+-- NewVariable(maxHPIV)
 
-speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
+-- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
 
-crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
-    crouchMultiplierPercentage)
-NewVariable(crouchMultiplierPercentageIV)
+-- crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
+--     crouchMultiplierPercentage)
+-- NewVariable(crouchMultiplierPercentageIV)
 
-runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
-    runMultiplierPercentage)
-NewVariable(runMultiplierPercentageIV)
+-- runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
+--     runMultiplierPercentage)
+-- NewVariable(runMultiplierPercentageIV)
 
-staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
-NewVariable(staminaSecondsIV)
+-- staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
+-- NewVariable(staminaSecondsIV)
 
-recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
-NewVariable(recoveryTimeIV)
+-- recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
+-- NewVariable(recoveryTimeIV)
 
----- Primary ability --
-primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
-NewVariable(primaryCastRangeIV)
+-- ---- Primary ability --
+-- primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+-- NewVariable(primaryCastRangeIV)
 
----- Secondary ability --
-secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
-NewVariable(secondaryCastRangeIV)
+-- ---- Secondary ability --
+-- secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+-- NewVariable(secondaryCastRangeIV)
 
----- Ultimate ability --
-ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
-NewVariable(ultimateCastRangeIV)
+-- ---- Ultimate ability --
+-- ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
+-- NewVariable(ultimateCastRangeIV)
 
-ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
-NewVariable(ultimateSpiceCostIV)
+-- ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+-- NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -164,7 +164,10 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Target Particle")
-    bloodParticle = Find("Omozra Blood Particle") -- not used currently
+    bloodParticle = Find("Omozra Blood Particle")
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
     swooshParticle = Find("Omozra Swoosh Particle") -- not used currently
     footstepsParticle = Find("Omozra Footstep Particle")
 
@@ -192,6 +195,11 @@ function Update(dt)
     end
     DrawActiveAbilities()
     DrawHoverParticle()
+
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -318,19 +326,23 @@ function Update(dt)
                     if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
                         Log("Going to a pickup\n")
                         target = nil
-                        currentState = State.IDLE
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+                            SetState(State.IDLE)
+                        end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
-                        currentState = State.IDLE
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
+                            SetState(State.IDLE)
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
                         Log("No possible path\n")
                         target = nil
                         destination = nil
-                        if (currentState ~= State.IDLE) then
+                        if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
                         end
                         isMoving = false
@@ -476,7 +488,6 @@ function CancelAbilities(onlyAbilities)
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
     elseif (currentState == State.AIM_ULTIMATE_RECAST and abilities.AbilityUltimateRecast == AbilityStatus.Active) then
         abilities.AbilityUltimateRecast = AbilityStatus.Active
-
     end
 
     if (onlyAbilities == nil) then
@@ -551,19 +562,19 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.5)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.5)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.5)
             elseif (abilities.AbilityUltimateRecast == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateRecastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.1)
+                componentLight:SetDiffuse(0.5)
             else
                 componentLight:SetAngle(0)
             end
@@ -621,6 +632,7 @@ function ManageTimers(dt)
         iFramesTimer = iFramesTimer + dt
         if (iFramesTimer >= iFrames) then
             iFramesTimer = nil
+            bloodParticle:GetComponentParticle():StopParticleSpawn()
         end
     end
 
@@ -816,6 +828,8 @@ function DoPrimary()
 
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
+
+    target = nil
 end
 
 -- Secondary ability
@@ -855,6 +869,8 @@ function DoSecondary()
 
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
+
+    target = nil
 end
 
 -- Ultimate ability
@@ -925,10 +941,9 @@ function RecastUltimate(position)
 end
 
 function DoUltimateRecast() -- Ult step 7
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
     abilities.AbilityUltimateRecast = AbilityStatus.Normal -- Used this only for drawing
-
-    DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
     StopMovement(false)
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
@@ -941,6 +956,7 @@ function TakeDamage(damage)
     end
 
     iFramesTimer = 0
+    bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
     if (damage == nil) then
         damage = 1

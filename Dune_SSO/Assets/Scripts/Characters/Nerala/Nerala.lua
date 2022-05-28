@@ -184,7 +184,10 @@ function Start()
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
     choosingTargetParticle = Find("Target Particle")
-    bloodParticle = Find("Nerala Blood Particle") -- not used currently
+    bloodParticle = Find("Nerala Blood Particle")
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
     impactParticle = Find("Nerala Impact Particle") -- not used currently
     smokeParticle = Find("Nerala Smoke Particle") -- not used currently
     swooshParticle = Find("Nerala Swoosh Particle") -- not used currently
@@ -208,6 +211,11 @@ function Update(dt)
 
     DrawActiveAbilities()
     DrawHoverParticle()
+
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
 
     DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
 
@@ -639,6 +647,7 @@ function ManageTimers(dt)
         iFramesTimer = iFramesTimer + dt
         if (iFramesTimer >= iFrames) then
             iFramesTimer = nil
+            bloodParticle:GetComponentParticle():StopParticleSpawn()
         end
     end
 
@@ -730,8 +739,6 @@ function MoveToDestination(dt)
                                                      100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.CROUCH) then
             s = speed * crouchMultiplierPercentage / 100
-            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
-                                                     100 * crouchMultiplierPercentage / 100, "repeated", gameObject})
         elseif (currentMovement == Movement.RUN) then
             s = speed * runMultiplierPercentage / 100
             DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(),
@@ -807,6 +814,9 @@ function Attack()
     SetState(State.ATTACK)
 
     componentAnimator:SetSelectedClip("Attack")
+    impactParticle:GetComponentParticle():SetLoop(true)
+    impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,
+        target:GetTransform():GetPosition().y + 17, target:GetTransform():GetPosition().z + 5))
 
     LookAtTarget(target:GetTransform():GetPosition())
 end
@@ -825,6 +835,7 @@ function DoAttack()
     attackTimer = 0.0
 
     target = nil
+    impactParticle:GetComponentParticle():SetLoop(false)
 
     SetState(State.IDLE)
 end
@@ -963,6 +974,7 @@ function TakeDamage(damage)
     end
 
     iFramesTimer = 0
+    bloodParticle:GetComponentParticle():ResumeParticleSpawn()
 
     if (damage == nil) then
         damage = 1
@@ -1054,6 +1066,7 @@ function EventHandler(key, fields)
                         componentTransform:GetPosition().z))
                 end
                 gameObject.active = false
+                DispatchGlobalEvent("Disable_Character", {characterID})
             end
         elseif (currentState == State.WORM and fields[2] == nil) then
 
@@ -1062,6 +1075,7 @@ function EventHandler(key, fields)
             end
             gameObject.active = true
             SetState(State.IDLE)
+            DispatchGlobalEvent("Enable_Character", {characterID})
         end
     elseif (key == "Dialogue_Opened") then
         isDialogueOpen = true

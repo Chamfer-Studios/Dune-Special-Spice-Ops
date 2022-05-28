@@ -12,8 +12,8 @@
                 {
                     "active": true,
                     "position": [
-                        0.0,
-                        0.0,
+                        -8.560174942016602,
+                        15.211343765258789,
                         0.0
                     ],
                     "rotation": [
@@ -35,7 +35,7 @@
                         {
                             "emitters": [
                                 {
-                                    "loop": false,
+                                    "loop": true,
                                     "maxParticles": 500,
                                     "modules": [
                                         {
@@ -43,11 +43,11 @@
                                             "minParticleLife": 0.20000000298023224,
                                             "particlesPerSpawn": 1,
                                             "randomParticleLife": false,
-                                            "spawnTime": 0.550000011920929,
+                                            "spawnTime": 1.2000000476837158,
                                             "type": 1
                                         },
                                         {
-                                            "billboardingType": 6,
+                                            "billboardingType": 2,
                                             "frontAxis": false,
                                             "maxDegrees": 180,
                                             "minDegrees": 0,
@@ -102,7 +102,7 @@
                                                         1.0,
                                                         1.0,
                                                         1.0,
-                                                        1.0
+                                                        0.7843137383460999
                                                     ],
                                                     "position": 0.5
                                                 },
@@ -117,6 +117,14 @@
                                                 }
                                             ],
                                             "type": 3
+                                        },
+                                        {
+                                            "minInitialSize": [
+                                                15.0,
+                                                15.0,
+                                                15.0
+                                            ],
+                                            "type": 4
                                         }
                                     ],
                                     "name": "Hit",
@@ -673,7 +681,7 @@
                                             "minPosition": [
                                                 -1.0,
                                                 -1.0,
-                                                -1.0
+                                                -5.0
                                             ],
                                             "minVelocity": 0.0,
                                             "randAcceleration": false,
@@ -760,7 +768,7 @@
                                             "minPosition": [
                                                 -0.5,
                                                 -0.5,
-                                                -0.5
+                                                -5.0
                                             ],
                                             "minVelocity": 0.0,
                                             "randAcceleration": false,
