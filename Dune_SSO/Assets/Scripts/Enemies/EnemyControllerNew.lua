@@ -3,12 +3,12 @@ local staticIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
 staticIV = InspectorVariable.new("static", staticIVT, static)
 NewVariable(staticIV)
 
-speed = 2000
+speed = 20
 local speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 speedIV = InspectorVariable.new("speed", speedIVT, speed)
 NewVariable(speedIV)
 
-chaseSpeed = 3000
+chaseSpeed = 30
 local chaseSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 chaseSpeedIV = InspectorVariable.new("chaseSpeed", chaseSpeedIVT, chaseSpeed)
 NewVariable(chaseSpeedIV)
@@ -195,6 +195,20 @@ function ProcessVisualTrigger(position, source)
     visualTriggers[nVisual] = {}
     visualTriggers[nVisual]["position"] = position
     visualTriggers[nVisual]["source"] = source
+    visualTriggers[nVisual]["valid"] = true
+    
+    lambda = function(uid)
+        --visualTriggers[nVisual]["valid"] = false
+        --Log("invalidated visual trigger\n")
+    end
+
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10, componentTransform:GetPosition().z)
+    dst = float3.new(position.x, position.y + 10, position.z)
+
+    --Log(tostring(src) .. " " .. tostring(dst) .. "\n")
+    --DrawLine(src, dst)
+
+    RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
 
     nVisual = nVisual + 1
 end
@@ -484,7 +498,7 @@ function Update(dt)
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     elseif state == STATE.AGGRO then
-        DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
+        DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
     end
 
     ClearPerceptionMemory()
