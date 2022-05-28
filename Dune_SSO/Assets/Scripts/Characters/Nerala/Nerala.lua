@@ -504,13 +504,13 @@ end
 function CancelAbilities(onlyAbilities)
     if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
     end
 
     if (onlyAbilities == nil) then
@@ -869,7 +869,7 @@ function FireDart()
 
     primaryTimer = 0.0
     abilities.AbilityPrimary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryCooldown})
 
     ChangeTrack(5)
 
@@ -909,7 +909,7 @@ function PlaceSmokebomb()
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     else
-        abilities.AbilitySecondary = AbilityStatus.Cooldown -- Should be state disabled 
+        abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     end
     -- secondaryTimer = 0.0
@@ -1051,7 +1051,8 @@ function EventHandler(key, fields)
     elseif (key == "Mosquito_Death") then
         ultimateTimer = 0.0
         abilities.AbilityUltimate = AbilityStatus.Cooldown
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        DispatchGlobalEvent("Player_Ability",
+            {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
         SetState(State.IDLE)
     elseif (key == "Sadiq_Update_Target") then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then

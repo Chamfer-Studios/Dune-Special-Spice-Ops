@@ -1,5 +1,3 @@
-currentCharacterId = 1
-
 function Start()
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     neralaImage = Find("Nerala Image")
@@ -17,6 +15,21 @@ function Start()
     hpFill1 = Find("HP Fill 1")
     hpFill2 = Find("HP Fill 2")
     hpFill3 = Find("HP Fill 3")
+
+    zhibTimer2 = nil
+    zhibCooldown2 = nil
+    zhibTimer3 = nil
+    zhibCooldown3 = nil
+
+    neralaTimer1 = nil
+    neralaCooldown1 = nil
+    neralaTimer3 = nil
+    neralaCooldown3 = nil
+
+    omozraTimer2 = nil
+    omozraCooldown2 = nil
+    omozraTimer3 = nil
+    omozraCooldown3 = nil
 end
 function Update(dt)
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -53,6 +66,8 @@ function Update(dt)
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), true) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), true) -- activate the skill slots to be visible
     end
+
+    ManageTimers(dt)
 end
 
 function EventHandler(key, fields)
@@ -71,6 +86,15 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskQ.active = true
                 activeMaskQ.active = false
+                -- Manage CDs
+                if characterID == 2 then
+                    neralaCooldown1 = fields[4]
+                    neralaTimer1 = neralaCooldown1
+                end
+            elseif abilityState == 4 then
+                -- TODO: State Using. Zhib Q gets using when the knife is in the way.
+            elseif abilityState == 6 then
+                -- TODO: State disabled. Zhib Q gets disabled when count = 0. Omozra Q gets disabled when count = 0.
             end
         elseif ability == 2 then
             if abilityState == 1 then
@@ -82,6 +106,18 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskW.active = true
                 activeMaskW.active = false
+                -- Manage CDs
+                if characterID == 1 then
+                    zhibCooldown2 = fields[4]
+                    zhibTimer2 = zhibCooldown2
+                elseif characterID == 3 then
+                    omozraCooldown2 = fields[4]
+                    omozraTimer2 = omozraCooldown2
+                end
+            elseif abilityState == 4 then
+                -- TODO: State Using. Zhib W gets using when the decoy is in the floor.
+            elseif abilityState == 6 then
+                -- TODO: State disabled. Nerala W gets disabled when count = 0.
             end
         elseif ability == 3 then
             if abilityState == 1 then
@@ -93,6 +129,21 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskE.active = true
                 activeMaskE.active = false
+                -- Manage CDs
+                if characterID == 1 then
+                    zhibCooldown3 = fields[4]
+                    zhibTimer3 = zhibCooldown3
+                elseif characterID == 2 then
+                    neralaCooldown3 = fields[4]
+                    neralaTimer3 = neralaCooldown3
+                elseif characterID == 3 then
+                    omozraCooldown3 = fields[4]
+                    omozraTimer3 = omozraCooldown3
+                end
+            elseif abilityState == 4 then
+                -- TODO: State Using. Nerala ult gets using when the mosquito is being used. Omozra ult gets using when the recast is being done
+            elseif abilityState == 6 then
+                -- State disabled. All 3 ults should be disabled if they don't have enough spice. Currently, event not sent in code
             end
         end
     elseif key == "Player_Health" then
@@ -119,6 +170,58 @@ function EventHandler(key, fields)
                 hpFill2.active = true
                 hpFill3.active = true
             end
+        end
+    end
+end
+
+function ManageTimers(dt)
+
+    if (zhibTimer2 ~= nil) then
+        zhibTimer2 = zhibTimer2 - dt
+        if (zhibTimer2 <= 0) then
+            -- TODO: Set Mask
+
+            zhibTimerW = nil
+        end
+    end
+    if (zhibTimer3 ~= nil) then
+        zhibTimer3 = zhibTimer3 - dt
+        if (zhibTimer3 <= 0) then
+            -- TODO: Set Mask
+
+            zhibTimer3 = nil
+        end
+    end
+    if (neralaTimer1 ~= nil) then
+        neralaTimer1 = neralaTimer1 - dt
+        if (neralaTimer1 <= 0) then
+            -- TODO: Set Mask
+
+            neralaTimer1 = nil
+        end
+    end
+    if (neralaTimer3 ~= nil) then
+        neralaTimer3 = neralaTimer3 - dt
+        if (neralaTimer3 <= 0) then
+            -- TODO: Set Mask
+
+            neralaTimer3 = nil
+        end
+    end
+    if (omozraTimer2 ~= nil) then
+        omozraTimer2 = omozraTimer2 - dt
+        if (omozraTimer2 <= 0) then
+            -- TODO: Set Mask
+
+            omozraTimer2 = nil
+        end
+    end
+    if (omozraTimer3 ~= nil) then
+        omozraTimer3 = omozraTimer3 - dt
+        if (omozraTimer3 <= 0) then
+            -- TODO: Set Mask
+
+            omozraTimer3 = nil
         end
     end
 end
