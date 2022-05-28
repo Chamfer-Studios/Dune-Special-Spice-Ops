@@ -179,50 +179,50 @@ function ManageTimers(dt)
     if (zhibTimer2 ~= nil) then
         zhibTimer2 = zhibTimer2 - dt
         if (zhibTimer2 <= 0) then
-            -- TODO: Set Mask
-
             zhibTimerW = nil
         end
+        cooldownMaskW:GetTransform2D():SetMask(float2.new(cooldownMaskW:GetTransform2D():GetMask().x,
+            zhibTimer2 / zhibCooldown2))
     end
     if (zhibTimer3 ~= nil) then
         zhibTimer3 = zhibTimer3 - dt
         if (zhibTimer3 <= 0) then
-            -- TODO: Set Mask
-
             zhibTimer3 = nil
         end
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
+            zhibTimer3 / zhibCooldown3))
     end
     if (neralaTimer1 ~= nil) then
         neralaTimer1 = neralaTimer1 - dt
         if (neralaTimer1 <= 0) then
-            -- TODO: Set Mask
-
             neralaTimer1 = nil
         end
+        cooldownMaskQ:GetTransform2D():SetMask(float2.new(cooldownMaskQ:GetTransform2D():GetMask().x,
+            neralaTimer1 / neralaCooldown1))
     end
     if (neralaTimer3 ~= nil) then
         neralaTimer3 = neralaTimer3 - dt
         if (neralaTimer3 <= 0) then
-            -- TODO: Set Mask
-
             neralaTimer3 = nil
         end
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
+            neralaTimer3 / neralaCooldown3))
     end
     if (omozraTimer2 ~= nil) then
         omozraTimer2 = omozraTimer2 - dt
         if (omozraTimer2 <= 0) then
-            -- TODO: Set Mask
-
             omozraTimer2 = nil
         end
+        cooldownMaskW:GetTransform2D():SetMask(float2.new(cooldownMaskW:GetTransform2D():GetMask().x,
+            omozraTimer2 / omozraCooldown2))
     end
     if (omozraTimer3 ~= nil) then
         omozraTimer3 = omozraTimer3 - dt
         if (omozraTimer3 <= 0) then
-            -- TODO: Set Mask
-
             omozraTimer3 = nil
         end
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
+            omozraTimer3 / omozraCooldown3))
     end
 end
 
