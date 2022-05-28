@@ -17,6 +17,7 @@ Movement = {
     IDLE_CROUCH = 4,
     CROUCH = 5
 }
+
 State = {
     IDLE = 1,
     ATTACK = 2,
@@ -88,10 +89,11 @@ maxDecoy = 1
 secondaryCastRange = 75
 secondaryCooldown = 10
 
+
 -- Ultimate ability --
 ultimateCastRange = 50
 ultimateCooldown = 30.0
-ultimateCastRangeExtension = ultimateCastRange * 0.5
+ultimateCastRangeExtension = ultimateCastRange * 0.7
 ultimateSpiceCost = 2000
 ---------------------------------------------------------
 
