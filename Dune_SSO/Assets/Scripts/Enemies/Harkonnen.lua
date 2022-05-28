@@ -25,7 +25,6 @@ function Start()
     componentLight = gameObject:GetLight()
 
     currentTrackID = -1
-    dieSFXOnce = true;
 end
 
 function Update(dt)
@@ -126,7 +125,8 @@ function DoAttack()
 
     DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
 
-    ChangeTrack(0)
+    trackList = {0,3}
+    ChangeTrack(trackList)
 
     LookAtTarget(target:GetTransform():GetPosition())
     attackTimer = 0.0
@@ -173,7 +173,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
                 knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -184,7 +185,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
                 knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -195,7 +197,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             end
         end
@@ -212,7 +215,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
                 dartHitChance = GetVariable("Nerala.lua", "awareChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -224,7 +228,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
                 dartHitChance = GetVariable("Nerala.lua", "aggroChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -236,7 +241,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
-                    ChangeTrack(2)
+                    trackList = {1}
+                    ChangeTrack(trackList)
                 end
             end
         end
@@ -246,9 +252,12 @@ end
 function Die(leaveBody)
     if (leaveBody == nil) then
         leaveBody = true
+        if(currentTrackID ~= 2) then
+            trackList = {2}
+            ChangeTrack(trackList)
+        end
     elseif (leaveBody == false) then
         -- Chance to spawn, if spawn dispatch event
-        if (dieSFXOnce == true) then
             math.randomseed(os.time())
             rng = math.random(100)
             if (rng >= 101) then
@@ -259,11 +268,10 @@ function Die(leaveBody)
             else
                 Log("The drop rate has not been good :( " .. rng .. "\n")
             end
-
-            ChangeTrack(1)
-
-            dieSFXOnce = false;
-        end
+            if(currentTrackID ~= 2) then
+                trackList = {2}
+                ChangeTrack(trackList)
+            end
     end
 
     gameObject.tag = Tag.CORPSE
@@ -324,12 +332,17 @@ function Float3Distance(a, b)
     return Float3Length(diff)
 end
 
-function ChangeTrack(index)
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = index
+        currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

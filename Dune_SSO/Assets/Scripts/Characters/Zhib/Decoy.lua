@@ -53,11 +53,8 @@ function Update(dt)
             if (effectParticles ~= nil) then
                 effectParticles:ResumeParticleSpawn()
             end
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
+            trackList = {0}
+            ChangeTrack(trackList)
             DispatchGlobalEvent("Auditory_Trigger",
                 {componentTransform:GetPosition(), effectRadius, "single", gameObject})
             effectTimer = 0.0
@@ -138,6 +135,21 @@ function Distance(a, b)
 
 end
 --------------------------------------------------
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("Decoy.lua compiled succesfully")
 Log("Decoy.lua compiled succesfully")

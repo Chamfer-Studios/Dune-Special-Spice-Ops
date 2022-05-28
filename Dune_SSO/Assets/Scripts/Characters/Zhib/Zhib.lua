@@ -484,13 +484,15 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        ChangeTrack(0)
+        trackList = {0}        
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        ChangeTrack(1)
+        trackList = {1}        
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -505,7 +507,8 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            ChangeTrack(0)
+            trackList = {0}        
+            ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -702,7 +705,8 @@ function ManageTimers(dt)
                     componentBoxCollider:UpdateIsTrigger()
                 end
 
-                ChangeTrack(7)
+                trackList = {8,13}        
+                ChangeTrack(trackList)
 
                 componentRigidBody:SetUseGravity(true)
                 componentRigidBody:UpdateEnableGravity()
@@ -852,7 +856,8 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    ChangeTrack(4)
+    trackList = {4, 10}        
+    ChangeTrack(trackList)
 
     attackTimer = 0.0
 
@@ -898,7 +903,8 @@ function DoPrimary()
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
-    ChangeTrack(5)
+    trackList = {5,11}        
+    ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
     SetState(State.IDLE)
@@ -934,7 +940,8 @@ function DoSecondary()
 
     decoyCount = decoyCount - 1
 
-    ChangeTrack(6)
+    trackList = {6}        
+    ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
     SetState(State.IDLE)
@@ -962,6 +969,9 @@ function CastUltimate(position)
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0
     StopMovement(false)
+
+    trackList = {7,12}        
+    ChangeTrack(trackList)
 
     LookAtTarget(position)
 end
@@ -1034,6 +1044,9 @@ function DoUltimate()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
 
+    trackList = {9,14}        
+    ChangeTrack(trackList)
+
     -- Add as reappear position the position from the last enemy who's gonna die
     local dist = 15
     reappearPosition = float3.new(enemiesInRange[#enemiesInRange]:GetTransform():GetPosition().x + vec2[1] * dist,
@@ -1075,7 +1088,8 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        ChangeTrack(2)
+        trackList = {2}        
+        ChangeTrack(trackList)
     else
         currentHP = 0
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -1095,7 +1109,8 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    ChangeTrack(3)
+    trackList = {3}        
+    ChangeTrack(trackList)
 end
 --------------------------------------------------
 
@@ -1140,12 +1155,16 @@ function EventHandler(key, fields)
         end
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
+        trackList = {15}        
+        ChangeTrack(trackList)
         secondaryTimer = 0.0
         abilities.AbilitySecondary = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability",
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
+        trackList = {15}        
+        ChangeTrack(trackList)
         Log("I have grabbed a knife! \n")
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
@@ -1182,7 +1201,8 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        ChangeTrack(8)
+        trackList = {15}        
+        ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
@@ -1238,12 +1258,17 @@ function Distance3D(a, b)
 end
 --------------------------------------------------
 
-function ChangeTrack(index)
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = index
+        currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

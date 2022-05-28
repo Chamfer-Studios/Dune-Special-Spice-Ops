@@ -49,8 +49,8 @@ function OnTriggerEnter(go)
             if (currentTrackID ~= -1) then
                 componentSwitch:StopTrack(currentTrackID)
             end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
+            trackList = {0,1}
+            ChangeTrack(trackList)
             StopMovement()
         end
     elseif (go:GetName() == "Zhib" and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
@@ -120,6 +120,21 @@ function Distance(a, b)
     local dx, dy = a[1] - b[1], a[2] - b[2]
     return math.sqrt(dx * dx + dy * dy)
 
+end
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 end
 
 print("Knife.lua compiled succesfully\n")

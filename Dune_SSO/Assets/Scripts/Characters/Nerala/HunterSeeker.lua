@@ -26,11 +26,8 @@ function Start()
     end
 
     componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
-    if (componentSwitch ~= nil) then
-        currentTrackID = 0
-        componentSwitch:PlayTrack(currentTrackID)
-    end
+    trackList = {0}        
+    ChangeTrack(trackList)
 
     mouseParticles = Find("Mouse Particles")
     if (mouseParticles ~= nil) then
@@ -45,13 +42,12 @@ end
 -- Called each loop iteration
 function Update(dt)
 
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= 1) then
-            componentSwitch:StopTrack(currentTrackID)
-            currentTrackID = 1
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+    --if(componentSwitch:IsAnyTrackPlaying() == false) then
+    if(currentTrackID ~= 1) then  
+        trackList = {1}        
+        ChangeTrack(trackList)
     end
+    --end
 
     if (lifeTimer >= lifeTime) then
         Die()
@@ -174,6 +170,8 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY and go == target) then
         DispatchGlobalEvent("Mosquito_Hit", {go})
+        trackList = {2,3}        
+        ChangeTrack(trackList)
         if (poisonCount == 1) then
             Die()
         end
@@ -207,6 +205,21 @@ function Distance(a, b)
 end
 
 --------------------------------------------------
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("HunterSeeker.lua compiled succesfully")
 Log("HunterSeeker.lua compiled succesfully\n")

@@ -28,10 +28,12 @@ function Update()
     elseif (currentState == STATE.AGGRO) then
         if (target ~= nil) then
             if (WithinMeleeRange() == true) then
-                ChangeTrack(0)
+                trackList = {0,4}
+                ChangeTrack(trackList)
                 MeleeAttack()
             elseif (WithinRangedRange() == true) then
-                ChangeTrack(1)
+                trackList = {1,5}
+                ChangeTrack(trackList)
                 RangedAttack()
             elseif (target ~= nil) then
                 MoveTowardsTarget()
@@ -83,7 +85,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
                 knifeHitChance = GetVariable("Zhib.lua", "awareChanceSardKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -94,7 +97,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
                 knifeHitChance = GetVariable("Zhib.lua", "aggroChanceSardKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -105,7 +109,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             end
         end
@@ -122,7 +127,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
                 dartHitChance = GetVariable("Nerala.lua", "awareChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -134,7 +140,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
                 dartHitChance = GetVariable("Nerala.lua", "aggroChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -146,7 +153,8 @@ function EventHandler(key, fields)
                     Die()
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
-                    ChangeTrack(3)
+                    trackList = {2}
+                    ChangeTrack(trackList)
                 end
             end
         end
@@ -167,7 +175,8 @@ function Die()
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
 
-   ChangeTrack(2)
+    trackList = {3}
+    ChangeTrack(trackList)
 
     DeleteGameObject()
 end
@@ -182,12 +191,17 @@ function Distance3D(a, b)
     return math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z)
 end
 
-function ChangeTrack(index)
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = index
+        currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

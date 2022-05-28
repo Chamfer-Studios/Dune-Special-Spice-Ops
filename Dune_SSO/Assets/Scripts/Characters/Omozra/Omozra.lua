@@ -448,13 +448,15 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        ChangeTrack(0)
+        trackList = {0}
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        ChangeTrack(1)
+        trackList = {1}
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -468,7 +470,8 @@ function SetMovement(newMovement)
         end
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
-        ChangeTrack(0)
+        trackList = {0}
+        ChangeTrack(trackList)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
         end
@@ -807,6 +810,9 @@ function CastPrimary(thisTarget)
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
 
+    trackList = {4}
+    ChangeTrack(trackList)
+
     if (thisTarget ~= gameObject) then
         LookAtTarget(thisTarget:GetTransform():GetPosition())
     end
@@ -850,6 +856,9 @@ function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
+    
+    trackList = {4}
+    ChangeTrack(trackList)
 
     LookAtTarget(position)
 
@@ -862,8 +871,6 @@ function DoSecondary()
     abilities.AbilitySecondary = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability",
         {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
-
-    ChangeTrack(4)
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -908,7 +915,8 @@ function CastUltimate(position) -- Ult step 3
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    ChangeTrack(4)
+    trackList = {4}
+    ChangeTrack(trackList)
 end
 
 function DoUltimate() -- Ult step 4
@@ -933,7 +941,8 @@ function RecastUltimate(position)
 
     LookAtTarget(position)
 
-    ChangeTrack(4)
+    trackList = {4}
+    ChangeTrack(trackList)
 
     ultimateTimer = 0.0
     abilities.AbilityUltimate = AbilityStatus.Cooldown
@@ -966,7 +975,8 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        ChangeTrack(2)
+        trackList = {2}
+        ChangeTrack(trackList)
     else
         currentHP = 0
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -986,7 +996,8 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    ChangeTrack(3)
+    trackList = {3}
+    ChangeTrack(trackList)
 end
 --------------------------------------------------
 
@@ -1038,13 +1049,15 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        -- ChangeTrack(8)
+        trackList = {5}
+        ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
                 currentHP = currentHP + 1
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
+                
             else
                 Log("Sadiq has healed Omozra, but it was already full HP\n")
             end
@@ -1095,12 +1108,17 @@ end
 
 --------------------------------------------------
 
-function ChangeTrack(index)
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = index
+        currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

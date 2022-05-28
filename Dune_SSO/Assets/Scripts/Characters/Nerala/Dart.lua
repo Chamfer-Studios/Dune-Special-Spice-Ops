@@ -8,7 +8,8 @@ function Start()
     boxCollider = gameObject:GetBoxCollider() -- This is here instead of at "awake" so the order of component creation does not affect
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
     componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
+    trackList = {0,1}
+    ChangeTrack(trackList)
     target = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     speed = GetVariable("Nerala.lua", "dartSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -36,18 +37,9 @@ end
 -- Collision Handler
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
-
-        -- ESTO CRASHEA ME CAGO EN DIOS
-        -- if (componentSwitch ~= nil) then
-        --     if (currentTrackID ~= -1) then
-        --         componentSwitch:StopTrack(currentTrackID)
-        --     end
-        --     currentTrackID = 2
-        --     componentSwitch:PlayTrack(currentTrackID)
-        -- end
-
         DispatchGlobalEvent("Dart_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
         DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
+        DeleteGameObject()
     end
 end
 
@@ -103,6 +95,21 @@ function Distance(a, b)
     local dx, dy = a[1] - b[1], a[2] - b[2]
     return math.sqrt(dx * dx + dy * dy)
 
+end
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
 end
 
 print("Dart.lua compiled succesfully\n")

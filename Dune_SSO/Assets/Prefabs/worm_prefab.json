@@ -345,7 +345,7 @@
                                                             "rotation": [
                                                                 0.2721167504787445,
                                                                 0.019353171810507774,
-                                                                -0.006201552227139473,
+                                                                -0.006201553624123335,
                                                                 0.9620497226715088
                                                             ],
                                                             "scale": [
@@ -415,7 +415,7 @@
                                                                 0.03874349594116211,
                                                                 -0.26563048362731934,
                                                                 0.143844872713089,
-                                                                0.9524956941604614
+                                                                0.952495813369751
                                                             ],
                                                             "scale": [
                                                                 1.0,
@@ -619,15 +619,15 @@
                                                                 -8.08376693725586
                                                             ],
                                                             "rotation": [
-                                                                -0.014398840256035328,
-                                                                -0.002675374038517475,
-                                                                -0.0006793886423110962,
+                                                                -0.014398842118680477,
+                                                                -0.0026753742713481188,
+                                                                -0.0006793888169340789,
                                                                 0.99989253282547
                                                             ],
                                                             "scale": [
                                                                 1.0,
                                                                 1.0,
-                                                                0.9999857544898987
+                                                                0.9999856352806091
                                                             ],
                                                             "type": 21
                                                         }
@@ -690,7 +690,7 @@
                                                             "rotation": [
                                                                 -0.021602798253297806,
                                                                 -0.08305618911981583,
-                                                                0.012442333623766899,
+                                                                0.012442330829799175,
                                                                 0.9962329864501953
                                                             ],
                                                             "scale": [
@@ -1041,7 +1041,7 @@
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
                         "is_animated": true,
-                        "root_node_UID": 827300317,
+                        "root_node_UID": 289235769,
                         "shape_type": 0,
                         "uid": 1026652156
                     },
@@ -1074,7 +1074,7 @@
                     "active": true,
                     "fade_time": 2.0,
                     "offset_sync": false,
-                    "total_tracks": 4,
+                    "total_tracks": 5,
                     "tracks": [
                         {
                             "bypass": false,
@@ -1085,8 +1085,8 @@
                             "offset": 0.0,
                             "pan": 0.0,
                             "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Sadiq/sadiq_ground_burrow_fx.wav",
-                            "transpose": 0.0,
+                            "track_path": "Assets/Audio/SFX/Sadiq/sadiq_ground_unburrow_1_fx.wav",
+                            "transpose": 1.0,
                             "volume": 100.0
                         },
                         {
@@ -1098,8 +1098,8 @@
                             "offset": 0.0,
                             "pan": 0.0,
                             "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Sadiq/sadiq_electric_waves_1_fx.wav",
-                            "transpose": 0.0,
+                            "track_path": "Assets/Audio/SFX/Sadiq/sadiq_ground_burrow_fx.wav",
+                            "transpose": 1.0,
                             "volume": 100.0
                         },
                         {
@@ -1112,7 +1112,7 @@
                             "pan": 0.0,
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Sadiq/sadiq_devour_fx.wav",
-                            "transpose": 0.0,
+                            "transpose": 1.0,
                             "volume": 100.0
                         },
                         {
@@ -1125,7 +1125,20 @@
                             "pan": 0.0,
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Sadiq/sadiq_spit_fx.wav",
-                            "transpose": 0.0,
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sadiq/sadiq_ground_unburrow_2_fx.wav",
+                            "transpose": 1.0,
                             "volume": 100.0
                         }
                     ],

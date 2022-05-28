@@ -71,12 +71,12 @@
                                                                     ],
                                                                     "rotation": [
                                                                         -0.14782874286174774,
-                                                                        0.0012365963775664568,
-                                                                        -0.005918501876294613,
+                                                                        0.0012365966103971004,
+                                                                        -0.005918683484196663,
                                                                         0.9889945983886719
                                                                     ],
                                                                     "scale": [
-                                                                        0.999979555606842,
+                                                                        0.9999682307243347,
                                                                         0.9999992847442627,
                                                                         0.9999992847442627
                                                                     ],
@@ -317,7 +317,7 @@
                                                                                 -5.340576171875e-05
                                                                             ],
                                                                             "rotation": [
-                                                                                0.026456058025360107,
+                                                                                0.026456056162714958,
                                                                                 -0.004907520022243261,
                                                                                 0.1881696581840515,
                                                                                 0.9817678928375244
@@ -325,7 +325,7 @@
                                                                             "scale": [
                                                                                 1.0,
                                                                                 1.0,
-                                                                                0.999979555606842
+                                                                                0.9999793767929077
                                                                             ],
                                                                             "type": 21
                                                                         }
@@ -874,7 +874,7 @@
                                                                 0.956791341304779
                                                             ],
                                                             "scale": [
-                                                                0.999979555606842,
+                                                                0.9999682307243347,
                                                                 1.0,
                                                                 1.0
                                                             ],
@@ -1043,12 +1043,12 @@
                                                             ],
                                                             "rotation": [
                                                                 0.2869023382663727,
-                                                                -0.005299449432641268,
+                                                                -0.005299449898302555,
                                                                 0.0015654294984415174,
                                                                 0.9579439163208008
                                                             ],
                                                             "scale": [
-                                                                0.9999794960021973,
+                                                                0.9999681711196899,
                                                                 0.9999999403953552,
                                                                 1.0
                                                             ],
@@ -1171,7 +1171,7 @@
                             ],
                             "rotation": [
                                 -0.01575528457760811,
-                                0.0031953349243849516,
+                                0.003195379162207246,
                                 -0.001295381342060864,
                                 0.9998699426651001
                             ],
@@ -1236,9 +1236,9 @@
                         -594.37548828125
                     ],
                     "rotation": [
-                        4.1896182523259995e-08,
-                        -0.10890054702758789,
-                        4.5897823319762665e-09,
+                        4.189618962868735e-08,
+                        -0.10890055447816849,
+                        4.589783220154686e-09,
                         0.9940526485443115
                     ],
                     "scale": [
@@ -1257,7 +1257,7 @@
                         "draw_face_normals": false,
                         "draw_vertex_normals": false,
                         "is_animated": true,
-                        "root_node_UID": 2087236767,
+                        "root_node_UID": 1439606360,
                         "shape_type": 0,
                         "uid": 821724498
                     },
@@ -1430,7 +1430,7 @@
                     "active": true,
                     "fade_time": 2.0,
                     "offset_sync": false,
-                    "total_tracks": 3,
+                    "total_tracks": 4,
                     "tracks": [
                         {
                             "bypass": false,
@@ -1442,20 +1442,7 @@
                             "pan": 0.0,
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Harkonnen/harkonnen_attack_fx.wav",
-                            "transpose": 0.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Harkonnen/harkonnen_death_fx.wav",
-                            "transpose": 0.0,
+                            "transpose": 1.0,
                             "volume": 100.0
                         },
                         {
@@ -1468,7 +1455,33 @@
                             "pan": 0.0,
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Generic/generic_enemy_dodge_fx.wav",
-                            "transpose": 0.0,
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Harkonnen/harkonnen_death_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Harkonnen/harkonnen_attack_splash_fx.wav",
+                            "transpose": 1.0,
                             "volume": 100.0
                         }
                     ],
