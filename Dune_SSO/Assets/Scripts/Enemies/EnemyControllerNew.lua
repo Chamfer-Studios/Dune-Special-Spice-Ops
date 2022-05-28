@@ -13,6 +13,11 @@ local chaseSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 chaseSpeedIV = InspectorVariable.new("chaseSpeed", chaseSpeedIVT, chaseSpeed)
 NewVariable(chaseSpeedIV)
 
+attackRange = 20
+local attackRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+attackRangeIV = InspectorVariable.new("attackRange", attackRangeIVT, attackRange)
+NewVariable(attackRangeIV)
+
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 visionConeAngleIV = InspectorVariable.new("visionConeAngle", visionConeAngleIVT, visionConeAngle)
@@ -58,6 +63,8 @@ local patrolWaypointsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3_ARRAY
 patrolWaypointsIV = InspectorVariable.new("patrolWaypoints", patrolWaypointsIVT, patrolWaypoints)
 NewVariable(patrolWaypointsIV)
 
+componentAnimator = nil
+
 coneLight = gameObject:GetLight()
 
 awareness_green = nil
@@ -80,6 +87,8 @@ STATE = {
 }
 
 state = STATE.UNAWARE
+
+isWalking = false
 
 awareness = 0
 targetAwareness = 0
@@ -199,14 +208,10 @@ function ProcessVisualTrigger(position, source)
     
     lambda = function(uid)
         --visualTriggers[nVisual]["valid"] = false
-        --Log("invalidated visual trigger\n")
     end
 
     src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10, componentTransform:GetPosition().z)
     dst = float3.new(position.x, position.y + 10, position.z)
-
-    --Log(tostring(src) .. " " .. tostring(dst) .. "\n")
-    --DrawLine(src, dst)
 
     RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
 
@@ -286,7 +291,7 @@ function UpdateAwarenessBars()
         awareness_red:GetTransform():SetScale(float3.new(0, 0, 0))
     end
 
-    if awareness == 2 then
+    if math.abs(awareness - 2) < 0.05 then
         awareness_green:GetTransform():SetScale(float3.new(0, 0, 0))
         awareness_yellow:GetTransform():SetScale(float3.new(0, 0, 0))
         awareness_red:GetTransform():SetScale(float3.new(awarenessSize.x, awarenessSize.y, awarenessSize.z))
@@ -319,6 +324,12 @@ function EventHandler(key, fields)
         LookAtDirection(fields[1])
     elseif key == "Player_Position" then
         ProcessVisualTrigger(fields[1], fields[2])
+    elseif key == "IsWalking" then
+        isWalking = fields[1]
+    elseif key == "Player_Attack" then
+        if (fields[1] == gameObject) then
+            SwitchState(state, STATE.DEAD)
+        end
     end
 end
 
@@ -386,6 +397,10 @@ end
 
 function UpdateStateFromAwareness()
     oldState = state
+
+    if state == STATE.DEAD then
+        do return end
+    end
 
     if math.abs(awareness) < 0.05 then
         SwitchState(state, STATE.UNAWARE)
@@ -485,6 +500,56 @@ function SwitchState(from, to)
     end
 end
 
+function UpdateAnimation(oldState, target)
+    if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
+        if (componentAnimator ~= nil) then
+            if (isWalking == false) then
+                componentAnimator:SetSelectedClip("Idle")
+            else
+                componentAnimator:SetSelectedClip("Walk")
+            end
+        end
+    elseif state == STATE.AGGRO then
+        if (componentAnimator ~= nil) then
+            currentClip = componentAnimator:GetSelectedClip()
+            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) < attackRange then
+                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
+                    componentAnimator:SetSelectedClip("Attack")
+                end
+            elseif currentClip == "Attack" and componentAnimator:IsCurrentClipPlaying() == false then
+                DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
+                componentAnimator:SetSelectedClip("AttackToIdle")
+            elseif currentClip == "AttackToIdle" and componentAnimator:IsCurrentClipPlaying() == false then
+                componentAnimator:SetSelectedClip("Idle")
+            elseif currentClip ~= "Walk" then
+                componentAnimator:SetSelectedClip("Walk")
+            end
+        end
+    elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
+        componentAnimator:SetSelectedClip("Death")
+        if (componentBoxCollider ~= nil) then
+            gameObject:DeleteComponent(componentBoxCollider)
+            componentBoxCollider = nil
+        end
+        if (componentLight ~= nil) then
+            gameObject:DeleteComponent(componentLight)
+            componentLight = nil
+        end
+        if (awareness_green ~= nil) then
+            DeleteGameObjectByUID(awareness_green:GetUID())
+            awareness_green = nil
+        end
+        if (awareness_red ~= nil) then
+            DeleteGameObjectByUID(awareness_red:GetUID())
+            awareness_red = nil
+        end
+        if (awareness_yellow ~= nil) then
+            DeleteGameObjectByUID(awareness_yellow:GetUID())
+            awareness_yellow = nil
+        end
+    end
+end
+
 function Update(dt)
     awarenessSpeed = UpdateTargetAwareness()
     UpdateAwareness(dt, awarenessSpeed)
@@ -492,6 +557,7 @@ function Update(dt)
     target = GetClosestTarget()
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
+    UpdateAnimation(oldState, target)
 
     if state == STATE.UNAWARE then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
