@@ -24,6 +24,11 @@ function Start()
 
     currentTrackID = -1
     dieSFXOnce = true;
+
+    componentParticle = gameObject:GetComponentParticle()
+    if (componentParticle ~= nil) then
+        componentParticle:StopParticleSpawn()
+    end
 end
 
 function Update(dt)
@@ -141,6 +146,10 @@ function EventHandler(key, fields)
         target = fields[1] -- fields[1] -> new Target;
     elseif key == "DeathMark_Death" then
         Die()
+        if (componentParticle ~= nil) then
+            componentParticle:SetLoop(true)
+            componentParticle:ResumeParticleSpawn()
+        end
     elseif key == "Player_Attack" then
         if (fields[1] == gameObject) then
             Die()

@@ -516,13 +516,13 @@ end
 function CancelAbilities(onlyAbilities)
     if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
     end
 
     if (onlyAbilities == nil) then
@@ -674,7 +674,7 @@ function ManageTimers(dt)
             Log("Decoy available!\n")
             secondaryTimer = nil
             abilities.AbilitySecondary = AbilityStatus.Normal
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 
@@ -684,7 +684,7 @@ function ManageTimers(dt)
         if (ultimateTimer >= ultimateCooldown) then
             ultimateTimer = nil
             abilities.AbilityUltimate = AbilityStatus.Normal
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
         end
     end
@@ -871,7 +871,7 @@ function ActivePrimary()
             CancelAbilities()
             SetState(State.AIM_PRIMARY)
             abilities.AbilityPrimary = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Active})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         end
     end
 end
@@ -892,10 +892,10 @@ function DoPrimary()
 
     if (knifeCount > 0) then
         abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     else
-        abilities.AbilityPrimary = AbilityStatus.Cooldown -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Cooldown})
+        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
     ChangeTrack(5)
@@ -913,7 +913,7 @@ function ActiveSecondary()
             CancelAbilities()
             SetState(State.AIM_SECONDARY)
             abilities.AbilitySecondary = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Active})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
     end
 end
@@ -951,7 +951,7 @@ function ActiveUltimate()
             CancelAbilities()
             SetState(State.AIM_ULTIMATE)
             abilities.AbilityUltimate = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
 end
@@ -968,8 +968,7 @@ end
 
 function DoUltimate()
     abilities.AbilityUltimate = AbilityStatus.Cooldown
-
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
 
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
@@ -987,21 +986,16 @@ function DoUltimate()
     for i = 1, #enemies do
         if (enemies[i] ~= target and
             Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <=
-            ultimateCastRange) then
+            ultimateCastRange) and #enemiesInRange < 3 then
             enemiesInRange[#enemiesInRange + 1] = enemies[i]
         end
-    end
-
-    -- If there are none, the ability isn't casted
-    if (#enemiesInRange <= 0) then
-        return
     end
 
     -- Check them all for adjacent enemies, different than the ones on the list and add them if there are anyway
     for i = 1, #enemiesInRange do
 
         for j = 1, #enemies do
-            if (enemiesInRange[i] ~= enemies[j]) then
+            if (enemiesInRange[i] ~= enemies[j] and #enemiesInRange < 3) then
                 if (Distance3D(enemiesInRange[i]:GetTransform():GetPosition(), enemies[j]:GetTransform():GetPosition()) <=
                     ultimateCastRangeExtension) then
 
@@ -1020,11 +1014,11 @@ function DoUltimate()
         end
     end
 
-    deathMarkDuration = 0.3
+    deathMarkDuration = 1
     -- Set IN ORDER the death mark
     for i = 1, #enemiesInRange do
         DispatchGlobalEvent("Death_Mark", {enemiesInRange[i], deathMarkDuration})
-        deathMarkDuration = deathMarkDuration + 0.3
+        deathMarkDuration = deathMarkDuration + 1
     end
 
     -- final pos = final target pos + Normalized(final target pos - initial pos) * d
@@ -1044,7 +1038,7 @@ function DoUltimate()
     -- Set timer equal to the longest dath mark timer to reappear
     gameObject.active = false
     invisibilityTimer = 0
-    invisibilityDuration = deathMarkDuration
+    invisibilityDuration = deathMarkDuration * 0.3
 
     if (componentRigidBody ~= nil) then
         if (componentBoxCollider ~= nil) then
@@ -1143,12 +1137,13 @@ function EventHandler(key, fields)
         Log("I have grabbed the decoy! \n")
         secondaryTimer = 0.0
         abilities.AbilitySecondary = AbilityStatus.Cooldown
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Cooldown})
+        DispatchGlobalEvent("Player_Ability",
+            {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
         Log("I have grabbed a knife! \n")
         abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         knifeCount = knifeCount + 1
     elseif (key == "Sadiq_Update_Target") then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then

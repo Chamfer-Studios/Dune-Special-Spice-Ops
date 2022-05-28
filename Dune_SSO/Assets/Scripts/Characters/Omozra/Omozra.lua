@@ -71,10 +71,9 @@ isTired = false
 
 -- Primary ability --
 primaryCastRange = 100
-primaryCooldown = 5
+maxSpit = 3
 
 -- Secondary ability --
-maxSpit = 3
 secondaryCastRange = 75
 secondaryCooldown = 10
 
@@ -479,13 +478,13 @@ end
 function CancelAbilities(onlyAbilities)
     if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Normal})
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
     elseif (currentState == State.AIM_ULTIMATE_RECAST and abilities.AbilityUltimateRecast == AbilityStatus.Active) then
         abilities.AbilityUltimateRecast = AbilityStatus.Active
     end
@@ -820,7 +819,7 @@ function DoPrimary()
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     else
-        abilities.AbilityPrimary = AbilityStatus.Cooldown -- Should be state disabled 
+        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
@@ -861,7 +860,8 @@ function DoSecondary()
 
     secondaryTimer = 0.0
     abilities.AbilitySecondary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    DispatchGlobalEvent("Player_Ability",
+        {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
 
     ChangeTrack(4)
 
@@ -884,7 +884,7 @@ function ActiveUltimate()
             CancelAbilities()
             SetState(State.AIM_ULTIMATE)
             abilities.AbilityUltimate = AbilityStatus.Active
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Active})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
     end
 end
@@ -937,7 +937,7 @@ function RecastUltimate(position)
 
     ultimateTimer = 0.0
     abilities.AbilityUltimate = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, AbilityStatus.Cooldown})
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
 end
 
 function DoUltimateRecast() -- Ult step 7

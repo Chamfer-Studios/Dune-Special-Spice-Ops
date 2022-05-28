@@ -39,7 +39,7 @@ function EventHandler(key, fields)
         end
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then
-            deathMarkTime = fields[2]
+            deathMarkTime = fields[2] * 0.3
             deathMarkTimer = 0.0
         end
     elseif key == "Die" then
@@ -157,8 +157,8 @@ function Update(dt)
         deathMarkTimer = deathMarkTimer + dt
         if (deathMarkTimer >= deathMarkTime) then
             -- Audio here
-            Die()
             DispatchEvent("DeathMark_Death", {})
+            deathMarkTimer = nil
             return
         end
     end
