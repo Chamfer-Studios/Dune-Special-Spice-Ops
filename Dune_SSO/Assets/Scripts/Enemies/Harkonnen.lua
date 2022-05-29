@@ -33,7 +33,7 @@ end
 
 function EventHandler(key, fields)
     if key == "Change_State" then -- fields[1] -> oldState; fields[2] -> newState;
-        if (fields[1] ~= STATE.DEAD and fields[1] ~= fields[2]) then
+        if fields[1] ~= fields[2] then
             currentState = fields[2]
         end
         -- Player basic attack

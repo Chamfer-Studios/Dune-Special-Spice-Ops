@@ -435,7 +435,7 @@ function UpdateStateFromAwareness()
 
     if state == STATE.DEAD or state == STATE.CORPSE then
         do
-            return
+            return (oldState)
         end
     end
 
@@ -522,7 +522,7 @@ function UpdatePathIfNecessary(oldState, newState)
 end
 
 function SwitchState(from, to)
-    if from == to then
+    if from == to or from == STATE.CORPSE then
         do
             return
         end
@@ -551,6 +551,7 @@ function SwitchState(from, to)
 end
 
 function UpdateAnimation(oldState, target)
+    Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
     if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
         if (componentAnimator ~= nil) then
             if (isWalking == false) then
@@ -621,6 +622,7 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
+    
     if (awareness_green ~= nil) then
         DeleteGameObjectByUID(awareness_green:GetUID())
         awareness_green = nil
@@ -633,16 +635,16 @@ function Die(leaveBody, enemyName)
         DeleteGameObjectByUID(awareness_yellow:GetUID())
         awareness_yellow = nil
     end
-
-    SwitchState(STATE.CORPSE)
-
+    
+    SwitchState(state, STATE.CORPSE)
+    
     if (leaveBody == false) then
         do
             DeleteGameObject()
             return
         end
     end
-
+    
     if (componentBoxCollider ~= nil) then
         gameObject:DeleteComponent(componentBoxCollider)
         componentBoxCollider = nil
@@ -651,7 +653,7 @@ function Die(leaveBody, enemyName)
         gameObject:DeleteComponent(coneLight)
         coneLight = nil
     end
-
+    
     -- Spice Loot Droprate
     math.randomseed(os.time())
     rng = math.random(100)
@@ -662,6 +664,8 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
+
+    Log(apetecan())
 end
 
 deathParameters = {
