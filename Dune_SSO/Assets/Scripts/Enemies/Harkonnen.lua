@@ -1,37 +1,47 @@
 knifeHitChance = 100
 dartHitChance = 100
 
+EnemyDeath = {
+    PLAYER_ATTACK = 1,
+    KNIFE = 2,
+    WEIRDING_WAY = 3,
+    MOSQUITO = 4,
+    WORM_KILL = 5
+}
+
+STATE = {
+    UNAWARE = 1,
+    SUS = 2,
+    AGGRO = 3,
+    DEAD = 4,
+    VICTORY = 5,
+    CORPSE = 6
+}
+
+currentState = STATE.UNAWARE
+
+function Update(dt)
+    -- Weirding Way death timer
+    if (deathMarkTimer ~= nil) then
+        deathMarkTimer = deathMarkTimer + dt
+        if (deathMarkTimer >= deathMarkDuration) then
+            deathMarkTimer = nil
+            DispatchEvent("Enemy_Death", {EnemyDeath.WEIRDING_WAY, "Harkonnen"})
+        end
+    end
+end
+
 function EventHandler(key, fields)
     if key == "Change_State" then -- fields[1] -> oldState; fields[2] -> newState;
         if (fields[1] ~= STATE.DEAD and fields[1] ~= fields[2]) then
             currentState = fields[2]
         end
-    elseif key == "Target_Update" then
-        target = fields[1] -- fields[1] -> new Target;
-    elseif key == "DeathMark_Death" then
-        Die()
-        if (componentParticle ~= nil) then
-            componentParticle:SetLoop(true)
-            componentParticle:ResumeParticleSpawn()
-        end
+        -- Player basic attack
     elseif key == "Player_Attack" then
         if (fields[1] == gameObject) then
-            Die()
+            DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK, "Harkonnen"})
         end
-    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
-        if (fields[1] == gameObject) then
-            if (fields[2] == 2) then
-                if (currentState == STATE.DEAD) then
-                    DeleteGameObject()
-                else
-                    Die(false)
-                end
-            end
-        end
-    elseif key == "Mosquito_Hit" then
-        if (fields[1] == gameObject) then
-            Die()
-        end
+        -- Zhib knife
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
@@ -41,7 +51,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
-                    Die()
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
                     trackList = {1}
@@ -53,7 +63,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
-                    Die()
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
                     trackList = {1}
@@ -65,7 +75,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
-                    Die()
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
                     trackList = {1}
@@ -73,6 +83,30 @@ function EventHandler(key, fields)
                 end
             end
         end
+        -- Zhib Weirding way
+    elseif key == "Death_Mark" then
+        if (fields[1] == gameObject) then
+            deathMarkTimer = 0.0
+            deathMarkDuration = fields[2]
+        end
+        -- Nerala Mosquito
+    elseif key == "Mosquito_Hit" then
+        if (fields[1] == gameObject) then
+            DispatchEvent("Enemy_Death", {EnemyDeath.MOSQUITO, "Harkonnen"})
+        end
+        -- Omozra ñam ñam
+    elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+        if (fields[1] == gameObject) then
+            if (fields[2] == 2) then
+                if (currentState == STATE.DEAD) then
+                    -- Send a specific event if necessary
+                    DeleteGameObject()
+                else
+                    DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
+                end
+            end
+        end
+        -- Nerala dart
     elseif key == "Dart_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
@@ -82,8 +116,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy is stunned! \n")
-                    -- TODO: STUN NOT DIE
-                    Die()
+                    DispatchEvent("Dart_Success")
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -95,8 +128,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy is stunned! \n")
-                    -- TODO: STUN NOT DIE
-                    Die()
+                    DispatchEvent("Dart_Success")
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -108,8 +140,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy is stunned! \n")
-                    -- TODO: STUN NOT DIE
-                    Die()
+                    DispatchEvent("Dart_Success")
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -117,46 +148,5 @@ function EventHandler(key, fields)
                 end
             end
         end
-    end
-end
-
-function Die(leaveBody)
-    if (leaveBody == nil) then
-        leaveBody = true
-        if(currentTrackID ~= 2) then
-            trackList = {2}
-            ChangeTrack(trackList)
-        end
-    elseif (leaveBody == false) then
-        -- Chance to spawn, if spawn dispatch event
-            math.randomseed(os.time())
-            rng = math.random(100)
-            if (rng >= 101) then
-                InstantiatePrefab("SpiceLoot")
-                str = "Harkonnen"
-                DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
-                Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
-            else
-                Log("The drop rate has not been good :( " .. rng .. "\n")
-            end
-            if(currentTrackID ~= 2) then
-                trackList = {2}
-                ChangeTrack(trackList)
-            end
-    end
-
-    gameObject.tag = Tag.CORPSE
-    DispatchEvent("Die", {leaveBody})
-    currentState = STATE.DEAD
-    if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Death")
-    end
-    if (componentBoxCollider ~= nil) then
-        gameObject:DeleteComponent(componentBoxCollider)
-        componentBoxCollider = nil
-    end
-    if (componentLight ~= nil) then
-        gameObject:DeleteComponent(componentLight)
-        componentLight = nil
     end
 end

@@ -78,12 +78,20 @@ awareness_red_name = "awareness_red_" .. gameObject:GetUID()
 pathfinderUpdateKey = "Pathfinder_UpdatePath"
 pathfinderFollowKey = "Pathfinder_FollowPath"
 
+EnemyDeath = {
+    PLAYER_ATTACK = 1,
+    KNIFE = 2,
+    WEIRDING_WAY = 3,
+    MOSQUITO = 4,
+    WORM_KILL = 5
+}
 STATE = {
     UNAWARE = 1,
     SUS = 2,
     AGGRO = 3,
     DEAD = 4,
-    VICTORY = 5
+    VICTORY = 5,
+    CORPSE = 6
 }
 
 state = STATE.UNAWARE
@@ -356,63 +364,6 @@ function UpdateSecondaryObjects()
     end
 end
 
-function EventHandler(key, fields)
-    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
-        ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
-    elseif key == "Walking_Direction" then
-        SetTargetDirection(fields[1])
-    elseif key == "Player_Position" then
-        ProcessVisualTrigger(fields[1], fields[2])
-    elseif key == "IsWalking" then
-        isWalking = fields[1]
-    elseif key == "Player_Attack" then
-        if (fields[1] == gameObject) then
-            SwitchState(state, STATE.DEAD)
-        end
-    elseif key == "Knife_Hit" then
-        if (fields[1] == gameObject) then
-            if (currentState == STATE.UNAWARE) then
-                knifeHitChance =
-                    GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                math.randomseed(os.time())
-                rng = math.random(100)
-                if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
-                    Die()
-                else
-                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
-                    trackList = {1}
-                    -- ChangeTrack(trackList)
-                end
-            elseif (currentState == STATE.SUS) then
-                knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                math.randomseed(os.time())
-                rng = math.random(100)
-                if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
-                    Die()
-                else
-                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
-                    trackList = {1}
-                    -- ChangeTrack(trackList)
-                end
-            elseif (currentState == STATE.AGGRO) then
-                knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                math.randomseed(os.time())
-                rng = math.random(100)
-                if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
-                    Die()
-                else
-                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
-                    trackList = {1}
-                    -- ChangeTrack(trackList)
-                end
-            end
-        end
-    end
-end
-
 function Start()
     CheckAndRecalculatePath(true)
     InstantiateNamedPrefab("awareness_green", awareness_green_name)
@@ -482,7 +433,7 @@ end
 function UpdateStateFromAwareness()
     oldState = state
 
-    if state == STATE.DEAD then
+    if state == STATE.DEAD or state == STATE.CORPSE then
         do
             return
         end
@@ -595,6 +546,8 @@ function SwitchState(from, to)
         targetAwareness = 2
         awareness = 2
     end
+
+    DispatchEvent("Change_State", {from, to})
 end
 
 function UpdateAnimation(oldState, target)
@@ -626,7 +579,11 @@ function UpdateAnimation(oldState, target)
             end
         end
     elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
-        Die()
+        componentAnimator:SetSelectedClip("Death")
+    elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
+        if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
+            Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+        end
     end
 end
 
@@ -663,16 +620,7 @@ function ClearPerceptionMemory()
     visualTriggers = {}
 end
 
-function Die()
-    componentAnimator:SetSelectedClip("Death")
-    if (componentBoxCollider ~= nil) then
-        gameObject:DeleteComponent(componentBoxCollider)
-        componentBoxCollider = nil
-    end
-    if (coneLight ~= nil) then
-        gameObject:DeleteComponent(coneLight)
-        coneLight = nil
-    end
+function Die(leaveBody, enemyName)
     if (awareness_green ~= nil) then
         DeleteGameObjectByUID(awareness_green:GetUID())
         awareness_green = nil
@@ -686,15 +634,73 @@ function Die()
         awareness_yellow = nil
     end
 
+    SwitchState(STATE.CORPSE)
+
+    if (leaveBody == false) then
+        do
+            DeleteGameObject()
+            return
+        end
+    end
+
+    if (componentBoxCollider ~= nil) then
+        gameObject:DeleteComponent(componentBoxCollider)
+        componentBoxCollider = nil
+    end
+    if (coneLight ~= nil) then
+        gameObject:DeleteComponent(coneLight)
+        coneLight = nil
+    end
+
+    -- Spice Loot Droprate
     math.randomseed(os.time())
     rng = math.random(100)
     if (rng >= 50) then
         InstantiatePrefab("SpiceLoot")
-        str = "Harkonnen"
-        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
+        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), enemyName})
         Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
+    end
+end
+
+deathParameters = {
+    LeaveBody = true,
+    EnemyName = "Harkonnen"
+}
+
+function EventHandler(key, fields)
+    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+        ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
+    elseif key == "Walking_Direction" then
+        SetTargetDirection(fields[1])
+    elseif key == "Player_Position" then
+        ProcessVisualTrigger(fields[1], fields[2])
+    elseif key == "IsWalking" then
+        isWalking = fields[1]
+    elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
+        if fields[1] == EnemyDeath.PLAYER_ATTACK then
+            SwitchState(state, STATE.DEAD)
+            deathParameters.LeaveBody = true
+            deathParameters.EnemyName = fields[2]
+        elseif fields[1] == EnemyDeath.KNIFE then
+            SwitchState(state, STATE.DEAD)
+            deathParameters.LeaveBody = true
+            deathParameters.EnemyName = fields[2]
+        elseif fields[1] == EnemyDeath.WEIRDING_WAY then
+            SwitchState(state, STATE.DEAD)
+            deathParameters.LeaveBody = true
+            deathParameters.EnemyName = fields[2]
+        elseif fields[1] == EnemyDeath.MOSQUITO then
+            SwitchState(state, STATE.DEAD)
+            deathParameters.LeaveBody = true
+            deathParameters.EnemyName = fields[2]
+        elseif fields[1] == EnemyDeath.WORM_KILL then
+            SwitchState(state, STATE.DEAD)
+            deathParameters.LeaveBody = false
+            deathParameters.EnemyName = fields[2]
+            Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+        end
     end
 end
 
@@ -703,3 +709,4 @@ function DrawDebugger()
 end
 
 print("EnemyController.lua compiled successfully!")
+Log("EnemyController.lua compiled successfully!\n")
