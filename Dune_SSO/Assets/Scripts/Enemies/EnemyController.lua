@@ -636,6 +636,19 @@ function Die(leaveBody, enemyName)
         awareness_yellow = nil
     end
     
+    -- Spice Loot Droprate
+    math.randomseed(os.time())
+    rng = math.random(100)
+    if (rng >= 50) then
+        InstantiatePrefab("SpiceLoot")
+        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), enemyName})
+        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+    else
+        Log("The drop rate has not been good :( " .. rng .. "\n")
+    end
+
+    DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
+
     SwitchState(state, STATE.CORPSE)
     
     if (leaveBody == false) then
@@ -654,16 +667,6 @@ function Die(leaveBody, enemyName)
         coneLight = nil
     end
     
-    -- Spice Loot Droprate
-    math.randomseed(os.time())
-    rng = math.random(100)
-    if (rng >= 50) then
-        InstantiatePrefab("SpiceLoot")
-        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), enemyName})
-        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
-    else
-        Log("The drop rate has not been good :( " .. rng .. "\n")
-    end
 
     Log(apetecan())
 end

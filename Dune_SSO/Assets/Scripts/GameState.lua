@@ -64,7 +64,6 @@ function Start()
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
-
 end
 
 -- Called each loop iteration
@@ -199,6 +198,9 @@ function EventHandler(key, fields)
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
+        --if(fields[2] ~= nil) then
+            --SetGameJsonIntItem("gameobjects_to_delete", fields[2])
+        --end
     elseif (key == "Spice_Spawn") then
         deadEnemyPos = fields[1]
         deadEnemyType = fields[2]
@@ -212,6 +214,8 @@ function EventHandler(key, fields)
         if (gameOverTimer == nil) then
             gameOverTimer = 0
         end
+    --elseif (key == "Enemy_Defeated") then
+        --SetGameJsonIntItem("gameobjects_to_delete", fields[1])
     elseif (key == "Dialogue_Opened") then
         auxGodMode = GodMode
         if (GodMode == false) then
