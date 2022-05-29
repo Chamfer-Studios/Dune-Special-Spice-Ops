@@ -4,9 +4,9 @@
     "contained_resources": [
         {
             "asset_file": "zhib_trap.sugar",
-            "library_path": "Library/Meshes/1492444383.sugar",
+            "library_path": "Library/Meshes/1622761336.sugar",
             "type": 0,
-            "uid": 1492444383
+            "uid": 1622761336
         },
         {
             "asset_file": "zhib_base_color.png",
@@ -17,8 +17,8 @@
         }
     ],
     "hash": "94eb11db426661f8204f8d089b20c469",
-    "library_file": "1862954119.tea",
-    "library_path": "Library/Models/1862954119.tea",
+    "library_file": "375019727.tea",
+    "library_path": "Library/Models/375019727.tea",
     "type": 3,
-    "uid": 1862954119
+    "uid": 375019727
 }
