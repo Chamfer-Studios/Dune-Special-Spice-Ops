@@ -472,13 +472,15 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        ChangeTrack(0)
+        trackList = {0}        
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        ChangeTrack(1)
+        trackList = {1}        
+        ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -493,7 +495,8 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE) then
-            ChangeTrack(0)
+            trackList = {0}        
+            ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -830,7 +833,8 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    ChangeTrack(4)
+    trackList = {4, 8}        
+    ChangeTrack(trackList)
 
     attackTimer = 0.0
 
@@ -871,7 +875,8 @@ function FireDart()
     abilities.AbilityPrimary = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryCooldown})
 
-    ChangeTrack(5)
+    trackList = {5,9}        
+    ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("DartToIdle")
     SetState(State.IDLE)
@@ -914,7 +919,8 @@ function PlaceSmokebomb()
     end
     -- secondaryTimer = 0.0
 
-    ChangeTrack(6)
+    trackList = {6}        
+    ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("SmokebombToIdle")
     SetState(State.IDLE)
@@ -945,7 +951,8 @@ function CastUltimate(position)
 
     LookAtTarget(position)
 
-    ChangeTrack(7)
+    trackList = {7}        
+    ChangeTrack(trackList)
 end
 
 function DoUltimate()
@@ -984,7 +991,8 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        ChangeTrack(2)
+        trackList = {2}        
+        ChangeTrack(trackList)
     else
         currentHP = 0
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -1004,7 +1012,8 @@ function Die()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    ChangeTrack(3)
+    trackList = {3}        
+    ChangeTrack(trackList)
 end
 --------------------------------------------------
 
@@ -1049,6 +1058,8 @@ function EventHandler(key, fields)
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
+        trackList = {10}        
+        ChangeTrack(trackList)
         ultimateTimer = 0.0
         abilities.AbilityUltimate = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability",
@@ -1086,7 +1097,8 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        ChangeTrack(8)
+        trackList = {11}        
+        ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
@@ -1141,12 +1153,17 @@ function Distance3D(a, b)
 end
 --------------------------------------------------
 
-function ChangeTrack(index)
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        currentTrackID = index
+        currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
 end

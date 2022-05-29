@@ -13,7 +13,8 @@ function Start()
     destination.y = 0.0
     player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
+    trackList = {0}
+    ChangeTrack(trackList)
     local playerPos = player:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
     local pos2D = {playerPos.x, playerPos.z}
@@ -39,6 +40,13 @@ function Update(dt)
 
         if (effectFlag) then
             -- DispatchGlobalEvent("Auditory_Trigger", { componentTransform:GetPosition(), effectRadius, "single", gameObject })
+            --if(componentSwitch:IsAnyTrackPlaying() == false) then
+              if(currentTrackID ~= 1) then  
+                trackList = {1}
+                ChangeTrack(trackList)
+              end   
+            --end
+
             smokeParticles:GetTransform():SetPosition(componentTransform:GetPosition())
             smokeParticles:GetComponentParticle():ResumeParticleSpawn()
             effectFlag = false
@@ -65,13 +73,9 @@ function MoveToDestination(dt)
         componentTransform:SetPosition(float3.new(pos.x, 0, pos.z))
         destination = nil
 
-        if (componentSwitch ~= nil) then
-            if (currentTrackID ~= -1) then
-                componentSwitch:StopTrack(currentTrackID)
-            end
-            currentTrackID = 0
-            componentSwitch:PlayTrack(currentTrackID)
-        end
+        --if(componentSwitch:IsAnyTrackPlaying() == false) then          
+            
+        --end
     end
 end
 
@@ -101,5 +105,19 @@ function Distance(a, b)
 end
 
 --------------------------------------------------
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("Smokebomb.lua compiled succesfully")

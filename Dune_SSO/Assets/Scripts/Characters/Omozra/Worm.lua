@@ -77,7 +77,8 @@ function CastDevour(castedOn)
         componentAnimator:SetSelectedClip("Devour")
     end
 
-    ChangeTrack(0)
+    trackList = {0,4}
+    ChangeTrack(trackList)
 
     currentState = State.DEVOUR
 end
@@ -89,7 +90,8 @@ function DoDevour()
     componentAnimator:SetSelectedClip("DevourToIdle")
 
     -- TODO: Add particles, audio, etc.
-    ChangeTrack(2)
+    trackList = {2}
+    ChangeTrack(trackList)
 
     currentState = State.IDLE
 end
@@ -106,7 +108,8 @@ function CastUltimate(castedOn)
         componentAnimator:SetSelectedClip("Devour")
     end
 
-    ChangeTrack(0)
+    trackList = {0,4}
+    ChangeTrack(trackList)
 
     currentState = State.EAT
 end
@@ -120,7 +123,8 @@ function DoUltimate()
     end
 
     -- TODO: Add particles, audio, etc.
-    ChangeTrack(2)
+    trackList = {2}
+    ChangeTrack(trackList)
 
     currentState = State.IDLE
 end
@@ -138,7 +142,8 @@ function CastSpit(position)
         componentAnimator:SetSelectedClip("Spit")
     end
 
-    ChangeTrack(0)
+    trackList = {0,4}
+    ChangeTrack(trackList)
 
     currentState = State.SPIT
 end
@@ -152,7 +157,8 @@ function DoSpit()
     end
 
     -- TODO: Add particles, audio, etc.
-    ChangeTrack(3)
+    trackList = {3}
+    ChangeTrack(trackList)
 
     currentState = State.IDLE
 end
@@ -187,6 +193,9 @@ function CastSpitHeal(thisTarget, omozraPos)
         componentAnimator:SetSelectedClip("SpitHeal")
     end
 
+    trackList = {0,4}
+    ChangeTrack(trackList)
+
     currentState = State.SPIT_HEAL
     Log("CastSpitHeal done successfully\n")
 end
@@ -199,6 +208,9 @@ function DoSpitHeal()
         componentAnimator:SetSelectedClip("SpitHealToIdle")
     end
 
+    trackList = {3}
+    ChangeTrack(trackList)
+    
     currentState = State.IDLE
 end
 
@@ -220,17 +232,6 @@ function EventHandler(key, fields)
     end
 end
 --------------------------------------------------
-
-function ChangeTrack(index)
-    if (componentSwitch ~= nil) then
-        if (currentTrackID ~= -1) then
-            componentSwitch:StopTrack(currentTrackID)
-        end
-        currentTrackID = index
-        componentSwitch:PlayTrack(currentTrackID)
-    end
-end
-
 function LookAtTarget(position)
     local targetPos2D = {position.x, position.z}
     local pos2D = {componentTransform:GetPosition().x, componentTransform:GetPosition().z}
@@ -269,5 +270,20 @@ function Distance(a, b)
 
 end
 --------------------------------------------------
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do size = size + 1 end
+    
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
+    end
+end
 
 print("Worm.lua compiled succesfully")
