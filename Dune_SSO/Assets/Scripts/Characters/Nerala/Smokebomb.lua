@@ -13,8 +13,7 @@ function Start()
     destination.y = 0.0
     player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     componentSwitch = gameObject:GetAudioSwitch()
-    trackList = {0}
-    ChangeTrack(trackList)
+    currentTrackID = -1
     local playerPos = player:GetTransform():GetPosition()
     local targetPos2D = {destination.x, destination.z}
     local pos2D = {playerPos.x, playerPos.z}
@@ -40,16 +39,29 @@ function Update(dt)
 
         if (effectFlag) then
             -- DispatchGlobalEvent("Auditory_Trigger", { componentTransform:GetPosition(), effectRadius, "single", gameObject })
-            --if(componentSwitch:IsAnyTrackPlaying() == false) then
-              if(currentTrackID ~= 1) then  
-                trackList = {1}
+            
+            if(currentTrackID ~= 0 and currentTrackID ~= 1) then
+                trackList = {0}
                 ChangeTrack(trackList)
-              end   
-            --end
+            end
 
-            smokeParticles:GetTransform():SetPosition(componentTransform:GetPosition())
-            smokeParticles:GetComponentParticle():ResumeParticleSpawn()
-            effectFlag = false
+            if(componentSwitch:IsAnyTrackPlaying() == false) then
+                currentTrackID = -1
+            end
+        
+            while(currentTrackID == 0) do
+                return
+            end
+        
+            if(currentTrackID ~= 1) then
+                trackList = {1}        
+                ChangeTrack(trackList)
+            end
+
+            -- No Compila
+            --smokeParticles:GetTransform():SetPosition(componentTransform:GetPosition())
+            --smokeParticles:GetComponentParticle():ResumeParticleSpawn()
+            --effectFlag = false
         end
     else
         DeleteGameObject()

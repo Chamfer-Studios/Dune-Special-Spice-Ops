@@ -90,8 +90,18 @@ function DoDevour()
     componentAnimator:SetSelectedClip("DevourToIdle")
 
     -- TODO: Add particles, audio, etc.
-    trackList = {2}
-    ChangeTrack(trackList)
+    if(componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while(currentTrackID == 0 or currentTrackID == 4) do
+        return
+    end
+
+    if(currentTrackID ~= 2) then
+        trackList = {2}        
+        ChangeTrack(trackList)
+    end
 
     currentState = State.IDLE
 end
@@ -123,8 +133,18 @@ function DoUltimate()
     end
 
     -- TODO: Add particles, audio, etc.
-    trackList = {2}
-    ChangeTrack(trackList)
+    if(componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while(currentTrackID == 0 or currentTrackID == 4) do
+        return
+    end
+
+    if(currentTrackID ~= 2) then
+        trackList = {2}        
+        ChangeTrack(trackList)
+    end
 
     currentState = State.IDLE
 end
@@ -157,8 +177,18 @@ function DoSpit()
     end
 
     -- TODO: Add particles, audio, etc.
-    trackList = {3}
-    ChangeTrack(trackList)
+    if(componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while(currentTrackID == 0 or currentTrackID == 4) do
+        return
+    end
+
+    if(currentTrackID ~= 3) then
+        trackList = {3}        
+        ChangeTrack(trackList)
+    end
 
     currentState = State.IDLE
 end
@@ -208,8 +238,18 @@ function DoSpitHeal()
         componentAnimator:SetSelectedClip("SpitHealToIdle")
     end
 
-    trackList = {3}
-    ChangeTrack(trackList)
+    if(componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while(currentTrackID == 0 or currentTrackID == 4) do
+        return
+    end
+
+    if(currentTrackID ~= 3) then
+        trackList = {3}        
+        ChangeTrack(trackList)
+    end
     
     currentState = State.IDLE
 end

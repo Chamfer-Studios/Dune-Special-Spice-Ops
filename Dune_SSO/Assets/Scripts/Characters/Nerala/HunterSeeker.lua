@@ -42,13 +42,6 @@ end
 -- Called each loop iteration
 function Update(dt)
 
-    --if(componentSwitch:IsAnyTrackPlaying() == false) then
-    if(currentTrackID ~= 1) then  
-        trackList = {1}        
-        ChangeTrack(trackList)
-    end
-    --end
-
     if (lifeTimer >= lifeTime) then
         Die()
         return
@@ -78,6 +71,7 @@ function Update(dt)
 
         -- Right Click
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then -- Right Click
+            
             goHit = GetGameObjectHovered()
             if (goHit ~= gameObject) then
                 if (goHit.tag == Tag.ENEMY) then
@@ -104,6 +98,20 @@ function Update(dt)
             lifeTimer = lifeTime + 1
         end
     end
+    
+    if(componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while(currentTrackID == 0 or currentTrackID == 2 or currentTrackID == 3) do
+        return
+    end
+
+    if(currentTrackID ~= 1) then
+        trackList = {1}        
+        ChangeTrack(trackList)
+    end
+
 end
 
 -- Move to destination
