@@ -4,9 +4,9 @@
     "contained_resources": [
         {
             "asset_file": "zhib_karambit.sugar",
-            "library_path": "Library/Meshes/1496270717.sugar",
+            "library_path": "Library/Meshes/216069290.sugar",
             "type": 0,
-            "uid": 1496270717
+            "uid": 216069290
         },
         {
             "asset_file": "zhib_base_color.png",
@@ -17,8 +17,8 @@
         }
     ],
     "hash": "2d1526567c3ed34776116f08e24c36b7",
-    "library_file": "1918500807.tea",
-    "library_path": "Library/Models/1918500807.tea",
+    "library_file": "1448672747.tea",
+    "library_path": "Library/Models/1448672747.tea",
     "type": 3,
-    "uid": 1918500807
+    "uid": 1448672747
 }
