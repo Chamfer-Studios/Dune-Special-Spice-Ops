@@ -90,6 +90,11 @@ function FollowPath(speed, dt, loop, useRB)
         if (componentRigidBody ~= nil and useRB == true) then
             componentRigidBody:SetLinearVelocity(float3.new(delta.x, delta.y, delta.z))
         else
+            delta = {
+                x = componentTransform:GetFront().x * speed * _dt,
+                y = componentTransform:GetFront().y * speed * _dt,
+                z = componentTransform:GetFront().z * speed * _dt
+            }
             nextPosition = {
                 x = currentPosition.x + delta.x,
                 y = currentPosition.y + delta.y,

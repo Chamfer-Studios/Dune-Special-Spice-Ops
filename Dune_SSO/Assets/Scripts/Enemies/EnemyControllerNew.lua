@@ -103,12 +103,27 @@ visualTriggers = {}
 
 target = nil
 
+targetDirection = nil
+
 function Float3Length(v)
     return math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
 end
 
+function Float3Normalized(v)
+    len = Float3Length(v)
+    return {
+        x = v.x / len,
+        y = v.y / len,
+        z = v.z / len
+    }
+end
+
 function Float3Difference(a, b)
     return float3.new(b.x - a.x, b.y - a.y, b.z - a.z)
+end
+
+function Float3Sum(a, b)
+    return float3.new(b.x + a.x, b.y + a.y, b.z + a.z)
 end
 
 function Float3Distance(a, b)
@@ -166,8 +181,24 @@ function CheckAndRecalculatePath(force)
     end
 end
 
-function LookAtDirection(direction)
-    componentTransform:LookAt(direction, float3.new(0, 1, 0))
+function SetTargetDirection(direction)
+    targetDirection = direction
+end
+
+rotationSpeed = 4
+
+function RotateToTargetDirection(dt)
+    if targetDirection ~= nil then
+        deltaDirection = Float3Difference(componentTransform:GetFront(), targetDirection)
+        if rotationSpeed * dt > Float3Length(deltaDirection) then
+            componentTransform:LookAt(targetDirection, float3.new(0, 1, 0))
+            do return end
+        end
+        deltaDirection = Float3Normalized(deltaDirection)
+        newDirection = float3.new(deltaDirection.x * dt * rotationSpeed, deltaDirection.y * dt * rotationSpeed, deltaDirection.z * dt * rotationSpeed)
+        newDirection = Float3Sum(componentTransform:GetFront(), newDirection)
+        componentTransform:LookAt(newDirection, float3.new(0, 1, 0))
+    end
 end
 
 function CheckIfPointInCone(position)
@@ -321,7 +352,7 @@ function EventHandler(key, fields)
     if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "Walking_Direction" then
-        LookAtDirection(fields[1])
+        SetTargetDirection(fields[1])
     elseif key == "Player_Position" then
         ProcessVisualTrigger(fields[1], fields[2])
     elseif key == "IsWalking" then
@@ -349,6 +380,8 @@ function Start()
             componentAnimator:SetSelectedClip("Walk")
         end
     end
+
+    targetDirection = componentTransform:GetFront()
 end
 
 function UpdateTargetAwareness()
@@ -558,6 +591,7 @@ function Update(dt)
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
     UpdateAnimation(oldState, target)
+    RotateToTargetDirection(dt)
 
     if state == STATE.UNAWARE then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
