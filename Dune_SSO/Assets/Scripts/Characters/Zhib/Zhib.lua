@@ -1095,17 +1095,21 @@ end
 function Die()
     SetState(State.DEAD)
     currentHP = 0
-    DispatchGlobalEvent("Player_Death", {characterID})
-
+    
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
+        componentTransform:GetPosition().z))
     end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    trackList = {3}        
-    ChangeTrack(trackList)
+    
+    if(currentTrackID ~= 3) then
+        trackList = {3}        
+        ChangeTrack(trackList)
+    end
+
+    DispatchGlobalEvent("Player_Death", {characterID})
 end
 --------------------------------------------------
 
