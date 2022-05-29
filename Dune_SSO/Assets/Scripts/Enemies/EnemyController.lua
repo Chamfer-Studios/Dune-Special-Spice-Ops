@@ -551,7 +551,7 @@ function SwitchState(from, to)
 end
 
 function UpdateAnimation(oldState, target)
-    Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
+    --Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
     if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
         if (componentAnimator ~= nil) then
             if (isWalking == false) then
@@ -668,7 +668,7 @@ function Die(leaveBody, enemyName)
     end
     
 
-    Log(apetecan())
+    --Log(apetecan())
 end
 
 deathParameters = {
