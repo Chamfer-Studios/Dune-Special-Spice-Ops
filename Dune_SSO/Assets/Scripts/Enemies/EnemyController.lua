@@ -279,11 +279,10 @@ function CheckAuditoryTriggerInRange(position, range)
     end
 end
 
-function ProcessSingleAuditoryTrigger(position, source, opts)
+function ProcessSingleAuditoryTrigger(position, source)
     singleAuditoryTriggers[nSingle] = {}
     singleAuditoryTriggers[nSingle]["position"] = position
     singleAuditoryTriggers[nSingle]["source"] = source
-    singleAuditoryTriggers[nSingle]["opts"] = opts
 
     nSingle = nSingle + 1
 end
@@ -304,7 +303,7 @@ function ProcessAuditoryTrigger(position, range, type, source)
     end
 
     if type == "single" then
-        ProcessSingleAuditoryTrigger(position, source, opts)
+        ProcessSingleAuditoryTrigger(position, source)
     elseif type == "repeated" then
         ProcessRepeatedAuditoryTrigger(position, source)
     end
@@ -388,8 +387,7 @@ end
 function UpdateTargetAwareness()
     awarenessSpeed = awarenessDecaySpeed
 
-    closestTargetResult = GetClosestTarget()
-    closestTarget = closestTargetResult[1]
+    closestTarget = GetClosestTarget()
     closestTargetPosition = componentTransform:GetPosition()
     if (closestTarget ~= nil) then
         closestTargetPosition = closestTarget["source"]:GetTransform():GetPosition()
@@ -416,10 +414,10 @@ end
 
 function UpdateAwareness(dt, awarenessSpeed)
     if #singleAuditoryTriggers ~= 0 then
-        if state == STATE.UNAWARE or singleAuditoryTriggers[1]["opts"] == "decoy" then
+        if state == STATE.UNAWARE then
             awareness = 1
             targetAwareness = 1
-        elseif state == STATE.SUS and singleAuditoryTriggers[1]["opts"] ~= "decoy" then
+        elseif state == STATE.SUS then
             awareness = 2
             targetAwareness = 2
         end
@@ -498,21 +496,17 @@ function GetClosestTarget()
     closestVisualTrigger = GetClosestTrigger(state, visualTriggers)
 
     newTarget = target
-    hasChanged = false
 
     if closestVisualTrigger ~= nil then
         newTarget = closestVisualTrigger
-        hasChanged = true
     elseif closestSingleTrigger ~= nil then
         newTarget = closestSingleTrigger
-        hasChanged = true
     elseif closestRepeatingTrigger ~= nil then
         newTarget = closestRepeatingTrigger
-        hasChanged = true
     end
 
     do
-        return { newTarget, hasChanged }
+        return (newTarget)
     end
 end
 
@@ -556,7 +550,8 @@ function SwitchState(from, to)
     DispatchEvent("Change_State", {from, to})
 end
 
-function UpdateAnimation(oldState, target, hasTargetChanged)
+function UpdateAnimation(oldState, target)
+    Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
     if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
         if (componentAnimator ~= nil) then
             if (isWalking == false) then
@@ -568,11 +563,7 @@ function UpdateAnimation(oldState, target, hasTargetChanged)
     elseif state == STATE.AGGRO then
         if (componentAnimator ~= nil) then
             currentClip = componentAnimator:GetSelectedClip()
-            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) < attackRange and currentClip == "Attack" then
-                if hasTargetChanged then
-                    componentAnimator:SetSelectedClip("Walk")
-                end
-            elseif Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
+            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
                 attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
                 componentAnimator:SetSelectedClip("Attack")
             elseif currentClip == "Attack" then
@@ -601,12 +592,10 @@ function Update(dt)
     awarenessSpeed = UpdateTargetAwareness()
     UpdateAwareness(dt, awarenessSpeed)
     oldState = UpdateStateFromAwareness()
-    targetResult = GetClosestTarget()
-    target = targetResult[1]
-    hasTargetChanged = targetResult[2]
+    target = GetClosestTarget()
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
-    UpdateAnimation(oldState, target, hasTargetChanged)
+    UpdateAnimation(oldState, target)
     RotateToTargetDirection(dt)
 
     if state == STATE.UNAWARE then
@@ -675,6 +664,8 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
+
+    Log(apetecan())
 end
 
 deathParameters = {
