@@ -644,8 +644,8 @@ function Die()
         gameObject:DeleteComponent(componentBoxCollider)
         componentBoxCollider = nil
     end
-    if (componentLight ~= nil) then
-        gameObject:DeleteComponent(componentLight)
+    if (coneLight ~= nil) then
+        --gameObject:DeleteComponent(coneLight)
         componentLight = nil
     end
     if (awareness_green ~= nil) then
