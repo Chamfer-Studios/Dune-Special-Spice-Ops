@@ -192,10 +192,13 @@ function RotateToTargetDirection(dt)
         deltaDirection = Float3Difference(componentTransform:GetFront(), targetDirection)
         if rotationSpeed * dt > Float3Length(deltaDirection) then
             componentTransform:LookAt(targetDirection, float3.new(0, 1, 0))
-            do return end
+            do
+                return
+            end
         end
         deltaDirection = Float3Normalized(deltaDirection)
-        newDirection = float3.new(deltaDirection.x * dt * rotationSpeed, deltaDirection.y * dt * rotationSpeed, deltaDirection.z * dt * rotationSpeed)
+        newDirection = float3.new(deltaDirection.x * dt * rotationSpeed, deltaDirection.y * dt * rotationSpeed,
+            deltaDirection.z * dt * rotationSpeed)
         newDirection = Float3Sum(componentTransform:GetFront(), newDirection)
         componentTransform:LookAt(newDirection, float3.new(0, 1, 0))
     end
@@ -229,19 +232,22 @@ end
 
 function ProcessVisualTrigger(position, source)
     if not CheckIfPointInCone(position) then
-        do return end
+        do
+            return
+        end
     end
 
     visualTriggers[nVisual] = {}
     visualTriggers[nVisual]["position"] = position
     visualTriggers[nVisual]["source"] = source
     visualTriggers[nVisual]["valid"] = true
-    
+
     lambda = function(uid)
-        --visualTriggers[nVisual]["valid"] = false
+        -- visualTriggers[nVisual]["valid"] = false
     end
 
-    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10, componentTransform:GetPosition().z)
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
+        componentTransform:GetPosition().z)
     dst = float3.new(position.x, position.y + 10, position.z)
 
     RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
@@ -283,7 +289,9 @@ end
 
 function ProcessAuditoryTrigger(position, range, type, source)
     if not CheckAuditoryTriggerInRange(position, range) then
-        do return end
+        do
+            return
+        end
     end
 
     if type == "single" then
@@ -364,7 +372,8 @@ function EventHandler(key, fields)
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE) then
-                knifeHitChance = GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                knifeHitChance =
+                    GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
@@ -373,7 +382,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
                     trackList = {1}
-                    --ChangeTrack(trackList)
+                    -- ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
                 knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -385,7 +394,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
                     trackList = {1}
-                    --ChangeTrack(trackList)
+                    -- ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
                 knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -397,7 +406,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
                     trackList = {1}
-                    --ChangeTrack(trackList)
+                    -- ChangeTrack(trackList)
                 end
             end
         end
@@ -447,7 +456,9 @@ function UpdateTargetAwareness()
         targetAwareness = 0
     end
 
-    do return (awarenessSpeed) end
+    do
+        return (awarenessSpeed)
+    end
 end
 
 function UpdateAwareness(dt, awarenessSpeed)
@@ -472,7 +483,9 @@ function UpdateStateFromAwareness()
     oldState = state
 
     if state == STATE.DEAD then
-        do return end
+        do
+            return
+        end
     end
 
     if math.abs(awareness) < 0.05 then
@@ -487,13 +500,15 @@ function UpdateStateFromAwareness()
         SwitchState(state, STATE.AGGRO)
     end
 
-    do return (oldState) end
+    do
+        return (oldState)
+    end
 end
 
 function GetClosestTrigger(stateCriteria, triggerTable)
     closestTrigger = nil
 
-    for i=1,#triggerTable do
+    for i = 1, #triggerTable do
         trigger = triggerTable[i]
 
         if stateCriteria == STATE.SUS or stateCriteria == STATE.UNAWARE then
@@ -501,7 +516,8 @@ function GetClosestTrigger(stateCriteria, triggerTable)
 
             if closestTrigger == nil then
                 closestTrigger = trigger
-            elseif Float3Distance(position, componentTransform:GetPosition()) < Float3Distance(position, closestTrigger["position"]) then
+            elseif Float3Distance(position, componentTransform:GetPosition()) <
+                Float3Distance(position, closestTrigger["position"]) then
                 closestTrigger = trigger
             end
 
@@ -510,14 +526,17 @@ function GetClosestTrigger(stateCriteria, triggerTable)
 
             if closestTrigger == nil then
                 closestTrigger = trigger
-            elseif Float3Distance(position, componentTransform:GetPosition()) < Float3Distance(position, closestTrigger["source"]:GetTransform():GetPosition()) then
+            elseif Float3Distance(position, componentTransform:GetPosition()) <
+                Float3Distance(position, closestTrigger["source"]:GetTransform():GetPosition()) then
                 closestTrigger = trigger
             end
 
         end
     end
 
-    do return (closestTrigger) end
+    do
+        return (closestTrigger)
+    end
 end
 
 function GetClosestTarget()
@@ -535,22 +554,27 @@ function GetClosestTarget()
         newTarget = closestRepeatingTrigger
     end
 
-    do return (newTarget) end
+    do
+        return (newTarget)
+    end
 end
 
 function UpdatePathIfNecessary(oldState, newState)
     if oldState ~= STATE.UNAWARE and newState == STATE.UNAWARE then
         CheckAndRecalculatePath(true)
     elseif newState == STATE.SUS then
-        DispatchEvent(pathfinderUpdateKey, { { target["position"] }, pingpong, componentTransform:GetPosition()})
+        DispatchEvent(pathfinderUpdateKey, {{target["position"]}, pingpong, componentTransform:GetPosition()})
     elseif newState == STATE.AGGRO then
-        DispatchEvent(pathfinderUpdateKey, { { target["source"]:GetTransform():GetPosition() }, pingpong, componentTransform:GetPosition()})
+        DispatchEvent(pathfinderUpdateKey,
+            {{target["source"]:GetTransform():GetPosition()}, pingpong, componentTransform:GetPosition()})
     end
 end
 
 function SwitchState(from, to)
     if from == to then
-        do return end
+        do
+            return
+        end
     end
 
     state = to
@@ -585,11 +609,12 @@ function UpdateAnimation(oldState, target)
     elseif state == STATE.AGGRO then
         if (componentAnimator ~= nil) then
             currentClip = componentAnimator:GetSelectedClip()
-            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) < attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
+            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
+                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
                 componentAnimator:SetSelectedClip("Attack")
             elseif currentClip == "Attack" then
                 if componentAnimator:IsCurrentClipPlaying() == false then
-                    DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
+                    DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
                     componentAnimator:SetSelectedClip("AttackToIdle")
                 end
             elseif currentClip == "AttackToIdle" then
@@ -645,8 +670,8 @@ function Die()
         componentBoxCollider = nil
     end
     if (coneLight ~= nil) then
-        --gameObject:DeleteComponent(coneLight)
-        componentLight = nil
+        gameObject:DeleteComponent(coneLight)
+        coneLight = nil
     end
     if (awareness_green ~= nil) then
         DeleteGameObjectByUID(awareness_green:GetUID())
@@ -660,7 +685,7 @@ function Die()
         DeleteGameObjectByUID(awareness_yellow:GetUID())
         awareness_yellow = nil
     end
-    
+
     math.randomseed(os.time())
     rng = math.random(100)
     if (rng >= 50) then
