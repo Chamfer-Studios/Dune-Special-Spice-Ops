@@ -1,0 +1,5278 @@
+{
+    "asset_file": "0_levelTutorial_new.fbx",
+    "asset_path": "Assets/Models/Environments/Level 1/0_levelTutorial_new.fbx",
+    "contained_resources": [
+        {
+            "asset_file": "box_001.sugar",
+            "library_path": "Library/Meshes/1770126729.sugar",
+            "type": 0,
+            "uid": 1770126729
+        },
+        {
+            "asset_file": "big_box_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/big_box_base_color.png",
+            "library_path": "Library/Textures/1753941597.cacao",
+            "type": 1,
+            "uid": 1753941597
+        },
+        {
+            "asset_file": "box_002.sugar",
+            "library_path": "Library/Meshes/1865592856.sugar",
+            "type": 0,
+            "uid": 1865592856
+        },
+        {
+            "asset_file": "box_003.sugar",
+            "library_path": "Library/Meshes/1304452823.sugar",
+            "type": 0,
+            "uid": 1304452823
+        },
+        {
+            "asset_file": "box_004.sugar",
+            "library_path": "Library/Meshes/2106152745.sugar",
+            "type": 0,
+            "uid": 2106152745
+        },
+        {
+            "asset_file": "box_005.sugar",
+            "library_path": "Library/Meshes/1692728527.sugar",
+            "type": 0,
+            "uid": 1692728527
+        },
+        {
+            "asset_file": "box_006.sugar",
+            "library_path": "Library/Meshes/764376114.sugar",
+            "type": 0,
+            "uid": 764376114
+        },
+        {
+            "asset_file": "box_007.sugar",
+            "library_path": "Library/Meshes/630373940.sugar",
+            "type": 0,
+            "uid": 630373940
+        },
+        {
+            "asset_file": "box_008.sugar",
+            "library_path": "Library/Meshes/757783453.sugar",
+            "type": 0,
+            "uid": 757783453
+        },
+        {
+            "asset_file": "box_009.sugar",
+            "library_path": "Library/Meshes/784232869.sugar",
+            "type": 0,
+            "uid": 784232869
+        },
+        {
+            "asset_file": "box_010.sugar",
+            "library_path": "Library/Meshes/638863993.sugar",
+            "type": 0,
+            "uid": 638863993
+        },
+        {
+            "asset_file": "box_011.sugar",
+            "library_path": "Library/Meshes/566079302.sugar",
+            "type": 0,
+            "uid": 566079302
+        },
+        {
+            "asset_file": "box_012.sugar",
+            "library_path": "Library/Meshes/1674294414.sugar",
+            "type": 0,
+            "uid": 1674294414
+        },
+        {
+            "asset_file": "box_016.sugar",
+            "library_path": "Library/Meshes/1536081455.sugar",
+            "type": 0,
+            "uid": 1536081455
+        },
+        {
+            "asset_file": "box_017.sugar",
+            "library_path": "Library/Meshes/110417316.sugar",
+            "type": 0,
+            "uid": 110417316
+        },
+        {
+            "asset_file": "box_018.sugar",
+            "library_path": "Library/Meshes/1297764664.sugar",
+            "type": 0,
+            "uid": 1297764664
+        },
+        {
+            "asset_file": "box_022.sugar",
+            "library_path": "Library/Meshes/1271607012.sugar",
+            "type": 0,
+            "uid": 1271607012
+        },
+        {
+            "asset_file": "box_023.sugar",
+            "library_path": "Library/Meshes/2047513232.sugar",
+            "type": 0,
+            "uid": 2047513232
+        },
+        {
+            "asset_file": "box_024.sugar",
+            "library_path": "Library/Meshes/814668800.sugar",
+            "type": 0,
+            "uid": 814668800
+        },
+        {
+            "asset_file": "box_025.sugar",
+            "library_path": "Library/Meshes/178236112.sugar",
+            "type": 0,
+            "uid": 178236112
+        },
+        {
+            "asset_file": "box_026.sugar",
+            "library_path": "Library/Meshes/884231003.sugar",
+            "type": 0,
+            "uid": 884231003
+        },
+        {
+            "asset_file": "box_029.sugar",
+            "library_path": "Library/Meshes/968749164.sugar",
+            "type": 0,
+            "uid": 968749164
+        },
+        {
+            "asset_file": "box_030.sugar",
+            "library_path": "Library/Meshes/1698590887.sugar",
+            "type": 0,
+            "uid": 1698590887
+        },
+        {
+            "asset_file": "box_031.sugar",
+            "library_path": "Library/Meshes/1019747458.sugar",
+            "type": 0,
+            "uid": 1019747458
+        },
+        {
+            "asset_file": "box_032.sugar",
+            "library_path": "Library/Meshes/1242885832.sugar",
+            "type": 0,
+            "uid": 1242885832
+        },
+        {
+            "asset_file": "box_033.sugar",
+            "library_path": "Library/Meshes/630691996.sugar",
+            "type": 0,
+            "uid": 630691996
+        },
+        {
+            "asset_file": "box_034.sugar",
+            "library_path": "Library/Meshes/641862401.sugar",
+            "type": 0,
+            "uid": 641862401
+        },
+        {
+            "asset_file": "box_038.sugar",
+            "library_path": "Library/Meshes/1264186342.sugar",
+            "type": 0,
+            "uid": 1264186342
+        },
+        {
+            "asset_file": "box_039.sugar",
+            "library_path": "Library/Meshes/1215782398.sugar",
+            "type": 0,
+            "uid": 1215782398
+        },
+        {
+            "asset_file": "box_040.sugar",
+            "library_path": "Library/Meshes/1827304382.sugar",
+            "type": 0,
+            "uid": 1827304382
+        },
+        {
+            "asset_file": "box_041.sugar",
+            "library_path": "Library/Meshes/489482937.sugar",
+            "type": 0,
+            "uid": 489482937
+        },
+        {
+            "asset_file": "box_042.sugar",
+            "library_path": "Library/Meshes/1987094414.sugar",
+            "type": 0,
+            "uid": 1987094414
+        },
+        {
+            "asset_file": "box_043.sugar",
+            "library_path": "Library/Meshes/133999564.sugar",
+            "type": 0,
+            "uid": 133999564
+        },
+        {
+            "asset_file": "box_044.sugar",
+            "library_path": "Library/Meshes/1957935601.sugar",
+            "type": 0,
+            "uid": 1957935601
+        },
+        {
+            "asset_file": "box_045.sugar",
+            "library_path": "Library/Meshes/653917529.sugar",
+            "type": 0,
+            "uid": 653917529
+        },
+        {
+            "asset_file": "box_046.sugar",
+            "library_path": "Library/Meshes/992063250.sugar",
+            "type": 0,
+            "uid": 992063250
+        },
+        {
+            "asset_file": "box_047.sugar",
+            "library_path": "Library/Meshes/1847476378.sugar",
+            "type": 0,
+            "uid": 1847476378
+        },
+        {
+            "asset_file": "box_048.sugar",
+            "library_path": "Library/Meshes/952695561.sugar",
+            "type": 0,
+            "uid": 952695561
+        },
+        {
+            "asset_file": "box_049.sugar",
+            "library_path": "Library/Meshes/339193742.sugar",
+            "type": 0,
+            "uid": 339193742
+        },
+        {
+            "asset_file": "Circle.sugar",
+            "library_path": "Library/Meshes/1650246500.sugar",
+            "type": 0,
+            "uid": 1650246500
+        },
+        {
+            "asset_file": "lvl_1_group_2_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_2_base_color.png",
+            "library_path": "Library/Textures/1987675268.cacao",
+            "type": 1,
+            "uid": 1987675268
+        },
+        {
+            "asset_file": "Circle_001.sugar",
+            "library_path": "Library/Meshes/2081276779.sugar",
+            "type": 0,
+            "uid": 2081276779
+        },
+        {
+            "asset_file": "Circle_002.sugar",
+            "library_path": "Library/Meshes/1302112702.sugar",
+            "type": 0,
+            "uid": 1302112702
+        },
+        {
+            "asset_file": "Circle_003.sugar",
+            "library_path": "Library/Meshes/1551926779.sugar",
+            "type": 0,
+            "uid": 1551926779
+        },
+        {
+            "asset_file": "Circle_004.sugar",
+            "library_path": "Library/Meshes/683507204.sugar",
+            "type": 0,
+            "uid": 683507204
+        },
+        {
+            "asset_file": "Circle_005.sugar",
+            "library_path": "Library/Meshes/1072133621.sugar",
+            "type": 0,
+            "uid": 1072133621
+        },
+        {
+            "asset_file": "Circle_006.sugar",
+            "library_path": "Library/Meshes/1952763352.sugar",
+            "type": 0,
+            "uid": 1952763352
+        },
+        {
+            "asset_file": "Circle_007.sugar",
+            "library_path": "Library/Meshes/381854433.sugar",
+            "type": 0,
+            "uid": 381854433
+        },
+        {
+            "asset_file": "Circle_008.sugar",
+            "library_path": "Library/Meshes/1460856867.sugar",
+            "type": 0,
+            "uid": 1460856867
+        },
+        {
+            "asset_file": "Circle_010.sugar",
+            "library_path": "Library/Meshes/2101764681.sugar",
+            "type": 0,
+            "uid": 2101764681
+        },
+        {
+            "asset_file": "Circle_011.sugar",
+            "library_path": "Library/Meshes/10231368.sugar",
+            "type": 0,
+            "uid": 10231368
+        },
+        {
+            "asset_file": "Circle_012.sugar",
+            "library_path": "Library/Meshes/1331146724.sugar",
+            "type": 0,
+            "uid": 1331146724
+        },
+        {
+            "asset_file": "Circle_014.sugar",
+            "library_path": "Library/Meshes/1746280685.sugar",
+            "type": 0,
+            "uid": 1746280685
+        },
+        {
+            "asset_file": "column_rock_001.sugar",
+            "library_path": "Library/Meshes/1757455541.sugar",
+            "type": 0,
+            "uid": 1757455541
+        },
+        {
+            "asset_file": "lvl_1_group_4_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_4_base_color.png",
+            "library_path": "Library/Textures/1745802697.cacao",
+            "type": 1,
+            "uid": 1745802697
+        },
+        {
+            "asset_file": "column_rock_002.sugar",
+            "library_path": "Library/Meshes/911470891.sugar",
+            "type": 0,
+            "uid": 911470891
+        },
+        {
+            "asset_file": "column_rock_003.sugar",
+            "library_path": "Library/Meshes/234846262.sugar",
+            "type": 0,
+            "uid": 234846262
+        },
+        {
+            "asset_file": "column_rock_004.sugar",
+            "library_path": "Library/Meshes/426365078.sugar",
+            "type": 0,
+            "uid": 426365078
+        },
+        {
+            "asset_file": "column_rock_005.sugar",
+            "library_path": "Library/Meshes/648911838.sugar",
+            "type": 0,
+            "uid": 648911838
+        },
+        {
+            "asset_file": "column_rock_006.sugar",
+            "library_path": "Library/Meshes/569791946.sugar",
+            "type": 0,
+            "uid": 569791946
+        },
+        {
+            "asset_file": "column_rock_007.sugar",
+            "library_path": "Library/Meshes/1321518736.sugar",
+            "type": 0,
+            "uid": 1321518736
+        },
+        {
+            "asset_file": "column_rock_008.sugar",
+            "library_path": "Library/Meshes/1533395005.sugar",
+            "type": 0,
+            "uid": 1533395005
+        },
+        {
+            "asset_file": "column_rock_009.sugar",
+            "library_path": "Library/Meshes/1892747361.sugar",
+            "type": 0,
+            "uid": 1892747361
+        },
+        {
+            "asset_file": "column_rock_010.sugar",
+            "library_path": "Library/Meshes/781512964.sugar",
+            "type": 0,
+            "uid": 781512964
+        },
+        {
+            "asset_file": "column_rock_011.sugar",
+            "library_path": "Library/Meshes/1875653000.sugar",
+            "type": 0,
+            "uid": 1875653000
+        },
+        {
+            "asset_file": "column_rock_012.sugar",
+            "library_path": "Library/Meshes/1443825406.sugar",
+            "type": 0,
+            "uid": 1443825406
+        },
+        {
+            "asset_file": "column_rock_013.sugar",
+            "library_path": "Library/Meshes/1776764139.sugar",
+            "type": 0,
+            "uid": 1776764139
+        },
+        {
+            "asset_file": "column_rock_014.sugar",
+            "library_path": "Library/Meshes/1566787095.sugar",
+            "type": 0,
+            "uid": 1566787095
+        },
+        {
+            "asset_file": "column_rock_015.sugar",
+            "library_path": "Library/Meshes/1734055831.sugar",
+            "type": 0,
+            "uid": 1734055831
+        },
+        {
+            "asset_file": "column_rock_016.sugar",
+            "library_path": "Library/Meshes/1126888203.sugar",
+            "type": 0,
+            "uid": 1126888203
+        },
+        {
+            "asset_file": "column_rock_018.sugar",
+            "library_path": "Library/Meshes/1355183386.sugar",
+            "type": 0,
+            "uid": 1355183386
+        },
+        {
+            "asset_file": "column_rock_019.sugar",
+            "library_path": "Library/Meshes/1289678270.sugar",
+            "type": 0,
+            "uid": 1289678270
+        },
+        {
+            "asset_file": "column_rock_020.sugar",
+            "library_path": "Library/Meshes/195455529.sugar",
+            "type": 0,
+            "uid": 195455529
+        },
+        {
+            "asset_file": "column_rock_021.sugar",
+            "library_path": "Library/Meshes/1937074296.sugar",
+            "type": 0,
+            "uid": 1937074296
+        },
+        {
+            "asset_file": "column_rock_022.sugar",
+            "library_path": "Library/Meshes/623075669.sugar",
+            "type": 0,
+            "uid": 623075669
+        },
+        {
+            "asset_file": "column_rock_023.sugar",
+            "library_path": "Library/Meshes/1399405276.sugar",
+            "type": 0,
+            "uid": 1399405276
+        },
+        {
+            "asset_file": "column_rock_024.sugar",
+            "library_path": "Library/Meshes/1160424889.sugar",
+            "type": 0,
+            "uid": 1160424889
+        },
+        {
+            "asset_file": "column_rock_025.sugar",
+            "library_path": "Library/Meshes/159741796.sugar",
+            "type": 0,
+            "uid": 159741796
+        },
+        {
+            "asset_file": "column_rock_026.sugar",
+            "library_path": "Library/Meshes/852592829.sugar",
+            "type": 0,
+            "uid": 852592829
+        },
+        {
+            "asset_file": "column_rock_027.sugar",
+            "library_path": "Library/Meshes/2021363836.sugar",
+            "type": 0,
+            "uid": 2021363836
+        },
+        {
+            "asset_file": "column_rock_028.sugar",
+            "library_path": "Library/Meshes/755353271.sugar",
+            "type": 0,
+            "uid": 755353271
+        },
+        {
+            "asset_file": "column_rock_029.sugar",
+            "library_path": "Library/Meshes/1063526021.sugar",
+            "type": 0,
+            "uid": 1063526021
+        },
+        {
+            "asset_file": "column_rock_030.sugar",
+            "library_path": "Library/Meshes/1627522681.sugar",
+            "type": 0,
+            "uid": 1627522681
+        },
+        {
+            "asset_file": "column_rock_031.sugar",
+            "library_path": "Library/Meshes/1990036236.sugar",
+            "type": 0,
+            "uid": 1990036236
+        },
+        {
+            "asset_file": "column_rock_034.sugar",
+            "library_path": "Library/Meshes/368591818.sugar",
+            "type": 0,
+            "uid": 368591818
+        },
+        {
+            "asset_file": "column_rock_035.sugar",
+            "library_path": "Library/Meshes/1834799238.sugar",
+            "type": 0,
+            "uid": 1834799238
+        },
+        {
+            "asset_file": "column_rock_036.sugar",
+            "library_path": "Library/Meshes/1668933082.sugar",
+            "type": 0,
+            "uid": 1668933082
+        },
+        {
+            "asset_file": "column_rock_037.sugar",
+            "library_path": "Library/Meshes/576516829.sugar",
+            "type": 0,
+            "uid": 576516829
+        },
+        {
+            "asset_file": "column_rock_038.sugar",
+            "library_path": "Library/Meshes/1536196723.sugar",
+            "type": 0,
+            "uid": 1536196723
+        },
+        {
+            "asset_file": "column_rock_039.sugar",
+            "library_path": "Library/Meshes/779624467.sugar",
+            "type": 0,
+            "uid": 779624467
+        },
+        {
+            "asset_file": "column_rock_040.sugar",
+            "library_path": "Library/Meshes/1693304098.sugar",
+            "type": 0,
+            "uid": 1693304098
+        },
+        {
+            "asset_file": "Cube_204.sugar",
+            "library_path": "Library/Meshes/439735838.sugar",
+            "type": 0,
+            "uid": 439735838
+        },
+        {
+            "asset_file": "lvl_1_floor_texture_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_floor_texture_base_color.png",
+            "library_path": "Library/Textures/430722129.cacao",
+            "type": 1,
+            "uid": 430722129
+        },
+        {
+            "asset_file": "Cube_205.sugar",
+            "library_path": "Library/Meshes/1747014903.sugar",
+            "type": 0,
+            "uid": 1747014903
+        },
+        {
+            "asset_file": "Cube_206.sugar",
+            "library_path": "Library/Meshes/1471923938.sugar",
+            "type": 0,
+            "uid": 1471923938
+        },
+        {
+            "asset_file": "Cube_207.sugar",
+            "library_path": "Library/Meshes/384053926.sugar",
+            "type": 0,
+            "uid": 384053926
+        },
+        {
+            "asset_file": "Cube_208.sugar",
+            "library_path": "Library/Meshes/1268694202.sugar",
+            "type": 0,
+            "uid": 1268694202
+        },
+        {
+            "asset_file": "door_rock_002.sugar",
+            "library_path": "Library/Meshes/1731857169.sugar",
+            "type": 0,
+            "uid": 1731857169
+        },
+        {
+            "asset_file": "grid_002.sugar",
+            "library_path": "Library/Meshes/566234767.sugar",
+            "type": 0,
+            "uid": 566234767
+        },
+        {
+            "asset_file": "lvl_1_group_1_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_1_base_color.png",
+            "library_path": "Library/Textures/738049943.cacao",
+            "type": 1,
+            "uid": 738049943
+        },
+        {
+            "asset_file": "grid_003.sugar",
+            "library_path": "Library/Meshes/791740471.sugar",
+            "type": 0,
+            "uid": 791740471
+        },
+        {
+            "asset_file": "grid_005.sugar",
+            "library_path": "Library/Meshes/1789361781.sugar",
+            "type": 0,
+            "uid": 1789361781
+        },
+        {
+            "asset_file": "grid_006.sugar",
+            "library_path": "Library/Meshes/1123456801.sugar",
+            "type": 0,
+            "uid": 1123456801
+        },
+        {
+            "asset_file": "jail_001.sugar",
+            "library_path": "Library/Meshes/1913558409.sugar",
+            "type": 0,
+            "uid": 1913558409
+        },
+        {
+            "asset_file": "jail_002.sugar",
+            "library_path": "Library/Meshes/737306532.sugar",
+            "type": 0,
+            "uid": 737306532
+        },
+        {
+            "asset_file": "jail_003.sugar",
+            "library_path": "Library/Meshes/371901482.sugar",
+            "type": 0,
+            "uid": 371901482
+        },
+        {
+            "asset_file": "medium_rock_1_001.sugar",
+            "library_path": "Library/Meshes/1827240582.sugar",
+            "type": 0,
+            "uid": 1827240582
+        },
+        {
+            "asset_file": "medium_rock_1_002.sugar",
+            "library_path": "Library/Meshes/640806078.sugar",
+            "type": 0,
+            "uid": 640806078
+        },
+        {
+            "asset_file": "medium_rock_1_003.sugar",
+            "library_path": "Library/Meshes/1677026521.sugar",
+            "type": 0,
+            "uid": 1677026521
+        },
+        {
+            "asset_file": "medium_rock_1_004.sugar",
+            "library_path": "Library/Meshes/71964563.sugar",
+            "type": 0,
+            "uid": 71964563
+        },
+        {
+            "asset_file": "medium_rock_1_005.sugar",
+            "library_path": "Library/Meshes/480740657.sugar",
+            "type": 0,
+            "uid": 480740657
+        },
+        {
+            "asset_file": "medium_rock_1_006.sugar",
+            "library_path": "Library/Meshes/1401000805.sugar",
+            "type": 0,
+            "uid": 1401000805
+        },
+        {
+            "asset_file": "medium_rock_1_007.sugar",
+            "library_path": "Library/Meshes/1684085229.sugar",
+            "type": 0,
+            "uid": 1684085229
+        },
+        {
+            "asset_file": "medium_rock_1_008.sugar",
+            "library_path": "Library/Meshes/594692403.sugar",
+            "type": 0,
+            "uid": 594692403
+        },
+        {
+            "asset_file": "medium_rock_1_009.sugar",
+            "library_path": "Library/Meshes/889063779.sugar",
+            "type": 0,
+            "uid": 889063779
+        },
+        {
+            "asset_file": "medium_rock_1_010.sugar",
+            "library_path": "Library/Meshes/725889995.sugar",
+            "type": 0,
+            "uid": 725889995
+        },
+        {
+            "asset_file": "medium_rock_1_013.sugar",
+            "library_path": "Library/Meshes/1161523544.sugar",
+            "type": 0,
+            "uid": 1161523544
+        },
+        {
+            "asset_file": "medium_rock_1_014.sugar",
+            "library_path": "Library/Meshes/871572520.sugar",
+            "type": 0,
+            "uid": 871572520
+        },
+        {
+            "asset_file": "medium_rock_1_015.sugar",
+            "library_path": "Library/Meshes/1040618005.sugar",
+            "type": 0,
+            "uid": 1040618005
+        },
+        {
+            "asset_file": "medium_rock_1_016.sugar",
+            "library_path": "Library/Meshes/2070916680.sugar",
+            "type": 0,
+            "uid": 2070916680
+        },
+        {
+            "asset_file": "medium_rock_1_017.sugar",
+            "library_path": "Library/Meshes/747765080.sugar",
+            "type": 0,
+            "uid": 747765080
+        },
+        {
+            "asset_file": "medium_rock_1_018.sugar",
+            "library_path": "Library/Meshes/1269905690.sugar",
+            "type": 0,
+            "uid": 1269905690
+        },
+        {
+            "asset_file": "medium_rock_1_019.sugar",
+            "library_path": "Library/Meshes/886869474.sugar",
+            "type": 0,
+            "uid": 886869474
+        },
+        {
+            "asset_file": "medium_rock_1_020.sugar",
+            "library_path": "Library/Meshes/554475798.sugar",
+            "type": 0,
+            "uid": 554475798
+        },
+        {
+            "asset_file": "medium_rock_1_021.sugar",
+            "library_path": "Library/Meshes/170810923.sugar",
+            "type": 0,
+            "uid": 170810923
+        },
+        {
+            "asset_file": "medium_rock_1_022.sugar",
+            "library_path": "Library/Meshes/414725890.sugar",
+            "type": 0,
+            "uid": 414725890
+        },
+        {
+            "asset_file": "medium_rock_1_023.sugar",
+            "library_path": "Library/Meshes/588163224.sugar",
+            "type": 0,
+            "uid": 588163224
+        },
+        {
+            "asset_file": "medium_rock_1_024.sugar",
+            "library_path": "Library/Meshes/1412260275.sugar",
+            "type": 0,
+            "uid": 1412260275
+        },
+        {
+            "asset_file": "medium_rock_2_001.sugar",
+            "library_path": "Library/Meshes/1320822072.sugar",
+            "type": 0,
+            "uid": 1320822072
+        },
+        {
+            "asset_file": "medium_rock_2_002.sugar",
+            "library_path": "Library/Meshes/2041610061.sugar",
+            "type": 0,
+            "uid": 2041610061
+        },
+        {
+            "asset_file": "medium_rock_2_003.sugar",
+            "library_path": "Library/Meshes/1684968010.sugar",
+            "type": 0,
+            "uid": 1684968010
+        },
+        {
+            "asset_file": "medium_rock_2_004.sugar",
+            "library_path": "Library/Meshes/1232122996.sugar",
+            "type": 0,
+            "uid": 1232122996
+        },
+        {
+            "asset_file": "medium_rock_2_005.sugar",
+            "library_path": "Library/Meshes/1441847603.sugar",
+            "type": 0,
+            "uid": 1441847603
+        },
+        {
+            "asset_file": "medium_rock_2_006.sugar",
+            "library_path": "Library/Meshes/516465175.sugar",
+            "type": 0,
+            "uid": 516465175
+        },
+        {
+            "asset_file": "medium_rock_2_008.sugar",
+            "library_path": "Library/Meshes/2088131536.sugar",
+            "type": 0,
+            "uid": 2088131536
+        },
+        {
+            "asset_file": "medium_rock_2_009.sugar",
+            "library_path": "Library/Meshes/448783990.sugar",
+            "type": 0,
+            "uid": 448783990
+        },
+        {
+            "asset_file": "medium_rock_2_011.sugar",
+            "library_path": "Library/Meshes/1812861354.sugar",
+            "type": 0,
+            "uid": 1812861354
+        },
+        {
+            "asset_file": "medium_rock_2_012.sugar",
+            "library_path": "Library/Meshes/329556498.sugar",
+            "type": 0,
+            "uid": 329556498
+        },
+        {
+            "asset_file": "medium_rock_2_013.sugar",
+            "library_path": "Library/Meshes/2059532848.sugar",
+            "type": 0,
+            "uid": 2059532848
+        },
+        {
+            "asset_file": "medium_rock_2_014.sugar",
+            "library_path": "Library/Meshes/312528154.sugar",
+            "type": 0,
+            "uid": 312528154
+        },
+        {
+            "asset_file": "medium_rock_2_015.sugar",
+            "library_path": "Library/Meshes/399301011.sugar",
+            "type": 0,
+            "uid": 399301011
+        },
+        {
+            "asset_file": "medium_rock_2_016.sugar",
+            "library_path": "Library/Meshes/180281639.sugar",
+            "type": 0,
+            "uid": 180281639
+        },
+        {
+            "asset_file": "medium_rock_2_017.sugar",
+            "library_path": "Library/Meshes/1686752631.sugar",
+            "type": 0,
+            "uid": 1686752631
+        },
+        {
+            "asset_file": "medium_rock_2_018.sugar",
+            "library_path": "Library/Meshes/475087708.sugar",
+            "type": 0,
+            "uid": 475087708
+        },
+        {
+            "asset_file": "medium_rock_2_019.sugar",
+            "library_path": "Library/Meshes/2009900245.sugar",
+            "type": 0,
+            "uid": 2009900245
+        },
+        {
+            "asset_file": "medium_rock_2_020.sugar",
+            "library_path": "Library/Meshes/372061354.sugar",
+            "type": 0,
+            "uid": 372061354
+        },
+        {
+            "asset_file": "medium_rock_2_021.sugar",
+            "library_path": "Library/Meshes/1751525525.sugar",
+            "type": 0,
+            "uid": 1751525525
+        },
+        {
+            "asset_file": "medium_rock_2_022.sugar",
+            "library_path": "Library/Meshes/72476106.sugar",
+            "type": 0,
+            "uid": 72476106
+        },
+        {
+            "asset_file": "medium_rock_3_001.sugar",
+            "library_path": "Library/Meshes/1126431579.sugar",
+            "type": 0,
+            "uid": 1126431579
+        },
+        {
+            "asset_file": "medium_rock_3_002.sugar",
+            "library_path": "Library/Meshes/2065541364.sugar",
+            "type": 0,
+            "uid": 2065541364
+        },
+        {
+            "asset_file": "medium_rock_3_003.sugar",
+            "library_path": "Library/Meshes/1839191958.sugar",
+            "type": 0,
+            "uid": 1839191958
+        },
+        {
+            "asset_file": "medium_rock_3_004.sugar",
+            "library_path": "Library/Meshes/1319732767.sugar",
+            "type": 0,
+            "uid": 1319732767
+        },
+        {
+            "asset_file": "medium_rock_3_005.sugar",
+            "library_path": "Library/Meshes/1066936399.sugar",
+            "type": 0,
+            "uid": 1066936399
+        },
+        {
+            "asset_file": "medium_rock_3_006.sugar",
+            "library_path": "Library/Meshes/524180365.sugar",
+            "type": 0,
+            "uid": 524180365
+        },
+        {
+            "asset_file": "medium_rock_3_007.sugar",
+            "library_path": "Library/Meshes/469662676.sugar",
+            "type": 0,
+            "uid": 469662676
+        },
+        {
+            "asset_file": "medium_rock_3_008.sugar",
+            "library_path": "Library/Meshes/1073511978.sugar",
+            "type": 0,
+            "uid": 1073511978
+        },
+        {
+            "asset_file": "medium_rock_3_009.sugar",
+            "library_path": "Library/Meshes/867059606.sugar",
+            "type": 0,
+            "uid": 867059606
+        },
+        {
+            "asset_file": "medium_rock_3_010.sugar",
+            "library_path": "Library/Meshes/1857266596.sugar",
+            "type": 0,
+            "uid": 1857266596
+        },
+        {
+            "asset_file": "medium_rock_3_011.sugar",
+            "library_path": "Library/Meshes/1605122328.sugar",
+            "type": 0,
+            "uid": 1605122328
+        },
+        {
+            "asset_file": "medium_rock_3_014.sugar",
+            "library_path": "Library/Meshes/1908890856.sugar",
+            "type": 0,
+            "uid": 1908890856
+        },
+        {
+            "asset_file": "medium_rock_3_015.sugar",
+            "library_path": "Library/Meshes/341525169.sugar",
+            "type": 0,
+            "uid": 341525169
+        },
+        {
+            "asset_file": "medium_rock_3_017.sugar",
+            "library_path": "Library/Meshes/1730902693.sugar",
+            "type": 0,
+            "uid": 1730902693
+        },
+        {
+            "asset_file": "medium_rock_3_018.sugar",
+            "library_path": "Library/Meshes/513371160.sugar",
+            "type": 0,
+            "uid": 513371160
+        },
+        {
+            "asset_file": "medium_rock_3_019.sugar",
+            "library_path": "Library/Meshes/350480127.sugar",
+            "type": 0,
+            "uid": 350480127
+        },
+        {
+            "asset_file": "medium_rock_3_020.sugar",
+            "library_path": "Library/Meshes/911625608.sugar",
+            "type": 0,
+            "uid": 911625608
+        },
+        {
+            "asset_file": "medium_rock_3_021.sugar",
+            "library_path": "Library/Meshes/1562678342.sugar",
+            "type": 0,
+            "uid": 1562678342
+        },
+        {
+            "asset_file": "medium_rock_3_022.sugar",
+            "library_path": "Library/Meshes/1419864519.sugar",
+            "type": 0,
+            "uid": 1419864519
+        },
+        {
+            "asset_file": "medium_rock_3_023.sugar",
+            "library_path": "Library/Meshes/1573149625.sugar",
+            "type": 0,
+            "uid": 1573149625
+        },
+        {
+            "asset_file": "medium_rock_3_024.sugar",
+            "library_path": "Library/Meshes/510603847.sugar",
+            "type": 0,
+            "uid": 510603847
+        },
+        {
+            "asset_file": "medium_rock_3_025.sugar",
+            "library_path": "Library/Meshes/386180194.sugar",
+            "type": 0,
+            "uid": 386180194
+        },
+        {
+            "asset_file": "medium_rock_3_026.sugar",
+            "library_path": "Library/Meshes/884160884.sugar",
+            "type": 0,
+            "uid": 884160884
+        },
+        {
+            "asset_file": "medium_rock_3_027.sugar",
+            "library_path": "Library/Meshes/1957801987.sugar",
+            "type": 0,
+            "uid": 1957801987
+        },
+        {
+            "asset_file": "medium_rock_3_028.sugar",
+            "library_path": "Library/Meshes/538571215.sugar",
+            "type": 0,
+            "uid": 538571215
+        },
+        {
+            "asset_file": "medium_rock_3_029.sugar",
+            "library_path": "Library/Meshes/795959854.sugar",
+            "type": 0,
+            "uid": 795959854
+        },
+        {
+            "asset_file": "mountain_wall_1_026.sugar",
+            "library_path": "Library/Meshes/1857650082.sugar",
+            "type": 0,
+            "uid": 1857650082
+        },
+        {
+            "asset_file": "lvl_1_group_6_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_6_base_color.png",
+            "library_path": "Library/Textures/780005812.cacao",
+            "type": 1,
+            "uid": 780005812
+        },
+        {
+            "asset_file": "mountain_wall_1_027.sugar",
+            "library_path": "Library/Meshes/680697090.sugar",
+            "type": 0,
+            "uid": 680697090
+        },
+        {
+            "asset_file": "mountain_wall_1_028.sugar",
+            "library_path": "Library/Meshes/886117329.sugar",
+            "type": 0,
+            "uid": 886117329
+        },
+        {
+            "asset_file": "mountain_wall_1_029.sugar",
+            "library_path": "Library/Meshes/802383755.sugar",
+            "type": 0,
+            "uid": 802383755
+        },
+        {
+            "asset_file": "mountain_wall_1_030.sugar",
+            "library_path": "Library/Meshes/1569547469.sugar",
+            "type": 0,
+            "uid": 1569547469
+        },
+        {
+            "asset_file": "mountain_wall_1_031.sugar",
+            "library_path": "Library/Meshes/1673850179.sugar",
+            "type": 0,
+            "uid": 1673850179
+        },
+        {
+            "asset_file": "mountain_wall_1_032.sugar",
+            "library_path": "Library/Meshes/38169734.sugar",
+            "type": 0,
+            "uid": 38169734
+        },
+        {
+            "asset_file": "mountain_wall_1_033.sugar",
+            "library_path": "Library/Meshes/900702722.sugar",
+            "type": 0,
+            "uid": 900702722
+        },
+        {
+            "asset_file": "mountain_wall_1_034.sugar",
+            "library_path": "Library/Meshes/809603355.sugar",
+            "type": 0,
+            "uid": 809603355
+        },
+        {
+            "asset_file": "mountain_wall_1_035.sugar",
+            "library_path": "Library/Meshes/387035031.sugar",
+            "type": 0,
+            "uid": 387035031
+        },
+        {
+            "asset_file": "mountain_wall_1_036.sugar",
+            "library_path": "Library/Meshes/704910957.sugar",
+            "type": 0,
+            "uid": 704910957
+        },
+        {
+            "asset_file": "mountain_wall_1_037.sugar",
+            "library_path": "Library/Meshes/999311376.sugar",
+            "type": 0,
+            "uid": 999311376
+        },
+        {
+            "asset_file": "mountain_wall_1_038.sugar",
+            "library_path": "Library/Meshes/690811364.sugar",
+            "type": 0,
+            "uid": 690811364
+        },
+        {
+            "asset_file": "mountain_wall_1_039.sugar",
+            "library_path": "Library/Meshes/553437723.sugar",
+            "type": 0,
+            "uid": 553437723
+        },
+        {
+            "asset_file": "mountain_wall_1_040.sugar",
+            "library_path": "Library/Meshes/1756963081.sugar",
+            "type": 0,
+            "uid": 1756963081
+        },
+        {
+            "asset_file": "mountain_wall_1_041.sugar",
+            "library_path": "Library/Meshes/816650861.sugar",
+            "type": 0,
+            "uid": 816650861
+        },
+        {
+            "asset_file": "mountain_wall_1_042.sugar",
+            "library_path": "Library/Meshes/855347137.sugar",
+            "type": 0,
+            "uid": 855347137
+        },
+        {
+            "asset_file": "mountain_wall_1_043.sugar",
+            "library_path": "Library/Meshes/750402955.sugar",
+            "type": 0,
+            "uid": 750402955
+        },
+        {
+            "asset_file": "mountain_wall_1_044.sugar",
+            "library_path": "Library/Meshes/359287503.sugar",
+            "type": 0,
+            "uid": 359287503
+        },
+        {
+            "asset_file": "mountain_wall_1_045.sugar",
+            "library_path": "Library/Meshes/1777127337.sugar",
+            "type": 0,
+            "uid": 1777127337
+        },
+        {
+            "asset_file": "mountain_wall_1_046.sugar",
+            "library_path": "Library/Meshes/1391795235.sugar",
+            "type": 0,
+            "uid": 1391795235
+        },
+        {
+            "asset_file": "mountain_wall_1_047.sugar",
+            "library_path": "Library/Meshes/40267807.sugar",
+            "type": 0,
+            "uid": 40267807
+        },
+        {
+            "asset_file": "mountain_wall_1_048.sugar",
+            "library_path": "Library/Meshes/704722842.sugar",
+            "type": 0,
+            "uid": 704722842
+        },
+        {
+            "asset_file": "mountain_wall_1_049.sugar",
+            "library_path": "Library/Meshes/531798979.sugar",
+            "type": 0,
+            "uid": 531798979
+        },
+        {
+            "asset_file": "mountain_wall_1_050.sugar",
+            "library_path": "Library/Meshes/1829304601.sugar",
+            "type": 0,
+            "uid": 1829304601
+        },
+        {
+            "asset_file": "mountain_wall_1_051.sugar",
+            "library_path": "Library/Meshes/2041558592.sugar",
+            "type": 0,
+            "uid": 2041558592
+        },
+        {
+            "asset_file": "mountain_wall_1_052.sugar",
+            "library_path": "Library/Meshes/312321371.sugar",
+            "type": 0,
+            "uid": 312321371
+        },
+        {
+            "asset_file": "mountain_wall_1_053.sugar",
+            "library_path": "Library/Meshes/945328418.sugar",
+            "type": 0,
+            "uid": 945328418
+        },
+        {
+            "asset_file": "mountain_wall_1_055.sugar",
+            "library_path": "Library/Meshes/1116702410.sugar",
+            "type": 0,
+            "uid": 1116702410
+        },
+        {
+            "asset_file": "mountain_wall_1_056.sugar",
+            "library_path": "Library/Meshes/660659288.sugar",
+            "type": 0,
+            "uid": 660659288
+        },
+        {
+            "asset_file": "mountain_wall_1_057.sugar",
+            "library_path": "Library/Meshes/790668876.sugar",
+            "type": 0,
+            "uid": 790668876
+        },
+        {
+            "asset_file": "mountain_wall_1_058.sugar",
+            "library_path": "Library/Meshes/1302148698.sugar",
+            "type": 0,
+            "uid": 1302148698
+        },
+        {
+            "asset_file": "mountain_wall_1_059.sugar",
+            "library_path": "Library/Meshes/570800406.sugar",
+            "type": 0,
+            "uid": 570800406
+        },
+        {
+            "asset_file": "mountain_wall_1_060.sugar",
+            "library_path": "Library/Meshes/1897722078.sugar",
+            "type": 0,
+            "uid": 1897722078
+        },
+        {
+            "asset_file": "mountain_wall_1_061.sugar",
+            "library_path": "Library/Meshes/364333351.sugar",
+            "type": 0,
+            "uid": 364333351
+        },
+        {
+            "asset_file": "mountain_wall_1_062.sugar",
+            "library_path": "Library/Meshes/766889845.sugar",
+            "type": 0,
+            "uid": 766889845
+        },
+        {
+            "asset_file": "mountain_wall_1_063.sugar",
+            "library_path": "Library/Meshes/1171018731.sugar",
+            "type": 0,
+            "uid": 1171018731
+        },
+        {
+            "asset_file": "mountain_wall_1_064.sugar",
+            "library_path": "Library/Meshes/1015619774.sugar",
+            "type": 0,
+            "uid": 1015619774
+        },
+        {
+            "asset_file": "mountain_wall_1_065.sugar",
+            "library_path": "Library/Meshes/1176094698.sugar",
+            "type": 0,
+            "uid": 1176094698
+        },
+        {
+            "asset_file": "mountain_wall_1_066.sugar",
+            "library_path": "Library/Meshes/1231758854.sugar",
+            "type": 0,
+            "uid": 1231758854
+        },
+        {
+            "asset_file": "mountain_wall_1_067.sugar",
+            "library_path": "Library/Meshes/110050469.sugar",
+            "type": 0,
+            "uid": 110050469
+        },
+        {
+            "asset_file": "mountain_wall_1_068.sugar",
+            "library_path": "Library/Meshes/1139867207.sugar",
+            "type": 0,
+            "uid": 1139867207
+        },
+        {
+            "asset_file": "mountain_wall_1_069.sugar",
+            "library_path": "Library/Meshes/629556650.sugar",
+            "type": 0,
+            "uid": 629556650
+        },
+        {
+            "asset_file": "mountain_wall_1_070.sugar",
+            "library_path": "Library/Meshes/1589869698.sugar",
+            "type": 0,
+            "uid": 1589869698
+        },
+        {
+            "asset_file": "mountain_wall_1_071.sugar",
+            "library_path": "Library/Meshes/1676356279.sugar",
+            "type": 0,
+            "uid": 1676356279
+        },
+        {
+            "asset_file": "mountain_wall_1_072.sugar",
+            "library_path": "Library/Meshes/741885982.sugar",
+            "type": 0,
+            "uid": 741885982
+        },
+        {
+            "asset_file": "mountain_wall_1_073.sugar",
+            "library_path": "Library/Meshes/313251301.sugar",
+            "type": 0,
+            "uid": 313251301
+        },
+        {
+            "asset_file": "mountain_wall_1_074.sugar",
+            "library_path": "Library/Meshes/1519634780.sugar",
+            "type": 0,
+            "uid": 1519634780
+        },
+        {
+            "asset_file": "mountain_wall_1_075.sugar",
+            "library_path": "Library/Meshes/1971638007.sugar",
+            "type": 0,
+            "uid": 1971638007
+        },
+        {
+            "asset_file": "mountain_wall_1_076.sugar",
+            "library_path": "Library/Meshes/104372345.sugar",
+            "type": 0,
+            "uid": 104372345
+        },
+        {
+            "asset_file": "mountain_wall_1_077.sugar",
+            "library_path": "Library/Meshes/733894306.sugar",
+            "type": 0,
+            "uid": 733894306
+        },
+        {
+            "asset_file": "mountain_wall_1_078.sugar",
+            "library_path": "Library/Meshes/1218966867.sugar",
+            "type": 0,
+            "uid": 1218966867
+        },
+        {
+            "asset_file": "mountain_wall_2_038.sugar",
+            "library_path": "Library/Meshes/669829050.sugar",
+            "type": 0,
+            "uid": 669829050
+        },
+        {
+            "asset_file": "mountain_wall_2_039.sugar",
+            "library_path": "Library/Meshes/1986787204.sugar",
+            "type": 0,
+            "uid": 1986787204
+        },
+        {
+            "asset_file": "mountain_wall_2_040.sugar",
+            "library_path": "Library/Meshes/1319412342.sugar",
+            "type": 0,
+            "uid": 1319412342
+        },
+        {
+            "asset_file": "mountain_wall_2_041.sugar",
+            "library_path": "Library/Meshes/1036772431.sugar",
+            "type": 0,
+            "uid": 1036772431
+        },
+        {
+            "asset_file": "mountain_wall_2_042.sugar",
+            "library_path": "Library/Meshes/1998805520.sugar",
+            "type": 0,
+            "uid": 1998805520
+        },
+        {
+            "asset_file": "mountain_wall_2_043.sugar",
+            "library_path": "Library/Meshes/325558694.sugar",
+            "type": 0,
+            "uid": 325558694
+        },
+        {
+            "asset_file": "mountain_wall_2_044.sugar",
+            "library_path": "Library/Meshes/1530894164.sugar",
+            "type": 0,
+            "uid": 1530894164
+        },
+        {
+            "asset_file": "mountain_wall_2_045.sugar",
+            "library_path": "Library/Meshes/1371009242.sugar",
+            "type": 0,
+            "uid": 1371009242
+        },
+        {
+            "asset_file": "mountain_wall_2_046.sugar",
+            "library_path": "Library/Meshes/1417377997.sugar",
+            "type": 0,
+            "uid": 1417377997
+        },
+        {
+            "asset_file": "mountain_wall_2_048.sugar",
+            "library_path": "Library/Meshes/1918079592.sugar",
+            "type": 0,
+            "uid": 1918079592
+        },
+        {
+            "asset_file": "mountain_wall_2_049.sugar",
+            "library_path": "Library/Meshes/1967981409.sugar",
+            "type": 0,
+            "uid": 1967981409
+        },
+        {
+            "asset_file": "mountain_wall_2_050.sugar",
+            "library_path": "Library/Meshes/1278062362.sugar",
+            "type": 0,
+            "uid": 1278062362
+        },
+        {
+            "asset_file": "mountain_wall_2_052.sugar",
+            "library_path": "Library/Meshes/713637780.sugar",
+            "type": 0,
+            "uid": 713637780
+        },
+        {
+            "asset_file": "mountain_wall_2_053.sugar",
+            "library_path": "Library/Meshes/1623042584.sugar",
+            "type": 0,
+            "uid": 1623042584
+        },
+        {
+            "asset_file": "mountain_wall_2_054.sugar",
+            "library_path": "Library/Meshes/1141830940.sugar",
+            "type": 0,
+            "uid": 1141830940
+        },
+        {
+            "asset_file": "mountain_wall_2_055.sugar",
+            "library_path": "Library/Meshes/1061204523.sugar",
+            "type": 0,
+            "uid": 1061204523
+        },
+        {
+            "asset_file": "mountain_wall_2_056.sugar",
+            "library_path": "Library/Meshes/984325060.sugar",
+            "type": 0,
+            "uid": 984325060
+        },
+        {
+            "asset_file": "mountain_wall_2_057.sugar",
+            "library_path": "Library/Meshes/713285302.sugar",
+            "type": 0,
+            "uid": 713285302
+        },
+        {
+            "asset_file": "mountain_wall_2_058.sugar",
+            "library_path": "Library/Meshes/2020343152.sugar",
+            "type": 0,
+            "uid": 2020343152
+        },
+        {
+            "asset_file": "mountain_wall_2_059.sugar",
+            "library_path": "Library/Meshes/650026722.sugar",
+            "type": 0,
+            "uid": 650026722
+        },
+        {
+            "asset_file": "mountain_wall_2_060.sugar",
+            "library_path": "Library/Meshes/128559202.sugar",
+            "type": 0,
+            "uid": 128559202
+        },
+        {
+            "asset_file": "mountain_wall_2_061.sugar",
+            "library_path": "Library/Meshes/311000651.sugar",
+            "type": 0,
+            "uid": 311000651
+        },
+        {
+            "asset_file": "mountain_wall_2_064.sugar",
+            "library_path": "Library/Meshes/800759310.sugar",
+            "type": 0,
+            "uid": 800759310
+        },
+        {
+            "asset_file": "mountain_wall_2_065.sugar",
+            "library_path": "Library/Meshes/443029075.sugar",
+            "type": 0,
+            "uid": 443029075
+        },
+        {
+            "asset_file": "mountain_wall_2_066.sugar",
+            "library_path": "Library/Meshes/1610128697.sugar",
+            "type": 0,
+            "uid": 1610128697
+        },
+        {
+            "asset_file": "mountain_wall_2_067.sugar",
+            "library_path": "Library/Meshes/856407201.sugar",
+            "type": 0,
+            "uid": 856407201
+        },
+        {
+            "asset_file": "mountain_wall_2_068.sugar",
+            "library_path": "Library/Meshes/2073032136.sugar",
+            "type": 0,
+            "uid": 2073032136
+        },
+        {
+            "asset_file": "mountain_wall_2_069.sugar",
+            "library_path": "Library/Meshes/885826658.sugar",
+            "type": 0,
+            "uid": 885826658
+        },
+        {
+            "asset_file": "mountain_wall_2_070.sugar",
+            "library_path": "Library/Meshes/192108875.sugar",
+            "type": 0,
+            "uid": 192108875
+        },
+        {
+            "asset_file": "mountain_wall_2_071.sugar",
+            "library_path": "Library/Meshes/1730440392.sugar",
+            "type": 0,
+            "uid": 1730440392
+        },
+        {
+            "asset_file": "mountain_wall_2_072.sugar",
+            "library_path": "Library/Meshes/37868192.sugar",
+            "type": 0,
+            "uid": 37868192
+        },
+        {
+            "asset_file": "mountain_wall_2_073.sugar",
+            "library_path": "Library/Meshes/450412970.sugar",
+            "type": 0,
+            "uid": 450412970
+        },
+        {
+            "asset_file": "mountain_wall_2_074.sugar",
+            "library_path": "Library/Meshes/673597344.sugar",
+            "type": 0,
+            "uid": 673597344
+        },
+        {
+            "asset_file": "mountain_wall_2_076.sugar",
+            "library_path": "Library/Meshes/712700800.sugar",
+            "type": 0,
+            "uid": 712700800
+        },
+        {
+            "asset_file": "mountain_wall_2_077.sugar",
+            "library_path": "Library/Meshes/2016341883.sugar",
+            "type": 0,
+            "uid": 2016341883
+        },
+        {
+            "asset_file": "mountain_wall_2_079.sugar",
+            "library_path": "Library/Meshes/446175160.sugar",
+            "type": 0,
+            "uid": 446175160
+        },
+        {
+            "asset_file": "mountain_wall_2_080.sugar",
+            "library_path": "Library/Meshes/1534902360.sugar",
+            "type": 0,
+            "uid": 1534902360
+        },
+        {
+            "asset_file": "mountain_wall_2_081.sugar",
+            "library_path": "Library/Meshes/1416421166.sugar",
+            "type": 0,
+            "uid": 1416421166
+        },
+        {
+            "asset_file": "mountain_wall_2_082.sugar",
+            "library_path": "Library/Meshes/858825235.sugar",
+            "type": 0,
+            "uid": 858825235
+        },
+        {
+            "asset_file": "mountain_wall_2_083.sugar",
+            "library_path": "Library/Meshes/1275785209.sugar",
+            "type": 0,
+            "uid": 1275785209
+        },
+        {
+            "asset_file": "mountain_wall_2_084.sugar",
+            "library_path": "Library/Meshes/208788427.sugar",
+            "type": 0,
+            "uid": 208788427
+        },
+        {
+            "asset_file": "mountain_wall_2_085.sugar",
+            "library_path": "Library/Meshes/926846836.sugar",
+            "type": 0,
+            "uid": 926846836
+        },
+        {
+            "asset_file": "mountain_wall_2_086.sugar",
+            "library_path": "Library/Meshes/873166656.sugar",
+            "type": 0,
+            "uid": 873166656
+        },
+        {
+            "asset_file": "mountain_wall_2_087.sugar",
+            "library_path": "Library/Meshes/1265352600.sugar",
+            "type": 0,
+            "uid": 1265352600
+        },
+        {
+            "asset_file": "mountain_wall_2_088.sugar",
+            "library_path": "Library/Meshes/1235750856.sugar",
+            "type": 0,
+            "uid": 1235750856
+        },
+        {
+            "asset_file": "mountain_wall_2_089.sugar",
+            "library_path": "Library/Meshes/1305245183.sugar",
+            "type": 0,
+            "uid": 1305245183
+        },
+        {
+            "asset_file": "mountain_wall_2_090.sugar",
+            "library_path": "Library/Meshes/236229413.sugar",
+            "type": 0,
+            "uid": 236229413
+        },
+        {
+            "asset_file": "mountain_wall_2_091.sugar",
+            "library_path": "Library/Meshes/486575746.sugar",
+            "type": 0,
+            "uid": 486575746
+        },
+        {
+            "asset_file": "mountain_wall_2_092.sugar",
+            "library_path": "Library/Meshes/899322229.sugar",
+            "type": 0,
+            "uid": 899322229
+        },
+        {
+            "asset_file": "mountain_wall_2_093.sugar",
+            "library_path": "Library/Meshes/1543312112.sugar",
+            "type": 0,
+            "uid": 1543312112
+        },
+        {
+            "asset_file": "mountain_wall_2_094.sugar",
+            "library_path": "Library/Meshes/529828883.sugar",
+            "type": 0,
+            "uid": 529828883
+        },
+        {
+            "asset_file": "mountain_wall_2_095.sugar",
+            "library_path": "Library/Meshes/1564587259.sugar",
+            "type": 0,
+            "uid": 1564587259
+        },
+        {
+            "asset_file": "mountain_wall_2_096.sugar",
+            "library_path": "Library/Meshes/1528872411.sugar",
+            "type": 0,
+            "uid": 1528872411
+        },
+        {
+            "asset_file": "mountain_wall_2_097.sugar",
+            "library_path": "Library/Meshes/1162470728.sugar",
+            "type": 0,
+            "uid": 1162470728
+        },
+        {
+            "asset_file": "mountain_wall_2_098.sugar",
+            "library_path": "Library/Meshes/1423871928.sugar",
+            "type": 0,
+            "uid": 1423871928
+        },
+        {
+            "asset_file": "mountain_wall_2_099.sugar",
+            "library_path": "Library/Meshes/894693154.sugar",
+            "type": 0,
+            "uid": 894693154
+        },
+        {
+            "asset_file": "mountain_wall_3_031.sugar",
+            "library_path": "Library/Meshes/424610844.sugar",
+            "type": 0,
+            "uid": 424610844
+        },
+        {
+            "asset_file": "mountain_wall_3_032.sugar",
+            "library_path": "Library/Meshes/275649404.sugar",
+            "type": 0,
+            "uid": 275649404
+        },
+        {
+            "asset_file": "mountain_wall_3_033.sugar",
+            "library_path": "Library/Meshes/1571437967.sugar",
+            "type": 0,
+            "uid": 1571437967
+        },
+        {
+            "asset_file": "mountain_wall_3_034.sugar",
+            "library_path": "Library/Meshes/686931223.sugar",
+            "type": 0,
+            "uid": 686931223
+        },
+        {
+            "asset_file": "mountain_wall_3_035.sugar",
+            "library_path": "Library/Meshes/162730703.sugar",
+            "type": 0,
+            "uid": 162730703
+        },
+        {
+            "asset_file": "mountain_wall_3_036.sugar",
+            "library_path": "Library/Meshes/48352996.sugar",
+            "type": 0,
+            "uid": 48352996
+        },
+        {
+            "asset_file": "mountain_wall_3_037.sugar",
+            "library_path": "Library/Meshes/53123113.sugar",
+            "type": 0,
+            "uid": 53123113
+        },
+        {
+            "asset_file": "mountain_wall_3_038.sugar",
+            "library_path": "Library/Meshes/713630441.sugar",
+            "type": 0,
+            "uid": 713630441
+        },
+        {
+            "asset_file": "mountain_wall_3_039.sugar",
+            "library_path": "Library/Meshes/1942813840.sugar",
+            "type": 0,
+            "uid": 1942813840
+        },
+        {
+            "asset_file": "mountain_wall_3_040.sugar",
+            "library_path": "Library/Meshes/1100811533.sugar",
+            "type": 0,
+            "uid": 1100811533
+        },
+        {
+            "asset_file": "mountain_wall_3_041.sugar",
+            "library_path": "Library/Meshes/860088173.sugar",
+            "type": 0,
+            "uid": 860088173
+        },
+        {
+            "asset_file": "mountain_wall_3_042.sugar",
+            "library_path": "Library/Meshes/2050651795.sugar",
+            "type": 0,
+            "uid": 2050651795
+        },
+        {
+            "asset_file": "mountain_wall_3_043.sugar",
+            "library_path": "Library/Meshes/953653627.sugar",
+            "type": 0,
+            "uid": 953653627
+        },
+        {
+            "asset_file": "mountain_wall_3_044.sugar",
+            "library_path": "Library/Meshes/362336898.sugar",
+            "type": 0,
+            "uid": 362336898
+        },
+        {
+            "asset_file": "mountain_wall_3_045.sugar",
+            "library_path": "Library/Meshes/1868290343.sugar",
+            "type": 0,
+            "uid": 1868290343
+        },
+        {
+            "asset_file": "mountain_wall_3_047.sugar",
+            "library_path": "Library/Meshes/819138078.sugar",
+            "type": 0,
+            "uid": 819138078
+        },
+        {
+            "asset_file": "mountain_wall_3_049.sugar",
+            "library_path": "Library/Meshes/1979189169.sugar",
+            "type": 0,
+            "uid": 1979189169
+        },
+        {
+            "asset_file": "mountain_wall_3_050.sugar",
+            "library_path": "Library/Meshes/1773582700.sugar",
+            "type": 0,
+            "uid": 1773582700
+        },
+        {
+            "asset_file": "mountain_wall_3_051.sugar",
+            "library_path": "Library/Meshes/599549177.sugar",
+            "type": 0,
+            "uid": 599549177
+        },
+        {
+            "asset_file": "mountain_wall_3_052.sugar",
+            "library_path": "Library/Meshes/360197926.sugar",
+            "type": 0,
+            "uid": 360197926
+        },
+        {
+            "asset_file": "mountain_wall_3_053.sugar",
+            "library_path": "Library/Meshes/1848342475.sugar",
+            "type": 0,
+            "uid": 1848342475
+        },
+        {
+            "asset_file": "mountain_wall_3_054.sugar",
+            "library_path": "Library/Meshes/638354789.sugar",
+            "type": 0,
+            "uid": 638354789
+        },
+        {
+            "asset_file": "mountain_wall_3_055.sugar",
+            "library_path": "Library/Meshes/682852166.sugar",
+            "type": 0,
+            "uid": 682852166
+        },
+        {
+            "asset_file": "mountain_wall_3_056.sugar",
+            "library_path": "Library/Meshes/1605418705.sugar",
+            "type": 0,
+            "uid": 1605418705
+        },
+        {
+            "asset_file": "mountain_wall_3_057.sugar",
+            "library_path": "Library/Meshes/389047922.sugar",
+            "type": 0,
+            "uid": 389047922
+        },
+        {
+            "asset_file": "mountain_wall_3_058.sugar",
+            "library_path": "Library/Meshes/26130223.sugar",
+            "type": 0,
+            "uid": 26130223
+        },
+        {
+            "asset_file": "mountain_wall_3_059.sugar",
+            "library_path": "Library/Meshes/1426974208.sugar",
+            "type": 0,
+            "uid": 1426974208
+        },
+        {
+            "asset_file": "mountain_wall_3_060.sugar",
+            "library_path": "Library/Meshes/323718996.sugar",
+            "type": 0,
+            "uid": 323718996
+        },
+        {
+            "asset_file": "mountain_wall_3_061.sugar",
+            "library_path": "Library/Meshes/1744327253.sugar",
+            "type": 0,
+            "uid": 1744327253
+        },
+        {
+            "asset_file": "mountain_wall_3_062.sugar",
+            "library_path": "Library/Meshes/2139600859.sugar",
+            "type": 0,
+            "uid": 2139600859
+        },
+        {
+            "asset_file": "mountain_wall_3_063.sugar",
+            "library_path": "Library/Meshes/945809937.sugar",
+            "type": 0,
+            "uid": 945809937
+        },
+        {
+            "asset_file": "mountain_wall_3_064.sugar",
+            "library_path": "Library/Meshes/1447462197.sugar",
+            "type": 0,
+            "uid": 1447462197
+        },
+        {
+            "asset_file": "mountain_wall_3_065.sugar",
+            "library_path": "Library/Meshes/1968803264.sugar",
+            "type": 0,
+            "uid": 1968803264
+        },
+        {
+            "asset_file": "mountain_wall_3_066.sugar",
+            "library_path": "Library/Meshes/1858782241.sugar",
+            "type": 0,
+            "uid": 1858782241
+        },
+        {
+            "asset_file": "mountain_wall_3_067.sugar",
+            "library_path": "Library/Meshes/1885661006.sugar",
+            "type": 0,
+            "uid": 1885661006
+        },
+        {
+            "asset_file": "mountain_wall_3_068.sugar",
+            "library_path": "Library/Meshes/211902491.sugar",
+            "type": 0,
+            "uid": 211902491
+        },
+        {
+            "asset_file": "mountain_wall_3_069.sugar",
+            "library_path": "Library/Meshes/1766938963.sugar",
+            "type": 0,
+            "uid": 1766938963
+        },
+        {
+            "asset_file": "mountain_wall_3_070.sugar",
+            "library_path": "Library/Meshes/1614121138.sugar",
+            "type": 0,
+            "uid": 1614121138
+        },
+        {
+            "asset_file": "mountain_wall_3_071.sugar",
+            "library_path": "Library/Meshes/1765026137.sugar",
+            "type": 0,
+            "uid": 1765026137
+        },
+        {
+            "asset_file": "mountain_wall_3_072.sugar",
+            "library_path": "Library/Meshes/1503378058.sugar",
+            "type": 0,
+            "uid": 1503378058
+        },
+        {
+            "asset_file": "mountain_wall_3_073.sugar",
+            "library_path": "Library/Meshes/1182968203.sugar",
+            "type": 0,
+            "uid": 1182968203
+        },
+        {
+            "asset_file": "mountain_wall_3_074.sugar",
+            "library_path": "Library/Meshes/584525158.sugar",
+            "type": 0,
+            "uid": 584525158
+        },
+        {
+            "asset_file": "mountain_wall_3_075.sugar",
+            "library_path": "Library/Meshes/1646514941.sugar",
+            "type": 0,
+            "uid": 1646514941
+        },
+        {
+            "asset_file": "mountain_wall_3_076.sugar",
+            "library_path": "Library/Meshes/2039992391.sugar",
+            "type": 0,
+            "uid": 2039992391
+        },
+        {
+            "asset_file": "mountain_wall_3_077.sugar",
+            "library_path": "Library/Meshes/230187467.sugar",
+            "type": 0,
+            "uid": 230187467
+        },
+        {
+            "asset_file": "mountain_wall_3_078.sugar",
+            "library_path": "Library/Meshes/1479861344.sugar",
+            "type": 0,
+            "uid": 1479861344
+        },
+        {
+            "asset_file": "mountain_wall_3_079.sugar",
+            "library_path": "Library/Meshes/2110996908.sugar",
+            "type": 0,
+            "uid": 2110996908
+        },
+        {
+            "asset_file": "mountain_wall_3_080.sugar",
+            "library_path": "Library/Meshes/566594231.sugar",
+            "type": 0,
+            "uid": 566594231
+        },
+        {
+            "asset_file": "mountain_wall_3_081.sugar",
+            "library_path": "Library/Meshes/1327679741.sugar",
+            "type": 0,
+            "uid": 1327679741
+        },
+        {
+            "asset_file": "mountain_wall_3_082.sugar",
+            "library_path": "Library/Meshes/485832210.sugar",
+            "type": 0,
+            "uid": 485832210
+        },
+        {
+            "asset_file": "mountain_wall_3_083.sugar",
+            "library_path": "Library/Meshes/1935550698.sugar",
+            "type": 0,
+            "uid": 1935550698
+        },
+        {
+            "asset_file": "small_rock_1_001.sugar",
+            "library_path": "Library/Meshes/965287415.sugar",
+            "type": 0,
+            "uid": 965287415
+        },
+        {
+            "asset_file": "small_rock_1_002.sugar",
+            "library_path": "Library/Meshes/1849597395.sugar",
+            "type": 0,
+            "uid": 1849597395
+        },
+        {
+            "asset_file": "small_rock_1_006.sugar",
+            "library_path": "Library/Meshes/508147596.sugar",
+            "type": 0,
+            "uid": 508147596
+        },
+        {
+            "asset_file": "small_rock_2_002.sugar",
+            "library_path": "Library/Meshes/2127309244.sugar",
+            "type": 0,
+            "uid": 2127309244
+        },
+        {
+            "asset_file": "small_rock_2_003.sugar",
+            "library_path": "Library/Meshes/2032601287.sugar",
+            "type": 0,
+            "uid": 2032601287
+        },
+        {
+            "asset_file": "small_rock_1_011.sugar",
+            "library_path": "Library/Meshes/247171188.sugar",
+            "type": 0,
+            "uid": 247171188
+        },
+        {
+            "asset_file": "small_rock_1_012.sugar",
+            "library_path": "Library/Meshes/1984739384.sugar",
+            "type": 0,
+            "uid": 1984739384
+        },
+        {
+            "asset_file": "small_rock_2_007.sugar",
+            "library_path": "Library/Meshes/1529458773.sugar",
+            "type": 0,
+            "uid": 1529458773
+        },
+        {
+            "asset_file": "small_rock_2_020.sugar",
+            "library_path": "Library/Meshes/1605694151.sugar",
+            "type": 0,
+            "uid": 1605694151
+        },
+        {
+            "asset_file": "small_rock_2_024.sugar",
+            "library_path": "Library/Meshes/278934085.sugar",
+            "type": 0,
+            "uid": 278934085
+        },
+        {
+            "asset_file": "small_rock_2_025.sugar",
+            "library_path": "Library/Meshes/1328646891.sugar",
+            "type": 0,
+            "uid": 1328646891
+        },
+        {
+            "asset_file": "small_rock_2_030.sugar",
+            "library_path": "Library/Meshes/1559555769.sugar",
+            "type": 0,
+            "uid": 1559555769
+        },
+        {
+            "asset_file": "small_rock_2_031.sugar",
+            "library_path": "Library/Meshes/1315995405.sugar",
+            "type": 0,
+            "uid": 1315995405
+        },
+        {
+            "asset_file": "small_rock_2_032.sugar",
+            "library_path": "Library/Meshes/1466423616.sugar",
+            "type": 0,
+            "uid": 1466423616
+        },
+        {
+            "asset_file": "small_rock_2_033.sugar",
+            "library_path": "Library/Meshes/1596338655.sugar",
+            "type": 0,
+            "uid": 1596338655
+        },
+        {
+            "asset_file": "small_rock_2_037.sugar",
+            "library_path": "Library/Meshes/1091817250.sugar",
+            "type": 0,
+            "uid": 1091817250
+        },
+        {
+            "asset_file": "small_rock_2_038.sugar",
+            "library_path": "Library/Meshes/763690653.sugar",
+            "type": 0,
+            "uid": 763690653
+        },
+        {
+            "asset_file": "small_rock_2_039.sugar",
+            "library_path": "Library/Meshes/1745121077.sugar",
+            "type": 0,
+            "uid": 1745121077
+        },
+        {
+            "asset_file": "small_rock_2_040.sugar",
+            "library_path": "Library/Meshes/1114158263.sugar",
+            "type": 0,
+            "uid": 1114158263
+        },
+        {
+            "asset_file": "small_rock_2_044.sugar",
+            "library_path": "Library/Meshes/271323685.sugar",
+            "type": 0,
+            "uid": 271323685
+        },
+        {
+            "asset_file": "small_rock_2_045.sugar",
+            "library_path": "Library/Meshes/1714700407.sugar",
+            "type": 0,
+            "uid": 1714700407
+        },
+        {
+            "asset_file": "small_rock_2_050.sugar",
+            "library_path": "Library/Meshes/696526883.sugar",
+            "type": 0,
+            "uid": 696526883
+        },
+        {
+            "asset_file": "small_rock_2_051.sugar",
+            "library_path": "Library/Meshes/1442424431.sugar",
+            "type": 0,
+            "uid": 1442424431
+        },
+        {
+            "asset_file": "small_rock_2_059.sugar",
+            "library_path": "Library/Meshes/564855097.sugar",
+            "type": 0,
+            "uid": 564855097
+        },
+        {
+            "asset_file": "small_rock_2_061.sugar",
+            "library_path": "Library/Meshes/1379739353.sugar",
+            "type": 0,
+            "uid": 1379739353
+        },
+        {
+            "asset_file": "small_rock_2_064.sugar",
+            "library_path": "Library/Meshes/628492779.sugar",
+            "type": 0,
+            "uid": 628492779
+        },
+        {
+            "asset_file": "small_rock_2_068.sugar",
+            "library_path": "Library/Meshes/746797901.sugar",
+            "type": 0,
+            "uid": 746797901
+        },
+        {
+            "asset_file": "small_rock_2_069.sugar",
+            "library_path": "Library/Meshes/1364677244.sugar",
+            "type": 0,
+            "uid": 1364677244
+        },
+        {
+            "asset_file": "small_rock_2_070.sugar",
+            "library_path": "Library/Meshes/2110507635.sugar",
+            "type": 0,
+            "uid": 2110507635
+        },
+        {
+            "asset_file": "small_rock_2_096.sugar",
+            "library_path": "Library/Meshes/1208071924.sugar",
+            "type": 0,
+            "uid": 1208071924
+        },
+        {
+            "asset_file": "small_rock_2_115.sugar",
+            "library_path": "Library/Meshes/181318236.sugar",
+            "type": 0,
+            "uid": 181318236
+        },
+        {
+            "asset_file": "small_rock_2_116.sugar",
+            "library_path": "Library/Meshes/116425467.sugar",
+            "type": 0,
+            "uid": 116425467
+        },
+        {
+            "asset_file": "small_rock_2_117.sugar",
+            "library_path": "Library/Meshes/1017940984.sugar",
+            "type": 0,
+            "uid": 1017940984
+        },
+        {
+            "asset_file": "small_rock_2_124.sugar",
+            "library_path": "Library/Meshes/1723574261.sugar",
+            "type": 0,
+            "uid": 1723574261
+        },
+        {
+            "asset_file": "small_rock_2_125.sugar",
+            "library_path": "Library/Meshes/362049954.sugar",
+            "type": 0,
+            "uid": 362049954
+        },
+        {
+            "asset_file": "small_rock_2_134.sugar",
+            "library_path": "Library/Meshes/1706306906.sugar",
+            "type": 0,
+            "uid": 1706306906
+        },
+        {
+            "asset_file": "small_rock_2_135.sugar",
+            "library_path": "Library/Meshes/1839197097.sugar",
+            "type": 0,
+            "uid": 1839197097
+        },
+        {
+            "asset_file": "small_rock_2_136.sugar",
+            "library_path": "Library/Meshes/1819742313.sugar",
+            "type": 0,
+            "uid": 1819742313
+        },
+        {
+            "asset_file": "small_rock_2_139.sugar",
+            "library_path": "Library/Meshes/578905688.sugar",
+            "type": 0,
+            "uid": 578905688
+        },
+        {
+            "asset_file": "small_rock_2_140.sugar",
+            "library_path": "Library/Meshes/1019362218.sugar",
+            "type": 0,
+            "uid": 1019362218
+        },
+        {
+            "asset_file": "small_rock_2_141.sugar",
+            "library_path": "Library/Meshes/2018239953.sugar",
+            "type": 0,
+            "uid": 2018239953
+        },
+        {
+            "asset_file": "small_rock_2_142.sugar",
+            "library_path": "Library/Meshes/1081058626.sugar",
+            "type": 0,
+            "uid": 1081058626
+        },
+        {
+            "asset_file": "small_rock_2_143.sugar",
+            "library_path": "Library/Meshes/1364110123.sugar",
+            "type": 0,
+            "uid": 1364110123
+        },
+        {
+            "asset_file": "small_rock_2_144.sugar",
+            "library_path": "Library/Meshes/1336315130.sugar",
+            "type": 0,
+            "uid": 1336315130
+        },
+        {
+            "asset_file": "small_rock_2_145.sugar",
+            "library_path": "Library/Meshes/1949065496.sugar",
+            "type": 0,
+            "uid": 1949065496
+        },
+        {
+            "asset_file": "small_rock_2_146.sugar",
+            "library_path": "Library/Meshes/698343653.sugar",
+            "type": 0,
+            "uid": 698343653
+        },
+        {
+            "asset_file": "small_rock_2_147.sugar",
+            "library_path": "Library/Meshes/1721486391.sugar",
+            "type": 0,
+            "uid": 1721486391
+        },
+        {
+            "asset_file": "small_rock_2_148.sugar",
+            "library_path": "Library/Meshes/951512194.sugar",
+            "type": 0,
+            "uid": 951512194
+        },
+        {
+            "asset_file": "small_rock_2_149.sugar",
+            "library_path": "Library/Meshes/941207614.sugar",
+            "type": 0,
+            "uid": 941207614
+        },
+        {
+            "asset_file": "small_rock_2_150.sugar",
+            "library_path": "Library/Meshes/152751807.sugar",
+            "type": 0,
+            "uid": 152751807
+        },
+        {
+            "asset_file": "small_rock_2_151.sugar",
+            "library_path": "Library/Meshes/1619522933.sugar",
+            "type": 0,
+            "uid": 1619522933
+        },
+        {
+            "asset_file": "small_rock_2_158.sugar",
+            "library_path": "Library/Meshes/93682696.sugar",
+            "type": 0,
+            "uid": 93682696
+        },
+        {
+            "asset_file": "small_rock_2_159.sugar",
+            "library_path": "Library/Meshes/84352203.sugar",
+            "type": 0,
+            "uid": 84352203
+        },
+        {
+            "asset_file": "small_rock_2_160.sugar",
+            "library_path": "Library/Meshes/1437376493.sugar",
+            "type": 0,
+            "uid": 1437376493
+        },
+        {
+            "asset_file": "small_rock_2_166.sugar",
+            "library_path": "Library/Meshes/850645798.sugar",
+            "type": 0,
+            "uid": 850645798
+        },
+        {
+            "asset_file": "small_rock_2_172.sugar",
+            "library_path": "Library/Meshes/1742163339.sugar",
+            "type": 0,
+            "uid": 1742163339
+        },
+        {
+            "asset_file": "small_rock_3_001.sugar",
+            "library_path": "Library/Meshes/898870681.sugar",
+            "type": 0,
+            "uid": 898870681
+        },
+        {
+            "asset_file": "small_rock_3_002.sugar",
+            "library_path": "Library/Meshes/182604480.sugar",
+            "type": 0,
+            "uid": 182604480
+        },
+        {
+            "asset_file": "small_rock_4_002.sugar",
+            "library_path": "Library/Meshes/792862411.sugar",
+            "type": 0,
+            "uid": 792862411
+        },
+        {
+            "asset_file": "small_rock_4_003.sugar",
+            "library_path": "Library/Meshes/1545737811.sugar",
+            "type": 0,
+            "uid": 1545737811
+        },
+        {
+            "asset_file": "small_rock_4_004.sugar",
+            "library_path": "Library/Meshes/1161597121.sugar",
+            "type": 0,
+            "uid": 1161597121
+        },
+        {
+            "asset_file": "small_rock_4_005.sugar",
+            "library_path": "Library/Meshes/2135369087.sugar",
+            "type": 0,
+            "uid": 2135369087
+        },
+        {
+            "asset_file": "still_tent_005.sugar",
+            "library_path": "Library/Meshes/443514348.sugar",
+            "type": 0,
+            "uid": 443514348
+        },
+        {
+            "asset_file": "lvl_1_group_5_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_5_base_color.png",
+            "library_path": "Library/Textures/1209453094.cacao",
+            "type": 1,
+            "uid": 1209453094
+        },
+        {
+            "asset_file": "tank_001.sugar",
+            "library_path": "Library/Meshes/762279095.sugar",
+            "type": 0,
+            "uid": 762279095
+        },
+        {
+            "asset_file": "vertical_rock_001.sugar",
+            "library_path": "Library/Meshes/788915221.sugar",
+            "type": 0,
+            "uid": 788915221
+        },
+        {
+            "asset_file": "vertical_rock_007.sugar",
+            "library_path": "Library/Meshes/629187774.sugar",
+            "type": 0,
+            "uid": 629187774
+        },
+        {
+            "asset_file": "vertical_rock_008.sugar",
+            "library_path": "Library/Meshes/26884265.sugar",
+            "type": 0,
+            "uid": 26884265
+        },
+        {
+            "asset_file": "vertical_rock_009.sugar",
+            "library_path": "Library/Meshes/571756774.sugar",
+            "type": 0,
+            "uid": 571756774
+        },
+        {
+            "asset_file": "vertical_rock_010.sugar",
+            "library_path": "Library/Meshes/730178120.sugar",
+            "type": 0,
+            "uid": 730178120
+        },
+        {
+            "asset_file": "vertical_rock_011.sugar",
+            "library_path": "Library/Meshes/185760241.sugar",
+            "type": 0,
+            "uid": 185760241
+        },
+        {
+            "asset_file": "vertical_rock_012.sugar",
+            "library_path": "Library/Meshes/56095910.sugar",
+            "type": 0,
+            "uid": 56095910
+        },
+        {
+            "asset_file": "vertical_rock_013.sugar",
+            "library_path": "Library/Meshes/192306312.sugar",
+            "type": 0,
+            "uid": 192306312
+        },
+        {
+            "asset_file": "watch_tower_003.sugar",
+            "library_path": "Library/Meshes/1508237664.sugar",
+            "type": 0,
+            "uid": 1508237664
+        },
+        {
+            "asset_file": "watch_tower_004.sugar",
+            "library_path": "Library/Meshes/879502038.sugar",
+            "type": 0,
+            "uid": 879502038
+        },
+        {
+            "asset_file": "wire_001.sugar",
+            "library_path": "Library/Meshes/623168320.sugar",
+            "type": 0,
+            "uid": 623168320
+        },
+        {
+            "asset_file": "wire_002.sugar",
+            "library_path": "Library/Meshes/323115986.sugar",
+            "type": 0,
+            "uid": 323115986
+        },
+        {
+            "asset_file": "wire_003.sugar",
+            "library_path": "Library/Meshes/898168134.sugar",
+            "type": 0,
+            "uid": 898168134
+        },
+        {
+            "asset_file": "wire_004.sugar",
+            "library_path": "Library/Meshes/1733108046.sugar",
+            "type": 0,
+            "uid": 1733108046
+        },
+        {
+            "asset_file": "weapon_001__5_.sugar",
+            "library_path": "Library/Meshes/1782693801.sugar",
+            "type": 0,
+            "uid": 1782693801
+        },
+        {
+            "asset_file": "dummy_008.sugar",
+            "library_path": "Library/Meshes/599977705.sugar",
+            "type": 0,
+            "uid": 599977705
+        },
+        {
+            "asset_file": "lvl_1_group_3_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_3_base_color.png",
+            "library_path": "Library/Textures/400067134.cacao",
+            "type": 1,
+            "uid": 400067134
+        },
+        {
+            "asset_file": "mountain_wall_1_077__1_.sugar",
+            "library_path": "Library/Meshes/182122249.sugar",
+            "type": 0,
+            "uid": 182122249
+        },
+        {
+            "asset_file": "mountain_wall_1_077__2_.sugar",
+            "library_path": "Library/Meshes/344770961.sugar",
+            "type": 0,
+            "uid": 344770961
+        },
+        {
+            "asset_file": "mountain_wall_1_077__3_.sugar",
+            "library_path": "Library/Meshes/114308710.sugar",
+            "type": 0,
+            "uid": 114308710
+        },
+        {
+            "asset_file": "mountain_wall_1_077__4_.sugar",
+            "library_path": "Library/Meshes/1983533704.sugar",
+            "type": 0,
+            "uid": 1983533704
+        },
+        {
+            "asset_file": "Plane.sugar",
+            "library_path": "Library/Meshes/725621226.sugar",
+            "type": 0,
+            "uid": 725621226
+        },
+        {
+            "asset_file": "lvl_1_plane_texture_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_plane_texture_base_color.png",
+            "library_path": "Library/Textures/1738945202.cacao",
+            "type": 1,
+            "uid": 1738945202
+        },
+        {
+            "asset_file": "jail_002.001.sugar",
+            "library_path": "Library/Meshes/1386459842.sugar",
+            "type": 0,
+            "uid": 1386459842
+        },
+        {
+            "asset_file": "jail_001.001.sugar",
+            "library_path": "Library/Meshes/1500463158.sugar",
+            "type": 0,
+            "uid": 1500463158
+        },
+        {
+            "asset_file": "Plane.001.sugar",
+            "library_path": "Library/Meshes/142865349.sugar",
+            "type": 0,
+            "uid": 142865349
+        },
+        {
+            "asset_file": "Plane.002.sugar",
+            "library_path": "Library/Meshes/477738607.sugar",
+            "type": 0,
+            "uid": 477738607
+        },
+        {
+            "asset_file": "worm_spine_l.sugar",
+            "library_path": "Library/Meshes/2087335230.sugar",
+            "type": 0,
+            "uid": 2087335230
+        },
+        {
+            "asset_file": "worm_fossile_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/worm_fossile_base_color.png",
+            "library_path": "Library/Textures/1395886174.cacao",
+            "type": 1,
+            "uid": 1395886174
+        },
+        {
+            "asset_file": "worm_l.001.sugar",
+            "library_path": "Library/Meshes/288819597.sugar",
+            "type": 0,
+            "uid": 288819597
+        },
+        {
+            "asset_file": "worm_l.002.sugar",
+            "library_path": "Library/Meshes/2006893176.sugar",
+            "type": 0,
+            "uid": 2006893176
+        },
+        {
+            "asset_file": "worm_spine_l.001.sugar",
+            "library_path": "Library/Meshes/240354816.sugar",
+            "type": 0,
+            "uid": 240354816
+        },
+        {
+            "asset_file": "worm_spine_l.003.sugar",
+            "library_path": "Library/Meshes/160451801.sugar",
+            "type": 0,
+            "uid": 160451801
+        },
+        {
+            "asset_file": "box_022.001.sugar",
+            "library_path": "Library/Meshes/259653890.sugar",
+            "type": 0,
+            "uid": 259653890
+        },
+        {
+            "asset_file": "box_022.002.sugar",
+            "library_path": "Library/Meshes/1577737407.sugar",
+            "type": 0,
+            "uid": 1577737407
+        },
+        {
+            "asset_file": "box_022.003.sugar",
+            "library_path": "Library/Meshes/775384996.sugar",
+            "type": 0,
+            "uid": 775384996
+        },
+        {
+            "asset_file": "box_022.004.sugar",
+            "library_path": "Library/Meshes/317390369.sugar",
+            "type": 0,
+            "uid": 317390369
+        },
+        {
+            "asset_file": "box_022.005.sugar",
+            "library_path": "Library/Meshes/1753340679.sugar",
+            "type": 0,
+            "uid": 1753340679
+        },
+        {
+            "asset_file": "box_022.006.sugar",
+            "library_path": "Library/Meshes/1484718466.sugar",
+            "type": 0,
+            "uid": 1484718466
+        },
+        {
+            "asset_file": "box_022.007.sugar",
+            "library_path": "Library/Meshes/445091581.sugar",
+            "type": 0,
+            "uid": 445091581
+        },
+        {
+            "asset_file": "box_022.008.sugar",
+            "library_path": "Library/Meshes/882503236.sugar",
+            "type": 0,
+            "uid": 882503236
+        },
+        {
+            "asset_file": "box_022.009.sugar",
+            "library_path": "Library/Meshes/1980108591.sugar",
+            "type": 0,
+            "uid": 1980108591
+        },
+        {
+            "asset_file": "box_022.010.sugar",
+            "library_path": "Library/Meshes/1062645333.sugar",
+            "type": 0,
+            "uid": 1062645333
+        },
+        {
+            "asset_file": "box_022.011.sugar",
+            "library_path": "Library/Meshes/1223404273.sugar",
+            "type": 0,
+            "uid": 1223404273
+        },
+        {
+            "asset_file": "box_022.012.sugar",
+            "library_path": "Library/Meshes/1899574041.sugar",
+            "type": 0,
+            "uid": 1899574041
+        },
+        {
+            "asset_file": "box_022.013.sugar",
+            "library_path": "Library/Meshes/841957226.sugar",
+            "type": 0,
+            "uid": 841957226
+        },
+        {
+            "asset_file": "box_022.014.sugar",
+            "library_path": "Library/Meshes/1766636630.sugar",
+            "type": 0,
+            "uid": 1766636630
+        },
+        {
+            "asset_file": "box_022.015.sugar",
+            "library_path": "Library/Meshes/378981250.sugar",
+            "type": 0,
+            "uid": 378981250
+        },
+        {
+            "asset_file": "box_022.016.sugar",
+            "library_path": "Library/Meshes/1296287737.sugar",
+            "type": 0,
+            "uid": 1296287737
+        },
+        {
+            "asset_file": "box_022.017.sugar",
+            "library_path": "Library/Meshes/1779569242.sugar",
+            "type": 0,
+            "uid": 1779569242
+        },
+        {
+            "asset_file": "box_022.020.sugar",
+            "library_path": "Library/Meshes/1056725906.sugar",
+            "type": 0,
+            "uid": 1056725906
+        },
+        {
+            "asset_file": "box_022.021.sugar",
+            "library_path": "Library/Meshes/1224527464.sugar",
+            "type": 0,
+            "uid": 1224527464
+        },
+        {
+            "asset_file": "box_022.022.sugar",
+            "library_path": "Library/Meshes/863765834.sugar",
+            "type": 0,
+            "uid": 863765834
+        },
+        {
+            "asset_file": "box_022.023.sugar",
+            "library_path": "Library/Meshes/1479630134.sugar",
+            "type": 0,
+            "uid": 1479630134
+        },
+        {
+            "asset_file": "box_022.024.sugar",
+            "library_path": "Library/Meshes/160835659.sugar",
+            "type": 0,
+            "uid": 160835659
+        },
+        {
+            "asset_file": "box_022.025.sugar",
+            "library_path": "Library/Meshes/1522741833.sugar",
+            "type": 0,
+            "uid": 1522741833
+        },
+        {
+            "asset_file": "box_022.026.sugar",
+            "library_path": "Library/Meshes/1689553211.sugar",
+            "type": 0,
+            "uid": 1689553211
+        },
+        {
+            "asset_file": "box_022.027.sugar",
+            "library_path": "Library/Meshes/266270499.sugar",
+            "type": 0,
+            "uid": 266270499
+        },
+        {
+            "asset_file": "box_022.028.sugar",
+            "library_path": "Library/Meshes/1449341855.sugar",
+            "type": 0,
+            "uid": 1449341855
+        },
+        {
+            "asset_file": "box_022.029.sugar",
+            "library_path": "Library/Meshes/1077607017.sugar",
+            "type": 0,
+            "uid": 1077607017
+        },
+        {
+            "asset_file": "box_022.030.sugar",
+            "library_path": "Library/Meshes/1485007482.sugar",
+            "type": 0,
+            "uid": 1485007482
+        },
+        {
+            "asset_file": "box_022.031.sugar",
+            "library_path": "Library/Meshes/2130845798.sugar",
+            "type": 0,
+            "uid": 2130845798
+        },
+        {
+            "asset_file": "box_022.032.sugar",
+            "library_path": "Library/Meshes/391949363.sugar",
+            "type": 0,
+            "uid": 391949363
+        },
+        {
+            "asset_file": "box_022.033.sugar",
+            "library_path": "Library/Meshes/425737424.sugar",
+            "type": 0,
+            "uid": 425737424
+        },
+        {
+            "asset_file": "box_022.034.sugar",
+            "library_path": "Library/Meshes/2051368290.sugar",
+            "type": 0,
+            "uid": 2051368290
+        },
+        {
+            "asset_file": "box_022.035.sugar",
+            "library_path": "Library/Meshes/1593083522.sugar",
+            "type": 0,
+            "uid": 1593083522
+        },
+        {
+            "asset_file": "box_022.036.sugar",
+            "library_path": "Library/Meshes/835163223.sugar",
+            "type": 0,
+            "uid": 835163223
+        },
+        {
+            "asset_file": "box_022.037.sugar",
+            "library_path": "Library/Meshes/54461193.sugar",
+            "type": 0,
+            "uid": 54461193
+        },
+        {
+            "asset_file": "box_022.038.sugar",
+            "library_path": "Library/Meshes/1378466908.sugar",
+            "type": 0,
+            "uid": 1378466908
+        },
+        {
+            "asset_file": "box_022.039.sugar",
+            "library_path": "Library/Meshes/1481032179.sugar",
+            "type": 0,
+            "uid": 1481032179
+        },
+        {
+            "asset_file": "box_022.041.sugar",
+            "library_path": "Library/Meshes/1579233066.sugar",
+            "type": 0,
+            "uid": 1579233066
+        },
+        {
+            "asset_file": "box_022.042.sugar",
+            "library_path": "Library/Meshes/229590818.sugar",
+            "type": 0,
+            "uid": 229590818
+        },
+        {
+            "asset_file": "box_022.043.sugar",
+            "library_path": "Library/Meshes/1372251549.sugar",
+            "type": 0,
+            "uid": 1372251549
+        },
+        {
+            "asset_file": "box_022.044.sugar",
+            "library_path": "Library/Meshes/1733153314.sugar",
+            "type": 0,
+            "uid": 1733153314
+        },
+        {
+            "asset_file": "box_022.046.sugar",
+            "library_path": "Library/Meshes/253258096.sugar",
+            "type": 0,
+            "uid": 253258096
+        },
+        {
+            "asset_file": "box_022.047.sugar",
+            "library_path": "Library/Meshes/335688280.sugar",
+            "type": 0,
+            "uid": 335688280
+        },
+        {
+            "asset_file": "box_022.048.sugar",
+            "library_path": "Library/Meshes/560601583.sugar",
+            "type": 0,
+            "uid": 560601583
+        },
+        {
+            "asset_file": "box_022.049.sugar",
+            "library_path": "Library/Meshes/1197414020.sugar",
+            "type": 0,
+            "uid": 1197414020
+        },
+        {
+            "asset_file": "box_022.050.sugar",
+            "library_path": "Library/Meshes/851168481.sugar",
+            "type": 0,
+            "uid": 851168481
+        },
+        {
+            "asset_file": "box_022.051.sugar",
+            "library_path": "Library/Meshes/423311186.sugar",
+            "type": 0,
+            "uid": 423311186
+        },
+        {
+            "asset_file": "box_022.052.sugar",
+            "library_path": "Library/Meshes/181632305.sugar",
+            "type": 0,
+            "uid": 181632305
+        },
+        {
+            "asset_file": "box_022.053.sugar",
+            "library_path": "Library/Meshes/2030850748.sugar",
+            "type": 0,
+            "uid": 2030850748
+        },
+        {
+            "asset_file": "box_022.045.sugar",
+            "library_path": "Library/Meshes/1981829916.sugar",
+            "type": 0,
+            "uid": 1981829916
+        },
+        {
+            "asset_file": "box_022.054.sugar",
+            "library_path": "Library/Meshes/1698181611.sugar",
+            "type": 0,
+            "uid": 1698181611
+        },
+        {
+            "asset_file": "box_022.055.sugar",
+            "library_path": "Library/Meshes/2016468261.sugar",
+            "type": 0,
+            "uid": 2016468261
+        },
+        {
+            "asset_file": "box_022.056.sugar",
+            "library_path": "Library/Meshes/1914701649.sugar",
+            "type": 0,
+            "uid": 1914701649
+        },
+        {
+            "asset_file": "box_022.057.sugar",
+            "library_path": "Library/Meshes/951422690.sugar",
+            "type": 0,
+            "uid": 951422690
+        },
+        {
+            "asset_file": "box_022.058.sugar",
+            "library_path": "Library/Meshes/65886843.sugar",
+            "type": 0,
+            "uid": 65886843
+        },
+        {
+            "asset_file": "box_022.059.sugar",
+            "library_path": "Library/Meshes/470930136.sugar",
+            "type": 0,
+            "uid": 470930136
+        },
+        {
+            "asset_file": "box_022.060.sugar",
+            "library_path": "Library/Meshes/995018237.sugar",
+            "type": 0,
+            "uid": 995018237
+        },
+        {
+            "asset_file": "box_022.061.sugar",
+            "library_path": "Library/Meshes/1461631792.sugar",
+            "type": 0,
+            "uid": 1461631792
+        },
+        {
+            "asset_file": "box_022.062.sugar",
+            "library_path": "Library/Meshes/1252520905.sugar",
+            "type": 0,
+            "uid": 1252520905
+        },
+        {
+            "asset_file": "box_022.063.sugar",
+            "library_path": "Library/Meshes/2020174984.sugar",
+            "type": 0,
+            "uid": 2020174984
+        },
+        {
+            "asset_file": "box_022.064.sugar",
+            "library_path": "Library/Meshes/951146118.sugar",
+            "type": 0,
+            "uid": 951146118
+        },
+        {
+            "asset_file": "box_022.065.sugar",
+            "library_path": "Library/Meshes/1263251588.sugar",
+            "type": 0,
+            "uid": 1263251588
+        },
+        {
+            "asset_file": "box_022.066.sugar",
+            "library_path": "Library/Meshes/111940388.sugar",
+            "type": 0,
+            "uid": 111940388
+        },
+        {
+            "asset_file": "box_022.067.sugar",
+            "library_path": "Library/Meshes/452646741.sugar",
+            "type": 0,
+            "uid": 452646741
+        },
+        {
+            "asset_file": "box_022.068.sugar",
+            "library_path": "Library/Meshes/152196134.sugar",
+            "type": 0,
+            "uid": 152196134
+        },
+        {
+            "asset_file": "box_022.069.sugar",
+            "library_path": "Library/Meshes/1428897763.sugar",
+            "type": 0,
+            "uid": 1428897763
+        },
+        {
+            "asset_file": "box_022.070.sugar",
+            "library_path": "Library/Meshes/1330850613.sugar",
+            "type": 0,
+            "uid": 1330850613
+        },
+        {
+            "asset_file": "box_022.071.sugar",
+            "library_path": "Library/Meshes/1952700278.sugar",
+            "type": 0,
+            "uid": 1952700278
+        },
+        {
+            "asset_file": "box_022.072.sugar",
+            "library_path": "Library/Meshes/1937687154.sugar",
+            "type": 0,
+            "uid": 1937687154
+        },
+        {
+            "asset_file": "box_022.073.sugar",
+            "library_path": "Library/Meshes/1282425840.sugar",
+            "type": 0,
+            "uid": 1282425840
+        },
+        {
+            "asset_file": "box_022.074.sugar",
+            "library_path": "Library/Meshes/160276637.sugar",
+            "type": 0,
+            "uid": 160276637
+        },
+        {
+            "asset_file": "box_022.075.sugar",
+            "library_path": "Library/Meshes/1277890627.sugar",
+            "type": 0,
+            "uid": 1277890627
+        },
+        {
+            "asset_file": "box_022.076.sugar",
+            "library_path": "Library/Meshes/858251726.sugar",
+            "type": 0,
+            "uid": 858251726
+        },
+        {
+            "asset_file": "box_022.077.sugar",
+            "library_path": "Library/Meshes/1898000089.sugar",
+            "type": 0,
+            "uid": 1898000089
+        },
+        {
+            "asset_file": "box_022.078.sugar",
+            "library_path": "Library/Meshes/1240926196.sugar",
+            "type": 0,
+            "uid": 1240926196
+        },
+        {
+            "asset_file": "box_022.079.sugar",
+            "library_path": "Library/Meshes/919437491.sugar",
+            "type": 0,
+            "uid": 919437491
+        },
+        {
+            "asset_file": "box_022.080.sugar",
+            "library_path": "Library/Meshes/1434169180.sugar",
+            "type": 0,
+            "uid": 1434169180
+        },
+        {
+            "asset_file": "box_022.081.sugar",
+            "library_path": "Library/Meshes/1633749093.sugar",
+            "type": 0,
+            "uid": 1633749093
+        },
+        {
+            "asset_file": "box_022.082.sugar",
+            "library_path": "Library/Meshes/1131373718.sugar",
+            "type": 0,
+            "uid": 1131373718
+        },
+        {
+            "asset_file": "box_022.083.sugar",
+            "library_path": "Library/Meshes/2125036457.sugar",
+            "type": 0,
+            "uid": 2125036457
+        },
+        {
+            "asset_file": "box_022.084.sugar",
+            "library_path": "Library/Meshes/443587355.sugar",
+            "type": 0,
+            "uid": 443587355
+        },
+        {
+            "asset_file": "box_022.085.sugar",
+            "library_path": "Library/Meshes/206543359.sugar",
+            "type": 0,
+            "uid": 206543359
+        },
+        {
+            "asset_file": "box_022.086.sugar",
+            "library_path": "Library/Meshes/482386875.sugar",
+            "type": 0,
+            "uid": 482386875
+        },
+        {
+            "asset_file": "box_022.087.sugar",
+            "library_path": "Library/Meshes/2143286524.sugar",
+            "type": 0,
+            "uid": 2143286524
+        },
+        {
+            "asset_file": "box_022.088.sugar",
+            "library_path": "Library/Meshes/2140167785.sugar",
+            "type": 0,
+            "uid": 2140167785
+        },
+        {
+            "asset_file": "box_022.089.sugar",
+            "library_path": "Library/Meshes/1431497127.sugar",
+            "type": 0,
+            "uid": 1431497127
+        },
+        {
+            "asset_file": "box_022.090.sugar",
+            "library_path": "Library/Meshes/103182056.sugar",
+            "type": 0,
+            "uid": 103182056
+        },
+        {
+            "asset_file": "box_022.096.sugar",
+            "library_path": "Library/Meshes/2042283615.sugar",
+            "type": 0,
+            "uid": 2042283615
+        },
+        {
+            "asset_file": "box_022.097.sugar",
+            "library_path": "Library/Meshes/2115804258.sugar",
+            "type": 0,
+            "uid": 2115804258
+        },
+        {
+            "asset_file": "box_022.098.sugar",
+            "library_path": "Library/Meshes/314096679.sugar",
+            "type": 0,
+            "uid": 314096679
+        },
+        {
+            "asset_file": "box_022.099.sugar",
+            "library_path": "Library/Meshes/1552088084.sugar",
+            "type": 0,
+            "uid": 1552088084
+        },
+        {
+            "asset_file": "box_022.100.sugar",
+            "library_path": "Library/Meshes/1516535302.sugar",
+            "type": 0,
+            "uid": 1516535302
+        },
+        {
+            "asset_file": "box_022.101.sugar",
+            "library_path": "Library/Meshes/1236906972.sugar",
+            "type": 0,
+            "uid": 1236906972
+        },
+        {
+            "asset_file": "box_022.103.sugar",
+            "library_path": "Library/Meshes/626687036.sugar",
+            "type": 0,
+            "uid": 626687036
+        },
+        {
+            "asset_file": "box_022.104.sugar",
+            "library_path": "Library/Meshes/538555065.sugar",
+            "type": 0,
+            "uid": 538555065
+        },
+        {
+            "asset_file": "box_022.105.sugar",
+            "library_path": "Library/Meshes/469058148.sugar",
+            "type": 0,
+            "uid": 469058148
+        },
+        {
+            "asset_file": "box_022.106.sugar",
+            "library_path": "Library/Meshes/1780844090.sugar",
+            "type": 0,
+            "uid": 1780844090
+        },
+        {
+            "asset_file": "box_022.107.sugar",
+            "library_path": "Library/Meshes/1942358148.sugar",
+            "type": 0,
+            "uid": 1942358148
+        },
+        {
+            "asset_file": "box_022.108.sugar",
+            "library_path": "Library/Meshes/987529635.sugar",
+            "type": 0,
+            "uid": 987529635
+        },
+        {
+            "asset_file": "box_022.109.sugar",
+            "library_path": "Library/Meshes/64111409.sugar",
+            "type": 0,
+            "uid": 64111409
+        },
+        {
+            "asset_file": "box_022.110.sugar",
+            "library_path": "Library/Meshes/1164471099.sugar",
+            "type": 0,
+            "uid": 1164471099
+        },
+        {
+            "asset_file": "box_022.111.sugar",
+            "library_path": "Library/Meshes/998286447.sugar",
+            "type": 0,
+            "uid": 998286447
+        },
+        {
+            "asset_file": "box_022.112.sugar",
+            "library_path": "Library/Meshes/1903734324.sugar",
+            "type": 0,
+            "uid": 1903734324
+        },
+        {
+            "asset_file": "box_022.113.sugar",
+            "library_path": "Library/Meshes/1848153992.sugar",
+            "type": 0,
+            "uid": 1848153992
+        },
+        {
+            "asset_file": "box_022.114.sugar",
+            "library_path": "Library/Meshes/1002973161.sugar",
+            "type": 0,
+            "uid": 1002973161
+        },
+        {
+            "asset_file": "box_022.115.sugar",
+            "library_path": "Library/Meshes/748911785.sugar",
+            "type": 0,
+            "uid": 748911785
+        },
+        {
+            "asset_file": "box_022.116.sugar",
+            "library_path": "Library/Meshes/1159234726.sugar",
+            "type": 0,
+            "uid": 1159234726
+        },
+        {
+            "asset_file": "box_022.117.sugar",
+            "library_path": "Library/Meshes/232992765.sugar",
+            "type": 0,
+            "uid": 232992765
+        },
+        {
+            "asset_file": "box_022.118.sugar",
+            "library_path": "Library/Meshes/1258305470.sugar",
+            "type": 0,
+            "uid": 1258305470
+        },
+        {
+            "asset_file": "box_022.119.sugar",
+            "library_path": "Library/Meshes/57271463.sugar",
+            "type": 0,
+            "uid": 57271463
+        },
+        {
+            "asset_file": "box_022.120.sugar",
+            "library_path": "Library/Meshes/1795287452.sugar",
+            "type": 0,
+            "uid": 1795287452
+        },
+        {
+            "asset_file": "box_022.121.sugar",
+            "library_path": "Library/Meshes/1825550843.sugar",
+            "type": 0,
+            "uid": 1825550843
+        },
+        {
+            "asset_file": "box_022.122.sugar",
+            "library_path": "Library/Meshes/1584992502.sugar",
+            "type": 0,
+            "uid": 1584992502
+        },
+        {
+            "asset_file": "box_022.123.sugar",
+            "library_path": "Library/Meshes/1174330448.sugar",
+            "type": 0,
+            "uid": 1174330448
+        },
+        {
+            "asset_file": "box_022.124.sugar",
+            "library_path": "Library/Meshes/631555893.sugar",
+            "type": 0,
+            "uid": 631555893
+        },
+        {
+            "asset_file": "box_022.125.sugar",
+            "library_path": "Library/Meshes/1147302431.sugar",
+            "type": 0,
+            "uid": 1147302431
+        },
+        {
+            "asset_file": "box_022.126.sugar",
+            "library_path": "Library/Meshes/1078794648.sugar",
+            "type": 0,
+            "uid": 1078794648
+        },
+        {
+            "asset_file": "box_022.127.sugar",
+            "library_path": "Library/Meshes/1465020106.sugar",
+            "type": 0,
+            "uid": 1465020106
+        },
+        {
+            "asset_file": "medium_rock_3_016.001.sugar",
+            "library_path": "Library/Meshes/928827812.sugar",
+            "type": 0,
+            "uid": 928827812
+        },
+        {
+            "asset_file": "medium_rock_3_020.001.sugar",
+            "library_path": "Library/Meshes/1651978699.sugar",
+            "type": 0,
+            "uid": 1651978699
+        },
+        {
+            "asset_file": "small_rock_2_013.043.sugar",
+            "library_path": "Library/Meshes/1739361401.sugar",
+            "type": 0,
+            "uid": 1739361401
+        },
+        {
+            "asset_file": "small_rock_2_013.086.sugar",
+            "library_path": "Library/Meshes/805481467.sugar",
+            "type": 0,
+            "uid": 805481467
+        },
+        {
+            "asset_file": "small_rock_2_013.122.sugar",
+            "library_path": "Library/Meshes/76901793.sugar",
+            "type": 0,
+            "uid": 76901793
+        },
+        {
+            "asset_file": "small_rock_2_013.146.sugar",
+            "library_path": "Library/Meshes/325450841.sugar",
+            "type": 0,
+            "uid": 325450841
+        },
+        {
+            "asset_file": "small_rock_2_013.152.sugar",
+            "library_path": "Library/Meshes/1700568836.sugar",
+            "type": 0,
+            "uid": 1700568836
+        },
+        {
+            "asset_file": "mountain_wall_1_040.001.sugar",
+            "library_path": "Library/Meshes/1284654498.sugar",
+            "type": 0,
+            "uid": 1284654498
+        },
+        {
+            "asset_file": "health_flag.001.sugar",
+            "library_path": "Library/Meshes/608989021.sugar",
+            "type": 0,
+            "uid": 608989021
+        },
+        {
+            "asset_file": "lvl_1_group_8_decor_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_8_decor_base_color.png",
+            "library_path": "Library/Textures/103073931.cacao",
+            "type": 1,
+            "uid": 103073931
+        },
+        {
+            "asset_file": "prohibited_flag.001.sugar",
+            "library_path": "Library/Meshes/1274066322.sugar",
+            "type": 0,
+            "uid": 1274066322
+        },
+        {
+            "asset_file": "cooking_pot.001.sugar",
+            "library_path": "Library/Meshes/1308143113.sugar",
+            "type": 0,
+            "uid": 1308143113
+        },
+        {
+            "asset_file": "health_flag.002.sugar",
+            "library_path": "Library/Meshes/1333075538.sugar",
+            "type": 0,
+            "uid": 1333075538
+        },
+        {
+            "asset_file": "prohibited_flag.002.sugar",
+            "library_path": "Library/Meshes/787906784.sugar",
+            "type": 0,
+            "uid": 787906784
+        },
+        {
+            "asset_file": "small_rock_2_061.001.sugar",
+            "library_path": "Library/Meshes/2014242178.sugar",
+            "type": 0,
+            "uid": 2014242178
+        },
+        {
+            "asset_file": "small_rock_2_061.002.sugar",
+            "library_path": "Library/Meshes/1531408476.sugar",
+            "type": 0,
+            "uid": 1531408476
+        },
+        {
+            "asset_file": "small_rock_2_061.003.sugar",
+            "library_path": "Library/Meshes/1818508343.sugar",
+            "type": 0,
+            "uid": 1818508343
+        },
+        {
+            "asset_file": "small_rock_2_061.004.sugar",
+            "library_path": "Library/Meshes/1199659789.sugar",
+            "type": 0,
+            "uid": 1199659789
+        },
+        {
+            "asset_file": "small_rock_2_061.005.sugar",
+            "library_path": "Library/Meshes/1782131229.sugar",
+            "type": 0,
+            "uid": 1782131229
+        },
+        {
+            "asset_file": "small_rock_2_061.006.sugar",
+            "library_path": "Library/Meshes/694203200.sugar",
+            "type": 0,
+            "uid": 694203200
+        },
+        {
+            "asset_file": "small_rock_2_061.007.sugar",
+            "library_path": "Library/Meshes/1310818229.sugar",
+            "type": 0,
+            "uid": 1310818229
+        },
+        {
+            "asset_file": "small_rock_2_061.008.sugar",
+            "library_path": "Library/Meshes/1778899600.sugar",
+            "type": 0,
+            "uid": 1778899600
+        },
+        {
+            "asset_file": "small_rock_2_061.009.sugar",
+            "library_path": "Library/Meshes/136490240.sugar",
+            "type": 0,
+            "uid": 136490240
+        },
+        {
+            "asset_file": "cooking_pot.002.sugar",
+            "library_path": "Library/Meshes/179084213.sugar",
+            "type": 0,
+            "uid": 179084213
+        },
+        {
+            "asset_file": "small_rock_2_061.017.sugar",
+            "library_path": "Library/Meshes/1090944288.sugar",
+            "type": 0,
+            "uid": 1090944288
+        },
+        {
+            "asset_file": "small_rock_2_061.018.sugar",
+            "library_path": "Library/Meshes/1107946225.sugar",
+            "type": 0,
+            "uid": 1107946225
+        },
+        {
+            "asset_file": "small_rock_2_061.019.sugar",
+            "library_path": "Library/Meshes/150798669.sugar",
+            "type": 0,
+            "uid": 150798669
+        },
+        {
+            "asset_file": "small_rock_2_061.020.sugar",
+            "library_path": "Library/Meshes/1115117097.sugar",
+            "type": 0,
+            "uid": 1115117097
+        },
+        {
+            "asset_file": "small_rock_2_061.021.sugar",
+            "library_path": "Library/Meshes/1265542878.sugar",
+            "type": 0,
+            "uid": 1265542878
+        },
+        {
+            "asset_file": "small_rock_2_061.022.sugar",
+            "library_path": "Library/Meshes/1930014082.sugar",
+            "type": 0,
+            "uid": 1930014082
+        },
+        {
+            "asset_file": "small_rock_2_061.023.sugar",
+            "library_path": "Library/Meshes/1836784283.sugar",
+            "type": 0,
+            "uid": 1836784283
+        },
+        {
+            "asset_file": "small_rock_2_061.024.sugar",
+            "library_path": "Library/Meshes/593782659.sugar",
+            "type": 0,
+            "uid": 593782659
+        },
+        {
+            "asset_file": "cooking_pot.003.sugar",
+            "library_path": "Library/Meshes/2042693676.sugar",
+            "type": 0,
+            "uid": 2042693676
+        },
+        {
+            "asset_file": "mineral_1.001.sugar",
+            "library_path": "Library/Meshes/738719156.sugar",
+            "type": 0,
+            "uid": 738719156
+        },
+        {
+            "asset_file": "mineral_1.002.sugar",
+            "library_path": "Library/Meshes/1473613962.sugar",
+            "type": 0,
+            "uid": 1473613962
+        },
+        {
+            "asset_file": "mineral_1.003.sugar",
+            "library_path": "Library/Meshes/26720166.sugar",
+            "type": 0,
+            "uid": 26720166
+        },
+        {
+            "asset_file": "mineral_1.004.sugar",
+            "library_path": "Library/Meshes/1166397351.sugar",
+            "type": 0,
+            "uid": 1166397351
+        },
+        {
+            "asset_file": "mineral_1.005.sugar",
+            "library_path": "Library/Meshes/709554905.sugar",
+            "type": 0,
+            "uid": 709554905
+        },
+        {
+            "asset_file": "mineral_1.006.sugar",
+            "library_path": "Library/Meshes/1766975447.sugar",
+            "type": 0,
+            "uid": 1766975447
+        },
+        {
+            "asset_file": "mineral_1.007.sugar",
+            "library_path": "Library/Meshes/1630316226.sugar",
+            "type": 0,
+            "uid": 1630316226
+        },
+        {
+            "asset_file": "mineral_1.008.sugar",
+            "library_path": "Library/Meshes/293151658.sugar",
+            "type": 0,
+            "uid": 293151658
+        },
+        {
+            "asset_file": "mineral_1.009.sugar",
+            "library_path": "Library/Meshes/839675153.sugar",
+            "type": 0,
+            "uid": 839675153
+        },
+        {
+            "asset_file": "mineral_1.010.sugar",
+            "library_path": "Library/Meshes/1416173492.sugar",
+            "type": 0,
+            "uid": 1416173492
+        },
+        {
+            "asset_file": "Circle_007.001.sugar",
+            "library_path": "Library/Meshes/1310888376.sugar",
+            "type": 0,
+            "uid": 1310888376
+        },
+        {
+            "asset_file": "mineral_1.011.sugar",
+            "library_path": "Library/Meshes/1216718964.sugar",
+            "type": 0,
+            "uid": 1216718964
+        },
+        {
+            "asset_file": "mineral_1.012.sugar",
+            "library_path": "Library/Meshes/491104007.sugar",
+            "type": 0,
+            "uid": 491104007
+        },
+        {
+            "asset_file": "mineral_1.016.sugar",
+            "library_path": "Library/Meshes/1589263632.sugar",
+            "type": 0,
+            "uid": 1589263632
+        },
+        {
+            "asset_file": "mineral_1.017.sugar",
+            "library_path": "Library/Meshes/1484787270.sugar",
+            "type": 0,
+            "uid": 1484787270
+        },
+        {
+            "asset_file": "mineral_1.018.sugar",
+            "library_path": "Library/Meshes/1419998786.sugar",
+            "type": 0,
+            "uid": 1419998786
+        },
+        {
+            "asset_file": "mineral_1.019.sugar",
+            "library_path": "Library/Meshes/1443217834.sugar",
+            "type": 0,
+            "uid": 1443217834
+        },
+        {
+            "asset_file": "mineral_2.001.sugar",
+            "library_path": "Library/Meshes/1174147937.sugar",
+            "type": 0,
+            "uid": 1174147937
+        },
+        {
+            "asset_file": "mineral_2.002.sugar",
+            "library_path": "Library/Meshes/1847600404.sugar",
+            "type": 0,
+            "uid": 1847600404
+        },
+        {
+            "asset_file": "mineral_2.003.sugar",
+            "library_path": "Library/Meshes/923696694.sugar",
+            "type": 0,
+            "uid": 923696694
+        },
+        {
+            "asset_file": "mineral_2.004.sugar",
+            "library_path": "Library/Meshes/837817035.sugar",
+            "type": 0,
+            "uid": 837817035
+        },
+        {
+            "asset_file": "mineral_2.005.sugar",
+            "library_path": "Library/Meshes/2129047033.sugar",
+            "type": 0,
+            "uid": 2129047033
+        },
+        {
+            "asset_file": "mineral_2.006.sugar",
+            "library_path": "Library/Meshes/265913175.sugar",
+            "type": 0,
+            "uid": 265913175
+        },
+        {
+            "asset_file": "mineral_2.007.sugar",
+            "library_path": "Library/Meshes/2055449023.sugar",
+            "type": 0,
+            "uid": 2055449023
+        },
+        {
+            "asset_file": "mineral_2.008.sugar",
+            "library_path": "Library/Meshes/2079424882.sugar",
+            "type": 0,
+            "uid": 2079424882
+        },
+        {
+            "asset_file": "mineral_2.009.sugar",
+            "library_path": "Library/Meshes/756945730.sugar",
+            "type": 0,
+            "uid": 756945730
+        },
+        {
+            "asset_file": "mineral_2.010.sugar",
+            "library_path": "Library/Meshes/954598554.sugar",
+            "type": 0,
+            "uid": 954598554
+        },
+        {
+            "asset_file": "mineral_2.011.sugar",
+            "library_path": "Library/Meshes/328556387.sugar",
+            "type": 0,
+            "uid": 328556387
+        },
+        {
+            "asset_file": "mineral_2.012.sugar",
+            "library_path": "Library/Meshes/455320500.sugar",
+            "type": 0,
+            "uid": 455320500
+        },
+        {
+            "asset_file": "mineral_2.013.sugar",
+            "library_path": "Library/Meshes/847930120.sugar",
+            "type": 0,
+            "uid": 847930120
+        },
+        {
+            "asset_file": "mineral_2.014.sugar",
+            "library_path": "Library/Meshes/312543179.sugar",
+            "type": 0,
+            "uid": 312543179
+        },
+        {
+            "asset_file": "mineral_2.015.sugar",
+            "library_path": "Library/Meshes/218086325.sugar",
+            "type": 0,
+            "uid": 218086325
+        },
+        {
+            "asset_file": "mineral_2.016.sugar",
+            "library_path": "Library/Meshes/1401937588.sugar",
+            "type": 0,
+            "uid": 1401937588
+        },
+        {
+            "asset_file": "mineral_3.001.sugar",
+            "library_path": "Library/Meshes/2045531568.sugar",
+            "type": 0,
+            "uid": 2045531568
+        },
+        {
+            "asset_file": "mineral_3.002.sugar",
+            "library_path": "Library/Meshes/284415540.sugar",
+            "type": 0,
+            "uid": 284415540
+        },
+        {
+            "asset_file": "mineral_3.003.sugar",
+            "library_path": "Library/Meshes/780414910.sugar",
+            "type": 0,
+            "uid": 780414910
+        },
+        {
+            "asset_file": "mineral_3.004.sugar",
+            "library_path": "Library/Meshes/125781538.sugar",
+            "type": 0,
+            "uid": 125781538
+        },
+        {
+            "asset_file": "mineral_3.005.sugar",
+            "library_path": "Library/Meshes/1991861235.sugar",
+            "type": 0,
+            "uid": 1991861235
+        },
+        {
+            "asset_file": "mineral_3.006.sugar",
+            "library_path": "Library/Meshes/2085159836.sugar",
+            "type": 0,
+            "uid": 2085159836
+        },
+        {
+            "asset_file": "mineral_3.007.sugar",
+            "library_path": "Library/Meshes/1051352324.sugar",
+            "type": 0,
+            "uid": 1051352324
+        },
+        {
+            "asset_file": "mineral_3.008.sugar",
+            "library_path": "Library/Meshes/1907993478.sugar",
+            "type": 0,
+            "uid": 1907993478
+        },
+        {
+            "asset_file": "mineral_3.009.sugar",
+            "library_path": "Library/Meshes/2115388255.sugar",
+            "type": 0,
+            "uid": 2115388255
+        },
+        {
+            "asset_file": "mineral_3.010.sugar",
+            "library_path": "Library/Meshes/223376876.sugar",
+            "type": 0,
+            "uid": 223376876
+        },
+        {
+            "asset_file": "mineral_3.011.sugar",
+            "library_path": "Library/Meshes/279476326.sugar",
+            "type": 0,
+            "uid": 279476326
+        },
+        {
+            "asset_file": "fuel_cell.001.sugar",
+            "library_path": "Library/Meshes/753532248.sugar",
+            "type": 0,
+            "uid": 753532248
+        },
+        {
+            "asset_file": "fuel_cell.002.sugar",
+            "library_path": "Library/Meshes/1980750088.sugar",
+            "type": 0,
+            "uid": 1980750088
+        },
+        {
+            "asset_file": "fuel_cell.003.sugar",
+            "library_path": "Library/Meshes/1859964376.sugar",
+            "type": 0,
+            "uid": 1859964376
+        },
+        {
+            "asset_file": "fuel_cell.004.sugar",
+            "library_path": "Library/Meshes/1828623729.sugar",
+            "type": 0,
+            "uid": 1828623729
+        },
+        {
+            "asset_file": "fuel_cell.005.sugar",
+            "library_path": "Library/Meshes/640035005.sugar",
+            "type": 0,
+            "uid": 640035005
+        },
+        {
+            "asset_file": "fuel_cell.006.sugar",
+            "library_path": "Library/Meshes/1122144764.sugar",
+            "type": 0,
+            "uid": 1122144764
+        },
+        {
+            "asset_file": "fuel_cell.007.sugar",
+            "library_path": "Library/Meshes/464246551.sugar",
+            "type": 0,
+            "uid": 464246551
+        },
+        {
+            "asset_file": "fuel_cell.008.sugar",
+            "library_path": "Library/Meshes/99874810.sugar",
+            "type": 0,
+            "uid": 99874810
+        },
+        {
+            "asset_file": "fuel_cell.009.sugar",
+            "library_path": "Library/Meshes/1397503172.sugar",
+            "type": 0,
+            "uid": 1397503172
+        },
+        {
+            "asset_file": "fuel_cell.010.sugar",
+            "library_path": "Library/Meshes/228739564.sugar",
+            "type": 0,
+            "uid": 228739564
+        },
+        {
+            "asset_file": "fuel_cell.011.sugar",
+            "library_path": "Library/Meshes/2089704988.sugar",
+            "type": 0,
+            "uid": 2089704988
+        },
+        {
+            "asset_file": "fuel_cell.012.sugar",
+            "library_path": "Library/Meshes/1017031983.sugar",
+            "type": 0,
+            "uid": 1017031983
+        },
+        {
+            "asset_file": "fuel_cell.013.sugar",
+            "library_path": "Library/Meshes/782789755.sugar",
+            "type": 0,
+            "uid": 782789755
+        },
+        {
+            "asset_file": "fuel_cell.014.sugar",
+            "library_path": "Library/Meshes/1781523963.sugar",
+            "type": 0,
+            "uid": 1781523963
+        },
+        {
+            "asset_file": "fuel_cell.015.sugar",
+            "library_path": "Library/Meshes/1535464714.sugar",
+            "type": 0,
+            "uid": 1535464714
+        },
+        {
+            "asset_file": "fuel_cell.016.sugar",
+            "library_path": "Library/Meshes/919455097.sugar",
+            "type": 0,
+            "uid": 919455097
+        },
+        {
+            "asset_file": "fuel_cell.017.sugar",
+            "library_path": "Library/Meshes/336104493.sugar",
+            "type": 0,
+            "uid": 336104493
+        },
+        {
+            "asset_file": "fuel_cell.018.sugar",
+            "library_path": "Library/Meshes/631637318.sugar",
+            "type": 0,
+            "uid": 631637318
+        },
+        {
+            "asset_file": "fuel_cell.019.sugar",
+            "library_path": "Library/Meshes/1798190608.sugar",
+            "type": 0,
+            "uid": 1798190608
+        },
+        {
+            "asset_file": "fuel_cell.020.sugar",
+            "library_path": "Library/Meshes/2064404822.sugar",
+            "type": 0,
+            "uid": 2064404822
+        },
+        {
+            "asset_file": "fuel_cell.021.sugar",
+            "library_path": "Library/Meshes/1733527872.sugar",
+            "type": 0,
+            "uid": 1733527872
+        },
+        {
+            "asset_file": "fuel_cell.022.sugar",
+            "library_path": "Library/Meshes/1467718916.sugar",
+            "type": 0,
+            "uid": 1467718916
+        },
+        {
+            "asset_file": "fuel_cell.023.sugar",
+            "library_path": "Library/Meshes/749000168.sugar",
+            "type": 0,
+            "uid": 749000168
+        },
+        {
+            "asset_file": "fuel_cell.024.sugar",
+            "library_path": "Library/Meshes/1587420846.sugar",
+            "type": 0,
+            "uid": 1587420846
+        },
+        {
+            "asset_file": "fuel_cell.025.sugar",
+            "library_path": "Library/Meshes/1864956541.sugar",
+            "type": 0,
+            "uid": 1864956541
+        },
+        {
+            "asset_file": "fuel_cell.026.sugar",
+            "library_path": "Library/Meshes/1125826130.sugar",
+            "type": 0,
+            "uid": 1125826130
+        },
+        {
+            "asset_file": "fuel_cell.027.sugar",
+            "library_path": "Library/Meshes/1079858581.sugar",
+            "type": 0,
+            "uid": 1079858581
+        },
+        {
+            "asset_file": "fuel_cell.028.sugar",
+            "library_path": "Library/Meshes/32083418.sugar",
+            "type": 0,
+            "uid": 32083418
+        },
+        {
+            "asset_file": "fuel_cell.029.sugar",
+            "library_path": "Library/Meshes/837633259.sugar",
+            "type": 0,
+            "uid": 837633259
+        },
+        {
+            "asset_file": "fuel_cell.030.sugar",
+            "library_path": "Library/Meshes/702614217.sugar",
+            "type": 0,
+            "uid": 702614217
+        },
+        {
+            "asset_file": "small_rock_2_061.025.sugar",
+            "library_path": "Library/Meshes/919219626.sugar",
+            "type": 0,
+            "uid": 919219626
+        },
+        {
+            "asset_file": "small_rock_2_061.026.sugar",
+            "library_path": "Library/Meshes/1607749436.sugar",
+            "type": 0,
+            "uid": 1607749436
+        },
+        {
+            "asset_file": "small_rock_2_061.027.sugar",
+            "library_path": "Library/Meshes/596299416.sugar",
+            "type": 0,
+            "uid": 596299416
+        },
+        {
+            "asset_file": "small_rock_2_061.028.sugar",
+            "library_path": "Library/Meshes/397643476.sugar",
+            "type": 0,
+            "uid": 397643476
+        },
+        {
+            "asset_file": "small_rock_2_061.029.sugar",
+            "library_path": "Library/Meshes/314709691.sugar",
+            "type": 0,
+            "uid": 314709691
+        },
+        {
+            "asset_file": "small_rock_2_061.030.sugar",
+            "library_path": "Library/Meshes/1338009813.sugar",
+            "type": 0,
+            "uid": 1338009813
+        },
+        {
+            "asset_file": "small_rock_2_061.031.sugar",
+            "library_path": "Library/Meshes/1216383303.sugar",
+            "type": 0,
+            "uid": 1216383303
+        },
+        {
+            "asset_file": "small_rock_2_061.032.sugar",
+            "library_path": "Library/Meshes/109722446.sugar",
+            "type": 0,
+            "uid": 109722446
+        },
+        {
+            "asset_file": "cooking_pot.004.sugar",
+            "library_path": "Library/Meshes/165261324.sugar",
+            "type": 0,
+            "uid": 165261324
+        },
+        {
+            "asset_file": "fuel_cell.031.sugar",
+            "library_path": "Library/Meshes/1460103343.sugar",
+            "type": 0,
+            "uid": 1460103343
+        },
+        {
+            "asset_file": "small_rock_2_013.001.sugar",
+            "library_path": "Library/Meshes/1190441163.sugar",
+            "type": 0,
+            "uid": 1190441163
+        },
+        {
+            "asset_file": "small_rock_2_013.005.sugar",
+            "library_path": "Library/Meshes/809890354.sugar",
+            "type": 0,
+            "uid": 809890354
+        },
+        {
+            "asset_file": "small_rock_2_013.006.sugar",
+            "library_path": "Library/Meshes/850646495.sugar",
+            "type": 0,
+            "uid": 850646495
+        },
+        {
+            "asset_file": "small_rock_2_013.007.sugar",
+            "library_path": "Library/Meshes/20200738.sugar",
+            "type": 0,
+            "uid": 20200738
+        },
+        {
+            "asset_file": "vertical_rock_010.001.sugar",
+            "library_path": "Library/Meshes/1634590415.sugar",
+            "type": 0,
+            "uid": 1634590415
+        },
+        {
+            "asset_file": "Circle_001.001.sugar",
+            "library_path": "Library/Meshes/1605367411.sugar",
+            "type": 0,
+            "uid": 1605367411
+        },
+        {
+            "asset_file": "Circle_001.002.sugar",
+            "library_path": "Library/Meshes/1147481540.sugar",
+            "type": 0,
+            "uid": 1147481540
+        },
+        {
+            "asset_file": "medium_rock_1_022.001.sugar",
+            "library_path": "Library/Meshes/611128768.sugar",
+            "type": 0,
+            "uid": 611128768
+        },
+        {
+            "asset_file": "medium_rock_3_002.001.sugar",
+            "library_path": "Library/Meshes/1834937362.sugar",
+            "type": 0,
+            "uid": 1834937362
+        },
+        {
+            "asset_file": "harkonnen_sword.sugar",
+            "library_path": "Library/Meshes/747973846.sugar",
+            "type": 0,
+            "uid": 747973846
+        },
+        {
+            "asset_file": "harkonnen_base_color.png",
+            "asset_path": "Assets/Textures/Characters/Enemies/Harkonnen/harkonnen_base_color.png",
+            "library_path": "Library/Textures/983102260.cacao",
+            "type": 1,
+            "uid": 983102260
+        },
+        {
+            "asset_file": "harkonnen_sword.001.sugar",
+            "library_path": "Library/Meshes/1040471416.sugar",
+            "type": 0,
+            "uid": 1040471416
+        },
+        {
+            "asset_file": "harkonnen_sword.002.sugar",
+            "library_path": "Library/Meshes/103930786.sugar",
+            "type": 0,
+            "uid": 103930786
+        },
+        {
+            "asset_file": "harkonnen_sword.003.sugar",
+            "library_path": "Library/Meshes/1872855008.sugar",
+            "type": 0,
+            "uid": 1872855008
+        },
+        {
+            "asset_file": "harkonnen_sword.004.sugar",
+            "library_path": "Library/Meshes/305639749.sugar",
+            "type": 0,
+            "uid": 305639749
+        },
+        {
+            "asset_file": "harkonnen_sword.005.sugar",
+            "library_path": "Library/Meshes/1522816064.sugar",
+            "type": 0,
+            "uid": 1522816064
+        },
+        {
+            "asset_file": "sardaukar_sword.sugar",
+            "library_path": "Library/Meshes/1112704373.sugar",
+            "type": 0,
+            "uid": 1112704373
+        },
+        {
+            "asset_file": "sardaukar_base_color.png",
+            "asset_path": "Assets/Textures/Characters/Enemies/Sardaukar/sardaukar_base_color.png",
+            "library_path": "Library/Textures/1407841547.cacao",
+            "type": 1,
+            "uid": 1407841547
+        },
+        {
+            "asset_file": "sardaukar_sword.001.sugar",
+            "library_path": "Library/Meshes/1381069948.sugar",
+            "type": 0,
+            "uid": 1381069948
+        },
+        {
+            "asset_file": "weapon_001__8_.001.sugar",
+            "library_path": "Library/Meshes/461008779.sugar",
+            "type": 0,
+            "uid": 461008779
+        },
+        {
+            "asset_file": "sardaukar_sword.002.sugar",
+            "library_path": "Library/Meshes/1543034768.sugar",
+            "type": 0,
+            "uid": 1543034768
+        },
+        {
+            "asset_file": "harkonnen_sword.006.sugar",
+            "library_path": "Library/Meshes/695135850.sugar",
+            "type": 0,
+            "uid": 695135850
+        },
+        {
+            "asset_file": "harkonnen_sword.007.sugar",
+            "library_path": "Library/Meshes/403035531.sugar",
+            "type": 0,
+            "uid": 403035531
+        },
+        {
+            "asset_file": "big_light.sugar",
+            "library_path": "Library/Meshes/476682205.sugar",
+            "type": 0,
+            "uid": 476682205
+        },
+        {
+            "asset_file": "group_3_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 2/group_3_base_color.png",
+            "library_path": "Library/Textures/1964319724.cacao",
+            "type": 1,
+            "uid": 1964319724
+        },
+        {
+            "asset_file": "big_light.001.sugar",
+            "library_path": "Library/Meshes/815138398.sugar",
+            "type": 0,
+            "uid": 815138398
+        },
+        {
+            "asset_file": "big_light.002.sugar",
+            "library_path": "Library/Meshes/767401367.sugar",
+            "type": 0,
+            "uid": 767401367
+        },
+        {
+            "asset_file": "big_light.003.sugar",
+            "library_path": "Library/Meshes/959684601.sugar",
+            "type": 0,
+            "uid": 959684601
+        },
+        {
+            "asset_file": "big_light.004.sugar",
+            "library_path": "Library/Meshes/1747343850.sugar",
+            "type": 0,
+            "uid": 1747343850
+        },
+        {
+            "asset_file": "big_light.005.sugar",
+            "library_path": "Library/Meshes/1500926463.sugar",
+            "type": 0,
+            "uid": 1500926463
+        },
+        {
+            "asset_file": "big_light.006.sugar",
+            "library_path": "Library/Meshes/892399779.sugar",
+            "type": 0,
+            "uid": 892399779
+        },
+        {
+            "asset_file": "big_light.007.sugar",
+            "library_path": "Library/Meshes/642672094.sugar",
+            "type": 0,
+            "uid": 642672094
+        },
+        {
+            "asset_file": "small_rock_2_009.001.sugar",
+            "library_path": "Library/Meshes/1036062526.sugar",
+            "type": 0,
+            "uid": 1036062526
+        },
+        {
+            "asset_file": "small_rock_2_009.004.sugar",
+            "library_path": "Library/Meshes/1968804337.sugar",
+            "type": 0,
+            "uid": 1968804337
+        },
+        {
+            "asset_file": "small_rock_2_009.005.sugar",
+            "library_path": "Library/Meshes/1574136000.sugar",
+            "type": 0,
+            "uid": 1574136000
+        },
+        {
+            "asset_file": "small_rock_2_010.007.sugar",
+            "library_path": "Library/Meshes/1009431360.sugar",
+            "type": 0,
+            "uid": 1009431360
+        },
+        {
+            "asset_file": "small_rock_2_013.002.sugar",
+            "library_path": "Library/Meshes/436479332.sugar",
+            "type": 0,
+            "uid": 436479332
+        },
+        {
+            "asset_file": "small_rock_2_013.003.sugar",
+            "library_path": "Library/Meshes/11323527.sugar",
+            "type": 0,
+            "uid": 11323527
+        },
+        {
+            "asset_file": "small_rock_2_013.004.sugar",
+            "library_path": "Library/Meshes/1792877826.sugar",
+            "type": 0,
+            "uid": 1792877826
+        },
+        {
+            "asset_file": "small_rock_2_013.009.sugar",
+            "library_path": "Library/Meshes/1957398532.sugar",
+            "type": 0,
+            "uid": 1957398532
+        },
+        {
+            "asset_file": "small_rock_2_013.011.sugar",
+            "library_path": "Library/Meshes/621528346.sugar",
+            "type": 0,
+            "uid": 621528346
+        },
+        {
+            "asset_file": "small_rock_2_013.012.sugar",
+            "library_path": "Library/Meshes/284047500.sugar",
+            "type": 0,
+            "uid": 284047500
+        },
+        {
+            "asset_file": "small_rock_2_013.015.sugar",
+            "library_path": "Library/Meshes/1225195111.sugar",
+            "type": 0,
+            "uid": 1225195111
+        },
+        {
+            "asset_file": "small_rock_2_013.016.sugar",
+            "library_path": "Library/Meshes/1971000146.sugar",
+            "type": 0,
+            "uid": 1971000146
+        },
+        {
+            "asset_file": "small_rock_2_013.017.sugar",
+            "library_path": "Library/Meshes/1052364696.sugar",
+            "type": 0,
+            "uid": 1052364696
+        },
+        {
+            "asset_file": "small_rock_2_013.019.sugar",
+            "library_path": "Library/Meshes/1994797402.sugar",
+            "type": 0,
+            "uid": 1994797402
+        },
+        {
+            "asset_file": "small_rock_2_013.024.sugar",
+            "library_path": "Library/Meshes/395548896.sugar",
+            "type": 0,
+            "uid": 395548896
+        },
+        {
+            "asset_file": "small_rock_2_013.031.sugar",
+            "library_path": "Library/Meshes/612774636.sugar",
+            "type": 0,
+            "uid": 612774636
+        },
+        {
+            "asset_file": "small_rock_2_013.032.sugar",
+            "library_path": "Library/Meshes/462546214.sugar",
+            "type": 0,
+            "uid": 462546214
+        },
+        {
+            "asset_file": "small_rock_2_013.033.sugar",
+            "library_path": "Library/Meshes/1607953803.sugar",
+            "type": 0,
+            "uid": 1607953803
+        },
+        {
+            "asset_file": "small_rock_2_013.034.sugar",
+            "library_path": "Library/Meshes/1872006091.sugar",
+            "type": 0,
+            "uid": 1872006091
+        },
+        {
+            "asset_file": "small_rock_2_013.035.sugar",
+            "library_path": "Library/Meshes/543553182.sugar",
+            "type": 0,
+            "uid": 543553182
+        },
+        {
+            "asset_file": "small_rock_2_013.038.sugar",
+            "library_path": "Library/Meshes/312777983.sugar",
+            "type": 0,
+            "uid": 312777983
+        },
+        {
+            "asset_file": "small_rock_2_013.039.sugar",
+            "library_path": "Library/Meshes/52025217.sugar",
+            "type": 0,
+            "uid": 52025217
+        },
+        {
+            "asset_file": "small_rock_2_013.040.sugar",
+            "library_path": "Library/Meshes/298795925.sugar",
+            "type": 0,
+            "uid": 298795925
+        },
+        {
+            "asset_file": "small_rock_2_013.041.sugar",
+            "library_path": "Library/Meshes/2087634810.sugar",
+            "type": 0,
+            "uid": 2087634810
+        },
+        {
+            "asset_file": "small_rock_2_013.042.sugar",
+            "library_path": "Library/Meshes/745795144.sugar",
+            "type": 0,
+            "uid": 745795144
+        },
+        {
+            "asset_file": "small_rock_2_013.045.sugar",
+            "library_path": "Library/Meshes/1296974341.sugar",
+            "type": 0,
+            "uid": 1296974341
+        },
+        {
+            "asset_file": "small_rock_2_013.047.sugar",
+            "library_path": "Library/Meshes/373614508.sugar",
+            "type": 0,
+            "uid": 373614508
+        },
+        {
+            "asset_file": "small_rock_2_013.048.sugar",
+            "library_path": "Library/Meshes/1031832158.sugar",
+            "type": 0,
+            "uid": 1031832158
+        },
+        {
+            "asset_file": "small_rock_2_013.049.sugar",
+            "library_path": "Library/Meshes/1396263369.sugar",
+            "type": 0,
+            "uid": 1396263369
+        },
+        {
+            "asset_file": "small_rock_2_013.052.sugar",
+            "library_path": "Library/Meshes/1580312114.sugar",
+            "type": 0,
+            "uid": 1580312114
+        },
+        {
+            "asset_file": "small_rock_2_013.053.sugar",
+            "library_path": "Library/Meshes/1061270440.sugar",
+            "type": 0,
+            "uid": 1061270440
+        },
+        {
+            "asset_file": "small_rock_2_013.055.sugar",
+            "library_path": "Library/Meshes/1432204550.sugar",
+            "type": 0,
+            "uid": 1432204550
+        },
+        {
+            "asset_file": "small_rock_2_013.059.sugar",
+            "library_path": "Library/Meshes/2022460418.sugar",
+            "type": 0,
+            "uid": 2022460418
+        },
+        {
+            "asset_file": "small_rock_2_013.060.sugar",
+            "library_path": "Library/Meshes/1538780515.sugar",
+            "type": 0,
+            "uid": 1538780515
+        },
+        {
+            "asset_file": "small_rock_2_013.061.sugar",
+            "library_path": "Library/Meshes/520723014.sugar",
+            "type": 0,
+            "uid": 520723014
+        },
+        {
+            "asset_file": "small_rock_2_013.062.sugar",
+            "library_path": "Library/Meshes/24358533.sugar",
+            "type": 0,
+            "uid": 24358533
+        },
+        {
+            "asset_file": "small_rock_2_013.065.sugar",
+            "library_path": "Library/Meshes/1217366278.sugar",
+            "type": 0,
+            "uid": 1217366278
+        },
+        {
+            "asset_file": "small_rock_2_013.067.sugar",
+            "library_path": "Library/Meshes/313677637.sugar",
+            "type": 0,
+            "uid": 313677637
+        },
+        {
+            "asset_file": "small_rock_2_013.068.sugar",
+            "library_path": "Library/Meshes/764518055.sugar",
+            "type": 0,
+            "uid": 764518055
+        },
+        {
+            "asset_file": "small_rock_2_013.069.sugar",
+            "library_path": "Library/Meshes/456053496.sugar",
+            "type": 0,
+            "uid": 456053496
+        },
+        {
+            "asset_file": "small_rock_2_013.070.sugar",
+            "library_path": "Library/Meshes/186087641.sugar",
+            "type": 0,
+            "uid": 186087641
+        },
+        {
+            "asset_file": "small_rock_2_013.071.sugar",
+            "library_path": "Library/Meshes/659601132.sugar",
+            "type": 0,
+            "uid": 659601132
+        },
+        {
+            "asset_file": "small_rock_2_013.072.sugar",
+            "library_path": "Library/Meshes/639042741.sugar",
+            "type": 0,
+            "uid": 639042741
+        },
+        {
+            "asset_file": "small_rock_2_013.073.sugar",
+            "library_path": "Library/Meshes/500391326.sugar",
+            "type": 0,
+            "uid": 500391326
+        },
+        {
+            "asset_file": "small_rock_2_013.075.sugar",
+            "library_path": "Library/Meshes/233555664.sugar",
+            "type": 0,
+            "uid": 233555664
+        },
+        {
+            "asset_file": "small_rock_2_013.076.sugar",
+            "library_path": "Library/Meshes/1017037936.sugar",
+            "type": 0,
+            "uid": 1017037936
+        },
+        {
+            "asset_file": "small_rock_2_013.077.sugar",
+            "library_path": "Library/Meshes/1881423536.sugar",
+            "type": 0,
+            "uid": 1881423536
+        },
+        {
+            "asset_file": "small_rock_2_013.078.sugar",
+            "library_path": "Library/Meshes/1961688198.sugar",
+            "type": 0,
+            "uid": 1961688198
+        },
+        {
+            "asset_file": "small_rock_2_013.079.sugar",
+            "library_path": "Library/Meshes/53531558.sugar",
+            "type": 0,
+            "uid": 53531558
+        },
+        {
+            "asset_file": "small_rock_2_013.081.sugar",
+            "library_path": "Library/Meshes/469725739.sugar",
+            "type": 0,
+            "uid": 469725739
+        },
+        {
+            "asset_file": "small_rock_2_013.082.sugar",
+            "library_path": "Library/Meshes/2034334028.sugar",
+            "type": 0,
+            "uid": 2034334028
+        },
+        {
+            "asset_file": "small_rock_2_013.083.sugar",
+            "library_path": "Library/Meshes/978420873.sugar",
+            "type": 0,
+            "uid": 978420873
+        },
+        {
+            "asset_file": "small_rock_2_013.084.sugar",
+            "library_path": "Library/Meshes/1126607827.sugar",
+            "type": 0,
+            "uid": 1126607827
+        },
+        {
+            "asset_file": "small_rock_2_013.085.sugar",
+            "library_path": "Library/Meshes/393487262.sugar",
+            "type": 0,
+            "uid": 393487262
+        },
+        {
+            "asset_file": "small_rock_2_013.087.sugar",
+            "library_path": "Library/Meshes/1749517753.sugar",
+            "type": 0,
+            "uid": 1749517753
+        },
+        {
+            "asset_file": "small_rock_2_013.088.sugar",
+            "library_path": "Library/Meshes/946357681.sugar",
+            "type": 0,
+            "uid": 946357681
+        },
+        {
+            "asset_file": "small_rock_2_013.089.sugar",
+            "library_path": "Library/Meshes/479244590.sugar",
+            "type": 0,
+            "uid": 479244590
+        },
+        {
+            "asset_file": "small_rock_2_013.091.sugar",
+            "library_path": "Library/Meshes/21624695.sugar",
+            "type": 0,
+            "uid": 21624695
+        },
+        {
+            "asset_file": "small_rock_2_013.092.sugar",
+            "library_path": "Library/Meshes/2103516088.sugar",
+            "type": 0,
+            "uid": 2103516088
+        },
+        {
+            "asset_file": "small_rock_2_013.093.sugar",
+            "library_path": "Library/Meshes/771192202.sugar",
+            "type": 0,
+            "uid": 771192202
+        },
+        {
+            "asset_file": "small_rock_2_013.094.sugar",
+            "library_path": "Library/Meshes/272441559.sugar",
+            "type": 0,
+            "uid": 272441559
+        },
+        {
+            "asset_file": "small_rock_2_013.095.sugar",
+            "library_path": "Library/Meshes/686420650.sugar",
+            "type": 0,
+            "uid": 686420650
+        },
+        {
+            "asset_file": "small_rock_2_013.097.sugar",
+            "library_path": "Library/Meshes/346468268.sugar",
+            "type": 0,
+            "uid": 346468268
+        },
+        {
+            "asset_file": "small_rock_2_013.098.sugar",
+            "library_path": "Library/Meshes/1393630097.sugar",
+            "type": 0,
+            "uid": 1393630097
+        },
+        {
+            "asset_file": "small_rock_2_013.099.sugar",
+            "library_path": "Library/Meshes/1261837494.sugar",
+            "type": 0,
+            "uid": 1261837494
+        },
+        {
+            "asset_file": "small_rock_2_013.100.sugar",
+            "library_path": "Library/Meshes/1295500031.sugar",
+            "type": 0,
+            "uid": 1295500031
+        },
+        {
+            "asset_file": "small_rock_2_013.101.sugar",
+            "library_path": "Library/Meshes/513562406.sugar",
+            "type": 0,
+            "uid": 513562406
+        },
+        {
+            "asset_file": "small_rock_2_013.102.sugar",
+            "library_path": "Library/Meshes/769939146.sugar",
+            "type": 0,
+            "uid": 769939146
+        },
+        {
+            "asset_file": "small_rock_2_013.103.sugar",
+            "library_path": "Library/Meshes/902852647.sugar",
+            "type": 0,
+            "uid": 902852647
+        },
+        {
+            "asset_file": "small_rock_2_013.105.sugar",
+            "library_path": "Library/Meshes/845949962.sugar",
+            "type": 0,
+            "uid": 845949962
+        },
+        {
+            "asset_file": "small_rock_2_013.106.sugar",
+            "library_path": "Library/Meshes/193337112.sugar",
+            "type": 0,
+            "uid": 193337112
+        },
+        {
+            "asset_file": "small_rock_2_013.107.sugar",
+            "library_path": "Library/Meshes/1217564618.sugar",
+            "type": 0,
+            "uid": 1217564618
+        },
+        {
+            "asset_file": "small_rock_2_013.108.sugar",
+            "library_path": "Library/Meshes/436330146.sugar",
+            "type": 0,
+            "uid": 436330146
+        },
+        {
+            "asset_file": "small_rock_2_013.109.sugar",
+            "library_path": "Library/Meshes/864744317.sugar",
+            "type": 0,
+            "uid": 864744317
+        },
+        {
+            "asset_file": "small_rock_2_013.110.sugar",
+            "library_path": "Library/Meshes/1920566886.sugar",
+            "type": 0,
+            "uid": 1920566886
+        },
+        {
+            "asset_file": "small_rock_2_013.113.sugar",
+            "library_path": "Library/Meshes/507625573.sugar",
+            "type": 0,
+            "uid": 507625573
+        },
+        {
+            "asset_file": "small_rock_2_013.114.sugar",
+            "library_path": "Library/Meshes/623246780.sugar",
+            "type": 0,
+            "uid": 623246780
+        },
+        {
+            "asset_file": "small_rock_2_013.115.sugar",
+            "library_path": "Library/Meshes/331574322.sugar",
+            "type": 0,
+            "uid": 331574322
+        },
+        {
+            "asset_file": "small_rock_2_013.116.sugar",
+            "library_path": "Library/Meshes/1961427469.sugar",
+            "type": 0,
+            "uid": 1961427469
+        },
+        {
+            "asset_file": "small_rock_2_013.118.sugar",
+            "library_path": "Library/Meshes/1729287593.sugar",
+            "type": 0,
+            "uid": 1729287593
+        },
+        {
+            "asset_file": "small_rock_2_013.119.sugar",
+            "library_path": "Library/Meshes/658395387.sugar",
+            "type": 0,
+            "uid": 658395387
+        },
+        {
+            "asset_file": "small_rock_2_013.120.sugar",
+            "library_path": "Library/Meshes/454864638.sugar",
+            "type": 0,
+            "uid": 454864638
+        },
+        {
+            "asset_file": "small_rock_2_013.121.sugar",
+            "library_path": "Library/Meshes/1364149700.sugar",
+            "type": 0,
+            "uid": 1364149700
+        },
+        {
+            "asset_file": "small_rock_2_013.123.sugar",
+            "library_path": "Library/Meshes/1798872124.sugar",
+            "type": 0,
+            "uid": 1798872124
+        },
+        {
+            "asset_file": "small_rock_2_013.125.sugar",
+            "library_path": "Library/Meshes/399086828.sugar",
+            "type": 0,
+            "uid": 399086828
+        },
+        {
+            "asset_file": "small_rock_2_013.127.sugar",
+            "library_path": "Library/Meshes/1726721487.sugar",
+            "type": 0,
+            "uid": 1726721487
+        },
+        {
+            "asset_file": "small_rock_2_013.128.sugar",
+            "library_path": "Library/Meshes/1038866973.sugar",
+            "type": 0,
+            "uid": 1038866973
+        },
+        {
+            "asset_file": "small_rock_2_013.130.sugar",
+            "library_path": "Library/Meshes/47672212.sugar",
+            "type": 0,
+            "uid": 47672212
+        },
+        {
+            "asset_file": "small_rock_2_013.131.sugar",
+            "library_path": "Library/Meshes/2140681475.sugar",
+            "type": 0,
+            "uid": 2140681475
+        },
+        {
+            "asset_file": "small_rock_2_013.132.sugar",
+            "library_path": "Library/Meshes/2060011914.sugar",
+            "type": 0,
+            "uid": 2060011914
+        },
+        {
+            "asset_file": "small_rock_2_013.133.sugar",
+            "library_path": "Library/Meshes/1364070007.sugar",
+            "type": 0,
+            "uid": 1364070007
+        },
+        {
+            "asset_file": "small_rock_2_013.134.sugar",
+            "library_path": "Library/Meshes/1783274036.sugar",
+            "type": 0,
+            "uid": 1783274036
+        },
+        {
+            "asset_file": "small_rock_2_013.135.sugar",
+            "library_path": "Library/Meshes/212625924.sugar",
+            "type": 0,
+            "uid": 212625924
+        },
+        {
+            "asset_file": "small_rock_2_013.136.sugar",
+            "library_path": "Library/Meshes/1878758096.sugar",
+            "type": 0,
+            "uid": 1878758096
+        },
+        {
+            "asset_file": "small_rock_2_013.138.sugar",
+            "library_path": "Library/Meshes/854323972.sugar",
+            "type": 0,
+            "uid": 854323972
+        },
+        {
+            "asset_file": "small_rock_2_013.139.sugar",
+            "library_path": "Library/Meshes/938986285.sugar",
+            "type": 0,
+            "uid": 938986285
+        },
+        {
+            "asset_file": "small_rock_2_013.140.sugar",
+            "library_path": "Library/Meshes/305555638.sugar",
+            "type": 0,
+            "uid": 305555638
+        },
+        {
+            "asset_file": "small_rock_2_013.141.sugar",
+            "library_path": "Library/Meshes/1798619922.sugar",
+            "type": 0,
+            "uid": 1798619922
+        },
+        {
+            "asset_file": "small_rock_2_013.142.sugar",
+            "library_path": "Library/Meshes/539295861.sugar",
+            "type": 0,
+            "uid": 539295861
+        },
+        {
+            "asset_file": "small_rock_2_013.143.sugar",
+            "library_path": "Library/Meshes/610010034.sugar",
+            "type": 0,
+            "uid": 610010034
+        },
+        {
+            "asset_file": "small_rock_2_013.144.sugar",
+            "library_path": "Library/Meshes/489561039.sugar",
+            "type": 0,
+            "uid": 489561039
+        },
+        {
+            "asset_file": "small_rock_2_013.145.sugar",
+            "library_path": "Library/Meshes/1906396048.sugar",
+            "type": 0,
+            "uid": 1906396048
+        },
+        {
+            "asset_file": "small_rock_2_013.147.sugar",
+            "library_path": "Library/Meshes/2138055651.sugar",
+            "type": 0,
+            "uid": 2138055651
+        },
+        {
+            "asset_file": "small_rock_2_013.148.sugar",
+            "library_path": "Library/Meshes/1472905745.sugar",
+            "type": 0,
+            "uid": 1472905745
+        },
+        {
+            "asset_file": "small_rock_2_013.149.sugar",
+            "library_path": "Library/Meshes/2108693568.sugar",
+            "type": 0,
+            "uid": 2108693568
+        },
+        {
+            "asset_file": "small_rock_2_013.154.sugar",
+            "library_path": "Library/Meshes/798361240.sugar",
+            "type": 0,
+            "uid": 798361240
+        },
+        {
+            "asset_file": "small_rock_2_013.155.sugar",
+            "library_path": "Library/Meshes/657467459.sugar",
+            "type": 0,
+            "uid": 657467459
+        },
+        {
+            "asset_file": "small_rock_2_013.156.sugar",
+            "library_path": "Library/Meshes/1410890412.sugar",
+            "type": 0,
+            "uid": 1410890412
+        },
+        {
+            "asset_file": "small_rock_2_013.157.sugar",
+            "library_path": "Library/Meshes/1978492188.sugar",
+            "type": 0,
+            "uid": 1978492188
+        },
+        {
+            "asset_file": "small_rock_2_013.158.sugar",
+            "library_path": "Library/Meshes/1207091164.sugar",
+            "type": 0,
+            "uid": 1207091164
+        },
+        {
+            "asset_file": "small_rock_2_013.159.sugar",
+            "library_path": "Library/Meshes/996876507.sugar",
+            "type": 0,
+            "uid": 996876507
+        },
+        {
+            "asset_file": "small_rock_2_013.160.sugar",
+            "library_path": "Library/Meshes/918580762.sugar",
+            "type": 0,
+            "uid": 918580762
+        },
+        {
+            "asset_file": "small_rock_2_013.161.sugar",
+            "library_path": "Library/Meshes/686343025.sugar",
+            "type": 0,
+            "uid": 686343025
+        },
+        {
+            "asset_file": "small_rock_2_013.162.sugar",
+            "library_path": "Library/Meshes/1793659219.sugar",
+            "type": 0,
+            "uid": 1793659219
+        },
+        {
+            "asset_file": "small_rock_2_013.163.sugar",
+            "library_path": "Library/Meshes/931382191.sugar",
+            "type": 0,
+            "uid": 931382191
+        },
+        {
+            "asset_file": "small_rock_2_013.164.sugar",
+            "library_path": "Library/Meshes/1266301549.sugar",
+            "type": 0,
+            "uid": 1266301549
+        },
+        {
+            "asset_file": "small_rock_2_013.165.sugar",
+            "library_path": "Library/Meshes/1315826981.sugar",
+            "type": 0,
+            "uid": 1315826981
+        },
+        {
+            "asset_file": "small_rock_2_013.166.sugar",
+            "library_path": "Library/Meshes/12195235.sugar",
+            "type": 0,
+            "uid": 12195235
+        },
+        {
+            "asset_file": "small_rock_2_013.167.sugar",
+            "library_path": "Library/Meshes/584457450.sugar",
+            "type": 0,
+            "uid": 584457450
+        },
+        {
+            "asset_file": "small_rock_2_013.168.sugar",
+            "library_path": "Library/Meshes/200735594.sugar",
+            "type": 0,
+            "uid": 200735594
+        },
+        {
+            "asset_file": "small_rock_2_013.169.sugar",
+            "library_path": "Library/Meshes/938510704.sugar",
+            "type": 0,
+            "uid": 938510704
+        },
+        {
+            "asset_file": "small_rock_2_013.170.sugar",
+            "library_path": "Library/Meshes/1381619015.sugar",
+            "type": 0,
+            "uid": 1381619015
+        },
+        {
+            "asset_file": "small_rock_2_013.171.sugar",
+            "library_path": "Library/Meshes/1945761920.sugar",
+            "type": 0,
+            "uid": 1945761920
+        },
+        {
+            "asset_file": "small_rock_2_013.172.sugar",
+            "library_path": "Library/Meshes/1178315290.sugar",
+            "type": 0,
+            "uid": 1178315290
+        },
+        {
+            "asset_file": "small_rock_2_013.173.sugar",
+            "library_path": "Library/Meshes/43616567.sugar",
+            "type": 0,
+            "uid": 43616567
+        },
+        {
+            "asset_file": "small_rock_2_013.174.sugar",
+            "library_path": "Library/Meshes/1879730501.sugar",
+            "type": 0,
+            "uid": 1879730501
+        },
+        {
+            "asset_file": "small_rock_2_099.sugar",
+            "library_path": "Library/Meshes/2049043919.sugar",
+            "type": 0,
+            "uid": 2049043919
+        },
+        {
+            "asset_file": "small_rock_2_100.sugar",
+            "library_path": "Library/Meshes/1710036103.sugar",
+            "type": 0,
+            "uid": 1710036103
+        },
+        {
+            "asset_file": "small_rock_2_101.sugar",
+            "library_path": "Library/Meshes/977911678.sugar",
+            "type": 0,
+            "uid": 977911678
+        },
+        {
+            "asset_file": "small_rock_2_102.sugar",
+            "library_path": "Library/Meshes/1917460520.sugar",
+            "type": 0,
+            "uid": 1917460520
+        },
+        {
+            "asset_file": "small_rock_2_104.sugar",
+            "library_path": "Library/Meshes/2136518886.sugar",
+            "type": 0,
+            "uid": 2136518886
+        },
+        {
+            "asset_file": "small_rock_2_105.sugar",
+            "library_path": "Library/Meshes/1331321637.sugar",
+            "type": 0,
+            "uid": 1331321637
+        },
+        {
+            "asset_file": "small_rock_2_107.sugar",
+            "library_path": "Library/Meshes/1733277906.sugar",
+            "type": 0,
+            "uid": 1733277906
+        },
+        {
+            "asset_file": "small_rock_2_108.sugar",
+            "library_path": "Library/Meshes/1336982816.sugar",
+            "type": 0,
+            "uid": 1336982816
+        },
+        {
+            "asset_file": "small_rock_2_109.sugar",
+            "library_path": "Library/Meshes/966517224.sugar",
+            "type": 0,
+            "uid": 966517224
+        },
+        {
+            "asset_file": "small_rock_2_110.sugar",
+            "library_path": "Library/Meshes/1680225717.sugar",
+            "type": 0,
+            "uid": 1680225717
+        },
+        {
+            "asset_file": "small_rock_2_111.sugar",
+            "library_path": "Library/Meshes/1706327605.sugar",
+            "type": 0,
+            "uid": 1706327605
+        },
+        {
+            "asset_file": "small_rock_2_112.sugar",
+            "library_path": "Library/Meshes/1187494316.sugar",
+            "type": 0,
+            "uid": 1187494316
+        },
+        {
+            "asset_file": "small_rock_2_113.sugar",
+            "library_path": "Library/Meshes/739526349.sugar",
+            "type": 0,
+            "uid": 739526349
+        },
+        {
+            "asset_file": "small_rock_2_173.sugar",
+            "library_path": "Library/Meshes/790319670.sugar",
+            "type": 0,
+            "uid": 790319670
+        },
+        {
+            "asset_file": "small_rock_2_176.sugar",
+            "library_path": "Library/Meshes/42905876.sugar",
+            "type": 0,
+            "uid": 42905876
+        },
+        {
+            "asset_file": "small_rock_2_177.sugar",
+            "library_path": "Library/Meshes/1677977270.sugar",
+            "type": 0,
+            "uid": 1677977270
+        },
+        {
+            "asset_file": "small_rock_2_179.sugar",
+            "library_path": "Library/Meshes/824476556.sugar",
+            "type": 0,
+            "uid": 824476556
+        },
+        {
+            "asset_file": "small_rock_2_181.sugar",
+            "library_path": "Library/Meshes/843392242.sugar",
+            "type": 0,
+            "uid": 843392242
+        },
+        {
+            "asset_file": "small_rock_2_182.sugar",
+            "library_path": "Library/Meshes/646751708.sugar",
+            "type": 0,
+            "uid": 646751708
+        },
+        {
+            "asset_file": "dummy_008__2_.001.sugar",
+            "library_path": "Library/Meshes/1211944499.sugar",
+            "type": 0,
+            "uid": 1211944499
+        },
+        {
+            "asset_file": "dummy_008__2_.002.sugar",
+            "library_path": "Library/Meshes/115437269.sugar",
+            "type": 0,
+            "uid": 115437269
+        },
+        {
+            "asset_file": "dummy_008__2_.003.sugar",
+            "library_path": "Library/Meshes/1180843333.sugar",
+            "type": 0,
+            "uid": 1180843333
+        },
+        {
+            "asset_file": "dummy_008__2_.004.sugar",
+            "library_path": "Library/Meshes/1881082309.sugar",
+            "type": 0,
+            "uid": 1881082309
+        },
+        {
+            "asset_file": "dummy_008__2_.005.sugar",
+            "library_path": "Library/Meshes/1549818092.sugar",
+            "type": 0,
+            "uid": 1549818092
+        },
+        {
+            "asset_file": "dummy_008__2_.006.sugar",
+            "library_path": "Library/Meshes/1199452689.sugar",
+            "type": 0,
+            "uid": 1199452689
+        },
+        {
+            "asset_file": "dummy_008__2_.007.sugar",
+            "library_path": "Library/Meshes/1253452044.sugar",
+            "type": 0,
+            "uid": 1253452044
+        },
+        {
+            "asset_file": "dummy_008__2_.008.sugar",
+            "library_path": "Library/Meshes/88247005.sugar",
+            "type": 0,
+            "uid": 88247005
+        },
+        {
+            "asset_file": "dummy_008__2_.009.sugar",
+            "library_path": "Library/Meshes/392497690.sugar",
+            "type": 0,
+            "uid": 392497690
+        },
+        {
+            "asset_file": "weapon_001__10_.001.sugar",
+            "library_path": "Library/Meshes/1366286715.sugar",
+            "type": 0,
+            "uid": 1366286715
+        },
+        {
+            "asset_file": "harkonnen_sword.008.sugar",
+            "library_path": "Library/Meshes/1511403354.sugar",
+            "type": 0,
+            "uid": 1511403354
+        },
+        {
+            "asset_file": "weapon_001__10_.002.sugar",
+            "library_path": "Library/Meshes/1727677756.sugar",
+            "type": 0,
+            "uid": 1727677756
+        },
+        {
+            "asset_file": "harkonnen_sword.009.sugar",
+            "library_path": "Library/Meshes/1046379484.sugar",
+            "type": 0,
+            "uid": 1046379484
+        },
+        {
+            "asset_file": "Box001.sugar",
+            "library_path": "Library/Meshes/1412954909.sugar",
+            "type": 0,
+            "uid": 1412954909
+        },
+        {
+            "asset_file": "group_7_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 2/group_7_base_color.png",
+            "library_path": "Library/Textures/673523806.cacao",
+            "type": 1,
+            "uid": 673523806
+        },
+        {
+            "asset_file": "Box004.sugar",
+            "library_path": "Library/Meshes/814062229.sugar",
+            "type": 0,
+            "uid": 814062229
+        },
+        {
+            "asset_file": "Box004.001.sugar",
+            "library_path": "Library/Meshes/340785978.sugar",
+            "type": 0,
+            "uid": 340785978
+        },
+        {
+            "asset_file": "Box004.002.sugar",
+            "library_path": "Library/Meshes/825941531.sugar",
+            "type": 0,
+            "uid": 825941531
+        },
+        {
+            "asset_file": "Box004.003.sugar",
+            "library_path": "Library/Meshes/658097899.sugar",
+            "type": 0,
+            "uid": 658097899
+        },
+        {
+            "asset_file": "Box004.004.sugar",
+            "library_path": "Library/Meshes/606285450.sugar",
+            "type": 0,
+            "uid": 606285450
+        },
+        {
+            "asset_file": "Box004.005.sugar",
+            "library_path": "Library/Meshes/1347949827.sugar",
+            "type": 0,
+            "uid": 1347949827
+        },
+        {
+            "asset_file": "medium_rock_3_027.001.sugar",
+            "library_path": "Library/Meshes/651428371.sugar",
+            "type": 0,
+            "uid": 651428371
+        },
+        {
+            "asset_file": "medium_rock_3_027.002.sugar",
+            "library_path": "Library/Meshes/1952215191.sugar",
+            "type": 0,
+            "uid": 1952215191
+        },
+        {
+            "asset_file": "Box001.001.sugar",
+            "library_path": "Library/Meshes/898305570.sugar",
+            "type": 0,
+            "uid": 898305570
+        },
+        {
+            "asset_file": "Box001.002.sugar",
+            "library_path": "Library/Meshes/1060707593.sugar",
+            "type": 0,
+            "uid": 1060707593
+        },
+        {
+            "asset_file": "door_rock_002.001.sugar",
+            "library_path": "Library/Meshes/318751070.sugar",
+            "type": 0,
+            "uid": 318751070
+        },
+        {
+            "asset_file": "missile_launcher.sugar",
+            "library_path": "Library/Meshes/2077171681.sugar",
+            "type": 0,
+            "uid": 2077171681
+        },
+        {
+            "asset_file": "lvl_1_group_7_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/lvl_1_group_7_base_color.png",
+            "library_path": "Library/Textures/1404727730.cacao",
+            "type": 1,
+            "uid": 1404727730
+        },
+        {
+            "asset_file": "tent.sugar",
+            "library_path": "Library/Meshes/964397570.sugar",
+            "type": 0,
+            "uid": 964397570
+        },
+        {
+            "asset_file": "Cube.sugar",
+            "library_path": "Library/Meshes/516485513.sugar",
+            "type": 0,
+            "uid": 516485513
+        },
+        {
+            "asset_file": "spaceship_base_color.png",
+            "asset_path": "Assets/Textures/Environments/Level 1/spaceship_base_color.png",
+            "library_path": "Library/Textures/1329807507.cacao",
+            "type": 1,
+            "uid": 1329807507
+        }
+    ],
+    "hash": "e7578c12395a4b1ede3b53794080fc64",
+    "library_file": "964482696.tea",
+    "library_path": "Library/Models/964482696.tea",
+    "type": 3,
+    "uid": 964482696
+}
