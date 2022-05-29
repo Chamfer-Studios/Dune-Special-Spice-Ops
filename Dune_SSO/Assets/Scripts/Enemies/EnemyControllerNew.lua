@@ -361,6 +361,46 @@ function EventHandler(key, fields)
         if (fields[1] == gameObject) then
             SwitchState(state, STATE.DEAD)
         end
+    elseif key == "Knife_Hit" then
+        if (fields[1] == gameObject) then
+            if (currentState == STATE.UNAWARE) then
+                knifeHitChance = GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
+                    trackList = {1}
+                    --ChangeTrack(trackList)
+                end
+            elseif (currentState == STATE.SUS) then
+                knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
+                    trackList = {1}
+                    --ChangeTrack(trackList)
+                end
+            elseif (currentState == STATE.AGGRO) then
+                knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                math.randomseed(os.time())
+                rng = math.random(100)
+                if (rng <= knifeHitChance) then
+                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
+                    Die()
+                else
+                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
+                    trackList = {1}
+                    --ChangeTrack(trackList)
+                end
+            end
+        end
     end
 end
 
@@ -545,41 +585,23 @@ function UpdateAnimation(oldState, target)
     elseif state == STATE.AGGRO then
         if (componentAnimator ~= nil) then
             currentClip = componentAnimator:GetSelectedClip()
-            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) < attackRange then
-                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
-                    componentAnimator:SetSelectedClip("Attack")
+            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) < attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
+                componentAnimator:SetSelectedClip("Attack")
+            elseif currentClip == "Attack" then
+                if componentAnimator:IsCurrentClipPlaying() == false then
+                    DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
+                    componentAnimator:SetSelectedClip("AttackToIdle")
                 end
-            elseif currentClip == "Attack" and componentAnimator:IsCurrentClipPlaying() == false then
-                DispatchGlobalEvent("Enemy_Attack", {target, "Harkonnen"})
-                componentAnimator:SetSelectedClip("AttackToIdle")
-            elseif currentClip == "AttackToIdle" and componentAnimator:IsCurrentClipPlaying() == false then
-                componentAnimator:SetSelectedClip("Idle")
+            elseif currentClip == "AttackToIdle" then
+                if componentAnimator:IsCurrentClipPlaying() == false then
+                    componentAnimator:SetSelectedClip("Idle")
+                end
             elseif currentClip ~= "Walk" then
                 componentAnimator:SetSelectedClip("Walk")
             end
         end
     elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
-        componentAnimator:SetSelectedClip("Death")
-        if (componentBoxCollider ~= nil) then
-            gameObject:DeleteComponent(componentBoxCollider)
-            componentBoxCollider = nil
-        end
-        if (componentLight ~= nil) then
-            gameObject:DeleteComponent(componentLight)
-            componentLight = nil
-        end
-        if (awareness_green ~= nil) then
-            DeleteGameObjectByUID(awareness_green:GetUID())
-            awareness_green = nil
-        end
-        if (awareness_red ~= nil) then
-            DeleteGameObjectByUID(awareness_red:GetUID())
-            awareness_red = nil
-        end
-        if (awareness_yellow ~= nil) then
-            DeleteGameObjectByUID(awareness_yellow:GetUID())
-            awareness_yellow = nil
-        end
+        Die()
     end
 end
 
@@ -614,6 +636,41 @@ function ClearPerceptionMemory()
     singleAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
+end
+
+function Die()
+    componentAnimator:SetSelectedClip("Death")
+    if (componentBoxCollider ~= nil) then
+        gameObject:DeleteComponent(componentBoxCollider)
+        componentBoxCollider = nil
+    end
+    if (componentLight ~= nil) then
+        gameObject:DeleteComponent(componentLight)
+        componentLight = nil
+    end
+    if (awareness_green ~= nil) then
+        DeleteGameObjectByUID(awareness_green:GetUID())
+        awareness_green = nil
+    end
+    if (awareness_red ~= nil) then
+        DeleteGameObjectByUID(awareness_red:GetUID())
+        awareness_red = nil
+    end
+    if (awareness_yellow ~= nil) then
+        DeleteGameObjectByUID(awareness_yellow:GetUID())
+        awareness_yellow = nil
+    end
+    
+    math.randomseed(os.time())
+    rng = math.random(100)
+    if (rng >= 50) then
+        InstantiatePrefab("SpiceLoot")
+        str = "Harkonnen"
+        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), str})
+        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+    else
+        Log("The drop rate has not been good :( " .. rng .. "\n")
+    end
 end
 
 function DrawDebugger()
