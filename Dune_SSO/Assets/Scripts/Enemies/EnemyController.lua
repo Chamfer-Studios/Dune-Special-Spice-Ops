@@ -551,7 +551,7 @@ function SwitchState(from, to)
 end
 
 function UpdateAnimation(oldState, target)
-    --Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
+    -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
     if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
         if (componentAnimator ~= nil) then
             if (isWalking == false) then
@@ -584,6 +584,7 @@ function UpdateAnimation(oldState, target)
     elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
         if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+            componentAnimator:SetSelectedClip("Corpse")
         end
     end
 end
@@ -622,7 +623,7 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
-    
+
     if (awareness_green ~= nil) then
         DeleteGameObjectByUID(awareness_green:GetUID())
         awareness_green = nil
@@ -635,7 +636,7 @@ function Die(leaveBody, enemyName)
         DeleteGameObjectByUID(awareness_yellow:GetUID())
         awareness_yellow = nil
     end
-    
+
     -- Spice Loot Droprate
     math.randomseed(os.time())
     rng = math.random(100)
@@ -650,14 +651,14 @@ function Die(leaveBody, enemyName)
     DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
 
     SwitchState(state, STATE.CORPSE)
-    
+
     if (leaveBody == false) then
         do
             DeleteGameObject()
             return
         end
     end
-    
+
     if (componentBoxCollider ~= nil) then
         gameObject:DeleteComponent(componentBoxCollider)
         componentBoxCollider = nil
@@ -666,9 +667,8 @@ function Die(leaveBody, enemyName)
         gameObject:DeleteComponent(coneLight)
         coneLight = nil
     end
-    
 
-    --Log(apetecan())
+    -- Log(apetecan())
 end
 
 deathParameters = {
