@@ -363,14 +363,19 @@ function Update(dt)
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
-                        Log("No possible path\n")
-                        target = nil
-                        destination = nil
-                        if (currentState ~= State.IDLE) then
-                            SetState(State.IDLE)
+                        if (isMoving == true) then
+                            Log("No possible path\n")
+                            return
+                        else
+                            Log("No possible path\n")
+                            target = nil
+                            destination = nil
+                            if (currentState ~= State.IDLE) then
+                                SetState(State.IDLE)
+                            end
+                            isMoving = false
+                            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                         end
-                        isMoving = false
-                        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     end
 
                     if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
@@ -404,6 +409,13 @@ function Update(dt)
         -- 3
         if (GetInput(23) == KEY_STATE.KEY_DOWN) then
             ActiveUltimate()
+        end
+
+        --T
+        if (GetInput(13) == KEY_STATE.KEY_DOWN) then
+            currentHP = 0
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+            Die()
         end
 
         -- LSHIFT -> Toggle crouch

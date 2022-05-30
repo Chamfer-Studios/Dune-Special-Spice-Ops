@@ -153,10 +153,7 @@ function Update(dt)
                 Log("I am not god:(\n")
                 GodMode = false
             end
-            --T
-        elseif (GetInput(13) == KEY_STATE.KEY_DOWN) then
-            Log("Substacting Spice! \n")
-            spiceAmount = spiceAmount - 200
+
         end
         if (characterSelected ~= 0) then
             if (characterSelected == 2 and characters[4] ~= nil) then
