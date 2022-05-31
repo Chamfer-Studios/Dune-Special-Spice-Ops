@@ -19,17 +19,17 @@ function Update(dt)
 end
 
 function EventHandler(key, fields)
-    if (key == "CharacterChanged") then -- fields[1] -> go;
+    if (key == "TransitionedFromLastCharacter") then -- fields[1] -> go;
         id = fields[1]
         changedCharacter = true
-        UpdateUI(id)
+        UpdateUI()
     end
 end
 ------------ END Dialogue Manager ------------
 
 ------------ Dialogue ------------
 
-function UpdateUI(id)
+function UpdateUI()
     
     if(changedCharacter == true) then
         if(id == 0)then
@@ -37,7 +37,7 @@ function UpdateUI(id)
         elseif(id == 1) then
             skillUiArray = {4,5,6}
         elseif(id == 2) then
-            skillUiArray = {6,7,8}
+            skillUiArray = {7,8,9}
         end
 
         SetSkillsValue()
@@ -48,12 +48,10 @@ function SetSkillsValue()
     -- Get Dialogue Values From JSON
     -- print("setting Values")
 
-
-    src = GetDialogueString("src", skillUiArray[1])
-    src2 = GetDialogueString("src", skillUiArray[2])
-    src3 = GetDialogueString("src", skillUiArray[3])
+    src = GetTransString("src", skillUiArray[1])
+    src2 = GetTransString("src", skillUiArray[2])
+    src3 = GetTransString("src", skillUiArray[3])
     
-
     -- Set Values To The Prefab
     Find("SkillOneUI"):GetImage():SetTexture(src)
     Find("SkillTwoUI"):GetImage():SetTexture(src2)
@@ -61,6 +59,8 @@ function SetSkillsValue()
 
     changedCharacter = false;
 end
+
+
 
 ------------ END Dialogue ------------
 print("Scene Transition Script Load Success")

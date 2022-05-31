@@ -1,88 +1,49 @@
 {
   "sceneTransition": [
     {
-      "id": "1",
-      "src": "Assets/NewUI/ability_zhib1",
-      "description": "Zhib aims at an enemy and throws a knife. If the knife hits, the
-	target is executed but it can be dodged. Zhib only has one knife,
-	but he can pick it up after throwing them.
-	The dodge chances are"
+      "id": 1,
+      "src": "Assets/New UI/ability_zhib1.png",
+      "description": "Zhib aims at an enemy and throws a knife. If the knife hits,"
     },
     {
-      "id": "2",
-      "src": "Assets/NewUI/ability_zhib2",
-      "description": "Zhib throws a device that alerts and attracts nearby enemies for
-	… seconds. After this time has passed, Zhib can pick up the
-	device and use it again when it recharges.
-	Cooldown:"
+      "id": 2,
+      "src": "Assets/New UI/ability_zhib2.png",
+      "description": "Zhib throws a device that alerts and attracts nearby enemies for"
     },
     {
-      "id": "3",
-      "src": "Assets/NewUI/ability_zhib3",
-      "description": "Zhib targets an enemy and executes him. If there is another enemy
-	inside a close range, he will slash through the first one onto
-	the second one, executing him as well. This chain kill extends to
-	a maximum of … enemies.
-	Cooldown:
-	Spice Cost:
-	"
+      "id": 3,
+      "src": "Assets/New UI/ability_zhib3.png",
+      "description": "Zhib aims at an enemy and throws a knife. If the knife hits,"
     },
     {
-      "id": "4",
-      "src": "Assets/NewUI/ability_nerala1",
-      "description": "Nerala aims at an enemy and fires a dart from her wrist that
-	makes enemies drowsy for … seconds. Drowsy enemies detect players
-	slower.
-	Cooldown:
-	"
+      "id": 4,
+      "src": "Assets/New UI/ability_nerala1.png",
+      "description": "Zhib aims at an enemy and throws a knife. If the knife hits,"
     },
     {
-      "id": "5",
-      "src": "Assets/NewUI/ability_nerala2",
-      "description": "Nerala deploys a device that releases smoke in a given area
-	during … seconds, making her invisible to the eyes of enemies
-	while inside it. The smoke bomb only has … charges.
-	"
+      "id": 5,
+      "src": "Assets/New UI/ability_nerala2.png",
+      "description": "Nerala deploys a device that releases smoke in a given area"
     },
     {
-      "id": "6",
-      "src": "Assets/NewUI/ability_nerala3",
-      "description": "Nerala deploys a minuscule machine that she can control from afar
-	during … seconds. This machine can execute enemies and is
-	invisible to their eyes, but can still be heard. The machine will
-	be destroyed if it’s detected by an enemy, it flies out of a
-	given range, it kills … enemies or the batteries run out.
-	Cooldown:
-	Spice Cost:
-	"
+      "id": 6,
+      "src": "Assets/New UI/ability_nerala3.png",
+      "description": "Nerala deploys a minuscule machine that she can control from afar"
     },
     {
-      "id": "7",
-      "src": "Assets/NewUI/ability_omozra1",
-      "description": "Omozra points at an ally or himself, prompting Sadiq to emerge
-	from the sand and spit on them, healing … hp points.
-	Cooldown:"
+      "id": 7,
+      "src": "Assets/New UI/ability_omozra1.png",
+      "description": "Omozra points at an ally or himself, prompting Sadiq to emerge"
     },
     {
-      "id": "8",
-      "src": "Assets/NewUI/ability_omozra2",
-      "description": "Omozra targets an enemy, commanding Sadiq to emerge from the sand
-	and eat them. Sadly, Sadiq will also eat any spice that the enemy
-	might carry.
-	Cooldown:
-	"
+      "id": 8,
+      "src": "Assets/New UI/ability_omozra2.png",
+      "description": "Omozra targets an enemy commanding Sadiq to emerge from the sand"
     },
     {
-      "id": "9",
-      "src": "Assets/NewUI/ability_omozra3",
-      "description": "Omozra points at an ally, prompting Sadiq to emerge from the sand
-	and partly swallow them. While the ally is inside Sadiq, Omozra
-	can move, but not cast any other abilities. Then, Omozra points
-	at a desired spot inside a given range and Sadiq pops up and
-	regurgitates the ally before disappearing under the sand again.
-	This ability can’t be casted on Omozra himself.
-	Cooldown:
-	Spice Cost"
-    },
+      "id": 9,
+      "src": "Assets/New UI/omozra_ability3.png",
+      "description": "Omozra points at an ally prompting Sadiq to emerge from the sand"
+    }
   ]
 }
