@@ -240,17 +240,17 @@ function SaveGame()
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
 
-    zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    zhibPos = zhibPos:GetTransform():GetPosition()
-    SetGameJsonFloat3("zhib_pos", zhibPos)
+    -- zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    -- zhibPos = zhibPos:GetTransform():GetPosition()
+    -- SetGameJsonFloat3("zhib_pos", zhibPos)
 
-    neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    neralaPos = neralaPos:GetTransform():GetPosition()
-    SetGameJsonFloat3("nerala_pos", neralaPos)
+    -- neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    -- neralaPos = neralaPos:GetTransform():GetPosition()
+    -- SetGameJsonFloat3("nerala_pos", neralaPos)
 
-    omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    omozraPos = omozraPos:GetTransform():GetPosition()
-    SetGameJsonFloat3("omozra_pos", omozraPos)
+    -- omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    -- omozraPos = omozraPos:GetTransform():GetPosition()
+    -- SetGameJsonFloat3("omozra_pos", omozraPos)
 
     SaveGameState()
 end
