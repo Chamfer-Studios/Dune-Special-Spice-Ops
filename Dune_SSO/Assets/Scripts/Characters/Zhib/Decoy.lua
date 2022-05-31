@@ -22,9 +22,9 @@ function Start()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
     componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
-    effectParticles = gameObject:GetChildren()[1]:GetComponentParticle()
-    if (effectParticles ~= nil) then
-        effectParticles:StopParticleSpawn()
+    waveParticle = Find("Zhib Wave Particle")
+    if (waveParticle ~= nil) then
+        waveParticle:GetComponentParticle():StopParticleSpawn()
     end
     pickupParticles = gameObject:GetComponentParticle()
     if (pickupParticles ~= nil) then
@@ -50,8 +50,10 @@ function Update(dt)
         lifeTimer = lifeTimer + dt
 
         if (effectTimer == nil) then
-            if (effectParticles ~= nil) then
-                effectParticles:ResumeParticleSpawn()
+            if (waveParticle ~= nil) then
+                waveParticle:GetComponentParticle():ResumeParticleSpawn()
+                waveParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                    componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
             end
             trackList = {0}
             ChangeTrack(trackList)
@@ -71,8 +73,8 @@ function Update(dt)
         if (currentTrackID ~= -1) then
             componentSwitch:StopTrack(currentTrackID)
         end
-        if (effectParticles ~= nil) then
-            effectParticles:StopParticleSpawn()
+        if (waveParticle ~= nil) then
+            waveParticle:GetComponentParticle():StopParticleSpawn()
         end
         if (pickupParticles ~= nil) then
             pickupParticles:ResumeParticleSpawn()
@@ -138,8 +140,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then
