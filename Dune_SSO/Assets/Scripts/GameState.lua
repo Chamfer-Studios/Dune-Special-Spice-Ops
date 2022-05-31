@@ -41,29 +41,7 @@ function Start()
     characterSelectedParticle = Find("Selected Particle")
     staminaBar = Find("Stamina Bar")
 
-    LoadGameState()
-    spiceAmount = GetGameJsonInt("spice")
-
-    str = "STARTING Spice Amount " .. spiceAmount .. "\n"
-    Log(str)
-
-    if (spiceAmount == 0) then
-        spiceAmount = startingSpiceAmount
-        str = "Spice Amount " .. spiceAmount .. "\n"
-        Log(str)
-    end
-
-    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
-    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
-    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
-
-    zhib_primary_level = GetGameJsonInt("zhib_primary_level")
-    zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
-    zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
-
-    omozra_primary_level = GetGameJsonInt("omozra_primary_level")
-    omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
-    omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
+    LoadGame()
 end
 
 -- Called each loop iteration
@@ -78,24 +56,10 @@ function Update(dt)
                 spiceAmount = 0
             end
 
-            SetGameJsonInt("spice", spiceAmount)
-
             str = "Spice Amount " .. spiceAmount .. "\n"
             Log(str)
 
-            SetGameJsonInt("nerala_primary_level", nerala_primary_level)
-            SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
-            SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
-
-            SetGameJsonInt("zhib_primary_level", zhib_primary_level)
-            SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
-            SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
-
-            SetGameJsonInt("omozra_primary_level", omozra_primary_level)
-            SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
-            SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
-
-            SaveGameState()
+            SaveGame()
 
             gameObject:ChangeScene(true, "SceneGameOver")
         end
@@ -195,9 +159,11 @@ function EventHandler(key, fields)
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
-        --if(fields[2] ~= nil) then
-            --SetGameJsonIntItem("gameobjects_to_delete", fields[2])
-        --end
+        if (fields[2] ~= nil) then
+            str = fields[2] .. "\n"
+            Log(str)
+            AddGameJsonElement("gameobjects_to_delete", fields[2])
+        end
     elseif (key == "Spice_Spawn") then
         deadEnemyPos = fields[1]
         deadEnemyType = fields[2]
@@ -211,8 +177,8 @@ function EventHandler(key, fields)
         if (gameOverTimer == nil) then
             gameOverTimer = 0
         end
-    --elseif (key == "Enemy_Defeated") then
-        --SetGameJsonIntItem("gameobjects_to_delete", fields[1])
+    elseif (key == "Enemy_Defeated") then
+        AddGameJsonElement("gameobjects_to_delete", fields[1])
     elseif (key == "Dialogue_Opened") then
         auxGodMode = GodMode
         if (GodMode == false) then
@@ -259,6 +225,64 @@ function EventHandler(key, fields)
             omozraAvailable = true
         end
     end
+end
+
+function SaveGame()
+    SetGameJsonInt("spice", spiceAmount)
+
+    SetGameJsonInt("nerala_primary_level", nerala_primary_level)
+    SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
+    SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
+
+    SetGameJsonInt("zhib_primary_level", zhib_primary_level)
+    SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
+    SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
+
+    SetGameJsonInt("omozra_primary_level", omozra_primary_level)
+    SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
+    SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
+
+    SaveGameState()
+end
+
+function LoadGame()
+    LoadGameState()
+
+    SizeToDelete = GetGameJsonArraySize("gameobjects_to_delete")
+
+    if (SizeToDelete > 0) then
+        SizeToDelete = SizeToDelete - 1
+        for i = 0, SizeToDelete do
+            uidToDelete = GetGameJsonElement("gameobjects_to_delete", i)
+            DeleteGameObjectByUID(uidToDelete)
+        end
+    end
+
+    spiceAmount = GetGameJsonInt("spice")
+
+    str = "STARTING Spice Amount " .. spiceAmount .. "\n"
+    Log(str)
+
+    if (spiceAmount == 0) then
+        spiceAmount = startingSpiceAmount
+        str = "Spice Amount " .. spiceAmount .. "\n"
+        Log(str)
+    end
+
+    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
+    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
+    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
+
+    zhib_primary_level = GetGameJsonInt("zhib_primary_level")
+    zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
+    zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
+
+    omozra_primary_level = GetGameJsonInt("omozra_primary_level")
+    omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
+    omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
+
+    -- Clear GO to delete from json file
+    --ClearGameJsonArray("gameobjects_to_delete")
 end
 --------------------------------------------------
 
