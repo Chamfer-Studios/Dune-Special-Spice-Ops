@@ -1150,6 +1150,9 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
+    elseif (key == "Update_Nerala_Position") then
+        Log("Receiving Nerala Position \n")
+        gameObject:GetTransform():SetPosition(float3.new(fields[1], fields[2], fields[3]))
     end
 end
 --------------------------------------------------

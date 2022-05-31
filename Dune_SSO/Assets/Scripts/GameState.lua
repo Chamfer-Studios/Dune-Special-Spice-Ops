@@ -240,22 +240,18 @@ function SaveGame()
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
 
-    -- omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    -- componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -50,
-    --     omozra:GetTransform():GetPosition().z))
-
     zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     zhibPos = zhibPos:GetTransform():GetPosition()
     SetGameJsonFloat3("zhib_pos", zhibPos)
-    
+
     neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     neralaPos = neralaPos:GetTransform():GetPosition()
     SetGameJsonFloat3("nerala_pos", neralaPos)
-    
+
     omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     omozraPos = omozraPos:GetTransform():GetPosition()
     SetGameJsonFloat3("omozra_pos", omozraPos)
-    
+
     SaveGameState()
 end
 
@@ -283,6 +279,24 @@ function LoadGame()
         Log(str)
     end
 
+    -- zhibPos = GetGameJsonFloat3("zhib_pos")
+    -- Log("Sending Zhib Position \n")
+    -- if (zhibPos ~= nil) then
+    --     DispatchGlobalEvent("Update_Zhib_Position", {zhibPos.x, zhibPos.y, zhibPos.z})
+    -- end
+
+    -- neralaPos = GetGameJsonFloat3("nerala_pos")
+    -- Log("Sending Nerala Position \n")
+    -- if (neralaPos ~= nil) then
+    --     DispatchGlobalEvent("Update_Nerala_Position", {neralaPos.x, neralaPos.y, neralaPos.z})
+    -- end
+
+    -- omozraPos = GetGameJsonFloat3("omozra_pos")
+    -- Log("Sending Omozra Position \n")
+    -- if (omozraPos ~= nil) then
+    --     DispatchGlobalEvent("Update_Omozra_Position", {omozraPos.x, omozraPos.y, omozraPos.z})
+    -- end
+
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
     nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
     nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
@@ -296,7 +310,7 @@ function LoadGame()
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
 
     -- Clear GO to delete from json file
-    --ClearGameJsonArray("gameobjects_to_delete")
+    -- ClearGameJsonArray("gameobjects_to_delete")
 end
 --------------------------------------------------
 
