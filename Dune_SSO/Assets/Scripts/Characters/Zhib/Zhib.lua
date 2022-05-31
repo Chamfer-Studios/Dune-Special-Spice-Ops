@@ -102,6 +102,10 @@ isDoubleClicking = false
 isDialogueOpen = false
 ---------------------------------------------------------
 
+------------------- Detection logic ---------------------
+smokebombFlag = false
+---------------------------------------------------------
+
 ------------------- Inspector setter --------------------
 -- -- Globals --
 -- maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -222,7 +226,11 @@ function Update(dt)
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
     end
 
-    DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+    if (smokebombPosition == nil) then
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+    elseif (Distance3D(componentTransform:GetPosition(), smokebombPosition) > smokebombRadius) then
+        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+    end
 
     if (lastRotation ~= nil) then
         componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
@@ -1237,6 +1245,12 @@ function EventHandler(key, fields)
                 Log("Sadiq has healed Zhib, but it was already full HP\n")
             end
         end
+    elseif (key == "Smokebomb_Start") then
+        smokebombPosition = fields[1]
+        smokebombRadius = fields[2]
+    elseif (key == "Smokebomb_End") then
+        smokebombPosition = nil
+        smokebombRadius = nil
     end
 end
 --------------------------------------------------

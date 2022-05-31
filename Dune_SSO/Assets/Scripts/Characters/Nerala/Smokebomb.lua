@@ -40,13 +40,7 @@ function Update(dt)
     if (destination ~= nil) then
         MoveToDestination(dt)
         if (destination == nil) then
-            smokeParticle:GetComponentParticle():SetLoop(true)
-            smokeParticle:GetComponentParticle():ResumeParticleSpawn()
-            smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
-            if (componentLight ~= nil) then
-                componentLight:SetAngle(360 / 2)
-            end
+            OnArrive()
         end
     elseif (lifeTimer <= lifeTime) then
 
@@ -72,16 +66,11 @@ function Update(dt)
                 trackList = {1}
                 ChangeTrack(trackList)
             end
-
-            -- No Compila
-            -- smokeParticle:GetTransform():SetPosition(componentTransform:GetPosition())
-            -- smokeParticle:GetComponentParticle():ResumeParticleSpawn()
-            -- effectFlag = false
         end
     else
         smokeParticle:GetComponentParticle():SetLoop(false)
         smokeParticle:GetComponentParticle():StopParticleSpawn()
-
+        DispatchGlobalEvent("Smokebomb_End", {})
         DeleteGameObject()
     end
 end
@@ -109,6 +98,22 @@ function MoveToDestination(dt)
     end
 end
 
+function OnArrive()
+
+    smokeParticle:GetComponentParticle():SetLoop(true)
+    smokeParticle:GetComponentParticle():ResumeParticleSpawn()
+    smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+        componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+    if (componentLight ~= nil) then
+        -- componentLight:SetAngle(360 / 2)
+    end
+
+    -- Audio of hitting the ground
+
+    DispatchGlobalEvent("Smokebomb_Start", {componentTransform:GetPosition(), effectRadius})
+end
+
+-- Math
 function Distance3D(a, b)
 
     diff = {
