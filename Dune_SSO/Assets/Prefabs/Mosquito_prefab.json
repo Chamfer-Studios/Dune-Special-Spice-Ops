@@ -98,7 +98,7 @@
                 {
                     "name": "minRetargetingDistance",
                     "type": "int",
-                    "value": 10
+                    "value": 3
                 }
             ],
             "type": 5
