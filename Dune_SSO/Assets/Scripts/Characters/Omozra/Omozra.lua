@@ -76,6 +76,12 @@ maxSpit = 3
 -- Secondary ability --
 secondaryCastRange = 75
 secondaryCooldown = 10
+unawareChanceHarkSecondary = 100
+awareChanceHarkSecondary = 100
+aggroChanceHarkSecondary = 100
+unawareChanceSardSecondary = 100
+awareChanceSardSecondary = 100
+aggroChanceSardSecondary = 100
 
 -- Ultimate ability --
 ultimateCastRange = 75

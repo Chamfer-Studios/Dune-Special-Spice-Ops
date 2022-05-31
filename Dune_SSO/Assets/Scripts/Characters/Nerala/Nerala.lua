@@ -76,7 +76,7 @@ attackTime = 2.5
 -- Primary ability --
 primaryCastRange = 100
 primaryCooldown = 5
-dartSpeed = 3000
+dartSpeed = 10000
 unawareChanceHarkDart = 100
 awareChanceHarkDart = 90
 aggroChanceHarkDart = 0
@@ -109,59 +109,59 @@ smokebombFlag = false
 ---------------------------------------------------------
 
 ------------------- Inspector setter --------------------
--- Globals --
-maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
-NewVariable(maxHPIV)
+-- -- Globals --
+-- maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
+-- NewVariable(maxHPIV)
 
-speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
+-- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
 
-crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
-    crouchMultiplierPercentage)
-NewVariable(crouchMultiplierPercentageIV)
+-- crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
+--     crouchMultiplierPercentage)
+-- NewVariable(crouchMultiplierPercentageIV)
 
-runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
-    runMultiplierPercentage)
-NewVariable(runMultiplierPercentageIV)
+-- runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
+--     runMultiplierPercentage)
+-- NewVariable(runMultiplierPercentageIV)
 
-staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
-NewVariable(staminaSecondsIV)
+-- staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
+-- NewVariable(staminaSecondsIV)
 
-recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
-NewVariable(recoveryTimeIV)
+-- recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
+-- NewVariable(recoveryTimeIV)
 
--- Primary ability --
-primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
-NewVariable(primaryCastRangeIV)
+-- -- Primary ability --
+-- primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+-- NewVariable(primaryCastRangeIV)
 
-primaryCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-primaryCooldownIV = InspectorVariable.new("primaryCooldown", primaryCooldownIVT, primaryCooldown)
-NewVariable(primaryCooldownIV)
+-- primaryCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- primaryCooldownIV = InspectorVariable.new("primaryCooldown", primaryCooldownIVT, primaryCooldown)
+-- NewVariable(primaryCooldownIV)
 
-dartSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-dartSpeedIV = InspectorVariable.new("dartSpeed", dartSpeedIVT, dartSpeed)
-NewVariable(dartSpeedIV)
+-- dartSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- dartSpeedIV = InspectorVariable.new("dartSpeed", dartSpeedIVT, dartSpeed)
+-- NewVariable(dartSpeedIV)
 
----- Secondary ability --
-secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
-NewVariable(secondaryCastRangeIV)
+-- ---- Secondary ability --
+-- secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+-- NewVariable(secondaryCastRangeIV)
 
----- Ultimate ability --
-ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
-NewVariable(ultimateCastRangeIV)
+-- ---- Ultimate ability --
+-- ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
+-- NewVariable(ultimateCastRangeIV)
 
-ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
-NewVariable(ultimateSpiceCostIV)
+-- ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+-- NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------

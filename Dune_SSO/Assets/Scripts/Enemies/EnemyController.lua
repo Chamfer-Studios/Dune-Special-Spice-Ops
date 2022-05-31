@@ -643,16 +643,6 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
-    -- Spice Loot Droprate
-    math.randomseed(os.time())
-    rng = math.random(100)
-    if (rng >= 50) then
-        InstantiatePrefab("SpiceLoot")
-        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), enemyName})
-        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
-    else
-        Log("The drop rate has not been good :( " .. rng .. "\n")
-    end
 
     DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
 
@@ -665,6 +655,16 @@ function Die(leaveBody, enemyName)
         end
     end
 
+    -- Spice Loot Droprate
+    math.randomseed(os.time())
+    rng = math.random(100)
+    if (rng >= 50) then
+        InstantiatePrefab("SpiceLoot")
+        DispatchGlobalEvent("Spice_Spawn", {componentTransform:GetPosition(), enemyName})
+        Log("Enemy has dropped a spice loot :) " .. rng .. "\n")
+    else
+        Log("The drop rate has not been good :( " .. rng .. "\n")
+    end
     -- Log(apetecan())
 end
 

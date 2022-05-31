@@ -98,11 +98,47 @@ function EventHandler(key, fields)
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 2) then
-                if (currentState == STATE.DEAD) then
+                if (currentState == STATE.DEAD or currentState == STATE.CORPSE) then
                     -- Send a specific event if necessary
                     DeleteGameObject()
                 else
-                    DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
+                    if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
+                        secondaryHitChance = GetVariable("Omozra.lua", "unawareChanceHarkSecondary",
+                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                        math.randomseed(os.time())
+                        rng = math.random(100)
+                        if (rng <= secondaryHitChance) then
+                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
+                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
+                        else
+                            Log("Ñam ñam's D100 roll has been " .. rng ..
+                                    " so the UNAWARE enemy has dodged the ñam ñam :( \n")
+                        end
+                    elseif (currentState == STATE.SUS) then
+                        secondaryHitChance = GetVariable("Omozra.lua", "awareChanceHarkSecondary",
+                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                        math.randomseed(os.time())
+                        rng = math.random(100)
+                        if (rng <= secondaryHitChance) then
+                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
+                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
+                        else
+                            Log("Ñam ñam's D100 roll has been " .. rng ..
+                                    " so the AWARE enemy has dodged the ñam ñam :( \n")
+                        end
+                    elseif (currentState == STATE.AGGRO) then
+                        secondaryHitChance = GetVariable("Omozra.lua", "aggroChanceHarkSecondary",
+                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                        math.randomseed(os.time())
+                        rng = math.random(100)
+                        if (rng <= secondaryHitChance) then
+                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
+                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
+                        else
+                            Log("Ñam ñam's D100 roll has been " .. rng ..
+                                    " so the AGGRO enemy has dodged the ñam ñam :( \n")
+                        end
+                    end
                 end
             end
         end
@@ -116,7 +152,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy is stunned! \n")
-                    DispatchEvent("Dart_Success")
+                    DispatchEvent("Dart_Success", {})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -128,7 +164,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy is stunned! \n")
-                    DispatchEvent("Dart_Success")
+                    DispatchEvent("Dart_Success", {})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -140,7 +176,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy is stunned! \n")
-                    DispatchEvent("Dart_Success")
+                    DispatchEvent("Dart_Success", {})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
                     trackList = {1}
