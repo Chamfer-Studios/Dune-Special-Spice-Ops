@@ -26,10 +26,11 @@ function Start()
     end
 
     componentSwitch = gameObject:GetAudioSwitch()
-    trackList = {0}        
+    trackList = {0}
     ChangeTrack(trackList)
 
-    mouseParticles = Find("Mouse Particles")
+    trailParticle = Find("Nerala Trail Particle")
+    mouseParticles = Find("Nerala Mouse Particle")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
@@ -71,7 +72,7 @@ function Update(dt)
 
         -- Right Click
         if (GetInput(3) == KEY_STATE.KEY_DOWN) then -- Right Click
-            
+
             goHit = GetGameObjectHovered()
             if (goHit ~= gameObject) then
                 if (goHit.tag == Tag.ENEMY) then
@@ -98,17 +99,17 @@ function Update(dt)
             lifeTimer = lifeTime + 1
         end
     end
-    
-    if(componentSwitch:IsAnyTrackPlaying() == false) then
+
+    if (componentSwitch:IsAnyTrackPlaying() == false) then
         currentTrackID = -1
     end
 
-    while(currentTrackID == 0 or currentTrackID == 2 or currentTrackID == 3) do
+    while (currentTrackID == 0 or currentTrackID == 2 or currentTrackID == 3) do
         return
     end
 
-    if(currentTrackID ~= 1) then
-        trackList = {1}        
+    if (currentTrackID ~= 1) then
+        trackList = {1}
         ChangeTrack(trackList)
     end
 
@@ -178,7 +179,7 @@ end
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY and go == target) then
         DispatchGlobalEvent("Mosquito_Hit", {go})
-        trackList = {2,3}        
+        trackList = {2, 3}
         ChangeTrack(trackList)
         if (poisonCount == 1) then
             Die()
@@ -216,8 +217,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then

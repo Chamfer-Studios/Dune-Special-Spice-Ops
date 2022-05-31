@@ -20,7 +20,7 @@
                 1.0
             ],
             "scale": [
-                15.0,
+                14.999999046325684,
                 15.0,
                 15.0
             ],
@@ -95,6 +95,33 @@
                 }
             ],
             "type": 11
+        },
+        {
+            "active": true,
+            "ambientValue": 0.0,
+            "constantAttenuationValue": 0.0,
+            "cutOffAngle": 1.0,
+            "diffuseValue": 0.20000000298023224,
+            "lightColor": [
+                0.0,
+                1.0,
+                0.0
+            ],
+            "lightDirection": [
+                1.0,
+                0.0,
+                0.0
+            ],
+            "lightPosition": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "linearAttenuationValue": 0.0,
+            "quadraticAttenuationValue": 0.0,
+            "sourceType": 2,
+            "specularValue": 0.0,
+            "type": 19
         }
     ],
     "is3D": true,

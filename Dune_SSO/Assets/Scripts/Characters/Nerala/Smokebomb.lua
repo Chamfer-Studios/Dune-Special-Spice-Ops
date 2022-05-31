@@ -3,7 +3,7 @@ speed = 100
 destination = nil
 lifeTime = 10.0 -- secs --iv required
 lifeTimer = 0
-effectRadius = 250.0
+effectRadius = 50.0
 effectFlag = true
 
 -------------------- Methods ---------------------
@@ -22,9 +22,15 @@ function Start()
     vec2 = Normalize(vec2, d)
     componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
 
-    smokeParticles = Find("Nerala Smoke")
-    if (smokeParticles ~= nil) then
-        smokeParticles:GetComponentParticle():StopParticleSpawn()
+    componentLight = gameObject:GetLight()
+    if (componentLight ~= nil) then
+        componentLight:SetRange(effectRadius)
+    end
+
+    smokeParticle = Find("Nerala Smoke Particle")
+    if (smokeParticle ~= nil) then
+        smokeParticle:GetComponentParticle():StopParticleSpawn()
+        smokeParticle:GetComponentParticle():SetLoop(false)
     end
 end
 
@@ -33,37 +39,49 @@ function Update(dt)
 
     if (destination ~= nil) then
         MoveToDestination(dt)
+        if (destination == nil) then
+            smokeParticle:GetComponentParticle():SetLoop(true)
+            smokeParticle:GetComponentParticle():ResumeParticleSpawn()
+            smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+            if (componentLight ~= nil) then
+                componentLight:SetAngle(360 / 2)
+            end
+        end
     elseif (lifeTimer <= lifeTime) then
 
         lifeTimer = lifeTimer + dt
 
         if (effectFlag) then
             -- DispatchGlobalEvent("Auditory_Trigger", { componentTransform:GetPosition(), effectRadius, "single", gameObject })
-            
-            if(currentTrackID ~= 0 and currentTrackID ~= 1) then
+
+            if (currentTrackID ~= 0 and currentTrackID ~= 1) then
                 trackList = {0}
                 ChangeTrack(trackList)
             end
 
-            if(componentSwitch:IsAnyTrackPlaying() == false) then
+            if (componentSwitch:IsAnyTrackPlaying() == false) then
                 currentTrackID = -1
             end
-        
-            while(currentTrackID == 0) do
+
+            while (currentTrackID == 0) do
                 return
             end
-        
-            if(currentTrackID ~= 1) then
-                trackList = {1}        
+
+            if (currentTrackID ~= 1) then
+                trackList = {1}
                 ChangeTrack(trackList)
             end
 
             -- No Compila
-            --smokeParticles:GetTransform():SetPosition(componentTransform:GetPosition())
-            --smokeParticles:GetComponentParticle():ResumeParticleSpawn()
-            --effectFlag = false
+            -- smokeParticle:GetTransform():SetPosition(componentTransform:GetPosition())
+            -- smokeParticle:GetComponentParticle():ResumeParticleSpawn()
+            -- effectFlag = false
         end
     else
+        smokeParticle:GetComponentParticle():SetLoop(false)
+        smokeParticle:GetComponentParticle():StopParticleSpawn()
+
         DeleteGameObject()
     end
 end
@@ -85,9 +103,9 @@ function MoveToDestination(dt)
         componentTransform:SetPosition(float3.new(pos.x, 0, pos.z))
         destination = nil
 
-        --if(componentSwitch:IsAnyTrackPlaying() == false) then          
-            
-        --end
+        -- if(componentSwitch:IsAnyTrackPlaying() == false) then          
+
+        -- end
     end
 end
 
@@ -120,8 +138,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
     if (componentSwitch ~= nil) then
         if (currentTrackID ~= -1) then

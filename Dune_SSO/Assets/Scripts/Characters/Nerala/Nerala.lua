@@ -189,9 +189,7 @@ function Start()
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     impactParticle = Find("Nerala Impact Particle") -- not used currently
-    smokeParticle = Find("Nerala Smoke Particle") -- not used currently
     swooshParticle = Find("Nerala Swoosh Particle") -- not used currently
-    trailParticle = Find("Nerala Trail Particle") -- not used currently
     footstepsParticle = Find("Nerala Footstep Particle")
 
     -- Audio
@@ -374,7 +372,8 @@ function Update(dt)
                                 SetState(State.IDLE)
                             end
                             isMoving = false
-                            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
                         end
                     end
 
@@ -411,7 +410,7 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        --T
+        -- T
         if (GetInput(13) == KEY_STATE.KEY_DOWN) then
             currentHP = 0
             DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -484,14 +483,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {0}        
+        trackList = {0}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {1}        
+        trackList = {1}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -507,7 +506,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE) then
-            trackList = {0}        
+            trackList = {0}
             ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
@@ -845,7 +844,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    trackList = {4, 8}        
+    trackList = {4, 8}
     ChangeTrack(trackList)
 
     attackTimer = 0.0
@@ -887,7 +886,7 @@ function FireDart()
     abilities.AbilityPrimary = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryCooldown})
 
-    trackList = {5,9}        
+    trackList = {5, 9}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("DartToIdle")
@@ -931,7 +930,7 @@ function PlaceSmokebomb()
     end
     -- secondaryTimer = 0.0
 
-    trackList = {6}        
+    trackList = {6}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("SmokebombToIdle")
@@ -963,7 +962,7 @@ function CastUltimate(position)
 
     LookAtTarget(position)
 
-    trackList = {7}        
+    trackList = {7}
     ChangeTrack(trackList)
 end
 
@@ -1003,7 +1002,7 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2}        
+        trackList = {2}
         ChangeTrack(trackList)
     else
         currentHP = 0
@@ -1015,17 +1014,17 @@ end
 function Die()
     SetState(State.DEAD)
     currentHP = 0
-    
+
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-        componentTransform:GetPosition().z))
+            componentTransform:GetPosition().z))
     end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    
-    if(currentTrackID ~= 3) then
-        trackList = {3}        
+
+    if (currentTrackID ~= 3) then
+        trackList = {3}
         ChangeTrack(trackList)
     end
 
@@ -1074,7 +1073,7 @@ function EventHandler(key, fields)
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
-        trackList = {10}        
+        trackList = {10}
         ChangeTrack(trackList)
         ultimateTimer = 0.0
         abilities.AbilityUltimate = AbilityStatus.Cooldown
@@ -1113,7 +1112,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {11}        
+        trackList = {11}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
@@ -1171,8 +1170,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then
