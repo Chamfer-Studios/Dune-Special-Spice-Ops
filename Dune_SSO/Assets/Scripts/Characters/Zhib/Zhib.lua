@@ -105,6 +105,8 @@ isDialogueOpen = false
 ------------------- Detection logic ---------------------
 smokebombFlag = false
 ---------------------------------------------------------
+--------------------Game Flow----------------------------
+unlocked = false;
 
 ------------------- Inspector setter --------------------
 -- -- Globals --

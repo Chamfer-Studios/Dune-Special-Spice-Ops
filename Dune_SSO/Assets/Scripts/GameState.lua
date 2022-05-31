@@ -21,8 +21,8 @@ omozra_ultimate_level = 0
 
 changedCharacter = false
 zhibAvailable = true
-neralaAvailable = true
-omozraAvailable = true
+neralaAvailable = false
+omozraAvailable = false
 
 GodMode = false
 
@@ -70,13 +70,13 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false and omozraPrimary == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
-                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
+                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1 and zhibAvailable == true) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                     characterSelected = 1
-                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2) then
+                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2 and neralaAvailable == true) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                     characterSelected = 2
-                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3) then
+                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3 and omozraAvailable == true) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                     characterSelected = 3
                 end
