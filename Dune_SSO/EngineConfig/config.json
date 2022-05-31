@@ -89,7 +89,7 @@
     },
     "ResourceManager": null,
     "SceneManager": {
-        "DefaultScene": "SceneMainMenu"
+        "DefaultScene": "SceneTransition"
     },
     "UI": null,
     "Window": {
