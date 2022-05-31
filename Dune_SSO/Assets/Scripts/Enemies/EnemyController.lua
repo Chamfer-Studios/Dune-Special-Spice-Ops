@@ -373,6 +373,19 @@ function Start()
     componentRigidbody = gameObject:GetRigidBody()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
 
+    debuffParticle = gameObject:GetChildren()[1]
+    if (debuffParticle ~= nil) then
+        debuffParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    bloodParticle = gameObject:GetChildren()[2]
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    slashParticle = gameObject:GetChildren()[3]
+    if (slashParticle ~= nil) then
+        slashParticle:GetComponentParticle():StopParticleSpawn()
+    end
+
     if (componentAnimator ~= nil) then
         if (static == true) then
             componentAnimator:SetSelectedClip("Idle")
@@ -696,6 +709,14 @@ function EventHandler(key, fields)
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
+            Log("HE DED 1\n")
+            if (slashParticle ~= nil) then
+                slashParticle:GetComponentParticle():ResumeParticleSpawn()
+                slashParticle:GetComponentParticle():SetLoop(false)
+                slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                    componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
+                Log("HE DED 2\n")
+            end
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.MOSQUITO then

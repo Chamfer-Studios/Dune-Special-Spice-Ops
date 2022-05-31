@@ -195,7 +195,6 @@ function Start()
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     impactParticle = Find("Zhib Impact Particle") -- not used currently
-    slashParticle = Find("Zhib Slash Particle") -- not used currently
     swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
     footstepsParticle = Find("Zhib Footstep Particle")
 
