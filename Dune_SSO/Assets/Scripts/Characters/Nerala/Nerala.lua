@@ -233,6 +233,22 @@ function Update(dt)
         return
     end
 
+    -- States
+    if (currentState == State.ATTACK) then
+        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
+            Attack()
+        else
+            destination = target:GetTransform():GetPosition()
+            MoveToDestination(dt)
+        end
+    elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+        State.AIM_ULTIMATE) then
+        StopMovement()
+        componentAnimator:SetSelectedClip("Idle")
+    elseif (destination ~= nil) then
+        MoveToDestination(dt)
+    end
+
     -- Gather Inputs
     if (IsSelected() == true) then
 
@@ -430,22 +446,6 @@ function Update(dt)
                     end
                 end
             end
-        end
-
-        -- States
-        if (currentState == State.ATTACK) then
-            if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
-                Attack()
-            else
-                destination = target:GetTransform():GetPosition()
-                MoveToDestination(dt)
-            end
-        elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
-            State.AIM_ULTIMATE) then
-            StopMovement()
-            componentAnimator:SetSelectedClip("Idle")
-        elseif (destination ~= nil) then
-            MoveToDestination(dt)
         end
     else
         -- CancelAbilities()
