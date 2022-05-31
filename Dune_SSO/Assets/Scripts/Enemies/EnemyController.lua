@@ -373,6 +373,19 @@ function Start()
     componentRigidbody = gameObject:GetRigidBody()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
 
+    debuffParticle = gameObject:GetChildren()[1]
+    if (debuffParticle ~= nil) then
+        debuffParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    bloodParticle = gameObject:GetChildren()[2]
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    slashParticle = gameObject:GetChildren()[3]
+    if (slashParticle ~= nil) then
+        slashParticle:GetComponentParticle():StopParticleSpawn()
+    end
+
     if (componentAnimator ~= nil) then
         if (static == true) then
             componentAnimator:SetSelectedClip("Idle")
@@ -385,6 +398,7 @@ function Start()
 end
 
 function UpdateTargetAwareness()
+
     awarenessSpeed = awarenessDecaySpeed
 
     closestTarget = GetClosestTarget()
@@ -590,6 +604,12 @@ function UpdateAnimation(oldState, target)
 end
 
 function Update(dt)
+    if state == STATE.DEAD then
+        do
+            UpdateAnimation(oldState, target)
+            return
+        end
+    end
     awarenessSpeed = UpdateTargetAwareness()
     UpdateAwareness(dt, awarenessSpeed)
     oldState = UpdateStateFromAwareness()
@@ -623,20 +643,6 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
-
-    if (awareness_green ~= nil) then
-        DeleteGameObjectByUID(awareness_green:GetUID())
-        awareness_green = nil
-    end
-    if (awareness_red ~= nil) then
-        DeleteGameObjectByUID(awareness_red:GetUID())
-        awareness_red = nil
-    end
-    if (awareness_yellow ~= nil) then
-        DeleteGameObjectByUID(awareness_yellow:GetUID())
-        awareness_yellow = nil
-    end
-
     -- Spice Loot Droprate
     math.randomseed(os.time())
     rng = math.random(100)
@@ -657,15 +663,6 @@ function Die(leaveBody, enemyName)
             DeleteGameObject()
             return
         end
-    end
-
-    if (componentBoxCollider ~= nil) then
-        gameObject:DeleteComponent(componentBoxCollider)
-        componentBoxCollider = nil
-    end
-    if (coneLight ~= nil) then
-        gameObject:DeleteComponent(coneLight)
-        coneLight = nil
     end
 
     -- Log(apetecan())
@@ -696,6 +693,14 @@ function EventHandler(key, fields)
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
+            Log("HE DED 1\n")
+            if (slashParticle ~= nil) then
+                slashParticle:GetComponentParticle():ResumeParticleSpawn()
+                slashParticle:GetComponentParticle():SetLoop(false)
+                slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                    componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
+                Log("HE DED 2\n")
+            end
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.MOSQUITO then
@@ -707,6 +712,28 @@ function EventHandler(key, fields)
             deathParameters.LeaveBody = false
             deathParameters.EnemyName = fields[2]
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+        end
+
+        if (awareness_green ~= nil) then
+            DeleteGameObjectByUID(awareness_green:GetUID())
+            awareness_green = nil
+        end
+        if (awareness_red ~= nil) then
+            DeleteGameObjectByUID(awareness_red:GetUID())
+            awareness_red = nil
+        end
+        if (awareness_yellow ~= nil) then
+            DeleteGameObjectByUID(awareness_yellow:GetUID())
+            awareness_yellow = nil
+        end
+
+        if (componentBoxCollider ~= nil) then
+            gameObject:DeleteComponent(componentBoxCollider)
+            componentBoxCollider = nil
+        end
+        if (coneLight ~= nil) then
+            gameObject:DeleteComponent(coneLight)
+            coneLight = nil
         end
     end
 end

@@ -197,7 +197,6 @@ function Start()
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     impactParticle = Find("Zhib Impact Particle") -- not used currently
-    slashParticle = Find("Zhib Slash Particle") -- not used currently
     swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
     footstepsParticle = Find("Zhib Footstep Particle")
 
@@ -1252,6 +1251,9 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
+    elseif (key == "Update_Zhib_Position") then
+        Log("Receiving Zhib Position \n")
+        componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
     end
 end
 --------------------------------------------------
