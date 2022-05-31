@@ -160,8 +160,6 @@ function EventHandler(key, fields)
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
         if (fields[2] ~= nil) then
-            str = fields[2] .. "\n"
-            Log(str)
             AddGameJsonElement("gameobjects_to_delete", fields[2])
         end
     elseif (key == "Spice_Spawn") then
@@ -242,6 +240,22 @@ function SaveGame()
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
 
+    -- omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    -- componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -50,
+    --     omozra:GetTransform():GetPosition().z))
+
+    zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    zhibPos = zhibPos:GetTransform():GetPosition()
+    SetGameJsonFloat3("zhib_pos", zhibPos)
+    
+    neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    neralaPos = neralaPos:GetTransform():GetPosition()
+    SetGameJsonFloat3("nerala_pos", neralaPos)
+    
+    omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    omozraPos = omozraPos:GetTransform():GetPosition()
+    SetGameJsonFloat3("omozra_pos", omozraPos)
+    
     SaveGameState()
 end
 
