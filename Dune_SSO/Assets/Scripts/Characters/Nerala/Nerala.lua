@@ -246,11 +246,6 @@ function Update(dt)
 
         UpdateStaminaBar()
 
-        if (footstepsParticle ~= nil) then
-            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
-        end
-
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
@@ -353,11 +348,17 @@ function Update(dt)
                         Log("Going to a pickup\n")
                         target = nil
                         currentState = State.IDLE
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
                         currentState = State.IDLE
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
@@ -367,6 +368,9 @@ function Update(dt)
                         else
                             Log("No possible path\n")
                             target = nil
+                            if (footstepsParticle ~= nil) then
+                                footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                            end
                             destination = nil
                             if (currentState ~= State.IDLE) then
                                 SetState(State.IDLE)
@@ -766,6 +770,11 @@ function MoveToDestination(dt)
             s = s * 0.5
         end
 
+        if (footstepsParticle ~= nil) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
+
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
@@ -799,6 +808,9 @@ function StopMovement(resetTarget)
     end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
+    end
+    if (footstepsParticle ~= nil) then
+        footstepsParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 

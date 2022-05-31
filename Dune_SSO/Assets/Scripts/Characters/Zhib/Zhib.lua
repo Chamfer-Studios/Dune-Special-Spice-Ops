@@ -254,11 +254,6 @@ function Update(dt)
 
         UpdateStaminaBar()
 
-        if (footstepsParticle ~= nil) then
-            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
-        end
-
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
@@ -370,11 +365,17 @@ function Update(dt)
                         Log("Going to a pickup\n")
                         target = nil
                         currentState = State.IDLE
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     elseif (goHit.tag == Tag.FLOOR) then
                         target = nil
                         currentState = State.IDLE
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
@@ -384,14 +385,18 @@ function Update(dt)
                         else
                             Log("No possible path\n")
                             target = nil
+                            if (footstepsParticle ~= nil) then
+                                footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                            end
                             destination = nil
                             if (currentState ~= State.IDLE) then
                                 SetState(State.IDLE)
                             end
                             isMoving = false
-                            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
                         end
-                        
+
                     end
 
                     if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
@@ -427,7 +432,7 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        --T
+        -- T
         if (GetInput(13) == KEY_STATE.KEY_DOWN) then
             currentHP = 0
             DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -496,14 +501,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {0}        
+        trackList = {0}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {1}        
+        trackList = {1}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -519,7 +524,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            trackList = {0}        
+            trackList = {0}
             ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
@@ -717,7 +722,7 @@ function ManageTimers(dt)
                     componentBoxCollider:UpdateIsTrigger()
                 end
 
-                trackList = {8,13}        
+                trackList = {8, 13}
                 ChangeTrack(trackList)
 
                 componentRigidBody:SetUseGravity(true)
@@ -791,6 +796,11 @@ function MoveToDestination(dt)
             s = s * 0.5
         end
 
+        if (footstepsParticle ~= nil) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
+
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
@@ -824,6 +834,9 @@ function StopMovement(resetTarget)
     end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
+    end
+    if (footstepsParticle ~= nil) then
+        footstepsParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 
@@ -868,7 +881,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    trackList = {4, 10}        
+    trackList = {4, 10}
     ChangeTrack(trackList)
 
     attackTimer = 0.0
@@ -915,7 +928,7 @@ function DoPrimary()
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
-    trackList = {5,11}        
+    trackList = {5, 11}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
@@ -952,7 +965,7 @@ function DoSecondary()
 
     decoyCount = decoyCount - 1
 
-    trackList = {6}        
+    trackList = {6}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
@@ -982,7 +995,7 @@ function CastUltimate(position)
     ultimateTimer = 0.0
     StopMovement(false)
 
-    trackList = {7,12}        
+    trackList = {7, 12}
     ChangeTrack(trackList)
 
     LookAtTarget(position)
@@ -1051,7 +1064,7 @@ function DoUltimate()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
 
-    trackList = {9,14}        
+    trackList = {9, 14}
     ChangeTrack(trackList)
 
     -- Add as reappear position the position from the last enemy who's gonna die
@@ -1095,7 +1108,7 @@ function TakeDamage(damage)
         currentHP = currentHP - damage
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2}        
+        trackList = {2}
         ChangeTrack(trackList)
     else
         currentHP = 0
@@ -1107,17 +1120,17 @@ end
 function Die()
     SetState(State.DEAD)
     currentHP = 0
-    
+
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-        componentTransform:GetPosition().z))
+            componentTransform:GetPosition().z))
     end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    
-    if(currentTrackID ~= 3) then
-        trackList = {3}        
+
+    if (currentTrackID ~= 3) then
+        trackList = {3}
         ChangeTrack(trackList)
     end
 
@@ -1166,7 +1179,7 @@ function EventHandler(key, fields)
         end
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
-        trackList = {15}        
+        trackList = {15}
         ChangeTrack(trackList)
         secondaryTimer = 0.0
         abilities.AbilitySecondary = AbilityStatus.Cooldown
@@ -1174,7 +1187,7 @@ function EventHandler(key, fields)
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
-        trackList = {15}        
+        trackList = {15}
         ChangeTrack(trackList)
         Log("I have grabbed a knife! \n")
         abilities.AbilityPrimary = AbilityStatus.Normal
@@ -1212,7 +1225,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {15}        
+        trackList = {15}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
@@ -1271,8 +1284,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then

@@ -30,7 +30,7 @@ function Start()
     ChangeTrack(trackList)
 
     trailParticle = Find("Nerala Trail Particle")
-    mouseParticles = Find("Nerala Mouse Particle")
+    mouseParticles = Find("Mouse Particle")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
     end
@@ -77,6 +77,9 @@ function Update(dt)
             if (goHit ~= gameObject) then
                 if (goHit.tag == Tag.ENEMY) then
                     target = goHit
+                    if (trailParticle ~= nil) then
+                        trailParticle:GetComponentParticle():ResumeParticleSpawn()
+                    end
                     destination = goHit:GetTransform():GetPosition()
                     DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     if (mouseParticles ~= nil) then
@@ -85,6 +88,9 @@ function Update(dt)
                         mouseParticles:GetTransform():SetPosition(destination)
                     end
                 else
+                    if (trailParticle ~= nil) then
+                        trailParticle:GetComponentParticle():ResumeParticleSpawn()
+                    end
                     destination = GetLastMouseClick()
                     DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     target = nil
@@ -127,6 +133,11 @@ function MoveToDestination(dt)
             speed = speed * 0.5
         end
 
+        if (trailParticle ~= nil) then
+            trailParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
+
         -- Movement
         local vec = float3.new(destination.x - pos.x, 0, destination.z - pos.z)
         vec.x = vec.x / d
@@ -162,6 +173,9 @@ function StopMovement()
     destination = nil
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
+    end
+    if (trailParticle ~= nil) then
+        trailParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 

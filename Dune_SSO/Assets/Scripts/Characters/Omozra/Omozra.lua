@@ -223,11 +223,6 @@ function Update(dt)
 
         UpdateStaminaBar()
 
-        if (footstepsParticle ~= nil) then
-            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
-        end
-
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
@@ -328,6 +323,9 @@ function Update(dt)
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
                         end
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     elseif (goHit.tag == Tag.FLOOR) then
@@ -335,11 +333,17 @@ function Update(dt)
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
                         end
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                        end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
                     else
                         Log("No possible path\n")
                         target = nil
+                        if (footstepsParticle ~= nil) then
+                            footstepsParticle:GetComponentParticle():StopParticleSpawn()
+                        end
                         destination = nil
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
@@ -386,10 +390,10 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        --T
+        -- T
         if (GetInput(13) == KEY_STATE.KEY_DOWN) then
             currentHP = 0
-        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             Die()
         end
 
@@ -741,6 +745,11 @@ function MoveToDestination(dt)
             s = s * 0.5
         end
 
+        if (footstepsParticle ~= nil) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
+
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
@@ -774,6 +783,9 @@ function StopMovement(resetTarget)
     end
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
+    end
+    if (footstepsParticle ~= nil) then
+        footstepsParticle:GetComponentParticle():StopParticleSpawn()
     end
 end
 
@@ -863,7 +875,7 @@ function CastSecondary(position)
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
-    
+
     trackList = {4}
     ChangeTrack(trackList)
 
@@ -994,16 +1006,16 @@ end
 function Die()
     SetState(State.DEAD)
     currentHP = 0
-    
+
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-        componentTransform:GetPosition().z))
+            componentTransform:GetPosition().z))
     end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
-    if(currentTrackID ~= 3) then
-        trackList = {3}        
+    if (currentTrackID ~= 3) then
+        trackList = {3}
         ChangeTrack(trackList)
     end
 
@@ -1067,7 +1079,7 @@ function EventHandler(key, fields)
                 currentHP = currentHP + 1
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
-                
+
             else
                 Log("Sadiq has healed Omozra, but it was already full HP\n")
             end
@@ -1120,8 +1132,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then
