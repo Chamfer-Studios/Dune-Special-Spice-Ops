@@ -95,6 +95,7 @@ doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
 isDialogueOpen = false
+hasToMove = false
 ---------------------------------------------------------
 
 ------------------- Detection logic ---------------------
@@ -228,7 +229,7 @@ function Update(dt)
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
-        MoveToDestination(dt)
+        hasToMove = true
     end
 
     -- Gather Inputs
@@ -430,6 +431,11 @@ function Update(dt)
         end
     else
         -- CancelAbilities()
+    end
+
+    if (hasToMove == true and destination ~= nil) then
+        MoveToDestination(dt)
+        hasToMove = false
     end
 end
 

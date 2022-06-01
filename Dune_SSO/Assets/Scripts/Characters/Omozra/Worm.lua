@@ -76,7 +76,7 @@ function CastPrimary(thisTarget, omozraPos)
     local d = Distance(pos2D, targetPos2D)
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
-    componentTransform:SetPosition(float3.new(targetPos.x - vec2[1] * 20, 0, targetPos.z - vec2[2] * 20))
+    componentTransform:SetPosition(float3.new(targetPos.x + vec2[1] * 40, 0, targetPos.z + vec2[2] * 40))
 
     -- math.randomseed(os.time())
     -- randomOffsetX = 40
