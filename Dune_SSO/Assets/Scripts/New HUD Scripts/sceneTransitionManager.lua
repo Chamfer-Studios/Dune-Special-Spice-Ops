@@ -2,13 +2,31 @@
 local id = -1
 local src = " "
 local description = " "
+local spice = 0;
 
 local changedCharacter = false
 
+local upgradeButton0 = { state = false, object = Find("Skill 1 - Upgrade 1") }
+local upgradeButton1 = { state = false, object = Find("Skill 1 - Upgrade 2") }
+local upgradeButton2 = { state = false, object = Find("Skill 1 - Upgrade 3") }
+local upgradeButton3 = { state = false, object = Find("Skill 2 - Upgrade 1") }
+local upgradeButton4 = { state = false, object = Find("Skill 2 - Upgrade 2") }
+local upgradeButton5 = { state = false, object = Find("Skill 2 - Upgrade 3") }
+local upgradeButton6 = { state = false, object = Find("Skill 3 - Upgrade 1") }
+local upgradeButton7 = { state = false, object = Find("Skill 3 - Upgrade 2") }
+local upgradeButton8 = { state = false, object = Find("Skill 3 - Upgrade 3") }
+local upgradeButton9 = { state = false, object = Find("Passive - Upgrade 1") }
+local upgradeButton10 = { state = false, object = Find("Passive - Upgrade 2") }
+local upgradeButton11 = { state = false, object = Find("Passive - Upgrade 3") }
+
+local upgradeArray = {upgradeButton0, upgradeButton1, upgradeButton2, upgradeButton3, 
+upgradeButton4, upgradeButton5, upgradeButton6, upgradeButton7, upgradeButton8, 
+upgradeButton9, upgradeButton10, upgradeButton11}
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
 ------------ Dialogue Manager ------------
 function Start()
+    --Log(upgradeButton.object:GetName())
     LoadJsonFile(path)
     skillUiArray = {1,2,3}
     id = 0
@@ -29,6 +47,111 @@ function Update(dt)
         SetDialogValue(3)
     end
 
+    if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
+        SetSpiceValue(20)
+    end
+
+    --for narnia
+    if(upgradeArray[1].object:GetButton():IsPressed())then
+        if(upgradeArray[1].state == 0) then
+            upgradeArray[1].state = 1
+        else
+            upgradeArray[1].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[1].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[2].object:GetButton():IsPressed()) then
+        if(upgradeArray[2].state == 0) then
+            upgradeArray[2].state = 1
+        else
+            upgradeArray[2].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[2].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[3].object:GetButton():IsPressed()) then
+        if(upgradeArray[3].state == 0) then
+            upgradeArray[3].state = 1
+        else
+            upgradeArray[3].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[3].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[4].object:GetButton():IsPressed()) then
+        if(upgradeArray[4].state == 0) then
+            upgradeArray[4].state = 1
+        else
+            upgradeArray[4].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[4].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[5].object:GetButton():IsPressed()) then
+        if(upgradeArray[5].state == 0) then
+            upgradeArray[5].state = 1
+        else
+            upgradeArray[5].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[5].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[6].object:GetButton():IsPressed()) then
+        if(upgradeArray[6].state == 0) then
+            upgradeArray[6].state = 1
+        else
+            upgradeArray[6].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[6].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[7].object:GetButton():IsPressed()) then
+        if(upgradeArray[7].state == 0) then
+            upgradeArray[7].state = 1
+        else
+            upgradeArray[7].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[7].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[8].object:GetButton():IsPressed()) then
+        if(upgradeArray[8].state == 0) then
+            upgradeArray[8].state = 1
+        else
+            upgradeArray[8].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[8].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[9].object:GetButton():IsPressed()) then
+        if(upgradeArray[9].state == 0) then
+            upgradeArray[9].state = 1
+        else
+            upgradeArray[9].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[9].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[10].object:GetButton():IsPressed()) then
+        if(upgradeArray[10].state == 0) then
+            upgradeArray[10].state = 1
+        else
+            upgradeArray[10].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[10].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[11].object:GetButton():IsPressed()) then
+        if(upgradeArray[11].state == 0) then
+            upgradeArray[11].state = 1
+        else
+            upgradeArray[11].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[11].object:GetName() .. "\n"
+        Log(str)
+    elseif(upgradeArray[12].object:GetButton():IsPressed()) then
+        if(upgradeArray[12].state == 0) then
+            upgradeArray[12].state = 1
+        else
+            upgradeArray[12].state = 0
+        end
+        str = "Name of the button" .. upgradeArray[12].object:GetName() .. "\n"
+        Log(str)
+    end
+    
+
+
 end
 
 function EventHandler(key, fields)
@@ -36,14 +159,6 @@ function EventHandler(key, fields)
         id = fields[1]
         changedCharacter = true
         UpdateUI()
-    end
-
-    if(key == "FirstHovered") then
-        SetDialogValue(1)
-    elseif(key == "SecondHovered") then
-        SetDialogValue(2)
-    elseif(key == "ThirdHovered") then
-        SetDialogValue(3)
     end
 end
 ------------ END Dialogue Manager ------------
@@ -118,6 +233,11 @@ function SetDialogValue(index)
 
 end
 
+function SetSpiceValue(spiceAmount)
+    spice = spice + spiceAmount
+    str = spice .. " Spice"
+    Find("SpiceAmount"):GetText():SetTextValue(str);
+end
 
 
 ------------ END Dialogue ------------
