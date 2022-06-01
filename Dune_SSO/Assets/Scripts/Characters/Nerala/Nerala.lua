@@ -102,6 +102,7 @@ doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
 isDialogueOpen = false
+hasToMove = false
 ---------------------------------------------------------
 
 ------------------- Detection logic ---------------------
@@ -239,14 +240,14 @@ function Update(dt)
             Attack()
         else
             destination = target:GetTransform():GetPosition()
-            MoveToDestination(dt)
+            hasToMove = true
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
-        MoveToDestination(dt)
+        hasToMove = true
     end
 
     -- Gather Inputs
@@ -449,6 +450,11 @@ function Update(dt)
         end
     else
         -- CancelAbilities()
+    end
+
+    if (hasToMove == true and destination ~= nil) then
+        MoveToDestination(dt)
+        hasToMove = false
     end
 end
 --------------------------------------------------
@@ -844,7 +850,6 @@ end
 -- Basic Attack
 function Attack()
     SetState(State.ATTACK)
-    StopMovement(false)
     componentAnimator:SetSelectedClip("Attack")
     impactParticle:GetComponentParticle():SetLoop(true)
     impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,

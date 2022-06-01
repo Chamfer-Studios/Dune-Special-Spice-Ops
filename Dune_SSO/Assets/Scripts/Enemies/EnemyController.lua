@@ -718,6 +718,8 @@ function EventHandler(key, fields)
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
         end
 
+        gameObject.tag = Tag.CORPSE
+
         if (awareness_green ~= nil) then
             DeleteGameObjectByUID(awareness_green:GetUID())
             awareness_green = nil
