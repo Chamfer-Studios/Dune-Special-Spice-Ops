@@ -2132,6 +2132,191 @@
             "isPrefab": false,
             "name": "Skill Masks Using",
             "tag": 0
+        },
+        {
+            "active": true,
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                -150.0,
+                                85.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                30.0,
+                                30.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                            "type": 16,
+                            "value": "1"
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Key Q",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                85.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                30.0,
+                                30.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                            "type": 16,
+                            "value": "2"
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Key W",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 4,
+                    "logicalSize": [
+                        1920.0,
+                        1080.0
+                    ],
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 13
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Skill Keyframes",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 7,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        150.0,
+                        85.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        30.0,
+                        30.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "color": [
+                        255,
+                        255,
+                        255,
+                        255
+                    ],
+                    "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                    "type": 16,
+                    "value": "3"
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Key E",
+            "tag": 0
         }
     ],
     "components": [
