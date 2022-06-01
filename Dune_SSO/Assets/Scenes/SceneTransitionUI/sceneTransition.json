@@ -90,6 +90,36 @@
       "description4": "at a desired spot inside a given range and Sadiq pops up and",
       "description5": "regurgitates the ally before disappearing under the sand again",
       "description6": "This ability can’t be casted on Omozra himself."
+    },
+    {
+      "id": 101,
+      "src": "Assets/New UI/omozra_ability3.png",
+      "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
+      "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
+      "description3": "can move, but not cast any other abilities. Then, Omozra points",
+      "description4": "at a desired spot inside a given range and Sadiq pops up and",
+      "description5": "regurgitates the ally before disappearing under the sand again",
+      "description6": "This ability can’t be casted on Omozra himself."
+    },
+    {
+      "id": 102,
+      "src": "Assets/New UI/omozra_ability3.png",
+      "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
+      "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
+      "description3": "can move, but not cast any other abilities. Then, Omozra points",
+      "description4": "at a desired spot inside a given range and Sadiq pops up and",
+      "description5": "regurgitates the ally before disappearing under the sand again",
+      "description6": "This ability can’t be casted on Omozra himself."
+    },
+    {
+      "id": 103,
+      "src": "Assets/New UI/omozra_ability3.png",
+      "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
+      "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
+      "description3": "can move, but not cast any other abilities. Then, Omozra points",
+      "description4": "at a desired spot inside a given range and Sadiq pops up and",
+      "description5": "regurgitates the ally before disappearing under the sand again",
+      "description6": "This ability can’t be casted on Omozra himself."
     }
   ]
 }

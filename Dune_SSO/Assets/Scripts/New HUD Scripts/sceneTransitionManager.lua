@@ -28,7 +28,7 @@ local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 function Start()
     --Log(upgradeButton.object:GetName())
     LoadJsonFile(path)
-    skillUiArray = {1,2,3}
+    skillUiArray = {1,2,3, 101}
     id = 0
     UpdateUI()
 end
@@ -39,12 +39,13 @@ function Update(dt)
     end
     
     if(Find("Button"):GetButton():IsIdle() == false and Find("Button"):GetButton():IsPressed() == false) then
-        Log("First One")
         SetDialogValue(1)
     elseif(Find("Button (1)"):GetButton():IsIdle() == false and Find("Button (1)"):GetButton():IsPressed() == false) then
         SetDialogValue(2)
     elseif(Find("Button (2)"):GetButton():IsIdle() == false and Find("Button (2)"):GetButton():IsPressed() == false) then
         SetDialogValue(3)
+    elseif(Find("Button (3)"):GetButton():IsIdle() == false and Find("Button (3)"):GetButton():IsPressed() == false) then
+        SetDialogValue(4)
     else 
         SetDialogValue(0)
     end
@@ -171,11 +172,11 @@ function UpdateUI()
     
     if(changedCharacter == true) then
         if(id == 0)then
-            skillUiArray = {1,2,3}
+            skillUiArray = {1,2,3, 101}
         elseif(id == 1) then
-            skillUiArray = {4,5,6}
+            skillUiArray = {4,5,6, 102}
         elseif(id == 2) then
-            skillUiArray = {7,8,9}
+            skillUiArray = {7,8,9, 103}
         end
 
         SetSkillsValue()
@@ -189,11 +190,16 @@ function SetSkillsValue()
     src = GetTransString("src", skillUiArray[1])
     src2 = GetTransString("src", skillUiArray[2])
     src3 = GetTransString("src", skillUiArray[3])
+    src4 = GetTransString("src", skillUiArray[4])
     
     -- Set Values To The Prefab
     Find("SkillOneUI"):GetImage():SetTexture(src)
+    Find("feedbackOne"):GetImage():SetTexture(src)
     Find("SkillTwoUI"):GetImage():SetTexture(src2)
+    Find("feedbackTwo"):GetImage():SetTexture(src2)
     Find("SkillThreeUI"):GetImage():SetTexture(src3)
+    Find("feedbackThree"):GetImage():SetTexture(src3)
+    Find("PassiveUI"):GetImage():SetTexture(src4)
 
     changedCharacter = false;
 end
@@ -222,6 +228,13 @@ function SetDialogValue(index)
         dialog3 = GetTransString("description4", skillUiArray[3])
         dialog4 = GetTransString("description5", skillUiArray[3])
         dialog5 = GetTransString("description6", skillUiArray[3])
+    elseif(index == 4) then
+        dialog = GetTransString("description1", skillUiArray[4])
+        dialog1 = GetTransString("description2", skillUiArray[4])
+        dialog2 = GetTransString("description3", skillUiArray[4])
+        dialog3 = GetTransString("description4", skillUiArray[4])
+        dialog4 = GetTransString("description5", skillUiArray[4])
+        dialog5 = GetTransString("description6", skillUiArray[4])
     else
         dialog = " "
         dialog1 = " "
