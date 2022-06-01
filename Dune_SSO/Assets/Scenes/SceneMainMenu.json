@@ -1,7 +1,7 @@
 {
     "SceneMainMenu": {
         "active": true,
-        "game_objects_amount": 40,
+        "game_objects_amount": 51,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -1857,6 +1857,526 @@
                 "isPrefab": false,
                 "name": "120 Text",
                 "parent_UID": 1816059730,
+                "tag": 0
+            },
+            {
+                "UID": 148945762,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -520.0,
+                            -132.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            161.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "V-Sync"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Vsync Text",
+                "parent_UID": 2055808393,
+                "tag": 0
+            },
+            {
+                "UID": 1701848486,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -95.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Vsync Button",
+                "parent_UID": 148945762,
+                "tag": 0
+            },
+            {
+                "UID": 757573716,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -132.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            476.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "Window Screen Mode"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WSM Text",
+                "parent_UID": 2055808393,
+                "tag": 0
+            },
+            {
+                "UID": 841311316,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -135.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Borderless Button",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 393429371,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -72.0,
+                            -81.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Fullscreen.lua",
+                        "id": 268692700,
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "FS Button",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 548174983,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            73.0,
+                            -82.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Windowed Button",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 1512526623,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -203.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            208.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "Borderless"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Borderless Text",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 1755389238,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -256.0,
+                            -77.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            213.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "Full Screen"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "FS Text",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 807271675,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            255.0,
+                            -81.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            213.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "Windowed"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Windowed Text",
+                "parent_UID": 757573716,
+                "tag": 0
+            },
+            {
+                "UID": 1266759538,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            500.0,
+                            -130.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            284.0,
+                            50.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "Window Size"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text",
+                "parent_UID": 2055808393,
+                "tag": 0
+            },
+            {
+                "UID": 207380102,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -100.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Button",
+                "parent_UID": 1266759538,
                 "tag": 0
             }
         ],
