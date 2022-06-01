@@ -12,6 +12,9 @@ function Start()
     activeMaskQ = Find("Skill Mask Active Q")
     activeMaskW = Find("Skill Mask Active W")
     activeMaskE = Find("Skill Mask Active E")
+    disabledMaskQ = Find("Skill Mask Disabled Q")
+    disabledMaskW = Find("Skill Mask Disabled W")
+    disabledMaskE = Find("Skill Mask Disabled E")
     hpFill1 = Find("HP Fill 1")
     hpFill2 = Find("HP Fill 2")
     hpFill3 = Find("HP Fill 3")
@@ -83,18 +86,15 @@ function EventHandler(key, fields)
     if key == "Player_Ability" then -- fields[1] -> characterID; fields[2] -> ability n; fields[3] -> ability state
         characterID = fields[1] -- 1: zhib, 2: Nerala, 3: Omozra
         ability = fields[2] -- 0: canceled, 1: Q, 2: W, 3: E
-        abilityState = fields[3] -- 1: normal, 2: active, 3: cooldown
+        abilityState = fields[3] -- 1: normal, 2: active, 3: cooldown, 4: Using, 5: Pickable, 6: Disabled
+        HandleMasks()
+        HandleCooldowns()
         if ability == 1 then
             if abilityState == 1 then
-                cooldownMaskQ.active = false
-                activeMaskQ.active = false
-            elseif abilityState == 2 then
-                cooldownMaskQ.active = false
-                activeMaskQ.active = true
-            elseif abilityState == 3 then
-                cooldownMaskQ.active = true
-                activeMaskQ.active = false
 
+            elseif abilityState == 2 then
+
+            elseif abilityState == 3 then
                 -- Manage CDs
                 if characterID == 2 then
                     neralaTimer1 = fields[4]
@@ -174,6 +174,96 @@ function EventHandler(key, fields)
     end
 end
 
+function HandleMasks()
+    if ability == 1 then
+        if abilityState == 1 then -- Normal
+            activeMaskQ.active = false
+            cooldownMaskQ.active = false
+            disabledMaskQ.active = false
+        elseif abilityState == 2 then -- Active
+            activeMaskQ.active = true
+            cooldownMaskQ.active = false
+            disabledMaskQ.active = false
+        elseif abilityState == 3 then -- CD
+            activeMaskQ.active = false
+            cooldownMaskQ.active = true
+            disabledMaskQ.active = false
+        elseif abilityState == 4 then -- Using
+        elseif abilityState == 5 then -- Pickable
+        elseif abilityState == 6 then -- Disabled
+            activeMaskQ.active = false
+            cooldownMaskQ.active = false
+            disabledMaskQ.active = true
+        end
+    elseif ability == 2 then
+        if abilityState == 1 then -- Normal
+            activeMaskW.active = false
+            cooldownMaskW.active = false
+            disabledMaskW.active = false
+        elseif abilityState == 2 then -- Active
+            activeMaskW.active = true
+            cooldownMaskW.active = false
+            disabledMaskW.active = false
+        elseif abilityState == 3 then -- CD
+            activeMaskW.active = false
+            cooldownMaskW.active = true
+            disabledMaskW.active = false
+        elseif abilityState == 4 then -- Using
+        elseif abilityState == 5 then -- Pickable
+        elseif abilityState == 6 then -- Disabled
+            activeMaskW.active = false
+            cooldownMaskW.active = false
+            disabledMaskW.active = true
+        end
+    elseif ability == 3 then
+        if abilityState == 1 then -- Normal
+            activeMaskE.active = false
+            cooldownMaskE.active = false
+            disabledMaskE.active = false
+        elseif abilityState == 2 then -- Active
+            activeMaskE.active = true
+            cooldownMaskE.active = false
+            disabledMaskE.active = false
+        elseif abilityState == 3 then -- CD
+            activeMaskE.active = false
+            cooldownMaskE.active = true
+            disabledMaskE.active = false
+        elseif abilityState == 4 then -- Using
+        elseif abilityState == 5 then -- Pickable
+        elseif abilityState == 6 then -- Disabled
+            activeMaskE.active = false
+            cooldownMaskE.active = false
+            disabledMaskE.active = true
+        end
+    end
+end
+
+function HandleCooldowns()
+
+end
+
+function ManageHealth(characterId, HP)
+    if currentCharacterId == characterId then
+        if HP == 0 then
+            hpFill1.active = false
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 1 then
+            hpFill1.active = true
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 2 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = false
+        elseif HP == 3 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = true
+        end
+    end
+end
+
 function ManageTimers(dt)
 
     if (zhibTimer2 ~= nil) then
@@ -237,28 +327,6 @@ function ManageTimers(dt)
             cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
         cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, omozraTimer3aux / omozraCooldown3))
-    end
-end
-
-function ManageHealth(characterId, HP)
-    if currentCharacterId == characterId then
-        if HP == 0 then
-            hpFill1.active = false
-            hpFill2.active = false
-            hpFill3.active = false
-        elseif HP == 1 then
-            hpFill1.active = true
-            hpFill2.active = false
-            hpFill3.active = false
-        elseif HP == 2 then
-            hpFill1.active = true
-            hpFill2.active = true
-            hpFill3.active = false
-        elseif HP == 3 then
-            hpFill1.active = true
-            hpFill2.active = true
-            hpFill3.active = true
-        end
     end
 end
 
