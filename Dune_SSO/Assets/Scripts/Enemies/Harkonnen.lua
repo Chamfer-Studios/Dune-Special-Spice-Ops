@@ -152,7 +152,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy is stunned! \n")
-                    DispatchEvent("Dart_Success", {})
+                    DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
                     trackList = {1}

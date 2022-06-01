@@ -65,8 +65,6 @@ NewVariable(patrolWaypointsIV)
 
 componentAnimator = nil
 
-coneLight = gameObject:GetLight()
-
 awareness_green = nil
 awareness_yellow = nil
 awareness_red = nil
@@ -372,6 +370,8 @@ function Start()
 
     componentRigidbody = gameObject:GetRigidBody()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    coneLight = gameObject:GetLight()
+    componentBoxCollider = gameObject:GetBoxCollider()
 
     debuffParticle = gameObject:GetChildren()[1]
     if (debuffParticle ~= nil) then
@@ -395,6 +395,9 @@ function Start()
     end
 
     targetDirection = componentTransform:GetFront()
+
+    auditoryDebuffMultiplier = 1
+    visualDebuffMultiplier = 1
 end
 
 function UpdateTargetAwareness()
@@ -412,11 +415,11 @@ function UpdateTargetAwareness()
     if #visualTriggers ~= 0 then
         targetAwareness = 2
         prop = 1.2 - (distance / visionConeRadius)
-        awarenessSpeed = awarenessVisualSpeed * prop
+        awarenessSpeed = awarenessVisualSpeed * prop * visualDebuffMultiplier
     elseif #repeatingAuditoryTriggers ~= 0 then
         targetAwareness = 2
         prop = 1.2 - (distance / hearingRange)
-        awarenessSpeed = awarenessSoundSpeed * prop
+        awarenessSpeed = awarenessSoundSpeed * prop * auditoryDebuffMultiplier
     else
         targetAwareness = 0
     end
@@ -682,6 +685,9 @@ function EventHandler(key, fields)
         ProcessVisualTrigger(fields[1], fields[2])
     elseif key == "IsWalking" then
         isWalking = fields[1]
+    elseif key == "Dart_Success" then
+        auditoryDebuffMultiplier = fields[1] / 100
+        visualDebuffMultiplier = fields[2] / 100
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         if fields[1] == EnemyDeath.PLAYER_ATTACK then
             SwitchState(state, STATE.DEAD)
@@ -693,13 +699,11 @@ function EventHandler(key, fields)
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
-            Log("HE DED 1\n")
             if (slashParticle ~= nil) then
                 slashParticle:GetComponentParticle():ResumeParticleSpawn()
                 slashParticle:GetComponentParticle():SetLoop(false)
                 slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
                     componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
-                Log("HE DED 2\n")
             end
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = fields[2]

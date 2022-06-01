@@ -199,9 +199,6 @@ end
 -- Called each loop iteration
 function Update(dt)
 
-    if (ultimateTimer ~= nil and currentState == State.AIM_ULTIMATE_RECAST) then
-        StopMovement(false)
-    end
     DrawActiveAbilities()
     DrawHoverParticle()
 
