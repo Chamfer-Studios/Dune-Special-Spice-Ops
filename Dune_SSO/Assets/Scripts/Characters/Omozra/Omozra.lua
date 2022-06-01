@@ -303,18 +303,20 @@ function Update(dt)
                 end
             elseif (currentState == State.AIM_ULTIMATE_RECAST) then
                 target = GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateRecastRange) then
-                    Log("[FAIL] Ability Ultimate Recast: Ability out of range!\n")
-                    target = nil
-                else
-                    if (target.tag ~= Tag.FLOOR) then
-                        Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                if (target.tag == Tag.FLOOR) then
+                    local mouse = GetLastMouseClick()
+                    if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateRecastRange) then
+                        Log("[FAIL] Ability Ultimate Recast: Ability out of range!\n")
                         target = nil
                     else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            RecastUltimate(mouse) -- Ult step 6
+                        if (target.tag ~= Tag.FLOOR) then
+                            Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                            target = nil
+                        else
+                            target = mouse
+                            if (componentAnimator ~= nil) then
+                                RecastUltimate(mouse) -- Ult step 6
+                            end
                         end
                     end
                 end

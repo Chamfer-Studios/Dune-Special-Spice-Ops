@@ -370,6 +370,9 @@ function Update(dt)
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                             end
                             destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
@@ -412,9 +415,8 @@ function Update(dt)
                         end
 
                     end
-
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
-                        false) then
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and
+                        not isTired) then
                         SetMovement(Movement.RUN)
                     else
                         if (currentMovement == Movement.IDLE and isMoving == true) then

@@ -345,13 +345,24 @@ function Update(dt)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            isMoving = false
-                            Attack()
+                            if (attackTimer == nil) then
+                                Log("Already Atacking!\n")
+                                do
+                                    return
+                                end
+                            else
+                                isMoving = false
+                                Attack()
+                            end
+
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                             end
                             destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
@@ -392,10 +403,10 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    end
 
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
-                        false) then
+                    end
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and
+                        not isTired) then
                         SetMovement(Movement.RUN)
                     else
                         if (currentMovement == Movement.IDLE and isMoving == true) then
