@@ -256,7 +256,7 @@ function ProcessVisualTrigger(position, source)
     visualTriggers[nVisual]["valid"] = true
 
     lambda = function(uid)
-        Log("Hello\n")
+        -- Log("Hello\n")
         -- visualTriggers[nVisual]["valid"] = false
     end
 
@@ -583,17 +583,15 @@ function UpdateAnimation(dt, oldState, target)
             attackTimer = nil
         end
     end
-    -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
-    if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
-        if (componentAnimator ~= nil) then
+    if (componentAnimator ~= nil) then
+        -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
+        if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
             if (isWalking == false) then
                 componentAnimator:SetSelectedClip("Idle")
             else
                 componentAnimator:SetSelectedClip("Walk")
             end
-        end
-    elseif state == STATE.AGGRO then
-        if (componentAnimator ~= nil) then
+        elseif state == STATE.AGGRO then
             currentClip = componentAnimator:GetSelectedClip()
             if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
                 attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
@@ -611,13 +609,13 @@ function UpdateAnimation(dt, oldState, target)
             elseif currentClip ~= "Walk" then
                 componentAnimator:SetSelectedClip("Walk")
             end
-        end
-    elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
-        componentAnimator:SetSelectedClip("Death")
-    elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
-        if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
-            Die(deathParameters.LeaveBody, deathParameters.EnemyName)
-            componentAnimator:SetSelectedClip("Corpse")
+        elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
+            componentAnimator:SetSelectedClip("Death")
+        elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
+            if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
+                Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+                componentAnimator:SetSelectedClip("Corpse")
+            end
         end
     end
 end
