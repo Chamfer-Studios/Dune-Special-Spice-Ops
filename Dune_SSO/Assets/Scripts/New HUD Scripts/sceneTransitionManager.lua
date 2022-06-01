@@ -23,6 +23,12 @@ function EventHandler(key, fields)
         id = fields[1]
         changedCharacter = true
         UpdateUI()
+    elseif(key == "FirstHovered") then
+        SetDialogValue(1)
+    elseif(key == "SecondHovered") then
+        SetDialogValue(2)
+    elseif(key == "ThirdHovered") then
+        SetDialogValue(3)
     end
 end
 ------------ END Dialogue Manager ------------
@@ -58,6 +64,43 @@ function SetSkillsValue()
     Find("SkillThreeUI"):GetImage():SetTexture(src3)
 
     changedCharacter = false;
+end
+
+function SetDialogValue(index)
+    -- Get Dialogue Values From JSON
+    -- print("setting Values")
+    if(index == 1) then
+        src = GetTransString("description1", skillUiArray[1])
+        src2 = GetTransString("description2", skillUiArray[1])
+        src3 = GetTransString("description3", skillUiArray[1])
+        src4 = GetTransString("description4", skillUiArray[1])
+        src5 = GetTransString("description5", skillUiArray[1])
+        src6 = GetTransString("description6", skillUiArray[1])
+    elseif(idex == 2) then
+        src = GetTransString("description1", skillUiArray[2])
+        src2 = GetTransString("description2", skillUiArray[2])
+        src3 = GetTransString("description3", skillUiArray[2])
+        src4 = GetTransString("description4", skillUiArray[2])
+        src5 = GetTransString("description5", skillUiArray[2])
+        src6 = GetTransString("description6", skillUiArray[2])
+    elseif(index == 3) then
+        src = GetTransString("description1", skillUiArray[3])
+        src2 = GetTransString("description2", skillUiArray[3])
+        src3 = GetTransString("description3", skillUiArray[3])
+        src4 = GetTransString("description4", skillUiArray[3])
+        src5 = GetTransString("description5", skillUiArray[3])
+        src6 = GetTransString("description6", skillUiArray[3])
+    end
+    
+    
+    -- Set Values To The Dialogue
+    Find("Text"):GetText():SetTextValue(src)
+    Find("Text(1)"):GetText():SetTextValue(src2)
+    Find("Text(2)"):GetText():SetTextValue(src3)
+    Find("Text(3)"):GetText():SetTextValue(src4)
+    Find("Text(4)"):GetText():SetTextValue(src5)
+    Find("Text(5)"):GetText():SetTextValue(src6)
+
 end
 
 
