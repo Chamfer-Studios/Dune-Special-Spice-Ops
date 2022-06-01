@@ -684,6 +684,8 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
+
+    -- Log(apetecan())
 end
 
 deathParameters = {
