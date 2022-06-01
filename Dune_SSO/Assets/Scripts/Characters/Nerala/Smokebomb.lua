@@ -105,7 +105,7 @@ function OnArrive()
     smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
         componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
     if (componentLight ~= nil) then
-        -- componentLight:SetAngle(360 / 2)
+         componentLight:SetAngle(360 / 2)
     end
 
     -- Audio of hitting the ground
