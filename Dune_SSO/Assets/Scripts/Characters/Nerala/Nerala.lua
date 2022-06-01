@@ -786,7 +786,6 @@ function MoveToDestination(dt)
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
-            -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
             DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
 
@@ -844,9 +843,8 @@ end
 
 -- Basic Attack
 function Attack()
-
     SetState(State.ATTACK)
-
+    StopMovement(false)
     componentAnimator:SetSelectedClip("Attack")
     impactParticle:GetComponentParticle():SetLoop(true)
     impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,

@@ -1,7 +1,8 @@
 ------------------- Variables --------------------
 speed = 3000
 destination = nil
-
+auditoryDebuffMultiplier = 30
+visualDebuffMultiplier = 100
 -------------------- Methods ---------------------
 
 function Start()
@@ -37,8 +38,7 @@ end
 -- Collision Handler
 function OnTriggerEnter(go)
     if (go.tag == Tag.ENEMY) then
-        DispatchGlobalEvent("Dart_Hit", {go}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
-        -- DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "single", gameObject})
+        DispatchGlobalEvent("Dart_Hit", {go, auditoryDebuffMultiplier, visualDebuffMultiplier}) -- Events better than OnTriggerEnter() for the enemies (cause more than one different type of projectile can hit an enemy)
         DeleteGameObject()
     end
 end

@@ -57,8 +57,7 @@ function Update(dt)
             end
             trackList = {0}
             ChangeTrack(trackList)
-            DispatchGlobalEvent("Auditory_Trigger",
-                {componentTransform:GetPosition(), effectRadius, "single", gameObject})
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), effectRadius, "single", player})
             effectTimer = 0.0
         else
             effectTimer = effectTimer + dt

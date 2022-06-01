@@ -152,7 +152,7 @@ function EventHandler(key, fields)
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy is stunned! \n")
-                    DispatchEvent("Dart_Success", {})
+                    DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
                     trackList = {1}
@@ -184,5 +184,22 @@ function EventHandler(key, fields)
                 end
             end
         end
+    end
+end
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
     end
 end
