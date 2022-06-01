@@ -38,13 +38,15 @@ function Update(dt)
         Log("No button")
     end
     
-    if(Find("Button"):GetButton():IsHovered()) then
+    if(Find("Button"):GetButton():IsIdle() == false and Find("Button"):GetButton():IsPressed() == false) then
         Log("First One")
         SetDialogValue(1)
-    elseif(Find("Button (1)"):GetButton():IsHovered()) then
+    elseif(Find("Button (1)"):GetButton():IsIdle() == false and Find("Button (1)"):GetButton():IsPressed() == false) then
         SetDialogValue(2)
-    elseif(Find("Button (2)"):GetButton():IsHovered()) then
+    elseif(Find("Button (2)"):GetButton():IsIdle() == false and Find("Button (2)"):GetButton():IsPressed() == false) then
         SetDialogValue(3)
+    else 
+        SetDialogValue(0)
     end
 
     if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
@@ -220,6 +222,13 @@ function SetDialogValue(index)
         dialog3 = GetTransString("description4", skillUiArray[3])
         dialog4 = GetTransString("description5", skillUiArray[3])
         dialog5 = GetTransString("description6", skillUiArray[3])
+    else
+        dialog = " "
+        dialog1 = " "
+        dialog2 = " "
+        dialog3 = " "
+        dialog4 = " "
+        dialog5 = " "
     end
     
      -- Set Values To The Dialogue
