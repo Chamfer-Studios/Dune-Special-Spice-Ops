@@ -45,7 +45,8 @@ NewVariable(levelNumberIV)
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
-    staminaBar = Find("Stamina Bar")
+
+    InstantiatePrefab("Stamina Bars")
 
     LoadGame()
 end
@@ -136,7 +137,6 @@ function Update(dt)
             if (characterSelected == 4) then
                 characterSelected = 2
             end
-            staminaBar:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
             if (characterSelectedParticle ~= nil) then
                 characterSelectedParticle:GetTransform():SetPosition(
                     float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
@@ -147,8 +147,6 @@ function Update(dt)
                 end
             end
         else
-            staminaBar:GetTransform():SetPosition(float3.new(staminaBar:GetTransform():GetPosition().x, -20,
-                staminaBar:GetTransform():GetPosition().z))
             characterSelectedParticle:GetTransform():SetPosition(float3.new(
                 characterSelectedParticle:GetTransform():GetPosition().x, -20,
                 characterSelectedParticle:GetTransform():GetPosition().z))

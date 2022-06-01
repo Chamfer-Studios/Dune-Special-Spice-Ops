@@ -64,7 +64,7 @@ speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
 staminaSeconds = 5
-recoveryTime = 3
+recoveryTime = 5
 staminaTimer = staminaSeconds
 isTired = false
 isUsingQ = false
@@ -209,10 +209,6 @@ function Start()
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-    -- Stamina
-    staminaBar = Find("Stamina Bar")
-    staminaBarSizeY = staminaBar:GetTransform():GetScale().y
-
     -- Abilities
     knifeCount = maxKnives
     decoyCount = maxDecoy
@@ -265,7 +261,11 @@ function Update(dt)
     -- Gather Inputs
     if (IsSelected() == true) then
 
-        UpdateStaminaBar()
+        if staminaBarBlue == nil then
+            ConfigStaminaBars()
+        else
+            UpdateStaminaBar()
+        end
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -666,10 +666,43 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    -- Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
-    -- Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
-    staminaBar:GetTransform():SetScale(float3.new(staminaBar:GetTransform():GetScale().x,
-        staminaBarSizeY * (staminaTimer / staminaSeconds), staminaBar:GetTransform():GetScale().z))
+    local proportion = staminaTimer / staminaSeconds
+
+    local pos = componentTransform:GetPosition()
+
+    staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+
+    -- NEW
+    if isTired == false then
+        if proportion >= 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        elseif proportion >= 0.33 and proportion < 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        else
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        end
+    else
+        staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+            staminaBarSizeZ))
+    end
 end
 
 function ManageTimers(dt)
@@ -1296,6 +1329,18 @@ function EventHandler(key, fields)
         Log("Receiving Zhib Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
     end
+end
+
+function ConfigStaminaBars()
+    Log("Configuring stamina bars\n")
+    staminaBarYellow = Find("Stamina Bar Yellow")
+    staminaBarGreen = Find("Stamina Bar Green")
+    staminaBarRed = Find("Stamina Bar Red")
+    staminaBarBlue = Find("Stamina Bar Blue")
+
+    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
+    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
+    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 
