@@ -125,94 +125,6 @@
             "tag": 0
         },
         {
-            "active": true,
-            "children": [],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 7,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        0.0,
-                        50.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        491.6000061035156,
-                        35.93000030517578
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/spice_bar_fill.png",
-                    "type": 14
-                },
-                {
-                    "active": true,
-                    "file_name": "Assets/Scripts/New HUD Scripts/spice_bar.lua",
-                    "id": 2040907340,
-                    "type": 5
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "Spice bar fill",
-            "tag": 0
-        },
-        {
-            "active": true,
-            "children": [],
-            "components": [
-                {
-                    "active": true,
-                    "type": 23
-                },
-                {
-                    "active": true,
-                    "anchor": 7,
-                    "pivot": [
-                        0.5,
-                        0.5
-                    ],
-                    "position": [
-                        0.0,
-                        50.0
-                    ],
-                    "rotation": [
-                        0.0,
-                        0.0,
-                        0.0
-                    ],
-                    "size": [
-                        551.7100219726563,
-                        37.7599983215332
-                    ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "texture": "Assets/New UI/spice_bar.png",
-                    "type": 14
-                }
-            ],
-            "is3D": false,
-            "isPrefab": false,
-            "name": "Spice Bar Frame",
-            "tag": 0
-        },
-        {
             "active": false,
             "children": [
                 {
@@ -2153,7 +2065,7 @@
                             ],
                             "position": [
                                 -150.0,
-                                85.0
+                                90.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2201,7 +2113,7 @@
                             ],
                             "position": [
                                 0.0,
-                                85.0
+                                90.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2230,6 +2142,54 @@
                     "is3D": false,
                     "isPrefab": false,
                     "name": "Key W",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                150.0,
+                                90.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                30.0,
+                                30.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                            "type": 16,
+                            "value": "3"
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Key E",
                     "tag": 0
                 }
             ],
@@ -2272,7 +2232,150 @@
         },
         {
             "active": true,
-            "children": [],
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                50.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                491.6000061035156,
+                                35.93000030517578
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/New UI/spice_bar_fill.png",
+                            "type": 14
+                        },
+                        {
+                            "active": true,
+                            "file_name": "Assets/Scripts/New HUD Scripts/spice_bar.lua",
+                            "id": 2040907340,
+                            "type": 5
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Spice bar fill",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                50.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                551.7100219726563,
+                                37.7599983215332
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/New UI/spice_bar.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Spice Bar Frame",
+                    "tag": 0
+                },
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 7,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                50.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                60.0,
+                                30.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "color": [
+                                255,
+                                255,
+                                255,
+                                255
+                            ],
+                            "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
+                            "type": 16,
+                            "value": "0"
+                        },
+                        {
+                            "active": true,
+                            "file_name": "Assets/Scripts/New HUD Scripts/spice_text.lua",
+                            "id": 1443486017,
+                            "type": 5
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Spice Text",
+                    "tag": 0
+                }
+            ],
             "components": [
                 {
                     "active": true,
@@ -2280,14 +2383,18 @@
                 },
                 {
                     "active": true,
-                    "anchor": 7,
+                    "anchor": 4,
+                    "logicalSize": [
+                        1920.0,
+                        1080.0
+                    ],
                     "pivot": [
                         0.5,
                         0.5
                     ],
                     "position": [
-                        150.0,
-                        85.0
+                        0.0,
+                        0.0
                     ],
                     "rotation": [
                         0.0,
@@ -2295,27 +2402,15 @@
                         0.0
                     ],
                     "size": [
-                        30.0,
-                        30.0
+                        200.0,
+                        200.0
                     ],
-                    "type": 22
-                },
-                {
-                    "active": true,
-                    "color": [
-                        255,
-                        255,
-                        255,
-                        255
-                    ],
-                    "fontPath": "Assets/Fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf",
-                    "type": 16,
-                    "value": "3"
+                    "type": 13
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Key E",
+            "name": "Spice",
             "tag": 0
         }
     ],
