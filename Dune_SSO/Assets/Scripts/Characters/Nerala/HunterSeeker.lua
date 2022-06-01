@@ -22,7 +22,7 @@ function Start()
     local vec2 = {targetPos2D[1], targetPos2D[2]}
     -- vec2 = Normalize(vec2, d)
     if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 10, vec2[2]))
+        componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 0, vec2[2]))
     end
 
     componentSwitch = gameObject:GetAudioSwitch()

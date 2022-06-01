@@ -2,7 +2,7 @@
     "gameobjects_to_delete_lvl1": [],
     "nerala_pos_lvl1": [
         -1537.3292236328125,
-        -9.5367431640625e-07,
+        0.0,
         811.97998046875
     ],
     "nerala_primary_level": 0,
@@ -19,7 +19,7 @@
     "spice": 1000,
     "zhib_pos_lvl1": [
         -1491.6207275390625,
-        3.0,
+        0.0,
         798.4801635742188
     ],
     "zhib_primary_level": 0,
