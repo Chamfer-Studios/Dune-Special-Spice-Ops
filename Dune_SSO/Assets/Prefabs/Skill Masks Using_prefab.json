@@ -33,13 +33,13 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
+                    "texture": "Assets/New UI/ability_using_mask.png",
                     "type": 14
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable Q",
+            "name": "Skill Mask Using Q",
             "tag": 0
         },
         {
@@ -74,13 +74,13 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
+                    "texture": "Assets/New UI/ability_using_mask.png",
                     "type": 14
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable W",
+            "name": "Skill Mask Using W",
             "tag": 0
         },
         {
@@ -115,13 +115,13 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
+                    "texture": "Assets/New UI/ability_using_mask.png",
                     "type": 14
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable E",
+            "name": "Skill Mask Using E",
             "tag": 0
         }
     ],
@@ -159,6 +159,6 @@
     ],
     "is3D": false,
     "isPrefab": true,
-    "name": "Skill Masks Pickable",
+    "name": "Skill Masks Using",
     "tag": 0
 }

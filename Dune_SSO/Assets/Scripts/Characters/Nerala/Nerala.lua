@@ -89,6 +89,7 @@ secondaryCastRange = 75
 secondaryCooldown = 10.0
 maxSmokeBombCount = 3
 smokeBombCount = maxSmokeBombCount
+smokebombActive = false
 
 -- Ultimate ability --
 ultimateCastRange = 50
@@ -471,6 +472,18 @@ function Update(dt)
         MoveToDestination(dt)
         hasToMove = false
     end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
+    end
 end
 --------------------------------------------------
 
@@ -640,7 +653,7 @@ function DrawActiveAbilities()
             elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.05)
+                componentLight:SetDiffuse(0.1)
             else
                 componentLight:SetAngle(0)
             end
@@ -912,7 +925,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Dart")
     StopMovement(false)
@@ -937,7 +951,7 @@ end
 
 -- Secondary ability
 function ActiveSecondary()
-    if (smokeBombCount > 0) then
+    if (smokeBombCount > 0 and smokebombActive == false) then
         if (currentState == State.AIM_SECONDARY) then
             CancelAbilities()
         else
@@ -950,7 +964,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Smokebomb")
     StopMovement(false)
@@ -963,13 +978,6 @@ function PlaceSmokebomb()
     InstantiatePrefab("Smokebomb")
     smokeBombCount = smokeBombCount - 1
 
-    if (smokeBombCount > 0) then
-        abilities.AbilitySecondary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-    else
-        abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-    end
     -- secondaryTimer = 0.0
 
     trackList = {6}
@@ -996,7 +1004,8 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("Mosquito")
 
@@ -1009,8 +1018,6 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
-    abilities.AbilityUltimate = AbilityStatus.Using
-
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
         OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -1169,9 +1176,18 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_Start") then
         smokebombPosition = fields[1]
         smokebombRadius = fields[2]
+        smokebombActive = true
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
+        smokebombActive = false
+        if (smokeBombCount > 0) then
+            abilities.AbilitySecondary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        else
+            abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        end
     elseif (key == "Update_Nerala_Position") then
         Log("Receiving Nerala Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))

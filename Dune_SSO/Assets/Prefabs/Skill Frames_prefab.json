@@ -1,8 +1,8 @@
 {
-    "active": false,
+    "active": true,
     "children": [
         {
-            "active": false,
+            "active": true,
             "children": [],
             "components": [
                 {
@@ -18,7 +18,7 @@
                     ],
                     "position": [
                         -150.0,
-                        140.0
+                        150.0
                     ],
                     "rotation": [
                         0.0,
@@ -26,24 +26,32 @@
                         0.0
                     ],
                     "size": [
-                        70.1500015258789,
-                        70.1500015258789
+                        74.0,
+                        96.0
                     ],
                     "type": 22
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/ability_hover.png",
+                    "idleTexture": "Assets/New UI/ability_default.png",
+                    "pressedTexture": "Assets/New UI/ability_pressed.png",
+                    "type": 15
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/New HUD Scripts/primary_skill_button.lua",
+                    "id": 29862008,
+                    "type": 5
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable Q",
+            "name": "Skill Frame Q",
             "tag": 0
         },
         {
-            "active": false,
+            "active": true,
             "children": [],
             "components": [
                 {
@@ -59,7 +67,7 @@
                     ],
                     "position": [
                         0.0,
-                        140.0
+                        150.0
                     ],
                     "rotation": [
                         0.0,
@@ -67,24 +75,32 @@
                         0.0
                     ],
                     "size": [
-                        70.1500015258789,
-                        70.1500015258789
+                        74.0,
+                        96.0
                     ],
                     "type": 22
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/ability_hover.png",
+                    "idleTexture": "Assets/New UI/ability_default.png",
+                    "pressedTexture": "Assets/New UI/ability_pressed.png",
+                    "type": 15
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/New HUD Scripts/secondary_skill_button.lua",
+                    "id": 258688672,
+                    "type": 5
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable W",
+            "name": "Skill Frame W",
             "tag": 0
         },
         {
-            "active": false,
+            "active": true,
             "children": [],
             "components": [
                 {
@@ -100,7 +116,7 @@
                     ],
                     "position": [
                         150.0,
-                        140.0
+                        150.0
                     ],
                     "rotation": [
                         0.0,
@@ -108,20 +124,28 @@
                         0.0
                     ],
                     "size": [
-                        70.1500015258789,
-                        70.1500015258789
+                        74.0,
+                        96.0
                     ],
                     "type": 22
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/ability_pickable_mask.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/ability_hover.png",
+                    "idleTexture": "Assets/New UI/ability_default.png",
+                    "pressedTexture": "Assets/New UI/ability_pressed.png",
+                    "type": 15
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/New HUD Scripts/ultimate_skill_button.lua",
+                    "id": 1366169570,
+                    "type": 5
                 }
             ],
             "is3D": false,
             "isPrefab": false,
-            "name": "Skill Mask Pickable E",
+            "name": "Skill Frame E",
             "tag": 0
         }
     ],
@@ -159,6 +183,6 @@
     ],
     "is3D": false,
     "isPrefab": true,
-    "name": "Skill Masks Pickable",
+    "name": "Skill Frames",
     "tag": 0
 }

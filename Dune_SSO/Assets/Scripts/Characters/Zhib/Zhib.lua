@@ -67,6 +67,9 @@ staminaSeconds = 5
 recoveryTime = 3
 staminaTimer = staminaSeconds
 isTired = false
+isUsingQ = false
+isUsingW = false
+isUsingE = false
 
 -- Basic Attack --
 attackRange = 25.0
@@ -479,6 +482,18 @@ function Update(dt)
     if (hasToMove == true and destination ~= nil) then
         MoveToDestination(dt)
         hasToMove = false
+    end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
     end
 end
 --------------------------------------------------
@@ -932,7 +947,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Knife")
     StopMovement(false)
@@ -941,7 +957,6 @@ function CastPrimary(position)
 end
 
 function DoPrimary()
-
     InstantiatePrefab("Knife")
     knifeCount = knifeCount - 1
 
@@ -975,7 +990,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Decoy")
     StopMovement(false)
@@ -985,7 +1001,6 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-    abilities.AbilitySecondary = AbilityStatus.Using
     InstantiatePrefab("Decoy")
 
     decoyCount = decoyCount - 1
@@ -1014,7 +1029,8 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0

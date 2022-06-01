@@ -439,6 +439,18 @@ function Update(dt)
         MoveToDestination(dt)
         hasToMove = false
     end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
+    end
 end
 
 --------------------------------------------------
@@ -674,12 +686,6 @@ function ManageTimers(dt)
         end
     end
 
-    -- Primary ability cooldown
-    if (spitCount > 2 and
-        not (abilities.AbilityPrimary == AbilityStatus.Active or abilities.AbilityPrimary == AbilityStatus.Casting)) then
-        -- abilities.AbilityPrimary = AbilityStatus.Normal
-        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    end
     if (currentState == State.AIM_PRIMARY) then
         DispatchGlobalEvent("Omozra_Primary", {})
     end
@@ -849,7 +855,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(thisTarget)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
@@ -864,14 +871,6 @@ end
 
 function DoPrimary()
     spitCount = spitCount - 3
-
-    if (spitCount > 2) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    else
-        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    end
 
     DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
 
@@ -896,7 +895,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
@@ -951,7 +951,8 @@ function CastUltimate(position) -- Ult step 3
         Log(str)
     end
 
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("Point")
 
@@ -976,8 +977,7 @@ function DoUltimate() -- Ult step 4
 end
 
 function RecastUltimate(position)
-
-    abilities.AbilityUltimateRecast = AbilityStatus.Casting
+    abilities.AbilityUltimateRecast = AbilityStatus.Casting -- Used this only for drawing
 
     componentAnimator:SetSelectedClip("Point")
 
@@ -1100,6 +1100,14 @@ function EventHandler(key, fields)
         trackList = {5}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
+        if (spitCount > 2) then
+            abilities.AbilityPrimary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        else
+            abilities.AbilityPrimary = AbilityStatus.Disabled
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        end
+
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
                 currentHP = currentHP + fields[2]

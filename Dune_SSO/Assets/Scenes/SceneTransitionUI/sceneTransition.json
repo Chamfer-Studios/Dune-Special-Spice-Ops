@@ -9,7 +9,6 @@
       "description4": "The dodge chances are",
       "description5": " ",
       "description6": " "
-      
     },
     {
       "id": 2,
@@ -120,6 +119,16 @@
       "description4": "at a desired spot inside a given range and Sadiq pops up and",
       "description5": "regurgitates the ally before disappearing under the sand again",
       "description6": "This ability can’t be casted on Omozra himself."
+    },
+    {
+      "id": 1000,
+      "src": "",
+      "description1": "Level: 1",
+      "description2": "",
+      "description3": "",
+      "description4": "",
+      "description5": "",
+      "description6": ""
     }
   ]
 }
