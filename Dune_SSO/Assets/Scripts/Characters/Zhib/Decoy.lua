@@ -36,6 +36,8 @@ function Start()
     end
 end
 
+a = false
+
 -- Called each loop iteration
 function Update(dt)
 
@@ -79,6 +81,12 @@ function Update(dt)
             pickupParticles:ResumeParticleSpawn()
         end
         -- Log("Decoy is grabbable! \n")
+
+        if a == false then
+            DispatchGlobalEvent("Decoy_Grabbable", {})
+            a = true
+        end
+
         isGrabbable = true
     end
 end

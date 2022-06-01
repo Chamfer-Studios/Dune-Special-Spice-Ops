@@ -946,11 +946,11 @@ function DoPrimary()
     knifeCount = knifeCount - 1
 
     if (knifeCount > 0) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        -- abilities.AbilityPrimary = AbilityStatus.Normal
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     else
-        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        -- abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
     trackList = {5, 11}
@@ -1203,6 +1203,12 @@ function EventHandler(key, fields)
                 {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Zhib: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
+    elseif (key == "Knife_Grabbable") then
+        abilities.AbilityPrimary = AbilityStatus.Pickable
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    elseif (key == "Decoy_Grabbable") then
+        abilities.AbilitySecondary = AbilityStatus.Pickable
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         trackList = {15}

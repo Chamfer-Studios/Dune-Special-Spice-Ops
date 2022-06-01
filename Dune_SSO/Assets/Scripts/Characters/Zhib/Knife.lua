@@ -93,6 +93,8 @@ function MoveToDestination(dt)
     end
 end
 
+a = false
+
 function StopMovement()
     destination = nil
     isGrabbable = true -- Has arrived to the destination
@@ -105,6 +107,11 @@ function StopMovement()
     end
     if (componentParticle ~= nil) then
         componentParticle:ResumeParticleSpawn()
+    end
+
+    if a == false then
+        DispatchGlobalEvent("Knife_Grabbable", {})
+        a = true
     end
 end
 ----------------- Math Functions -----------------
