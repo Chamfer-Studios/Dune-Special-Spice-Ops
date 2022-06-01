@@ -216,6 +216,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+
     DrawActiveAbilities()
     DrawHoverParticle()
 
@@ -235,7 +236,9 @@ function Update(dt)
     end
 
     if (ManageTimers(dt) == false) then
-        return
+        do
+            return
+        end
     end
 
     -- States
@@ -353,7 +356,9 @@ function Update(dt)
                             attackRange) then
                             if (attackTimer == nil) then
                                 Log("Already Atacking!\n")
-                                return
+                                do
+                                    return
+                                end
                             else
                                 isMoving = false
                                 Attack()
@@ -387,7 +392,9 @@ function Update(dt)
                     else
                         if (isMoving == true) then
                             Log("No possible path\n")
-                            return
+                            do
+                                return
+                            end
                         else
                             Log("No possible path\n")
                             target = nil
@@ -560,7 +567,9 @@ end
 
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
-        return
+        do
+            return
+        end
     end
 
     if (IsSelected() == true) then
@@ -597,7 +606,9 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
-            return
+            do
+                return
+            end
         end
         choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
         choosingTargetParticle:GetTransform():SetPosition(finalPosition)
@@ -1100,7 +1111,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
+        do
+            return
+        end
     end
 
     iFramesTimer = 0
@@ -1193,6 +1206,7 @@ function EventHandler(key, fields)
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
+        aaaFlag = true
         trackList = {15}
         ChangeTrack(trackList)
         Log("I have grabbed a knife! \n")
@@ -1266,7 +1280,9 @@ end
 function OnCollisionEnter(go)
 
     if (currentState == State.DEAD) then
-        return
+        do
+            return
+        end
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         -- TakeDamage(1)
