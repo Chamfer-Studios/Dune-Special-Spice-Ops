@@ -11,10 +11,23 @@ local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 function Start()
     LoadJsonFile(path)
     skillUiArray = {1,2,3}
+    id = 0
+    UpdateUI()
 end
 
 function Update(dt)
+    if(Find("Button") == nil) then
+        Log("No button")
+    end
     
+    if(Find("Button"):GetButton():IsHovered()) then
+        Log("First One")
+        SetDialogValue(1)
+    elseif(Find("Button (1)"):GetButton():IsHovered()) then
+        SetDialogValue(2)
+    elseif(Find("Button (2)"):GetButton():IsHovered()) then
+        SetDialogValue(3)
+    end
 
 end
 
@@ -23,7 +36,9 @@ function EventHandler(key, fields)
         id = fields[1]
         changedCharacter = true
         UpdateUI()
-    elseif(key == "FirstHovered") then
+    end
+
+    if(key == "FirstHovered") then
         SetDialogValue(1)
     elseif(key == "SecondHovered") then
         SetDialogValue(2)
@@ -70,36 +85,36 @@ function SetDialogValue(index)
     -- Get Dialogue Values From JSON
     -- print("setting Values")
     if(index == 1) then
-        src = GetTransString("description1", skillUiArray[1])
-        src2 = GetTransString("description2", skillUiArray[1])
-        src3 = GetTransString("description3", skillUiArray[1])
-        src4 = GetTransString("description4", skillUiArray[1])
-        src5 = GetTransString("description5", skillUiArray[1])
-        src6 = GetTransString("description6", skillUiArray[1])
-    elseif(idex == 2) then
-        src = GetTransString("description1", skillUiArray[2])
-        src2 = GetTransString("description2", skillUiArray[2])
-        src3 = GetTransString("description3", skillUiArray[2])
-        src4 = GetTransString("description4", skillUiArray[2])
-        src5 = GetTransString("description5", skillUiArray[2])
-        src6 = GetTransString("description6", skillUiArray[2])
+        dialog = GetTransString("description1", skillUiArray[1])
+        dialog1 = GetTransString("description2", skillUiArray[1])
+        dialog2 = GetTransString("description3", skillUiArray[1])
+        dialog3 = GetTransString("description4", skillUiArray[1])
+        dialog4 = GetTransString("description5", skillUiArray[1])
+        dialog5 = GetTransString("description6", skillUiArray[1])
+    elseif(index == 2) then
+        dialog = GetTransString("description1", skillUiArray[2])
+        dialog1 = GetTransString("description2", skillUiArray[2])
+        dialog2 = GetTransString("description3", skillUiArray[2])
+        dialog3 = GetTransString("description4", skillUiArray[2])
+        dialog4 = GetTransString("description5", skillUiArray[2])
+        dialog5 = GetTransString("description6", skillUiArray[2])
     elseif(index == 3) then
-        src = GetTransString("description1", skillUiArray[3])
-        src2 = GetTransString("description2", skillUiArray[3])
-        src3 = GetTransString("description3", skillUiArray[3])
-        src4 = GetTransString("description4", skillUiArray[3])
-        src5 = GetTransString("description5", skillUiArray[3])
-        src6 = GetTransString("description6", skillUiArray[3])
+        dialog = GetTransString("description1", skillUiArray[3])
+        dialog1 = GetTransString("description2", skillUiArray[3])
+        dialog2 = GetTransString("description3", skillUiArray[3])
+        dialog3 = GetTransString("description4", skillUiArray[3])
+        dialog4 = GetTransString("description5", skillUiArray[3])
+        dialog5 = GetTransString("description6", skillUiArray[3])
     end
     
+     -- Set Values To The Dialogue
+     Find("Text"):GetText():SetTextValue(dialog)
+     Find("Text (1)"):GetText():SetTextValue(dialog1)
+     Find("Text (2)"):GetText():SetTextValue(dialog2)
+     Find("Text (3)"):GetText():SetTextValue(dialog3)
+     Find("Text (4)"):GetText():SetTextValue(dialog4)
+     Find("Text (5)"):GetText():SetTextValue(dialog5)
     
-    -- Set Values To The Dialogue
-    Find("Text"):GetText():SetTextValue(src)
-    Find("Text(1)"):GetText():SetTextValue(src2)
-    Find("Text(2)"):GetText():SetTextValue(src3)
-    Find("Text(3)"):GetText():SetTextValue(src4)
-    Find("Text(4)"):GetText():SetTextValue(src5)
-    Find("Text(5)"):GetText():SetTextValue(src6)
 
 end
 
