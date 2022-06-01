@@ -99,12 +99,17 @@ isWalking = false
 awareness = 0
 targetAwareness = 0
 
-nSingle = 1
 nRepeating = 1
+nSingle = 1
 nVisual = 1
 
-singleAuditoryTriggers = {}
+-- {
+--        "position": float3
+--        "source": gameObject
+---       "valid": bool
+-- }
 repeatingAuditoryTriggers = {}
+singleAuditoryTriggers = {}
 visualTriggers = {}
 
 target = nil
@@ -249,6 +254,7 @@ function ProcessVisualTrigger(position, source)
     visualTriggers[nVisual]["valid"] = true
 
     lambda = function(uid)
+        Log("Hello\n")
         -- visualTriggers[nVisual]["valid"] = false
     end
 
@@ -257,6 +263,7 @@ function ProcessVisualTrigger(position, source)
     dst = float3.new(position.x, position.y + 10, position.z)
 
     RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
+    DrawLine(src, dst)
 
     nVisual = nVisual + 1
 end
@@ -649,14 +656,14 @@ function Die(leaveBody, enemyName)
 
     DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
 
-    SwitchState(state, STATE.CORPSE)
-
     if (leaveBody == false) then
         do
             DeleteGameObject()
             return
         end
     end
+
+    SwitchState(state, STATE.CORPSE)
 
     -- Spice Loot Droprate
     math.randomseed(os.time())
@@ -668,7 +675,6 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
-    -- Log(apetecan())
 end
 
 deathParameters = {
