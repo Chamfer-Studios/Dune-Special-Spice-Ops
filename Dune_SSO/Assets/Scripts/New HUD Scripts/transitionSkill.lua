@@ -1,5 +1,5 @@
 function Update(dt)
-    if (gameObject:GetButton():IsHovered()) then
+    if (gameObject:GetButton():IsPressed()) then
         --if(gameObject:GetName() == "Button") then
             --DispatchGlobalEvent("FirstHovered")
         --elseif (gameObject:GetName() == "Button(1)") then
