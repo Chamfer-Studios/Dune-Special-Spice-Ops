@@ -1146,10 +1146,6 @@ function Die()
     SetState(State.DEAD)
     currentHP = 0
 
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
-    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
@@ -1194,6 +1190,7 @@ function EventHandler(key, fields)
             CancelAbilities(true)
         end
         if (fields[2] == characterID) then
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             -- If game changed to Zhib, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Zhib: Primary = " .. abilities.AbilityPrimary .. "\n")
@@ -1258,11 +1255,11 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + 1
+                currentHP = currentHP + fields[2]
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Zhib. Current HP = " .. currentHP .. "\n")
             else
-                Log("Sadiq has healed Zhib, but it was already full HP\n")
+                Log("Sadiq tried to heal Zhib but he was already full HP\n")
             end
         end
     elseif (key == "Smokebomb_Start") then

@@ -1,7 +1,7 @@
 ------------------- Variables --------------------
 speed = 10000
 destination = nil
-
+healAmmount = 1
 -------------------- Methods ---------------------
 
 function Start()
@@ -42,15 +42,15 @@ function MoveToDestination(dt)
     if (d > 2.0) then
 
         -- Adapt speed on arrive
-        if (d < 15.0 and once == false) then
-            speed = speed * 0.5
-            once = true
+        local s = speed
+        if (d < 15.0) then
+            s = s * 0.5
         end
 
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
-            componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * speed * dt, 0, vec2[2] * speed * dt))
+            componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
         end
 
         -- Rotation
@@ -61,7 +61,7 @@ function MoveToDestination(dt)
         componentTransform:SetRotation(float3.new(componentTransform:GetRotation().x,
             componentTransform:GetRotation().y, rad))
     else
-        DispatchGlobalEvent("Spit_Heal_Hit", {target})
+        DispatchGlobalEvent("Spit_Heal_Hit", {target, healAmmount})
         destination = nil
         if (componentRigidBody ~= nil) then
             componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))

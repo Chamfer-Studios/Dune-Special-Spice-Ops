@@ -56,13 +56,76 @@ function Update(dt)
                 elseif (currentState == State.SPIT) then
                     DoSpit()
                 elseif (currentState == State.SPIT_HEAL) then
-                    DoSpitHeal()
+                    DoPrimary()
                 else
                     componentTransform:SetPosition(float3.new(0, -50, 0))
                 end
             end
         end
     end
+end
+
+-- Primary spit in your face
+function CastPrimary(thisTarget, omozraPos)
+
+    target = thisTarget
+    targetPos = target:GetTransform():GetPosition()
+    -- Spawn with an offset to the direction of the heal
+    local targetPos2D = {targetPos.x, targetPos.z}
+    local pos2D = {omozraPos.x, omozraPos.z}
+    local d = Distance(pos2D, targetPos2D)
+    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+    vec2 = Normalize(vec2, d)
+    componentTransform:SetPosition(float3.new(targetPos.x - vec2[1] * 20, 0, targetPos.z - vec2[2] * 20))
+
+    -- math.randomseed(os.time())
+    -- randomOffsetX = 40
+    -- randomOffsetZ = 40
+    -- if (math.random(1, 2) == 1) then
+    --    rngX = math.random(-randomOffsetX, -20)
+    --    rngZ = math.random(-randomOffsetZ, -20)
+    -- else
+    --    rngX = math.random(20, randomOffsetX)
+    --    rngZ = math.random(20, randomOffsetZ)
+    -- end
+    -- local a = float3.new(targetPos.x + rngX, targetPos.y, targetPos.z + rngZ)
+    -- componentTransform:SetPosition(a)
+    -- Log("X: " .. a.x .. " Y: " .. a.y .. " Z: " .. a.z .. "\n")
+
+    LookAtTarget(targetPos)
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("SpitHeal")
+    end
+
+    trackList = {0, 4}
+    ChangeTrack(trackList)
+
+    currentState = State.SPIT_HEAL
+end
+
+function DoPrimary()
+    -- TODO: spit something in the direction of the player
+    InstantiatePrefab("SpitHeal")
+
+    if (componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("SpitHealToIdle")
+    end
+
+    if (componentSwitch:IsAnyTrackPlaying() == false) then
+        currentTrackID = -1
+    end
+
+    while (currentTrackID == 0 or currentTrackID == 4) do
+        return
+    end
+
+    if (currentTrackID ~= 3) then
+        trackList = {3}
+        ChangeTrack(trackList)
+    end
+
+    currentState = State.IDLE
 end
 
 -- Devour
@@ -77,7 +140,7 @@ function CastDevour(castedOn)
         componentAnimator:SetSelectedClip("Devour")
     end
 
-    trackList = {0,4}
+    trackList = {0, 4}
     ChangeTrack(trackList)
 
     currentState = State.DEVOUR
@@ -90,16 +153,16 @@ function DoDevour()
     componentAnimator:SetSelectedClip("DevourToIdle")
 
     -- TODO: Add particles, audio, etc.
-    if(componentSwitch:IsAnyTrackPlaying() == false) then
+    if (componentSwitch:IsAnyTrackPlaying() == false) then
         currentTrackID = -1
     end
 
-    while(currentTrackID == 0 or currentTrackID == 4) do
+    while (currentTrackID == 0 or currentTrackID == 4) do
         return
     end
 
-    if(currentTrackID ~= 2) then
-        trackList = {2}        
+    if (currentTrackID ~= 2) then
+        trackList = {2}
         ChangeTrack(trackList)
     end
 
@@ -118,7 +181,7 @@ function CastUltimate(castedOn)
         componentAnimator:SetSelectedClip("Devour")
     end
 
-    trackList = {0,4}
+    trackList = {0, 4}
     ChangeTrack(trackList)
 
     currentState = State.EAT
@@ -133,16 +196,16 @@ function DoUltimate()
     end
 
     -- TODO: Add particles, audio, etc.
-    if(componentSwitch:IsAnyTrackPlaying() == false) then
+    if (componentSwitch:IsAnyTrackPlaying() == false) then
         currentTrackID = -1
     end
 
-    while(currentTrackID == 0 or currentTrackID == 4) do
+    while (currentTrackID == 0 or currentTrackID == 4) do
         return
     end
 
-    if(currentTrackID ~= 2) then
-        trackList = {2}        
+    if (currentTrackID ~= 2) then
+        trackList = {2}
         ChangeTrack(trackList)
     end
 
@@ -162,7 +225,7 @@ function CastSpit(position)
         componentAnimator:SetSelectedClip("Spit")
     end
 
-    trackList = {0,4}
+    trackList = {0, 4}
     ChangeTrack(trackList)
 
     currentState = State.SPIT
@@ -177,80 +240,19 @@ function DoSpit()
     end
 
     -- TODO: Add particles, audio, etc.
-    if(componentSwitch:IsAnyTrackPlaying() == false) then
+    if (componentSwitch:IsAnyTrackPlaying() == false) then
         currentTrackID = -1
     end
 
-    while(currentTrackID == 0 or currentTrackID == 4) do
+    while (currentTrackID == 0 or currentTrackID == 4) do
         return
     end
 
-    if(currentTrackID ~= 3) then
-        trackList = {3}        
+    if (currentTrackID ~= 3) then
+        trackList = {3}
         ChangeTrack(trackList)
     end
 
-    currentState = State.IDLE
-end
-
-function CastSpitHeal(thisTarget, omozraPos)
-    target = thisTarget
-    targetPos = target:GetTransform():GetPosition()
-    -- Spawn with an offset to the direction of the heal
-    local targetPos2D = {target:GetTransform():GetPosition().x, target:GetTransform():GetPosition().z}
-    local pos2D = {omozraPos.x, omozraPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-
-    math.randomseed(os.time())
-    randomOffsetX = 40
-    randomOffsetZ = 40
-    if (math.random(1, 2) == 1) then
-        rngX = math.random(-randomOffsetX, -20)
-        rngZ = math.random(-randomOffsetZ, -20)
-    else
-        rngX = math.random(20, randomOffsetX)
-        rngZ = math.random(20, randomOffsetZ)
-    end
-    local a = float3.new(targetPos.x + rngX, targetPos.y, targetPos.z + rngZ)
-    componentTransform:SetPosition(a)
-    -- Log("X: " .. a.x .. " Y: " .. a.y .. " Z: " .. a.z .. "\n")
-
-    LookAtTarget(thisTarget:GetTransform():GetPosition())
-
-    if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("SpitHeal")
-    end
-
-    trackList = {0,4}
-    ChangeTrack(trackList)
-
-    currentState = State.SPIT_HEAL
-    Log("CastSpitHeal done successfully\n")
-end
-
-function DoSpitHeal()
-    -- TODO: spit something in the direction of the player
-    InstantiatePrefab("SpitHeal")
-
-    if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("SpitHealToIdle")
-    end
-
-    if(componentSwitch:IsAnyTrackPlaying() == false) then
-        currentTrackID = -1
-    end
-
-    while(currentTrackID == 0 or currentTrackID == 4) do
-        return
-    end
-
-    if(currentTrackID ~= 3) then
-        trackList = {3}        
-        ChangeTrack(trackList)
-    end
-    
     currentState = State.IDLE
 end
 
@@ -267,8 +269,8 @@ function EventHandler(key, fields)
         elseif (fields[2] == 3) then
             CastSpit(fields[1])
         end
-    elseif (key == "Sadiq_Heal") then
-        CastSpitHeal(fields[1], fields[2])
+    elseif (key == "Sadiq_Heal") then -- fields[1] -> target; fields[2] -> pos;
+        CastPrimary(fields[1], fields[2])
     end
 end
 --------------------------------------------------
@@ -313,8 +315,10 @@ end
 
 function ChangeTrack(_trackList)
     size = 0
-    for i in pairs(_trackList) do size = size + 1 end
-    
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
     index = math.random(size)
 
     if (componentSwitch ~= nil) then

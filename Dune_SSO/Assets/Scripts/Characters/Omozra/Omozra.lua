@@ -218,7 +218,9 @@ function Update(dt)
     end
 
     if (ManageTimers(dt) == false) then
-        return
+        do
+            return
+        end
     end
 
     -- Manage States
@@ -523,7 +525,9 @@ end
 
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
-        return
+        do
+            return
+        end
     end
 
     if (IsSelected() == true) then
@@ -570,7 +574,9 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
-            return
+            do
+                return
+            end
         end
         choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
         choosingTargetParticle:GetTransform():SetPosition(finalPosition)
@@ -859,7 +865,7 @@ function DoPrimary()
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
-    DispatchGlobalEvent("Sadiq_Heal", {target, gameObject:GetTransform():GetPosition()})
+    DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
 
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
@@ -991,7 +997,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
+        do
+            return
+        end
     end
 
     iFramesTimer = 0
@@ -1018,10 +1026,6 @@ function Die()
     SetState(State.DEAD)
     currentHP = 0
 
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
-    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
@@ -1066,6 +1070,7 @@ function EventHandler(key, fields)
             CancelAbilities(true)
         end
         if (fields[2] == characterID) then
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             -- If game changed to omozra, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Omozra: Primary = " .. abilities.AbilityPrimary .. "\n")
@@ -1089,7 +1094,7 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + 1
+                currentHP = currentHP + fields[2]
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
 
@@ -1119,7 +1124,9 @@ end
 
 function OnCollisionEnter(go)
     if (currentState == State.DEAD) then
-        return
+        do
+            return
+        end
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         -- TakeDamage(1)
