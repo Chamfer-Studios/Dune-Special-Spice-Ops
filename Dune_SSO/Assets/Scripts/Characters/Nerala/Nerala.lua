@@ -1088,11 +1088,12 @@ function EventHandler(key, fields)
         end
         if (fields[2] == characterID) then
             -- If game changed to nerala, update HUD events depending on Abilities
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryTimer})
             -- Log("Nerala: Primary = " .. abilities.AbilityPrimary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             -- Log("Nerala: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then

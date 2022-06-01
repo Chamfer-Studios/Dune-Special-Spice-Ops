@@ -663,8 +663,8 @@ function ManageTimers(dt)
     -- Primary ability cooldown
     if (spitCount > 2 and
         not (abilities.AbilityPrimary == AbilityStatus.Active or abilities.AbilityPrimary == AbilityStatus.Casting)) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        -- abilities.AbilityPrimary = AbilityStatus.Normal
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
     if (currentState == State.AIM_PRIMARY) then
         DispatchGlobalEvent("Omozra_Primary", {})
@@ -1069,9 +1069,11 @@ function EventHandler(key, fields)
             -- If game changed to omozra, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Omozra: Primary = " .. abilities.AbilityPrimary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryTimer})
             -- Log("Omozra: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Omozra: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Dialogue_Opened") then

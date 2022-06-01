@@ -17,19 +17,27 @@ function Start()
     hpFill3 = Find("HP Fill 3")
 
     zhibTimer2 = nil
-    zhibCooldown2 = nil
+    zhibTimer2aux = nil
+    zhibCooldown2 = GetVariable("Zhib.lua", "secondaryCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     zhibTimer3 = nil
-    zhibCooldown3 = nil
+    zhibTimer3aux = nil
+    zhibCooldown3 = GetVariable("Zhib.lua", "ultimateCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
     neralaTimer1 = nil
-    neralaCooldown1 = nil
+    neralaTimer1aux = nil
+    neralaCooldown1 = GetVariable("Nerala.lua", "primaryCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     neralaTimer3 = nil
-    neralaCooldown3 = nil
+    neralaTimer3aux = nil
+    neralaCooldown3 = GetVariable("Nerala.lua", "ultimateCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
     omozraTimer2 = nil
-    omozraCooldown2 = nil
+    omozraTimer2aux = nil
+    omozraCooldown2 = GetVariable("Omozra.lua", "secondaryCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     omozraTimer3 = nil
-    omozraCooldown3 = nil
+    omozraTimer3aux = nil
+    omozraCooldown3 = GetVariable("Omozra.lua", "ultimateCooldown", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+    maskSize = cooldownMaskQ:GetTransform2D():GetMask()
 end
 function Update(dt)
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -62,8 +70,8 @@ function Update(dt)
         zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         neralaImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), true) -- deactivate the skill slots to be invisible
-        neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), true) -- deactivate the skill slots to be invisible
+        zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
+        neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), true) -- activate the skill slots to be visible
     end
 
@@ -86,10 +94,13 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskQ.active = true
                 activeMaskQ.active = false
+
                 -- Manage CDs
                 if characterID == 2 then
-                    neralaCooldown1 = fields[4]
-                    neralaTimer1 = neralaCooldown1
+                    neralaTimer1 = fields[4]
+                    if neralaTimer1aux == nil then
+                        neralaTimer1aux = neralaCooldown1
+                    end
                 end
             elseif abilityState == 4 then
                 -- TODO: State Using. Zhib Q gets using when the knife is in the way.
@@ -106,13 +117,18 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskW.active = true
                 activeMaskW.active = false
+
                 -- Manage CDs
                 if characterID == 1 then
-                    zhibCooldown2 = fields[4]
-                    zhibTimer2 = zhibCooldown2
+                    zhibTimer2 = fields[4]
+                    if zhibTimer2aux == nil then
+                        zhibTimer2aux = zhibCooldown2
+                    end
                 elseif characterID == 3 then
-                    omozraCooldown2 = fields[4]
-                    omozraTimer2 = omozraCooldown2
+                    omozraTimer2 = fields[4]
+                    if omozraTimer2aux == nil then
+                        omozraTimer2aux = omozraCooldown2
+                    end
                 end
             elseif abilityState == 4 then
                 -- TODO: State Using. Zhib W gets using when the decoy is in the floor.
@@ -129,16 +145,23 @@ function EventHandler(key, fields)
             elseif abilityState == 3 then
                 cooldownMaskE.active = true
                 activeMaskE.active = false
+
                 -- Manage CDs
                 if characterID == 1 then
-                    zhibCooldown3 = fields[4]
-                    zhibTimer3 = zhibCooldown3
+                    zhibTimer3 = fields[4]
+                    if zhibTimer3aux == nil then
+                        zhibTimer3aux = zhibCooldown3
+                    end
                 elseif characterID == 2 then
-                    neralaCooldown3 = fields[4]
-                    neralaTimer3 = neralaCooldown3
+                    neralaTimer3 = fields[4]
+                    if neralaTimer3aux == nil then
+                        neralaTimer3aux = neralaCooldown3
+                    end
                 elseif characterID == 3 then
-                    omozraCooldown3 = fields[4]
-                    omozraTimer3 = omozraCooldown3
+                    omozraTimer3 = fields[4]
+                    if omozraTimer3aux == nil then
+                        omozraTimer3aux = omozraCooldown3
+                    end
                 end
             elseif abilityState == 4 then
                 -- TODO: State Using. Nerala ult gets using when the mosquito is being used. Omozra ult gets using when the recast is being done
@@ -146,31 +169,8 @@ function EventHandler(key, fields)
                 -- State disabled. All 3 ults should be disabled if they don't have enough spice. Currently, event not sent in code
             end
         end
-    elseif key == "Player_Health" then
-        -- fields[1] = characterID
-        -- fields[2] = currentHP
-        -- fields[3] = maxHP
-        -- Log("Fields "..tostring(fields[1]).."\n")
-        -- Log("cID "..tostring(currentCharacterId).."\n")
-        if currentCharacterId == fields[1] then
-            if fields[2] == 0 then
-                hpFill1.active = false
-                hpFill2.active = false
-                hpFill3.active = false
-            elseif fields[2] == 1 then
-                hpFill1.active = true
-                hpFill2.active = false
-                hpFill3.active = false
-            elseif fields[2] == 2 then
-                hpFill1.active = true
-                hpFill2.active = true
-                hpFill3.active = false
-            elseif fields[2] == 3 then
-                hpFill1.active = true
-                hpFill2.active = true
-                hpFill3.active = true
-            end
-        end
+    elseif key == "Player_Health" then -- fields[1] = characterID, fields[2] = currentHP
+        ManageHealth(fields[1], fields[2])
     end
 end
 
@@ -178,51 +178,87 @@ function ManageTimers(dt)
 
     if (zhibTimer2 ~= nil) then
         zhibTimer2 = zhibTimer2 - dt
+        zhibTimer2aux = zhibTimer2aux - dt
         if (zhibTimer2 <= 0) then
             zhibTimerW = nil
+            zhibTimer2aux = nil
+            cooldownMaskW:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
-        cooldownMaskW:GetTransform2D():SetMask(float2.new(cooldownMaskW:GetTransform2D():GetMask().x,
-            zhibTimer2 / zhibCooldown2))
+        cooldownMaskW:GetTransform2D():SetMask(float2.new(maskSize.x, zhibTimer2aux / zhibCooldown2))
     end
     if (zhibTimer3 ~= nil) then
         zhibTimer3 = zhibTimer3 - dt
+        zhibTimer3aux = zhibTimer3aux - dt
         if (zhibTimer3 <= 0) then
             zhibTimer3 = nil
+            zhibTimer3aux = nil
+            cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
-        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
-            zhibTimer3 / zhibCooldown3))
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, zhibTimer3aux / zhibCooldown3))
     end
     if (neralaTimer1 ~= nil) then
         neralaTimer1 = neralaTimer1 - dt
-        if (neralaTimer1 <= 0) then
+        neralaTimer1aux = neralaTimer1aux - dt
+        if (neralaTimer1 <= 0.0) then
             neralaTimer1 = nil
+            neralaTimer1aux = nil
+            cooldownMaskQ:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
+        else
+            cooldownMaskQ:GetTransform2D():SetMask(float2.new(maskSize.x, neralaTimer1aux / neralaCooldown1))
         end
-        cooldownMaskQ:GetTransform2D():SetMask(float2.new(cooldownMaskQ:GetTransform2D():GetMask().x,
-            neralaTimer1 / neralaCooldown1))
+
     end
     if (neralaTimer3 ~= nil) then
         neralaTimer3 = neralaTimer3 - dt
+        neralaTimer3aux = neralaTimer3aux - dt
         if (neralaTimer3 <= 0) then
             neralaTimer3 = nil
+            neralaTimer3aux = nil
+            cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
-        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
-            neralaTimer3 / neralaCooldown3))
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, neralaTimer3aux / neralaCooldown3))
     end
     if (omozraTimer2 ~= nil) then
         omozraTimer2 = omozraTimer2 - dt
+        omozraTimer2aux = omozraTimer2aux - dt
         if (omozraTimer2 <= 0) then
             omozraTimer2 = nil
+            omozraTimer2aux = nil
+            cooldownMaskW:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
-        cooldownMaskW:GetTransform2D():SetMask(float2.new(cooldownMaskW:GetTransform2D():GetMask().x,
-            omozraTimer2 / omozraCooldown2))
+        cooldownMaskW:GetTransform2D():SetMask(float2.new(maskSize.x, omozraTimer2aux / omozraCooldown2))
     end
     if (omozraTimer3 ~= nil) then
         omozraTimer3 = omozraTimer3 - dt
+        omozraTimer3aux = omozraTimer3aux - dt
         if (omozraTimer3 <= 0) then
             omozraTimer3 = nil
+            omozraTimer3aux = nil
+            cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, maskSize.y))
         end
-        cooldownMaskE:GetTransform2D():SetMask(float2.new(cooldownMaskE:GetTransform2D():GetMask().x,
-            omozraTimer3 / omozraCooldown3))
+        cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, omozraTimer3aux / omozraCooldown3))
+    end
+end
+
+function ManageHealth(characterId, HP)
+    if currentCharacterId == characterId then
+        if HP == 0 then
+            hpFill1.active = false
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 1 then
+            hpFill1.active = true
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 2 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = false
+        elseif HP == 3 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = true
+        end
     end
 end
 

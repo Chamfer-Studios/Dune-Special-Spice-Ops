@@ -1197,9 +1197,11 @@ function EventHandler(key, fields)
             -- If game changed to Zhib, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Zhib: Primary = " .. abilities.AbilityPrimary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryTimer})
             -- Log("Zhib: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Zhib: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Decoy_Grabbed") then
