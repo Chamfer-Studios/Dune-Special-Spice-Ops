@@ -18,6 +18,8 @@ local attackRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 attackRangeIV = InspectorVariable.new("attackRange", attackRangeIVT, attackRange)
 NewVariable(attackRangeIV)
 
+attackSpeed = 1.5
+
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 visionConeAngleIV = InspectorVariable.new("visionConeAngle", visionConeAngleIVT, visionConeAngle)
@@ -574,7 +576,13 @@ function SwitchState(from, to)
     DispatchEvent("Change_State", {from, to})
 end
 
-function UpdateAnimation(oldState, target)
+function UpdateAnimation(dt, oldState, target)
+    if (attackTimer ~= nil) then
+        attackTimer = attackTimer + dt
+        if (attackTimer >= attackSpeed) then
+            attackTimer = nil
+        end
+    end
     -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
     if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
         if (componentAnimator ~= nil) then
@@ -588,12 +596,13 @@ function UpdateAnimation(oldState, target)
         if (componentAnimator ~= nil) then
             currentClip = componentAnimator:GetSelectedClip()
             if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
-                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
+                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
                 componentAnimator:SetSelectedClip("Attack")
             elseif currentClip == "Attack" then
                 if componentAnimator:IsCurrentClipPlaying() == false then
                     DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
                     componentAnimator:SetSelectedClip("AttackToIdle")
+                    attackTimer = 0
                 end
             elseif currentClip == "AttackToIdle" then
                 if componentAnimator:IsCurrentClipPlaying() == false then
@@ -616,7 +625,7 @@ end
 function Update(dt)
     if state == STATE.DEAD then
         do
-            UpdateAnimation(oldState, target)
+            UpdateAnimation(dt, oldState, target)
             return
         end
     end
@@ -626,7 +635,7 @@ function Update(dt)
     target = GetClosestTarget()
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
-    UpdateAnimation(oldState, target)
+    UpdateAnimation(dt, oldState, target)
     RotateToTargetDirection(dt)
 
     if state == STATE.UNAWARE then
