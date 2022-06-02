@@ -1,5 +1,5 @@
 ------------------- Variables --------------------
-speed = 7000
+speed = 10000
 destination = nil
 isGrabbable = false
 once = false
@@ -85,6 +85,15 @@ function MoveToDestination(dt)
 
         -- Movement
         vec2 = Normalize(vec2, d)
+
+        if (target ~= nil) then
+            local newDestination = target:GetTransform():GetPosition()
+            if (Distance3D(destination, newDestination) >= 5) then
+                destination = float3.new(newDestination.x + vec2[1] * 5, newDestination.y,
+                    newDestination.z + vec2[2] * 5)
+            end
+        end
+
         if (componentRigidBody ~= nil) then
             componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
         end
@@ -147,6 +156,15 @@ function ChangeTrack(_trackList)
         currentTrackID = _trackList[index]
         componentSwitch:PlayTrack(currentTrackID)
     end
+end
+
+function Distance3D(a, b)
+    diff = {
+        x = b.x - a.x,
+        y = b.y - a.y,
+        z = b.z - a.z
+    }
+    return math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z)
 end
 
 print("Knife.lua compiled succesfully\n")
