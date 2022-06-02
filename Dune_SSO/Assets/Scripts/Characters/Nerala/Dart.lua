@@ -59,14 +59,15 @@ function MoveToDestination(dt)
     if (d > 2.0) then
 
         -- Adapt speed on arrive
+        local s = speed
         if (d < 15.0) then
-            speed = speed * 0.5
+            s = s * 0.5
         end
 
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
-            componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * speed * dt, 0, vec2[2] * speed * dt))
+            componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
         end
 
         -- Rotation
