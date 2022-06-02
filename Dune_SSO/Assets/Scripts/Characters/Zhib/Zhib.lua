@@ -667,6 +667,7 @@ end
 
 function UpdateStaminaBar()
     local proportion = staminaTimer / staminaSeconds
+    local recoveryProportion = staminaTimer / recoveryTime
 
     local pos = componentTransform:GetPosition()
 
@@ -700,7 +701,7 @@ function UpdateStaminaBar()
         staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
         staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
         staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
             staminaBarSizeZ))
     end
 end
