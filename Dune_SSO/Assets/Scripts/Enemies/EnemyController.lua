@@ -19,6 +19,7 @@ attackRangeIV = InspectorVariable.new("attackRange", attackRangeIVT, attackRange
 NewVariable(attackRangeIV)
 
 attackSpeed = 1.5
+dartRange = 100
 
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -269,7 +270,6 @@ function ProcessVisualTrigger(position, source)
     hit = CustomRayCast(src, dst, Tag.WALL)
 
     if hit == false then
-        Log("hello\n")
         visualTriggers[nVisual] = {}
         visualTriggers[nVisual]["position"] = position
         visualTriggers[nVisual]["source"] = source
@@ -464,6 +464,10 @@ function Start()
 
     auditoryDebuffMultiplier = 1
     visualDebuffMultiplier = 1
+
+    thisType = "Harkonnen" -- Default
+    dartCount = 2
+    isAttacking = false
 end
 
 function UpdateTargetAwareness()
@@ -586,16 +590,12 @@ function GetClosestTarget()
     newTarget = target
 
     if closestVisualTrigger ~= nil then
-        Log("1\n")
         newTarget = closestVisualTrigger
     elseif closestDecoyTrigger ~= nil then
-        Log("2\n")
         newTarget = closestDecoyTrigger
     elseif closestSingleTrigger ~= nil then
-        Log("3\n")
         newTarget = closestSingleTrigger
     elseif closestRepeatingTrigger ~= nil then
-        Log("4\n")
         newTarget = closestRepeatingTrigger
     end
 
@@ -651,6 +651,13 @@ function UpdateAnimation(dt, oldState, target)
             attackTimer = nil
         end
     end
+    if (dartTimer ~= nil) then
+        dartTimer = dartTimer + dt
+        if (dartTimer >= attackSpeed) then
+            dartTimer = nil
+        end
+    end
+
     if (componentAnimator ~= nil) then
         -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
         if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
@@ -661,21 +668,31 @@ function UpdateAnimation(dt, oldState, target)
             end
         elseif state == STATE.AGGRO then
             currentClip = componentAnimator:GetSelectedClip()
-            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
-                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
-                componentAnimator:SetSelectedClip("Attack")
-            elseif currentClip == "Attack" then
-                if componentAnimator:IsCurrentClipPlaying() == false then
-                    DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
-                    componentAnimator:SetSelectedClip("AttackToIdle")
-                    attackTimer = 0
-                end
-            elseif currentClip == "AttackToIdle" then
-                if componentAnimator:IsCurrentClipPlaying() == false then
+            if (thisType == "Harkonnen") then
+                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance <
+                    attackRange then
+                    componentAnimator:SetSelectedClip("Attack")
+                    isAttacking = true
+                elseif currentClip == "Attack" then
+                    if (componentAnimator:IsCurrentClipPlaying() == false) then
+                        DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
+                        componentAnimator:SetSelectedClip("AttackToIdle")
+                        attackTimer = 0
+                    end
+                elseif currentClip == "AttackToIdle" then
+                    if componentAnimator:IsCurrentClipPlaying() == false then
+                        componentAnimator:SetSelectedClip("Idle")
+                        isAttacking = false
+                    end
+                elseif (distance > attackRange) then
+                    if (currentClip ~= "Run") then
+                        componentAnimator:SetSelectedClip("Run")
+                    end
+                else
                     componentAnimator:SetSelectedClip("Idle")
                 end
-            elseif currentClip ~= "Walk" then
-                componentAnimator:SetSelectedClip("Walk")
+            elseif (thisType == "Sardaukar") then
+                AttackSardaukar(currentClip) -- Lo aparto para no estorbar
             end
         elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
             componentAnimator:SetSelectedClip("Death")
@@ -708,7 +725,10 @@ function Update(dt)
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     elseif state == STATE.AGGRO then
-        DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
+        currentClip = componentAnimator:GetSelectedClip()
+        if (not isAttacking) then
+            DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
+        end
     end
 
     ClearPerceptionMemory()
@@ -775,6 +795,9 @@ function EventHandler(key, fields)
             debuffParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
                 componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
         end
+    elseif key == "Assign_Type" then
+        thisType = fields[1]
+        attackRange = 40
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
@@ -824,6 +847,59 @@ end
 
 function DrawDebugger()
     DrawCircle(componentTransform:GetPosition(), hearingRange, float3.new(255.0, 0.0, 0.0), 5.0)
+end
+
+function AttackSardaukar(currentClip)
+    if (updateDartTarget ~= nil) then
+        DispatchGlobalEvent("Update_Enemy_Dart_Target", {dartName, target["source"], componentTransform:GetPosition()})
+        updateDartTarget = nil
+        dartName = nil
+    end
+    local distance = Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition())
+    if (dartCount > 0) then
+        if currentClip ~= "Ranged" and currentClip ~= "RangedToIdle" and dartTimer == nil and distance < dartRange then
+            componentAnimator:SetSelectedClip("Ranged")
+            isAttacking = true
+        elseif currentClip == "Ranged" then
+            if (componentAnimator:IsCurrentClipPlaying() == false) then
+                dartName = "SardaukarDart " .. gameObject:GetUID() .. " " .. dartCount * (-1) + 3
+                updateDartTarget = true
+                InstantiateNamedPrefab("SardaukarDart", dartName)
+                componentAnimator:SetSelectedClip("RangedToIdle")
+                dartCount = dartCount - 1
+                dartTimer = 0
+            end
+        elseif currentClip == "RangedToIdle" then
+            if componentAnimator:IsCurrentClipPlaying() == false then
+                componentAnimator:SetSelectedClip("Run")
+                isAttacking = false
+            end
+        elseif (currentClip ~= "Run") then
+            componentAnimator:SetSelectedClip("Run")
+        end
+    else
+        if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance < attackRange then
+            componentAnimator:SetSelectedClip("Attack")
+            isAttacking = true
+        elseif currentClip == "Attack" then
+            if (componentAnimator:IsCurrentClipPlaying() == false) then
+                DispatchGlobalEvent("Enemy_Attack", {target["source"], "Sardaukar"})
+                componentAnimator:SetSelectedClip("AttackToIdle")
+                attackTimer = 0
+            end
+        elseif currentClip == "AttackToIdle" then
+            if componentAnimator:IsCurrentClipPlaying() == false then
+                componentAnimator:SetSelectedClip("Idle")
+                isAttacking = false
+            end
+        elseif (distance > attackRange) then
+            if (currentClip ~= "Run") then
+                componentAnimator:SetSelectedClip("Run")
+            end
+        else
+            componentAnimator:SetSelectedClip("Idle")
+        end
+    end
 end
 
 print("EnemyController.lua compiled successfully!")
