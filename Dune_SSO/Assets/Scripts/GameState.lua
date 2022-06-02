@@ -21,6 +21,7 @@ omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
 
+anyCharacterSelected = true
 changedCharacter = false
 zhibAvailable = true
 neralaAvailable = true
@@ -96,6 +97,7 @@ function Update(dt)
             if (characterSelected == 1) then
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 1 to 0
                 characterSelected = 0
+                anyCharacterSelected = false
             else
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                 characterSelected = 1
@@ -146,7 +148,9 @@ function Update(dt)
                     characterSelectedParticle:GetComponentParticle():SetLoop(true)
                 end
             end
+            anyCharacterSelected = true
         else
+            anyCharacterSelected = false
             characterSelectedParticle:GetTransform():SetPosition(float3.new(
                 characterSelectedParticle:GetTransform():GetPosition().x, -20,
                 characterSelectedParticle:GetTransform():GetPosition().z))
