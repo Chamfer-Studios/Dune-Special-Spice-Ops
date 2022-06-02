@@ -29,6 +29,7 @@ function Start()
     --Log(upgradeButton.object:GetName())
     LoadJsonFile(path)
     skillUiArray = {1,2,3, 101}
+    dialogueGo = Find("Dialogue")
     id = 0
     UpdateUI()
 end
@@ -213,6 +214,7 @@ function SetDialogValue(index)
     -- Get Dialogue Values From JSON
     -- print("setting Values")
     if(index == 1) then
+        dialogueGo:Active(true)
         dialog = GetTransString("description1", skillUiArray[1])
         dialog1 = GetTransString("description2", skillUiArray[1])
         dialog2 = GetTransString("description3", skillUiArray[1])
@@ -220,6 +222,7 @@ function SetDialogValue(index)
         dialog4 = GetTransString("description5", skillUiArray[1])
         dialog5 = GetTransString("description6", skillUiArray[1])
     elseif(index == 2) then
+        dialogueGo:Active(true)
         dialog = GetTransString("description1", skillUiArray[2])
         dialog1 = GetTransString("description2", skillUiArray[2])
         dialog2 = GetTransString("description3", skillUiArray[2])
@@ -227,6 +230,7 @@ function SetDialogValue(index)
         dialog4 = GetTransString("description5", skillUiArray[2])
         dialog5 = GetTransString("description6", skillUiArray[2])
     elseif(index == 3) then
+        dialogueGo:Active(true)
         dialog = GetTransString("description1", skillUiArray[3])
         dialog1 = GetTransString("description2", skillUiArray[3])
         dialog2 = GetTransString("description3", skillUiArray[3])
@@ -234,6 +238,7 @@ function SetDialogValue(index)
         dialog4 = GetTransString("description5", skillUiArray[3])
         dialog5 = GetTransString("description6", skillUiArray[3])
     elseif(index == 4) then
+        dialogueGo:Active(true)
         dialog = GetTransString("description1", skillUiArray[4])
         dialog1 = GetTransString("description2", skillUiArray[4])
         dialog2 = GetTransString("description3", skillUiArray[4])
@@ -241,6 +246,7 @@ function SetDialogValue(index)
         dialog4 = GetTransString("description5", skillUiArray[4])
         dialog5 = GetTransString("description6", skillUiArray[4])
     else
+        dialogueGo:Active(false)
         dialog = " "
         dialog1 = " "
         dialog2 = " "
