@@ -97,6 +97,7 @@ STATE = {
 state = STATE.UNAWARE
 
 isWalking = false
+isDecoyed = false
 
 awareness = 0
 targetAwareness = 0
@@ -617,10 +618,10 @@ function UpdateAnimation(dt, oldState, target)
         elseif state == STATE.AGGRO then
             currentClip = componentAnimator:GetSelectedClip()
             if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
-                attackRange then
-                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
-                    componentAnimator:SetSelectedClip("Attack")
-                elseif currentClip == "Attack" and componentAnimator:IsCurrentClipPlaying() == false then
+                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
+                componentAnimator:SetSelectedClip("Attack")
+            elseif currentClip == "Attack" then
+                if componentAnimator:IsCurrentClipPlaying() == false then
                     DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
                     componentAnimator:SetSelectedClip("AttackToIdle")
                     attackTimer = 0
@@ -711,7 +712,12 @@ deathParameters = {
 }
 
 function EventHandler(key, fields)
-    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+    if key == "Decoy_Trigger" then
+        if (isDecoyed == false) then
+            ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
+            isDecoyed = true
+        end
+    elseif key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "Walking_Direction" then
         SetTargetDirection(fields[1])
