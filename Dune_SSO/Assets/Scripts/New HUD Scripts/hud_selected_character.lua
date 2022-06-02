@@ -1,9 +1,8 @@
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
-
 function Start()
     LoadJsonFile(path)
-    skillUiArray = {1,2,3, 101}
+    skillUiArray = {1, 2, 3, 101}
 
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     neralaImage = Find("Nerala Image")
@@ -78,7 +77,7 @@ function Update(dt)
 
     AbilityStateUsingBlinking(dt)
 
-    if(skillButtonQ:GetButton():IsIdle() and skillButtonW:GetButton():IsIdle() and skillButtonE:GetButton():IsIdle()) then
+    if (skillButtonQ:GetButton():IsIdle() and skillButtonW:GetButton():IsIdle() and skillButtonE:GetButton():IsIdle()) then
         SkillDescription:Active(false)
     end
 end
@@ -93,6 +92,7 @@ function EventHandler(key, fields)
         HandleMasks()
         HandleCooldowns(fields[4])
     elseif key == "Player_Health" then -- fields[1] = characterID, fields[2] = currentHP
+        currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
         ManageHealth(fields[1], fields[2])
 
     elseif key == "Display_Description" then
@@ -278,22 +278,24 @@ function HandleCooldowns(currentTimer)
 end
 
 function ManageHealth(characterId, HP)
-    if HP == 0 then
-        hpFill1.active = false
-        hpFill2.active = false
-        hpFill3.active = false
-    elseif HP == 1 then
-        hpFill1.active = true
-        hpFill2.active = false
-        hpFill3.active = false
-    elseif HP == 2 then
-        hpFill1.active = true
-        hpFill2.active = true
-        hpFill3.active = false
-    elseif HP == 3 then
-        hpFill1.active = true
-        hpFill2.active = true
-        hpFill3.active = true
+    if currentCharacterId == characterId then
+        if HP == 0 then
+            hpFill1.active = false
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 1 then
+            hpFill1.active = true
+            hpFill2.active = false
+            hpFill3.active = false
+        elseif HP == 2 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = false
+        elseif HP == 3 then
+            hpFill1.active = true
+            hpFill2.active = true
+            hpFill3.active = true
+        end
     end
 end
 
@@ -444,38 +446,36 @@ function DisplayDescription(buttonIndex, characterId)
 
     SkillDescription:Active(true)
 
-    
-    if(characterId == 1)then
-        skillUiArray = {1,2,3, 101}
-    elseif(characterId == 2) then
-        skillUiArray = {4,5,6, 102}
-    elseif(characterId == 3) then
-        skillUiArray = {7,8,9, 103}
+    if (characterId == 1) then
+        skillUiArray = {1, 2, 3, 101}
+    elseif (characterId == 2) then
+        skillUiArray = {4, 5, 6, 102}
+    elseif (characterId == 3) then
+        skillUiArray = {7, 8, 9, 103}
     end
 
-
-    if(buttonIndex == 1) then
+    if (buttonIndex == 1) then
         dialog = GetTransString("description1", skillUiArray[1])
         dialog1 = GetTransString("description2", skillUiArray[1])
         dialog2 = GetTransString("description3", skillUiArray[1])
         dialog3 = GetTransString("description4", skillUiArray[1])
         dialog4 = GetTransString("description5", skillUiArray[1])
         dialog5 = GetTransString("description6", skillUiArray[1])
-    elseif(buttonIndex == 2) then
+    elseif (buttonIndex == 2) then
         dialog = GetTransString("description1", skillUiArray[2])
         dialog1 = GetTransString("description2", skillUiArray[2])
         dialog2 = GetTransString("description3", skillUiArray[2])
         dialog3 = GetTransString("description4", skillUiArray[2])
         dialog4 = GetTransString("description5", skillUiArray[2])
         dialog5 = GetTransString("description6", skillUiArray[2])
-    elseif(buttonIndex == 3) then
+    elseif (buttonIndex == 3) then
         dialog = GetTransString("description1", skillUiArray[3])
         dialog1 = GetTransString("description2", skillUiArray[3])
         dialog2 = GetTransString("description3", skillUiArray[3])
         dialog3 = GetTransString("description4", skillUiArray[3])
         dialog4 = GetTransString("description5", skillUiArray[3])
         dialog5 = GetTransString("description6", skillUiArray[3])
-    elseif(buttonIndex == 4) then
+    elseif (buttonIndex == 4) then
         dialog = GetTransString("description1", skillUiArray[4])
         dialog1 = GetTransString("description2", skillUiArray[4])
         dialog2 = GetTransString("description3", skillUiArray[4])
@@ -490,14 +490,14 @@ function DisplayDescription(buttonIndex, characterId)
         dialog4 = " "
         dialog5 = " "
     end
-    
-     -- Set Values To The Dialogue
-     line1:GetText():SetTextValue(dialog)
-     line2:GetText():SetTextValue(dialog1)
-     line3:GetText():SetTextValue(dialog2)
-     line4:GetText():SetTextValue(dialog3)
-     line5:GetText():SetTextValue(dialog4)
-     line6:GetText():SetTextValue(dialog5)
+
+    -- Set Values To The Dialogue
+    line1:GetText():SetTextValue(dialog)
+    line2:GetText():SetTextValue(dialog1)
+    line3:GetText():SetTextValue(dialog2)
+    line4:GetText():SetTextValue(dialog3)
+    line5:GetText():SetTextValue(dialog4)
+    line6:GetText():SetTextValue(dialog5)
 end
 
 print("UI_AbilitySlot_1.lua compiled succesfully")
