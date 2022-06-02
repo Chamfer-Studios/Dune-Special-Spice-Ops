@@ -27,6 +27,17 @@ function Start()
     usingMaskQ = Find("Skill Mask Using Q")
     usingMaskW = Find("Skill Mask Using W")
     usingMaskE = Find("Skill Mask Using E")
+    SkillDescription = Find("SkillDescription")
+    skillButtonQ = Find("Skill Frame Q")
+    skillButtonW = Find("Skill Frame W")
+    skillButtonE = Find("Skill Frame E")
+
+    line1 = Find("line1")
+    line2 = Find("line2")
+    line3 = Find("line3")
+    line4 = Find("line4")
+    line5 = Find("line5")
+    line6 = Find("line6")
 
     hpFill1 = Find("HP Fill 1")
     hpFill2 = Find("HP Fill 2")
@@ -67,8 +78,8 @@ function Update(dt)
 
     AbilityStateUsingBlinking(dt)
 
-    if(Find("Skill Frame Q"):GetButton():IsIdle() and Find("Skill Frame W"):GetButton():IsIdle() and Find("Skill Frame E"):GetButton():IsIdle()) then
-       Find("SkillDescription"):Active(false)
+    if(skillButtonQ:GetButton():IsIdle() and skillButtonW:GetButton():IsIdle() and skillButtonE:GetButton():IsIdle()) then
+        SkillDescription:Active(false)
     end
 end
 
@@ -415,7 +426,7 @@ end
 
 function DisplayDescription(buttonIndex, characterId)
 
-    Find("SkillDescription"):Active(true)
+    SkillDescription:Active(true)
 
     
     if(characterId == 1)then
@@ -465,12 +476,12 @@ function DisplayDescription(buttonIndex, characterId)
     end
     
      -- Set Values To The Dialogue
-     Find("line1"):GetText():SetTextValue(dialog)
-     Find("line2"):GetText():SetTextValue(dialog1)
-     Find("line3"):GetText():SetTextValue(dialog2)
-     Find("line4"):GetText():SetTextValue(dialog3)
-     Find("line5"):GetText():SetTextValue(dialog4)
-     Find("line6"):GetText():SetTextValue(dialog5)
+     line1:GetText():SetTextValue(dialog)
+     line2:GetText():SetTextValue(dialog1)
+     line3:GetText():SetTextValue(dialog2)
+     line4:GetText():SetTextValue(dialog3)
+     line5:GetText():SetTextValue(dialog4)
+     line6:GetText():SetTextValue(dialog5)
 end
 
 print("UI_AbilitySlot_1.lua compiled succesfully")
