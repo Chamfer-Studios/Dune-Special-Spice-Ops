@@ -92,7 +92,7 @@
     },
     {
       "id": 101,
-      "src": "Assets/New UI/omozra_ability3.png",
+      "src": "Assets/New UI/zhib_passive_icon.png",
       "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
       "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
       "description3": "can move, but not cast any other abilities. Then, Omozra points",
@@ -102,7 +102,7 @@
     },
     {
       "id": 102,
-      "src": "Assets/New UI/omozra_ability3.png",
+      "src": "Assets/New UI/nerala_passive_icon.png",
       "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
       "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
       "description3": "can move, but not cast any other abilities. Then, Omozra points",
@@ -112,7 +112,7 @@
     },
     {
       "id": 103,
-      "src": "Assets/New UI/omozra_ability3.png",
+      "src": "Assets/New UI/omozra_passive_icon.png",
       "description1": "Omozra points at an ally, prompting Sadiq to emerge from the sand",
       "description2": "and partly swallow them. While the ally is inside Sadiq, Omozra",
       "description3": "can move, but not cast any other abilities. Then, Omozra points",

@@ -68,8 +68,7 @@ end
 
 function Update(dt)
     if(isStarting == true) then
-        SetVariable(20, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        Log("Saved Spice:" .. GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n")
+        SpiceCost(0)
         isStarting = false
     end
     if(Find("Button") == nil) then
@@ -112,6 +111,7 @@ function Update(dt)
             upgradeArray[1].state = false
             upgradeArray[1].object:GetChildren()[1]:Active(false)
             upgradeArray[2].unlocked = false
+            SpiceCost(-20)
         end
         end
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
@@ -133,6 +133,7 @@ function Update(dt)
         upgradeArray[2].state = false
         upgradeArray[2].object:GetChildren()[1]:Active(false)
         upgradeArray[3].unlocked = false
+        SpiceCost(-20)
         end
     end
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
@@ -150,6 +151,7 @@ function Update(dt)
         else
             upgradeArray[3].state = false
             upgradeArray[3].object:GetChildren()[1]:Active(false)
+            SpiceCost(-20)
         end
     --SECOND HAB
     -----------------------------------------------------
@@ -172,6 +174,7 @@ function Update(dt)
             upgradeArray[4].state = false
             upgradeArray[4].object:GetChildren()[1]:Active(false)
             upgradeArray[5].unlocked = false
+            SpiceCost(-20)
             end
         end
     elseif(upgradeArray[5].object:GetButton():IsPressed()) then
@@ -193,6 +196,7 @@ function Update(dt)
             upgradeArray[5].state = false
             upgradeArray[5].object:GetChildren()[1]:Active(false)
             upgradeArray[6].unlocked = false
+            SpiceCost(-20)
             end
         end
     elseif(upgradeArray[6].object:GetButton():IsPressed()) then
@@ -210,6 +214,7 @@ function Update(dt)
         else
             upgradeArray[6].state = false
             upgradeArray[6].object:GetChildren()[1]:Active(false)
+            SpiceCost(-20)
         end
     --THIRD HAB
     -----------------------------------------------------
@@ -233,6 +238,7 @@ function Update(dt)
                 upgradeArray[7].state = false
                 upgradeArray[7].object:GetChildren()[1]:Active(false)
                 upgradeArray[8].unlocked = false
+                SpiceCost(-20)
             end
         end
     elseif(upgradeArray[8].object:GetButton():IsPressed()) then
@@ -254,6 +260,7 @@ function Update(dt)
             upgradeArray[8].state = false
             upgradeArray[8].object:GetChildren()[1]:Active(false)
             upgradeArray[9].unlocked = false
+            SpiceCost(-20)
             end
         end
     elseif(upgradeArray[9].object:GetButton():IsPressed()) then
@@ -271,6 +278,7 @@ function Update(dt)
         else
             upgradeArray[9].state = false
             upgradeArray[9].object:GetChildren()[1]:Active(false)
+            SpiceCost(-20)
         end
     --PASIVE
     -----------------------------------------------------
@@ -293,6 +301,7 @@ function Update(dt)
             upgradeArray[10].state = false
             upgradeArray[10].object:GetChildren()[1]:Active(false)
             upgradeArray[11].unlocked = false
+            SpiceCost(-20)
             end
         end
     elseif(upgradeArray[11].object:GetButton():IsPressed()) then
@@ -314,6 +323,7 @@ function Update(dt)
             upgradeArray[11].state = false
             upgradeArray[11].object:GetChildren()[1]:Active(false)
             upgradeArray[12].unlocked = false
+            SpiceCost(-20)
             end
         end
     elseif(upgradeArray[12].object:GetButton():IsPressed()) then
@@ -331,6 +341,7 @@ function Update(dt)
         else
             upgradeArray[12].state = false
             upgradeArray[12].object:GetChildren()[1]:Active(false)
+            SpiceCost(-20)
         end
     end
     
