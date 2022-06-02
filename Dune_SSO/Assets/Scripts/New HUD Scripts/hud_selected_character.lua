@@ -358,15 +358,32 @@ function AbilityStateUsingBlinking(dt)
             if isUsingQ == true then
                 usingMaskQ.active = not usingMaskQ.active
                 activeMaskQ.active = not activeMaskQ.active
-            elseif isUsingW == true then
+            else
+                usingMaskQ.active = false
+            end
+            if isUsingW == true then
                 usingMaskW.active = not usingMaskW.active
                 activeMaskW.active = not activeMaskW.active
-            elseif isUsingE == true then
+            else
+                usingMaskW.active = false
+            end
+            if isUsingE == true then
                 usingMaskE.active = not usingMaskE.active
                 activeMaskE.active = not activeMaskE.active
+            else
+                usingMaskE.active = false
             end
         end
     else
+        if isUsingQ == false then
+            usingMaskQ.active = false
+        end
+        if isUsingW == false then
+            usingMaskW.active = false
+        end
+        if isUsingE == false then
+            usingMaskE.active = false
+        end
         blinkTimer = nil
     end
 end
