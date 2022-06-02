@@ -77,8 +77,11 @@ function Update(dt)
 
     AbilityStateUsingBlinking(dt)
 
-    if (skillButtonQ:GetButton():IsIdle() and skillButtonW:GetButton():IsIdle() and skillButtonE:GetButton():IsIdle()) then
-        SkillDescription:Active(false)
+    if (skillButtonQ ~= nil and skillButtonW ~= nil and skillButtonE ~= nil and SkillDescription ~= nil) then
+        if (skillButtonQ:GetButton():IsIdle() and skillButtonW:GetButton():IsIdle() and
+            skillButtonE:GetButton():IsIdle()) then
+            SkillDescription:Active(false)
+        end
     end
 end
 
