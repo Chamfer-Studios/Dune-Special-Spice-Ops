@@ -2,33 +2,37 @@
 local id = -1
 local src = " "
 local description = " "
-local spice = 0;
+localSpice = 0
 
 local changedCharacter = false
 
-local upgradeButton0 = { state = false, object = Find("Skill 1 - Upgrade 1") }
-local upgradeButton1 = { state = false, object = Find("Skill 1 - Upgrade 2") }
-local upgradeButton2 = { state = false, object = Find("Skill 1 - Upgrade 3") }
-local upgradeButton3 = { state = false, object = Find("Skill 2 - Upgrade 1") }
-local upgradeButton4 = { state = false, object = Find("Skill 2 - Upgrade 2") }
-local upgradeButton5 = { state = false, object = Find("Skill 2 - Upgrade 3") }
-local upgradeButton6 = { state = false, object = Find("Skill 3 - Upgrade 1") }
-local upgradeButton7 = { state = false, object = Find("Skill 3 - Upgrade 2") }
-local upgradeButton8 = { state = false, object = Find("Skill 3 - Upgrade 3") }
-local upgradeButton9 = { state = false, object = Find("Passive - Upgrade 1") }
-local upgradeButton10 = { state = false, object = Find("Passive - Upgrade 2") }
-local upgradeButton11 = { state = false, object = Find("Passive - Upgrade 3") }
+local upgradeButton1 = { state = false, object = Find("Skill 1 - Upgrade 1"), unlocked = true }
+local upgradeButton2 = { state = false, object = Find("Skill 1 - Upgrade 2"), unlocked = false }
+local upgradeButton3 = { state = false, object = Find("Skill 1 - Upgrade 3"), unlocked = false }
+local upgradeButton4 = { state = false, object = Find("Skill 2 - Upgrade 1"), unlocked = true }
+local upgradeButton5 = { state = false, object = Find("Skill 2 - Upgrade 2"), unlocked = false }
+local upgradeButton6 = { state = false, object = Find("Skill 2 - Upgrade 3"), unlocked = false }
+local upgradeButton7 = { state = false, object = Find("Skill 3 - Upgrade 1"), unlocked = true }
+local upgradeButton8 = { state = false, object = Find("Skill 3 - Upgrade 2"), unlocked = false }
+local upgradeButton9 = { state = false, object = Find("Skill 3 - Upgrade 3"), unlocked = false }
+local upgradeButton10 = { state = false, object = Find("Passive - Upgrade 1"), unlocked = true }
+local upgradeButton11 = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
+local upgradeButton12 = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
 
 
 
-local upgradeArray = {upgradeButton0, upgradeButton1, upgradeButton2, upgradeButton3, 
-upgradeButton4, upgradeButton5, upgradeButton6, upgradeButton7, upgradeButton8, 
-upgradeButton9, upgradeButton10, upgradeButton11}
+local upgradeArray = {upgradeButton1, upgradeButton2, upgradeButton3, upgradeButton4, 
+upgradeButton5, upgradeButton6, upgradeButton7, upgradeButton8, upgradeButton9, 
+upgradeButton10, upgradeButton11, upgradeButton12}
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
 ------------ Dialogue Manager ------------
 function Start()
+    LoadGameState()
+
+    localSpice = GetGameJsonInt("spice")
     SpiceAmountText = Find("SpiceAmount")
+    Log("Spice Amount: " .. localSpice .. "\n")
     --Log(upgradeButton.object:GetName())
     LoadJsonFile(path)
     skillUiArray = {1,2,3, 101}
@@ -36,7 +40,7 @@ function Start()
     id = 0
     UpdateUI()
 
-    SetSpiceValue()
+    SpiceCost(0)
 end
 
 function Update(dt)
@@ -61,132 +65,162 @@ function Update(dt)
 
     --for narnia
     if(upgradeArray[1].object:GetButton():IsPressed())then
-        
     if(upgradeArray[1].state == false) then
-        Log("state 1")
+        if(id == 0)then
+            LevelUpZhibSkill()
+        elseif(id == 1) then
+            LevelUpNeralaSkill()
+        elseif(id == 2) then
+            LevelUpOmozraSkill()
+        end
+        SpiceCost(20)
         upgradeArray[1].state = true
         upgradeArray[1].object:GetChildren()[1]:Active(true)
-    else
-        Log("state 0")
-        upgradeArray[1].state = false
-        upgradeArray[1].object:GetChildren()[1]:Active(false)
-    end
-
-        SpiceCost(20)
-        str = "Name of the button" .. upgradeArray[1].object:GetName() .. "\n"
-        Log(str)
+        upgradeArray[2].unlocked = true
+        end
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
         if(upgradeArray[2].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[2].state = true
             upgradeArray[2].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[2].state = false
-            upgradeArray[2].object:GetChildren()[1]:Active(false)
         end
-        
-        str = "Name of the button" .. upgradeArray[2].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
         if(upgradeArray[3].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[3].state = true
             upgradeArray[3].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[3].state = false
-            upgradeArray[3].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[4].object:GetButton():IsPressed()) then
         if(upgradeArray[4].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[4].state = true
             upgradeArray[4].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[4].state = false
-            upgradeArray[4].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[5].object:GetButton():IsPressed()) then
         if(upgradeArray[5].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[5].state = true
             upgradeArray[5].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[5].state = false
-            upgradeArray[5].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[6].object:GetButton():IsPressed()) then
         if(upgradeArray[6].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[6].state = true
             upgradeArray[6].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[6].state = false
-            upgradeArray[6].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[7].object:GetButton():IsPressed()) then
         if(upgradeArray[7].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            
+            SpiceCost(20)
             upgradeArray[7].state = true
             upgradeArray[7].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[7].state = false
-            upgradeArray[7].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[8].object:GetButton():IsPressed()) then
         if(upgradeArray[8].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[8].state = true
             upgradeArray[8].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[8].state = false
-            upgradeArray[8].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[9].object:GetButton():IsPressed()) then
         if(upgradeArray[9].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[9].state = true
             upgradeArray[9].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[9].state = false
-            upgradeArray[9].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[10].object:GetButton():IsPressed()) then
         if(upgradeArray[10].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[10].state = true
             upgradeArray[10].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[10].state = false
-            upgradeArray[10].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[11].object:GetButton():IsPressed()) then
         if(upgradeArray[11].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[11].state = true
             upgradeArray[11].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[11].state = false
-            upgradeArray[11].object:GetChildren()[1]:Active(false)
         end
     elseif(upgradeArray[12].object:GetButton():IsPressed()) then
         if(upgradeArray[12].state == false) then
-            Log("state 1")
+            if(id == 0)then
+                LevelUpZhibSkill()
+            elseif(id == 1) then
+                LevelUpNeralaSkill()
+            elseif(id == 2) then
+                LevelUpOmozraSkill()
+            end
+            SpiceCost(20)
             upgradeArray[12].state = true
             upgradeArray[12].object:GetChildren()[1]:Active(true)
-        else
-            Log("state 0")
-            upgradeArray[12].state = false
-            upgradeArray[12].object:GetChildren()[1]:Active(false)
         end
     end
     
@@ -298,17 +332,31 @@ function SetDialogValue(index)
 end
 
 function SetSpiceValue()
+    Log(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. " Spice")
     SpiceAmountText:GetText():SetTextValue(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. " Spice");
 end
 
 function SpiceCost(amount)
-    newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
-    SpiceAmountText:GetText():SetTextValue(newSpice)
-    str = "New Spice value" .. newSpice ..  "\n"
-    Log(str)
-    SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    localSpice = localSpice - amount
+    SpiceAmountText:GetText():SetTextValue(localSpice)
 end
 
+function LevelUpZhibSkill(skillIndex, characterID)
 
+    
+    Log("LevelingUpZhib \n")
+end
+
+function LevelUpNeralaSkill(skillIndex, characterID)
+
+    
+    Log("LevelingUpNerala")
+end
+
+function LevelUpOmozraSkill(skillIndex, characterID)
+
+    
+    Log("LevelingUpOmozra\n")
+end
 ------------ END Dialogue ------------
 print("Scene Transition Script Load Success")
