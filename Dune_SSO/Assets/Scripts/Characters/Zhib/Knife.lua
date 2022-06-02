@@ -14,21 +14,26 @@ function Start()
     player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     speed = GetVariable("Zhib.lua", "knifeSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     playerPos = player:GetTransform():GetPosition()
-    destination = target:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {playerPos.x, playerPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, playerPos.y + 10,
-            playerPos.z + vec2[2] * 3))
-    end
-    destination = float3.new(destination.x + vec2[1] * 5, destination.y, destination.z + vec2[2] * 5)
+    if (target ~= nil) then
+        destination = target:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {playerPos.x, playerPos.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+        vec2 = Normalize(vec2, d)
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, playerPos.y + 10,
+                playerPos.z + vec2[2] * 3))
+        end
+        destination = float3.new(destination.x + vec2[1] * 5, destination.y, destination.z + vec2[2] * 5)
 
-    componentParticle = gameObject:GetComponentParticle()
-    if (componentParticle ~= nil) then
-        componentParticle:StopParticleSpawn()
+        componentParticle = gameObject:GetComponentParticle()
+        if (componentParticle ~= nil) then
+            componentParticle:StopParticleSpawn()
+        end
+    else
+        DispatchGlobalEvent("Knife_Bugged", {})
+        DeleteGameObject()
     end
 end
 
@@ -55,7 +60,6 @@ function OnTriggerEnter(go)
             end
             trackList = {0, 1}
             ChangeTrack(trackList)
-            -- StopMovement()
         end
     elseif (go:GetName() == "Zhib" and isGrabbable == true) then -- Using direct name instead of tags so other players can't pick it up
         DispatchGlobalEvent("Knife_Grabbed", {})
@@ -93,8 +97,6 @@ function MoveToDestination(dt)
     end
 end
 
-a = false
-
 function StopMovement()
     destination = nil
     isGrabbable = true -- Has arrived to the destination
@@ -109,10 +111,9 @@ function StopMovement()
         componentParticle:ResumeParticleSpawn()
     end
 
-    if a == false then
-        DispatchGlobalEvent("Knife_Grabbable", {})
-        a = true
-    end
+    gameObject.tag = Tag.PICKUP
+
+    DispatchGlobalEvent("Knife_Grabbable", {})
 end
 ----------------- Math Functions -----------------
 

@@ -84,6 +84,7 @@ function Update(dt)
 
         if a == false then
             DispatchGlobalEvent("Decoy_Grabbable", {})
+            gameObject.tag = Tag.PICKUP
             a = true
         end
 

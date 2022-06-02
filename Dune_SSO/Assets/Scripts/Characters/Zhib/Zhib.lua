@@ -379,8 +379,7 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    elseif (goHit.tag == Tag.PICKUP) then
-                        Log("Going to a pickup\n")
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE) then
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then
@@ -1269,7 +1268,6 @@ function EventHandler(key, fields)
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
-        aaaFlag = true
         trackList = {15}
         ChangeTrack(trackList)
         Log("I have grabbed a knife! \n")
@@ -1329,6 +1327,11 @@ function EventHandler(key, fields)
     elseif (key == "Update_Zhib_Position") then
         Log("Receiving Zhib Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+    elseif (key == "Knife_Bugged") then
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        knifeCount = knifeCount + 1
+        Log("Knife bugged, correction applied.\n")
     end
 end
 
