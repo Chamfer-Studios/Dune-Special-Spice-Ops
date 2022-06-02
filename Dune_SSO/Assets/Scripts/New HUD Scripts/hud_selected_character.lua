@@ -464,8 +464,9 @@ end
 
 function DisplayDescription(buttonIndex, characterId)
 
-    SkillDescription:Active(true)
-
+    if (SkillDescription ~= nil) then
+        SkillDescription:Active(true)
+    end
     if (characterId == 1) then
         skillUiArray = {1, 2, 3, 101}
     elseif (characterId == 2) then
@@ -512,7 +513,7 @@ function DisplayDescription(buttonIndex, characterId)
     end
 
     -- Set Values To The Dialogue
-    if(line1 ~= nil and line2 ~= nil and line3 ~= nil and line4 ~= nil and line5 ~= nil and line6 ~= nil) then
+    if (line1 ~= nil and line2 ~= nil and line3 ~= nil and line4 ~= nil and line5 ~= nil and line6 ~= nil) then
         line1:GetText():SetTextValue(dialog)
         line2:GetText():SetTextValue(dialog1)
         line3:GetText():SetTextValue(dialog2)
@@ -520,7 +521,6 @@ function DisplayDescription(buttonIndex, characterId)
         line5:GetText():SetTextValue(dialog4)
         line6:GetText():SetTextValue(dialog5)
     end
-    
 end
 
 print("UI_AbilitySlot_1.lua compiled succesfully")
