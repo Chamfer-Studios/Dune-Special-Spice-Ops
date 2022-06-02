@@ -218,6 +218,11 @@ function RotateToTargetDirection(dt)
 end
 
 function CheckIfPointInCone(position)
+    if (position == nil) then
+        do
+            return
+        end
+    end
     if Float3Distance(position, componentTransform:GetPosition()) > visionConeRadius then
         do
             return (false)
@@ -244,12 +249,16 @@ function CheckIfPointInCone(position)
 end
 
 function ProcessVisualTrigger(position, source)
+    if (position == nil or source == nil) then
+        do
+            return
+        end
+    end
     if not CheckIfPointInCone(position) then
         do
             return
         end
     end
-
     visualTriggers[nVisual] = {}
     visualTriggers[nVisual]["position"] = position
     visualTriggers[nVisual]["source"] = source
@@ -271,6 +280,11 @@ function ProcessVisualTrigger(position, source)
 end
 
 function CheckAuditoryTriggerInRange(position, range)
+    if (position == nil or range == nil) then
+        do
+            return (false)
+        end
+    end
     mypos = componentTransform:GetPosition()
 
     distance = Float3Distance(mypos, position)
@@ -287,6 +301,12 @@ function CheckAuditoryTriggerInRange(position, range)
 end
 
 function ProcessSingleAuditoryTrigger(position, source)
+    if (position == nil or source == nil) then
+        Log("Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
     singleAuditoryTriggers[nSingle] = {}
     singleAuditoryTriggers[nSingle]["position"] = position
     singleAuditoryTriggers[nSingle]["source"] = source
@@ -295,6 +315,12 @@ function ProcessSingleAuditoryTrigger(position, source)
 end
 
 function ProcessRepeatedAuditoryTrigger(position, source)
+    if (position == nil or source == nil) then
+        Log("Repeated Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
     repeatingAuditoryTriggers[nRepeating] = {}
     repeatingAuditoryTriggers[nRepeating]["position"] = position
     repeatingAuditoryTriggers[nRepeating]["source"] = source
@@ -324,12 +350,11 @@ end
 
 function UpdateAwarenessBars()
     position = componentTransform:GetPosition()
-    awareness_green:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x,
-        position.y + awarenessOffset.y, position.z + awarenessOffset.z))
-    awareness_yellow:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x,
-        position.y + awarenessOffset.y, position.z + awarenessOffset.z))
-    awareness_red:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y,
-        position.z + awarenessOffset.z))
+    awarenessPosition = float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y,
+        position.z + awarenessOffset.z)
+    awareness_green:GetTransform():SetPosition(awarenessPosition)
+    awareness_yellow:GetTransform():SetPosition(awarenessPosition)
+    awareness_red:GetTransform():SetPosition(awarenessPosition)
 
     if awareness < 1 then
         awareness_green:GetTransform():SetScale(
@@ -377,10 +402,17 @@ function Start()
     InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
     InstantiateNamedPrefab("awareness_red", awareness_red_name)
 
-    componentRigidbody = gameObject:GetRigidBody()
-    componentAnimator = gameObject:GetParent():GetComponentAnimator()
     coneLight = gameObject:GetLight()
+    componentRigidbody = gameObject:GetRigidBody()
     componentBoxCollider = gameObject:GetBoxCollider()
+    componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    if (componentAnimator ~= nil) then
+        if (static == true) then
+            componentAnimator:SetSelectedClip("Idle")
+        else
+            componentAnimator:SetSelectedClip("Walk")
+        end
+    end
 
     debuffParticle = gameObject:GetChildren()[1]
     if (debuffParticle ~= nil) then
@@ -395,14 +427,6 @@ function Start()
         slashParticle:GetComponentParticle():StopParticleSpawn()
     end
 
-    if (componentAnimator ~= nil) then
-        if (static == true) then
-            componentAnimator:SetSelectedClip("Idle")
-        else
-            componentAnimator:SetSelectedClip("Walk")
-        end
-    end
-
     targetDirection = componentTransform:GetFront()
 
     auditoryDebuffMultiplier = 1
@@ -410,7 +434,6 @@ function Start()
 end
 
 function UpdateTargetAwareness()
-
     awarenessSpeed = awarenessDecaySpeed
 
     closestTarget = GetClosestTarget()
@@ -594,10 +617,10 @@ function UpdateAnimation(dt, oldState, target)
         elseif state == STATE.AGGRO then
             currentClip = componentAnimator:GetSelectedClip()
             if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
-                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
-                componentAnimator:SetSelectedClip("Attack")
-            elseif currentClip == "Attack" then
-                if componentAnimator:IsCurrentClipPlaying() == false then
+                attackRange then
+                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil then
+                    componentAnimator:SetSelectedClip("Attack")
+                elseif currentClip == "Attack" and componentAnimator:IsCurrentClipPlaying() == false then
                     DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
                     componentAnimator:SetSelectedClip("AttackToIdle")
                     attackTimer = 0
@@ -611,11 +634,10 @@ function UpdateAnimation(dt, oldState, target)
             end
         elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
             componentAnimator:SetSelectedClip("Death")
-        elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
-            if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
-                Die(deathParameters.LeaveBody, deathParameters.EnemyName)
-                componentAnimator:SetSelectedClip("Corpse")
-            end
+        elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD and state ~= STATE.CORPSE and
+            componentAnimator:IsCurrentClipPlaying() == false then
+            Die(deathParameters.LeaveBody, deathParameters.EnemyName)
+            componentAnimator:SetSelectedClip("Corpse")
         end
     end
 end
@@ -645,7 +667,6 @@ function Update(dt)
     end
 
     ClearPerceptionMemory()
-
     DrawDebugger()
 end
 
@@ -660,7 +681,6 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
-
     DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
 
     if (leaveBody == false) then
@@ -682,7 +702,6 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
-
     -- Log(apetecan())
 end
 
@@ -703,12 +722,14 @@ function EventHandler(key, fields)
     elseif key == "Dart_Success" then
         auditoryDebuffMultiplier = fields[1] / 100
         visualDebuffMultiplier = fields[2] / 100
+        if (debuffParticle ~= nil) then
+            debuffParticle:GetComponentParticle():ResumeParticleSpawn()
+            debuffParticle:GetComponentParticle():SetLoop(true)
+            debuffParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
+        end
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
-        if fields[1] == EnemyDeath.PLAYER_ATTACK then
-            SwitchState(state, STATE.DEAD)
-            deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
-        elseif fields[1] == EnemyDeath.KNIFE then
+        if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = fields[2]
@@ -720,10 +741,6 @@ function EventHandler(key, fields)
                 slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
                     componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
             end
-            deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
-        elseif fields[1] == EnemyDeath.MOSQUITO then
-            SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = fields[2]
         elseif fields[1] == EnemyDeath.WORM_KILL then
@@ -747,7 +764,6 @@ function EventHandler(key, fields)
             DeleteGameObjectByUID(awareness_yellow:GetUID())
             awareness_yellow = nil
         end
-
         if (componentBoxCollider ~= nil) then
             gameObject:DeleteComponent(componentBoxCollider)
             componentBoxCollider = nil
