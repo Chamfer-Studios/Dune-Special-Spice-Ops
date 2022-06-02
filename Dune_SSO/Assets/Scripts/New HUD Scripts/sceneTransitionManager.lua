@@ -105,6 +105,10 @@ function Update(dt)
         upgradeArray[1].object:GetChildren()[1]:Active(true)
         --Unlock
         upgradeArray[2].unlocked = true
+    else
+        upgradeArray[1].state = false
+        upgradeArray[1].object:GetChildren()[1]:Active(false)
+        upgradeArray[2].unlocked = false
         end
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
         if(upgradeArray[2].state == false and upgradeArray[2].unlocked == true) then
