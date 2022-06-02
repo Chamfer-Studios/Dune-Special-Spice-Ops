@@ -260,22 +260,19 @@ function ProcessVisualTrigger(position, source)
             return
         end
     end
-    visualTriggers[nVisual] = {}
-    visualTriggers[nVisual]["position"] = position
-    visualTriggers[nVisual]["source"] = source
-    visualTriggers[nVisual]["valid"] = true
-
-    lambda = function(uid)
-        -- Log("Hello\n")
-        -- visualTriggers[nVisual]["valid"] = false
-    end
 
     src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
         componentTransform:GetPosition().z)
     dst = float3.new(position.x, position.y + 10, position.z)
 
-    RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
-    DrawLine(src, dst)
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        Log("hello\n")
+        visualTriggers[nVisual] = {}
+        visualTriggers[nVisual]["position"] = position
+        visualTriggers[nVisual]["source"] = source
+    end
 
     nVisual = nVisual + 1
 end
@@ -308,9 +305,18 @@ function ProcessSingleAuditoryTrigger(position, source)
             return
         end
     end
-    singleAuditoryTriggers[nSingle] = {}
-    singleAuditoryTriggers[nSingle]["position"] = position
-    singleAuditoryTriggers[nSingle]["source"] = source
+
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
+        componentTransform:GetPosition().z)
+    dst = float3.new(position.x, position.y + 10, position.z)
+
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        singleAuditoryTriggers[nSingle] = {}
+        singleAuditoryTriggers[nSingle]["position"] = position
+        singleAuditoryTriggers[nSingle]["source"] = source
+    end
 
     nSingle = nSingle + 1
 end
@@ -322,9 +328,18 @@ function ProcessRepeatedAuditoryTrigger(position, source)
             return
         end
     end
-    repeatingAuditoryTriggers[nRepeating] = {}
-    repeatingAuditoryTriggers[nRepeating]["position"] = position
-    repeatingAuditoryTriggers[nRepeating]["source"] = source
+
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
+        componentTransform:GetPosition().z)
+    dst = float3.new(position.x, position.y + 10, position.z)
+
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        repeatingAuditoryTriggers[nRepeating] = {}
+        repeatingAuditoryTriggers[nRepeating]["position"] = position
+        repeatingAuditoryTriggers[nRepeating]["source"] = source
+    end
 
     nRepeating = nRepeating + 1
 end
