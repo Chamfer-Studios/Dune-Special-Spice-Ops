@@ -2,28 +2,53 @@
 local id = -1
 local src = " "
 local description = " "
-localSpice = 0
+local isStarting = true
 
 local changedCharacter = false
 
-local upgradeButton1 = { state = false, object = Find("Skill 1 - Upgrade 1"), unlocked = true }
-local upgradeButton2 = { state = false, object = Find("Skill 1 - Upgrade 2"), unlocked = false }
-local upgradeButton3 = { state = false, object = Find("Skill 1 - Upgrade 3"), unlocked = false }
-local upgradeButton4 = { state = false, object = Find("Skill 2 - Upgrade 1"), unlocked = true }
-local upgradeButton5 = { state = false, object = Find("Skill 2 - Upgrade 2"), unlocked = false }
-local upgradeButton6 = { state = false, object = Find("Skill 2 - Upgrade 3"), unlocked = false }
-local upgradeButton7 = { state = false, object = Find("Skill 3 - Upgrade 1"), unlocked = true }
-local upgradeButton8 = { state = false, object = Find("Skill 3 - Upgrade 2"), unlocked = false }
-local upgradeButton9 = { state = false, object = Find("Skill 3 - Upgrade 3"), unlocked = false }
-local upgradeButton10 = { state = false, object = Find("Passive - Upgrade 1"), unlocked = true }
-local upgradeButton11 = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
-local upgradeButton12 = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
+local upgradeButton1Z = { state = false, object = Find("Skill 1 - Upgrade 1"), unlocked = true }
+local upgradeButton2Z = { state = false, object = Find("Skill 1 - Upgrade 2"), unlocked = false }
+local upgradeButton3Z = { state = false, object = Find("Skill 1 - Upgrade 3"), unlocked = false }
+local upgradeButton4Z = { state = false, object = Find("Skill 2 - Upgrade 1"), unlocked = true }
+local upgradeButton5Z = { state = false, object = Find("Skill 2 - Upgrade 2"), unlocked = false }
+local upgradeButton6Z = { state = false, object = Find("Skill 2 - Upgrade 3"), unlocked = false }
+local upgradeButton7Z = { state = false, object = Find("Skill 3 - Upgrade 1"), unlocked = true }
+local upgradeButton8Z = { state = false, object = Find("Skill 3 - Upgrade 2"), unlocked = false }
+local upgradeButton9Z = { state = false, object = Find("Skill 3 - Upgrade 3"), unlocked = false }
+local upgradeButton10Z = { state = false, object = Find("Passive - Upgrade 1"), unlocked = true }
+local upgradeButton11Z = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
+local upgradeButton12Z = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
+
+local upgradeButton1N = { state = false, object = Find("Skill 1 - Upgrade 1"), unlocked = true }
+local upgradeButton2N = { state = false, object = Find("Skill 1 - Upgrade 2"), unlocked = false }
+local upgradeButton3N = { state = false, object = Find("Skill 1 - Upgrade 3"), unlocked = false }
+local upgradeButton4N = { state = false, object = Find("Skill 2 - Upgrade 1"), unlocked = true }
+local upgradeButton5N = { state = false, object = Find("Skill 2 - Upgrade 2"), unlocked = false }
+local upgradeButton6N = { state = false, object = Find("Skill 2 - Upgrade 3"), unlocked = false }
+local upgradeButton7N = { state = false, object = Find("Skill 3 - Upgrade 1"), unlocked = true }
+local upgradeButton8N = { state = false, object = Find("Skill 3 - Upgrade 2"), unlocked = false }
+local upgradeButton9N = { state = false, object = Find("Skill 3 - Upgrade 3"), unlocked = false }
+local upgradeButton10N = { state = false, object = Find("Passive - Upgrade 1"), unlocked = true }
+local upgradeButton11N = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
+local upgradeButton12N = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
+
+local upgradeButton1O = { state = false, object = Find("Skill 1 - Upgrade 1"), unlocked = true }
+local upgradeButton2O = { state = false, object = Find("Skill 1 - Upgrade 2"), unlocked = false }
+local upgradeButton3O = { state = false, object = Find("Skill 1 - Upgrade 3"), unlocked = false }
+local upgradeButton4O = { state = false, object = Find("Skill 2 - Upgrade 1"), unlocked = true }
+local upgradeButton5O = { state = false, object = Find("Skill 2 - Upgrade 2"), unlocked = false }
+local upgradeButton6O = { state = false, object = Find("Skill 2 - Upgrade 3"), unlocked = false }
+local upgradeButton7O = { state = false, object = Find("Skill 3 - Upgrade 1"), unlocked = true }
+local upgradeButton8O = { state = false, object = Find("Skill 3 - Upgrade 2"), unlocked = false }
+local upgradeButton9O = { state = false, object = Find("Skill 3 - Upgrade 3"), unlocked = false }
+local upgradeButton10O = { state = false, object = Find("Passive - Upgrade 1"), unlocked = true }
+local upgradeButton11O = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
+local upgradeButton12O = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
 
 
-
-local upgradeArray = {upgradeButton1, upgradeButton2, upgradeButton3, upgradeButton4, 
-upgradeButton5, upgradeButton6, upgradeButton7, upgradeButton8, upgradeButton9, 
-upgradeButton10, upgradeButton11, upgradeButton12}
+local upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, 
+upgradeButton5Z, upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, 
+upgradeButton10Z, upgradeButton11Z, upgradeButton12Z}
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
 ------------ Dialogue Manager ------------
@@ -39,12 +64,14 @@ function Start()
     dialogueGo = Find("Dialogue")
     id = 0
     UpdateUI()
-
-    SpiceCost(0)
 end
 
 function Update(dt)
-
+    if(isStarting == true) then
+        SetVariable(20, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        Log("Saved Spice:" .. GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n")
+        isStarting = false
+    end
     if(Find("Button") == nil) then
         Log("No button")
     end
@@ -76,10 +103,11 @@ function Update(dt)
         SpiceCost(20)
         upgradeArray[1].state = true
         upgradeArray[1].object:GetChildren()[1]:Active(true)
+        --Unlock
         upgradeArray[2].unlocked = true
         end
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
-        if(upgradeArray[2].state == false) then
+        if(upgradeArray[2].state == false and upgradeArray[2].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -90,9 +118,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[2].state = true
             upgradeArray[2].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[3].unlocked = true
         end
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
-        if(upgradeArray[3].state == false) then
+        if(upgradeArray[3].state == false and upgradeArray[3].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -116,9 +146,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[4].state = true
             upgradeArray[4].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[5].unlocked = true
         end
     elseif(upgradeArray[5].object:GetButton():IsPressed()) then
-        if(upgradeArray[5].state == false) then
+        if(upgradeArray[5].state == false and upgradeArray[5].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -129,9 +161,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[5].state = true
             upgradeArray[5].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[6].unlocked = true
         end
     elseif(upgradeArray[6].object:GetButton():IsPressed()) then
-        if(upgradeArray[6].state == false) then
+        if(upgradeArray[6].state == false and upgradeArray[6].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -156,9 +190,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[7].state = true
             upgradeArray[7].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[8].unlocked = true
         end
     elseif(upgradeArray[8].object:GetButton():IsPressed()) then
-        if(upgradeArray[8].state == false) then
+        if(upgradeArray[8].state == false and upgradeArray[8].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -169,9 +205,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[8].state = true
             upgradeArray[8].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[9].unlocked = true
         end
     elseif(upgradeArray[9].object:GetButton():IsPressed()) then
-        if(upgradeArray[9].state == false) then
+        if(upgradeArray[9].state == false and upgradeArray[9].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -195,9 +233,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[10].state = true
             upgradeArray[10].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[11].unlocked = true
         end
     elseif(upgradeArray[11].object:GetButton():IsPressed()) then
-        if(upgradeArray[11].state == false) then
+        if(upgradeArray[11].state == false and upgradeArray[11].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -208,9 +248,11 @@ function Update(dt)
             SpiceCost(20)
             upgradeArray[11].state = true
             upgradeArray[11].object:GetChildren()[1]:Active(true)
+            --Unlock
+            upgradeArray[12].unlocked = true
         end
     elseif(upgradeArray[12].object:GetButton():IsPressed()) then
-        if(upgradeArray[12].state == false) then
+        if(upgradeArray[12].state == false and upgradeArray[12].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill()
             elseif(id == 1) then
@@ -244,10 +286,22 @@ function UpdateUI()
     if(changedCharacter == true) then
         if(id == 0)then
             skillUiArray = {1,2,3, 101}
+
+            upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, 
+            upgradeButton5Z, upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, 
+            upgradeButton10Z, upgradeButton11Z, upgradeButton12Z}
         elseif(id == 1) then
             skillUiArray = {4,5,6, 102}
+
+            upgradeArray = {upgradeButton1N, upgradeButton2N, upgradeButton3N, upgradeButton4N, 
+            upgradeButton5N, upgradeButton6N, upgradeButton7N, upgradeButton8N, upgradeButton9N, 
+            upgradeButton10N, upgradeButton11N, upgradeButton12N}
         elseif(id == 2) then
             skillUiArray = {7,8,9, 103}
+
+            upgradeArray = {upgradeButton1O, upgradeButton2O, upgradeButton3O, upgradeButton4O, 
+            upgradeButton5O, upgradeButton6O, upgradeButton7O, upgradeButton8O, upgradeButton9O, 
+            upgradeButton10O, upgradeButton11O, upgradeButton12O}
         end
 
         SetSkillsValue()
@@ -271,6 +325,14 @@ function SetSkillsValue()
     Find("SkillThreeUI"):GetImage():SetTexture(src3)
     Find("feedbackThree"):GetImage():SetTexture(src3)
     Find("PassiveUI"):GetImage():SetTexture(src4)
+
+    for i = 1, #upgradeArray do
+        if upgradeArray[i].state == false then
+            upgradeArray[i].object:GetChildren()[1]:Active(false)
+        else
+            upgradeArray[i].object:GetChildren()[1]:Active(true)
+        end
+    end
 
     changedCharacter = false;
 end
@@ -331,14 +393,12 @@ function SetDialogValue(index)
 
 end
 
-function SetSpiceValue()
-    Log(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. " Spice")
-    SpiceAmountText:GetText():SetTextValue(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. " Spice");
-end
-
 function SpiceCost(amount)
-    localSpice = localSpice - amount
-    SpiceAmountText:GetText():SetTextValue(localSpice)
+    newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
+    SpiceAmountText:GetText():SetTextValue(newSpice)
+    Log("New Spice:" .. newSpice .. "\n")
+    SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    Log("Saved Spice:" .. GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n")
 end
 
 function LevelUpZhibSkill(skillIndex, characterID)
