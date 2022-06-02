@@ -61,108 +61,133 @@ function Update(dt)
 
     --for narnia
     if(upgradeArray[1].object:GetButton():IsPressed())then
-        if(upgradeArray[1].state == 0) then
-            upgradeArray[1].state = 1
-        else
-            upgradeArray[1].state = 0
-        end
+        
+    if(upgradeArray[1].state == false) then
+        Log("state 1")
+        upgradeArray[1].state = true
+        upgradeArray[1].object:GetChildren()[1]:Active(true)
+    else
+        Log("state 0")
+        upgradeArray[1].state = false
+        upgradeArray[1].object:GetChildren()[1]:Active(false)
+    end
 
         SpiceCost(20)
         str = "Name of the button" .. upgradeArray[1].object:GetName() .. "\n"
         Log(str)
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
-        if(upgradeArray[2].state == 0) then
-            upgradeArray[2].state = 1
+        if(upgradeArray[2].state == false) then
+            Log("state 1")
+            upgradeArray[2].state = true
+            upgradeArray[2].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[2].state = 0
-        end
-
-        if(upgradeArray[2].state == 1) then
-            upgradeArray[2].object:GetButton().state = 2
+            Log("state 0")
+            upgradeArray[2].state = false
+            upgradeArray[2].object:GetChildren()[1]:Active(false)
         end
         
         str = "Name of the button" .. upgradeArray[2].object:GetName() .. "\n"
         Log(str)
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
-        if(upgradeArray[3].state == 0) then
-            upgradeArray[3].state = 1
+        if(upgradeArray[3].state == false) then
+            Log("state 1")
+            upgradeArray[3].state = true
+            upgradeArray[3].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[3].state = 0
+            Log("state 0")
+            upgradeArray[3].state = false
+            upgradeArray[3].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[3].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[4].object:GetButton():IsPressed()) then
-        if(upgradeArray[4].state == 0) then
-            upgradeArray[4].state = 1
+        if(upgradeArray[4].state == false) then
+            Log("state 1")
+            upgradeArray[4].state = true
+            upgradeArray[4].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[4].state = 0
+            Log("state 0")
+            upgradeArray[4].state = false
+            upgradeArray[4].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[4].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[5].object:GetButton():IsPressed()) then
-        if(upgradeArray[5].state == 0) then
-            upgradeArray[5].state = 1
+        if(upgradeArray[5].state == false) then
+            Log("state 1")
+            upgradeArray[5].state = true
+            upgradeArray[5].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[5].state = 0
+            Log("state 0")
+            upgradeArray[5].state = false
+            upgradeArray[5].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[5].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[6].object:GetButton():IsPressed()) then
-        if(upgradeArray[6].state == 0) then
-            upgradeArray[6].state = 1
+        if(upgradeArray[6].state == false) then
+            Log("state 1")
+            upgradeArray[6].state = true
+            upgradeArray[6].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[6].state = 0
+            Log("state 0")
+            upgradeArray[6].state = false
+            upgradeArray[6].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[6].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[7].object:GetButton():IsPressed()) then
-        if(upgradeArray[7].state == 0) then
-            upgradeArray[7].state = 1
+        if(upgradeArray[7].state == false) then
+            Log("state 1")
+            upgradeArray[7].state = true
+            upgradeArray[7].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[7].state = 0
+            Log("state 0")
+            upgradeArray[7].state = false
+            upgradeArray[7].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[7].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[8].object:GetButton():IsPressed()) then
-        if(upgradeArray[8].state == 0) then
-            upgradeArray[8].state = 1
+        if(upgradeArray[8].state == false) then
+            Log("state 1")
+            upgradeArray[8].state = true
+            upgradeArray[8].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[8].state = 0
+            Log("state 0")
+            upgradeArray[8].state = false
+            upgradeArray[8].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[8].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[9].object:GetButton():IsPressed()) then
-        if(upgradeArray[9].state == 0) then
-            upgradeArray[9].state = 1
+        if(upgradeArray[9].state == false) then
+            Log("state 1")
+            upgradeArray[9].state = true
+            upgradeArray[9].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[9].state = 0
+            Log("state 0")
+            upgradeArray[9].state = false
+            upgradeArray[9].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[9].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[10].object:GetButton():IsPressed()) then
-        if(upgradeArray[10].state == 0) then
-            upgradeArray[10].state = 1
+        if(upgradeArray[10].state == false) then
+            Log("state 1")
+            upgradeArray[10].state = true
+            upgradeArray[10].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[10].state = 0
+            Log("state 0")
+            upgradeArray[10].state = false
+            upgradeArray[10].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[10].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[11].object:GetButton():IsPressed()) then
-        if(upgradeArray[11].state == 0) then
-            upgradeArray[11].state = 1
+        if(upgradeArray[11].state == false) then
+            Log("state 1")
+            upgradeArray[11].state = true
+            upgradeArray[11].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[11].state = 0
+            Log("state 0")
+            upgradeArray[11].state = false
+            upgradeArray[11].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[11].object:GetName() .. "\n"
-        Log(str)
     elseif(upgradeArray[12].object:GetButton():IsPressed()) then
-        if(upgradeArray[12].state == 0) then
-            upgradeArray[12].state = 1
+        if(upgradeArray[12].state == false) then
+            Log("state 1")
+            upgradeArray[12].state = true
+            upgradeArray[12].object:GetChildren()[1]:Active(true)
         else
-            upgradeArray[12].state = 0
+            Log("state 0")
+            upgradeArray[12].state = false
+            upgradeArray[12].object:GetChildren()[1]:Active(false)
         end
-        str = "Name of the button" .. upgradeArray[12].object:GetName() .. "\n"
-        Log(str)
     end
     
 
