@@ -1228,7 +1228,9 @@ function EventHandler(key, fields)
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
             if (fields[2] == "Harkonnen") then
-                TakeDamage()
+                TakeDamage(1)
+            elseif (fields[2] == "Sardaukar") then
+                TakeDamage(2)
             end
         end
     elseif (key == "Active_Primary") then
