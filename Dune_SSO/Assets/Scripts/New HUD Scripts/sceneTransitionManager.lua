@@ -69,6 +69,11 @@ function Update(dt)
         else
             upgradeArray[2].state = 0
         end
+
+        if(upgradeArray[2].state == 1) then
+            upgradeArray[2].object:GetButton().state = 2
+        end
+        
         str = "Name of the button" .. upgradeArray[2].object:GetName() .. "\n"
         Log(str)
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
