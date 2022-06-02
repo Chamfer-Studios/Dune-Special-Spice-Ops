@@ -1,9 +1,9 @@
 ------------------- Variables --------------------
 speed = 100
 destination = nil
-lifeTime = 10.0 -- secs --iv required
+lifeTime = 5 -- secs --iv required
 lifeTimer = 0
-effectRadius = 50.0
+effectRadius = 50
 effectFlag = true
 
 -------------------- Methods ---------------------
@@ -105,7 +105,7 @@ function OnArrive()
     smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
         componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
     if (componentLight ~= nil) then
-         componentLight:SetAngle(360 / 2)
+        componentLight:SetAngle(360 / 2)
     end
 
     -- Audio of hitting the ground

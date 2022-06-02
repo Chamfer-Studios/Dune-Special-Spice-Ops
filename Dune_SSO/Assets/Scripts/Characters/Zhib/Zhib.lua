@@ -61,10 +61,10 @@ iFramesTimer = nil
 -- Globals --
 characterID = 1
 speed = 2000
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
+crouchMultiplierPercentage = 60
+runMultiplierPercentage = 133
 staminaSeconds = 5
-recoveryTime = 5
+recoveryTime = 7
 staminaTimer = staminaSeconds
 isTired = false
 isUsingQ = false
@@ -76,9 +76,9 @@ attackRange = 25.0
 attackTime = 2.5
 
 -- Primary ability --
-primaryCastRange = 100
+primaryCastRange = 150
 maxKnives = 1
-knifeSpeed = 7000
+knifeSpeed = 13500
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
@@ -88,13 +88,13 @@ aggroChanceSardKnife = 0
 
 -- Secondary ability --
 maxDecoy = 1
-secondaryCastRange = 75
-secondaryCooldown = 10
+secondaryCastRange = 200
+secondaryCooldown = 7.5
 
 -- Ultimate ability --
-ultimateCastRange = 50
-ultimateCooldown = 30.0
-ultimateCastRangeExtension = ultimateCastRange * 0.5
+ultimateCastRange = 40
+ultimateCooldown = 2
+ultimateCastRangeExtension = ultimateCastRange * 0.75
 ultimateSpiceCost = 2000
 ---------------------------------------------------------
 

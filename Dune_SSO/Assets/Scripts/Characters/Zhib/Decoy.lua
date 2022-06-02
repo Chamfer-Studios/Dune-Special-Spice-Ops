@@ -1,9 +1,9 @@
 ------------------- Variables --------------------
-speed = 100
+speed = 300
 destination = nil
-lifeTime = 10.0 -- secs --iv required
+lifeTime = 7.5 -- secs --iv required
 lifeTimer = 0
-effectRadius = 100.0
+effectRadius = 120
 effectTime = 2.0
 isGrabbable = false
 --------------------------------------------------
@@ -46,7 +46,7 @@ function Update(dt)
     elseif (lifeTimer <= lifeTime) then
 
         if (componentLight ~= nil) then
-            -- componentLight:SetAngle(360 / 2)
+            componentLight:SetAngle(360 / 2)
         end
 
         lifeTimer = lifeTimer + dt

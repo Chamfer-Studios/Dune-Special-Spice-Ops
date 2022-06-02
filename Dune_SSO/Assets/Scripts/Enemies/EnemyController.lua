@@ -19,18 +19,21 @@ attackRangeIV = InspectorVariable.new("attackRange", attackRangeIVT, attackRange
 NewVariable(attackRangeIV)
 
 attackSpeed = 1.5
+local attackSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+attackSpeedIV = InspectorVariable.new("attackSpeed", attackSpeedIVT, attackSpeed)
+NewVariable(attackSpeedIV)
 
-visionConeAngle = 90
+visionConeAngle = 70
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 visionConeAngleIV = InspectorVariable.new("visionConeAngle", visionConeAngleIVT, visionConeAngle)
 NewVariable(visionConeAngleIV)
 
-visionConeRadius = 50
+visionConeRadius = 195
 local visionConeRadiusIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 visionConeRadiusIV = InspectorVariable.new("visionConeRadius", visionConeRadiusIVT, visionConeRadius)
 NewVariable(visionConeRadiusIV)
 
-hearingRange = 30
+hearingRange = 110
 local hearingRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 hearingRangeIV = InspectorVariable.new("hearingRange", hearingRangeIVT, hearingRange)
 NewVariable(hearingRangeIV)
@@ -359,9 +362,9 @@ function ProcessAuditoryTrigger(position, range, type, source)
 end
 
 function ConfigAwarenessBars()
-    awareness_green = Find(awareness_green_name)
-    awareness_yellow = Find(awareness_yellow_name)
-    awareness_red = Find(awareness_red_name)
+    -- awareness_green = Find(awareness_green_name)
+    -- awareness_yellow = Find(awareness_yellow_name)
+    -- awareness_red = Find(awareness_red_name)
 end
 
 function UpdateAwarenessBars()
@@ -414,9 +417,9 @@ end
 
 function Start()
     CheckAndRecalculatePath(true)
-    InstantiateNamedPrefab("awareness_green", awareness_green_name)
-    InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
-    InstantiateNamedPrefab("awareness_red", awareness_red_name)
+    -- InstantiateNamedPrefab("awareness_green", awareness_green_name)
+    -- InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
+    -- InstantiateNamedPrefab("awareness_red", awareness_red_name)
 
     coneLight = gameObject:GetLight()
     componentRigidbody = gameObject:GetRigidBody()
@@ -750,6 +753,7 @@ function EventHandler(key, fields)
                 componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
         end
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
+        DeleteGameObjectByUID(gameObject:GetUID())
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true

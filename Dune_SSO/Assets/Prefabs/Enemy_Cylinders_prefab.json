@@ -1,0 +1,4196 @@
+{
+    "active": true,
+    "children": [
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1239.0982666015625,
+                        -0.009741838090121746,
+                        -186.87249755859375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1239.0982666015625,
+                        -0.009741838090121746,
+                        -186.87249755859375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1545.092041015625,
+                        0.0029538231901824474,
+                        218.21630859375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1545.092041015625,
+                        0.0029538231901824474,
+                        218.21630859375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (1)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1373.548828125,
+                        0.0019761144649237394,
+                        -89.03253173828125
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1373.548828125,
+                        0.0019761144649237394,
+                        -89.03253173828125
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (2)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1856.609130859375,
+                        0.0019817946013063192,
+                        -487.13861083984375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1856.609130859375,
+                        0.0019817946013063192,
+                        -487.13861083984375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1781.4710693359375,
+                        0.0019792690873146057,
+                        -604.8743896484375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1781.4710693359375,
+                        0.0019792690873146057,
+                        -604.8743896484375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3) (1)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1755.13427734375,
+                        0.001979268155992031,
+                        -234.40501403808594
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1755.13427734375,
+                        0.001979268155992031,
+                        -234.40501403808594
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3) (2)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1518.9349365234375,
+                        0.0019748671911656857,
+                        532.6492919921875
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1518.9349365234375,
+                        0.0019748671911656857,
+                        532.6492919921875
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3) (3)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1723.826416015625,
+                        0.001008424675092101,
+                        -802.6265869140625
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1723.826416015625,
+                        0.001008424675092101,
+                        -802.6265869140625
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3) (4)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1296.499267578125,
+                        -0.08979091048240662,
+                        -325.0208740234375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1296.499267578125,
+                        -0.08979091048240662,
+                        -325.0208740234375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (3) (5)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1203.794677734375,
+                        0.12420198321342468,
+                        -370.6290283203125
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1203.794677734375,
+                        0.12420198321342468,
+                        -370.6290283203125
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (4)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1248.082275390625,
+                        0.1289348602294922,
+                        -935.6288452148438
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1248.082275390625,
+                        0.1289348602294922,
+                        -935.6288452148438
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (5)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1629.0235595703125,
+                        0.04300198704004288,
+                        -1498.1875
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1629.0235595703125,
+                        0.04300198704004288,
+                        -1498.1875
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (6)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1716.466064453125,
+                        0.01848044991493225,
+                        -1198.6416015625
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1716.466064453125,
+                        0.01848044991493225,
+                        -1198.6416015625
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (7)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1479.436767578125,
+                        -0.00880950503051281,
+                        -1700.7276611328125
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1479.436767578125,
+                        -0.00880950503051281,
+                        -1700.7276611328125
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (8)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1211.60546875,
+                        0.0019875862635672092,
+                        -1737.0927734375
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1211.60546875,
+                        0.0019875862635672092,
+                        -1737.0927734375
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (9)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -1058.443359375,
+                        0.0020824982784688473,
+                        -821.319580078125
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -1058.443359375,
+                        0.0020824982784688473,
+                        -821.319580078125
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (10)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -809.1156005859375,
+                        0.0010038625914603472,
+                        -914.8385620117188
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -809.1156005859375,
+                        0.0010038625914603472,
+                        -914.8385620117188
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (11)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -528.1572265625,
+                        0.0018254099413752556,
+                        -422.2422180175781
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -528.1572265625,
+                        0.0018254099413752556,
+                        -422.2422180175781
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (12)",
+            "tag": 2
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        -517.1075439453125,
+                        0.0019799405708909035,
+                        -167.50979614257813
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        0.17999997735023499,
+                        0.17999999225139618,
+                        0.17999999225139618
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "mesh": {
+                        "asset_path": "Assets/Models/Enemies/Cylinder.sugar",
+                        "draw_face_normals": false,
+                        "draw_vertex_normals": false,
+                        "is_animated": false,
+                        "shape_type": 0,
+                        "uid": 1380662996
+                    },
+                    "type": 1
+                },
+                {
+                    "active": true,
+                    "color": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "shader": {
+                        "asset_path": "Assets/Shaders/default_shader.glsl",
+                        "uniforms": null
+                    },
+                    "texture": {
+                        "asset_path": ""
+                    },
+                    "type": 2
+                },
+                {
+                    "active": true,
+                    "body_type": "Static",
+                    "freeze_position_x": false,
+                    "freeze_position_y": false,
+                    "freeze_position_z": false,
+                    "freeze_rotation_x": false,
+                    "freeze_rotation_y": false,
+                    "freeze_rotation_z": false,
+                    "mass": 1.0,
+                    "type": 6,
+                    "use_gravity": true
+                },
+                {
+                    "active": true,
+                    "center": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "filter": "",
+                    "is_trigger": false,
+                    "scale_factor": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 7
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Pathfinder.lua",
+                    "id": 1742068310,
+                    "inspector_variables": [
+                        {
+                            "name": "minRetargetingDistance",
+                            "type": "int",
+                            "value": 10
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/EnemyController.lua",
+                    "id": 1103878891,
+                    "inspector_variables": [
+                        {
+                            "name": "static",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "name": "speed",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "chaseSpeed",
+                            "type": "int",
+                            "value": 30
+                        },
+                        {
+                            "name": "attackRange",
+                            "type": "int",
+                            "value": 20
+                        },
+                        {
+                            "name": "attackSpeed",
+                            "type": "int",
+                            "value": 2
+                        },
+                        {
+                            "name": "visionConeAngle",
+                            "type": "int",
+                            "value": 70
+                        },
+                        {
+                            "name": "visionConeRadius",
+                            "type": "int",
+                            "value": 195
+                        },
+                        {
+                            "name": "hearingRange",
+                            "type": "int",
+                            "value": 110
+                        },
+                        {
+                            "name": "awarenessOffset",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.0,
+                                "y": 50.0,
+                                "z": 0.0
+                            }
+                        },
+                        {
+                            "name": "awarenessSize",
+                            "type": "float3",
+                            "value": {
+                                "x": 0.15000000596046448,
+                                "y": 0.30000001192092896,
+                                "z": 0.15000000596046448
+                            }
+                        },
+                        {
+                            "name": "pingpong",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "loop",
+                            "type": "bool",
+                            "value": false
+                        },
+                        {
+                            "name": "patrolWaypoints",
+                            "type": "float3_array",
+                            "value": []
+                        }
+                    ],
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "file_name": "Assets/Scripts/Enemies/Harkonnen.lua",
+                    "id": 1154995122,
+                    "type": 5
+                },
+                {
+                    "active": true,
+                    "ambientValue": 0.0,
+                    "constantAttenuationValue": 0.0,
+                    "cutOffAngle": 0.8660253882408142,
+                    "diffuseValue": 0.5,
+                    "lightColor": [
+                        1.0,
+                        0.0,
+                        1.0
+                    ],
+                    "lightDirection": [
+                        0.0,
+                        0.0,
+                        -1.0
+                    ],
+                    "lightPosition": [
+                        -517.1075439453125,
+                        0.0019799405708909035,
+                        -167.50979614257813
+                    ],
+                    "linearAttenuationValue": 0.0,
+                    "quadraticAttenuationValue": 0.0,
+                    "sourceType": 2,
+                    "specularValue": 0.0,
+                    "type": 19
+                }
+            ],
+            "is3D": true,
+            "isPrefab": true,
+            "name": "Enemy_Cylinder (13)",
+            "tag": 2
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "position": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "type": 21
+        }
+    ],
+    "is3D": true,
+    "isPrefab": true,
+    "name": "Enemy_Cylinders",
+    "tag": 0
+}

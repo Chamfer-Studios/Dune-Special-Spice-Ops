@@ -61,11 +61,11 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 2
-speed = 2500
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
-staminaSeconds = 5
-recoveryTime = 5
+speed = 2140
+crouchMultiplierPercentage = 63
+runMultiplierPercentage = 138
+staminaSeconds = 3
+recoveryTime = 4
 staminaTimer = staminaSeconds
 isTired = false
 
@@ -74,9 +74,9 @@ attackRange = 50.0
 attackTime = 2.5
 
 -- Primary ability --
-primaryCastRange = 100
+primaryCastRange = 165
 primaryCooldown = 5
-dartSpeed = 10000
+dartSpeed = 18000
 unawareChanceHarkDart = 100
 awareChanceHarkDart = 90
 aggroChanceHarkDart = 0
@@ -85,17 +85,17 @@ awareChanceSardDart = 80
 aggroChanceSardDart = 0
 
 -- Secondary ability --
-secondaryCastRange = 75
-secondaryCooldown = 10.0
+secondaryCastRange = 200
+secondaryCooldown = 10
 maxSmokeBombCount = 3
 smokeBombCount = maxSmokeBombCount
 smokebombActive = false
 
 -- Ultimate ability --
-ultimateCastRange = 50
-ultimateCooldown = 30.0
+ultimateCastRange = 30
+ultimateCooldown = 2
 ultimateSpiceCost = 1500
-ultimateMaxDistance = 300 -- Careful changing variable name (HunterSeeker.lua)
+ultimateMaxDistance = 615 -- Careful changing variable name (HunterSeeker.lua)
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------

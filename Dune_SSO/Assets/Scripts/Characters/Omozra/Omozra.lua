@@ -61,20 +61,20 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 3
-speed = 2000
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
+speed = 1600
+crouchMultiplierPercentage = 67
+runMultiplierPercentage = 133
 staminaSeconds = 5
-recoveryTime = 5
+recoveryTime = 7
 staminaTimer = staminaSeconds
 isTired = false
 
 -- Primary ability --
 primaryCastRange = 100
-maxSpit = 3
+spitNeeded = 6
 
 -- Secondary ability --
-secondaryCastRange = 75
+secondaryCastRange = 300
 secondaryCooldown = 10
 unawareChanceHarkSecondary = 100
 awareChanceHarkSecondary = 100
@@ -84,10 +84,10 @@ awareChanceSardSecondary = 100
 aggroChanceSardSecondary = 100
 
 -- Ultimate ability --
-ultimateCastRange = 75
-ultimateCooldown = 30
+ultimateCastRange = 130
+ultimateCooldown = 2
 ultimateSpiceCost = 1000
-ultimateRecastRange = 100
+ultimateRecastRange = 300
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -190,7 +190,8 @@ function Start()
 
     -- Abilities
     InstantiatePrefab("Worm")
-    spitCount = maxSpit
+
+    spitCount = spitNeeded
 end
 
 -- Called each loop iteration
@@ -242,7 +243,7 @@ function Update(dt)
 
             -- Primary ability (spit heal)
             if (currentState == State.AIM_PRIMARY) then
-                if (spitCount <= 2) then
+                if (spitCount < spitNeeded) then
                     Log("[FAIL] Ability Primary: You don't have enough spits!\n")
                 else
                     target = GetGameObjectHovered()
@@ -876,7 +877,7 @@ end
 
 -- Primary ability
 function ActivePrimary()
-    if (spitCount > 2) then
+    if (spitCount >= spitNeeded) then
         if (currentState == State.AIM_PRIMARY) then
             CancelAbilities()
         else
@@ -904,7 +905,7 @@ function CastPrimary(thisTarget)
 end
 
 function DoPrimary()
-    spitCount = spitCount - 3
+    spitCount = spitCount - spitNeeded
 
     DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
 
@@ -1134,7 +1135,7 @@ function EventHandler(key, fields)
         trackList = {5}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
-        if (spitCount > 2) then
+        if (spitCount >= spitNeeded) then
             abilities.AbilityPrimary = AbilityStatus.Normal
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         else
