@@ -367,8 +367,7 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    elseif (goHit.tag == Tag.PICKUP) then
-                        Log("Going to a pickup\n")
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE) then
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then

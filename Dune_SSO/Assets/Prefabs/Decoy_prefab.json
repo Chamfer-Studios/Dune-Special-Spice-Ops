@@ -9,9 +9,9 @@
         {
             "active": true,
             "position": [
-                -1496.4962158203125,
                 0.0,
-                527.1190185546875
+                0.0,
+                0.0
             ],
             "rotation": [
                 8.42937097900176e-08,
@@ -129,9 +129,9 @@
                 0.0
             ],
             "lightPosition": [
-                -1496.4962158203125,
                 0.0,
-                527.1190185546875
+                0.0,
+                0.0
             ],
             "linearAttenuationValue": 0.0,
             "quadraticAttenuationValue": 0.0,

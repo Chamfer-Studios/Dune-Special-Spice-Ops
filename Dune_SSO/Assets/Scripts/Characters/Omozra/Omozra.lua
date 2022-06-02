@@ -333,8 +333,7 @@ function Update(dt)
                 else
                     isMoving = true
 
-                    if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
-                        Log("Going to a pickup\n")
+                    if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE or goHit.tag == Tag.ENEMY) then
                         target = nil
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
