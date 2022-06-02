@@ -647,30 +647,30 @@ function UpdateStaminaBar()
     -- NEW
     if isTired == false then
         if proportion >= 0.66 then
-            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarGreen:GetTransform():GetScale().x,
-                staminaBarSizeY * (proportion), staminaBarGreen:GetTransform():GetScale().z))
+            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
             staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
             staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
             staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
         elseif proportion >= 0.33 and proportion < 0.66 then
             staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarYellow:GetTransform():GetScale().x,
-                staminaBarSizeY * (proportion), staminaBarYellow:GetTransform():GetScale().z))
+            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
             staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
             staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
         else
             staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
             staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarRed:GetTransform():GetScale().x,
-                staminaBarSizeY * (proportion), staminaBarRed:GetTransform():GetScale().z))
+            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
             staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
         end
     else
         staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
         staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
         staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarBlue:GetTransform():GetScale().x,
-            staminaBarSizeY * (proportion), staminaBarBlue:GetTransform():GetScale().z))
+        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+            staminaBarSizeZ))
     end
 end
 
@@ -1172,7 +1172,9 @@ function ConfigStaminaBars()
     staminaBarRed = Find("Stamina Bar Red")
     staminaBarBlue = Find("Stamina Bar Blue")
 
+    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
     staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
+    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 

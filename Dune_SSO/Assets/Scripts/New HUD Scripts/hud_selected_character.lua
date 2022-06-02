@@ -310,7 +310,6 @@ function AbilityStateUsingBlinking(dt)
         if blinkTimer == nil then
             blinkTimer = 0.0
         end
-        Log(blinkTimer .. "\n")
         blinkTimer = blinkTimer + dt
         if blinkTimer >= blink then
             blinkTimer = 0.0
