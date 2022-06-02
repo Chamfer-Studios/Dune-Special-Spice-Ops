@@ -109,18 +109,21 @@ function HandleMasks()
                 usingMaskQ.active = false
                 pickableMaskQ.active = false
                 disabledMaskQ.active = false
+                isUsingQ = false
             elseif abilityState == 2 then -- Active
                 activeMaskQ.active = true
                 cooldownMaskQ.active = false
                 usingMaskQ.active = false
                 pickableMaskQ.active = false
                 disabledMaskQ.active = false
+                isUsingQ = false
             elseif abilityState == 3 then -- CD
                 activeMaskQ.active = false
                 cooldownMaskQ.active = true
                 usingMaskQ.active = false
                 pickableMaskQ.active = false
                 disabledMaskQ.active = false
+                isUsingQ = false
             elseif abilityState == 4 then -- Using
                 activeMaskQ.active = false
                 cooldownMaskQ.active = false
@@ -133,13 +136,16 @@ function HandleMasks()
                 usingMaskQ.active = false
                 pickableMaskQ.active = true
                 disabledMaskQ.active = false
+                isUsingQ = false
             elseif abilityState == 6 then -- Disabled
                 activeMaskQ.active = false
                 cooldownMaskQ.active = false
                 usingMaskQ.active = false
                 pickableMaskQ.active = false
                 disabledMaskQ.active = true
+                isUsingQ = false
             end
+
         elseif ability == 2 then
             if abilityState == 1 then -- Normal
                 activeMaskW.active = false
@@ -147,18 +153,21 @@ function HandleMasks()
                 usingMaskW.active = false
                 pickableMaskW.active = false
                 disabledMaskW.active = false
+                isUsingW = false
             elseif abilityState == 2 then -- Active
                 activeMaskW.active = true
                 cooldownMaskW.active = false
                 usingMaskW.active = false
                 pickableMaskW.active = false
                 disabledMaskW.active = false
+                isUsingW = false
             elseif abilityState == 3 then -- CD
                 activeMaskW.active = false
                 cooldownMaskW.active = true
                 usingMaskW.active = false
                 pickableMaskW.active = false
                 disabledMaskW.active = false
+                isUsingW = false
             elseif abilityState == 4 then -- Using
                 activeMaskW.active = false
                 cooldownMaskW.active = false
@@ -171,12 +180,14 @@ function HandleMasks()
                 usingMaskW.active = false
                 pickableMaskW.active = true
                 disabledMaskW.active = false
+                isUsingW = false
             elseif abilityState == 6 then -- Disabled
                 activeMaskW.active = false
                 cooldownMaskW.active = false
                 usingMaskW.active = false
                 pickableMaskW.active = false
                 disabledMaskW.active = true
+                isUsingW = false
             end
         elseif ability == 3 then
             if abilityState == 1 then -- Normal
@@ -185,18 +196,21 @@ function HandleMasks()
                 usingMaskE.active = false
                 pickableMaskE.active = false
                 disabledMaskE.active = false
+                isUsingE = false
             elseif abilityState == 2 then -- Active
                 activeMaskE.active = true
                 cooldownMaskE.active = false
                 usingMaskE.active = false
                 pickableMaskE.active = false
                 disabledMaskE.active = false
+                isUsingE = false
             elseif abilityState == 3 then -- CD
                 activeMaskE.active = false
                 cooldownMaskE.active = true
                 usingMaskE.active = false
                 pickableMaskE.active = false
                 disabledMaskE.active = false
+                isUsingE = false
             elseif abilityState == 4 then -- Using
                 activeMaskE.active = false
                 cooldownMaskE.active = false
@@ -209,12 +223,14 @@ function HandleMasks()
                 usingMaskE.active = false
                 pickableMaskE.active = true
                 disabledMaskE.active = false
+                isUsingE = false
             elseif abilityState == 6 then -- Disabled
                 activeMaskE.active = false
                 cooldownMaskE.active = false
                 usingMaskE.active = false
                 pickableMaskE.active = false
                 disabledMaskE.active = true
+                isUsingE = false
             end
         end
     end
