@@ -19,6 +19,8 @@ local upgradeButton9 = { state = false, object = Find("Passive - Upgrade 1") }
 local upgradeButton10 = { state = false, object = Find("Passive - Upgrade 2") }
 local upgradeButton11 = { state = false, object = Find("Passive - Upgrade 3") }
 
+
+
 local upgradeArray = {upgradeButton0, upgradeButton1, upgradeButton2, upgradeButton3, 
 upgradeButton4, upgradeButton5, upgradeButton6, upgradeButton7, upgradeButton8, 
 upgradeButton9, upgradeButton10, upgradeButton11}
@@ -26,15 +28,19 @@ local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
 ------------ Dialogue Manager ------------
 function Start()
+    SpiceAmountText = Find("SpiceAmount")
     --Log(upgradeButton.object:GetName())
     LoadJsonFile(path)
     skillUiArray = {1,2,3, 101}
     dialogueGo = Find("Dialogue")
     id = 0
     UpdateUI()
+
+    SetSpiceValue()
 end
 
 function Update(dt)
+
     if(Find("Button") == nil) then
         Log("No button")
     end
@@ -51,9 +57,7 @@ function Update(dt)
         SetDialogValue(0)
     end
 
-    if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
-        SetSpiceValue(20)
-    end
+
 
     --for narnia
     if(upgradeArray[1].object:GetButton():IsPressed())then
@@ -62,6 +66,8 @@ function Update(dt)
         else
             upgradeArray[1].state = 0
         end
+
+        SpiceCost(20)
         str = "Name of the button" .. upgradeArray[1].object:GetName() .. "\n"
         Log(str)
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
@@ -266,10 +272,16 @@ function SetDialogValue(index)
 
 end
 
-function SetSpiceValue(spiceAmount)
-    spice = spice + spiceAmount
-    str = spice .. " Spice"
-    Find("SpiceAmount"):GetText():SetTextValue(str);
+function SetSpiceValue()
+    SpiceAmountText:GetText():SetTextValue(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. " Spice");
+end
+
+function SpiceCost(amount)
+    newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
+    SpiceAmountText:GetText():SetTextValue(newSpice)
+    str = "New Spice value" .. newSpice ..  "\n"
+    Log(str)
+    SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
 
 
