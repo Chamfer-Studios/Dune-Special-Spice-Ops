@@ -14,30 +14,35 @@ function Start()
 
     maxTetherRange = GetVariable("Nerala.lua", "ultimateMaxDistance", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
-    player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
-    neralaPosition = player:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {neralaPosition.x, neralaPosition.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1], targetPos2D[2]}
-    -- vec2 = Normalize(vec2, d)
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 0, vec2[2]))
+    if (destination ~= nil) then
+        player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
+        neralaPosition = player:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {neralaPosition.x, neralaPosition.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1], targetPos2D[2]}
+        -- vec2 = Normalize(vec2, d)
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 0, vec2[2]))
+        end
+
+        componentSwitch = gameObject:GetAudioSwitch()
+        trackList = {0}
+        ChangeTrack(trackList)
+
+        trailParticle = Find("Nerala Trail Particle")
+        mouseParticles = Find("Mouse Particle")
+        if (mouseParticles ~= nil) then
+            mouseParticles:GetComponentParticle():StopParticleSpawn()
+        end
+
+        poisonCount = 2 -- Number of kills left
+
+        DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
+    else
+        DispatchGlobalEvent("Nerala_Ultimate_Bugged", {})
+        DeleteGameObject()
     end
-
-    componentSwitch = gameObject:GetAudioSwitch()
-    trackList = {0}
-    ChangeTrack(trackList)
-
-    trailParticle = Find("Nerala Trail Particle")
-    mouseParticles = Find("Mouse Particle")
-    if (mouseParticles ~= nil) then
-        mouseParticles:GetComponentParticle():StopParticleSpawn()
-    end
-
-    poisonCount = 2 -- Number of kills left
-
-    DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
 end
 
 -- Called each loop iteration

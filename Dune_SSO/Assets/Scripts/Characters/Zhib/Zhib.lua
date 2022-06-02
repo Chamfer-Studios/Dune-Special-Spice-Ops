@@ -1335,7 +1335,7 @@ function EventHandler(key, fields)
     elseif (key == "Update_Zhib_Position") then
         Log("Receiving Zhib Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
-    elseif (key == "Knife_Bugged") then
+    elseif (key == "Zhib_Primary_Bugged") then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         knifeCount = knifeCount + 1

@@ -32,7 +32,7 @@ function Start()
             componentParticle:StopParticleSpawn()
         end
     else
-        DispatchGlobalEvent("Knife_Bugged", {})
+        DispatchGlobalEvent("Zhib_Primary_Bugged", {})
         DeleteGameObject()
     end
 end

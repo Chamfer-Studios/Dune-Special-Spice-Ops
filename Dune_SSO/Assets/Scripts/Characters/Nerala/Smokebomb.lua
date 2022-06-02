@@ -10,27 +10,33 @@ effectFlag = true
 
 function Start()
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
-    destination.y = 0.0
-    player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
-    local playerPos = player:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {playerPos.x, playerPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-    componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
+    if (destination ~= nil) then
+        destination.y = 0.0
+        player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+        componentSwitch = gameObject:GetAudioSwitch()
+        currentTrackID = -1
+        local playerPos = player:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {playerPos.x, playerPos.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+        vec2 = Normalize(vec2, d)
+        componentTransform:SetPosition(
+            float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
 
-    componentLight = gameObject:GetLight()
-    if (componentLight ~= nil) then
-        componentLight:SetRange(effectRadius)
-    end
+        componentLight = gameObject:GetLight()
+        if (componentLight ~= nil) then
+            componentLight:SetRange(effectRadius)
+        end
 
-    smokeParticle = Find("Nerala Smoke Particle")
-    if (smokeParticle ~= nil) then
-        smokeParticle:GetComponentParticle():StopParticleSpawn()
-        smokeParticle:GetComponentParticle():SetLoop(false)
+        smokeParticle = Find("Nerala Smoke Particle")
+        if (smokeParticle ~= nil) then
+            smokeParticle:GetComponentParticle():StopParticleSpawn()
+            smokeParticle:GetComponentParticle():SetLoop(false)
+        end
+    else
+        DispatchGlobalEvent("Nerala_Secondary_Bugged", {})
+        DeleteGameObject()
     end
 end
 
@@ -105,7 +111,7 @@ function OnArrive()
     smokeParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
         componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
     if (componentLight ~= nil) then
-         componentLight:SetAngle(360 / 2)
+        componentLight:SetAngle(360 / 2)
     end
 
     -- Audio of hitting the ground

@@ -10,16 +10,22 @@ function Start()
     componentSwitch = gameObject:GetAudioSwitch()
     currentTrackID = -1
     target = GetVariable("Worm.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    worm = GetVariable("Worm.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    wormPos = worm:GetTransform():GetPosition()
-    destination = target:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {wormPos.x, wormPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(wormPos.x + vec2[1] * 3, wormPos.y + 10, wormPos.z + vec2[2] * 3))
+    if (target ~= nil) then
+        worm = GetVariable("Worm.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+        wormPos = worm:GetTransform():GetPosition()
+        destination = target:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {wormPos.x, wormPos.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+        vec2 = Normalize(vec2, d)
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(wormPos.x + vec2[1] * 3, wormPos.y + 10,
+                wormPos.z + vec2[2] * 3))
+        end
+    else
+        DispatchGlobalEvent("Omozra_Primary_Bugged", {})
+        DeleteGameObject()
     end
 end
 

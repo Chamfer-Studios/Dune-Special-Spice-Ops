@@ -11,28 +11,34 @@ isGrabbable = false
 -------------------- Methods ---------------------
 function Start()
     destination = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
-    destination.y = 0.0
-    player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    componentSwitch = gameObject:GetAudioSwitch()
-    currentTrackID = -1
-    local playerPos = player:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {playerPos.x, playerPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-    componentTransform:SetPosition(float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
-    waveParticle = Find("Zhib Wave Particle")
-    if (waveParticle ~= nil) then
-        waveParticle:GetComponentParticle():StopParticleSpawn()
-    end
-    pickupParticles = gameObject:GetComponentParticle()
-    if (pickupParticles ~= nil) then
-        pickupParticles:StopParticleSpawn()
-    end
-    componentLight = gameObject:GetLight()
-    if (componentLight ~= nil) then
-        componentLight:SetRange(effectRadius)
+    if (destination ~= nil) then
+        destination.y = 0.0
+        player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+        componentSwitch = gameObject:GetAudioSwitch()
+        currentTrackID = -1
+        local playerPos = player:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {playerPos.x, playerPos.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+        vec2 = Normalize(vec2, d)
+        componentTransform:SetPosition(
+            float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
+        waveParticle = Find("Zhib Wave Particle")
+        if (waveParticle ~= nil) then
+            waveParticle:GetComponentParticle():StopParticleSpawn()
+        end
+        pickupParticles = gameObject:GetComponentParticle()
+        if (pickupParticles ~= nil) then
+            pickupParticles:StopParticleSpawn()
+        end
+        componentLight = gameObject:GetLight()
+        if (componentLight ~= nil) then
+            componentLight:SetRange(effectRadius)
+        end
+    else
+        DispatchGlobalEvent("Zhib_Secondary_Bugged", {})
+        DeleteGameObject()
     end
 end
 

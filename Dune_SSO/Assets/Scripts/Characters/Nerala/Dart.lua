@@ -12,18 +12,23 @@ function Start()
     trackList = {0, 1}
     ChangeTrack(trackList)
     target = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    speed = GetVariable("Nerala.lua", "dartSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    playerPos = player:GetTransform():GetPosition()
-    destination = target:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {playerPos.x, playerPos.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
-    vec2 = Normalize(vec2, d)
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, playerPos.y + 10,
-            playerPos.z + vec2[2] * 3))
+    if (target ~= nil) then
+        player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+        speed = GetVariable("Nerala.lua", "dartSpeed", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        playerPos = player:GetTransform():GetPosition()
+        destination = target:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {playerPos.x, playerPos.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
+        vec2 = Normalize(vec2, d)
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(playerPos.x + vec2[1] * 3, playerPos.y + 10,
+                playerPos.z + vec2[2] * 3))
+        end
+    else
+        DispatchGlobalEvent("Nerala_Primary_Bugged", {})
+        DeleteGameObject()
     end
 end
 

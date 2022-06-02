@@ -69,6 +69,14 @@ end
 function CastPrimary(thisTarget, omozraPos)
 
     target = thisTarget
+
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Primary_Bugged", {})
+        do
+            return
+        end
+    end
+
     targetPos = target:GetTransform():GetPosition()
     -- Spawn with an offset to the direction of the heal
     local targetPos2D = {targetPos.x, targetPos.z}
@@ -106,6 +114,13 @@ end
 
 function DoPrimary()
     -- TODO: spit something in the direction of the player
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Primary_Bugged", {})
+        do
+            return
+        end
+    end
+
     InstantiatePrefab("SpitHeal")
 
     if (componentAnimator ~= nil) then
@@ -133,6 +148,13 @@ function CastDevour(castedOn)
 
     target = castedOn
 
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Secondary_Bugged", {})
+        do
+            return
+        end
+    end
+
     local targetPos = target:GetTransform():GetPosition()
     componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
 
@@ -147,6 +169,13 @@ function CastDevour(castedOn)
 end
 
 function DoDevour()
+
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Secondary_Bugged", {})
+        do
+            return
+        end
+    end
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -174,6 +203,13 @@ function CastUltimate(castedOn)
 
     target = castedOn
 
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Ultimate_Bugged", {})
+        do
+            return
+        end
+    end
+
     local targetPos = target:GetTransform():GetPosition()
     componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
 
@@ -188,6 +224,13 @@ function CastUltimate(castedOn)
 end
 
 function DoUltimate()
+
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Ultimate_Bugged", {})
+        do
+            return
+        end
+    end
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -216,6 +259,14 @@ end
 function CastSpit(position)
 
     target = position
+
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Ultimate_Recast_Bugged", {})
+        do
+            return
+        end
+    end
+
     componentTransform:SetPosition(position)
 
     -- This is just to stop the movement
@@ -232,6 +283,13 @@ function CastSpit(position)
 end
 
 function DoSpit()
+
+    if (target == nil) then
+        DispatchGlobalEvent("Omozra_Ultimate_Recast_Bugged", {})
+        do
+            return
+        end
+    end
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit) -- No need for fields[2] cause we will check for state.work
 
