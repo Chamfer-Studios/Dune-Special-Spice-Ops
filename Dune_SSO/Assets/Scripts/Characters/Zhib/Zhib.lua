@@ -88,7 +88,7 @@ aggroChanceSardKnife = 0
 
 -- Secondary ability --
 maxDecoy = 1
-secondaryCastRange = 75
+secondaryCastRange = 225 -- 75
 secondaryCooldown = 10
 
 -- Ultimate ability --

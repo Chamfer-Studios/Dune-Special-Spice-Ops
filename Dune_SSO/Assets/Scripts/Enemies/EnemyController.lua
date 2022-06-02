@@ -97,13 +97,13 @@ STATE = {
 state = STATE.UNAWARE
 
 isWalking = false
-isDecoyed = false
 
 awareness = 0
 targetAwareness = 0
 
 nRepeating = 1
 nSingle = 1
+nDecoy = 1
 nVisual = 1
 
 -- {
@@ -113,6 +113,7 @@ nVisual = 1
 -- }
 repeatingAuditoryTriggers = {}
 singleAuditoryTriggers = {}
+decoyAuditoryTriggers = {}
 visualTriggers = {}
 
 target = nil
@@ -321,6 +322,20 @@ function ProcessSingleAuditoryTrigger(position, source)
     nSingle = nSingle + 1
 end
 
+function ProcessDecoyAuditoryTrigger(position, source)
+    if (position == nil or source == nil) then
+        Log("Decoy Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
+    decoyAuditoryTriggers[nDecoy] = {}
+    decoyAuditoryTriggers[nDecoy]["position"] = position
+    decoyAuditoryTriggers[nDecoy]["source"] = source
+
+    nDecoy = nDecoy + 1
+end
+
 function ProcessRepeatedAuditoryTrigger(position, source)
     if (position == nil or source == nil) then
         Log("Repeated Auditory Trigger Error\n")
@@ -355,6 +370,8 @@ function ProcessAuditoryTrigger(position, range, type, source)
         ProcessSingleAuditoryTrigger(position, source)
     elseif type == "repeated" then
         ProcessRepeatedAuditoryTrigger(position, source)
+    elseif type == "decoy" then
+        ProcessDecoyAuditoryTrigger(position, source)
     end
 end
 
@@ -468,6 +485,11 @@ function UpdateTargetAwareness()
         targetAwareness = 2
         prop = 1.2 - (distance / hearingRange)
         awarenessSpeed = awarenessSoundSpeed * prop * auditoryDebuffMultiplier
+    elseif #decoyAuditoryTriggers ~= 0 then
+        if state == STATE.UNAWARE then
+            awareness = 1
+            targetAwareness = 1
+        end
     else
         targetAwareness = 0
     end
@@ -559,14 +581,21 @@ function GetClosestTarget()
     closestRepeatingTrigger = GetClosestTrigger(state, repeatingAuditoryTriggers)
     closestSingleTrigger = GetClosestTrigger(state, singleAuditoryTriggers)
     closestVisualTrigger = GetClosestTrigger(state, visualTriggers)
+    closestDecoyTrigger = GetClosestTrigger(state, decoyAuditoryTriggers)
 
     newTarget = target
 
     if closestVisualTrigger ~= nil then
+        Log("1\n")
         newTarget = closestVisualTrigger
+    elseif closestDecoyTrigger ~= nil then
+        Log("2\n")
+        newTarget = closestDecoyTrigger
     elseif closestSingleTrigger ~= nil then
+        Log("3\n")
         newTarget = closestSingleTrigger
     elseif closestRepeatingTrigger ~= nil then
+        Log("4\n")
         newTarget = closestRepeatingTrigger
     end
 
@@ -690,8 +719,10 @@ function ClearPerceptionMemory()
     nSingle = 1
     nRepeating = 1
     nVisual = 1
+    nDecoy = 1
 
     singleAuditoryTriggers = {}
+    decoyAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
 end
@@ -727,12 +758,7 @@ deathParameters = {
 }
 
 function EventHandler(key, fields)
-    if key == "Decoy_Trigger" then
-        if (isDecoyed == false) then
-            ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
-            isDecoyed = true
-        end
-    elseif key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "Walking_Direction" then
         SetTargetDirection(fields[1])

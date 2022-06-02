@@ -4,7 +4,7 @@ destination = nil
 lifeTime = 10.0 -- secs --iv required
 lifeTimer = 0
 effectRadius = 100.0
-effectTime = 2.0
+effectTime = 0.0
 isGrabbable = false
 --------------------------------------------------
 
@@ -59,7 +59,8 @@ function Update(dt)
             end
             trackList = {0}
             ChangeTrack(trackList)
-            DispatchGlobalEvent("Decoy_Trigger", {componentTransform:GetPosition(), effectRadius, "single", gameObject})
+            DispatchGlobalEvent("Auditory_Trigger",
+                {componentTransform:GetPosition(), effectRadius, "decoy", gameObject})
             effectTimer = 0.0
         else
             effectTimer = effectTimer + dt
