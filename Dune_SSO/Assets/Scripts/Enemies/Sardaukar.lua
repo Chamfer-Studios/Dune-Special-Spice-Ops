@@ -1,5 +1,6 @@
 knifeHitChance = 100
 dartHitChance = 100
+neralaAttackHitChance = 100
 
 EnemyDeath = {
     PLAYER_ATTACK = 1,
@@ -30,7 +31,7 @@ function Update(dt)
         deathMarkTimer = deathMarkTimer + dt
         if (deathMarkTimer >= deathMarkDuration) then
             deathMarkTimer = nil
-            DispatchEvent("Enemy_Death", {EnemyDeath.WEIRDING_WAY, "Harkonnen"})
+            DispatchEvent("Enemy_Death", {EnemyDeath.WEIRDING_WAY})
         end
     end
 end
@@ -43,45 +44,87 @@ function EventHandler(key, fields)
         -- Player basic attack
     elseif key == "Player_Attack" then
         if (fields[1] == gameObject) then
-            DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK, "Harkonnen"})
+            if fields[2] == 2 then -- Chances only for nerala attack
+                if currentState == STATE.UNAWARE or currentState == STATE.AWARE then
+                    neralaAttackHitChance = GetVariable("Nerala.lua", "unawareChanceSardAttack",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= neralaAttackHitChance) then
+                        Log("Culona's attack D100 roll has been " .. rng ..
+                                " so the UNAWARE SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK})
+                    else
+                        Log("Culona's attack D100 roll has been " .. rng ..
+                                " so the UNAWARE SARDAUKAR enemy has dodged the attack :( \n")
+                    end
+                elseif currentState == STATE.SUS then
+                    neralaAttackHitChance = GetVariable("Nerala.lua", "awareChanceSardAttack",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= neralaAttackHitChance) then
+                        Log("Culona's attack D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK})
+                    else
+                        Log("Culona's attack D100 roll has been " .. rng ..
+                                " so the AWARE SARDAUKAR enemy has dodged the attack :( \n")
+                    end
+                elseif currentState == STATE.AGGRO then
+                    neralaAttackHitChance = GetVariable("Nerala.lua", "aggroChanceSardAttack",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= neralaAttackHitChance) then
+                        Log("Culona's attack D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK})
+                    else
+                        Log("Culona's attack D100 roll has been " .. rng ..
+                                " so the AGGRO SARDAUKAR enemy has dodged the attack :( \n")
+                    end
+                end
+            end
         end
         -- Zhib knife
     elseif key == "Knife_Hit" then
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
                 knifeHitChance =
-                    GetVariable("Zhib.lua", "unawareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    GetVariable("Zhib.lua", "unawareChanceSardKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
-                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
+                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE SARDAUKAR enemy is dead! \n")
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE})
                 else
-                    Log("Knife's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the knife :( \n")
+                    Log("Knife's D100 roll has been " .. rng ..
+                            " so the UNAWARE SARDAUKAR enemy has dodged the knife :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
-                knifeHitChance = GetVariable("Zhib.lua", "awareChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                knifeHitChance = GetVariable("Zhib.lua", "awareChanceSardKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
-                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
+                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy is dead! \n")
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE})
                 else
-                    Log("Knife's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the knife :( \n")
+                    Log("Knife's D100 roll has been " .. rng ..
+                            " so the AWARE SARDAUKAR enemy has dodged the knife :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
-                knifeHitChance = GetVariable("Zhib.lua", "aggroChanceHarkKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                knifeHitChance = GetVariable("Zhib.lua", "aggroChanceSardKnife", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= knifeHitChance) then
-                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
-                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE, "Harkonnen"})
+                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy is dead! \n")
+                    DispatchEvent("Enemy_Death", {EnemyDeath.KNIFE})
                 else
-                    Log("Knife's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the knife :( \n")
+                    Log("Knife's D100 roll has been " .. rng ..
+                            " so the AGGRO SARDAUKAR enemy has dodged the knife :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -96,54 +139,51 @@ function EventHandler(key, fields)
         -- Nerala Mosquito
     elseif key == "Mosquito_Hit" then
         if (fields[1] == gameObject) then
-            DispatchEvent("Enemy_Death", {EnemyDeath.MOSQUITO, "Harkonnen"})
+            DispatchEvent("Enemy_Death", {EnemyDeath.MOSQUITO})
         end
         -- Omozra ñam ñam
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
             if (fields[2] == 2) then
-                if (currentState == STATE.DEAD or currentState == STATE.CORPSE) then
-                    -- Send a specific event if necessary
-                    DeleteGameObject()
-                else
-                    if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
-                        secondaryHitChance = GetVariable("Omozra.lua", "unawareChanceHarkSecondary",
-                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                        math.randomseed(os.time())
-                        rng = math.random(100)
-                        if (rng <= secondaryHitChance) then
-                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the UNAWARE enemy is dead! \n")
-                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Sardaukar"})
-                        else
-                            Log("Ñam ñam's D100 roll has been " .. rng ..
-                                    " so the UNAWARE enemy has dodged the ñam ñam :( \n")
-                        end
-                    elseif (currentState == STATE.SUS) then
-                        secondaryHitChance = GetVariable("Omozra.lua", "awareChanceHarkSecondary",
-                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                        math.randomseed(os.time())
-                        rng = math.random(100)
-                        if (rng <= secondaryHitChance) then
-                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the AWARE enemy is dead! \n")
-                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
-                        else
-                            Log("Ñam ñam's D100 roll has been " .. rng ..
-                                    " so the AWARE enemy has dodged the ñam ñam :( \n")
-                        end
-                    elseif (currentState == STATE.AGGRO) then
-                        secondaryHitChance = GetVariable("Omozra.lua", "aggroChanceHarkSecondary",
-                            INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-                        math.randomseed(os.time())
-                        rng = math.random(100)
-                        if (rng <= secondaryHitChance) then
-                            Log("Ñam ñam's D100 roll has been " .. rng .. " so the AGGRO enemy is dead! \n")
-                            DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL, "Harkonnen"})
-                        else
-                            Log("Ñam ñam's D100 roll has been " .. rng ..
-                                    " so the AGGRO enemy has dodged the ñam ñam :( \n")
-                        end
+                if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
+                    secondaryHitChance = GetVariable("Omozra.lua", "unawareChanceSardSecondary",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= secondaryHitChance) then
+                        Log("Ñam ñam's D100 roll has been " .. rng .. " so the UNAWARE SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL})
+                    else
+                        Log("Ñam ñam's D100 roll has been " .. rng ..
+                                " so the UNAWARE enemy has dodged the ñam ñam :( \n")
+                    end
+                elseif (currentState == STATE.SUS) then
+                    secondaryHitChance = GetVariable("Omozra.lua", "awareChanceSardSecondary",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= secondaryHitChance) then
+                        Log("Ñam ñam's D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL})
+                    else
+                        Log("Ñam ñam's D100 roll has been " .. rng ..
+                                " so the AWARE enemy has dodged the ñam ñam :( \n")
+                    end
+                elseif (currentState == STATE.AGGRO) then
+                    secondaryHitChance = GetVariable("Omozra.lua", "aggroChanceSardSecondary",
+                        INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    math.randomseed(os.time())
+                    rng = math.random(100)
+                    if (rng <= secondaryHitChance) then
+                        Log("Ñam ñam's D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy is dead! \n")
+                        DispatchEvent("Enemy_Death", {EnemyDeath.WORM_KILL})
+                    else
+                        Log("Ñam ñam's D100 roll has been " .. rng ..
+                                " so the AGGRO SARDAUKAR enemy has dodged the ñam ñam :( \n")
                     end
                 end
+            elseif fields[2] == 4 then
+                DeleteGameObject()
             end
         end
         -- Nerala dart
@@ -151,38 +191,39 @@ function EventHandler(key, fields)
         if (fields[1] == gameObject) then
             if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
                 dartHitChance =
-                    GetVariable("Nerala.lua", "unawareChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                    GetVariable("Nerala.lua", "unawareChanceSardDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
-                    Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy is stunned! \n")
+                    Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE SARDAUKAR enemy is stunned! \n")
                     DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
-                    Log("Dart's D100 roll has been " .. rng .. " so the UNAWARE enemy has dodged the dart :( \n")
+                    Log("Dart's D100 roll has been " .. rng ..
+                            " so the UNAWARE SARDAUKAR enemy has dodged the dart :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
-                dartHitChance = GetVariable("Nerala.lua", "awareChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                dartHitChance = GetVariable("Nerala.lua", "awareChanceSardDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
-                    Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy is stunned! \n")
-                    DispatchEvent("Dart_Success", {})
+                    Log("Dart's D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy is stunned! \n")
+                    DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
-                    Log("Dart's D100 roll has been " .. rng .. " so the AWARE enemy has dodged the dart :( \n")
+                    Log("Dart's D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy has dodged the dart :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
-                dartHitChance = GetVariable("Nerala.lua", "aggroChanceHarkDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                dartHitChance = GetVariable("Nerala.lua", "aggroChanceSardDart", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
                 math.randomseed(os.time())
                 rng = math.random(100)
                 if (rng <= dartHitChance) then
-                    Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy is stunned! \n")
-                    DispatchEvent("Dart_Success", {})
+                    Log("Dart's D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy is stunned! \n")
+                    DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
-                    Log("Dart's D100 roll has been " .. rng .. " so the AGGRO enemy has dodged the dart :( \n")
+                    Log("Dart's D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy has dodged the dart :( \n")
                     trackList = {1}
                     ChangeTrack(trackList)
                 end

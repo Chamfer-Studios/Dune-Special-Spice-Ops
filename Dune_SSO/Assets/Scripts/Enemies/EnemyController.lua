@@ -466,6 +466,11 @@ function Start()
     isWalking = false
 
     thisType = "Harkonnen" -- Default
+
+    deathParameters = {
+        LeaveBody = true,
+        EnemyName = thisType
+    }
     dartCount = 2
     isAttacking = false
 end
@@ -783,11 +788,6 @@ function Die(leaveBody, enemyName)
     -- Log(apetecan())
 end
 
-deathParameters = {
-    LeaveBody = true,
-    EnemyName = "Harkonnen"
-}
-
 function EventHandler(key, fields)
     if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
@@ -813,7 +813,7 @@ function EventHandler(key, fields)
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
             if (slashParticle ~= nil) then
@@ -823,11 +823,11 @@ function EventHandler(key, fields)
                     componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
             end
             deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
         elseif fields[1] == EnemyDeath.WORM_KILL then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = false
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
         end
 

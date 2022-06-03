@@ -72,6 +72,12 @@ isTired = false
 -- Basic Attack --
 attackRange = 50.0
 attackTime = 2.5
+unawareChanceHarkAttack = 100
+awareChanceHarkAttack = 75
+aggroChanceHarkAttack = 50
+unawareChanceSardAttack = 100
+awareChanceSardAttack = 60
+aggroChanceSardAttack = 40
 
 -- Primary ability --
 primaryCastRange = 100
