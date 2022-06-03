@@ -177,8 +177,11 @@ function DoDevour()
         end
     end
 
-    DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
-
+    if (target.tag == Tag.CORPSE) then
+        DispatchGlobalEvent("Sadiq_Update_Target", {target, 4}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+    else
+        DispatchGlobalEvent("Sadiq_Update_Target", {target, 2}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+    end
     componentAnimator:SetSelectedClip("DevourToIdle")
 
     -- TODO: Add particles, audio, etc.

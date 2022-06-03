@@ -19,12 +19,13 @@ Movement = {
 }
 State = {
     IDLE = 1,
-    AIM_PRIMARY = 2,
-    AIM_SECONDARY = 3,
-    AIM_ULTIMATE = 4,
-    AIM_ULTIMATE_RECAST = 5,
-    WORM = 6,
-    DEAD = 7
+    PASSIVE = 2,
+    AIM_PRIMARY = 3,
+    AIM_SECONDARY = 4,
+    AIM_ULTIMATE = 5,
+    AIM_ULTIMATE_RECAST = 6,
+    WORM = 7,
+    DEAD = 8
 }
 
 Ability = {
@@ -69,13 +70,18 @@ recoveryTime = 5
 staminaTimer = staminaSeconds
 isTired = false
 
+-- Passive -- 
+passiveRange = 100
+
 -- Primary ability --
 primaryCastRange = 100
-maxSpit = 3
+maxCharges = 6
+primaryChargeCost = 3
+secondaryChargeCost = 4
 
 -- Secondary ability --
 secondaryCastRange = 75
-secondaryCooldown = 10
+secondaryCooldown = 2
 unawareChanceHarkSecondary = 100
 awareChanceHarkSecondary = 100
 aggroChanceHarkSecondary = 100
@@ -190,7 +196,8 @@ function Start()
 
     -- Abilities
     InstantiatePrefab("Worm")
-    spitCount = maxSpit
+    currentCharges = maxCharges
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 end
 
 -- Called each loop iteration
@@ -220,8 +227,16 @@ function Update(dt)
         end
     end
 
-    -- Manage States
-    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+    -- States
+    if (currentState == State.PASSIVE and target ~= nil) then
+        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= passiveRange) then
+            Passive()
+        else
+            destination = target:GetTransform():GetPosition()
+            hasToMove = true
+        end
+    elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+        State.AIM_ULTIMATE) then
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
@@ -242,22 +257,18 @@ function Update(dt)
 
             -- Primary ability (spit heal)
             if (currentState == State.AIM_PRIMARY) then
-                if (spitCount <= 2) then
-                    Log("[FAIL] Ability Primary: You don't have enough spits!\n")
+                target = GetGameObjectHovered()
+                if (target.tag ~= Tag.PLAYER) then
+                    Log("[FAIL] Ability Primary: You have to select a player first!\n")
+                    target = nil
                 else
-                    target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.PLAYER) then
-                        Log("[FAIL] Ability Primary: You have to select a player first!\n")
+                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                        primaryCastRange) then
+                        Log("[FAIL] Ability Primary: Ability out of range!\n")
                         target = nil
                     else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            primaryCastRange) then
-                            Log("[FAIL] Ability Primary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastPrimary(target)
-                            end
+                        if (componentAnimator ~= nil) then
+                            CastPrimary(target)
                         end
                     end
                 end
@@ -332,7 +343,25 @@ function Update(dt)
                 else
                     isMoving = true
 
-                    if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE or goHit.tag == Tag.ENEMY) then
+                    if (goHit.tag == Tag.CORPSE) then
+                        SetState(State.PASSIVE)
+                        target = goHit
+                        if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
+                            passiveRange) then
+                            isMoving = false
+                            Passive()
+                        else
+                            if (footstepsParticle ~= nil) then
+                                footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            end
+                            destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
+                        end
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
                         target = nil
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
@@ -457,6 +486,9 @@ end
 function SetState(newState)
     if (newState == State.IDLE) then
         currentState = State.IDLE
+    elseif (newState == State.PASSIVE) then
+        currentState = State.PASSIVE
+        StopMovement(false)
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
         StopMovement(false)
@@ -753,7 +785,9 @@ function ManageTimers(dt)
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
             else
-                if (currentState == State.AIM_PRIMARY) then
+                if (currentState == State.PASSIVE) then
+                    DoPassive()
+                elseif (currentState == State.AIM_PRIMARY) then
                     DoPrimary()
                 elseif (currentState == State.AIM_SECONDARY) then
                     DoSecondary()
@@ -874,9 +908,31 @@ function IsSelected()
     return false
 end
 
+-- Passive
+function Passive()
+
+    SetState(State.PASSIVE)
+    componentAnimator:SetSelectedClip("Point")
+    LookAtTarget(target:GetTransform():GetPosition())
+
+end
+
+function DoPassive()
+
+    currentCharges = currentCharges + 1
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+    componentAnimator:SetSelectedClip("PointToIdle")
+    SetState(State.IDLE)
+
+    target = nil
+end
+
 -- Primary ability
 function ActivePrimary()
-    if (spitCount > 2) then
+    if (currentCharges >= primaryChargeCost) then
         if (currentState == State.AIM_PRIMARY) then
             CancelAbilities()
         else
@@ -904,7 +960,8 @@ function CastPrimary(thisTarget)
 end
 
 function DoPrimary()
-    spitCount = spitCount - 3
+    currentCharges = currentCharges - primaryChargeCost
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
     DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
 
@@ -916,7 +973,7 @@ end
 
 -- Secondary ability
 function ActiveSecondary()
-    if (secondaryTimer == nil) then
+    if (secondaryTimer == nil and currentCharges >= secondaryChargeCost) then
         if (currentState == State.AIM_SECONDARY) then
             CancelAbilities()
         else
@@ -943,7 +1000,8 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-    spitCount = spitCount + 1
+    currentCharges = currentCharges - secondaryChargeCost
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
     secondaryTimer = 0.0
     abilities.AbilitySecondary = AbilityStatus.Cooldown
@@ -1124,6 +1182,7 @@ function EventHandler(key, fields)
             DispatchGlobalEvent("Player_Ability",
                 {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Omozra: Ultimate = " .. abilities.AbilityUltimate .. "\n")
+            DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
         end
     elseif (key == "Dialogue_Opened") then
         isDialogueOpen = true
@@ -1136,7 +1195,7 @@ function EventHandler(key, fields)
         trackList = {5}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
-        if (spitCount > 2) then
+        if (currentCharges >= primaryChargeCost) then
             abilities.AbilityPrimary = AbilityStatus.Normal
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         else
