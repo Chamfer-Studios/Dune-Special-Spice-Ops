@@ -97,8 +97,6 @@ STATE = {
 
 state = STATE.UNAWARE
 
-isWalking = false
-
 awareness = 0
 targetAwareness = 0
 
@@ -465,6 +463,8 @@ function Start()
     auditoryDebuffMultiplier = 1
     visualDebuffMultiplier = 1
 
+    isWalking = false
+
     thisType = "Harkonnen" -- Default
     dartCount = 2
     isAttacking = false
@@ -725,7 +725,6 @@ function Update(dt)
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     elseif state == STATE.AGGRO then
-        currentClip = componentAnimator:GetSelectedClip()
         if (not isAttacking) then
             DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
         end
@@ -887,17 +886,25 @@ function AttackSardaukar(currentClip)
                 componentAnimator:SetSelectedClip("AttackToIdle")
                 attackTimer = 0
             end
-        elseif currentClip == "AttackToIdle" then
+        elseif currentClip == "AttackToIdle" or currentClip == "RangedToIdle" then
             if componentAnimator:IsCurrentClipPlaying() == false then
-                componentAnimator:SetSelectedClip("Idle")
+                if (distance > attackRange) then -- Both options use attack range since he can't range attack anymore
+                    if (currentClip ~= "Run") then
+                        componentAnimator:SetSelectedClip("Run")
+                    end
+                else
+                    componentAnimator:SetSelectedClip("Idle")
+                end
                 isAttacking = false
             end
-        elseif (distance > attackRange) then
+        elseif (isWalking == false) then
+            if (currentClip ~= "Idle") then
+                componentAnimator:SetSelectedClip("Idle")
+            end
+        else
             if (currentClip ~= "Run") then
                 componentAnimator:SetSelectedClip("Run")
             end
-        else
-            componentAnimator:SetSelectedClip("Idle")
         end
     end
 end
