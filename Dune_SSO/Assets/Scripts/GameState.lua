@@ -241,20 +241,24 @@ function EventHandler(key, fields)
         elseif (fields[1] == 3) then
             omozraAvailable = true
         end
+        SaveGame()
     end
 end
 
 function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
+    --SetGameJsonBool("nerala_available", neralaAvailable)
     SetGameJsonInt("nerala_primary_level", nerala_primary_level)
     SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
     SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
 
+    --SetGameJsonBool("zhib_available", zhibAvailable)
     SetGameJsonInt("zhib_primary_level", zhib_primary_level)
     SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
     SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
 
+    --SetGameJsonBool("omozra_available", omozraAvailable)
     SetGameJsonInt("omozra_primary_level", omozra_primary_level)
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
