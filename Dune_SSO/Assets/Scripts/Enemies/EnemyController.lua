@@ -18,6 +18,9 @@ local attackRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 attackRangeIV = InspectorVariable.new("attackRange", attackRangeIVT, attackRange)
 NewVariable(attackRangeIV)
 
+attackSpeed = 1.5
+dartRange = 100
+
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 visionConeAngleIV = InspectorVariable.new("visionConeAngle", visionConeAngleIVT, visionConeAngle)
@@ -65,8 +68,6 @@ NewVariable(patrolWaypointsIV)
 
 componentAnimator = nil
 
-coneLight = gameObject:GetLight()
-
 awareness_green = nil
 awareness_yellow = nil
 awareness_red = nil
@@ -96,17 +97,22 @@ STATE = {
 
 state = STATE.UNAWARE
 
-isWalking = false
-
 awareness = 0
 targetAwareness = 0
 
-nSingle = 1
 nRepeating = 1
+nSingle = 1
+nDecoy = 1
 nVisual = 1
 
-singleAuditoryTriggers = {}
+-- {
+--        "position": float3
+--        "source": gameObject
+---       "valid": bool
+-- }
 repeatingAuditoryTriggers = {}
+singleAuditoryTriggers = {}
+decoyAuditoryTriggers = {}
 visualTriggers = {}
 
 target = nil
@@ -213,6 +219,11 @@ function RotateToTargetDirection(dt)
 end
 
 function CheckIfPointInCone(position)
+    if (position == nil) then
+        do
+            return
+        end
+    end
     if Float3Distance(position, componentTransform:GetPosition()) > visionConeRadius then
         do
             return (false)
@@ -239,31 +250,38 @@ function CheckIfPointInCone(position)
 end
 
 function ProcessVisualTrigger(position, source)
+    if (position == nil or source == nil) then
+        do
+            return
+        end
+    end
     if not CheckIfPointInCone(position) then
         do
             return
         end
     end
 
-    visualTriggers[nVisual] = {}
-    visualTriggers[nVisual]["position"] = position
-    visualTriggers[nVisual]["source"] = source
-    visualTriggers[nVisual]["valid"] = true
-
-    lambda = function(uid)
-        -- visualTriggers[nVisual]["valid"] = false
-    end
-
     src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
         componentTransform:GetPosition().z)
     dst = float3.new(position.x, position.y + 10, position.z)
 
-    RayCastLambda(src, dst, "terrain", gameObject, RNG(), lambda)
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        visualTriggers[nVisual] = {}
+        visualTriggers[nVisual]["position"] = position
+        visualTriggers[nVisual]["source"] = source
+    end
 
     nVisual = nVisual + 1
 end
 
 function CheckAuditoryTriggerInRange(position, range)
+    if (position == nil or range == nil) then
+        do
+            return (false)
+        end
+    end
     mypos = componentTransform:GetPosition()
 
     distance = Float3Distance(mypos, position)
@@ -280,17 +298,61 @@ function CheckAuditoryTriggerInRange(position, range)
 end
 
 function ProcessSingleAuditoryTrigger(position, source)
-    singleAuditoryTriggers[nSingle] = {}
-    singleAuditoryTriggers[nSingle]["position"] = position
-    singleAuditoryTriggers[nSingle]["source"] = source
+    if (position == nil or source == nil) then
+        Log("Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
+
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
+        componentTransform:GetPosition().z)
+    dst = float3.new(position.x, position.y + 10, position.z)
+
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        singleAuditoryTriggers[nSingle] = {}
+        singleAuditoryTriggers[nSingle]["position"] = position
+        singleAuditoryTriggers[nSingle]["source"] = source
+    end
 
     nSingle = nSingle + 1
 end
 
+function ProcessDecoyAuditoryTrigger(position, source)
+    if (position == nil or source == nil) then
+        Log("Decoy Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
+    decoyAuditoryTriggers[nDecoy] = {}
+    decoyAuditoryTriggers[nDecoy]["position"] = position
+    decoyAuditoryTriggers[nDecoy]["source"] = source
+
+    nDecoy = nDecoy + 1
+end
+
 function ProcessRepeatedAuditoryTrigger(position, source)
-    repeatingAuditoryTriggers[nRepeating] = {}
-    repeatingAuditoryTriggers[nRepeating]["position"] = position
-    repeatingAuditoryTriggers[nRepeating]["source"] = source
+    if (position == nil or source == nil) then
+        Log("Repeated Auditory Trigger Error\n")
+        do
+            return
+        end
+    end
+
+    src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
+        componentTransform:GetPosition().z)
+    dst = float3.new(position.x, position.y + 10, position.z)
+
+    hit = CustomRayCast(src, dst, Tag.WALL)
+
+    if hit == false then
+        repeatingAuditoryTriggers[nRepeating] = {}
+        repeatingAuditoryTriggers[nRepeating]["position"] = position
+        repeatingAuditoryTriggers[nRepeating]["source"] = source
+    end
 
     nRepeating = nRepeating + 1
 end
@@ -306,6 +368,8 @@ function ProcessAuditoryTrigger(position, range, type, source)
         ProcessSingleAuditoryTrigger(position, source)
     elseif type == "repeated" then
         ProcessRepeatedAuditoryTrigger(position, source)
+    elseif type == "decoy" then
+        ProcessDecoyAuditoryTrigger(position, source)
     end
 end
 
@@ -317,12 +381,11 @@ end
 
 function UpdateAwarenessBars()
     position = componentTransform:GetPosition()
-    awareness_green:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x,
-        position.y + awarenessOffset.y, position.z + awarenessOffset.z))
-    awareness_yellow:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x,
-        position.y + awarenessOffset.y, position.z + awarenessOffset.z))
-    awareness_red:GetTransform():SetPosition(float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y,
-        position.z + awarenessOffset.z))
+    awarenessPosition = float3.new(position.x + awarenessOffset.x, position.y + awarenessOffset.y,
+        position.z + awarenessOffset.z)
+    awareness_green:GetTransform():SetPosition(awarenessPosition)
+    awareness_yellow:GetTransform():SetPosition(awarenessPosition)
+    awareness_red:GetTransform():SetPosition(awarenessPosition)
 
     if awareness < 1 then
         awareness_green:GetTransform():SetScale(
@@ -370,8 +433,17 @@ function Start()
     InstantiateNamedPrefab("awareness_yellow", awareness_yellow_name)
     InstantiateNamedPrefab("awareness_red", awareness_red_name)
 
+    coneLight = gameObject:GetLight()
     componentRigidbody = gameObject:GetRigidBody()
+    componentBoxCollider = gameObject:GetBoxCollider()
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
+    if (componentAnimator ~= nil) then
+        if (static == true) then
+            componentAnimator:SetSelectedClip("Idle")
+        else
+            componentAnimator:SetSelectedClip("Walk")
+        end
+    end
 
     debuffParticle = gameObject:GetChildren()[1]
     if (debuffParticle ~= nil) then
@@ -386,19 +458,24 @@ function Start()
         slashParticle:GetComponentParticle():StopParticleSpawn()
     end
 
-    if (componentAnimator ~= nil) then
-        if (static == true) then
-            componentAnimator:SetSelectedClip("Idle")
-        else
-            componentAnimator:SetSelectedClip("Walk")
-        end
-    end
-
     targetDirection = componentTransform:GetFront()
+
+    auditoryDebuffMultiplier = 1
+    visualDebuffMultiplier = 1
+
+    isWalking = false
+
+    thisType = "Harkonnen" -- Default
+
+    deathParameters = {
+        LeaveBody = true,
+        EnemyName = thisType
+    }
+    dartCount = 2
+    isAttacking = false
 end
 
 function UpdateTargetAwareness()
-
     awarenessSpeed = awarenessDecaySpeed
 
     closestTarget = GetClosestTarget()
@@ -412,11 +489,16 @@ function UpdateTargetAwareness()
     if #visualTriggers ~= 0 then
         targetAwareness = 2
         prop = 1.2 - (distance / visionConeRadius)
-        awarenessSpeed = awarenessVisualSpeed * prop
+        awarenessSpeed = awarenessVisualSpeed * prop * visualDebuffMultiplier
     elseif #repeatingAuditoryTriggers ~= 0 then
         targetAwareness = 2
         prop = 1.2 - (distance / hearingRange)
-        awarenessSpeed = awarenessSoundSpeed * prop
+        awarenessSpeed = awarenessSoundSpeed * prop * auditoryDebuffMultiplier
+    elseif #decoyAuditoryTriggers ~= 0 then
+        if state == STATE.UNAWARE then
+            awareness = 1
+            targetAwareness = 1
+        end
     else
         targetAwareness = 0
     end
@@ -508,11 +590,14 @@ function GetClosestTarget()
     closestRepeatingTrigger = GetClosestTrigger(state, repeatingAuditoryTriggers)
     closestSingleTrigger = GetClosestTrigger(state, singleAuditoryTriggers)
     closestVisualTrigger = GetClosestTrigger(state, visualTriggers)
+    closestDecoyTrigger = GetClosestTrigger(state, decoyAuditoryTriggers)
 
     newTarget = target
 
     if closestVisualTrigger ~= nil then
         newTarget = closestVisualTrigger
+    elseif closestDecoyTrigger ~= nil then
+        newTarget = closestDecoyTrigger
     elseif closestSingleTrigger ~= nil then
         newTarget = closestSingleTrigger
     elseif closestRepeatingTrigger ~= nil then
@@ -564,39 +649,72 @@ function SwitchState(from, to)
     DispatchEvent("Change_State", {from, to})
 end
 
-function UpdateAnimation(oldState, target)
-    -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
-    if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
-        if (componentAnimator ~= nil) then
-            if (isWalking == false) then
-                componentAnimator:SetSelectedClip("Idle")
-            else
-                componentAnimator:SetSelectedClip("Walk")
-            end
+function UpdateAnimation(dt, oldState, target)
+    if (attackTimer ~= nil) then
+        attackTimer = attackTimer + dt
+        if (attackTimer >= attackSpeed) then
+            attackTimer = nil
         end
-    elseif state == STATE.AGGRO then
-        if (componentAnimator ~= nil) then
-            currentClip = componentAnimator:GetSelectedClip()
-            if Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition()) <
-                attackRange and currentClip ~= "Attack" and currentClip ~= "AttackToIdle" then
-                componentAnimator:SetSelectedClip("Attack")
-            elseif currentClip == "Attack" then
-                if componentAnimator:IsCurrentClipPlaying() == false then
-                    DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
-                    componentAnimator:SetSelectedClip("AttackToIdle")
-                end
-            elseif currentClip == "AttackToIdle" then
-                if componentAnimator:IsCurrentClipPlaying() == false then
+    end
+    if (dartTimer ~= nil) then
+        dartTimer = dartTimer + dt
+        if (dartTimer >= attackSpeed) then
+            dartTimer = nil
+        end
+    end
+
+    if (componentAnimator ~= nil) then
+        currentClip = componentAnimator:GetSelectedClip()
+        -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
+        if state == STATE.UNAWARE or state == STATE.SUS then
+            if (isWalking == false) then
+                if (currentClip ~= "Idle") then
                     componentAnimator:SetSelectedClip("Idle")
                 end
-            elseif currentClip ~= "Walk" then
-                componentAnimator:SetSelectedClip("Walk")
+            elseif (isWalking == true) then
+                if (currentClip ~= "Walk") then
+                    componentAnimator:SetSelectedClip("Walk")
+                end
             end
-        end
-    elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
-        componentAnimator:SetSelectedClip("Death")
-    elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD then
-        if componentAnimator:IsCurrentClipPlaying() == false and state ~= STATE.CORPSE then
+        elseif state == STATE.AGGRO then
+            if (thisType == "Harkonnen") then
+                if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance <
+                    attackRange then
+                    componentAnimator:SetSelectedClip("Attack")
+                    isAttacking = true
+                elseif currentClip == "Attack" then
+                    if (componentAnimator:IsCurrentClipPlaying() == false) then
+                        DispatchGlobalEvent("Enemy_Attack", {target["source"], thisType})
+                        componentAnimator:SetSelectedClip("AttackToIdle")
+                        attackTimer = 0
+                    end
+                elseif currentClip == "AttackToIdle" then
+                    if componentAnimator:IsCurrentClipPlaying() == false then
+                        if (distance > attackRange) then
+                            if (currentClip ~= "Run") then
+                                componentAnimator:SetSelectedClip("Run")
+                            end
+                        else
+                            componentAnimator:SetSelectedClip("Idle")
+                        end
+                        isAttacking = false
+                    end
+                elseif (isWalking == false) then
+                    if (currentClip ~= "Idle") then
+                        componentAnimator:SetSelectedClip("Idle")
+                    end
+                else
+                    if (currentClip ~= "Walk") then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
+                end
+            elseif (thisType == "Sardaukar") then
+                AttackSardaukar(currentClip) -- Lo aparto para no estorbar
+            end
+        elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
+            componentAnimator:SetSelectedClip("Death")
+        elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD and state ~= STATE.CORPSE and
+            componentAnimator:IsCurrentClipPlaying() == false then
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
             componentAnimator:SetSelectedClip("Corpse")
         end
@@ -606,7 +724,7 @@ end
 function Update(dt)
     if state == STATE.DEAD then
         do
-            UpdateAnimation(oldState, target)
+            UpdateAnimation(dt, oldState, target)
             return
         end
     end
@@ -616,7 +734,7 @@ function Update(dt)
     target = GetClosestTarget()
     UpdatePathIfNecessary(oldState, state)
     UpdateSecondaryObjects()
-    UpdateAnimation(oldState, target)
+    UpdateAnimation(dt, oldState, target)
     RotateToTargetDirection(dt)
 
     if state == STATE.UNAWARE then
@@ -624,11 +742,12 @@ function Update(dt)
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     elseif state == STATE.AGGRO then
-        DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
+        if (not isAttacking) then
+            DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
+        end
     end
 
     ClearPerceptionMemory()
-
     DrawDebugger()
 end
 
@@ -636,13 +755,26 @@ function ClearPerceptionMemory()
     nSingle = 1
     nRepeating = 1
     nVisual = 1
+    nDecoy = 1
 
     singleAuditoryTriggers = {}
+    decoyAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
 end
 
 function Die(leaveBody, enemyName)
+    DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
+
+    if (leaveBody == false) then
+        do
+            DeleteGameObject()
+            return
+        end
+    end
+
+    SwitchState(state, STATE.CORPSE)
+
     -- Spice Loot Droprate
     math.randomseed(os.time())
     rng = math.random(100)
@@ -653,28 +785,11 @@ function Die(leaveBody, enemyName)
     else
         Log("The drop rate has not been good :( " .. rng .. "\n")
     end
-
-    DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
-
-    SwitchState(state, STATE.CORPSE)
-
-    if (leaveBody == false) then
-        do
-            DeleteGameObject()
-            return
-        end
-    end
-
     -- Log(apetecan())
 end
 
-deathParameters = {
-    LeaveBody = true,
-    EnemyName = "Harkonnen"
-}
-
 function EventHandler(key, fields)
-    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated"); fields[4] -> source ("GameObject");
+    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "Walking_Direction" then
         SetTargetDirection(fields[1])
@@ -682,37 +797,41 @@ function EventHandler(key, fields)
         ProcessVisualTrigger(fields[1], fields[2])
     elseif key == "IsWalking" then
         isWalking = fields[1]
+    elseif key == "Dart_Success" then
+        auditoryDebuffMultiplier = fields[1] / 100
+        visualDebuffMultiplier = fields[2] / 100
+        if (debuffParticle ~= nil) then
+            debuffParticle:GetComponentParticle():ResumeParticleSpawn()
+            debuffParticle:GetComponentParticle():SetLoop(true)
+            debuffParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
+        end
+    elseif key == "Assign_Type" then
+        thisType = fields[1]
+        attackRange = 40
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
-        if fields[1] == EnemyDeath.PLAYER_ATTACK then
+        if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
-        elseif fields[1] == EnemyDeath.KNIFE then
-            SwitchState(state, STATE.DEAD)
-            deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
-            Log("HE DED 1\n")
             if (slashParticle ~= nil) then
                 slashParticle:GetComponentParticle():ResumeParticleSpawn()
                 slashParticle:GetComponentParticle():SetLoop(false)
                 slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
                     componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
-                Log("HE DED 2\n")
             end
             deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
-        elseif fields[1] == EnemyDeath.MOSQUITO then
-            SwitchState(state, STATE.DEAD)
-            deathParameters.LeaveBody = true
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
         elseif fields[1] == EnemyDeath.WORM_KILL then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = false
-            deathParameters.EnemyName = fields[2]
+            deathParameters.EnemyName = thisType
             Die(deathParameters.LeaveBody, deathParameters.EnemyName)
         end
+
+        gameObject.tag = Tag.CORPSE
 
         if (awareness_green ~= nil) then
             DeleteGameObjectByUID(awareness_green:GetUID())
@@ -726,7 +845,6 @@ function EventHandler(key, fields)
             DeleteGameObjectByUID(awareness_yellow:GetUID())
             awareness_yellow = nil
         end
-
         if (componentBoxCollider ~= nil) then
             gameObject:DeleteComponent(componentBoxCollider)
             componentBoxCollider = nil
@@ -740,6 +858,67 @@ end
 
 function DrawDebugger()
     DrawCircle(componentTransform:GetPosition(), hearingRange, float3.new(255.0, 0.0, 0.0), 5.0)
+end
+
+function AttackSardaukar(currentClip)
+    if (updateDartTarget ~= nil) then
+        DispatchGlobalEvent("Update_Enemy_Dart_Target", {dartName, target["source"], componentTransform:GetPosition()})
+        updateDartTarget = nil
+        dartName = nil
+    end
+    local distance = Float3Distance(componentTransform:GetPosition(), target["source"]:GetTransform():GetPosition())
+    if (dartCount > 0) then
+        if currentClip ~= "Ranged" and currentClip ~= "RangedToIdle" and dartTimer == nil and distance < dartRange then
+            componentAnimator:SetSelectedClip("Ranged")
+            isAttacking = true
+        elseif currentClip == "Ranged" then
+            if (componentAnimator:IsCurrentClipPlaying() == false) then
+                dartName = "SardaukarDart " .. gameObject:GetUID() .. " " .. dartCount * (-1) + 3
+                updateDartTarget = true
+                InstantiateNamedPrefab("SardaukarDart", dartName)
+                componentAnimator:SetSelectedClip("RangedToIdle")
+                dartCount = dartCount - 1
+                dartTimer = 0
+            end
+        elseif currentClip == "RangedToIdle" then
+            if componentAnimator:IsCurrentClipPlaying() == false then
+                componentAnimator:SetSelectedClip("Run")
+                isAttacking = false
+            end
+        elseif (currentClip ~= "Run") then
+            componentAnimator:SetSelectedClip("Run")
+        end
+    else
+        if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance < attackRange then
+            componentAnimator:SetSelectedClip("Attack")
+            isAttacking = true
+        elseif currentClip == "Attack" then
+            if (componentAnimator:IsCurrentClipPlaying() == false) then
+                DispatchGlobalEvent("Enemy_Attack", {target["source"], "Sardaukar"})
+                componentAnimator:SetSelectedClip("AttackToIdle")
+                attackTimer = 0
+            end
+        elseif currentClip == "AttackToIdle" or currentClip == "RangedToIdle" then
+            if componentAnimator:IsCurrentClipPlaying() == false then
+                if (distance > attackRange) then -- Both options use attack range since he can't range attack anymore
+                    if (currentClip ~= "Run") then
+                        componentAnimator:SetSelectedClip("Run")
+                    end
+                else
+                    componentAnimator:SetSelectedClip("Idle")
+                end
+                isAttacking = false
+            end
+        elseif (isWalking == false) then
+            if (currentClip ~= "Idle") then
+                componentAnimator:SetSelectedClip("Idle")
+            end
+        else
+            if (currentClip ~= "Run") then
+                componentAnimator:SetSelectedClip("Run")
+            end
+        end
+    end
 end
 
 print("EnemyController.lua compiled successfully!")

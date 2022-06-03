@@ -55,7 +55,7 @@ function FollowPath(speed, dt, loop, useRB)
     if #_G.finalPath == 0 or currentPathIndex > #_G.finalPath then
         do
             DispatchEvent("IsWalking", {false})
-            if (componentRigidBody ~= nil) then
+            if (componentRigidBody ~= nil and useRB == true) then
                 componentRigidBody:SetLinearVelocity(float3.new(0.0, 0.0, 0.0))
             end
             do

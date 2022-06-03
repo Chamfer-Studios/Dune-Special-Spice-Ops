@@ -64,9 +64,12 @@ speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
 staminaSeconds = 5
-recoveryTime = 3
+recoveryTime = 5
 staminaTimer = staminaSeconds
 isTired = false
+isUsingQ = false
+isUsingW = false
+isUsingE = false
 
 -- Basic Attack --
 attackRange = 25.0
@@ -85,7 +88,7 @@ aggroChanceSardKnife = 0
 
 -- Secondary ability --
 maxDecoy = 1
-secondaryCastRange = 75
+secondaryCastRange = 225 -- 75
 secondaryCooldown = 10
 
 -- Ultimate ability --
@@ -100,6 +103,7 @@ doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
 isDialogueOpen = false
+hasToMove = false
 ---------------------------------------------------------
 
 ------------------- Detection logic ---------------------
@@ -207,10 +211,6 @@ function Start()
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-    -- Stamina
-    staminaBar = Find("Stamina Bar")
-    staminaBarSizeY = staminaBar:GetTransform():GetScale().y
-
     -- Abilities
     knifeCount = maxKnives
     decoyCount = maxDecoy
@@ -218,8 +218,15 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+
     DrawActiveAbilities()
     DrawHoverParticle()
+
+    if staminaBarBlue == nil then
+        ConfigStaminaBars()
+    else
+        UpdateStaminaBar()
+    end
 
     if (bloodParticle ~= nil) then
         bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
@@ -237,7 +244,9 @@ function Update(dt)
     end
 
     if (ManageTimers(dt) == false) then
-        return
+        do
+            return
+        end
     end
 
     -- States
@@ -247,20 +256,18 @@ function Update(dt)
             Attack()
         else
             destination = target:GetTransform():GetPosition()
-            MoveToDestination(dt)
+            hasToMove = true
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
-        MoveToDestination(dt)
+        hasToMove = true
     end
 
     -- Gather Inputs
     if (IsSelected() == true) then
-
-        UpdateStaminaBar()
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -355,7 +362,9 @@ function Update(dt)
                             attackRange) then
                             if (attackTimer == nil) then
                                 Log("Already Atacking!\n")
-                                return
+                                do
+                                    return
+                                end
                             else
                                 isMoving = false
                                 Attack()
@@ -366,11 +375,13 @@ function Update(dt)
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                             end
                             destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    elseif (goHit.tag == Tag.PICKUP) then
-                        Log("Going to a pickup\n")
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE) then
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then
@@ -389,7 +400,9 @@ function Update(dt)
                     else
                         if (isMoving == true) then
                             Log("No possible path\n")
-                            return
+                            do
+                                return
+                            end
                         else
                             Log("No possible path\n")
                             target = nil
@@ -406,9 +419,8 @@ function Update(dt)
                         end
 
                     end
-
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
-                        false) then
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and
+                        not isTired) then
                         SetMovement(Movement.RUN)
                     else
                         if (currentMovement == Movement.IDLE and isMoving == true) then
@@ -466,6 +478,23 @@ function Update(dt)
         end
     else
         -- CancelAbilities()
+    end
+
+    if (hasToMove == true and destination ~= nil) then
+        MoveToDestination(dt)
+        hasToMove = false
+    end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
     end
 end
 --------------------------------------------------
@@ -562,7 +591,9 @@ end
 
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
-        return
+        do
+            return
+        end
     end
 
     if (IsSelected() == true) then
@@ -599,7 +630,9 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
-            return
+            do
+                return
+            end
         end
         choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
         choosingTargetParticle:GetTransform():SetPosition(finalPosition)
@@ -634,10 +667,52 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    -- Log("Stamina proportion: " .. (staminaTimer / staminaSeconds) .. "\n")
-    -- Log("Stamina final size: " .. staminaBarSizeY * (staminaTimer / staminaSeconds) .. "\n")
-    staminaBar:GetTransform():SetScale(float3.new(staminaBar:GetTransform():GetScale().x,
-        staminaBarSizeY * (staminaTimer / staminaSeconds), staminaBar:GetTransform():GetScale().z))
+    local pos = componentTransform:GetPosition()
+    if IsSelected() == true then
+        local proportion = staminaTimer / staminaSeconds
+        local recoveryProportion = staminaTimer / recoveryTime
+
+        staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+        staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+        staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+        staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+
+        -- NEW
+        if isTired == false then
+            if proportion >= 0.66 then
+                staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                    staminaBarSizeZ))
+                staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+            elseif proportion >= 0.33 and proportion < 0.66 then
+                staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                    staminaBarSizeZ))
+                staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+            else
+                staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+                staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                    staminaBarSizeZ))
+                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+            end
+        else
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
+                staminaBarSizeZ))
+        end
+    else
+        if GetVariable("GameState.lua", "anyCharacterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false then
+            staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
+            staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
+            staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
+            staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
+        end
+    end
 end
 
 function ManageTimers(dt)
@@ -915,7 +990,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Knife")
     StopMovement(false)
@@ -924,16 +1000,15 @@ function CastPrimary(position)
 end
 
 function DoPrimary()
-
     InstantiatePrefab("Knife")
     knifeCount = knifeCount - 1
 
     if (knifeCount > 0) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        -- abilities.AbilityPrimary = AbilityStatus.Normal
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     else
-        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        -- abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
+        -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
     trackList = {5, 11}
@@ -958,7 +1033,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Decoy")
     StopMovement(false)
@@ -968,7 +1044,6 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-    abilities.AbilitySecondary = AbilityStatus.Using
     InstantiatePrefab("Decoy")
 
     decoyCount = decoyCount - 1
@@ -997,7 +1072,8 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0
@@ -1102,7 +1178,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
+        do
+            return
+        end
     end
 
     iFramesTimer = 0
@@ -1129,10 +1207,6 @@ function Die()
     SetState(State.DEAD)
     currentHP = 0
 
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
-    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
@@ -1156,7 +1230,9 @@ function EventHandler(key, fields)
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
             if (fields[2] == "Harkonnen") then
-                TakeDamage()
+                TakeDamage(1)
+            elseif (fields[2] == "Sardaukar") then
+                TakeDamage(2)
             end
         end
     elseif (key == "Active_Primary") then
@@ -1177,14 +1253,23 @@ function EventHandler(key, fields)
             CancelAbilities(true)
         end
         if (fields[2] == characterID) then
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             -- If game changed to Zhib, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Zhib: Primary = " .. abilities.AbilityPrimary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryTimer})
             -- Log("Zhib: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Zhib: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
+    elseif (key == "Knife_Grabbable") then
+        abilities.AbilityPrimary = AbilityStatus.Pickable
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+    elseif (key == "Decoy_Grabbable") then
+        abilities.AbilitySecondary = AbilityStatus.Pickable
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
         trackList = {15}
@@ -1238,11 +1323,11 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + 1
+                currentHP = currentHP + fields[2]
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Zhib. Current HP = " .. currentHP .. "\n")
             else
-                Log("Sadiq has healed Zhib, but it was already full HP\n")
+                Log("Sadiq tried to heal Zhib but he was already full HP\n")
             end
         end
     elseif (key == "Smokebomb_Start") then
@@ -1254,7 +1339,24 @@ function EventHandler(key, fields)
     elseif (key == "Update_Zhib_Position") then
         Log("Receiving Zhib Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+    elseif (key == "Zhib_Primary_Bugged") then
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        knifeCount = knifeCount + 1
+        Log("Knife bugged, correction applied.\n")
     end
+end
+
+function ConfigStaminaBars()
+    Log("Configuring stamina bars\n")
+    staminaBarYellow = Find("Stamina Bar Yellow")
+    staminaBarGreen = Find("Stamina Bar Green")
+    staminaBarRed = Find("Stamina Bar Red")
+    staminaBarBlue = Find("Stamina Bar Blue")
+
+    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
+    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
+    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 
@@ -1268,7 +1370,9 @@ end
 function OnCollisionEnter(go)
 
     if (currentState == State.DEAD) then
-        return
+        do
+            return
+        end
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         -- TakeDamage(1)

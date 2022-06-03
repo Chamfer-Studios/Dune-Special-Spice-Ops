@@ -65,18 +65,24 @@ speed = 2500
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
 staminaSeconds = 5
-recoveryTime = 3
+recoveryTime = 5
 staminaTimer = staminaSeconds
 isTired = false
 
 -- Basic Attack --
 attackRange = 50.0
 attackTime = 2.5
+unawareChanceHarkAttack = 100
+awareChanceHarkAttack = 75
+aggroChanceHarkAttack = 50
+unawareChanceSardAttack = 100
+awareChanceSardAttack = 60
+aggroChanceSardAttack = 40
 
 -- Primary ability --
 primaryCastRange = 100
 primaryCooldown = 5
-dartSpeed = 3000
+dartSpeed = 10000
 unawareChanceHarkDart = 100
 awareChanceHarkDart = 90
 aggroChanceHarkDart = 0
@@ -89,6 +95,7 @@ secondaryCastRange = 75
 secondaryCooldown = 10.0
 maxSmokeBombCount = 3
 smokeBombCount = maxSmokeBombCount
+smokebombActive = false
 
 -- Ultimate ability --
 ultimateCastRange = 50
@@ -102,6 +109,7 @@ doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
 isDialogueOpen = false
+hasToMove = false
 ---------------------------------------------------------
 
 ------------------- Detection logic ---------------------
@@ -112,59 +120,59 @@ smokebombFlag = false
 unlocked = false;
 
 ------------------- Inspector setter --------------------
--- Globals --
-maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
-NewVariable(maxHPIV)
+-- -- Globals --
+-- maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- maxHPIV = InspectorVariable.new("maxHP", maxHPIVT, maxHP)
+-- NewVariable(maxHPIV)
 
-speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-speedIV = InspectorVariable.new("speed", speedIVT, speed)
-NewVariable(speedIV)
+-- speedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- speedIV = InspectorVariable.new("speed", speedIVT, speed)
+-- NewVariable(speedIV)
 
-crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
-    crouchMultiplierPercentage)
-NewVariable(crouchMultiplierPercentageIV)
+-- crouchMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- crouchMultiplierPercentageIV = InspectorVariable.new("crouchMultiplierPercentage", crouchMultiplierPercentageIVT,
+--     crouchMultiplierPercentage)
+-- NewVariable(crouchMultiplierPercentageIV)
 
-runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
-    runMultiplierPercentage)
-NewVariable(runMultiplierPercentageIV)
+-- runMultiplierPercentageIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- runMultiplierPercentageIV = InspectorVariable.new("runMultiplierPercentage", runMultiplierPercentageIVT,
+--     runMultiplierPercentage)
+-- NewVariable(runMultiplierPercentageIV)
 
-staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
-NewVariable(staminaSecondsIV)
+-- staminaSecondsIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- staminaSecondsIV = InspectorVariable.new("staminaSeconds", staminaSecondsIVT, staminaSeconds)
+-- NewVariable(staminaSecondsIV)
 
-recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
-NewVariable(recoveryTimeIV)
+-- recoveryTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- recoveryTimeIV = InspectorVariable.new("recoveryTime", recoveryTimeIVT, recoveryTime)
+-- NewVariable(recoveryTimeIV)
 
--- Primary ability --
-primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
-NewVariable(primaryCastRangeIV)
+-- -- Primary ability --
+-- primaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- primaryCastRangeIV = InspectorVariable.new("primaryCastRange", primaryCastRangeIVT, primaryCastRange)
+-- NewVariable(primaryCastRangeIV)
 
-primaryCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-primaryCooldownIV = InspectorVariable.new("primaryCooldown", primaryCooldownIVT, primaryCooldown)
-NewVariable(primaryCooldownIV)
+-- primaryCooldownIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- primaryCooldownIV = InspectorVariable.new("primaryCooldown", primaryCooldownIVT, primaryCooldown)
+-- NewVariable(primaryCooldownIV)
 
-dartSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-dartSpeedIV = InspectorVariable.new("dartSpeed", dartSpeedIVT, dartSpeed)
-NewVariable(dartSpeedIV)
+-- dartSpeedIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- dartSpeedIV = InspectorVariable.new("dartSpeed", dartSpeedIVT, dartSpeed)
+-- NewVariable(dartSpeedIV)
 
----- Secondary ability --
-secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
-NewVariable(secondaryCastRangeIV)
+-- ---- Secondary ability --
+-- secondaryCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- secondaryCastRangeIV = InspectorVariable.new("secondaryCastRange", secondaryCastRangeIVT, secondaryCastRange)
+-- NewVariable(secondaryCastRangeIV)
 
----- Ultimate ability --
-ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
-NewVariable(ultimateCastRangeIV)
+-- ---- Ultimate ability --
+-- ultimateCastRangeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateCastRangeIV = InspectorVariable.new("ultimateCastRange", ultimateCastRangeIVT, ultimateCastRange)
+-- NewVariable(ultimateCastRangeIV)
 
-ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
-ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
-NewVariable(ultimateSpiceCostIV)
+-- ultimateSpiceCostIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+-- ultimateSpiceCostIV = InspectorVariable.new("ultimateSpiceCost", ultimateSpiceCostIVT, ultimateSpiceCost)
+-- NewVariable(ultimateSpiceCostIV)
 ---------------------------------------------------------
 
 ----------------------- Methods -------------------------
@@ -205,10 +213,6 @@ function Start()
     -- HP
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
-
-    -- Stamina
-    staminaBar = Find("Stamina Bar")
-    staminaBarSizeY = staminaBar:GetTransform():GetScale().y
 end
 
 -- Called each loop iteration
@@ -233,7 +237,9 @@ function Update(dt)
     end
 
     if (ManageTimers(dt) == false) then
-        return
+        do
+            return
+        end
     end
 
     -- States
@@ -242,20 +248,24 @@ function Update(dt)
             Attack()
         else
             destination = target:GetTransform():GetPosition()
-            MoveToDestination(dt)
+            hasToMove = true
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
-        MoveToDestination(dt)
+        hasToMove = true
     end
 
     -- Gather Inputs
     if (IsSelected() == true) then
 
-        UpdateStaminaBar()
+        if staminaBarBlue == nil then
+            ConfigStaminaBars()
+        else
+            UpdateStaminaBar()
+        end
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -345,18 +355,28 @@ function Update(dt)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            isMoving = false
-                            Attack()
+                            if (attackTimer == nil) then
+                                Log("Already Atacking!\n")
+                                do
+                                    return
+                                end
+                            else
+                                isMoving = false
+                                Attack()
+                            end
+
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
                             end
                             destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    elseif (goHit.tag == Tag.PICKUP) then
-                        Log("Going to a pickup\n")
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.CORPSE) then
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then
@@ -375,7 +395,9 @@ function Update(dt)
                     else
                         if (isMoving == true) then
                             Log("No possible path\n")
-                            return
+                            do
+                                return
+                            end
                         else
                             Log("No possible path\n")
                             target = nil
@@ -390,10 +412,10 @@ function Update(dt)
                             DispatchEvent("Pathfinder_UpdatePath",
                                 {{destination}, false, componentTransform:GetPosition()})
                         end
-                    end
 
-                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and isTired ==
-                        false) then
+                    end
+                    if (currentMovement == Movement.WALK and isDoubleClicking == true and isMoving == true and
+                        not isTired) then
                         SetMovement(Movement.RUN)
                     else
                         if (currentMovement == Movement.IDLE and isMoving == true) then
@@ -452,6 +474,23 @@ function Update(dt)
         end
     else
         -- CancelAbilities()
+    end
+
+    if (hasToMove == true and destination ~= nil) then
+        MoveToDestination(dt)
+        hasToMove = false
+    end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
     end
 end
 --------------------------------------------------
@@ -551,7 +590,9 @@ end
 
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
-        return
+        do
+            return
+        end
     end
 
     if (IsSelected() == true) then
@@ -590,7 +631,9 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
-            return
+            do
+                return
+            end
         end
         choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
         choosingTargetParticle:GetTransform():SetPosition(finalPosition)
@@ -618,7 +661,7 @@ function DrawActiveAbilities()
             elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.05)
+                componentLight:SetDiffuse(0.1)
             else
                 componentLight:SetAngle(0)
             end
@@ -629,8 +672,44 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    staminaBar:GetTransform():SetScale(float3.new(staminaBar:GetTransform():GetScale().x,
-        staminaBarSizeY * (staminaTimer / staminaSeconds), staminaBar:GetTransform():GetScale().z))
+    local proportion = staminaTimer / staminaSeconds
+    local recoveryProportion = staminaTimer / recoveryTime
+
+    local pos = componentTransform:GetPosition()
+
+    staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+
+    -- NEW
+    if isTired == false then
+        if proportion >= 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        elseif proportion >= 0.33 and proportion < 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        else
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        end
+    else
+        staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
+            staminaBarSizeZ))
+    end
 end
 
 function ManageTimers(dt)
@@ -789,7 +868,6 @@ function MoveToDestination(dt)
         -- Movement
         vec2 = Normalize(vec2, d)
         if (componentRigidBody ~= nil) then
-            -- componentRigidBody:SetLinearVelocity(float3.new(vec2[1] * s * dt, 0, vec2[2] * s * dt))
             DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
 
@@ -847,9 +925,7 @@ end
 
 -- Basic Attack
 function Attack()
-
     SetState(State.ATTACK)
-
     componentAnimator:SetSelectedClip("Attack")
     impactParticle:GetComponentParticle():SetLoop(true)
     impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,
@@ -893,7 +969,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Dart")
     StopMovement(false)
@@ -918,7 +995,7 @@ end
 
 -- Secondary ability
 function ActiveSecondary()
-    if (smokeBombCount > 0) then
+    if (smokeBombCount > 0 and smokebombActive == false) then
         if (currentState == State.AIM_SECONDARY) then
             CancelAbilities()
         else
@@ -931,7 +1008,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Smokebomb")
     StopMovement(false)
@@ -944,13 +1022,6 @@ function PlaceSmokebomb()
     InstantiatePrefab("Smokebomb")
     smokeBombCount = smokeBombCount - 1
 
-    if (smokeBombCount > 0) then
-        abilities.AbilitySecondary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-    else
-        abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-    end
     -- secondaryTimer = 0.0
 
     trackList = {6}
@@ -977,7 +1048,8 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("Mosquito")
 
@@ -990,8 +1062,6 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
-    abilities.AbilityUltimate = AbilityStatus.Using
-
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
         OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -1011,7 +1081,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
+        do
+            return
+        end
     end
 
     iFramesTimer = 0
@@ -1038,10 +1110,6 @@ function Die()
     SetState(State.DEAD)
     currentHP = 0
 
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
-    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
@@ -1066,7 +1134,9 @@ function EventHandler(key, fields)
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
             if (fields[2] == "Harkonnen") then
-                TakeDamage()
+                TakeDamage(1)
+            elseif (fields[2] == "Sardaukar") then
+                TakeDamage(2)
             end
         end
     elseif (key == "Active_Primary") then
@@ -1087,12 +1157,14 @@ function EventHandler(key, fields)
             CancelAbilities(true)
         end
         if (fields[2] == characterID) then
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             -- If game changed to nerala, update HUD events depending on Abilities
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryTimer})
             -- Log("Nerala: Primary = " .. abilities.AbilityPrimary .. "\n")
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             -- Log("Nerala: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
@@ -1140,7 +1212,7 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + 1
+                currentHP = currentHP + fields[2]
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Nerala. Current HP = " .. currentHP .. "\n")
             else
@@ -1150,13 +1222,34 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_Start") then
         smokebombPosition = fields[1]
         smokebombRadius = fields[2]
+        smokebombActive = true
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
+        smokebombActive = false
+        if (smokeBombCount > 0) then
+            abilities.AbilitySecondary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        else
+            abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        end
     elseif (key == "Update_Nerala_Position") then
         Log("Receiving Nerala Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
     end
+end
+
+function ConfigStaminaBars()
+    Log("Configuring stamina bars\n")
+    staminaBarYellow = Find("Stamina Bar Yellow")
+    staminaBarGreen = Find("Stamina Bar Green")
+    staminaBarRed = Find("Stamina Bar Red")
+    staminaBarBlue = Find("Stamina Bar Blue")
+
+    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
+    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
+    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 
@@ -1169,7 +1262,9 @@ end
 
 function OnCollisionEnter(go)
     if (currentState == State.DEAD) then
-        return
+        do
+            return
+        end
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         -- TakeDamage(1)

@@ -7,6 +7,8 @@ targetAngle = 0.0
 newZoomedPos = float3.new(0, 0, 0)
 zoomSpeed = 50
 mosquitoAlive = false
+arrived = false
+actualId = 0
 
 function Update(dt)
   
@@ -22,11 +24,74 @@ function Update(dt)
         newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
         newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
     end
+    if (Find("LeftArrow"):GetButton():IsPressed()) then -- Q
+        if (actualId == 1) then
+            return
+        end
+        if(actualId == nil)then
+           actualId = 0
+        end
+        if(actualId == 0) then
+            actualId = 1
+        elseif(actualId == 2) then
+            actualId = 0
+        end
+        str = "ActualPos" .. actualId .. "\n"
+        Log(str)
+        arrived = false
+        remainingAngle = remainingAngle - angle
+    end
 
+    if (Find("RightArrow"):GetButton():IsPressed()) then -- E
+        if (actualId == 2) then
+            return
+        end
+        if(actualId == nil)then
+            actualId = 0
+         end
+        if(actualId == 1) then
+            actualId = 0
+        elseif(actualId == 0) then
+            actualId = 2
+        end
+        str = "ActualPos" .. actualId .. "\n"
+        Log(str)
+        arrived = false
+        remainingAngle = remainingAngle + angle
+    end
+    
     if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
+        if (actualId == 1) then
+            return
+        end
+        if(actualId == nil)then
+           actualId = 0
+        end
+        if(actualId == 0) then
+            actualId = 1
+        elseif(actualId == 2) then
+            actualId = 0
+        end
+        str = "ActualPos" .. actualId .. "\n"
+        Log(str)
+        arrived = false
         remainingAngle = remainingAngle - angle
     end
     if (GetInput(15) == KEY_STATE.KEY_DOWN) then -- E
+        if (actualId == 2) then
+            return
+        end
+        if(actualId == nil)then
+            actualId = 0
+         end
+        if(actualId == 1) then
+            actualId = 0
+        elseif(actualId == 0) then
+            actualId = 2
+        end
+        str = "ActualPos" .. actualId .. "\n"
+        Log(str)
+        arrived = false
         remainingAngle = remainingAngle + angle
     end
 
@@ -45,6 +110,10 @@ function Update(dt)
         finalPos.y = newPos.y + newZoomedPos.y
         finalPos.z = newPos.z + newZoomedPos.z
         componentTransform:SetPosition(finalPos)
+        if(arrived == false) then
+            DispatchGlobalEvent("TransitionedFromLastCharacter", {actualId})
+            arrived = true;
+        end
     else
         componentTransform:SetPosition(newPos)
     end

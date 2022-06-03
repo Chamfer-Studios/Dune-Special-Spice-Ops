@@ -19,12 +19,13 @@ Movement = {
 }
 State = {
     IDLE = 1,
-    AIM_PRIMARY = 2,
-    AIM_SECONDARY = 3,
-    AIM_ULTIMATE = 4,
-    AIM_ULTIMATE_RECAST = 5,
-    WORM = 6,
-    DEAD = 7
+    PASSIVE = 2,
+    AIM_PRIMARY = 3,
+    AIM_SECONDARY = 4,
+    AIM_ULTIMATE = 5,
+    AIM_ULTIMATE_RECAST = 6,
+    WORM = 7,
+    DEAD = 8
 }
 
 Ability = {
@@ -65,17 +66,28 @@ speed = 2000
 crouchMultiplierPercentage = 66
 runMultiplierPercentage = 150
 staminaSeconds = 5
-recoveryTime = 3
+recoveryTime = 5
 staminaTimer = staminaSeconds
 isTired = false
 
+-- Passive -- 
+passiveRange = 100
+
 -- Primary ability --
 primaryCastRange = 100
-maxSpit = 3
+maxCharges = 6
+primaryChargeCost = 3
+secondaryChargeCost = 4
 
 -- Secondary ability --
 secondaryCastRange = 75
-secondaryCooldown = 10
+secondaryCooldown = 2
+unawareChanceHarkSecondary = 100
+awareChanceHarkSecondary = 100
+aggroChanceHarkSecondary = 100
+unawareChanceSardSecondary = 100
+awareChanceSardSecondary = 100
+aggroChanceSardSecondary = 100
 
 -- Ultimate ability --
 ultimateCastRange = 75
@@ -89,6 +101,7 @@ doubleClickDuration = 0.5
 doubleClickTimer = 0.0
 isDoubleClicking = false
 isDialogueOpen = false
+hasToMove = false
 ---------------------------------------------------------
 
 ------------------- Detection logic ---------------------
@@ -181,21 +194,15 @@ function Start()
     currentHP = maxHP
     DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-    -- Stamina
-    staminaBar = Find("Stamina Bar")
-    staminaBarSizeY = staminaBar:GetTransform():GetScale().y
-
     -- Abilities
     InstantiatePrefab("Worm")
-    spitCount = maxSpit
+    currentCharges = maxCharges
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 end
 
 -- Called each loop iteration
 function Update(dt)
 
-    if (ultimateTimer ~= nil and currentState == State.AIM_ULTIMATE_RECAST) then
-        StopMovement(false)
-    end
     DrawActiveAbilities()
     DrawHoverParticle()
 
@@ -215,43 +222,53 @@ function Update(dt)
     end
 
     if (ManageTimers(dt) == false) then
-        return
+        do
+            return
+        end
     end
 
-    -- Manage States
-    if (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) then
+    -- States
+    if (currentState == State.PASSIVE and target ~= nil) then
+        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= passiveRange) then
+            Passive()
+        else
+            destination = target:GetTransform():GetPosition()
+            hasToMove = true
+        end
+    elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
+        State.AIM_ULTIMATE) then
         StopMovement()
         componentAnimator:SetSelectedClip("Idle")
     elseif (destination ~= nil) then
-        MoveToDestination(dt)
+        hasToMove = true
     end
 
     -- Gather Inputs
     if (IsSelected() == true) then
 
-        UpdateStaminaBar()
+        if staminaBarBlue == nil then
+            ConfigStaminaBars()
+        else
+            UpdateStaminaBar()
+        end
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
 
             -- Primary ability (spit heal)
             if (currentState == State.AIM_PRIMARY) then
-                if (spitCount <= 2) then
-                    Log("[FAIL] Ability Primary: You don't have enough spits!\n")
+                target = GetGameObjectHovered()
+                if (target.tag ~= Tag.PLAYER) then
+                    Log("[FAIL] Ability Primary: You have to select a player first!\n")
+                    target = nil
                 else
-                    target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.PLAYER) then
-                        Log("[FAIL] Ability Primary: You have to select a player first!\n")
+                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
+                        primaryCastRange) then
+                        Log("[FAIL] Ability Primary: Ability out of range!\n")
                         target = nil
                     else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            primaryCastRange) then
-                            Log("[FAIL] Ability Primary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastPrimary(target)
-                            end
+                        if (componentAnimator ~= nil) then
+                            CastPrimary(target)
                         end
                     end
                 end
@@ -312,6 +329,7 @@ function Update(dt)
                         end
                     end
                 end
+
             end
         end
 
@@ -325,8 +343,25 @@ function Update(dt)
                 else
                     isMoving = true
 
-                    if (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
-                        Log("Going to a pickup\n")
+                    if (goHit.tag == Tag.CORPSE) then
+                        SetState(State.PASSIVE)
+                        target = goHit
+                        if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
+                            passiveRange) then
+                            isMoving = false
+                            Passive()
+                        else
+                            if (footstepsParticle ~= nil) then
+                                footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            end
+                            destination = target:GetTransform():GetPosition()
+                            if (currentMovement == Movement.IDLE and isMoving == true) then
+                                SetMovement(Movement.WALK)
+                            end
+                            DispatchEvent("Pathfinder_UpdatePath",
+                                {{destination}, false, componentTransform:GetPosition()})
+                        end
+                    elseif (goHit.tag == Tag.PICKUP or goHit.tag == Tag.ENEMY) then
                         target = nil
                         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
                             SetState(State.IDLE)
@@ -426,6 +461,23 @@ function Update(dt)
     else
         -- CancelAbilities()
     end
+
+    if (hasToMove == true and destination ~= nil) then
+        MoveToDestination(dt)
+        hasToMove = false
+    end
+
+    if abilities.AbilityPrimary == AbilityStatus.Using then
+        isUsingQ = true
+    elseif abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    elseif abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
+        isUsingQ = false
+        isUsingW = false
+        isUsingE = false
+    end
 end
 
 --------------------------------------------------
@@ -434,6 +486,9 @@ end
 function SetState(newState)
     if (newState == State.IDLE) then
         currentState = State.IDLE
+    elseif (newState == State.PASSIVE) then
+        currentState = State.PASSIVE
+        StopMovement(false)
     elseif (newState == State.AIM_PRIMARY) then
         currentState = State.AIM_PRIMARY
         StopMovement(false)
@@ -520,7 +575,9 @@ end
 
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
-        return
+        do
+            return
+        end
     end
 
     if (IsSelected() == true) then
@@ -567,7 +624,9 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, mouseClick.y + 1, mouseClick.z)
         else
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
-            return
+            do
+                return
+            end
         end
         choosingTargetParticle:GetComponentParticle():ResumeParticleSpawn()
         choosingTargetParticle:GetTransform():SetPosition(finalPosition)
@@ -606,8 +665,44 @@ function DrawActiveAbilities()
 end
 
 function UpdateStaminaBar()
-    staminaBar:GetTransform():SetScale(float3.new(staminaBar:GetTransform():GetScale().x,
-        staminaBarSizeY * (staminaTimer / staminaSeconds), staminaBar:GetTransform():GetScale().z))
+    local proportion = staminaTimer / staminaSeconds
+    local recoveryProportion = staminaTimer / recoveryTime
+
+    local pos = componentTransform:GetPosition()
+
+    staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+    staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
+
+    -- NEW
+    if isTired == false then
+        if proportion >= 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        elseif proportion >= 0.33 and proportion < 0.66 then
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        else
+            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
+                staminaBarSizeZ))
+            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
+        end
+    else
+        staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
+        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
+            staminaBarSizeZ))
+    end
 end
 
 function ManageTimers(dt)
@@ -657,12 +752,6 @@ function ManageTimers(dt)
         end
     end
 
-    -- Primary ability cooldown
-    if (spitCount > 2 and
-        not (abilities.AbilityPrimary == AbilityStatus.Active or abilities.AbilityPrimary == AbilityStatus.Casting)) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    end
     if (currentState == State.AIM_PRIMARY) then
         DispatchGlobalEvent("Omozra_Primary", {})
     end
@@ -696,7 +785,9 @@ function ManageTimers(dt)
             if (componentAnimator:IsCurrentClipPlaying() == true) then
                 ret = false
             else
-                if (currentState == State.AIM_PRIMARY) then
+                if (currentState == State.PASSIVE) then
+                    DoPassive()
+                elseif (currentState == State.AIM_PRIMARY) then
                     DoPrimary()
                 elseif (currentState == State.AIM_SECONDARY) then
                     DoSecondary()
@@ -817,9 +908,31 @@ function IsSelected()
     return false
 end
 
+-- Passive
+function Passive()
+
+    SetState(State.PASSIVE)
+    componentAnimator:SetSelectedClip("Point")
+    LookAtTarget(target:GetTransform():GetPosition())
+
+end
+
+function DoPassive()
+
+    currentCharges = currentCharges + 1
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
+
+    DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
+
+    componentAnimator:SetSelectedClip("PointToIdle")
+    SetState(State.IDLE)
+
+    target = nil
+end
+
 -- Primary ability
 function ActivePrimary()
-    if (spitCount > 2) then
+    if (currentCharges >= primaryChargeCost) then
         if (currentState == State.AIM_PRIMARY) then
             CancelAbilities()
         else
@@ -832,7 +945,8 @@ function ActivePrimary()
 end
 
 function CastPrimary(thisTarget)
-    abilities.AbilityPrimary = AbilityStatus.Casting
+    abilities.AbilityPrimary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
@@ -846,17 +960,10 @@ function CastPrimary(thisTarget)
 end
 
 function DoPrimary()
-    spitCount = spitCount - 3
+    currentCharges = currentCharges - primaryChargeCost
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
-    if (spitCount > 2) then
-        abilities.AbilityPrimary = AbilityStatus.Normal
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    else
-        abilities.AbilityPrimary = AbilityStatus.Disabled -- Should be state disabled 
-        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-    end
-
-    DispatchGlobalEvent("Sadiq_Heal", {target, gameObject:GetTransform():GetPosition()})
+    DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
 
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
@@ -866,7 +973,7 @@ end
 
 -- Secondary ability
 function ActiveSecondary()
-    if (secondaryTimer == nil) then
+    if (secondaryTimer == nil and currentCharges >= secondaryChargeCost) then
         if (currentState == State.AIM_SECONDARY) then
             CancelAbilities()
         else
@@ -879,7 +986,8 @@ function ActiveSecondary()
 end
 
 function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Casting
+    abilities.AbilitySecondary = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
     componentAnimator:SetSelectedClip("Point")
     StopMovement(false)
@@ -892,12 +1000,13 @@ function CastSecondary(position)
 end
 
 function DoSecondary()
-    spitCount = spitCount + 1
+    currentCharges = currentCharges - secondaryChargeCost
+    DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
     secondaryTimer = 0.0
-    abilities.AbilitySecondary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability",
-        {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
+    -- abilities.AbilitySecondary = AbilityStatus.Cooldown
+    -- DispatchGlobalEvent("Player_Ability",
+    --     {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -934,7 +1043,8 @@ function CastUltimate(position) -- Ult step 3
         Log(str)
     end
 
-    abilities.AbilityUltimate = AbilityStatus.Casting
+    abilities.AbilityUltimate = AbilityStatus.Using
+    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
     componentAnimator:SetSelectedClip("Point")
 
@@ -959,8 +1069,7 @@ function DoUltimate() -- Ult step 4
 end
 
 function RecastUltimate(position)
-
-    abilities.AbilityUltimateRecast = AbilityStatus.Casting
+    abilities.AbilityUltimateRecast = AbilityStatus.Casting -- Used this only for drawing
 
     componentAnimator:SetSelectedClip("Point")
 
@@ -988,7 +1097,9 @@ end
 function TakeDamage(damage)
     if (iFramesTimer ~= nil or currentHP == 0 or
         GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true) then
-        return
+        do
+            return
+        end
     end
 
     iFramesTimer = 0
@@ -1015,10 +1126,6 @@ function Die()
     SetState(State.DEAD)
     currentHP = 0
 
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(componentTransform:GetPosition().x, 3,
-            componentTransform:GetPosition().z))
-    end
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Death")
     end
@@ -1042,7 +1149,9 @@ function EventHandler(key, fields)
     elseif (key == "Enemy_Attack") then
         if (fields[1] == gameObject) then
             if (fields[2] == "Harkonnen") then
-                TakeDamage()
+                TakeDamage(1)
+            elseif (fields[2] == "Sardaukar") then
+                TakeDamage(2)
             end
         end
     elseif (key == "Active_Primary") then
@@ -1063,13 +1172,17 @@ function EventHandler(key, fields)
             CancelAbilities(true)
         end
         if (fields[2] == characterID) then
+            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
             -- If game changed to omozra, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Omozra: Primary = " .. abilities.AbilityPrimary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryTimer})
             -- Log("Omozra: Secondary = " .. abilities.AbilitySecondary .. "\n")
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Omozra: Ultimate = " .. abilities.AbilityUltimate .. "\n")
+            DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
         end
     elseif (key == "Dialogue_Opened") then
         isDialogueOpen = true
@@ -1082,14 +1195,32 @@ function EventHandler(key, fields)
         trackList = {5}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
+        if (currentCharges >= primaryChargeCost) then
+            abilities.AbilityPrimary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        else
+            abilities.AbilityPrimary = AbilityStatus.Disabled
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        end
+
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + 1
+                currentHP = currentHP + fields[2]
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
 
             else
                 Log("Sadiq has healed Omozra, but it was already full HP\n")
+            end
+        end
+    elseif key == "Sadiq_Update_Target" then
+        if fields[2] == 2 then
+            if (currentCharges >= secondaryChargeCost) then
+                abilities.AbilitySecondary = AbilityStatus.Normal
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            else
+                abilities.AbilityPrimary = AbilityStatus.Disabled
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             end
         end
     elseif (key == "Smokebomb_Start") then
@@ -1103,6 +1234,18 @@ function EventHandler(key, fields)
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
     end
 end
+
+function ConfigStaminaBars()
+    Log("Configuring stamina bars\n")
+    staminaBarYellow = Find("Stamina Bar Yellow")
+    staminaBarGreen = Find("Stamina Bar Green")
+    staminaBarRed = Find("Stamina Bar Red")
+    staminaBarBlue = Find("Stamina Bar Blue")
+
+    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
+    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
+    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
+end
 --------------------------------------------------
 
 ------------------ Collisions --------------------
@@ -1114,7 +1257,9 @@ end
 
 function OnCollisionEnter(go)
     if (currentState == State.DEAD) then
-        return
+        do
+            return
+        end
     end
     if (go.tag == Tag.ENEMY and iFramesTimer == nil) then
         -- TakeDamage(1)

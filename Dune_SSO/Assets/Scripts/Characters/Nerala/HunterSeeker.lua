@@ -14,30 +14,35 @@ function Start()
 
     maxTetherRange = GetVariable("Nerala.lua", "ultimateMaxDistance", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
-    local player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
-    neralaPosition = player:GetTransform():GetPosition()
-    local targetPos2D = {destination.x, destination.z}
-    local pos2D = {neralaPosition.x, neralaPosition.z}
-    local d = Distance(pos2D, targetPos2D)
-    local vec2 = {targetPos2D[1], targetPos2D[2]}
-    -- vec2 = Normalize(vec2, d)
-    if (componentRigidBody ~= nil) then
-        componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 10, vec2[2]))
+    if (destination ~= nil) then
+        player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
+        neralaPosition = player:GetTransform():GetPosition()
+        local targetPos2D = {destination.x, destination.z}
+        local pos2D = {neralaPosition.x, neralaPosition.z}
+        local d = Distance(pos2D, targetPos2D)
+        local vec2 = {targetPos2D[1], targetPos2D[2]}
+        -- vec2 = Normalize(vec2, d)
+        if (componentRigidBody ~= nil) then
+            componentRigidBody:SetRigidBodyPos(float3.new(vec2[1], 0, vec2[2]))
+        end
+
+        componentSwitch = gameObject:GetAudioSwitch()
+        trackList = {0}
+        ChangeTrack(trackList)
+
+        trailParticle = Find("Nerala Trail Particle")
+        mouseParticles = Find("Mouse Particle")
+        if (mouseParticles ~= nil) then
+            mouseParticles:GetComponentParticle():StopParticleSpawn()
+        end
+
+        poisonCount = 2 -- Number of kills left
+
+        DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
+    else
+        DispatchGlobalEvent("Nerala_Ultimate_Bugged", {})
+        DeleteGameObject()
     end
-
-    componentSwitch = gameObject:GetAudioSwitch()
-    trackList = {0}
-    ChangeTrack(trackList)
-
-    trailParticle = Find("Nerala Trail Particle")
-    mouseParticles = Find("Mouse Particle")
-    if (mouseParticles ~= nil) then
-        mouseParticles:GetComponentParticle():StopParticleSpawn()
-    end
-
-    poisonCount = 2 -- Number of kills left
-
-    DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
 end
 
 -- Called each loop iteration
@@ -45,13 +50,24 @@ function Update(dt)
 
     if (lifeTimer >= lifeTime) then
         Die()
-        return
+        do
+            return
+        end
     elseif (Distance3D(componentTransform:GetPosition(), neralaPosition) > maxTetherRange) then
         Die()
-        return
+        do
+            return
+        end
     end
 
-    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", gameObject}) -- TODO: Check range
+    if (poisonTimer ~= nil) then
+        poisonTimer = poisonTimer + dt
+        if (poisonTimer >= 1) then
+            poisonTimer = nil
+        end
+    end
+
+    DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", player}) -- TODO: Check range
 
     lifeTimer = lifeTimer + dt
 
@@ -129,8 +145,9 @@ function MoveToDestination(dt)
     if (d > 5.0) then
 
         -- Adapt speed on arrive
+        local s = speed
         if (d < 2.0) then
-            speed = speed * 0.5
+            s = s * 0.5
         end
 
         if (trailParticle ~= nil) then
@@ -145,7 +162,7 @@ function MoveToDestination(dt)
         vec.z = vec.z / d
         if (componentRigidBody ~= nil) then
             -- componentRigidBody:SetLinearVelocity(float3.new(vec.x * speed * dt, 0, vec.z * speed * dt))
-            DispatchEvent("Pathfinder_FollowPath", {speed, dt, false})
+            DispatchEvent("Pathfinder_FollowPath", {s, dt, false})
         end
 
         -- Rotation
@@ -191,7 +208,7 @@ function EventHandler(key, fields)
 end
 
 function OnTriggerEnter(go)
-    if (go.tag == Tag.ENEMY and go == target) then
+    if (go.tag == Tag.ENEMY and go == target and poisonTimer == nil) then
         DispatchGlobalEvent("Mosquito_Hit", {go})
         trackList = {2, 3}
         ChangeTrack(trackList)
@@ -199,6 +216,7 @@ function OnTriggerEnter(go)
             Die()
         end
         poisonCount = poisonCount - 1
+        poisonTimer = 0
     end
 end
 

@@ -1,4 +1,6 @@
 ------------------- Variables --------------------
+levelNumber = 1
+
 characterSelected = 1
 spiceAmount = 1000
 startingSpiceAmount = 1000
@@ -19,6 +21,7 @@ omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
 
+anyCharacterSelected = true
 changedCharacter = false
 zhibAvailable = true
 neralaAvailable = false
@@ -35,17 +38,27 @@ startingSpiceAmountIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 startingSpiceAmountIV = InspectorVariable.new("startingSpiceAmount", startingSpiceAmountIVT, startingSpiceAmount)
 NewVariable(startingSpiceAmountIV)
 
+levelNumberIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+levelNumberIV = InspectorVariable.new("levelNumber", levelNumberIVT, levelNumber)
+NewVariable(levelNumberIV)
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
-    staminaBar = Find("Stamina Bar")
+
+    InstantiatePrefab("Stamina Bars")
 
     LoadGame()
 end
 
 -- Called each loop iteration
 function Update(dt)
+
+    if (GetInput(50) == KEY_STATE.KEY_DOWN) then
+        SaveGame()
+    end
+
     if (gameOverTimer ~= nil) then
         if (gameOverTimer < gameOverTime) then
             gameOverTimer = gameOverTimer + dt
@@ -58,8 +71,6 @@ function Update(dt)
 
             str = "Spice Amount " .. spiceAmount .. "\n"
             Log(str)
-
-            SaveGame()
 
             gameObject:ChangeScene(true, "SceneGameOver")
         end
@@ -86,6 +97,7 @@ function Update(dt)
             if (characterSelected == 1) then
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 1 to 0
                 characterSelected = 0
+                anyCharacterSelected = false
             else
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                 characterSelected = 1
@@ -127,7 +139,6 @@ function Update(dt)
             if (characterSelected == 4) then
                 characterSelected = 2
             end
-            staminaBar:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
             if (characterSelectedParticle ~= nil) then
                 characterSelectedParticle:GetTransform():SetPosition(
                     float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
@@ -137,9 +148,9 @@ function Update(dt)
                     characterSelectedParticle:GetComponentParticle():SetLoop(true)
                 end
             end
+            anyCharacterSelected = true
         else
-            staminaBar:GetTransform():SetPosition(float3.new(staminaBar:GetTransform():GetPosition().x, -20,
-                staminaBar:GetTransform():GetPosition().z))
+            anyCharacterSelected = false
             characterSelectedParticle:GetTransform():SetPosition(float3.new(
                 characterSelectedParticle:GetTransform():GetPosition().x, -20,
                 characterSelectedParticle:GetTransform():GetPosition().z))
@@ -160,7 +171,8 @@ function EventHandler(key, fields)
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
         if (fields[2] ~= nil) then
-            AddGameJsonElement("gameobjects_to_delete", fields[2])
+            keyJson = "gameobjects_to_delete_lvl" .. levelNumber
+            AddGameJsonElement(keyJson, fields[2])
         end
     elseif (key == "Spice_Spawn") then
         deadEnemyPos = fields[1]
@@ -176,7 +188,8 @@ function EventHandler(key, fields)
             gameOverTimer = 0
         end
     elseif (key == "Enemy_Defeated") then
-        AddGameJsonElement("gameobjects_to_delete", fields[1])
+        keyJson = "gameobjects_to_delete_lvl" .. levelNumber
+        AddGameJsonElement(keyJson, fields[1])
     elseif (key == "Dialogue_Opened") then
         auxGodMode = GodMode
         if (GodMode == false) then
@@ -240,17 +253,20 @@ function SaveGame()
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
 
-    -- zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    -- zhibPos = zhibPos:GetTransform():GetPosition()
-    -- SetGameJsonFloat3("zhib_pos", zhibPos)
+    zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    zhibPos = zhibPos:GetTransform():GetPosition()
+    keyJson = "zhib_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, zhibPos)
 
-    -- neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    -- neralaPos = neralaPos:GetTransform():GetPosition()
-    -- SetGameJsonFloat3("nerala_pos", neralaPos)
+    neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    neralaPos = neralaPos:GetTransform():GetPosition()
+    keyJson = "nerala_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, neralaPos)
 
-    -- omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
-    -- omozraPos = omozraPos:GetTransform():GetPosition()
-    -- SetGameJsonFloat3("omozra_pos", omozraPos)
+    omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
+    omozraPos = omozraPos:GetTransform():GetPosition()
+    keyJson = "omozra_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, omozraPos)
 
     SaveGameState()
 end
@@ -258,12 +274,13 @@ end
 function LoadGame()
     LoadGameState()
 
-    SizeToDelete = GetGameJsonArraySize("gameobjects_to_delete")
+    keyJson = "gameobjects_to_delete_lvl" .. levelNumber
+    SizeToDelete = GetGameJsonArraySize(keyJson)
 
     if (SizeToDelete > 0) then
         SizeToDelete = SizeToDelete - 1
         for i = 0, SizeToDelete do
-            uidToDelete = GetGameJsonElement("gameobjects_to_delete", i)
+            uidToDelete = GetGameJsonElement(keyJson, i)
             DeleteGameObjectByUID(uidToDelete)
         end
     end
@@ -279,23 +296,23 @@ function LoadGame()
         Log(str)
     end
 
-    -- zhibPos = GetGameJsonFloat3("zhib_pos")
-    -- Log("Sending Zhib Position \n")
-    -- if (zhibPos ~= nil) then
-    --     DispatchGlobalEvent("Update_Zhib_Position", {zhibPos.x, zhibPos.y, zhibPos.z})
-    -- end
+    keyJson = "zhib_pos_lvl" .. levelNumber
+    zhibPos = GetGameJsonFloat3(keyJson)
+    if (zhibPos ~= nil) then
+        DispatchGlobalEvent("Update_Zhib_Position", {zhibPos.x, zhibPos.y, zhibPos.z})
+    end
 
-    -- neralaPos = GetGameJsonFloat3("nerala_pos")
-    -- Log("Sending Nerala Position \n")
-    -- if (neralaPos ~= nil) then
-    --     DispatchGlobalEvent("Update_Nerala_Position", {neralaPos.x, neralaPos.y, neralaPos.z})
-    -- end
+    keyJson = "nerala_pos_lvl" .. levelNumber
+    neralaPos = GetGameJsonFloat3(keyJson)
+    if (neralaPos ~= nil) then
+        DispatchGlobalEvent("Update_Nerala_Position", {neralaPos.x, neralaPos.y, neralaPos.z})
+    end
 
-    -- omozraPos = GetGameJsonFloat3("omozra_pos")
-    -- Log("Sending Omozra Position \n")
-    -- if (omozraPos ~= nil) then
-    --     DispatchGlobalEvent("Update_Omozra_Position", {omozraPos.x, omozraPos.y, omozraPos.z})
-    -- end
+    keyJson = "omozra_pos_lvl" .. levelNumber
+    omozraPos = GetGameJsonFloat3(keyJson)
+    if (omozraPos ~= nil) then
+        DispatchGlobalEvent("Update_Omozra_Position", {omozraPos.x, omozraPos.y, omozraPos.z})
+    end
 
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
     nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
@@ -308,9 +325,6 @@ function LoadGame()
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
-
-    -- Clear GO to delete from json file
-    -- ClearGameJsonArray("gameobjects_to_delete")
 end
 --------------------------------------------------
 
