@@ -595,7 +595,7 @@ function DrawHoverParticle()
             finalPosition = float3.new(t.x, t.y + 1, t.z)
         elseif ((currentState == State.AIM_SECONDARY and
             (drawingTarget.tag == Tag.ENEMY or drawingTarget.tag == Tag.CORPSE)) or
-            (currentState == State.AIM_ULTIMATE and drawingTarget.tag == Tag.PLAYER)) then
+            (currentState == State.AIM_ULTIMATE and drawingTarget.tag == Tag.PLAYER and drawingTarget ~= gameObject)) then
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if ((currentState == State.AIM_SECONDARY and dist <= secondaryCastRange) or
                 (currentState == State.AIM_ULTIMATE and dist <= ultimateCastRange)) then
