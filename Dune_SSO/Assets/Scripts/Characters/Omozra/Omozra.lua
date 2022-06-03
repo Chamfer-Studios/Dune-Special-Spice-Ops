@@ -1004,9 +1004,9 @@ function DoSecondary()
     DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
     secondaryTimer = 0.0
-    abilities.AbilitySecondary = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability",
-        {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
+    -- abilities.AbilitySecondary = AbilityStatus.Cooldown
+    -- DispatchGlobalEvent("Player_Ability",
+    --     {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
 
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
@@ -1211,6 +1211,16 @@ function EventHandler(key, fields)
 
             else
                 Log("Sadiq has healed Omozra, but it was already full HP\n")
+            end
+        end
+    elseif key == "Sadiq_Update_Target" then
+        if fields[2] == 2 then
+            if (currentCharges >= secondaryChargeCost) then
+                abilities.AbilitySecondary = AbilityStatus.Normal
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+            else
+                abilities.AbilityPrimary = AbilityStatus.Disabled
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             end
         end
     elseif (key == "Smokebomb_Start") then
