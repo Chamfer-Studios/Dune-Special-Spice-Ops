@@ -41,7 +41,9 @@ function EventHandler(key, fields)
         -- Player basic attack
     elseif key == "Player_Attack" then
         if (fields[1] == gameObject) then
-            if fields[2] == 2 then -- Chances only for nerala attack
+            if fields[2] == 1 then
+                DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK})
+            elseif fields[2] == 2 then -- Chances only for nerala attack
                 if currentState == STATE.UNAWARE or currentState == STATE.AWARE then
                     neralaAttackHitChance = GetVariable("Nerala.lua", "unawareChanceHarkAttack",
                         INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
