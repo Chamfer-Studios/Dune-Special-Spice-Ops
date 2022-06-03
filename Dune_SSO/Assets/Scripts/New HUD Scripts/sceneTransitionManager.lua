@@ -111,6 +111,13 @@ function Update(dt)
             upgradeArray[1].state = false
             upgradeArray[1].object:GetChildren()[1]:Active(false)
             upgradeArray[2].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(1, 1)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(1, 1)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(1, 1)
+            end
             SpiceCost(-20)
         end
         end
@@ -133,6 +140,13 @@ function Update(dt)
         upgradeArray[2].state = false
         upgradeArray[2].object:GetChildren()[1]:Active(false)
         upgradeArray[3].unlocked = false
+        if(id == 0)then
+            LevelDownZhibSkill(2, 1)
+        elseif(id == 1) then
+            LevelDownNeralaSkill(2, 1)
+        elseif(id == 2) then
+            LevelDownOmozraSkill(2, 1)
+        end
         SpiceCost(-20)
         end
     end
@@ -151,6 +165,13 @@ function Update(dt)
         else
             upgradeArray[3].state = false
             upgradeArray[3].object:GetChildren()[1]:Active(false)
+            if(id == 0)then
+                LevelDownZhibSkill(3, 1)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(3, 1)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(3, 1)
+            end
             SpiceCost(-20)
         end
     --SECOND HAB
@@ -174,6 +195,13 @@ function Update(dt)
             upgradeArray[4].state = false
             upgradeArray[4].object:GetChildren()[1]:Active(false)
             upgradeArray[5].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(1, 2)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(1, 2)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(1, 2)
+            end
             SpiceCost(-20)
             end
         end
@@ -196,6 +224,13 @@ function Update(dt)
             upgradeArray[5].state = false
             upgradeArray[5].object:GetChildren()[1]:Active(false)
             upgradeArray[6].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(2, 2)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(2, 2)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(2, 2)
+            end
             SpiceCost(-20)
             end
         end
@@ -214,6 +249,13 @@ function Update(dt)
         else
             upgradeArray[6].state = false
             upgradeArray[6].object:GetChildren()[1]:Active(false)
+            if(id == 0)then
+                LevelDownZhibSkill(3, 2)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(3, 2)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(3, 2)
+            end
             SpiceCost(-20)
         end
     --THIRD HAB
@@ -238,6 +280,13 @@ function Update(dt)
                 upgradeArray[7].state = false
                 upgradeArray[7].object:GetChildren()[1]:Active(false)
                 upgradeArray[8].unlocked = false
+                if(id == 0)then
+                    LevelDownZhibSkill(1, 3)
+                elseif(id == 1) then
+                    LevelDownNeralaSkill(1, 3)
+                elseif(id == 2) then
+                    LevelDownOmozraSkill(1, 3)
+                end
                 SpiceCost(-20)
             end
         end
@@ -260,6 +309,13 @@ function Update(dt)
             upgradeArray[8].state = false
             upgradeArray[8].object:GetChildren()[1]:Active(false)
             upgradeArray[9].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(2, 3)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(2, 3)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(2, 3)
+            end
             SpiceCost(-20)
             end
         end
@@ -278,6 +334,13 @@ function Update(dt)
         else
             upgradeArray[9].state = false
             upgradeArray[9].object:GetChildren()[1]:Active(false)
+            if(id == 0)then
+                LevelDownZhibSkill(3, 3)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(3, 3)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(3, 3)
+            end
             SpiceCost(-20)
         end
     --PASIVE
@@ -301,6 +364,13 @@ function Update(dt)
             upgradeArray[10].state = false
             upgradeArray[10].object:GetChildren()[1]:Active(false)
             upgradeArray[11].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(1, 4)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(1, 4)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(1, 4)
+            end
             SpiceCost(-20)
             end
         end
@@ -323,6 +393,13 @@ function Update(dt)
             upgradeArray[11].state = false
             upgradeArray[11].object:GetChildren()[1]:Active(false)
             upgradeArray[12].unlocked = false
+            if(id == 0)then
+                LevelDownZhibSkill(2, 4)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(2, 4)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(2, 4)
+            end
             SpiceCost(-20)
             end
         end
@@ -341,6 +418,13 @@ function Update(dt)
         else
             upgradeArray[12].state = false
             upgradeArray[12].object:GetChildren()[1]:Active(false)
+            if(id == 0)then
+                LevelDownZhibSkill(3, 4)
+            elseif(id == 1) then
+                LevelDownNeralaSkill(3, 4)
+            elseif(id == 2) then
+                LevelDownOmozraSkill(3, 4)
+            end
             SpiceCost(-20)
         end
     end
@@ -483,17 +567,45 @@ end
 function LevelUpZhibSkill(skillLvl, skillId)
 
     if(skillId == 1) then
-        Log("Leveling Up skill 1")
-        levelUpZhib1 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib first skill level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 2) then
-        Log("Leveling Up skill 2")
-        levelUpZhib2 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib second skill level" .. GetVariable("UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 3) then
-        Log("Leveling Up skill 3")
-        levelUpZhib3 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib third skill level" .. GetVariable("UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 4) then
-        Log("Leveling Up skill 4")
-        levelUpZhib4 = skillLvl
+        --SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        --str = "Zhib level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        --Log(str)
+    end
+    
+    Log("LevelingUpZhib \n")
+end
+
+function LevelDownZhibSkill(skillLvl, skillId)
+
+    skillLvl = skillLvl - 1
+    if(skillId == 1) then
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib first skill level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
+    elseif(skillId == 2) then
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib second skill level" .. GetVariable("UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
+    elseif(skillId == 3) then
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib third skill level" .. GetVariable("UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
+    elseif(skillId == 4) then
+        --SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        --str = "Zhib level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        --Log(str)
     end
     
     Log("LevelingUpZhib \n")
@@ -502,13 +614,28 @@ end
 function LevelUpNeralaSkill(skillLvl, skillId)
 
     if(skillId == 1) then
-        levelUpNerala1 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 2) then
-        levelUpNerala2 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 3) then
-        levelUpNerala3 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 4) then
-        levelUpNerala4 = skillLvl
+        --levelUpNerala4 = skillLvl
+    end
+    Log("LevelingUpNerala")
+end
+
+function LevelDownNeralaSkill(skillLvl, skillId)
+
+    skillLvl = skillLvl - 1
+    if(skillId == 1) then
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 2) then
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 3) then
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 4) then
+        --levelUpNerala4 = skillLvl
     end
     Log("LevelingUpNerala")
 end
@@ -516,13 +643,28 @@ end
 function LevelUpOmozraSkill(skillLvl, skillId)
 
     if(skillId == 1) then
-        levelUpNerala1 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 2) then
-        levelUpNerala2 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 3) then
-        levelUpNerala3 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     elseif(skillId == 4) then
-        levelUpNerala4 = skillLvl
+        --levelUpNerala4 = skillLvl
+    end
+    Log("LevelingUpOmozra\n")
+end
+
+function LevelDownOmozraSkill(skillLvl, skillId)
+
+    skillLvl = skillLvl - 1
+    if(skillId == 1) then
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 2) then
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 3) then
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    elseif(skillId == 4) then
+        --levelUpNerala4 = skillLvl
     end
     Log("LevelingUpOmozra\n")
 end
