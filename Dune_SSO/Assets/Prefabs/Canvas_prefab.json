@@ -1147,8 +1147,10 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/square_frame_a.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/square_frame_a.png",
+                    "idleTexture": "Assets/New UI/square_frame_a.png",
+                    "pressedTexture": "Assets/New UI/square_frame_a.png",
+                    "type": 15
                 }
             ],
             "is3D": false,
@@ -1188,8 +1190,10 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/square_frame_c.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/square_frame_c.png",
+                    "idleTexture": "Assets/New UI/square_frame_c.png",
+                    "pressedTexture": "Assets/New UI/square_frame_c.png",
+                    "type": 15
                 }
             ],
             "is3D": false,
@@ -1229,8 +1233,10 @@
                 },
                 {
                     "active": true,
-                    "texture": "Assets/New UI/square_frame_c.png",
-                    "type": 14
+                    "hoverTexture": "Assets/New UI/square_frame_c.png",
+                    "idleTexture": "Assets/New UI/square_frame_c.png",
+                    "pressedTexture": "Assets/New UI/square_frame_c.png",
+                    "type": 15
                 }
             ],
             "is3D": false,
