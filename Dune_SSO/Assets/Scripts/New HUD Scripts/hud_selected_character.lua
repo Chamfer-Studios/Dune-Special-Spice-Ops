@@ -1,10 +1,23 @@
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
+character = {
+    Zhib = 1,
+    Nerala = 2,
+    Omozra = 3
+}
+
 function Start()
     LoadJsonFile(path)
     skillUiArray = {1, 2, 3, 101}
 
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+
+    selectedCharacterFrame = Find("Selected Character Frame")
+    currentSelectedCharacterFrame = character.Zhib
+    leftCharacterFrame = Find("Left Character Frame")
+    currentLeftCharacterFrame = character.Nerala
+    rightCharacterFrame = Find("Right Character Frame")
+    currentRightCharacterFrame = character.Omozra
 
     zhibImage = Find("Zhib Image")
     zhibKey = Find("Zhib Key")
@@ -86,6 +99,8 @@ function Update(dt)
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
     ManageTimers(dt)
+
+    CheckSelectedCharacterButtons()
 
     CurrentCharacterDrawing()
 
@@ -360,12 +375,16 @@ function CurrentCharacterDrawing()
         zhibImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         zhibImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         zhibKey.active = false
+        currentSelectedCharacterFrame = character.Zhib
         neralaImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         neralaKey.active = true
+        currentLeftCharacterFrame = character.Nerala
         omozraImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         omozraKey.active = true
+        currentRightCharacterFrame = character.Omozra
+
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), true) -- activate the skill slots to be visible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
@@ -373,12 +392,16 @@ function CurrentCharacterDrawing()
         neralaImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         neralaImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         neralaKey.active = false
+        currentSelectedCharacterFrame = character.Nerala
         omozraImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         omozraKey.active = true
+        currentLeftCharacterFrame = character.Omozra
         zhibImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         zhibKey.active = true
+        currentRightCharacterFrame = character.Omozra
+
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), true) -- activate the skill slots to be visible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
@@ -386,12 +409,16 @@ function CurrentCharacterDrawing()
         omozraImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         omozraImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         omozraKey.active = false
+        currentSelectedCharacterFrame = character.Omozra
         zhibImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         zhibKey.active = true
+        currentLeftCharacterFrame = character.Zhib
         neralaImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
         neralaKey.active = true
+        currentRightCharacterFrame = character.Nerala
+
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), true) -- activate the skill slots to be visible
@@ -527,6 +554,24 @@ function ManageTimers(dt)
         else
             cooldownMaskE:GetTransform2D():SetMask(float2.new(maskSize.x, omozraTimer3aux / omozraCooldown3))
         end
+    end
+end
+
+function CheckSelectedCharacterButtons()
+
+    if selectedCharacterFrame:GetButton():IsPressed() == true then
+        Log("Selected character frame\n")
+        DispatchGlobalEvent("Character_Selected", {currentSelectedCharacterFrame})
+    end
+
+    if leftCharacterFrame:GetButton():IsPressed() == true then
+        Log("Left character frame\n")
+        DispatchGlobalEvent("Character_Selected", {currentLeftCharacterFrame})
+    end
+
+    if rightCharacterFrame:GetButton():IsPressed() == true then
+        Log("Right character frame\n")
+        DispatchGlobalEvent("Character_Selected", {currentRightCharacterFrame})
     end
 end
 

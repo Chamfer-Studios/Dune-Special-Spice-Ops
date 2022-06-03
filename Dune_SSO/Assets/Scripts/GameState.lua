@@ -164,8 +164,14 @@ end
 
 function EventHandler(key, fields)
     if key == "Character_Selected" then -- fields[1] -> characterSelected;
-        characterSelected = fields[1]
-        -- characterSelected = 1
+        if characterSelected == fields[1] then
+            DispatchGlobalEvent("Changed_Character", {characterSelected, 0})
+            characterSelected = 0
+        else
+            Log("Changing to character: " .. fields[1] .. "\n")
+            DispatchGlobalEvent("Changed_Character", {characterSelected, fields[1]})
+            characterSelected = fields[1]
+        end
     elseif (key == "Spice_Reward") then
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
