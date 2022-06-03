@@ -659,15 +659,19 @@ function UpdateAnimation(dt, oldState, target)
     end
 
     if (componentAnimator ~= nil) then
+        currentClip = componentAnimator:GetSelectedClip()
         -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
-        if oldState ~= state and (state == STATE.UNAWARE or state == STATE.SUS) then
+        if state == STATE.UNAWARE or state == STATE.SUS then
             if (isWalking == false) then
-                componentAnimator:SetSelectedClip("Idle")
-            else
-                componentAnimator:SetSelectedClip("Walk")
+                if (currentClip ~= "Idle") then
+                    componentAnimator:SetSelectedClip("Idle")
+                end
+            elseif (isWalking == true) then
+                if (currentClip ~= "Walk") then
+                    componentAnimator:SetSelectedClip("Walk")
+                end
             end
         elseif state == STATE.AGGRO then
-            currentClip = componentAnimator:GetSelectedClip()
             if (thisType == "Harkonnen") then
                 if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance <
                     attackRange then
@@ -675,21 +679,29 @@ function UpdateAnimation(dt, oldState, target)
                     isAttacking = true
                 elseif currentClip == "Attack" then
                     if (componentAnimator:IsCurrentClipPlaying() == false) then
-                        DispatchGlobalEvent("Enemy_Attack", {target["source"], "Harkonnen"})
+                        DispatchGlobalEvent("Enemy_Attack", {target["source"], thisType})
                         componentAnimator:SetSelectedClip("AttackToIdle")
                         attackTimer = 0
                     end
                 elseif currentClip == "AttackToIdle" then
                     if componentAnimator:IsCurrentClipPlaying() == false then
-                        componentAnimator:SetSelectedClip("Idle")
+                        if (distance > attackRange) then
+                            if (currentClip ~= "Run") then
+                                componentAnimator:SetSelectedClip("Run")
+                            end
+                        else
+                            componentAnimator:SetSelectedClip("Idle")
+                        end
                         isAttacking = false
                     end
-                elseif (distance > attackRange) then
-                    if (currentClip ~= "Run") then
-                        componentAnimator:SetSelectedClip("Run")
+                elseif (isWalking == false) then
+                    if (currentClip ~= "Idle") then
+                        componentAnimator:SetSelectedClip("Idle")
                     end
                 else
-                    componentAnimator:SetSelectedClip("Idle")
+                    if (currentClip ~= "Walk") then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
                 end
             elseif (thisType == "Sardaukar") then
                 AttackSardaukar(currentClip) -- Lo aparto para no estorbar
