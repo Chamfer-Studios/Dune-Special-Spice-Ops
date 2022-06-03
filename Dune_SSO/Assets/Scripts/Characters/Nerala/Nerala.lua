@@ -1036,6 +1036,8 @@ function ActiveUltimate()
             abilities.AbilityUltimate = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
         end
+    elseif (GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) < ultimateSpiceCost) then
+        DispatchGlobalEvent("Not_Enough_Spice", {"tonto"})
     end
 end
 
