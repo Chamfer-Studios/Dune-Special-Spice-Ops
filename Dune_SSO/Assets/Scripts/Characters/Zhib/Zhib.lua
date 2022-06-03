@@ -1338,8 +1338,12 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         knifeCount = knifeCount + 1
         Log("Knife bugged, correction applied.\n")
-    elseif (key == "Zhib_Primary_Bugged") then
-    elseif (key == "Zhib_Primary_Bugged") then
+    elseif (key == "Zhib_Secondary_Bugged") then
+        secondaryTimer = nil
+        abilities.AbilitySecondary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        decoyCount = decoyCount + 1
+        Log("Decoy bugged, correction applied.\n")
     end
 end
 

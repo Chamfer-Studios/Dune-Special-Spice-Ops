@@ -1234,6 +1234,24 @@ function EventHandler(key, fields)
     elseif (key == "Update_Omozra_Position") then
         Log("Receiving Omozra Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+    elseif (key == "Omozra_Primary_Bugged") then
+        currentCharges = currentCharges + primaryChargeCost
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        Log("Spit bugged, correction applied.\n")
+    elseif (key == "Omozra_Secondary_Bugged") then
+        currentCharges = currentCharges + secondaryChargeCost
+        abilities.AbilitySecondary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        Log("Devour bugged, correction applied.\n")
+    elseif (key == "Omozra_Ultimate_Bugged" or key == "Omozra_Ultimate_Recast_Bugged") then
+        abilities.AbilityUltimate = AbilityStatus.Normal
+        abilities.AbilityUltimateRecast = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        local OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        local NewSpice = OGSpice + ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        Log("TP bugged, correction applied.\n")
     end
 end
 

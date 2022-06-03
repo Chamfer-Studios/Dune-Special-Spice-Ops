@@ -1058,11 +1058,11 @@ end
 function DoUltimate()
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
-        OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        NewSpice = OGSpice - ultimateSpiceCost
+        local OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        local NewSpice = OGSpice - ultimateSpiceCost
         SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
-        str = "Spice Amount " .. NewSpice .. "\n"
+        local str = "Spice Amount " .. NewSpice .. "\n"
         Log(str)
     end
 
@@ -1231,6 +1231,25 @@ function EventHandler(key, fields)
     elseif (key == "Update_Nerala_Position") then
         Log("Receiving Nerala Position \n")
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+    elseif (key == "Nerala_Primary_Bugged") then
+        primaryTimer = nil
+        abilities.AbilityPrimary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        Log("Dart bugged, correction applied.\n")
+    elseif (key == "Nerala_Secondary_Bugged") then
+        secondaryTimer = nil
+        abilities.AbilitySecondary = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        smokeBombCount = smokeBombCount + 1
+        Log("Smokebomb bugged, correction applied.\n")
+    elseif (key == "Nerala_Ultimate_Bugged") then
+        ultimateTimer = nil
+        abilities.AbilityUltimate = AbilityStatus.Normal
+        DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+        local OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        local NewSpice = OGSpice + ultimateSpiceCost
+        SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        Log("Mosquito bugged, correction applied.\n")
     end
 end
 
