@@ -5,9 +5,14 @@ function Start()
     skillUiArray = {1, 2, 3, 101}
 
     currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    neralaImage = Find("Nerala Image")
+
     zhibImage = Find("Zhib Image")
+    zhibKey = Find("Zhib Key")
+    neralaImage = Find("Nerala Image")
+    neralaKey = Find("Nerala Key")
     omozraImage = Find("Omozra Image")
+    omozraKey = Find("Omozra Key")
+
     zhibSkills = Find("Zhib Skills")
     neralaSkills = Find("Nerala Skills")
     omozraSkills = Find("Omozra Skills")
@@ -354,30 +359,39 @@ function CurrentCharacterDrawing()
     if currentCharacterId == 1 then
         zhibImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         zhibImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
+        zhibKey.active = false
         neralaImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        neralaKey.active = true
         omozraImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        omozraKey.active = true
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), true) -- activate the skill slots to be visible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
     elseif currentCharacterId == 2 then
         neralaImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         neralaImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
+        neralaKey.active = false
         omozraImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        omozraKey.active = true
         zhibImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        zhibKey.active = true
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), true) -- activate the skill slots to be visible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
     elseif currentCharacterId == 3 then
         omozraImage:GetTransform2D():SetPosition(float2.new(210, 158)) -- center position
         omozraImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
+        omozraKey.active = false
         zhibImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
         zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        zhibKey.active = true
         neralaImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
         neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+        neralaKey.active = true
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         omozraSkills:SetIsActiveToChildren(omozraSkills:GetChildren(), true) -- activate the skill slots to be visible
