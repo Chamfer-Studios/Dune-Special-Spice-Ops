@@ -231,6 +231,24 @@
       "char": " ",
       "line1": "They just needed directions and few indications. They tortured our brothers,",
       "line2": "and they plan to do the same thing to our families. To the thopter, now!  "
+    },
+    {
+      "id": 31,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
+      "srcUnlock": "Assets/New UI/Omozra_Image.png",
+      "char": "Omozra",
+      "line1": "I find you a good dude",
+      "line2": "I can help you..."
+    },
+    {
+      "id": 32,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/Portraits/nebala_v1.0.png",
+      "srcUnlock": "Assets/New UI/Nerala_Image.png",
+      "char": "Nerala",
+      "line1": "I find you a good dude",
+      "line2": "I can help you..."
     }
   ]
 }

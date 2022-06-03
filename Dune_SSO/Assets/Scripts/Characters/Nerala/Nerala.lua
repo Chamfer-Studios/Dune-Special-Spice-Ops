@@ -116,6 +116,9 @@ hasToMove = false
 smokebombFlag = false
 ---------------------------------------------------------
 
+--------------------Game Flow----------------------------
+unlocked = false;
+
 ------------------- Inspector setter --------------------
 -- -- Globals --
 -- maxHPIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
