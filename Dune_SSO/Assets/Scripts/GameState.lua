@@ -24,8 +24,8 @@ omozra_ultimate_level = 0
 anyCharacterSelected = true
 changedCharacter = false
 zhibAvailable = true
-neralaAvailable = false
-omozraAvailable = false
+neralaAvailable = true
+omozraAvailable = true
 
 GodMode = false
 

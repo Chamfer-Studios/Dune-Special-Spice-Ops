@@ -71,7 +71,7 @@ isTired = false
 
 -- Basic Attack --
 attackRange = 50.0
-attackTime = 2.5
+attackTime = 10.5
 unawareChanceHarkAttack = 100
 awareChanceHarkAttack = 75
 aggroChanceHarkAttack = 50
@@ -350,21 +350,13 @@ function Update(dt)
                     CancelAbilities()
                 else
                     isMoving = true
-                    if (goHit.tag == Tag.ENEMY) then
+                    if (goHit.tag == Tag.ENEMY and attackTimer == nil) then
                         SetState(State.ATTACK)
                         target = goHit
                         if (Distance3D(componentTransform:GetPosition(), goHit:GetTransform():GetPosition()) <=
                             attackRange) then
-                            if (attackTimer == nil) then
-                                Log("Already Atacking!\n")
-                                do
-                                    return
-                                end
-                            else
-                                isMoving = false
-                                Attack()
-                            end
-
+                            isMoving = false
+                            Attack()
                         else
                             if (footstepsParticle ~= nil) then
                                 footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
