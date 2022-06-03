@@ -202,7 +202,7 @@ end
 rotationSpeed = 4
 
 function RotateToTargetDirection(dt)
-    if targetDirection ~= nil then
+    if (targetDirection ~= nil and isOnStandBy == nil) then
         deltaDirection = Float3Difference(componentTransform:GetFront(), targetDirection)
         if rotationSpeed * dt > Float3Length(deltaDirection) then
             componentTransform:LookAt(targetDirection, float3.new(0, 1, 0))
@@ -637,6 +637,7 @@ function SwitchState(from, to)
     end
 
     if to == STATE.SUS then
+        isOnStandBy = nil
         targetAwareness = 1
         awareness = 1
     end
@@ -667,7 +668,7 @@ function UpdateAnimation(dt, oldState, target)
         currentClip = componentAnimator:GetSelectedClip()
         -- Log(tostring(oldState) .. "" .. tostring(state) .. "\n")
         if state == STATE.UNAWARE or state == STATE.SUS then
-            if (isWalking == false) then
+            if (isWalking == false or isOnStandBy ~= nil) then
                 if (currentClip ~= "Idle") then
                     componentAnimator:SetSelectedClip("Idle")
                 end
@@ -737,7 +738,7 @@ function Update(dt)
     UpdateAnimation(dt, oldState, target)
     RotateToTargetDirection(dt)
 
-    if state == STATE.UNAWARE then
+    if state == STATE.UNAWARE and isOnStandBy == nil then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
@@ -809,6 +810,8 @@ function EventHandler(key, fields)
     elseif key == "Assign_Type" then
         thisType = fields[1]
         attackRange = 40
+    elseif key == "Patrol_Point" and state == STATE.UNAWARE then
+        isOnStandBy = fields[1]
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)

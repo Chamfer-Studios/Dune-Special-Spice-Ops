@@ -4,6 +4,11 @@ minRetargetingDistanceIV = InspectorVariable.new("minRetargetingDistance", minRe
     minRetargetingDistance)
 NewVariable(minRetargetingDistanceIV)
 
+standByTime = 0
+local standByTimeIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
+standByTimeIV = InspectorVariable.new("standByTime", standByTimeIVT, standByTime)
+NewVariable(standByTimeIV)
+
 navigation = GetNavigation()
 
 _G.finalPath = {}
@@ -68,7 +73,12 @@ function FollowPath(speed, dt, loop, useRB)
     currentPosition = componentTransform:GetPosition()
     if Float3Distance(currentTarget, currentPosition) <= minRetargetingDistance then
         currentPathIndex = currentPathIndex + 1
+        DispatchEvent("Patrol_Point", {true})
+        standByTimer = 0
+
         if currentPathIndex > #_G.finalPath and loop then
+            standByTimer = nil
+            DispatchEvent("Patrol_Point", {nil})
             currentPathIndex = 2
             currentTarget = _G.finalPath[currentPathIndex]
         end
@@ -187,4 +197,12 @@ end
 
 function Update(dt)
     _dt = dt
+    if (standByTimer ~= nil) then
+
+        standByTimer = standByTimer + dt
+        if (standByTimer >= standByTime) then
+            standByTimer = nil
+            DispatchEvent("Patrol_Point", {nil})
+        end
+    end
 end
