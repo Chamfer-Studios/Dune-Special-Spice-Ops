@@ -38,9 +38,14 @@ function Start()
     line5 = Find("line5")
     line6 = Find("line6")
 
+    hpFrame1 = Find("HP Frame 1")
+    hpFrame2 = Find("HP Frame 2")
+    hpFrame3 = Find("HP Frame 3")
+    hpFrame4 = Find("HP Frame 4")
     hpFill1 = Find("HP Fill 1")
     hpFill2 = Find("HP Fill 2")
     hpFill3 = Find("HP Fill 3")
+    hpFill4 = Find("HP Fill 4")
 
     zhibTimer2 = nil
     zhibTimer2aux = nil
@@ -66,6 +71,10 @@ function Start()
     maskSize = cooldownMaskQ:GetTransform2D():GetMask()
 
     blink = 0.4
+
+    isUsingQ = false
+    isUsingW = false
+    isUsingE = false
 end
 
 function Update(dt)
@@ -94,10 +103,9 @@ function EventHandler(key, fields)
         abilityState = fields[3] -- 1: normal, 2: active, 3: cooldown, 4: Using, 5: Pickable, 6: Disabled
         HandleMasks()
         HandleCooldowns(fields[4])
-    elseif key == "Player_Health" then -- fields[1] = characterID, fields[2] = currentHP
+    elseif key == "Player_Health" then -- fields[1] = characterID, fields[2] = currentHP, fields[3] = maxHP
         currentCharacterId = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        ManageHealth(fields[1], fields[2])
-
+        ManageHealth(fields[1], fields[2], fields[3])
     elseif key == "Display_Description" then
         DisplayDescription(fields[1], fields[2])
     end
@@ -280,24 +288,64 @@ function HandleCooldowns(currentTimer)
 
 end
 
-function ManageHealth(characterId, HP)
+function ManageHealth(characterId, HP, maxHP)
     if currentCharacterId == characterId then
-        if HP == 0 then
-            hpFill1.active = false
-            hpFill2.active = false
-            hpFill3.active = false
-        elseif HP == 1 then
-            hpFill1.active = true
-            hpFill2.active = false
-            hpFill3.active = false
-        elseif HP == 2 then
-            hpFill1.active = true
-            hpFill2.active = true
-            hpFill3.active = false
-        elseif HP == 3 then
-            hpFill1.active = true
-            hpFill2.active = true
-            hpFill3.active = true
+        if maxHP == 3 then
+            hpFrame1:GetTransform2D():SetPosition(float2.new(130, 42))
+            hpFrame2:GetTransform2D():SetPosition(float2.new(210, 42))
+            hpFrame3:GetTransform2D():SetPosition(float2.new(290, 42))
+            hpFrame4.active = false
+            hpFill4.active = false
+            if HP == 0 then
+                hpFill1.active = false
+                hpFill2.active = false
+                hpFill3.active = false
+            elseif HP == 1 then
+                hpFill1.active = true
+                hpFill2.active = false
+                hpFill3.active = false
+            elseif HP == 2 then
+                hpFill1.active = true
+                hpFill2.active = true
+                hpFill3.active = false
+            elseif HP == 3 then
+                hpFill1.active = true
+                hpFill2.active = true
+                hpFill3.active = true
+            end
+
+        elseif maxHP == 4 then
+            hpFrame1:GetTransform2D():SetPosition(float2.new(85, 42))
+            hpFrame2:GetTransform2D():SetPosition(float2.new(170, 42))
+            hpFrame3:GetTransform2D():SetPosition(float2.new(255, 42))
+            hpFrame4:GetTransform2D():SetPosition(float2.new(340, 42))
+            hpFrame4.active = true
+            if HP == 0 then
+                hpFill1.active = false
+                hpFill2.active = false
+                hpFill3.active = false
+                hpFill4.active = false
+            elseif HP == 1 then
+                hpFill1.active = true
+                hpFill2.active = false
+                hpFill3.active = false
+                hpFill4.active = false
+            elseif HP == 2 then
+                hpFill1.active = true
+                hpFill2.active = true
+                hpFill3.active = false
+                hpFill4.active = false
+            elseif HP == 3 then
+                hpFill1.active = true
+                hpFill2.active = true
+                hpFill3.active = true
+                hpFill4.active = false
+            elseif HP == 4 then
+                hpFill1.active = true
+                hpFill2.active = true
+                hpFill3.active = true
+                hpFill4.active = true
+            end
         end
     end
 end
@@ -363,29 +411,35 @@ function AbilityStateUsingBlinking(dt)
                 activeMaskQ.active = not activeMaskQ.active
             else
                 usingMaskQ.active = false
+                activeMaskQ.active = false
             end
             if isUsingW == true then
                 usingMaskW.active = not usingMaskW.active
                 activeMaskW.active = not activeMaskW.active
             else
                 usingMaskW.active = false
+                activeMaskW.active = false
             end
             if isUsingE == true then
                 usingMaskE.active = not usingMaskE.active
                 activeMaskE.active = not activeMaskE.active
             else
                 usingMaskE.active = false
+                activeMaskE.active = false
             end
         end
     else
         if isUsingQ == false then
             usingMaskQ.active = false
+            activeMaskQ.active = false
         end
         if isUsingW == false then
             usingMaskW.active = false
+            activeMaskW.active = false
         end
         if isUsingE == false then
             usingMaskE.active = false
+            activeMaskE.active = false
         end
         blinkTimer = nil
     end
