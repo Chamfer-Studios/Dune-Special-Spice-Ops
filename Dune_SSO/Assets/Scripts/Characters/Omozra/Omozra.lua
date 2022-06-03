@@ -211,10 +211,12 @@ function Update(dt)
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
     end
 
-    if (smokebombPosition == nil) then
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
-    elseif (Distance3D(componentTransform:GetPosition(), smokebombPosition) > smokebombRadius) then
-        DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+    if GetVariable("GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+        if (smokebombPosition == nil) then
+            DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+        elseif (Distance3D(componentTransform:GetPosition(), smokebombPosition) > smokebombRadius) then
+            DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
+        end
     end
 
     if (lastRotation ~= nil) then

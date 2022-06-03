@@ -3,7 +3,8 @@ local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 character = {
     Zhib = 1,
     Nerala = 2,
-    Omozra = 3
+    Omozra = 3,
+    None = 4
 }
 
 function Start()
@@ -376,14 +377,32 @@ function CurrentCharacterDrawing()
         zhibImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         zhibKey.active = false
         currentSelectedCharacterFrame = character.Zhib
-        neralaImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
-        neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        neralaKey.active = true
-        currentLeftCharacterFrame = character.Nerala
-        omozraImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
-        omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        omozraKey.active = true
-        currentRightCharacterFrame = character.Omozra
+
+        if GetVariable("GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            neralaImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
+            neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            neralaKey.active = true
+            leftCharacterFrame.active = true
+            currentLeftCharacterFrame = character.Nerala
+        else
+            neralaImage.active = false
+            neralaKey.active = false
+            leftCharacterFrame.active = false
+            currentLeftCharacterFrame = character.None
+        end
+
+        if GetVariable("GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            omozraImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
+            omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            omozraKey.active = true
+            rightCharacterFrame.active = true
+            currentRightCharacterFrame = character.Omozra
+        else
+            omozraImage.active = false
+            omozraKey.active = false
+            rightCharacterFrame.active = false
+            currentRightCharacterFrame = character.Omozra
+        end
 
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), true) -- activate the skill slots to be visible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
@@ -393,14 +412,32 @@ function CurrentCharacterDrawing()
         neralaImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         neralaKey.active = false
         currentSelectedCharacterFrame = character.Nerala
-        omozraImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
-        omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        omozraKey.active = true
-        currentLeftCharacterFrame = character.Omozra
-        zhibImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
-        zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        zhibKey.active = true
-        currentRightCharacterFrame = character.Omozra
+
+        if GetVariable("GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            omozraImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
+            omozraImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            omozraKey.active = true
+            leftCharacterFrame.active = true
+            currentLeftCharacterFrame = character.Omozra
+        else
+            omozraImage.active = false
+            omozraKey.active = false
+            leftCharacterFrame.active = false
+            currentLeftCharacterFrame = character.None
+        end
+
+        if GetVariable("GameState.lua", "zhibAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            zhibImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
+            zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            zhibKey.active = true
+            rightCharacterFrame.active = true
+            currentRightCharacterFrame = character.Zhib
+        else
+            zhibImage.active = false
+            zhibKey.active = false
+            rightCharacterFrame.active = false
+            currentRightCharacterFrame = character.None
+        end
 
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), true) -- activate the skill slots to be visible
@@ -410,14 +447,32 @@ function CurrentCharacterDrawing()
         omozraImage:GetTransform2D():SetSize(float2.new(156.25, 156.25)) -- big size
         omozraKey.active = false
         currentSelectedCharacterFrame = character.Omozra
-        zhibImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
-        zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        zhibKey.active = true
-        currentLeftCharacterFrame = character.Zhib
-        neralaImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
-        neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
-        neralaKey.active = true
-        currentRightCharacterFrame = character.Nerala
+
+        if GetVariable("GameState.lua", "zhibAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            zhibImage:GetTransform2D():SetPosition(float2.new(70, 120)) -- left position
+            zhibImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            zhibKey.active = true
+            leftCharacterFrame.active = true
+            currentLeftCharacterFrame = character.Zhib
+        else
+            zhibImage.active = false
+            zhibKey.active = false
+            leftCharacterFrame.active = false
+            currentLeftCharacterFrame = character.None
+        end
+
+        if GetVariable("GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+            neralaImage:GetTransform2D():SetPosition(float2.new(350, 120)) -- right position
+            neralaImage:GetTransform2D():SetSize(float2.new(76.25, 76.25)) -- small size
+            neralaKey.active = true
+            rightCharacterFrame.active = true
+            currentRightCharacterFrame = character.Nerala
+        else
+            neralaImage.active = false
+            neralaKey.active = false
+            rightCharacterFrame.active = false
+            currentRightCharacterFrame = character.None
+        end
 
         zhibSkills:SetIsActiveToChildren(zhibSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
         neralaSkills:SetIsActiveToChildren(neralaSkills:GetChildren(), false) -- deactivate the skill slots to be invisible
