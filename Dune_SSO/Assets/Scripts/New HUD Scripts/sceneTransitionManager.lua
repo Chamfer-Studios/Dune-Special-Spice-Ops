@@ -95,11 +95,11 @@ function Update(dt)
     -----------------------------------------------------
     if(upgradeArray[1].state == false) then
         if(id == 0)then
-            LevelUpZhibSkill(1, 1)
+            LevelUpZhibSkill(1, 1, true)
         elseif(id == 1) then
-            LevelUpNeralaSkill(1, 1)
+            LevelUpNeralaSkill(1, 1, true)
         elseif(id == 2) then
-            LevelUpOmozraSkill(1, 1)
+            LevelUpOmozraSkill(1, 1, true)
         end
         SpiceCost(20)
         upgradeArray[1].state = true
@@ -112,11 +112,11 @@ function Update(dt)
             upgradeArray[1].object:GetChildren()[1]:Active(false)
             upgradeArray[2].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(1, 1)
+                LevelUpZhibSkill(1, 1, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(1, 1)
+                LevelUpNeralaSkill(1, 1, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(1, 1)
+                LevelUpOmozraSkill(1, 1, false)
             end
             SpiceCost(-20)
         end
@@ -124,11 +124,11 @@ function Update(dt)
     elseif(upgradeArray[2].object:GetButton():IsPressed()) then
         if(upgradeArray[2].state == false and upgradeArray[2].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(2, 1)
+                LevelUpZhibSkill(2, 1, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(2, 1)
+                LevelUpNeralaSkill(2, 1, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(2, 1)
+                LevelUpOmozraSkill(2, 1, true)
             end
             SpiceCost(20)
             upgradeArray[2].state = true
@@ -141,11 +141,11 @@ function Update(dt)
         upgradeArray[2].object:GetChildren()[1]:Active(false)
         upgradeArray[3].unlocked = false
         if(id == 0)then
-            LevelDownZhibSkill(2, 1)
+            LevelUpZhibSkill(2, 1, false)
         elseif(id == 1) then
-            LevelDownNeralaSkill(2, 1)
+            LevelUpNeralaSkill(2, 1, false)
         elseif(id == 2) then
-            LevelDownOmozraSkill(2, 1)
+            LevelUpOmozraSkill(2, 1, false)
         end
         SpiceCost(-20)
         end
@@ -153,11 +153,11 @@ function Update(dt)
     elseif(upgradeArray[3].object:GetButton():IsPressed()) then
         if(upgradeArray[3].state == false and upgradeArray[3].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(3, 1)
+                LevelUpZhibSkill(3, 1, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(3, 1)
+                LevelUpNeralaSkill(3, 1, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(3, 1)
+                LevelUpOmozraSkill(3, 1, true)
             end
             SpiceCost(20)
             upgradeArray[3].state = true
@@ -166,11 +166,11 @@ function Update(dt)
             upgradeArray[3].state = false
             upgradeArray[3].object:GetChildren()[1]:Active(false)
             if(id == 0)then
-                LevelDownZhibSkill(3, 1)
+                LevelUpZhibSkill(3, 1,false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(3, 1)
+                LevelUpNeralaSkill(3, 1,false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(3, 1)
+                LevelUpOmozraSkill(3, 1,false)
             end
             SpiceCost(-20)
         end
@@ -179,11 +179,11 @@ function Update(dt)
     elseif(upgradeArray[4].object:GetButton():IsPressed()) then
         if(upgradeArray[4].state == false) then
             if(id == 0)then
-                LevelUpZhibSkill(1,2)
+                LevelUpZhibSkill(1,2, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(1,2)
+                LevelUpNeralaSkill(1,2, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(1,2)
+                LevelUpOmozraSkill(1,2, true)
             end
             SpiceCost(20)
             upgradeArray[4].state = true
@@ -196,11 +196,11 @@ function Update(dt)
             upgradeArray[4].object:GetChildren()[1]:Active(false)
             upgradeArray[5].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(1, 2)
+                LevelUpZhibSkill(1,2, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(1, 2)
+                LevelUpNeralaSkill(1,2, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(1, 2)
+                LevelUpOmozraSkill(1,2, false)
             end
             SpiceCost(-20)
             end
@@ -208,11 +208,11 @@ function Update(dt)
     elseif(upgradeArray[5].object:GetButton():IsPressed()) then
         if(upgradeArray[5].state == false and upgradeArray[5].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(2,2)
+                LevelUpZhibSkill(2,2, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(2,2)
+                LevelUpNeralaSkill(2,2, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(2,2)
+                LevelUpOmozraSkill(2,2, true)
             end
             SpiceCost(20)
             upgradeArray[5].state = true
@@ -225,11 +225,11 @@ function Update(dt)
             upgradeArray[5].object:GetChildren()[1]:Active(false)
             upgradeArray[6].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(2, 2)
+                LevelUpZhibSkill(2,2, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(2, 2)
+                LevelUpNeralaSkill(2,2, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(2, 2)
+                LevelUpOmozraSkill(2,2, false)
             end
             SpiceCost(-20)
             end
@@ -237,11 +237,11 @@ function Update(dt)
     elseif(upgradeArray[6].object:GetButton():IsPressed()) then
         if(upgradeArray[6].state == false and upgradeArray[6].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(3,2)
+                LevelUpZhibSkill(3,2, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(3,2)
+                LevelUpNeralaSkill(3,2, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(3,2)
+                LevelUpOmozraSkill(3,2, true)
             end
             SpiceCost(20)
             upgradeArray[6].state = true
@@ -250,11 +250,11 @@ function Update(dt)
             upgradeArray[6].state = false
             upgradeArray[6].object:GetChildren()[1]:Active(false)
             if(id == 0)then
-                LevelDownZhibSkill(3, 2)
+                LevelUpZhibSkill(3,2, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(3, 2)
+                LevelUpNeralaSkill(3,2, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(3, 2)
+                LevelUpOmozraSkill(3,2, false)
             end
             SpiceCost(-20)
         end
@@ -263,11 +263,11 @@ function Update(dt)
     elseif(upgradeArray[7].object:GetButton():IsPressed()) then
         if(upgradeArray[7].state == false) then
             if(id == 0)then
-                LevelUpZhibSkill(1,3)
+                LevelUpZhibSkill(1,3, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(1,3)
+                LevelUpNeralaSkill(1,3, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(1,3)
+                LevelUpOmozraSkill(1,3, true)
             end
             
             SpiceCost(20)
@@ -281,11 +281,11 @@ function Update(dt)
                 upgradeArray[7].object:GetChildren()[1]:Active(false)
                 upgradeArray[8].unlocked = false
                 if(id == 0)then
-                    LevelDownZhibSkill(1, 3)
+                    LevelUpZhibSkill(1,3, false)
                 elseif(id == 1) then
-                    LevelDownNeralaSkill(1, 3)
+                    LevelUpNeralaSkill(1,3, false)
                 elseif(id == 2) then
-                    LevelDownOmozraSkill(1, 3)
+                    LevelUpOmozraSkill(1,3, false)
                 end
                 SpiceCost(-20)
             end
@@ -293,11 +293,11 @@ function Update(dt)
     elseif(upgradeArray[8].object:GetButton():IsPressed()) then
         if(upgradeArray[8].state == false and upgradeArray[8].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(2,3)
+                LevelUpZhibSkill(2,3, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(2,3)
+                LevelUpNeralaSkill(2,3, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(2,3)
+                LevelUpOmozraSkill(2,3, true)
             end
             SpiceCost(20)
             upgradeArray[8].state = true
@@ -310,11 +310,11 @@ function Update(dt)
             upgradeArray[8].object:GetChildren()[1]:Active(false)
             upgradeArray[9].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(2, 3)
+                LevelUpZhibSkill(2,3, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(2, 3)
+                LevelUpNeralaSkill(2,3, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(2, 3)
+                LevelUpOmozraSkill(2,3, false)
             end
             SpiceCost(-20)
             end
@@ -322,11 +322,11 @@ function Update(dt)
     elseif(upgradeArray[9].object:GetButton():IsPressed()) then
         if(upgradeArray[9].state == false and upgradeArray[9].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(3,3)
+                LevelUpZhibSkill(3,3, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(3,3)
+                LevelUpNeralaSkill(3,3, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(3,3)
+                LevelUpOmozraSkill(3,3, true)
             end
             SpiceCost(20)
             upgradeArray[9].state = true
@@ -335,11 +335,11 @@ function Update(dt)
             upgradeArray[9].state = false
             upgradeArray[9].object:GetChildren()[1]:Active(false)
             if(id == 0)then
-                LevelDownZhibSkill(3, 3)
+                LevelUpZhibSkill(3,3, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(3, 3)
+                LevelUpNeralaSkill(3,3, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(3, 3)
+                LevelUpOmozraSkill(3,3, false)
             end
             SpiceCost(-20)
         end
@@ -348,11 +348,11 @@ function Update(dt)
     elseif(upgradeArray[10].object:GetButton():IsPressed()) then
         if(upgradeArray[10].state == false) then
             if(id == 0)then
-                LevelUpZhibSkill(1,4)
+                LevelUpZhibSkill(1,4, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(1,4)
+                LevelUpNeralaSkill(1,4, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(1,4)
+                LevelUpOmozraSkill(1,4, true)
             end
             SpiceCost(20)
             upgradeArray[10].state = true
@@ -365,11 +365,11 @@ function Update(dt)
             upgradeArray[10].object:GetChildren()[1]:Active(false)
             upgradeArray[11].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(1, 4)
+                LevelUpZhibSkill(1,4, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(1, 4)
+                LevelUpNeralaSkill(1,4, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(1, 4)
+                LevelUpOmozraSkill(1,4, false)
             end
             SpiceCost(-20)
             end
@@ -377,11 +377,11 @@ function Update(dt)
     elseif(upgradeArray[11].object:GetButton():IsPressed()) then
         if(upgradeArray[11].state == false and upgradeArray[11].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(2,4)
+                LevelUpZhibSkill(2,4, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(2,4)
+                LevelUpNeralaSkill(2,4, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(2,4)
+                LevelUpOmozraSkill(2,4, true)
             end
             SpiceCost(20)
             upgradeArray[11].state = true
@@ -394,11 +394,11 @@ function Update(dt)
             upgradeArray[11].object:GetChildren()[1]:Active(false)
             upgradeArray[12].unlocked = false
             if(id == 0)then
-                LevelDownZhibSkill(2, 4)
+                LevelUpZhibSkill(2,4, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(2, 4)
+                LevelUpNeralaSkill(2,4, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(2, 4)
+                LevelUpOmozraSkill(2,4, false)
             end
             SpiceCost(-20)
             end
@@ -406,11 +406,11 @@ function Update(dt)
     elseif(upgradeArray[12].object:GetButton():IsPressed()) then
         if(upgradeArray[12].state == false and upgradeArray[12].unlocked == true) then
             if(id == 0)then
-                LevelUpZhibSkill(3,4)
+                LevelUpZhibSkill(3,4, true)
             elseif(id == 1) then
-                LevelUpNeralaSkill(3,4)
+                LevelUpNeralaSkill(3,4, true)
             elseif(id == 2) then
-                LevelUpOmozraSkill(3,4)
+                LevelUpOmozraSkill(3,4, true)
             end
             SpiceCost(20)
             upgradeArray[12].state = true
@@ -419,11 +419,11 @@ function Update(dt)
             upgradeArray[12].state = false
             upgradeArray[12].object:GetChildren()[1]:Active(false)
             if(id == 0)then
-                LevelDownZhibSkill(3, 4)
+                LevelUpZhibSkill(3,4, false)
             elseif(id == 1) then
-                LevelDownNeralaSkill(3, 4)
+                LevelUpNeralaSkill(3,4, false)
             elseif(id == 2) then
-                LevelDownOmozraSkill(3, 4)
+                LevelUpOmozraSkill(3,4, false)
             end
             SpiceCost(-20)
         end
@@ -564,8 +564,12 @@ function SpiceCost(amount)
     Log("Saved Spice:" .. GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n")
 end
 
-function LevelUpZhibSkill(skillLvl, skillId)
+function LevelUpZhibSkill(skillLvl, skillId, direction)
 
+    if(direction == false) then
+       skillLvl = skillLvl - 1
+    end
+   
     if(skillId == 1) then
         SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
         str = "Zhib first skill level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
@@ -587,86 +591,53 @@ function LevelUpZhibSkill(skillLvl, skillId)
     Log("LevelingUpZhib \n")
 end
 
-function LevelDownZhibSkill(skillLvl, skillId)
+function LevelUpNeralaSkill(skillLvl, skillId, direction)
 
-    skillLvl = skillLvl - 1
-    if(skillId == 1) then
-        SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        str = "Zhib first skill level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
-        Log(str)
-    elseif(skillId == 2) then
-        SetVariable(skillLvl, "UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        str = "Zhib second skill level" .. GetVariable("UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
-        Log(str)
-    elseif(skillId == 3) then
-        SetVariable(skillLvl, "UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        str = "Zhib third skill level" .. GetVariable("UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
-        Log(str)
-    elseif(skillId == 4) then
-        --SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        --str = "Zhib level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
-        --Log(str)
-    end
-    
-    Log("LevelingUpZhib \n")
-end
-
-function LevelUpNeralaSkill(skillLvl, skillId)
+    if(direction == false) then
+        skillLvl = skillLvl - 1
+     end
 
     if(skillId == 1) then
         SetVariable(skillLvl, "UI_GameState.lua", "nerala_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Nerala first skill level" .. GetVariable("UI_GameState.lua", "nerala_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 2) then
         SetVariable(skillLvl, "UI_GameState.lua", "nerala_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Nerala secondary skill level" .. GetVariable("UI_GameState.lua", "nerala_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 3) then
         SetVariable(skillLvl, "UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Nerala third skill level" .. GetVariable("UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 4) then
         --levelUpNerala4 = skillLvl
     end
     Log("LevelingUpNerala")
 end
 
-function LevelDownNeralaSkill(skillLvl, skillId)
+function LevelUpOmozraSkill(skillLvl, skillId, direction) --false down true up
 
-    skillLvl = skillLvl - 1
-    if(skillId == 1) then
-        SetVariable(skillLvl, "UI_GameState.lua", "nerala_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 2) then
-        SetVariable(skillLvl, "UI_GameState.lua", "nerala_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 3) then
-        SetVariable(skillLvl, "UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 4) then
-        --levelUpNerala4 = skillLvl
+    if(direction == false) then
+        skillLvl = skillLvl - 1
     end
-    Log("LevelingUpNerala")
-end
-
-function LevelUpOmozraSkill(skillLvl, skillId)
 
     if(skillId == 1) then
         SetVariable(skillLvl, "UI_GameState.lua", "omozra_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Omozra first skill level" .. GetVariable("UI_GameState.lua", "omozra_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 2) then
         SetVariable(skillLvl, "UI_GameState.lua", "omozra_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Omozra second skill level" .. GetVariable("UI_GameState.lua", "omozra_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 3) then
         SetVariable(skillLvl, "UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Omozra third skill level" .. GetVariable("UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     elseif(skillId == 4) then
         --levelUpNerala4 = skillLvl
     end
     Log("LevelingUpOmozra\n")
 end
 
-function LevelDownOmozraSkill(skillLvl, skillId)
-
-    skillLvl = skillLvl - 1
-    if(skillId == 1) then
-        SetVariable(skillLvl, "UI_GameState.lua", "omozra_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 2) then
-        SetVariable(skillLvl, "UI_GameState.lua", "omozra_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 3) then
-        SetVariable(skillLvl, "UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    elseif(skillId == 4) then
-        --levelUpNerala4 = skillLvl
-    end
-    Log("LevelingUpOmozra\n")
-end
 ------------ END Dialogue ------------
 print("Scene Transition Script Load Success")
