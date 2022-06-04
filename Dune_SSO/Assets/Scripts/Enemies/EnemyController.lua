@@ -446,15 +446,15 @@ function Start()
         end
     end
 
-    debuffParticle = gameObject:GetChildren()[1]
+    debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
     if (debuffParticle ~= nil) then
         debuffParticle:GetComponentParticle():StopParticleSpawn()
     end
-    bloodParticle = gameObject:GetChildren()[2]
+    bloodParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[2]
     if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
-    slashParticle = gameObject:GetChildren()[3]
+    slashParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[3]
     if (slashParticle ~= nil) then
         slashParticle:GetComponentParticle():StopParticleSpawn()
     end
@@ -735,6 +735,21 @@ function UpdateAnimation(dt, oldState, target)
 end
 
 function Update(dt)
+    if (slashParticle ~= nil) then
+        slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
+
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
+
+    if (debuffParticle ~= nil) then
+        debuffParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 22, componentTransform:GetPosition().z + 12))
+    end
+
     if state == STATE.DEAD then
         do
             UpdateAnimation(dt, oldState, target)
@@ -786,6 +801,8 @@ function Die(leaveBody, enemyName)
     end
 
     SwitchState(state, STATE.CORPSE)
+    slashParticle:GetComponentParticle():StopParticleSpawn()
+    bloodParticle:GetComponentParticle():StopParticleSpawn()
 
     -- Spice Loot Droprate
     math.randomseed(os.time())
@@ -822,9 +839,6 @@ function EventHandler(key, fields)
         visualDebuffMultiplier = fields[2] / 100
         if (debuffParticle ~= nil) then
             debuffParticle:GetComponentParticle():ResumeParticleSpawn()
-            debuffParticle:GetComponentParticle():SetLoop(true)
-            debuffParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
         end
     elseif key == "Assign_Type" then
         thisType = fields[1]
@@ -838,17 +852,18 @@ function EventHandler(key, fields)
             targetAwareness = 1
         end
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
+        debuffParticle:GetComponentParticle():StopParticleSpawn()
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = thisType
+            if (bloodParticle ~= nil) then
+                bloodParticle:GetComponentParticle():ResumeParticleSpawn()
+            end
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
             if (slashParticle ~= nil) then
                 slashParticle:GetComponentParticle():ResumeParticleSpawn()
-                slashParticle:GetComponentParticle():SetLoop(false)
-                slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                    componentTransform:GetPosition().y + 12, componentTransform:GetPosition().z)) -- 23,12
             end
             deathParameters.LeaveBody = true
             deathParameters.EnemyName = thisType
