@@ -705,8 +705,8 @@ function UpdateAnimation(dt, oldState, target)
                         componentAnimator:SetSelectedClip("Idle")
                     end
                 else
-                    if (currentClip ~= "Walk") then
-                        componentAnimator:SetSelectedClip("Walk")
+                    if (currentClip ~= "Run") then
+                        componentAnimator:SetSelectedClip("Run")
                     end
                 end
             elseif (thisType == "Sardaukar") then
@@ -901,9 +901,9 @@ function AttackSardaukar(currentClip)
                 componentAnimator:SetSelectedClip("AttackToIdle")
                 attackTimer = 0
             end
-        elseif currentClip == "AttackToIdle" or currentClip == "RangedToIdle" then
+        elseif currentClip == "AttackToIdle" or currentClip == "RangedToIdle" then -- Both options use attack range since he can't range attack anymore
             if componentAnimator:IsCurrentClipPlaying() == false then
-                if (distance > attackRange) then -- Both options use attack range since he can't range attack anymore
+                if (distance > attackRange) then
                     if (currentClip ~= "Run") then
                         componentAnimator:SetSelectedClip("Run")
                     end
