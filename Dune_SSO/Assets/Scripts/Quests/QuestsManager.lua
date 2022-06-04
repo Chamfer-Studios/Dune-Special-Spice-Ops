@@ -15,26 +15,26 @@ missionList = {}
 
 ------------ Dialogue Manager ------------
 function Start()
+    --if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
+        --limit the logic with the capMission
+        --if (missionIndex < missionCap) then
+           -- InstantiateNamedPrefab(prefabPath, "Mission_" .. missionIndex )
+            --if(missionIndex > 1) then
+            --local newMission = Find("Mission_" .. missionIndex - 1)
+            --table.insert(missionList, newMission)
 
+            --Layout()
+            --end
+            --missionIndex = missionIndex + 1
+        --end
+    --end
 end
 
 function Update(dt)
 
     -- TODO: SET THE ID FROM EVENT AND SET OPENDIALOGUE TO TRUE
     -- DispatchEvent(pathfinderUpdateKey, { patrolWaypoints, pingpong, componentTransform:GetPosition() })
-    if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
-        --limit the logic with the capMission
-        if (missionIndex < missionCap) then
-            InstantiateNamedPrefab(prefabPath, "Mission_" .. missionIndex )
-            if(missionIndex > 1) then
-            local newMission = Find("Mission_" .. missionIndex - 1)
-            table.insert(missionList, newMission)
-
-            Layout()
-            end
-            missionIndex = missionIndex + 1
-        end
-    end
+    
     
     
 end
