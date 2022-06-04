@@ -21,11 +21,10 @@ omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
 
-anyCharacterSelected = true
 changedCharacter = false
 zhibAvailable = true
-neralaAvailable = true
-omozraAvailable = true
+neralaAvailable = false
+omozraAvailable = false
 
 GodMode = false
 
@@ -46,8 +45,7 @@ NewVariable(levelNumberIV)
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
-
-    InstantiatePrefab("Stamina Bars")
+    staminaBar = Find("Stamina Bar")
 
     LoadGame()
 end
@@ -81,13 +79,13 @@ function Update(dt)
         if (GetInput(1) == KEY_STATE.KEY_DOWN and omozraUltimate == false and omozraPrimary == false) then
             local goHovered = GetGameObjectHovered()
             if (goHovered.tag == Tag.PLAYER) then
-                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1 and zhibAvailable == true) then
+                if (goHovered:GetName() == "Zhib" and changedCharacter ~= 1) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                     characterSelected = 1
-                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2 and neralaAvailable == true) then
+                elseif (goHovered:GetName() == "Nerala" and changedCharacter ~= 2) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 2}) -- From character X to 2
                     characterSelected = 2
-                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3 and omozraAvailable == true) then
+                elseif (goHovered:GetName() == "Omozra" and changedCharacter ~= 3) then
                     DispatchGlobalEvent("Changed_Character", {characterSelected, 3}) -- From character X to 3
                     characterSelected = 3
                 end
@@ -97,7 +95,6 @@ function Update(dt)
             if (characterSelected == 1) then
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 1 to 0
                 characterSelected = 0
-                anyCharacterSelected = false
             else
                 DispatchGlobalEvent("Changed_Character", {characterSelected, 1}) -- From character X to 1
                 characterSelected = 1
@@ -139,6 +136,7 @@ function Update(dt)
             if (characterSelected == 4) then
                 characterSelected = 2
             end
+            staminaBar:GetTransform():SetPosition(float3.new(playerPos.x, playerPos.y + 30, playerPos.z))
             if (characterSelectedParticle ~= nil) then
                 characterSelectedParticle:GetTransform():SetPosition(
                     float3.new(playerPos.x, playerPos.y + 1, playerPos.z))
@@ -148,9 +146,9 @@ function Update(dt)
                     characterSelectedParticle:GetComponentParticle():SetLoop(true)
                 end
             end
-            anyCharacterSelected = true
         else
-            anyCharacterSelected = false
+            staminaBar:GetTransform():SetPosition(float3.new(staminaBar:GetTransform():GetPosition().x, -20,
+                staminaBar:GetTransform():GetPosition().z))
             characterSelectedParticle:GetTransform():SetPosition(float3.new(
                 characterSelectedParticle:GetTransform():GetPosition().x, -20,
                 characterSelectedParticle:GetTransform():GetPosition().z))
@@ -164,14 +162,8 @@ end
 
 function EventHandler(key, fields)
     if key == "Character_Selected" then -- fields[1] -> characterSelected;
-        if characterSelected == fields[1] then
-            DispatchGlobalEvent("Changed_Character", {characterSelected, 0})
-            characterSelected = 0
-        else
-            Log("Changing to character: " .. fields[1] .. "\n")
-            DispatchGlobalEvent("Changed_Character", {characterSelected, fields[1]})
-            characterSelected = fields[1]
-        end
+        characterSelected = fields[1]
+        -- characterSelected = 1
     elseif (key == "Spice_Reward") then
         spiceAmount = spiceAmount + fields[1]
         str = "Spice Amount " .. spiceAmount .. "\n"
@@ -248,17 +240,14 @@ end
 function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
-    --SetGameJsonBool("nerala_available", neralaAvailable)
     SetGameJsonInt("nerala_primary_level", nerala_primary_level)
     SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
     SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
 
-    --SetGameJsonBool("zhib_available", zhibAvailable)
     SetGameJsonInt("zhib_primary_level", zhib_primary_level)
     SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
     SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
 
-    --SetGameJsonBool("omozra_available", omozraAvailable)
     SetGameJsonInt("omozra_primary_level", omozra_primary_level)
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
@@ -305,21 +294,6 @@ function LoadGame()
         str = "Spice Amount " .. spiceAmount .. "\n"
         Log(str)
     end
-
-    -- zhibAvailable = GetGameJsonBool("zhib_available")
-    -- if(zhibAvailable == false) then
-    --     DispatchEvent("Disable_Character", {1})
-    -- end
-
-    -- neralaAvailable = GetGameJsonBool("nerala_available")
-    -- if(neralaAvailable == false) then
-    --     DispatchEvent("Disable_Character", {2})
-    -- end
-
-    -- omozraAvailable = GetGameJsonBool("omozra_available")
-    -- if(omozraAvailable == false) then
-    --     DispatchEvent("Disable_Character", {3})
-    -- end
 
     keyJson = "zhib_pos_lvl" .. levelNumber
     zhibPos = GetGameJsonFloat3(keyJson)

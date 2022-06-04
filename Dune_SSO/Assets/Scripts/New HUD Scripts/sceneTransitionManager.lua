@@ -602,9 +602,9 @@ function LevelUpZhibSkill(skillLvl, skillId, direction)
         str = "Zhib third skill level" .. GetVariable("UI_GameState.lua", "zhib_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
         Log(str)
     elseif(skillId == 4) then
-        --SetVariable(skillLvl, "UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        --str = "Zhib level" .. GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
-        --Log(str)
+        SetVariable(skillLvl, "UI_GameState.lua", "zhib_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Zhib level" .. GetVariable("UI_GameState.lua", "zhib_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     end
     
     Log("LevelingUpZhib \n")
@@ -629,7 +629,9 @@ function LevelUpNeralaSkill(skillLvl, skillId, direction)
         str = "Nerala third skill level" .. GetVariable("UI_GameState.lua", "nerala_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
         Log(str)
     elseif(skillId == 4) then
-        --levelUpNerala4 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "nerala_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Nerala level" .. GetVariable("UI_GameState.lua", "nerala_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     end
     Log("LevelingUpNerala")
 end
@@ -653,7 +655,9 @@ function LevelUpOmozraSkill(skillLvl, skillId, direction) --false down true up
         str = "Omozra third skill level" .. GetVariable("UI_GameState.lua", "omozra_ultimate_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
         Log(str)
     elseif(skillId == 4) then
-        --levelUpNerala4 = skillLvl
+        SetVariable(skillLvl, "UI_GameState.lua", "omozra_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        str = "Omozra level" .. GetVariable("UI_GameState.lua", "omozra_passive_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) .. "\n"
+        Log(str)
     end
     Log("LevelingUpOmozra\n")
 end
