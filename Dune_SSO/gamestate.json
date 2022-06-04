@@ -5,6 +5,7 @@
         0.0,
         812.0
     ],
+    "nerala_available" : true,
     "nerala_primary_level": 0,
     "nerala_secondary_level": 0,
     "nerala_ultimate_level": 0,
@@ -13,6 +14,7 @@
         0.0,
         800.0
     ],
+    "omozra_available" : true,
     "omozra_primary_level": 0,
     "omozra_secondary_level": 0,
     "omozra_ultimate_level": 0,
@@ -22,6 +24,7 @@
         0.0,
         798.4801635742188
     ],
+    "zhib_available" : true,
     "zhib_primary_level": 0,
     "zhib_secondary_level": 0,
     "zhib_ultimate_level": 0
