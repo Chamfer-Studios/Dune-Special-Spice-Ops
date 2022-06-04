@@ -66,6 +66,7 @@ runMultiplierPercentage = 150
 staminaSeconds = 5
 recoveryTime = 5
 staminaTimer = staminaSeconds
+standingStaminaMultiplier = 1.5
 isTired = false
 isUsingQ = false
 isUsingW = false
@@ -92,7 +93,7 @@ secondaryCastRange = 225 -- 75
 secondaryCooldown = 10
 
 -- Ultimate ability --
-ultimateCastRange = 50
+ultimateCastRange = 100
 ultimateCooldown = 30.0
 ultimateCastRangeExtension = ultimateCastRange * 0.5
 ultimateSpiceCost = 2000
@@ -727,7 +728,11 @@ function ManageTimers(dt)
             -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
     else
-        staminaTimer = staminaTimer + dt
+        if (currentMovement == Movement.IDLE or currentMovement == Movement.IDLE_CROUCH) then
+            staminaTimer = staminaTimer + dt * standingStaminaMultiplier
+        else
+            staminaTimer = staminaTimer + dt
+        end
         if (staminaTimer > recoveryTime) then
             staminaTimer = staminaSeconds
             isTired = false
