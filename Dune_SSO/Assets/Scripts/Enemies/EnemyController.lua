@@ -20,6 +20,7 @@ NewVariable(attackRangeIV)
 
 attackSpeed = 1.5
 dartRange = 100
+chainAwarenessDistance = 100
 
 visionConeAngle = 90
 local visionConeAngleIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
@@ -645,6 +646,7 @@ function SwitchState(from, to)
     if to == STATE.AGGRO then
         targetAwareness = 2
         awareness = 2
+        DispatchGlobalEvent("Enemy_Aggro", {gameObject, componentTransform:GetPosition(), chainAwarenessDistance}) -- fields[1] -> gameObject; fields[2] -> position; fields[3] -> range;
     end
 
     DispatchEvent("Change_State", {from, to})
@@ -812,6 +814,12 @@ function EventHandler(key, fields)
         attackRange = 40
     elseif key == "Patrol_Point" and state == STATE.UNAWARE then
         isOnStandBy = fields[1]
+    elseif key == "Enemy_Aggro" then -- fields[1] -> gameObject; fields[2] -> position; fields[3] -> range;
+        if (fields[1] ~= gameObject and Float3Distance(fields[2], componentTransform:GetPosition()) <= fields[3] and
+            state ~= STATE.AGGRO) then
+            awareness = 1
+            targetAwareness = 1
+        end
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
