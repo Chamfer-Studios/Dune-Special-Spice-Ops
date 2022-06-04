@@ -9,9 +9,31 @@ zoomSpeed = 50
 mosquitoAlive = false
 arrived = false
 actualId = 0
+local isStarting = true
+local neralaAvailable
+local omozraAvailable
 
+
+function Start() 
+    leftArrow = Find("LeftArrow")
+    rightArrow = Find("RightArrow")
+end
 function Update(dt)
-  
+    if(isStarting == true) then
+        if (GetVariable("UI_GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            omozraAvailable = false
+        else
+            omozraAvailable = true
+        end
+        if(GetVariable("UI_GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            neralaAvailable = false
+        else
+            neralaAvailable = true
+        end
+
+        isStarting = false
+    end
+
     target = Find("CameraReference"):GetTransform():GetPosition()
   
 
@@ -24,7 +46,8 @@ function Update(dt)
         newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
         newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
     end
-    if (Find("LeftArrow"):GetButton():IsPressed()) then -- Q
+    
+    if (leftArrow:GetButton():IsPressed() and leftArrow.active == true) then -- Q
         if (actualId == 1) then
             return
         end
@@ -42,7 +65,7 @@ function Update(dt)
         remainingAngle = remainingAngle - angle
     end
 
-    if (Find("RightArrow"):GetButton():IsPressed()) then -- E
+    if (rightArrow:GetButton():IsPressed() and rightArrow.active == true) then -- E
         if (actualId == 2) then
             return
         end
@@ -58,6 +81,17 @@ function Update(dt)
         Log(str)
         arrived = false
         remainingAngle = remainingAngle + angle
+    end
+
+    if (actualId == 0) then
+        rightArrow:Active(omozraAvailable)
+        leftArrow:Active(neralaAvailable)
+    elseif(actualId == 1) then
+        rightArrow:Active(true)
+        leftArrow:Active(false)
+    elseif(actualId == 2) then
+        rightArrow:Active(false)
+        leftArrow:Active(true)
     end
     
     if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q

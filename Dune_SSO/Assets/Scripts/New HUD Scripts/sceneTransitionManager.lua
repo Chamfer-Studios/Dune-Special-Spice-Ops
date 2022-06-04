@@ -73,10 +73,20 @@ function Start()
     dialogueGo = Find("Dialogue")
     id = 0
     UpdateUI()
+
+    
+    --deactivate the characters that are not available
 end
 
 function Update(dt)
     if(isStarting == true) then
+        if (GetVariable("UI_GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            Find("RightArrow"):Active(false)
+        end
+        if(GetVariable("UI_GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+            Find("LeftArrow"):Active(false)
+        end
+    
         SpiceCost(0)
         isStarting = false
     end
@@ -99,7 +109,7 @@ function Update(dt)
 
 
     --for narnia
-    if(upgradeArray[1].object:GetButton():IsPressed())then
+    if(upgradeArray[1].object:GetButton():IsPressed() and upgradeArray[1].unlocked == true)then
     --FIRST HAB
     -----------------------------------------------------
     if(upgradeArray[1].state == false) then
@@ -130,7 +140,7 @@ function Update(dt)
             SpiceCost(-20)
         end
         end
-    elseif(upgradeArray[2].object:GetButton():IsPressed()) then
+    elseif(upgradeArray[2].object:GetButton():IsPressed() and upgradeArray[2].unlocked == true) then
         if(upgradeArray[2].state == false and upgradeArray[2].unlocked == true) then
             if(id == 0)then
                 LevelUpZhibSkill(2, 1, true)
@@ -159,8 +169,8 @@ function Update(dt)
         SpiceCost(-20)
         end
     end
-    elseif(upgradeArray[3].object:GetButton():IsPressed()) then
-        if(upgradeArray[3].state == false and upgradeArray[3].unlocked == true) then
+    elseif(upgradeArray[3].object:GetButton():IsPressed() and upgradeArray[3].unlocked == true) then
+        if(upgradeArray[3].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(3, 1, true)
             elseif(id == 1) then
@@ -185,7 +195,7 @@ function Update(dt)
         end
     --SECOND HAB
     -----------------------------------------------------
-    elseif(upgradeArray[4].object:GetButton():IsPressed()) then
+    elseif(upgradeArray[4].object:GetButton():IsPressed() and upgradeArray[4].unlocked == true) then
         if(upgradeArray[4].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(1,2, true)
@@ -214,8 +224,8 @@ function Update(dt)
             SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[5].object:GetButton():IsPressed()) then
-        if(upgradeArray[5].state == false and upgradeArray[5].unlocked == true) then
+    elseif(upgradeArray[5].object:GetButton():IsPressed() and upgradeArray[5].unlocked == true) then
+        if(upgradeArray[5].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(2,2, true)
             elseif(id == 1) then
@@ -243,8 +253,8 @@ function Update(dt)
             SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[6].object:GetButton():IsPressed()) then
-        if(upgradeArray[6].state == false and upgradeArray[6].unlocked == true) then
+    elseif(upgradeArray[6].object:GetButton():IsPressed() and upgradeArray[6].unlocked == true) then
+        if(upgradeArray[6].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(3,2, true)
             elseif(id == 1) then
@@ -269,7 +279,7 @@ function Update(dt)
         end
     --THIRD HAB
     -----------------------------------------------------
-    elseif(upgradeArray[7].object:GetButton():IsPressed()) then
+    elseif(upgradeArray[7].object:GetButton():IsPressed() and upgradeArray[7].unlocked == true) then
         if(upgradeArray[7].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(1,3, true)
@@ -299,8 +309,8 @@ function Update(dt)
                 SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[8].object:GetButton():IsPressed()) then
-        if(upgradeArray[8].state == false and upgradeArray[8].unlocked == true) then
+    elseif(upgradeArray[8].object:GetButton():IsPressed() and upgradeArray[8].unlocked == true) then
+        if(upgradeArray[8].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(2,3, true)
             elseif(id == 1) then
@@ -328,8 +338,8 @@ function Update(dt)
             SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[9].object:GetButton():IsPressed()) then
-        if(upgradeArray[9].state == false and upgradeArray[9].unlocked == true) then
+    elseif(upgradeArray[9].object:GetButton():IsPressed() and upgradeArray[9].unlocked == true) then
+        if(upgradeArray[9].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(3,3, true)
             elseif(id == 1) then
@@ -354,7 +364,7 @@ function Update(dt)
         end
     --PASIVE
     -----------------------------------------------------
-    elseif(upgradeArray[10].object:GetButton():IsPressed()) then
+    elseif(upgradeArray[10].object:GetButton():IsPressed() and upgradeArray[10].unlocked == true) then
         if(upgradeArray[10].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(1,4, true)
@@ -383,8 +393,8 @@ function Update(dt)
             SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[11].object:GetButton():IsPressed()) then
-        if(upgradeArray[11].state == false and upgradeArray[11].unlocked == true) then
+    elseif(upgradeArray[11].object:GetButton():IsPressed() and upgradeArray[11].unlocked == true) then
+        if(upgradeArray[11].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(2,4, true)
             elseif(id == 1) then
@@ -412,8 +422,8 @@ function Update(dt)
             SpiceCost(-20)
             end
         end
-    elseif(upgradeArray[12].object:GetButton():IsPressed()) then
-        if(upgradeArray[12].state == false and upgradeArray[12].unlocked == true) then
+    elseif(upgradeArray[12].object:GetButton():IsPressed() and upgradeArray[12].unlocked == true) then
+        if(upgradeArray[12].state == false) then
             if(id == 0)then
                 LevelUpZhibSkill(3,4, true)
             elseif(id == 1) then
