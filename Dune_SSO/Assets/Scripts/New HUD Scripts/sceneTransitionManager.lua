@@ -45,11 +45,20 @@ local upgradeButton10O = { state = false, object = Find("Passive - Upgrade 1"), 
 local upgradeButton11O = { state = false, object = Find("Passive - Upgrade 2"), unlocked = false }
 local upgradeButton12O = { state = false, object = Find("Passive - Upgrade 3"), unlocked = false }
 
-
 local upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, 
 upgradeButton5Z, upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, 
 upgradeButton10Z, upgradeButton11Z, upgradeButton12Z}
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
+
+function calcAbilityCost(level, ultimate)
+    if(ultimate ~= nil) then
+        local sum = level + 1
+        return 2^sum * 100
+    end
+
+    local sum = level + 1
+    return 2^sum * 150
+end
 
 ------------ Dialogue Manager ------------
 function Start()

@@ -306,6 +306,21 @@ function LoadGame()
         Log(str)
     end
 
+    -- zhibAvailable = GetGameJsonBool("zhib_available")
+    -- if(zhibAvailable == false) then
+    --     DispatchEvent("Disable_Character", {1})
+    -- end
+
+    -- neralaAvailable = GetGameJsonBool("nerala_available")
+    -- if(neralaAvailable == false) then
+    --     DispatchEvent("Disable_Character", {2})
+    -- end
+
+    -- omozraAvailable = GetGameJsonBool("omozra_available")
+    -- if(omozraAvailable == false) then
+    --     DispatchEvent("Disable_Character", {3})
+    -- end
+
     keyJson = "zhib_pos_lvl" .. levelNumber
     zhibPos = GetGameJsonFloat3(keyJson)
     if (zhibPos ~= nil) then
