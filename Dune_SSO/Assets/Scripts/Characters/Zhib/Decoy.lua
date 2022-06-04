@@ -65,8 +65,7 @@ function Update(dt)
             end
             trackList = {0}
             ChangeTrack(trackList)
-            DispatchGlobalEvent("Auditory_Trigger",
-                {componentTransform:GetPosition(), effectRadius, "decoy", gameObject})
+            DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), effectRadius, "decoy", player})
             effectTimer = 0.0
         else
             effectTimer = effectTimer + dt
@@ -90,6 +89,7 @@ function Update(dt)
         -- Log("Decoy is grabbable! \n")
 
         if a == false then
+            DispatchGlobalEvent("Decoy_Trigger_End", {})
             DispatchGlobalEvent("Decoy_Grabbable", {})
             gameObject.tag = Tag.PICKUP
             a = true

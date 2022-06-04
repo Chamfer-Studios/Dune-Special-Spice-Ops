@@ -476,6 +476,8 @@ function Start()
     isAttacking = false
 end
 
+decoyOnce = false
+
 function UpdateTargetAwareness()
     awarenessSpeed = awarenessDecaySpeed
 
@@ -496,10 +498,11 @@ function UpdateTargetAwareness()
         prop = 1.2 - (distance / hearingRange)
         awarenessSpeed = awarenessSoundSpeed * prop * auditoryDebuffMultiplier
     elseif #decoyAuditoryTriggers ~= 0 then
-        if state == STATE.UNAWARE then
+        if decoyOnce == false and state == STATE.UNAWARE then
             awareness = 1
-            targetAwareness = 1
+            decoyOnce = true
         end
+        targetAwareness = 1
     else
         targetAwareness = 0
     end
@@ -534,6 +537,10 @@ function UpdateStateFromAwareness()
         do
             return (oldState)
         end
+    end
+
+    if awareness < 1 and #decoyAuditoryTriggers ~= 0 then
+        awareness = 1
     end
 
     if math.abs(awareness) < 0.05 then
@@ -653,6 +660,9 @@ function SwitchState(from, to)
 end
 
 function UpdateAnimation(dt, oldState, target)
+    if #decoyAuditoryTriggers ~= 0 then
+        distance = 50
+    end
     if (attackTimer ~= nil) then
         attackTimer = attackTimer + dt
         if (attackTimer >= attackSpeed) then
@@ -745,6 +755,7 @@ function Update(dt)
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
     elseif state == STATE.AGGRO then
+        ClearDecoyTarget()
         if (not isAttacking) then
             DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
         end
@@ -758,10 +769,8 @@ function ClearPerceptionMemory()
     nSingle = 1
     nRepeating = 1
     nVisual = 1
-    nDecoy = 1
 
     singleAuditoryTriggers = {}
-    decoyAuditoryTriggers = {}
     repeatingAuditoryTriggers = {}
     visualTriggers = {}
 end
@@ -791,8 +800,16 @@ function Die(leaveBody, enemyName)
     -- Log(apetecan())
 end
 
+function ClearDecoyTarget()
+    nDecoy = 1
+    decoyAuditoryTriggers = {}
+end
+
 function EventHandler(key, fields)
-    if key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
+    if key == "Decoy_Trigger_End" then
+        decoyOnce = false
+        ClearDecoyTarget()
+    elseif key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
         ProcessAuditoryTrigger(fields[1], fields[2], fields[3], fields[4])
     elseif key == "Walking_Direction" then
         SetTargetDirection(fields[1])
