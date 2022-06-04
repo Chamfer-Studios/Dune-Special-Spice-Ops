@@ -9,7 +9,9 @@ zoomSpeed = 50
 mosquitoAlive = false
 arrived = false
 actualId = 0
+
 local isStarting = true
+
 local neralaAvailable
 local omozraAvailable
 
@@ -20,12 +22,12 @@ function Start()
 end
 function Update(dt)
     if(isStarting == true) then
-        if (GetVariable("UI_GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        if (GetVariable("UI_GameState.lua", "omozra_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             omozraAvailable = false
         else
             omozraAvailable = true
         end
-        if(GetVariable("UI_GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
+        if(GetVariable("UI_GameState.lua", "nerala_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             neralaAvailable = false
         else
             neralaAvailable = true
@@ -181,3 +183,5 @@ function EventHandler(key, fields)
         mosquito = nil
     end
 end
+
+print("TransitionCamera.lua compiled succesfully")

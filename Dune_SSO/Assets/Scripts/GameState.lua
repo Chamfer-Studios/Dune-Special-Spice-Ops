@@ -21,11 +21,12 @@ omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
 
-anyCharacterSelected = true
-changedCharacter = false
 zhibAvailable = true
 neralaAvailable = true
 omozraAvailable = true
+
+anyCharacterSelected = true
+changedCharacter = false
 
 GodMode = false
 
