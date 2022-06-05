@@ -633,15 +633,68 @@ function LevelUp(characterID, skill, skillLevel, direction)
     DispatchEvent("Save_Game", {})
 end
 
-function Load(upgradeArray)
+function Load(upgradeArray, iteration)
 
-    --upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
-                            --upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
-                            --upgradeButton11Z, upgradeButton12Z}
+    if (iteration == 1) then
+        characterName = "zhib"
+        upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
+                            upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
+                            upgradeButton11Z, upgradeButton12Z}
+    elseif (iteration == 2) then
+        characterName = "nerala"
+        upgradeArray = {upgradeButton1N, upgradeButton2N, upgradeButton3N, upgradeButton4N, upgradeButton5N,
+                            upgradeButton6N, upgradeButton7N, upgradeButton8N, upgradeButton9N, upgradeButton10N,
+                            upgradeButton11N, upgradeButton12N}
+    elseif (iteration == 3) then
+        characterName = "omozra"
+        upgradeArray = {upgradeButton1O, upgradeButton2O, upgradeButton3O, upgradeButton4O, upgradeButton5O,
+                            upgradeButton6O, upgradeButton7O, upgradeButton8O, upgradeButton9O, upgradeButton10O,
+                            upgradeButton11O, upgradeButton12O}
+    end
 
-       -- upgradeArray[GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].unlocked = true
-       -- upgradeArray[GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
-       -- upgradeArray[3 + GetVariable("UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
+    local characterAbilityName
+    local abilityCost = calcAbilityCost(skillLevel)
+
+    for i = 0, #upgradeArray do
+        if (i < 4) then
+            characterAbilityName = characterName .. "_primary_level"
+            offset = 0
+        elseif (i < 7 and i > 3) then
+            characterAbilityName = characterName .. "_secondary_level"
+            offset = 3
+        elseif (i < 10 and i > 6) then
+            characterAbilityName = characterName .. "_ultimate_level"
+            offset = 6
+        else
+            characterAbilityName = characterName .. "_passive_level"
+            offset = 9
+        end
+        upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].unlocked = true
+        upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
+
+       
+        if(GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 3) then
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].unlocked = true
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].state = true
+
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2].unlocked = true
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2].state = true
+        elseif(GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 2) then
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].unlocked = true
+            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].state = true
+        end
+            
+
+        --if level is 3 set 2 and 1 to unlocked and upgraded 
+        --if level is 2 set 1 
+        --if level is 1 nothing
+        
+        
+    end
+    
+
+    newIteration = iteration + 1
+    Load(newIteration)
 end
 
 
