@@ -344,7 +344,7 @@ function ProcessRepeatedAuditoryTrigger(position, source)
     end
 
     if (mosquito ~= nil) then
-        if (state == STATE.SUS and math.abs(Float3Distance(position, mosquito:GetTransform():GetPosition())) < 0.5) then
+        if (state == STATE.AGGRO and math.abs(Float3Distance(position, mosquito:GetTransform():GetPosition())) < 0.5) then
             DispatchGlobalEvent("Mosquito_Detected", {})
             do
                 return
@@ -870,7 +870,6 @@ function EventHandler(key, fields)
         mosquito = fields[1]
     elseif key == "Mosquito_Death" then
         mosquito = nil
-        isMosquitoDetected = nil
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         debuffParticle:GetComponentParticle():StopParticleSpawn()
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
