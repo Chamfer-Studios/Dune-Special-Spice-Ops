@@ -94,6 +94,10 @@ function Start()
     isUsingQ = false
     isUsingW = false
     isUsingE = false
+
+    takeDamageBorder = Find("Take Damage Border")
+    takeDamageTimer = nil
+    takeDamageDuration = 0.5
 end
 
 function Update(dt)
@@ -113,6 +117,8 @@ function Update(dt)
             SkillDescription:Active(false)
         end
     end
+
+    TakeDamage(dt)
 end
 
 function EventHandler(key, fields)
@@ -129,6 +135,9 @@ function EventHandler(key, fields)
         ManageHealth(fields[1], fields[2], fields[3])
     elseif key == "Display_Description" then
         DisplayDescription(fields[1], fields[2])
+    elseif key == "Enemy_Attack" then
+        takeDamageTimer = 0.0
+        -- takeDamageBorder.active = true
     end
 end
 
@@ -688,6 +697,17 @@ function DisplayDescription(buttonIndex, characterId)
         line4:GetText():SetTextValue(dialog3)
         line5:GetText():SetTextValue(dialog4)
         line6:GetText():SetTextValue(dialog5)
+    end
+end
+
+function TakeDamage(dt)
+    if takeDamageTimer ~= nil then
+        takeDamageTimer = takeDamageTimer + dt
+        if takeDamageTimer >= takeDamageDuration then
+            takeDamageTimer = nil
+            takenDamage = false
+            takeDamageBorder.active = false
+        end
     end
 end
 

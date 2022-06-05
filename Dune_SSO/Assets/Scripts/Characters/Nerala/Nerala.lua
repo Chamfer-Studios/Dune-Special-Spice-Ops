@@ -1086,6 +1086,9 @@ function CastUltimate(position)
 end
 
 function DoUltimate()
+
+    DispatchGlobalEvent("Used_Ultimate", {ultimateSpiceCost})
+
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
         local OGSpice = GetVariable("GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)

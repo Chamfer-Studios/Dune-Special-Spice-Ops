@@ -1,5 +1,4 @@
 ------------------- Variables --------------------
-speed = 10000
 destination = nil
 isGrabbable = false
 once = false

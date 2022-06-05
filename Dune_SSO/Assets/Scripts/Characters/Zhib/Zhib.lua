@@ -79,7 +79,7 @@ attackTime = 2.5
 -- Primary ability --
 primaryCastRange = 100
 maxKnives = 1
-knifeSpeed = 7000
+knifeSpeed = 10000
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
@@ -1117,6 +1117,8 @@ end
 function DoUltimate()
     abilities.AbilityUltimate = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
+
+    DispatchGlobalEvent("Used_Ultimate", {ultimateSpiceCost})
 
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
         -- Subtracts spice cost when using ultimate ability
