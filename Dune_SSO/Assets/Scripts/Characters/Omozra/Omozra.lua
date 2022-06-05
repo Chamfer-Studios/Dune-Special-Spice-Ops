@@ -1113,14 +1113,17 @@ function TakeDamage(damage)
         damage = 1
     end
 
+    currentHP = currentHP - damage
     if (currentHP > 1) then
-        currentHP = currentHP - damage
+        Log("Receiving " .. damage .. " damage, current HP = " .. currentHP .. "\n")
+
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
         trackList = {2}
         ChangeTrack(trackList)
     else
         currentHP = 0
+        Log("Dying\n")
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
         Die()
     end
