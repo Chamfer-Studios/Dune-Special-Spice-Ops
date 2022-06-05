@@ -343,6 +343,15 @@ function ProcessRepeatedAuditoryTrigger(position, source)
         end
     end
 
+    if (mosquito ~= nil) then
+        if (state == STATE.SUS and math.abs(Float3Distance(position, mosquito:GetTransform():GetPosition())) < 0.5) then
+            DispatchGlobalEvent("Mosquito_Detected", {})
+            do
+                return
+            end
+        end
+    end
+
     src = float3.new(componentTransform:GetPosition().x, componentTransform:GetPosition().y + 10,
         componentTransform:GetPosition().z)
     dst = float3.new(position.x, position.y + 10, position.z)
@@ -484,7 +493,7 @@ function UpdateTargetAwareness()
     closestTarget = GetClosestTarget()
     closestTargetPosition = componentTransform:GetPosition()
     if (closestTarget ~= nil) then
-        closestTargetPosition = closestTarget["source"]:GetTransform():GetPosition()
+        closestTargetPosition = closestTarget["position"]
     end
 
     distance = Float3Distance(componentTransform:GetPosition(), closestTargetPosition)
@@ -851,6 +860,11 @@ function EventHandler(key, fields)
             awareness = 1
             targetAwareness = 1
         end
+    elseif key == "Mosquito_Spawn" then
+        mosquito = fields[1]
+    elseif key == "Mosquito_Death" then
+        mosquito = nil
+        isMosquitoDetected = nil
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
         debuffParticle:GetComponentParticle():StopParticleSpawn()
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
