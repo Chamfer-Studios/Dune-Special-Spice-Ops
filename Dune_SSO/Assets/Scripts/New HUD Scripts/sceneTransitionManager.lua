@@ -675,7 +675,7 @@ function UpdateState()
                 offset = 9
             end
 
-            if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~= 0) then
+            if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~= (offset + 0)) then
                 upgradeArray[offset +
                     GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
                     .unlocked = true
@@ -707,6 +707,9 @@ function UpdateState()
                 upgradeArray[offset +
                     GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) + 1]
                     .unlocked = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) + 1]
+                    .state = false
             elseif (GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 1) then
                 upgradeArray[offset +
                     GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) + 1]
