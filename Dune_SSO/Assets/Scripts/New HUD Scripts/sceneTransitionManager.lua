@@ -189,8 +189,8 @@ local isStarting = true
 local changedCharacter = false
 
 local upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
-upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
-upgradeButton11Z, upgradeButton12Z}
+                      upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
+                      upgradeButton11Z, upgradeButton12Z}
 
 local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 
@@ -201,7 +201,7 @@ function calcAbilityCost(level, ultimate)
     if (ultimate == nil) then
         return math.floor(2 ^ level * 100)
     end
-    
+
     return math.floor(2 ^ level * 150)
 end
 
@@ -226,7 +226,7 @@ function Update(dt)
         if (GetVariable("UI_GameState.lua", "omozra_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             Find("RightArrow"):Active(false)
         end
-        
+
         if (GetVariable("UI_GameState.lua", "nerala_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             Find("LeftArrow"):Active(false)
         end
@@ -467,6 +467,8 @@ function EventHandler(key, fields)
         id = fields[1]
         changedCharacter = true
         UpdateUI()
+    elseif (key == "Gamestate_Loaded") then
+        --Load()
     end
 end
 
@@ -622,7 +624,7 @@ function LevelUp(characterID, skill, skillLevel, direction)
     SpiceCost(abilityCost)
     SetVariable(skillLevel, "UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 
-    DispatchGlobalEvent("Save_Game", {})
+    DispatchEvent("Save_Game", {})
 end
 
 print("sceneTransitionManager.lua compiled succesfully")

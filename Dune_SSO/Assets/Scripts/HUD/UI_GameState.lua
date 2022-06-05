@@ -40,6 +40,8 @@ function Start()
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
     omozra_passive_level = GetGameJsonInt("omozra_passive_level")
+
+    DispatchEvent("Gamestate_Loaded", {})
 end
 
 function EventHandler(key, fields)
