@@ -444,12 +444,6 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        -- T
-        if (GetInput(13) == KEY_STATE.KEY_DOWN) then
-            currentHP = 0
-            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
-            Die()
-        end
 
         -- LSHIFT -> Toggle crouch
         if (GetInput(12) == KEY_STATE.KEY_DOWN) then
@@ -1167,6 +1161,8 @@ function EventHandler(key, fields)
                 TakeDamage(1)
             elseif (fields[2] == "Sardaukar") then
                 TakeDamage(2)
+            elseif (fields [2] == "Rabban") then
+                TakeDamage(666)
             end
         end
     elseif (key == "Active_Primary") then

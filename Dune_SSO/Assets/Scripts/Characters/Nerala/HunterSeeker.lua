@@ -6,6 +6,7 @@ lifeTimer = 0
 destination = nil
 target = nil
 attackRange = 20.0 -- Maybe too big
+isDead = false
 -------------------- Methods ---------------------
 
 function Start()
@@ -47,13 +48,11 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-
-    if (lifeTimer >= lifeTime) then
-        Die()
+    if (isDead == true) then
         do
             return
         end
-    elseif (Distance3D(componentTransform:GetPosition(), neralaPosition) > maxTetherRange) then
+    elseif (lifeTimer >= lifeTime or Distance3D(componentTransform:GetPosition(), neralaPosition) > maxTetherRange) then
         Die()
         do
             return
@@ -197,13 +196,21 @@ function StopMovement()
 end
 
 function Die()
+    if (isDead == true) then
+        do
+            return
+        end
+    end
     DeleteGameObject()
     DispatchGlobalEvent("Mosquito_Death", {})
+    isDead = true
 end
 
 function EventHandler(key, fields)
     if (key == "Stop_Movement") then
         StopMovement()
+    elseif (key == "Mosquito_Detected") then
+        Die()
     end
 end
 
