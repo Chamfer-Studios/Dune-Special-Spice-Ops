@@ -455,18 +455,18 @@ function Start()
         end
     end
 
-    -- debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
-    -- if (debuffParticle ~= nil) then
-    --     debuffParticle:GetComponentParticle():StopParticleSpawn()
-    -- end
-    -- bloodParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[2]
-    -- if (bloodParticle ~= nil) then
-    --     bloodParticle:GetComponentParticle():StopParticleSpawn()
-    -- end
-    -- slashParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[3]
-    -- if (slashParticle ~= nil) then
-    --     slashParticle:GetComponentParticle():StopParticleSpawn()
-    -- end
+    debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
+    if (debuffParticle ~= nil) then
+        debuffParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    bloodParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[2]
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    slashParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[3]
+    if (slashParticle ~= nil) then
+        slashParticle:GetComponentParticle():StopParticleSpawn()
+    end
 
     targetDirection = componentTransform:GetFront()
 
