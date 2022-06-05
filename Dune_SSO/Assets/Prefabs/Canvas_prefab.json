@@ -21,7 +21,7 @@
                             ],
                             "position": [
                                 0.0,
-                                25.0
+                                35.0
                             ],
                             "rotation": [
                                 0.0,
@@ -29,22 +29,15 @@
                                 0.0
                             ],
                             "size": [
-                                40.0,
-                                40.0
+                                60.0,
+                                60.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "Z"
+                            "texture": "Assets/New UI/Controls/Z_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -111,7 +104,7 @@
                             ],
                             "position": [
                                 0.0,
-                                25.0
+                                35.0
                             ],
                             "rotation": [
                                 0.0,
@@ -119,22 +112,15 @@
                                 0.0
                             ],
                             "size": [
-                                40.0,
-                                40.0
+                                60.0,
+                                60.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "X"
+                            "texture": "Assets/New UI/Controls/X_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -201,7 +187,7 @@
                             ],
                             "position": [
                                 0.0,
-                                25.0
+                                35.0
                             ],
                             "rotation": [
                                 0.0,
@@ -209,22 +195,15 @@
                                 0.0
                             ],
                             "size": [
-                                40.0,
-                                40.0
+                                60.0,
+                                60.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "C"
+                            "texture": "Assets/New UI/Controls/C_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -2218,7 +2197,7 @@
                             ],
                             "position": [
                                 -150.0,
-                                90.0
+                                82.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2226,22 +2205,15 @@
                                 0.0
                             ],
                             "size": [
-                                30.0,
-                                30.0
+                                45.0,
+                                45.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "1"
+                            "texture": "Assets/New UI/Controls/1_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -2266,7 +2238,7 @@
                             ],
                             "position": [
                                 0.0,
-                                90.0
+                                82.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2274,22 +2246,15 @@
                                 0.0
                             ],
                             "size": [
-                                30.0,
-                                30.0
+                                45.0,
+                                45.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "2"
+                            "texture": "Assets/New UI/Controls/2_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -2314,7 +2279,7 @@
                             ],
                             "position": [
                                 150.0,
-                                90.0
+                                82.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2322,22 +2287,15 @@
                                 0.0
                             ],
                             "size": [
-                                30.0,
-                                30.0
+                                45.0,
+                                45.0
                             ],
                             "type": 22
                         },
                         {
                             "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "3"
+                            "texture": "Assets/New UI/Controls/3_Key_Light.png",
+                            "type": 14
                         }
                     ],
                     "is3D": false,
@@ -2403,7 +2361,7 @@
                             ],
                             "position": [
                                 0.0,
-                                50.0
+                                40.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2450,7 +2408,7 @@
                             ],
                             "position": [
                                 0.0,
-                                50.0
+                                40.0
                             ],
                             "rotation": [
                                 0.0,
@@ -2491,7 +2449,7 @@
                             ],
                             "position": [
                                 0.0,
-                                50.0
+                                40.0
                             ],
                             "rotation": [
                                 0.0,
@@ -3058,6 +3016,47 @@
             "is3D": false,
             "isPrefab": false,
             "name": "HP Frame 4",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 4,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        1920.0,
+                        1080.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/New UI/bloodMask.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Take Damage Border",
             "tag": 0
         }
     ],
