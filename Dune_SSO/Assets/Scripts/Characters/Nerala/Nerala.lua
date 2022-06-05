@@ -477,13 +477,17 @@ function Update(dt)
 
     if abilities.AbilityPrimary == AbilityStatus.Using then
         isUsingQ = true
-    elseif abilities.AbilitySecondary == AbilityStatus.Using then
-        isUsingW = true
-    elseif abilities.AbilityUltimate == AbilityStatus.Using then
-        isUsingE = true
     else
         isUsingQ = false
+    end
+    if abilities.AbilitySecondary == AbilityStatus.Using then
+        isUsingW = true
+    else
         isUsingW = false
+    end
+    if abilities.AbilityUltimate == AbilityStatus.Using then
+        isUsingE = true
+    else
         isUsingE = false
     end
 end
@@ -1090,8 +1094,8 @@ function TakeDamage(damage)
     end
 
     currentHP = currentHP - damage
-    if (currentHP > 1) then
-        Log("Receiving " .. damage .. " damage, current HP = " .. currentHP .. "\n")
+    if (currentHP > 0) then
+        Log("Nerala: Taking " .. damage .. " damage, current HP = " .. currentHP .. "\n")
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
@@ -1099,7 +1103,7 @@ function TakeDamage(damage)
         ChangeTrack(trackList)
     else
         currentHP = 0
-        Log("Dying\n")
+        Log("Nerala: Dying\n")
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
         Die()
     end
