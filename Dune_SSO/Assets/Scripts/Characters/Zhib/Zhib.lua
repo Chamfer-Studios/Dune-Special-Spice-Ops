@@ -450,7 +450,6 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        
         -- LSHIFT -> Toggle crouch
         if (GetInput(12) == KEY_STATE.KEY_DOWN) then
 
@@ -577,6 +576,12 @@ function CancelAbilities(onlyAbilities)
     elseif (currentState == State.AIM_ULTIMATE and abilities.AbilityUltimate == AbilityStatus.Active) then
         abilities.AbilityUltimate = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+    end
+
+    if (currentMovement == Movement.IDLE and componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("Idle")
+    elseif (currentMovement == Movement.IDLE_CROUCH and componentAnimator ~= nil) then
+        componentAnimator:SetSelectedClip("IdleCrouch")
     end
 
     if (onlyAbilities == nil) then
@@ -834,7 +839,11 @@ function ManageTimers(dt)
                 elseif (currentState == State.AIM_ULTIMATE) then
                     DoUltimate()
                 elseif (currentState ~= State.DEAD) then
-                    componentAnimator:SetSelectedClip("Idle") -- Comment this line to test animations in-game
+                    if (currentMovement == Movement.IDLE_CROUCH) then
+                        componentAnimator:SetSelectedClip("IdleCrouch")
+                    else
+                        componentAnimator:SetSelectedClip("Idle")
+                    end
                 end
             end
         end
@@ -928,7 +937,7 @@ function StopMovement(resetTarget)
 
     if (currentMovement == Movement.CROUCH) then
         SetMovement(Movement.IDLE_CROUCH)
-    else
+    elseif (currentMovement ~= Movement.IDLE_CROUCH) then
         SetMovement(Movement.IDLE)
     end
 
@@ -1263,7 +1272,7 @@ function EventHandler(key, fields)
                 TakeDamage(1)
             elseif (fields[2] == "Sardaukar") then
                 TakeDamage(2)
-            elseif (fields [2] == "Rabban") then
+            elseif (fields[2] == "Rabban") then
                 TakeDamage(666)
             end
         end
