@@ -495,49 +495,49 @@ function AbilityStateUsingBlinking(dt)
         isUsingE = GetVariable("Omozra.lua", "isUsingE", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
     end
 
-    if isUsingQ ~= false or isUsingW ~= false or isUsingE ~= false then
-        if blinkTimer == nil then
-            blinkTimer = 0.0
+    if isUsingQ == true then
+        if blinkTimerQ == nil then
+            blinkTimerQ = 0.0
         end
-        blinkTimer = blinkTimer + dt
-        if blinkTimer >= blink then
-            blinkTimer = 0.0
-            if isUsingQ == true then
-                usingMaskQ.active = not usingMaskQ.active
-                activeMaskQ.active = not activeMaskQ.active
-            else
-                usingMaskQ.active = false
-                activeMaskQ.active = false
-            end
-            if isUsingW == true then
-                usingMaskW.active = not usingMaskW.active
-                activeMaskW.active = not activeMaskW.active
-            else
-                usingMaskW.active = false
-                activeMaskW.active = false
-            end
-            if isUsingE == true then
-                usingMaskE.active = not usingMaskE.active
-                activeMaskE.active = not activeMaskE.active
-            else
-                usingMaskE.active = false
-                activeMaskE.active = false
-            end
+        blinkTimerQ = blinkTimerQ + dt
+        if blinkTimerQ >= blink then
+            blinkTimerQ = 0.0
+            usingMaskQ.active = not usingMaskQ.active
+            activeMaskQ.active = not activeMaskQ.active
         end
     else
-        if isUsingQ == false then
-            usingMaskQ.active = false
-            activeMaskQ.active = false
+        usingMaskQ.active = false
+        activeMaskQ.active = false
+    end
+
+    if isUsingW == true then
+        if blinkTimerW == nil then
+            blinkTimerW = 0.0
         end
-        if isUsingW == false then
-            usingMaskW.active = false
-            activeMaskW.active = false
+        blinkTimerW = blinkTimerW + dt
+        if blinkTimerW >= blink then
+            blinkTimerW = 0.0
+            usingMaskW.active = not usingMaskW.active
+            activeMaskW.active = not activeMaskW.active
         end
-        if isUsingE == false then
-            usingMaskE.active = false
-            activeMaskE.active = false
+    else
+        usingMaskW.active = false
+        activeMaskW.active = false
+    end
+
+    if isUsingE == true then
+        if blinkTimerE == nil then
+            blinkTimerE = 0.0
         end
-        blinkTimer = nil
+        blinkTimerE = blinkTimerE + dt
+        if blinkTimerE >= blink then
+            blinkTimerE = 0.0
+            usingMaskE.active = not usingMaskQ.active
+            activeMaskE.active = not activeMaskQ.active
+        end
+    else
+        usingMaskE.active = false
+        activeMaskE.active = false
     end
 end
 
