@@ -455,18 +455,18 @@ function Start()
         end
     end
 
-    debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
-    if (debuffParticle ~= nil) then
-        debuffParticle:GetComponentParticle():StopParticleSpawn()
-    end
-    bloodParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[2]
-    if (bloodParticle ~= nil) then
-        bloodParticle:GetComponentParticle():StopParticleSpawn()
-    end
-    slashParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[3]
-    if (slashParticle ~= nil) then
-        slashParticle:GetComponentParticle():StopParticleSpawn()
-    end
+    -- debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
+    -- if (debuffParticle ~= nil) then
+    --     debuffParticle:GetComponentParticle():StopParticleSpawn()
+    -- end
+    -- bloodParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[2]
+    -- if (bloodParticle ~= nil) then
+    --     bloodParticle:GetComponentParticle():StopParticleSpawn()
+    -- end
+    -- slashParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[3]
+    -- if (slashParticle ~= nil) then
+    --     slashParticle:GetComponentParticle():StopParticleSpawn()
+    -- end
 
     targetDirection = componentTransform:GetFront()
 
@@ -694,12 +694,18 @@ function UpdateAnimation(dt, oldState, target)
                     componentAnimator:SetSelectedClip("Idle")
                 end
             elseif (isWalking == true) then
-                if (currentClip ~= "Walk") then
-                    componentAnimator:SetSelectedClip("Walk")
+                if (thisType == "Rabban") then
+                    if (currentClip ~= "Wander") then
+                        componentAnimator:SetSelectedClip("Wander")
+                    end
+                else
+                    if (currentClip ~= "Walk") then
+                        componentAnimator:SetSelectedClip("Walk")
+                    end
                 end
             end
         elseif state == STATE.AGGRO then
-            if (thisType == "Harkonnen") then
+            if (thisType == "Harkonnen" or thisType == "Rabban") then
                 if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance <
                     attackRange then
                     componentAnimator:SetSelectedClip("Attack")

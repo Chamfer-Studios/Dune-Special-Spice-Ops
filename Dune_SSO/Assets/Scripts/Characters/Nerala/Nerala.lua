@@ -1167,6 +1167,8 @@ function EventHandler(key, fields)
                 TakeDamage(1)
             elseif (fields[2] == "Sardaukar") then
                 TakeDamage(2)
+            elseif (fields [2] == "Rabban") then
+                TakeDamage(666)
             end
         end
     elseif (key == "Active_Primary") then
