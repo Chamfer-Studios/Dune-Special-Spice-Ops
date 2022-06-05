@@ -180,7 +180,6 @@ local upgradeButton12O = {
     object = Find("Passive - Upgrade 3"),
     unlocked = false
 }
-
 local id = -1
 local src = " "
 local description = " "
@@ -231,7 +230,7 @@ function Update(dt)
             Find("LeftArrow"):Active(false)
         end
 
-        SpiceCost(0)
+        SetSpiceAmount(6000)
         isStarting = false
     end
 
@@ -585,9 +584,16 @@ function SetDialogValue(index)
 end
 
 function SpiceCost(amount)
-    newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
-    SpiceAmountText:GetText():SetTextValue(newSpice)
-    SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    if(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= amount) then
+        newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
+        SpiceAmountText:GetText():SetTextValue(newSpice)
+        SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    end
+end
+
+function SetSpiceAmount(amount)
+    SpiceAmountText:GetText():SetTextValue(amount)
+    SetVariable(amount, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
 
 function LevelUp(characterID, skill, skillLevel, direction)
@@ -626,5 +632,17 @@ function LevelUp(characterID, skill, skillLevel, direction)
 
     DispatchEvent("Save_Game", {})
 end
+
+function Load(upgradeArray)
+
+    --upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
+                            --upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
+                            --upgradeButton11Z, upgradeButton12Z}
+
+       -- upgradeArray[GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].unlocked = true
+       -- upgradeArray[GetVariable("UI_GameState.lua", "zhib_primary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
+       -- upgradeArray[3 + GetVariable("UI_GameState.lua", "zhib_secondary_level", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
+end
+
 
 print("sceneTransitionManager.lua compiled succesfully")
