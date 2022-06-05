@@ -439,12 +439,7 @@ function Update(dt)
             ActiveUltimate()
         end
 
-        -- T
-        if (GetInput(13) == KEY_STATE.KEY_DOWN) then
-            currentHP = 0
-            DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
-            Die()
-        end
+        
 
         -- LSHIFT -> Toggle crouch
         if (GetInput(12) == KEY_STATE.KEY_DOWN) then
