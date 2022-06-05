@@ -367,7 +367,8 @@ function Update(dt)
                             Attack()
                         else
                             if (footstepsParticle ~= nil) then
-                                footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                                feetTimer = 0.5
+                                FootstepMovement()
                             end
                             destination = target:GetTransform():GetPosition()
                             if (currentMovement == Movement.IDLE and isMoving == true) then
@@ -380,7 +381,8 @@ function Update(dt)
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then
-                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            feetTimer = 0.5
+                            FootstepMovement()
                         end
                         destination = goHit:GetTransform():GetPosition()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
@@ -388,7 +390,8 @@ function Update(dt)
                         target = nil
                         currentState = State.IDLE
                         if (footstepsParticle ~= nil) then
-                            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+                            feetTimer = 0.5
+                            FootstepMovement()
                         end
                         destination = GetLastMouseClick()
                         DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
@@ -850,6 +853,27 @@ function ManageTimers(dt)
     return ret
 end
 
+feetTimer = 0.0
+leftFoot = true
+function FootstepMovement()
+    if (footstepsParticle ~= nil) then
+        if (feetTimer > 0.5) then
+            feetTimer = 0.0
+            leftFoot = not leftFoot
+            footstepsParticle:GetComponentParticle():ResumeParticleSpawn()
+        end
+
+        if (leftFoot == true) then
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x - 2,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        else
+            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x + 2,
+                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+        end
+
+    end
+end
+
 function MoveToDestination(dt)
     local targetPos2D = {destination.x, destination.z}
     local pos2D = {componentTransform:GetPosition().x, componentTransform:GetPosition().z}
@@ -883,8 +907,8 @@ function MoveToDestination(dt)
         end
 
         if (footstepsParticle ~= nil) then
-            footstepsParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+            feetTimer = feetTimer + dt
+            FootstepMovement()
         end
 
         -- Movement
