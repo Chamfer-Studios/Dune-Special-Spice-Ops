@@ -1106,6 +1106,7 @@ function CastUltimate(position)
 
     componentAnimator:SetSelectedClip("UltimateStart")
     ultimateTimer = 0.0
+    iFramesTimer = 0.0
     StopMovement(false)
 
     trackList = {7, 12}
