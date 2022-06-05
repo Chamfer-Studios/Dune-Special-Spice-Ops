@@ -215,6 +215,7 @@ function Start()
 
     id = 0
 
+    Load(1)
     UpdateUI()
 
     -- deactivate the characters that are not available
@@ -633,7 +634,7 @@ function LevelUp(characterID, skill, skillLevel, direction)
     DispatchEvent("Save_Game", {})
 end
 
-function Load(upgradeArray, iteration)
+function Load(iteration)
 
     if (iteration == 1) then
         characterName = "zhib"
@@ -651,9 +652,6 @@ function Load(upgradeArray, iteration)
                             upgradeButton6O, upgradeButton7O, upgradeButton8O, upgradeButton9O, upgradeButton10O,
                             upgradeButton11O, upgradeButton12O}
     end
-
-    local characterAbilityName
-    local abilityCost = calcAbilityCost(skillLevel)
 
     for i = 0, #upgradeArray do
         if (i < 4) then
@@ -683,18 +681,16 @@ function Load(upgradeArray, iteration)
             upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].unlocked = true
             upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].state = true
         end
-            
-
-        --if level is 3 set 2 and 1 to unlocked and upgraded 
-        --if level is 2 set 1 
-        --if level is 1 nothing
-        
-        
     end
     
 
-    newIteration = iteration + 1
-    Load(newIteration)
+    if iteration == 3 then
+        --leaving
+    else
+        newIteration = iteration + 1
+        Load(newIteration)
+    end
+    
 end
 
 
