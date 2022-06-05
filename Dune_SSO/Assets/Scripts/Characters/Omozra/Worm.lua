@@ -121,7 +121,7 @@ function DoPrimary()
         end
     end
 
-    InstantiatePrefab("SpitHeal")
+    InstantiatePrefab("SpitHeal2")
 
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("SpitHealToIdle")
