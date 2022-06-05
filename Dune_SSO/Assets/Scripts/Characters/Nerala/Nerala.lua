@@ -82,7 +82,7 @@ aggroChanceSardAttack = 40
 -- Primary ability --
 primaryCastRange = 100
 primaryCooldown = 5
-dartSpeed = 10000
+dartSpeed = 17000
 unawareChanceHarkDart = 100
 awareChanceHarkDart = 90
 aggroChanceHarkDart = 0
@@ -1005,7 +1005,7 @@ end
 
 function FireDart()
 
-    InstantiatePrefab("Dart")
+    InstantiatePrefab("Dart2")
 
     primaryTimer = 0.0
     abilities.AbilityPrimary = AbilityStatus.Cooldown
