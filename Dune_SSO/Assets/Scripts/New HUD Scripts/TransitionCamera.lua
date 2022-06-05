@@ -184,4 +184,4 @@ function EventHandler(key, fields)
     end
 end
 
-print("TransitionCamera.lua compiled succesfully")
+print("TransitionCamera.lua compiled successfully!")

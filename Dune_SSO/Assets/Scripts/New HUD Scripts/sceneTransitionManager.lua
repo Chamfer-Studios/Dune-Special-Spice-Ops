@@ -215,9 +215,6 @@ function Start()
 
     id = 0
 
-    Load(1)
-    UpdateUI()
-
     -- deactivate the characters that are not available
 end
 
@@ -231,7 +228,12 @@ function Update(dt)
             Find("LeftArrow"):Active(false)
         end
 
-        SetSpiceAmount(6000)
+        UpdateState()
+        UpdateUI()
+
+        SpiceCost(0)
+        -- SetSpiceAmount(6000)
+
         isStarting = false
     end
 
@@ -468,7 +470,7 @@ function EventHandler(key, fields)
         changedCharacter = true
         UpdateUI()
     elseif (key == "Gamestate_Loaded") then
-        --Load()
+        -- Load()
     end
 end
 
@@ -585,7 +587,7 @@ function SetDialogValue(index)
 end
 
 function SpiceCost(amount)
-    if(GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= amount) then
+    if (GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= amount) then
         newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
         SpiceAmountText:GetText():SetTextValue(newSpice)
         SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -634,64 +636,84 @@ function LevelUp(characterID, skill, skillLevel, direction)
     DispatchEvent("Save_Game", {})
 end
 
-function Load(iteration)
+function UpdateState()
 
-    if (iteration == 1) then
-        characterName = "zhib"
-        upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
+    local characterName
+    local characterAbilityName
+    
+    for i = 1, 3 do
+        if (i == 1) then
+            characterName = "zhib"
+            upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgradeButton4Z, upgradeButton5Z,
                             upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
                             upgradeButton11Z, upgradeButton12Z}
-    elseif (iteration == 2) then
-        characterName = "nerala"
-        upgradeArray = {upgradeButton1N, upgradeButton2N, upgradeButton3N, upgradeButton4N, upgradeButton5N,
+        elseif (i == 2) then
+            characterName = "nerala"
+            upgradeArray = {upgradeButton1N, upgradeButton2N, upgradeButton3N, upgradeButton4N, upgradeButton5N,
                             upgradeButton6N, upgradeButton7N, upgradeButton8N, upgradeButton9N, upgradeButton10N,
                             upgradeButton11N, upgradeButton12N}
-    elseif (iteration == 3) then
-        characterName = "omozra"
-        upgradeArray = {upgradeButton1O, upgradeButton2O, upgradeButton3O, upgradeButton4O, upgradeButton5O,
+        elseif (i == 3) then
+            characterName = "omozra"
+            upgradeArray = {upgradeButton1O, upgradeButton2O, upgradeButton3O, upgradeButton4O, upgradeButton5O,
                             upgradeButton6O, upgradeButton7O, upgradeButton8O, upgradeButton9O, upgradeButton10O,
                             upgradeButton11O, upgradeButton12O}
-    end
-
-    for i = 0, #upgradeArray do
-        if (i < 4) then
-            characterAbilityName = characterName .. "_primary_level"
-            offset = 0
-        elseif (i < 7 and i > 3) then
-            characterAbilityName = characterName .. "_secondary_level"
-            offset = 3
-        elseif (i < 10 and i > 6) then
-            characterAbilityName = characterName .. "_ultimate_level"
-            offset = 6
-        else
-            characterAbilityName = characterName .. "_passive_level"
-            offset = 9
         end
-        upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].unlocked = true
-        upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state = true
 
-       
-        if(GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 3) then
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].unlocked = true
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].state = true
+        for j = 1, #upgradeArray do
 
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2].unlocked = true
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2].state = true
-        elseif(GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 2) then
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].unlocked = true
-            upgradeArray[offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1].state = true
+            if (j < 4) then
+                characterAbilityName = characterName .. "_primary_level"
+                offset = 0
+            elseif (j < 7 and j > 3) then
+                characterAbilityName = characterName .. "_secondary_level"
+                offset = 3
+            elseif (j < 10 and j > 6) then
+                characterAbilityName = characterName .. "_ultimate_level"
+                offset = 6
+            else
+                characterAbilityName = characterName .. "_passive_level"
+                offset = 9
+            end
+
+            if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~= 0) then
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
+                    .unlocked = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
+                    .state = true
+            end
+
+            if (GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 3) then
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1]
+                    .unlocked = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1]
+                    .state = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2]
+                    .unlocked = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 2]
+                    .state = true
+            elseif (GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 2) then
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1]
+                    .unlocked = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - 1]
+                    .state = true
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) + 1]
+                    .unlocked = true
+            elseif (GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 1) then
+                upgradeArray[offset +
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) + 1]
+                    .unlocked = true
+            end
         end
     end
-    
-
-    if iteration == 3 then
-        --leaving
-    else
-        newIteration = iteration + 1
-        Load(newIteration)
-    end
-    
 end
 
-
-print("sceneTransitionManager.lua compiled succesfully")
+print("sceneTransitionManager.lua compiled successfully!")

@@ -68,5 +68,5 @@ function EventHandler(key, fields)
     end
 end
 
-print("UI_GameState.lua compiled succesfully")
-Log("UI_GameState.lua compiled succesfully\n")
+print("UI_GameState.lua compiled successfully!")
+Log("UI_GameState.lua compiled successfully!\n")
