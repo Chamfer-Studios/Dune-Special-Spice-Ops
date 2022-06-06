@@ -7,8 +7,8 @@ image = default
 function Update(dt)
 	if (gameObject.active == true) then
 		if (isStarting == true) then
-			fullscreen = GetFullscreen()
-			if (fullscreen == true) then
+			borderless = GetBorderless()
+			if (borderless == true) then
 				image = checked
 			elseif (fullscreen == false) then
 				image = default
@@ -17,12 +17,12 @@ function Update(dt)
 			isStarting = false
 		end
 		if (gameObject:GetButton():IsPressed() == true) then
-			fullscreen = GetFullscreen()
-			if (fullscreen == true) then
-				SetFullscreen(false)
+			borderless = GetBorderless()
+			if (borderless == true) then
+				SetBorderless(false)
 				image = default
-			elseif (fullscreen == false) then
-				SetFullscreen(true)
+			elseif (borderless == false) then
+				SetBorderless(true)
 				image = checked
 			end
 			gameObject:GetButton():SetIdleTexture(image)
@@ -30,4 +30,4 @@ function Update(dt)
 	end
 end
 
-print("UI_Fullscreen.lua compiled succesfully")
+print("UI_Borderless.lua compiled succesfully")

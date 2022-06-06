@@ -7,22 +7,22 @@ image = default
 function Update(dt)
 	if (gameObject.active == true) then
 		if (isStarting == true) then
-			fullscreen = GetFullscreen()
-			if (fullscreen == true) then
+			fullscreenDesktop = GetFullscreenDesktop()
+			if (fullscreenDesktop == true) then
 				image = checked
-			elseif (fullscreen == false) then
+			elseif (fullscreenDesktop == false) then
 				image = default
 			end
 			gameObject:GetButton():SetIdleTexture(image)
 			isStarting = false
 		end
 		if (gameObject:GetButton():IsPressed() == true) then
-			fullscreen = GetFullscreen()
-			if (fullscreen == true) then
-				SetFullscreen(false)
+			fullscreenDesktop = GetFullscreenDesktop()
+			if (fullscreenDesktop == true) then
+				SetFullscreenDesktop(false)
 				image = default
-			elseif (fullscreen == false) then
-				SetFullscreen(true)
+			elseif (fullscreenDesktop == false) then
+				SetFullscreenDesktop(true)
 				image = checked
 			end
 			gameObject:GetButton():SetIdleTexture(image)
@@ -30,4 +30,4 @@ function Update(dt)
 	end
 end
 
-print("UI_Fullscreen.lua compiled succesfully")
+print("UI_FullscreenDesktop.lua compiled succesfully")

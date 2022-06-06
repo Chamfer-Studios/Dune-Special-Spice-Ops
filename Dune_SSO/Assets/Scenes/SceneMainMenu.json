@@ -1,7 +1,7 @@
 {
     "SceneMainMenu": {
         "active": true,
-        "game_objects_amount": 51,
+        "game_objects_amount": 52,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -1339,6 +1339,24 @@
                         "idleTexture": "Assets/New UI/slider_button_default.png",
                         "pressedTexture": "Assets/New UI/slider_button_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
+                        "id": 155587823,
+                        "inspector_variables": [
+                            {
+                                "name": "rightPos",
+                                "type": "int",
+                                "value": 300
+                            },
+                            {
+                                "name": "leftPos",
+                                "type": "int",
+                                "value": -300
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1572,6 +1590,12 @@
                         "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
                         "type": 16,
                         "value": "SPF"
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_FPS.lua",
+                        "id": 844645124,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1944,6 +1968,12 @@
                         "idleTexture": "Assets/New UI/checkbox_a_default.png",
                         "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Vsync.lua",
+                        "id": 1106885570,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2037,6 +2067,12 @@
                         "idleTexture": "Assets/New UI/checkbox_a_default.png",
                         "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Borderless.lua",
+                        "id": 1496512952,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2131,6 +2167,12 @@
                         "idleTexture": "Assets/New UI/checkbox_a_default.png",
                         "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_Windowed.lua",
+                        "id": 1305222561,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2371,12 +2413,80 @@
                         "idleTexture": "Assets/New UI/checkbox_a_default.png",
                         "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_FullscreenDesktop.lua",
+                        "id": 129396576,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "WS Button",
                 "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1120523257,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -476.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            62.0,
+                            54.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "",
+                        "idleTexture": "",
+                        "pressedTexture": "",
+                        "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
+                        "id": 1959484593,
+                        "inspector_variables": [
+                            {
+                                "name": "rightPos",
+                                "type": "int",
+                                "value": -400
+                            },
+                            {
+                                "name": "leftPos",
+                                "type": "int",
+                                "value": -900
+                            }
+                        ],
+                        "type": 5
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Button",
+                "parent_UID": 1606156178,
                 "tag": 0
             }
         ],
