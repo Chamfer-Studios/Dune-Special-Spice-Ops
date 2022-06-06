@@ -1372,7 +1372,7 @@ function EventHandler(key, fields)
             ultimateCastRange = 120
             maxEnemies = 6
         elseif (fields[6] == 2) then
-            ultimateCastRangeExtension = 100
+
         elseif (fields[6] == 3) then
             maxEnemies = 8
             ultimateSpiceCost = 1800

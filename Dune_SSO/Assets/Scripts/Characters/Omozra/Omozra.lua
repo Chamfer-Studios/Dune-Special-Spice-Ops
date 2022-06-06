@@ -1257,9 +1257,9 @@ function EventHandler(key, fields)
         if (fields[5] == 1) then
             secondaryCastRange = 265
         elseif (fields[5] == 2) then
-            secondaryChargeCost = 4
+
         elseif (fields[5] == 3) then
-            secondaryChargeCost = 3
+
         end
 
         if (fields[6] == 1) then
