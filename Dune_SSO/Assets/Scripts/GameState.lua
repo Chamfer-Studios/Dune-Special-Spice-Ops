@@ -2,10 +2,11 @@
 levelNumber = 1
 
 characterSelected = 1
+
 spiceAmount = 1000
 startingSpiceAmount = 1000
-spiceMaxLvl1 = 10000
 deadAllyPenalization = 2000
+
 particleActive = false
 gameOverTime = 5
 
@@ -69,9 +70,6 @@ function Update(dt)
             if (spiceAmount <= 0) then
                 spiceAmount = 0
             end
-
-            str = "Spice Amount " .. spiceAmount .. "\n"
-            Log(str)
 
             gameObject:ChangeScene(true, "SceneGameOver")
         end
@@ -175,8 +173,7 @@ function EventHandler(key, fields)
         end
     elseif (key == "Spice_Reward") then
         spiceAmount = spiceAmount + fields[1]
-        str = "Spice Amount " .. spiceAmount .. "\n"
-        Log(str)
+
         if (fields[2] ~= nil) then
             keyJson = "gameobjects_to_delete_lvl" .. levelNumber
             AddGameJsonElement(keyJson, fields[2])
@@ -298,13 +295,8 @@ function LoadGame()
 
     spiceAmount = GetGameJsonInt("spice")
 
-    str = "STARTING Spice Amount " .. spiceAmount .. "\n"
-    Log(str)
-
     if (spiceAmount == 0) then
         spiceAmount = startingSpiceAmount
-        str = "Spice Amount " .. spiceAmount .. "\n"
-        Log(str)
     end
 
     -- zhibAvailable = GetGameJsonBool("zhib_available")
@@ -352,6 +344,5 @@ function LoadGame()
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
 end
---------------------------------------------------
 
 print("GameState.lua compiled succesfully")

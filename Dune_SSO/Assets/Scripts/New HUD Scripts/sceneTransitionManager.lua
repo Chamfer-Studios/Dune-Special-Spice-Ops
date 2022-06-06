@@ -215,20 +215,21 @@ function Start()
 
     id = 0
 
-    -- deactivate the characters that are not available
 end
 
 function Update(dt)
     if (isStarting == true) then
+
+        -- Deactivate the characters that are not available
         if (GetVariable("UI_GameState.lua", "omozra_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             Find("RightArrow"):Active(false)
+            Find("omozra_transition"):Active(false)
         end
-
         if (GetVariable("UI_GameState.lua", "nerala_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
             Find("LeftArrow"):Active(false)
+            Find("nerala_transition"):Active(false)
         end
 
-        UpdateState()
         UpdateUI()
 
         SpiceCost(0)
@@ -257,12 +258,13 @@ function Update(dt)
     if (upgradeArray[1].object:GetButton():IsPressed() and upgradeArray[1].unlocked == true) then
         if (upgradeArray[1].state == false) then
 
-            LevelUp(id, "primary", 1, true)
+            if (LevelUp(id, "primary", 1, true) ~= false) then
+                upgradeArray[1].state = true
+                upgradeArray[1].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[2].unlocked = true
+            end
 
-            upgradeArray[1].state = true
-            upgradeArray[1].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[2].unlocked = true
         else
             if upgradeArray[2].state == false then
                 upgradeArray[1].state = false
@@ -274,14 +276,14 @@ function Update(dt)
         end
         -- PRIMARY ABILITY : LEVEL 2
     elseif (upgradeArray[2].object:GetButton():IsPressed() and upgradeArray[2].unlocked == true) then
-        if (upgradeArray[2].state == false and upgradeArray[2].unlocked == true) then
+        if (upgradeArray[2].state == false) then
 
-            LevelUp(id, "primary", 2, true)
-
-            upgradeArray[2].state = true
-            upgradeArray[2].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[3].unlocked = true
+            if (LevelUp(id, "primary", 2, true) ~= false) then
+                upgradeArray[2].state = true
+                upgradeArray[2].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[3].unlocked = true
+            end
         else
             if upgradeArray[3].state == false then
                 upgradeArray[2].state = false
@@ -295,10 +297,10 @@ function Update(dt)
     elseif (upgradeArray[3].object:GetButton():IsPressed() and upgradeArray[3].unlocked == true) then
         if (upgradeArray[3].state == false) then
 
-            LevelUp(id, "primary", 3, true)
-
-            upgradeArray[3].state = true
-            upgradeArray[3].object:GetChildren()[1]:Active(true)
+            if (LevelUp(id, "primary", 3, true) ~= false) then
+                upgradeArray[3].state = true
+                upgradeArray[3].object:GetChildren()[1]:Active(true)
+            end
         else
             upgradeArray[3].state = false
             upgradeArray[3].object:GetChildren()[1]:Active(false)
@@ -309,12 +311,12 @@ function Update(dt)
     elseif (upgradeArray[4].object:GetButton():IsPressed() and upgradeArray[4].unlocked == true) then
         if (upgradeArray[4].state == false) then
 
-            LevelUp(id, "secondary", 1, true)
-
-            upgradeArray[4].state = true
-            upgradeArray[4].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[5].unlocked = true
+            if (LevelUp(id, "secondary", 1, true) ~= false) then
+                upgradeArray[4].state = true
+                upgradeArray[4].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[5].unlocked = true
+            end
         else
             if upgradeArray[5].state == false then
                 upgradeArray[4].state = false
@@ -328,12 +330,12 @@ function Update(dt)
     elseif (upgradeArray[5].object:GetButton():IsPressed() and upgradeArray[5].unlocked == true) then
         if (upgradeArray[5].state == false) then
 
-            LevelUp(id, "secondary", 2, true)
-
-            upgradeArray[5].state = true
-            upgradeArray[5].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[6].unlocked = true
+            if (LevelUp(id, "secondary", 2, true) ~= false) then
+                upgradeArray[5].state = true
+                upgradeArray[5].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[6].unlocked = true
+            end
         else
             if upgradeArray[6].state == false then
                 upgradeArray[5].state = false
@@ -347,10 +349,10 @@ function Update(dt)
     elseif (upgradeArray[6].object:GetButton():IsPressed() and upgradeArray[6].unlocked == true) then
         if (upgradeArray[6].state == false) then
 
-            LevelUp(id, "secondary", 3, true)
-
-            upgradeArray[6].state = true
-            upgradeArray[6].object:GetChildren()[1]:Active(true)
+            if (LevelUp(id, "secondary", 3, true) ~= false) then
+                upgradeArray[6].state = true
+                upgradeArray[6].object:GetChildren()[1]:Active(true)
+            end
         else
             upgradeArray[6].state = false
             upgradeArray[6].object:GetChildren()[1]:Active(false)
@@ -361,12 +363,12 @@ function Update(dt)
     elseif (upgradeArray[7].object:GetButton():IsPressed() and upgradeArray[7].unlocked == true) then
         if (upgradeArray[7].state == false) then
 
-            LevelUp(id, "ultimate", 1, true)
-
-            upgradeArray[7].state = true
-            upgradeArray[7].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[8].unlocked = true
+            if (LevelUp(id, "ultimate", 1, true) ~= false) then
+                upgradeArray[7].state = true
+                upgradeArray[7].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[8].unlocked = true
+            end
         else
             if upgradeArray[8].state == false then
                 upgradeArray[7].state = false
@@ -380,12 +382,12 @@ function Update(dt)
     elseif (upgradeArray[8].object:GetButton():IsPressed() and upgradeArray[8].unlocked == true) then
         if (upgradeArray[8].state == false) then
 
-            LevelUp(id, "ultimate", 2, true)
-
-            upgradeArray[8].state = true
-            upgradeArray[8].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[9].unlocked = true
+            if (LevelUp(id, "ultimate", 2, true) ~= false) then
+                upgradeArray[8].state = true
+                upgradeArray[8].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[9].unlocked = true
+            end
         else
             if upgradeArray[9].state == false then
                 upgradeArray[8].state = false
@@ -399,10 +401,10 @@ function Update(dt)
     elseif (upgradeArray[9].object:GetButton():IsPressed() and upgradeArray[9].unlocked == true) then
         if (upgradeArray[9].state == false) then
 
-            LevelUp(id, "ultimate", 3, true)
-
-            upgradeArray[9].state = true
-            upgradeArray[9].object:GetChildren()[1]:Active(true)
+            if (LevelUp(id, "ultimate", 3, true) ~= false) then
+                upgradeArray[9].state = true
+                upgradeArray[9].object:GetChildren()[1]:Active(true)
+            end
         else
             upgradeArray[9].state = false
             upgradeArray[9].object:GetChildren()[1]:Active(false)
@@ -413,12 +415,12 @@ function Update(dt)
     elseif (upgradeArray[10].object:GetButton():IsPressed() and upgradeArray[10].unlocked == true) then
         if (upgradeArray[10].state == false) then
 
-            LevelUp(id, "passive", 1, true)
-
-            upgradeArray[10].state = true
-            upgradeArray[10].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[11].unlocked = true
+            if (LevelUp(id, "passive", 1, true) ~= false) then
+                upgradeArray[10].state = true
+                upgradeArray[10].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[11].unlocked = true
+            end
         else
             if upgradeArray[11].state == false then
                 upgradeArray[10].state = false
@@ -432,12 +434,12 @@ function Update(dt)
     elseif (upgradeArray[11].object:GetButton():IsPressed() and upgradeArray[11].unlocked == true) then
         if (upgradeArray[11].state == false) then
 
-            LevelUp(id, "passive", 2, true)
-
-            upgradeArray[11].state = true
-            upgradeArray[11].object:GetChildren()[1]:Active(true)
-            -- Unlock
-            upgradeArray[12].unlocked = true
+            if (LevelUp(id, "passive", 2, true) ~= false) then
+                upgradeArray[11].state = true
+                upgradeArray[11].object:GetChildren()[1]:Active(true)
+                -- Unlock
+                upgradeArray[12].unlocked = true
+            end
         else
             if upgradeArray[12].state == false then
                 upgradeArray[11].state = false
@@ -451,10 +453,10 @@ function Update(dt)
     elseif (upgradeArray[12].object:GetButton():IsPressed() and upgradeArray[12].unlocked == true) then
         if (upgradeArray[12].state == false) then
 
-            LevelUp(id, "passive", 3, true)
-
-            upgradeArray[12].state = true
-            upgradeArray[12].object:GetChildren()[1]:Active(true)
+            if (LevelUp(id, "passive", 3, true) ~= false) then
+                upgradeArray[12].state = true
+                upgradeArray[12].object:GetChildren()[1]:Active(true)
+            end
         else
             upgradeArray[12].state = false
             upgradeArray[12].object:GetChildren()[1]:Active(false)
@@ -470,7 +472,7 @@ function EventHandler(key, fields)
         changedCharacter = true
         UpdateUI()
     elseif (key == "Gamestate_Loaded") then
-        -- Load()
+        UpdateState()
     end
 end
 
@@ -587,11 +589,9 @@ function SetDialogValue(index)
 end
 
 function SpiceCost(amount)
-    if (GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= amount) then
-        newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
-        SpiceAmountText:GetText():SetTextValue(newSpice)
-        SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    end
+    newSpice = GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) - amount
+    SpiceAmountText:GetText():SetTextValue(newSpice)
+    SetVariable(newSpice, "UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
 
 function SetSpiceAmount(amount)
@@ -625,7 +625,11 @@ function LevelUp(characterID, skill, skillLevel, direction)
         characterAbilityName = characterName .. "_passive_level"
     end
 
-    if (direction == false) then
+    if (direction == true) then
+        if (GetVariable("UI_GameState.lua", "spice", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) < abilityCost) then
+            return false
+        end
+    elseif (direction == false) then
         abilityCost = -(abilityCost)
         skillLevel = skillLevel - 1
     end
@@ -640,7 +644,7 @@ function UpdateState()
 
     local characterName
     local characterAbilityName
-    
+
     for i = 1, 3 do
         if (i == 1) then
             characterName = "zhib"
@@ -675,13 +679,14 @@ function UpdateState()
                 offset = 9
             end
 
-            if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~= (offset + 0)) then
+            if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~=
+                (offset + 0)) then
                 upgradeArray[offset +
                     GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
                     .unlocked = true
                 upgradeArray[offset +
-                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
-                    .state = true
+                    GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)].state =
+                    true
             end
 
             if (GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) == 3) then

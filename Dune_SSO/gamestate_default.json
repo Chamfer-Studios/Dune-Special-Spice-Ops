@@ -1,6 +1,6 @@
 {
     "gameobjects_to_delete_lvl1": [],
-    "nerala_available": false,
+    "nerala_available": true,
     "nerala_passive_level": 0,
     "nerala_pos_lvl1": [
         -1537.0,
@@ -20,7 +20,7 @@
     "omozra_primary_level": 0,
     "omozra_secondary_level": 0,
     "omozra_ultimate_level": 0,
-    "spice": 1000,
+    "spice": 9000,
     "zhib_available": true,
     "zhib_passive_level": 0,
     "zhib_pos_lvl1": [

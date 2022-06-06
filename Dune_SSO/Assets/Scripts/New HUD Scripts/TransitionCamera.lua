@@ -1,5 +1,5 @@
 rotSpeed = 150.0
-angle = 90.0
+angle = 120.0
 remainingAngle = 0.0
 offset = float3.new(0, 0, -235)
 scrollspeed = 15.0
@@ -10,77 +10,67 @@ mosquitoAlive = false
 arrived = false
 actualId = 0
 
+local rotationEnded = true
+
 local isStarting = true
 
 local neralaAvailable
 local omozraAvailable
 
-
-function Start() 
+function Start()
     leftArrow = Find("LeftArrow")
     rightArrow = Find("RightArrow")
+
+    rotationEnded = true
 end
+
 function Update(dt)
-    if(isStarting == true) then
-        if (GetVariable("UI_GameState.lua", "omozra_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-            omozraAvailable = false
-        else
-            omozraAvailable = true
-        end
-        if(GetVariable("UI_GameState.lua", "nerala_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
-            neralaAvailable = false
-        else
-            neralaAvailable = true
-        end
+
+    if (isStarting == true) then
+        omozraAvailable = GetVariable("UI_GameState.lua", "omozra_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+        neralaAvailable = GetVariable("UI_GameState.lua", "nerala_available", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
 
         isStarting = false
     end
 
     target = Find("CameraReference"):GetTransform():GetPosition()
-  
 
-    if (GetMouseZ() > 0) then
-        newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
-        newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
-        newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-    elseif (GetMouseZ() < 0) then
-        newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
-        newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
-        newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
-    end
-    
-    if (leftArrow:GetButton():IsPressed() and leftArrow.active == true) then -- Q
-        if (actualId == 1) then
-            return
-        end
-        if(actualId == nil)then
-           actualId = 0
-        end
-        if(actualId == 0) then
+    if ((leftArrow:GetButton():IsPressed() or GetInput(14) == KEY_STATE.KEY_DOWN) and leftArrow.active == true and
+        rotationEnded == true) then -- Q
+
+        if (actualId == nil) then
+            actualId = 0
+        elseif (actualId == 0) then
             actualId = 1
-        elseif(actualId == 2) then
+        elseif (actualId == 1) then
+            actualId = 2
+        elseif (actualId == 2) then
             actualId = 0
         end
+
         str = "ActualPos" .. actualId .. "\n"
         Log(str)
+
         arrived = false
         remainingAngle = remainingAngle - angle
     end
 
-    if (rightArrow:GetButton():IsPressed() and rightArrow.active == true) then -- E
-        if (actualId == 2) then
-            return
-        end
-        if(actualId == nil)then
+    if ((rightArrow:GetButton():IsPressed() or GetInput(15) == KEY_STATE.KEY_DOWN) and rightArrow.active == true and
+        rotationEnded == true) then -- E
+
+        if (actualId == nil) then
             actualId = 0
-         end
-        if(actualId == 1) then
-            actualId = 0
-        elseif(actualId == 0) then
+        elseif (actualId == 0) then
             actualId = 2
+        elseif (actualId == 1) then
+            actualId = 0
+        elseif (actualId == 2) then
+            actualId = 1
         end
+
         str = "ActualPos" .. actualId .. "\n"
         Log(str)
+
         arrived = false
         remainingAngle = remainingAngle + angle
     end
@@ -88,47 +78,12 @@ function Update(dt)
     if (actualId == 0) then
         rightArrow:Active(omozraAvailable)
         leftArrow:Active(neralaAvailable)
-    elseif(actualId == 1) then
+    elseif (actualId == 1) then
         rightArrow:Active(true)
-        leftArrow:Active(false)
-    elseif(actualId == 2) then
-        rightArrow:Active(false)
+        leftArrow:Active(omozraAvailable)
+    elseif (actualId == 2) then
+        rightArrow:Active(neralaAvailable)
         leftArrow:Active(true)
-    end
-    
-    if (GetInput(14) == KEY_STATE.KEY_DOWN) then -- Q
-        if (actualId == 1) then
-            return
-        end
-        if(actualId == nil)then
-           actualId = 0
-        end
-        if(actualId == 0) then
-            actualId = 1
-        elseif(actualId == 2) then
-            actualId = 0
-        end
-        str = "ActualPos" .. actualId .. "\n"
-        Log(str)
-        arrived = false
-        remainingAngle = remainingAngle - angle
-    end
-    if (GetInput(15) == KEY_STATE.KEY_DOWN) then -- E
-        if (actualId == 2) then
-            return
-        end
-        if(actualId == nil)then
-            actualId = 0
-         end
-        if(actualId == 1) then
-            actualId = 0
-        elseif(actualId == 0) then
-            actualId = 2
-        end
-        str = "ActualPos" .. actualId .. "\n"
-        Log(str)
-        arrived = false
-        remainingAngle = remainingAngle + angle
     end
 
     local newRemainingAngle = MoveTowards(remainingAngle, 0, rotSpeed * dt)
@@ -146,12 +101,14 @@ function Update(dt)
         finalPos.y = newPos.y + newZoomedPos.y
         finalPos.z = newPos.z + newZoomedPos.z
         componentTransform:SetPosition(finalPos)
-        if(arrived == false) then
+        if (arrived == false) then
             DispatchGlobalEvent("TransitionedFromLastCharacter", {actualId})
-            arrived = true;
+            arrived = true
+            rotationEnded = true
         end
     else
         componentTransform:SetPosition(newPos)
+        rotationEnded = false
     end
 
     gameObject:GetCamera():LookAt(target)
