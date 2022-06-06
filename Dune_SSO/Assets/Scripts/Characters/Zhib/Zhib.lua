@@ -250,21 +250,61 @@ function Update(dt)
     end
 
     -- States
-    if (currentState == State.ATTACK) then
-
-        if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <= attackRange) then
-            Attack()
-        else
-            if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
-                destination = target:GetTransform():GetPosition()
-                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+    if (currentMovement ~= Movement.IDLE and currentMovement ~= Movement.IDLE_CROUCH and target ~= nil) then
+        if (currentState == State.ATTACK) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                attackRange) then
+                Attack()
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
             end
-            hasToMove = true
+        elseif (currentState == State.AIM_PRIMARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastPrimary()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_SECONDARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target)) <= secondaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastSecondary(true)
+                end
+            else
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_ULTIMATE) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                ultimateCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastUltimate()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
-        componentAnimator:SetSelectedClip("Idle")
+        if (currentMovement == Movement.IDLE_CROUCH) then
+            componentAnimator:SetSelectedClip("IdleCrouch")
+        else
+            componentAnimator:SetSelectedClip("Idle")
+        end
     elseif (destination ~= nil) then
         hasToMove = true
     end
@@ -279,75 +319,15 @@ function Update(dt)
 
             -- Primary ability (Knife)
             if (currentState == State.AIM_PRIMARY) then
-                if (knifeCount <= 0) then
-                    Log("[FAIL] Ability Primary: You don't have enough knives!\n")
-                else
-                    target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.ENEMY) then
-                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
-                        target = nil
-                    else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            primaryCastRange) then
-                            Log("[FAIL] Ability Primary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastPrimary(target:GetTransform():GetPosition())
-                            end
-                        end
-                    end
-                end
+                CastPrimary()
 
                 -- Secondary ability (Decoy)
             elseif (currentState == State.AIM_SECONDARY) then
-                if (secondaryTimer ~= nil) then
-                    Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
-                else
-                    if (decoyCount <= 0) then
-                        Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
-                    else
-                        -- GetGameObjectHovered updates the last mouse click
-                        target = GetGameObjectHovered()
-                        local mouse = GetLastMouseClick()
-                        if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
-                            Log("[FAIL] Ability Secondary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (target.tag ~= Tag.FLOOR) then
-                                Log("[FAIL] Ability Secondary: You have to select floor!\n")
-                                target = nil
-                            else
-                                target = mouse
-                                if (componentAnimator ~= nil) then
-                                    CastSecondary(mouse)
-                                end
-                            end
-                        end
-                    end
-                end
+                CastSecondary(false)
 
                 -- Ultimate ability (master yi)
             elseif (currentState == State.AIM_ULTIMATE) then
-                if (ultimateTimer ~= nil) then
-                    Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
-                else
-                    target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.ENEMY) then
-                        Log("[FAIL] Ability Ultimate: You have to select an enemy first!\n")
-                        target = nil
-                    else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            ultimateCastRange) then
-                            Log("[FAIL] Ability Ultimate: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastUltimate(target:GetTransform():GetPosition())
-                            end
-                        end
-                    end
-                end
+                CastUltimate()
             end
         end
 
@@ -984,14 +964,45 @@ function ActivePrimary()
     end
 end
 
-function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+function CastPrimary()
+    if (knifeCount <= 0) then
+        Log("[FAIL] Ability Primary: You don't have enough knives!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.ENEMY) then
+            Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        else
+            if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    abilities.AbilityPrimary = AbilityStatus.Using
+                    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
-    componentAnimator:SetSelectedClip("Knife")
-    StopMovement(false)
+                    componentAnimator:SetSelectedClip("Knife")
+                    StopMovement(false)
 
-    LookAtTarget(position)
+                    LookAtTarget(target:GetTransform():GetPosition())
+                end
+            else
+                if (footstepsParticle ~= nil) then
+                    feetTimer = 0.5
+                    FootstepMovement()
+                end
+                destination = target:GetTransform():GetPosition()
+                SetMovement(Movement.WALK)
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
+        end
+    end
 end
 
 function DoPrimary()
@@ -1027,14 +1038,54 @@ function ActiveSecondary()
     end
 end
 
-function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+function CastSecondary(isAlreadyCasted)
+    if (secondaryTimer ~= nil) then
+        Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (decoyCount <= 0) then
+            Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
+            do
+                return
+            end
+        else
+            local goHovered = GetGameObjectHovered()
+            if (isAlreadyCasted == false) then
+                -- GetGameObjectHovered() updates the last mouse click
+                target = goHovered
+                mouse = GetLastMouseClick()
+                if (target.tag ~= Tag.FLOOR) then
+                    Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                    target = nil
+                    do
+                        return
+                    end
+                end
+                target = mouse
+            end
+            if (math.abs(Distance3D(target, componentTransform:GetPosition())) <= secondaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    abilities.AbilitySecondary = AbilityStatus.Using
+                    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
-    componentAnimator:SetSelectedClip("Decoy")
-    StopMovement(false)
+                    componentAnimator:SetSelectedClip("Decoy")
+                    StopMovement(false)
 
-    LookAtTarget(position)
+                    LookAtTarget(target)
+                end
+            else
+                if (footstepsParticle ~= nil) then
+                    feetTimer = 0.5
+                    FootstepMovement()
+                end
+                destination = target
+                SetMovement(Movement.WALK)
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
+        end
+    end
 
 end
 
@@ -1069,18 +1120,46 @@ function ActiveUltimate()
 end
 
 function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+    if (ultimateTimer ~= nil) then
+        Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.ENEMY) then
+            Log("[FAIL] Ability Ultimate: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        else
+            if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateCastRange) then
+                abilities.AbilityUltimate = AbilityStatus.Using
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
-    componentAnimator:SetSelectedClip("UltimateStart")
-    ultimateTimer = 0.0
-    iFramesTimer = 0.0
-    StopMovement(false)
+                componentAnimator:SetSelectedClip("UltimateStart")
+                ultimateTimer = 0.0
+                iFramesTimer = 0.0
+                StopMovement(false)
 
-    trackList = {7, 12}
-    ChangeTrack(trackList)
+                trackList = {7, 12}
+                ChangeTrack(trackList)
 
-    LookAtTarget(position)
+                LookAtTarget(target:GetTransform():GetPosition())
+            else
+                if (footstepsParticle ~= nil) then
+                    feetTimer = 0.5
+                    FootstepMovement()
+                end
+                destination = target:GetTransform():GetPosition()
+                SetMovement(Movement.WALK)
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
+        end
+    end
 end
 
 function DoUltimate()
