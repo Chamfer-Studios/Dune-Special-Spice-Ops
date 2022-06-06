@@ -454,7 +454,7 @@ function Start()
             componentAnimator:SetSelectedClip("Walk")
         end
     end
-
+if (#gameObject:GetParent():GetChildren()>2) then
     debuffParticle = gameObject:GetParent():GetChildren()[3]:GetChildren()[1]
     if (debuffParticle ~= nil) then
         debuffParticle:GetComponentParticle():StopParticleSpawn()
@@ -467,9 +467,8 @@ function Start()
     if (slashParticle ~= nil) then
         slashParticle:GetComponentParticle():StopParticleSpawn()
     end
-
+end
     targetDirection = componentTransform:GetFront()
-
     auditoryDebuffMultiplier = 1
     visualDebuffMultiplier = 1
 
@@ -871,7 +870,9 @@ function EventHandler(key, fields)
     elseif key == "Mosquito_Death" then
         mosquito = nil
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
+        if(debuffParticle~=nil) then
         debuffParticle:GetComponentParticle():StopParticleSpawn()
+        end
         if fields[1] == EnemyDeath.PLAYER_ATTACK or fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.MOSQUITO then
             SwitchState(state, STATE.DEAD)
             deathParameters.LeaveBody = true
