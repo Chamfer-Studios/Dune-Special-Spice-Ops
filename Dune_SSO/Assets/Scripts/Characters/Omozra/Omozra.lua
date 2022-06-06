@@ -185,7 +185,6 @@ function Start()
     if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
-    swooshParticle = Find("Omozra Swoosh Particle") -- not used currently
     footstepsParticle = Find("Omozra Footstep Particle")
 
     -- Audio

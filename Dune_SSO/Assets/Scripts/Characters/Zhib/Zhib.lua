@@ -202,8 +202,6 @@ function Start()
     if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
-    impactParticle = Find("Zhib Impact Particle") -- not used currently
-    swooshParticle = Find("Zhib Swoosh Particle") -- not used currently
     footstepsParticle = Find("Zhib Footstep Particle")
 
     -- Audio
@@ -228,12 +226,6 @@ function Update(dt)
         bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
     end
-
-    -- if (swooshParticle ~= nil) then
-    --     swooshParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-    --         componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
-    --    swooshParticle:GetTransform():SetRotation(componentTransform:GetRotation())
-    -- end
 
     if GetVariable("GameState.lua", "zhibAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
         if (smokebombPosition == nil) then

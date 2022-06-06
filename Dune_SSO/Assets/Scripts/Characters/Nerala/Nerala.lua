@@ -204,8 +204,6 @@ function Start()
     if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
-    impactParticle = Find("Nerala Impact Particle") -- not used currently
-    swooshParticle = Find("Nerala Swoosh Particle") -- not used currently
     footstepsParticle = Find("Nerala Footstep Particle")
 
     -- Audio
