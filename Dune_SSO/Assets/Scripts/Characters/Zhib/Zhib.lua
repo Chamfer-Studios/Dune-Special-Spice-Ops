@@ -192,6 +192,7 @@ function Start()
     end
 
     -- Particles
+    characterSelectedParticle = Find("Selected Particle")
     mouseParticles = Find("Mouse Particle")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
@@ -222,12 +223,6 @@ function Update(dt)
 
     DrawActiveAbilities()
     DrawHoverParticle()
-
-    if staminaBarBlue == nil then
-        ConfigStaminaBars()
-    else
-        UpdateStaminaBar()
-    end
 
     if (bloodParticle ~= nil) then
         bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
@@ -271,6 +266,8 @@ function Update(dt)
 
     -- Gather Inputs
     if (IsSelected() == true) then
+
+        UpdateStamina()
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -668,52 +665,14 @@ function DrawActiveAbilities()
     end
 end
 
-function UpdateStaminaBar()
-    local pos = componentTransform:GetPosition()
-    if IsSelected() == true then
-        local proportion = staminaTimer / staminaSeconds
-        local recoveryProportion = staminaTimer / recoveryTime
+function UpdateStamina()
+    local proportion = staminaTimer / staminaSeconds
+    local recoveryProportion = staminaTimer / recoveryTime
 
-        staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-        staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-        staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-        staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-
-        -- NEW
-        if isTired == false then
-            if proportion >= 0.66 then
-                staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                    staminaBarSizeZ))
-                staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-            elseif proportion >= 0.33 and proportion < 0.66 then
-                staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                    staminaBarSizeZ))
-                staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-            else
-                staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-                staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                    staminaBarSizeZ))
-                staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-            end
-        else
-            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
-                staminaBarSizeZ))
-        end
-    else
-        if GetVariable("GameState.lua", "anyCharacterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false then
-            staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
-            staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
-            staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
-            staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y - 30, pos.z))
-        end
+    if proportion >= 0.5 then -- From Green to Yellow
+        characterSelectedParticle:GetComponentParticle():SetColor((2 - (proportion * 2)) * 255, 255, 0, 255)
+    else -- From Yellow to Red
+        characterSelectedParticle:GetComponentParticle():SetColor(255, (proportion * 2) * 255, 0, 255)
     end
 end
 

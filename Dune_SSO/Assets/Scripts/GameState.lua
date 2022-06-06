@@ -54,8 +54,6 @@ function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
 
-    InstantiatePrefab("Stamina Bars")
-
     isStarting = true
 end
 

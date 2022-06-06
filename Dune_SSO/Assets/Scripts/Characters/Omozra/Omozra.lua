@@ -175,6 +175,7 @@ function Start()
     end
 
     -- Particles
+    characterSelectedParticle = Find("Selected Particle")
     mouseParticles = Find("Mouse Particle")
     if (mouseParticles ~= nil) then
         mouseParticles:GetComponentParticle():StopParticleSpawn()
@@ -248,11 +249,7 @@ function Update(dt)
     -- Gather Inputs
     if (IsSelected() == true) then
 
-        if staminaBarBlue == nil then
-            ConfigStaminaBars()
-        else
-            UpdateStaminaBar()
-        end
+        UpdateStamina()
 
         -- Left Click
         if (GetInput(1) == KEY_STATE.KEY_DOWN) then
@@ -673,44 +670,14 @@ function DrawActiveAbilities()
     end
 end
 
-function UpdateStaminaBar()
+function UpdateStamina()
     local proportion = staminaTimer / staminaSeconds
     local recoveryProportion = staminaTimer / recoveryTime
 
-    local pos = componentTransform:GetPosition()
-
-    staminaBarGreen:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-    staminaBarYellow:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-    staminaBarRed:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-    staminaBarBlue:GetTransform():SetPosition(float3.new(pos.x, pos.y + 30, pos.z))
-
-    -- NEW
-    if isTired == false then
-        if proportion >= 0.66 then
-            staminaBarGreen:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                staminaBarSizeZ))
-            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-        elseif proportion >= 0.33 and proportion < 0.66 then
-            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarYellow:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                staminaBarSizeZ))
-            staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-        else
-            staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-            staminaBarRed:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (proportion),
-                staminaBarSizeZ))
-            staminaBarBlue:GetTransform():SetScale(float3.new(0, 0, 0))
-        end
-    else
-        staminaBarGreen:GetTransform():SetScale(float3.new(0, 0, 0))
-        staminaBarYellow:GetTransform():SetScale(float3.new(0, 0, 0))
-        staminaBarRed:GetTransform():SetScale(float3.new(0, 0, 0))
-        staminaBarBlue:GetTransform():SetScale(float3.new(staminaBarSizeX, staminaBarSizeY * (recoveryProportion),
-            staminaBarSizeZ))
+    if proportion >= 0.5 then -- From Green to Yellow
+        characterSelectedParticle:GetComponentParticle():SetColor((2 - (proportion * 2)) * 255, 255, 0, 255)
+    else -- From Yellow to Red
+        characterSelectedParticle:GetComponentParticle():SetColor(255, (proportion * 2) * 255, 0, 255)
     end
 end
 
@@ -1294,18 +1261,6 @@ function EventHandler(key, fields)
         SetVariable(NewSpice, "GameState.lua", "spiceAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
         Log("TP bugged, correction applied.\n")
     end
-end
-
-function ConfigStaminaBars()
-    Log("Configuring stamina bars\n")
-    staminaBarYellow = Find("Stamina Bar Yellow")
-    staminaBarGreen = Find("Stamina Bar Green")
-    staminaBarRed = Find("Stamina Bar Red")
-    staminaBarBlue = Find("Stamina Bar Blue")
-
-    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
-    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
-    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 

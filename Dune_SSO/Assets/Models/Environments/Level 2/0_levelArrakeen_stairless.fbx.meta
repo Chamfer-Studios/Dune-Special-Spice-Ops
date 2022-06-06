@@ -1,6 +1,6 @@
 {
-    "asset_file": "0_levelArrakeen_stairless (1).fbx",
-    "asset_path": "Assets/Models/Environments/Level 2/0_levelArrakeen_stairless (1).fbx",
+    "asset_file": "0_levelArrakeen_stairless.fbx",
+    "asset_path": "Assets/Models/Environments/Level 2/0_levelArrakeen_stairless.fbx",
     "contained_resources": [
         {
             "asset_file": "Wall.025.sugar",
@@ -812,8 +812,8 @@
         }
     ],
     "hash": "e2abe3af8308626270531afa7d26ae97",
-    "library_file": "656065582.tea",
-    "library_path": "Library/Models/656065582.tea",
+    "library_file": "1842900300.tea",
+    "library_path": "Library/Models/1842900300.tea",
     "type": 3,
-    "uid": 656065582
+    "uid": 1842900300
 }
