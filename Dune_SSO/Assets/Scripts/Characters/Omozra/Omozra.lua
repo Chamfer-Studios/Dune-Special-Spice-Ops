@@ -1242,9 +1242,45 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
-    elseif (key == "Update_Omozra_Position") then
-        Log("Receiving Omozra Position \n")
+    elseif (key == "Update_Omozra_State") then
+
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+
+        if (fields[4] == 1) then
+            primaryCastRange = 265
+        elseif (fields[4] == 2) then
+            primaryChargeCost = 5
+        elseif (fields[4] == 3) then
+            primaryHealAmount = 2
+        end
+
+        if (fields[5] == 1) then
+            secondaryCastRange = 265
+        elseif (fields[5] == 2) then
+            secondaryChargeCost = 4
+        elseif (fields[5] == 3) then
+            secondaryChargeCost = 3
+        end
+
+        if (fields[6] == 1) then
+            ultimateCastRange = 190
+        elseif (fields[6] == 2) then
+            ultimateCastRange = 225
+        elseif (fields[6] == 3) then
+            ultimateSpiceCost = 750
+        end
+
+        if (fields[7] == 1) then
+            staminaSeconds = 7
+            staminaTimer = staminaSeconds
+        elseif (fields[7] == 2) then
+            runMultiplierPercentage = 144
+        elseif (fields[7] == 3) then
+            maxHP = 4
+            currentHP = maxHP
+            DispatchEvent("Player_Health", {3, currentHP, maxHP})
+        end
+
     elseif (key == "Omozra_Primary_Bugged") then
         currentCharges = currentCharges + primaryChargeCost
         abilities.AbilityPrimary = AbilityStatus.Normal

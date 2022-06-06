@@ -14,16 +14,19 @@ zhib_hp = 4
 zhib_primary_level = 0
 zhib_secondary_level = 0
 zhib_ultimate_level = 0
+zhib_passive_level = 0
 
 nerala_hp = 3
 nerala_primary_level = 0
 nerala_secondary_level = 0
 nerala_ultimate_level = 0
+nerala_passive_level = 0
 
 omozra_hp = 3
 omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
+omozra_passive_level = 0
 
 zhibAvailable = true
 neralaAvailable = true
@@ -254,23 +257,14 @@ end
 function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
-    SetGameJsonInt("zhib_hp", GetVariable("Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
     -- SetGameJsonBool("zhib_available", zhibAvailable)
-    SetGameJsonInt("zhib_primary_level", zhib_primary_level)
-    SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
-    SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
+    SetGameJsonInt("zhib_hp", GetVariable("Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
-    SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
     -- SetGameJsonBool("nerala_available", neralaAvailable)
-    SetGameJsonInt("nerala_primary_level", nerala_primary_level)
-    SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
-    SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
+    SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
-    SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
     -- SetGameJsonBool("omozra_available", omozraAvailable)
-    SetGameJsonInt("omozra_primary_level", omozra_primary_level)
-    SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
-    SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
+    SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
     zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     zhibPos = zhibPos:GetTransform():GetPosition()
@@ -310,65 +304,70 @@ function LoadGame()
         spiceAmount = startingSpiceAmount
     end
 
-    -- zhibAvailable = GetGameJsonBool("zhib_available")
-    -- if(zhibAvailable == false) then
-    --     DispatchEvent("Disable_Character", {1})
-    -- end
-
-    -- neralaAvailable = GetGameJsonBool("nerala_available")
-    -- if(neralaAvailable == false) then
-    --     DispatchEvent("Disable_Character", {2})
-    -- end
-
-    -- omozraAvailable = GetGameJsonBool("omozra_available")
-    -- if(omozraAvailable == false) then
-    --     DispatchEvent("Disable_Character", {3})
-    -- end
-
-    keyJson = "zhib_pos_lvl" .. levelNumber
-    zhibPos = GetGameJsonFloat3(keyJson)
-    if (zhibPos ~= nil) then
-        DispatchGlobalEvent("Update_Zhib_Position", {zhibPos.x, zhibPos.y, zhibPos.z})
-    end
-
-    keyJson = "nerala_pos_lvl" .. levelNumber
-    neralaPos = GetGameJsonFloat3(keyJson)
-    if (neralaPos ~= nil) then
-        DispatchGlobalEvent("Update_Nerala_Position", {neralaPos.x, neralaPos.y, neralaPos.z})
-    end
-
-    keyJson = "omozra_pos_lvl" .. levelNumber
-    omozraPos = GetGameJsonFloat3(keyJson)
-    if (omozraPos ~= nil) then
-        DispatchGlobalEvent("Update_Omozra_Position", {omozraPos.x, omozraPos.y, omozraPos.z})
-    end
+    --- Zhib
+    zhib_primary_level = GetGameJsonInt("zhib_primary_level")
+    zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
+    zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
+    zhib_passive_level = GetGameJsonInt("zhib_passive_level")
 
     zhib_hp = GetGameJsonInt("zhib_hp")
     SetVariable(zhib_hp, "Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     DispatchGlobalEvent("Player_Health",
         {1, zhib_hp, GetVariable("Zhib.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
 
+    keyJson = "zhib_pos_lvl" .. levelNumber
+    zhibPos = GetGameJsonFloat3(keyJson)
+    DispatchGlobalEvent("Update_Zhib_State", {zhibPos.x, zhibPos.y, zhibPos.z, zhib_primary_level, zhib_secondary_level,
+                                              zhib_ultimate_level, zhib_passive_level})
+
+    -- zhibAvailable = GetGameJsonBool("zhib_available")
+    -- if(zhibAvailable == false) then
+    --     DispatchEvent("Disable_Character", {1})
+    -- end
+
+    --- Nerala
+    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
+    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
+    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
+    nerala_passive_level = GetGameJsonInt("nerala_passive_level")
+
     nerala_hp = GetGameJsonInt("nerala_hp")
     SetVariable(nerala_hp, "Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     DispatchGlobalEvent("Player_Health",
         {2, nerala_hp, GetVariable("Nerala.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
+
+    keyJson = "nerala_pos_lvl" .. levelNumber
+    neralaPos = GetGameJsonFloat3(keyJson)
+    DispatchGlobalEvent("Update_Nerala_State",
+        {neralaPos.x, neralaPos.y, neralaPos.z, nerala_primary_level, nerala_secondary_level, nerala_ultimate_level,
+         nerala_passive_level})
+
+    -- neralaAvailable = GetGameJsonBool("nerala_available")
+    -- if(neralaAvailable == false) then
+    --     DispatchEvent("Disable_Character", {2})
+    -- end
+
+    --- Omozra
+    omozra_primary_level = GetGameJsonInt("omozra_primary_level")
+    omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
+    omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
+    omozra_passive_level = GetGameJsonInt("omozra_passive_level")
 
     omozra_hp = GetGameJsonInt("omozra_hp")
     SetVariable(omozra_hp, "Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     DispatchGlobalEvent("Player_Health",
         {3, omozra_hp, GetVariable("Omozra.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
 
-    zhib_primary_level = GetGameJsonInt("zhib_primary_level")
-    zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
-    zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
+    keyJson = "omozra_pos_lvl" .. levelNumber
+    omozraPos = GetGameJsonFloat3(keyJson)
+    DispatchGlobalEvent("Update_Omozra_State",
+        {omozraPos.x, omozraPos.y, omozraPos.z, omozra_primary_level, omozra_secondary_level, omozra_ultimate_level,
+         omozra_passive_level})
 
-    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
-    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
-    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
-
-    omozra_primary_level = GetGameJsonInt("omozra_primary_level")
-    omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
-    omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
+    -- omozraAvailable = GetGameJsonBool("omozra_available")
+    -- if(omozraAvailable == false) then
+    --     DispatchEvent("Disable_Character", {3})
+    -- end
 end
 
-print("GameState.lua compiled succesfully")
+print("GameState.lua compiled successfully!")

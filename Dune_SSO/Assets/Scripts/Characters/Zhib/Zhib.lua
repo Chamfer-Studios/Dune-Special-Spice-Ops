@@ -96,10 +96,11 @@ secondaryCastRange = 200 -- 75
 secondaryCooldown = 7.5
 
 -- Ultimate ability --
-ultimateCastRange = 40
+ultimateCastRange = 75
 ultimateCooldown = 2
 ultimateCastRangeExtension = ultimateCastRange * 0.75
 ultimateSpiceCost = 2000
+maxEnemies = 5
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -1101,7 +1102,7 @@ function DoUltimate()
     for i = 1, #enemies do
         if (enemies[i] ~= target and
             Distance3D(enemies[i]:GetTransform():GetPosition(), target:GetTransform():GetPosition()) <=
-            ultimateCastRange) and #enemiesInRange < 3 then
+            ultimateCastRange) and #enemiesInRange < maxEnemies then
             enemiesInRange[#enemiesInRange + 1] = enemies[i]
         end
     end
@@ -1110,7 +1111,7 @@ function DoUltimate()
     for i = 1, #enemiesInRange do
 
         for j = 1, #enemies do
-            if (enemiesInRange[i] ~= enemies[j] and #enemiesInRange < 3) then
+            if (enemiesInRange[i] ~= enemies[j] and #enemiesInRange < maxEnemies) then
                 if (Distance3D(enemiesInRange[i]:GetTransform():GetPosition(), enemies[j]:GetTransform():GetPosition()) <=
                     ultimateCastRangeExtension) then
 
@@ -1341,9 +1342,51 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
-    elseif (key == "Update_Zhib_Position") then
-        Log("Receiving Zhib Position \n")
+    elseif (key == "Update_Zhib_State") then -- fields 1 to 3: position | fields 4 to 7: (primary, secondary, ultimate, passive)
+
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
+
+        if (fields[4] == 1) then
+            primarySoundRange = 225
+        elseif (fields[4] == 2) then
+            primaryCastRange = 188
+        elseif (fields[4] == 3) then
+            unawareChanceHarkKnife = 100
+            awareChanceHarkKnife = 90
+            aggroChanceHarkKnife = 40
+            unawareChanceSardKnife = 90
+            awareChanceSardKnife = 40
+            aggroChanceSardKnife = 20
+        end
+
+        if (fields[5] == 1) then
+            secondaryCastRange = 225
+            secondaryEffectRadius = 150
+        elseif (fields[5] == 2) then
+            secondaryDuration = 10
+        elseif (fields[5] == 3) then
+            secondaryCooldown = 6
+        end
+
+        if (fields[6] == 1) then
+            ultimateCastRange = 120
+            maxEnemies = 6
+        elseif (fields[6] == 2) then
+            ultimateCastRangeExtension = 100
+        elseif (fields[6] == 3) then
+            maxEnemies = 8
+            ultimateSpiceCost = 1800
+        end
+
+        if (fields[7] == 1) then
+            staminaSeconds = 6
+            staminaTimer = staminaSeconds
+        elseif (fields[7] == 2) then
+            runMultiplierPercentage = 144
+        elseif (fields[7] == 3) then
+            crouchMultiplierPercentage = 70
+        end
+
     elseif (key == "Zhib_Primary_Bugged") then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})

@@ -1,16 +1,16 @@
 spice = 0
 
-nerala_available = true
-nerala_primary_level = 0
-nerala_secondary_level = 0
-nerala_ultimate_level = 0
-nerala_passive_level = 0
-
 zhib_available = true
 zhib_primary_level = 0
 zhib_secondary_level = 0
 zhib_ultimate_level = 0
 zhib_passive_level = 0
+
+nerala_available = true
+nerala_primary_level = 0
+nerala_secondary_level = 0
+nerala_ultimate_level = 0
+nerala_passive_level = 0
 
 omozra_available = true
 omozra_primary_level = 0
@@ -23,17 +23,17 @@ function Start()
 
     spice = GetGameJsonInt("spice")
 
-    nerala_available = GetGameJsonBool("nerala_available")
-    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
-    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
-    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
-    nerala_passive_level = GetGameJsonInt("nerala_passive_level")
-
     zhib_available = GetGameJsonBool("zhib_available")
     zhib_primary_level = GetGameJsonInt("zhib_primary_level")
     zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
     zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
     zhib_passive_level = GetGameJsonInt("zhib_passive_level")
+
+    nerala_available = GetGameJsonBool("nerala_available")
+    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
+    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
+    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
+    nerala_passive_level = GetGameJsonInt("nerala_passive_level")
     
     omozra_available = GetGameJsonBool("omozra_available")
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
