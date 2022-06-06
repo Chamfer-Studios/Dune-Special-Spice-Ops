@@ -7,6 +7,7 @@ destination = nil
 target = nil
 attackRange = 20.0 -- Maybe too big
 isDead = false
+poisonCount = 1
 -------------------- Methods ---------------------
 
 function Start()
@@ -16,6 +17,8 @@ function Start()
     maxTetherRange = GetVariable("Nerala.lua", "ultimateMaxDistance", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     destination = GetVariable("Nerala.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
     if (destination ~= nil) then
+        lifeTime = GetVariable("Nerala.lua", "ultimateLifeTime", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        poisonCount = GetVariable("Nerala.lua", "ultimateKills", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
         player = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT) -- player = Find("Nerala")
         neralaPosition = player:GetTransform():GetPosition()
         local targetPos2D = {destination.x, destination.z}
@@ -36,8 +39,6 @@ function Start()
         if (mouseParticles ~= nil) then
             mouseParticles:GetComponentParticle():StopParticleSpawn()
         end
-
-        poisonCount = 2 -- Number of kills left
 
         DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
     else

@@ -61,10 +61,10 @@ iFramesTimer = nil
 -- Globals --
 characterID = 1
 speed = 2000
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
+crouchMultiplierPercentage = 60
+runMultiplierPercentage = 133
 staminaSeconds = 5
-recoveryTime = 5
+recoveryTime = 7
 staminaTimer = staminaSeconds
 standingStaminaMultiplier = 1.5
 isTired = false
@@ -77,9 +77,10 @@ attackRange = 25.0
 attackTime = 2.5
 
 -- Primary ability --
-primaryCastRange = 100
+primaryCastRange = 150
 maxKnives = 1
-knifeSpeed = 10000
+knifeSpeed = 11500
+primarySoundRange = 300
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
@@ -89,13 +90,15 @@ aggroChanceSardKnife = 0
 
 -- Secondary ability --
 maxDecoy = 1
-secondaryCastRange = 225 -- 75
-secondaryCooldown = 10
+secondaryEffectRadius = 120
+secondaryDuration = 7.5
+secondaryCastRange = 200 -- 75
+secondaryCooldown = 7.5
 
 -- Ultimate ability --
-ultimateCastRange = 100
-ultimateCooldown = 30.0
-ultimateCastRangeExtension = ultimateCastRange * 0.5
+ultimateCastRange = 40
+ultimateCooldown = 2
+ultimateCastRangeExtension = ultimateCastRange * 0.75
 ultimateSpiceCost = 2000
 ---------------------------------------------------------
 
@@ -1321,7 +1324,11 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + fields[2]
+                currentHP = currentHP +
+                                GetVariable("Omozra.lua", "primaryHealAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                if currentHP > maxHP then
+                    currentHP = maxHP
+                end
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Zhib. Current HP = " .. currentHP .. "\n")
             else

@@ -62,25 +62,25 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 3
-speed = 2000
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
-staminaSeconds = 5
-recoveryTime = 5
+speed = 1600
+crouchMultiplierPercentage = 67
+runMultiplierPercentage = 133
+staminaSeconds = 6
+recoveryTime = 7
 staminaTimer = staminaSeconds
 isTired = false
 
 -- Passive -- 
 passiveRange = 100
+maxCharges = 6
 
 -- Primary ability --
-primaryCastRange = 100
-maxCharges = 6
-primaryChargeCost = 3
-secondaryChargeCost = 4
+primaryCastRange = 225
+primaryChargeCost = 6
+primaryHealAmount = 1
 
 -- Secondary ability --
-secondaryCastRange = 75
+secondaryCastRange = 225
 secondaryCooldown = 2
 unawareChanceHarkSecondary = 100
 awareChanceHarkSecondary = 100
@@ -88,10 +88,11 @@ aggroChanceHarkSecondary = 100
 unawareChanceSardSecondary = 100
 awareChanceSardSecondary = 100
 aggroChanceSardSecondary = 100
+secondaryChargeCost = 6
 
 -- Ultimate ability --
-ultimateCastRange = 75
-ultimateCooldown = 30
+ultimateCastRange = 150
+ultimateCooldown = 2
 ultimateSpiceCost = 1000
 ultimateRecastRange = 100
 ---------------------------------------------------------
@@ -963,7 +964,7 @@ function DoPrimary()
     currentCharges = currentCharges - primaryChargeCost
     DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
-    DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition()}) -- fields[1] -> target; fields[2] -> pos;
+    DispatchGlobalEvent("Sadiq_Heal", {target, componentTransform:GetPosition(), primaryHealAmount}) -- fields[1] -> target; fields[2] -> pos;
 
     componentAnimator:SetSelectedClip("PointToIdle")
     SetState(State.IDLE)
@@ -1214,7 +1215,10 @@ function EventHandler(key, fields)
 
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + fields[2]
+                currentHP = currentHP + primaryHealAmount
+                if currentHP > maxHP then
+                    currentHP = maxHP
+                end
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Omozra. Current HP = " .. currentHP .. "\n")
 

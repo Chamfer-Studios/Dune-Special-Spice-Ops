@@ -61,11 +61,11 @@ iFramesTimer = nil
 
 -- Globals --
 characterID = 2
-speed = 2500
-crouchMultiplierPercentage = 66
-runMultiplierPercentage = 150
-staminaSeconds = 5
-recoveryTime = 5
+speed = 2140
+crouchMultiplierPercentage = 63
+runMultiplierPercentage = 138
+staminaSeconds = 3
+recoveryTime = 4
 staminaTimer = staminaSeconds
 isTired = false
 
@@ -80,9 +80,11 @@ awareChanceSardAttack = 60
 aggroChanceSardAttack = 40
 
 -- Primary ability --
-primaryCastRange = 100
+primaryCastRange = 165
 primaryCooldown = 5
-dartSpeed = 17000
+primarySpeed = 18000
+primaryAuditoryDebuff = 30
+primaryVisualDebuff = 100
 unawareChanceHarkDart = 100
 awareChanceHarkDart = 90
 aggroChanceHarkDart = 0
@@ -91,17 +93,20 @@ awareChanceSardDart = 80
 aggroChanceSardDart = 0
 
 -- Secondary ability --
-secondaryCastRange = 75
-secondaryCooldown = 10.0
+secondaryCastRange = 200
+secondaryEffectRadius = 50
+secondaryDuration = 5
 maxSmokeBombCount = 3
 smokeBombCount = maxSmokeBombCount
 smokebombActive = false
 
 -- Ultimate ability --
-ultimateCastRange = 50
-ultimateCooldown = 30.0
-ultimateSpiceCost = 1500
-ultimateMaxDistance = 300 -- Careful changing variable name (HunterSeeker.lua)
+ultimateCastRange = 30
+ultimateCooldown = 2
+ultimateSpiceCost = 1000
+ultimateKills = 1
+ultimateLifeTime = 10
+ultimateMaxDistance = 615 -- Careful changing variable name (HunterSeeker.lua)
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
@@ -1212,7 +1217,11 @@ function EventHandler(key, fields)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
-                currentHP = currentHP + fields[2]
+                currentHP = currentHP +
+                                GetVariable("Omozra.lua", "primaryHealAmount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+                if currentHP > maxHP then
+                    currentHP = maxHP
+                end
                 DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
                 Log("Sadiq has healed Nerala. Current HP = " .. currentHP .. "\n")
             else

@@ -13,6 +13,8 @@ function Start()
     destination = GetVariable("Zhib.lua", "target", INSPECTOR_VARIABLE_TYPE.INSPECTOR_FLOAT3) -- float 3
     if (destination ~= nil) then
         destination.y = 0.0
+        effectRadius = GetVariable("Zhib.lua", "secondaryEffectRadius", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        lifeTime = GetVariable("Zhib.lua", "secondaryDuration", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
         player = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
         componentSwitch = gameObject:GetAudioSwitch()
         currentTrackID = -1
