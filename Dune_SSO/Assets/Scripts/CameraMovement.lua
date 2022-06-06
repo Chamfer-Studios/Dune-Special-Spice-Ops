@@ -31,6 +31,11 @@ function Update(dt)
 
     local lastFinalPos = componentTransform:GetPosition()
 
+    str = "Mouse Position X: " .. tostring(GetMouseScreenPos().x) .. "Mouse Position Y: " .. tostring(GetMouseScreenPos().y) .. "\n"
+    str2 = "Last ViewPort Size X: " .. tostring(GetLastViewportSize().x) .. "Last ViewPort Size Y: " .. tostring(GetLastViewportSize().y) .. "\n"
+    Log(str)
+    Log(str2)
+
     if(GetMouseMotionX() > 0 and GetInput(2) == KEY_STATE.KEY_REPEAT )then
         xMotion = GetMouseMotionX()
         newDeltaX = xMotion * camSensitivity -- camera sensitivity
@@ -85,28 +90,29 @@ function Update(dt)
     --input: wasd keys to pan the camera freely
     --i had to do both key up and down. Down is for activating the panning in the propper direction
     --and up resets it to zero
-    if (GetInput(16) == KEY_STATE.KEY_DOWN) then -- W --HAY UN KEY REPEAT
+    if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - 20)) then -- W --HAY UN KEY REPEAT
+        Log("Panning Up")
         zPanning = -1.0
     end
-    if (GetInput(16) == KEY_STATE.KEY_UP) then -- W
+    if (GetMouseScreenPos().y < (GetLastViewportSize().y) - 10 and GetMouseScreenPos().y > 15) then -- W
         zPanning = 0.0
     end
-    if (GetInput(17) == KEY_STATE.KEY_DOWN) then -- A
+    if (GetMouseScreenPos().x > 0 and GetMouseScreenPos().x < 15) then -- A
         xPanning = -1.0
     end
-    if (GetInput(17) == KEY_STATE.KEY_UP) then -- A
+    if (GetMouseScreenPos().x > 15 and GetMouseScreenPos().x < (GetLastViewportSize().x - 20)) then -- A
         xPanning = 0.0
     end
-    if (GetInput(18) == KEY_STATE.KEY_DOWN) then -- S
+    if (GetMouseScreenPos().y > 0 and GetMouseScreenPos().y < 15) then -- S
         zPanning = 1.0
     end
-    if (GetInput(18) == KEY_STATE.KEY_UP) then -- S
+    if (GetMouseScreenPos().y > 15 and GetMouseScreenPos().y < (GetLastViewportSize().y - 20)) then -- S
         zPanning = 0.0
     end
-    if (GetInput(19) == KEY_STATE.KEY_DOWN) then -- D
+    if (GetMouseScreenPos().x < GetLastViewportSize().x and GetMouseScreenPos().x > (GetLastViewportSize().x - 20)) then -- D
         xPanning = 1.0
     end
-    if (GetInput(19) == KEY_STATE.KEY_UP) then -- D
+    if (GetMouseScreenPos().x < (GetLastViewportSize().x) - 10 and GetMouseScreenPos().x > 15) then -- D
         xPanning = 0.0
     end
 
