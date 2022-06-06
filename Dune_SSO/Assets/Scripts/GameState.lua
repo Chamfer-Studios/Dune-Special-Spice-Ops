@@ -10,14 +10,17 @@ deadAllyPenalization = 2000
 particleActive = false
 gameOverTime = 5
 
-nerala_primary_level = 0
-nerala_secondary_level = 0
-nerala_ultimate_level = 0
-
+zhib_hp = 4
 zhib_primary_level = 0
 zhib_secondary_level = 0
 zhib_ultimate_level = 0
 
+nerala_hp = 3
+nerala_primary_level = 0
+nerala_secondary_level = 0
+nerala_ultimate_level = 0
+
+omozra_hp = 3
 omozra_primary_level = 0
 omozra_secondary_level = 0
 omozra_ultimate_level = 0
@@ -44,6 +47,8 @@ levelNumberIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 levelNumberIV = InspectorVariable.new("levelNumber", levelNumberIVT, levelNumber)
 NewVariable(levelNumberIV)
 
+local isStarting = true
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -51,11 +56,16 @@ function Start()
 
     InstantiatePrefab("Stamina Bars")
 
-    LoadGame()
+    isStarting = true
 end
 
 -- Called each loop iteration
 function Update(dt)
+
+    if (isStarting == true) then
+        LoadGame()
+        isStarting = false
+    end
 
     if (GetInput(50) == KEY_STATE.KEY_DOWN) then
         SaveGame()
@@ -246,17 +256,20 @@ end
 function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
-    --SetGameJsonBool("nerala_available", neralaAvailable)
-    SetGameJsonInt("nerala_primary_level", nerala_primary_level)
-    SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
-    SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
-
-    --SetGameJsonBool("zhib_available", zhibAvailable)
+    SetGameJsonInt("zhib_hp", GetVariable("Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
+    -- SetGameJsonBool("zhib_available", zhibAvailable)
     SetGameJsonInt("zhib_primary_level", zhib_primary_level)
     SetGameJsonInt("zhib_secondary_level", zhib_secondary_level)
     SetGameJsonInt("zhib_ultimate_level", zhib_ultimate_level)
 
-    --SetGameJsonBool("omozra_available", omozraAvailable)
+    SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
+    -- SetGameJsonBool("nerala_available", neralaAvailable)
+    SetGameJsonInt("nerala_primary_level", nerala_primary_level)
+    SetGameJsonInt("nerala_secondary_level", nerala_secondary_level)
+    SetGameJsonInt("nerala_ultimate_level", nerala_ultimate_level)
+
+    SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
+    -- SetGameJsonBool("omozra_available", omozraAvailable)
     SetGameJsonInt("omozra_primary_level", omozra_primary_level)
     SetGameJsonInt("omozra_secondary_level", omozra_secondary_level)
     SetGameJsonInt("omozra_ultimate_level", omozra_ultimate_level)
@@ -332,13 +345,28 @@ function LoadGame()
         DispatchGlobalEvent("Update_Omozra_Position", {omozraPos.x, omozraPos.y, omozraPos.z})
     end
 
-    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
-    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
-    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
+    zhib_hp = GetGameJsonInt("zhib_hp")
+    SetVariable(zhib_hp, "Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    DispatchGlobalEvent("Player_Health",
+        {1, zhib_hp, GetVariable("Zhib.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
+
+    nerala_hp = GetGameJsonInt("nerala_hp")
+    SetVariable(nerala_hp, "Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    DispatchGlobalEvent("Player_Health",
+        {2, nerala_hp, GetVariable("Nerala.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
+
+    omozra_hp = GetGameJsonInt("omozra_hp")
+    SetVariable(omozra_hp, "Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    DispatchGlobalEvent("Player_Health",
+        {3, omozra_hp, GetVariable("Omozra.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
 
     zhib_primary_level = GetGameJsonInt("zhib_primary_level")
     zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
     zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
+
+    nerala_primary_level = GetGameJsonInt("nerala_primary_level")
+    nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
+    nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
 
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
