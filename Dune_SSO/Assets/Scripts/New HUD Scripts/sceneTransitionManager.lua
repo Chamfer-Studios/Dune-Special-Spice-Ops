@@ -196,12 +196,14 @@ local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
 local primaryLvl1Cost = 200
 local ultimateLvl1Cost = 300
 
-function calcAbilityCost(level, ultimate)
-    if (ultimate == nil) then
-        return math.floor(2 ^ level * 100)
+function calcAbilityCost(level, flags)
+    if (flags == "ultimate") then
+        return math.floor(2 ^ level * 150)
+    elseif (flags == "passive") then
+        return math.floor(2 ^ level * 50)
     end
 
-    return math.floor(2 ^ level * 150)
+    return math.floor(2 ^ level * 100)
 end
 
 ------------ Dialogue Manager ------------
@@ -232,8 +234,7 @@ function Update(dt)
 
         UpdateUI()
 
-        SpiceCost(0)
-        -- SetSpiceAmount(6000)
+        SpiceCost(-8500)
 
         isStarting = false
     end
@@ -619,9 +620,10 @@ function LevelUp(characterID, skill, skillLevel, direction)
     elseif (skill == "secondary") then
         characterAbilityName = characterName .. "_secondary_level"
     elseif (skill == "ultimate") then
-        abilityCost = calcAbilityCost(skillLevel, true)
+        abilityCost = calcAbilityCost(skillLevel, skill)
         characterAbilityName = characterName .. "_ultimate_level"
     elseif (skill == "passive") then
+        abilityCost = calcAbilityCost(skillLevel, skill)
         characterAbilityName = characterName .. "_passive_level"
     end
 
