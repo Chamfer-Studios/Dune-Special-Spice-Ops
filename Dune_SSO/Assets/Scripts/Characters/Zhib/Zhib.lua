@@ -229,6 +229,12 @@ function Update(dt)
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
     end
 
+    -- if (swooshParticle ~= nil) then
+    --     swooshParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+    --         componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    --    swooshParticle:GetTransform():SetRotation(componentTransform:GetRotation())
+    -- end
+
     if GetVariable("GameState.lua", "zhibAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
         if (smokebombPosition == nil) then
             DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
