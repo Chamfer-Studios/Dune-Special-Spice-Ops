@@ -680,7 +680,7 @@ function UpdateState()
             end
 
             if ((offset + GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)) ~=
-                (offset + 0)) then
+                (offset)) then
                 upgradeArray[offset +
                     GetVariable("UI_GameState.lua", characterAbilityName, INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)]
                     .unlocked = true
