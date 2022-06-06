@@ -940,9 +940,9 @@ function Attack()
     SetState(State.ATTACK)
 
     componentAnimator:SetSelectedClip("Attack")
-    impactParticle:GetComponentParticle():SetLoop(true)
-    impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,
-        target:GetTransform():GetPosition().y + 17, target:GetTransform():GetPosition().z + 5))
+    -- impactParticle:GetComponentParticle():SetLoop(true)
+    -- impactParticle:GetTransform():SetPosition(float3.new(target:GetTransform():GetPosition().x,
+    --     target:GetTransform():GetPosition().y + 17, target:GetTransform():GetPosition().z + 5))
     LookAtTarget(target:GetTransform():GetPosition())
 end
 
@@ -961,7 +961,7 @@ function DoAttack()
     attackTimer = 0.0
 
     target = nil
-    impactParticle:GetComponentParticle():SetLoop(false)
+    -- impactParticle:GetComponentParticle():SetLoop(false)
 
     SetState(State.IDLE)
 end
