@@ -31,11 +31,6 @@ function Update(dt)
 
     local lastFinalPos = componentTransform:GetPosition()
 
-    str = "Mouse Position X: " .. tostring(GetMouseScreenPos().x) .. "Mouse Position Y: " .. tostring(GetMouseScreenPos().y) .. "\n"
-    str2 = "Last ViewPort Size X: " .. tostring(GetLastViewportSize().x) .. "Last ViewPort Size Y: " .. tostring(GetLastViewportSize().y) .. "\n"
-    Log(str)
-    Log(str2)
-
     if(GetMouseMotionX() > 0 and GetInput(2) == KEY_STATE.KEY_REPEAT )then
         xMotion = GetMouseMotionX()
         newDeltaX = xMotion * camSensitivity -- camera sensitivity
