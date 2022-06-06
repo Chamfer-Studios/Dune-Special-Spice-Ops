@@ -137,7 +137,7 @@ function EventHandler(key, fields)
         DisplayDescription(fields[1], fields[2])
     elseif key == "Enemy_Attack" then
         takeDamageTimer = 0.0
-        -- takeDamageBorder.active = true
+        takeDamageBorder.active = true
     end
 end
 
