@@ -250,10 +250,13 @@ function Update(dt)
 
     -- States
     if (currentState == State.ATTACK) then
-        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
+        if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <= attackRange) then
             Attack()
         else
-            destination = target:GetTransform():GetPosition()
+            if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                destination = target:GetTransform():GetPosition()
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
             hasToMove = true
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
@@ -1243,7 +1246,7 @@ function EventHandler(key, fields)
             abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
-    elseif (key == "Update_Nerala_State") then  -- fields 1 to 3: position | fields 4 to 7: (primary, secondary, ultimate, passive)
+    elseif (key == "Update_Nerala_State") then -- fields 1 to 3: position | fields 4 to 7: (primary, secondary, ultimate, passive)
 
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
 

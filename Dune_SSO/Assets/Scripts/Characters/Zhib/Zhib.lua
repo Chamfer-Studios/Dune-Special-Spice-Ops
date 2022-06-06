@@ -252,10 +252,13 @@ function Update(dt)
     -- States
     if (currentState == State.ATTACK) then
 
-        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= attackRange) then
+        if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <= attackRange) then
             Attack()
         else
-            destination = target:GetTransform():GetPosition()
+            if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                destination = target:GetTransform():GetPosition()
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
             hasToMove = true
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
@@ -1223,6 +1226,7 @@ end
 -------------------- Events ----------------------
 function EventHandler(key, fields)
     if (key == "Stop_Movement") then
+        Log("PARA, ZORRAAAAA\n")
         StopMovement()
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
@@ -1455,6 +1459,7 @@ function Distance3D(a, b)
     }
     return math.sqrt(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z)
 end
+
 --------------------------------------------------
 
 function ChangeTrack(_trackList)
