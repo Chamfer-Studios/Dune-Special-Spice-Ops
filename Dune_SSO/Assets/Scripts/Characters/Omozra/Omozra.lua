@@ -231,17 +231,70 @@ function Update(dt)
     end
 
     -- States
-    if (currentState == State.PASSIVE and target ~= nil) then
-        if (Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition()) <= passiveRange) then
-            Passive()
-        else
-            destination = target:GetTransform():GetPosition()
-            hasToMove = true
+    if (currentMovement ~= Movement.IDLE and currentMovement ~= Movement.IDLE_CROUCH and target ~= nil) then
+        if (currentState == State.PASSIVE) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                passiveRange) then
+                Passive()
+            else
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_PRIMARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastPrimary()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_SECONDARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                secondaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastSecondary()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_ULTIMATE) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                ultimateCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastUltimate()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
+        elseif currentState == State.AIM_ULTIMATE_RECAST then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target)) <= ultimateRecastRange) then
+                if (componentAnimator ~= nil) then
+                    RecastUltimate(true)
+                end
+            else
+                hasToMove = true
+            end
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
-        componentAnimator:SetSelectedClip("Idle")
+        if (currentMovement == Movement.IDLE_CROUCH) then
+            componentAnimator:SetSelectedClip("IdleCrouch")
+        else
+            componentAnimator:SetSelectedClip("Idle")
+        end
     elseif (destination ~= nil) then
         hasToMove = true
     end
@@ -256,79 +309,17 @@ function Update(dt)
 
             -- Primary ability (spit heal)
             if (currentState == State.AIM_PRIMARY) then
-                target = GetGameObjectHovered()
-                if (target.tag ~= Tag.PLAYER) then
-                    Log("[FAIL] Ability Primary: You have to select a player first!\n")
-                    target = nil
-                else
-                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                        primaryCastRange) then
-                        Log("[FAIL] Ability Primary: Ability out of range!\n")
-                        target = nil
-                    else
-                        if (componentAnimator ~= nil) then
-                            CastPrimary(target)
-                        end
-                    end
-                end
+                CastPrimary()
 
                 -- Secondary ability
             elseif (currentState == State.AIM_SECONDARY) then
-                if (secondaryTimer ~= nil) then
-                    Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
-                else
-                    target = GetGameObjectHovered()
-                    if (target.tag == Tag.ENEMY or target.tag == Tag.CORPSE) then
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            secondaryCastRange) then
-                            Log("[FAIL] Ability Secondary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastSecondary(target:GetTransform():GetPosition())
-                            end
-                        end
-                    else
-                        Log("[FAIL] Ability Secondary: You have to select an enemy or a corpse first!\n")
-                        target = nil
-                    end
-                end
+                CastSecondary()
 
                 -- Ultimate ability (needs to be refactored a bit :D)
             elseif (ultimateTimer == nil and currentState == State.AIM_ULTIMATE) then
-                target = GetGameObjectHovered()
-                if (target.tag ~= Tag.PLAYER) then
-                    Log("[FAIL] Ability Ultimate: You have to select an ally first!\n")
-                    target = nil
-                else
-                    if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                        ultimateCastRange) then
-                        Log("[FAIL] Ability Ultimate: Ability out of range!\n")
-                        target = nil
-                    else
-                        if (componentAnimator ~= nil and target ~= gameObject) then
-                            CastUltimate(target:GetTransform():GetPosition())
-                        end
-                    end
-                end
+                CastUltimate()
             elseif (currentState == State.AIM_ULTIMATE_RECAST) then
-                target = GetGameObjectHovered() -- This is for the ability to go to the mouse Pos (it uses the target var)
-                local mouse = GetLastMouseClick()
-                if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateRecastRange) then
-                    Log("[FAIL] Ability Ultimate Recast: Ability out of range!\n")
-                    target = nil
-                else
-                    if (target.tag ~= Tag.FLOOR) then
-                        Log("[FAIL] Ability Ultimate: You have to select floor!\n")
-                        target = nil
-                    else
-                        target = mouse
-                        if (componentAnimator ~= nil) then
-                            RecastUltimate(mouse) -- Ult step 6
-                        end
-                    end
-                end
-
+                RecastUltimate(false)
             end
         end
 
@@ -576,6 +567,13 @@ function CancelAbilities(onlyAbilities)
         if (currentState ~= State.AIM_ULTIMATE_RECAST) then
             SetState(State.IDLE)
         end
+    end
+
+    StopMovement()
+    if (currentMovement == Movement.IDLE_CROUCH) then
+        componentAnimator:SetSelectedClip("IdleCrouch")
+    else
+        componentAnimator:SetSelectedClip("Idle")
     end
 end
 
@@ -945,18 +943,49 @@ function ActivePrimary()
     end
 end
 
-function CastPrimary(thisTarget)
-    abilities.AbilityPrimary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+function CastPrimary()
+    if (primaryTimer ~= nil) then
+        Log("[FAIL] Ability Primary: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.PLAYER) then
+            Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        else
+            if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    abilities.AbilityPrimary = AbilityStatus.Using
+                    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
-    componentAnimator:SetSelectedClip("Point")
-    StopMovement(false)
+                    componentAnimator:SetSelectedClip("Point")
+                    StopMovement(false)
 
-    trackList = {4}
-    ChangeTrack(trackList)
+                    trackList = {4}
+                    ChangeTrack(trackList)
 
-    if (thisTarget ~= gameObject) then
-        LookAtTarget(thisTarget:GetTransform():GetPosition())
+                    if (target ~= gameObject) then
+                        LookAtTarget(target:GetTransform():GetPosition())
+                    end
+                end
+            else
+                if (footstepsParticle ~= nil) then
+                    feetTimer = 0.5
+                    FootstepMovement()
+                end
+                destination = target:GetTransform():GetPosition()
+                SetMovement(Movement.WALK)
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
+        end
     end
 end
 
@@ -986,18 +1015,47 @@ function ActiveSecondary()
     end
 end
 
-function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+function CastSecondary()
+    if (secondaryTimer ~= nil) then
+        Log("[FAIL] Ability Secondary: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.ENEMY and target.tag ~= Tag.CORPSE) then
+            Log("[FAIL] Ability Secondary: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        end
+        if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
+            secondaryCastRange) then
+            if (componentAnimator ~= nil) then
+                abilities.AbilitySecondary = AbilityStatus.Using
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
-    componentAnimator:SetSelectedClip("Point")
-    StopMovement(false)
+                componentAnimator:SetSelectedClip("Point")
+                StopMovement(false)
 
-    trackList = {4}
-    ChangeTrack(trackList)
+                trackList = {4}
+                ChangeTrack(trackList)
 
-    LookAtTarget(position)
-
+                LookAtTarget(target:GetTransform():GetPosition())
+            end
+        else
+            if (footstepsParticle ~= nil) then
+                feetTimer = 0.5
+                FootstepMovement()
+            end
+            destination = target:GetTransform():GetPosition()
+            SetMovement(Movement.WALK)
+            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+        end
+    end
 end
 
 function DoSecondary()
@@ -1035,7 +1093,51 @@ function ActiveUltimate()
     end
 end
 
-function CastUltimate(position) -- Ult step 3
+function CastUltimate()
+    if (ultimateTimer ~= nil) then
+        Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.PLAYER) then
+            Log("[FAIL] Ability Ultimate: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        end
+        if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
+            ultimateCastRange) then
+            if (componentAnimator ~= nil) then
+                abilities.AbilityUltimate = AbilityStatus.Using
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+
+                componentAnimator:SetSelectedClip("Point")
+
+                StopMovement(false)
+
+                LookAtTarget(target:GetTransform():GetPosition())
+
+                trackList = {4}
+                ChangeTrack(trackList)
+            end
+        else
+            if (footstepsParticle ~= nil) then
+                feetTimer = 0.5
+                FootstepMovement()
+            end
+            destination = target:GetTransform():GetPosition()
+            SetMovement(Movement.WALK)
+            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+        end
+    end
+end
+
+function DoUltimate()
     DispatchGlobalEvent("Used_Ultimate", {ultimateSpiceCost})
 
     if (GetVariable("GameState.lua", "GodMode", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == false) then
@@ -1051,20 +1153,6 @@ function CastUltimate(position) -- Ult step 3
     abilities.AbilityUltimate = AbilityStatus.Using
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
-    componentAnimator:SetSelectedClip("Point")
-
-    StopMovement(false)
-
-    LookAtTarget(target:GetTransform():GetPosition())
-
-    trackList = {4}
-    ChangeTrack(trackList)
-end
-
-function DoUltimate() -- Ult step 4
-    abilities.AbilityUltimate = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
-
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
     StopMovement()
     componentAnimator:SetSelectedClip("PointToIdle")
@@ -1073,24 +1161,52 @@ function DoUltimate() -- Ult step 4
     abilities.AbilityUltimateRecast = AbilityStatus.Active -- Used this only for drawing
 end
 
-function RecastUltimate(position)
-    abilities.AbilityUltimateRecast = AbilityStatus.Casting -- Used this only for drawing
+function RecastUltimate(isAlreadyCasted)
 
-    componentAnimator:SetSelectedClip("Point")
+    local goHovered = GetGameObjectHovered()
+    if (isAlreadyCasted == false) then
+        -- GetGameObjectHovered() updates the last mouse click
+        target = goHovered
+        mouse = GetLastMouseClick()
+        if (target.tag ~= Tag.FLOOR) then
+            Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+            target = nil
+            do
+                return
+            end
+        end
+        target = mouse
+    end
+    if (math.abs(Distance3D(target, componentTransform:GetPosition())) <= ultimateRecastRange) then
+        if (componentAnimator ~= nil) then
+            abilities.AbilityUltimateRecast = AbilityStatus.Casting -- Used this only for drawing
 
-    StopMovement(false)
+            componentAnimator:SetSelectedClip("Point")
 
-    LookAtTarget(position)
+            StopMovement(false)
 
-    trackList = {4}
-    ChangeTrack(trackList)
+            LookAtTarget(target)
 
-    ultimateTimer = 0.0
-    abilities.AbilityUltimate = AbilityStatus.Cooldown
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
+            trackList = {4}
+            ChangeTrack(trackList)
+
+            ultimateTimer = 0.0
+            abilities.AbilityUltimate = AbilityStatus.Cooldown
+            DispatchGlobalEvent("Player_Ability",
+                {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})
+        end
+    else
+        if (footstepsParticle ~= nil) then
+            feetTimer = 0.5
+            FootstepMovement()
+        end
+        destination = target
+        SetMovement(Movement.WALK)
+        DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+    end
 end
 
-function DoUltimateRecast() -- Ult step 7
+function DoUltimateRecast()
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 3}) -- fields[1] -> target; fields[2] -> targeted for (1 -> warning; 2 -> eat; 3 -> spit)
 
     abilities.AbilityUltimateRecast = AbilityStatus.Normal -- Used this only for drawing
