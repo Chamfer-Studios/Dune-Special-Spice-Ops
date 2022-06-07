@@ -2443,7 +2443,7 @@
                             0.5
                         ],
                         "position": [
-                            -476.0,
+                            45.0,
                             0.0
                         ],
                         "rotation": [
@@ -2459,9 +2459,9 @@
                     },
                     {
                         "active": true,
-                        "hoverTexture": "",
-                        "idleTexture": "",
-                        "pressedTexture": "",
+                        "hoverTexture": "Assets/New UI/slider_button_hover.png",
+                        "idleTexture": "Assets/New UI/slider_button_default.png",
+                        "pressedTexture": "Assets/New UI/slider_button_pressed.png",
                         "type": 15
                     },
                     {
@@ -2472,12 +2472,12 @@
                             {
                                 "name": "rightPos",
                                 "type": "int",
-                                "value": -400
+                                "value": 0
                             },
                             {
                                 "name": "leftPos",
                                 "type": "int",
-                                "value": -900
+                                "value": 500
                             }
                         ],
                         "type": 5

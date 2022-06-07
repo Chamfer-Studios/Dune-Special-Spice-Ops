@@ -12,8 +12,10 @@ NewVariable(leftPosIV)
 
 -- Called each loop iteration
 function Update(dt)
+	print("mouseX")
 	mouseX = gameObject:GetButton():GetMouseX()
 	mouseX = mouseX * 5 - 2450
+	
 	onePart = (rightPos - leftPos) / 4
 	if (gameObject:GetButton():IsPressed() == true) then
 		isActive = true
