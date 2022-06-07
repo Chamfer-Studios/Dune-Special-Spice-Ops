@@ -268,16 +268,19 @@ function SaveGame()
 
     zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     zhibPos = zhibPos:GetTransform():GetPosition()
+    zhibPos.y = 0.0
     keyJson = "zhib_pos_lvl" .. levelNumber
     SetGameJsonFloat3(keyJson, zhibPos)
 
     neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     neralaPos = neralaPos:GetTransform():GetPosition()
+    neralaPos.y = 0.0
     keyJson = "nerala_pos_lvl" .. levelNumber
     SetGameJsonFloat3(keyJson, neralaPos)
 
     omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     omozraPos = omozraPos:GetTransform():GetPosition()
+    omozraPos.y = 0.0
     keyJson = "omozra_pos_lvl" .. levelNumber
     SetGameJsonFloat3(keyJson, omozraPos)
 
