@@ -13,8 +13,7 @@ NewVariable(leftPosIV)
 -- Called each loop iteration
 function Update(dt)
 	mouseX = gameObject:GetButton():GetMouseX()
-	mouseX = mouseX * 5.3 --- 2450
-	print(mouseX)
+	mouseX = mouseX * 5.3
 	onePart = (rightPos - leftPos) / 4
 	if (gameObject:GetButton():IsPressed() == true) then
 		isActive = true
@@ -26,7 +25,6 @@ function Update(dt)
 		if (mouseX < leftPos) then
 			mouseX = leftPos
 			gameObject:GetTransform2D():SetPositionX(mouseX)
-			print("mousePos Left")
 		elseif (mouseX >= (leftPos + onePart) and mouseX <= (leftPos + (onePart * 2))) then
 			mouseX = leftPos + onePart
 			gameObject:GetTransform2D():SetPositionX(mouseX)
@@ -39,7 +37,6 @@ function Update(dt)
 		elseif (mouseX > rightPos) then
 			mouseX = rightPos
 			gameObject:GetTransform2D():SetPositionX(mouseX)
-			print("mousePos Right")
 		end
 	end
 end

@@ -1,7 +1,7 @@
 {
     "SceneMainMenu": {
         "active": true,
-        "game_objects_amount": 52,
+        "game_objects_amount": 51,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -1342,8 +1342,8 @@
                     },
                     {
                         "active": true,
-                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
-                        "id": 155587823,
+                        "file_name": "Assets/Scripts/HUD/UI_MasterAudio.lua",
+                        "id": 489075817,
                         "inspector_variables": [
                             {
                                 "name": "rightPos",
@@ -1466,14 +1466,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 3,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            0.0,
-                            0.0
+                            1247.0,
+                            98.0
                         ],
                         "rotation": [
                             0.0,
@@ -1492,12 +1492,30 @@
                         "idleTexture": "Assets/New UI/slider_button_default.png",
                         "pressedTexture": "Assets/New UI/slider_button_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
+                        "id": 1037110031,
+                        "inspector_variables": [
+                            {
+                                "name": "rightPos",
+                                "type": "int",
+                                "value": 1400
+                            },
+                            {
+                                "name": "leftPos",
+                                "type": "int",
+                                "value": 1100
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
                 "name": "SB Button",
-                "parent_UID": 1407584223,
+                "parent_UID": 2055808393,
                 "tag": 0
             },
             {
@@ -2425,68 +2443,6 @@
                 "isPrefab": false,
                 "name": "WS Button",
                 "parent_UID": 1266759538,
-                "tag": 0
-            },
-            {
-                "UID": 1120523257,
-                "active": true,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 3,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            600.0,
-                            -86.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            62.0,
-                            54.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "hoverTexture": "Assets/New UI/slider_button_hover.png",
-                        "idleTexture": "Assets/New UI/slider_button_default.png",
-                        "pressedTexture": "Assets/New UI/slider_button_pressed.png",
-                        "type": 15
-                    },
-                    {
-                        "active": true,
-                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
-                        "id": 1959484593,
-                        "inspector_variables": [
-                            {
-                                "name": "rightPos",
-                                "type": "int",
-                                "value": 1200
-                            },
-                            {
-                                "name": "leftPos",
-                                "type": "int",
-                                "value": 600
-                            }
-                        ],
-                        "type": 5
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Button",
-                "parent_UID": 1606156178,
                 "tag": 0
             }
         ],
