@@ -1589,7 +1589,7 @@
                         ],
                         "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
                         "type": 16,
-                        "value": "SPF"
+                        "value": "FPS"
                     },
                     {
                         "active": true,
@@ -1688,7 +1688,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "30 Button",
+                "name": "120 Button",
                 "parent_UID": 1816059730,
                 "tag": 0
             },
@@ -1732,7 +1732,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "120 Button",
+                "name": "30 Button",
                 "parent_UID": 1816059730,
                 "tag": 0
             },
