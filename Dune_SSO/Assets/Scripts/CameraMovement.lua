@@ -21,6 +21,90 @@ furthestY = 2000.0
 rayCastCulling = {}
 local freePanningDebug
 --use the fokin start
+
+function Float3Length(v)
+    return math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
+end
+
+function Float3Normalized(v)
+    len = Float3Length(v)
+    return {
+        x = v.x / len,
+        y = v.y / len,
+        z = v.z / len
+    }
+end
+
+function Float3Difference(a, b)
+    return {
+        x = b.x - a.x,
+        y = b.y - a.y,
+        z = b.z - a.z
+    }
+end
+
+function Float3Distance(a, b)
+    diff = Float3Difference(a, b)
+    return Float3Length(diff)
+end
+
+function Float3NormalizedDifference(a, b)
+    v = Float3Difference(a, b)
+    return Float3Normalized(v)
+end
+
+function Float3Dot(a, b)
+    return a.x * b.x + a.y * b.y + a.z * b.z
+end
+
+function Float3Angle(a, b)
+    lenA = Float3Length(a)
+    lenB = Float3Length(b)
+
+    return math.acos(Float3Dot(a, b) / (lenA * lenB))
+end
+
+function Float3Cross(a, b)
+    return float3.new(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x
+    )
+end
+
+function Float3Mult(a, b)
+    return float3.new(
+        a.x * b,
+        a.y * b,
+        a.z * b
+    )
+end
+
+function Float3Sum(a, b)
+    return float3.new(
+        a.x + b.x,
+        a.y + b.y,
+        a.z + b.z
+    )
+end
+
+function Float3RotateAxisAngle(v, axis, angle)
+    do
+        anglecos = math.cos(angle)
+        vbycos = float3.new(
+            v.x * anglecos,
+            v.y * anglecos,
+            v.z * anglecos
+        )
+        anglesin = math.sin(angle)
+        axisvectorcross = Float3Cross(axis, v)
+        axisvectordot = Float3Dot(axis, v)
+        ret = Float3Sum(Float3Sum(vbycos, Float3Mult(axisvectorcross, anglesin)), (Float3Mult(axis, axisvectordot * (1 - anglecos))))
+
+        do return ret end;
+    end
+end
+
 function Start()
     --Put the position of the selected character inside variable target
     freePanningDebug = true
@@ -172,8 +256,18 @@ function Update(dt)
     -- modify target with the camera panning
     if (freePanningDebug == true) then
         local currentPanSpeed = panSpeed * dt
-        target.z = target.z + (zPanning * currentPanSpeed)
-        target.x = target.x + (xPanning * currentPanSpeed)
+        panning = float3.new(xPanning, 0, zPanning)
+
+        rotation = componentTransform:GetRotation()
+
+        front = componentTransform:GetGlobalFront()
+        front.y = 0
+        front = Float3Normalized(front)
+
+        panning = float3.new(panning.x * front.x, 0, panning.z * front.z)
+
+        target.z = target.z + (panning.z * currentPanSpeed)
+        target.x = target.x + (panning.x * currentPanSpeed)
     else
         GetSelectedCharacter()
     end
