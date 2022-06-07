@@ -1046,7 +1046,7 @@ function CastSecondary(isAlreadyCasted)
         end
     else
         if (decoyCount <= 0) then
-            Log("[FAIL] Ability Secondary: You don't have enough decoy!\n")
+            Log("[FAIL] Ability Secondary: You don't have enough decoys!\n")
             do
                 return
             end
@@ -1086,7 +1086,6 @@ function CastSecondary(isAlreadyCasted)
             end
         end
     end
-
 end
 
 function DoSecondary()

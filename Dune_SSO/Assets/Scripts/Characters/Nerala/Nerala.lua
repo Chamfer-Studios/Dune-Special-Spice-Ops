@@ -249,20 +249,56 @@ function Update(dt)
     end
 
     -- States
-    if (currentState == State.ATTACK) then
-        if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <= attackRange) then
-            Attack()
-        else
-            if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
-                destination = target:GetTransform():GetPosition()
-                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+    if (currentMovement ~= Movement.IDLE and currentMovement ~= Movement.IDLE_CROUCH and target ~= nil) then
+        if (currentState == State.ATTACK) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                attackRange) then
+                Attack()
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
             end
-            hasToMove = true
+        elseif (currentState == State.AIM_PRIMARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target:GetTransform():GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastPrimary()
+                end
+            else
+                if (math.abs(Distance3D(destination, target:GetTransform():GetPosition())) >= 5) then
+                    destination = target:GetTransform():GetPosition()
+                    DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+                end
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_SECONDARY) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target)) <= secondaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastSecondary(true)
+                end
+            else
+                hasToMove = true
+            end
+        elseif (currentState == State.AIM_ULTIMATE) then
+            if (math.abs(Distance3D(componentTransform:GetPosition(), target)) <= ultimateCastRange) then
+                if (componentAnimator ~= nil) then
+                    CastUltimate(true)
+                end
+            else
+                hasToMove = true
+            end
         end
     elseif (currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
         State.AIM_ULTIMATE) then
         StopMovement()
-        componentAnimator:SetSelectedClip("Idle")
+        if (currentMovement == Movement.IDLE_CROUCH) then
+            componentAnimator:SetSelectedClip("IdleCrouch")
+        else
+            componentAnimator:SetSelectedClip("Idle")
+        end
     elseif (destination ~= nil) then
         hasToMove = true
     end
@@ -277,72 +313,15 @@ function Update(dt)
 
             -- Primary ability (Dart)
             if (currentState == State.AIM_PRIMARY) then
-                if (primaryTimer ~= nil) then
-                    Log("[FAIL] Ability Primary: Ability in cooldown!\n")
-                else
-                    target = GetGameObjectHovered()
-                    if (target.tag ~= Tag.ENEMY) then
-                        Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
-                        target = nil
-                    else
-                        if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) >
-                            primaryCastRange) then
-                            Log("[FAIL] Ability Primary: Ability out of range!\n")
-                            target = nil
-                        else
-                            if (componentAnimator ~= nil) then
-                                CastPrimary(target:GetTransform():GetPosition())
-                            end
-                        end
-                    end
-                end
+                CastPrimary()
 
                 -- Secondary ability (Smokebomb)
             elseif (currentState == State.AIM_SECONDARY) then
-                if (smokeBombCount <= 0) then -- secondaryTimer ~= nil
-                    Log("[FAIL] Ability Secondary: You don't have enough smoke bombs!\n")
-                else
-                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
-                    local mouse = GetLastMouseClick()
-                    if (Distance3D(mouse, componentTransform:GetPosition()) > secondaryCastRange) then
-                        Log("[FAIL] Ability Secondary: Ability out of range!\n")
-                        target = nil
-                    else
-                        if (target.tag ~= Tag.FLOOR) then
-                            Log("[FAIL] Ability Secondary: You have to select floor!\n")
-                            target = nil
-                        else
-                            target = mouse
-                            if (componentAnimator ~= nil) then
-                                CastSecondary(mouse)
-                            end
-                        end
-                    end
-                end
+                CastSecondary(false)
 
                 -- Ultimate ability (mosquito)
             elseif (currentState == State.AIM_ULTIMATE) then
-                if (ultimateTimer ~= nil) then
-                    Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
-                else
-                    target = GetGameObjectHovered() -- GetGameObjectHovered updates the last mouse click
-                    local mouse = GetLastMouseClick()
-                    if (Distance3D(mouse, componentTransform:GetPosition()) > ultimateCastRange) then
-                        Log("[FAIL] Ability Ultimate: Ability out of range!\n")
-                        target = nil
-                    else
-                        if (target.tag ~= Tag.FLOOR) then
-                            Log("[FAIL] Ability Ultimate: You have to select floor!\n")
-                            target = nil
-                        else
-                            target = mouse
-                            if (componentAnimator ~= nil) then
-                                CastUltimate(mouse)
-                            end
-                        end
-                    end
-                end
-
+                CastUltimate(false)
             end
         end
 
@@ -966,14 +945,46 @@ function ActivePrimary()
     end
 end
 
-function CastPrimary(position)
-    abilities.AbilityPrimary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+function CastPrimary()
 
-    componentAnimator:SetSelectedClip("Dart")
-    StopMovement(false)
+    if (primaryTimer ~= nil) then
+        Log("[FAIL] Ability Primary: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        if (target == nil) then
+            target = GetGameObjectHovered()
+        end
+        if (target.tag ~= Tag.ENEMY) then
+            Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
+            target = nil
+            do
+                return
+            end
+        else
+            if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
+                primaryCastRange) then
+                if (componentAnimator ~= nil) then
+                    abilities.AbilityPrimary = AbilityStatus.Using
+                    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
 
-    LookAtTarget(position)
+                    componentAnimator:SetSelectedClip("Dart")
+                    StopMovement(false)
+
+                    LookAtTarget(target:GetTransform():GetPosition())
+                end
+            else
+                if (footstepsParticle ~= nil) then
+                    feetTimer = 0.5
+                    FootstepMovement()
+                end
+                destination = target:GetTransform():GetPosition()
+                SetMovement(Movement.WALK)
+                DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+            end
+        end
+    end
 end
 
 function FireDart()
@@ -1005,14 +1016,47 @@ function ActiveSecondary()
     end
 end
 
-function CastSecondary(position)
-    abilities.AbilitySecondary = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+function CastSecondary(isAlreadyCasted)
+    if (smokeBombCount <= 0) then
+        Log("[FAIL] Ability Secondary: You don't have enough smokebombs!\n")
+        do
+            return
+        end
+    else
+        local goHovered = GetGameObjectHovered()
+        if (isAlreadyCasted == false) then
+            -- GetGameObjectHovered() updates the last mouse click
+            target = goHovered
+            mouse = GetLastMouseClick()
+            if (target.tag ~= Tag.FLOOR) then
+                Log("[FAIL] Ability Secondary: You have to select floor!\n")
+                target = nil
+                do
+                    return
+                end
+            end
+            target = mouse
+        end
+        if (math.abs(Distance3D(target, componentTransform:GetPosition())) <= secondaryCastRange) then
+            if (componentAnimator ~= nil) then
+                abilities.AbilitySecondary = AbilityStatus.Using
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
 
-    componentAnimator:SetSelectedClip("Smokebomb")
-    StopMovement(false)
+                componentAnimator:SetSelectedClip("Smokebomb")
+                StopMovement(false)
 
-    LookAtTarget(position)
+                LookAtTarget(target)
+            end
+        else
+            if (footstepsParticle ~= nil) then
+                feetTimer = 0.5
+                FootstepMovement()
+            end
+            destination = target
+            SetMovement(Movement.WALK)
+            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+        end
+    end
 end
 
 function PlaceSmokebomb()
@@ -1047,18 +1091,51 @@ function ActiveUltimate()
     end
 end
 
-function CastUltimate(position)
-    abilities.AbilityUltimate = AbilityStatus.Using
-    DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
+function CastUltimate(isAlreadyCasted)
+    if (ultimateTimer ~= nil) then
+        Log("[FAIL] Ability Ultimate: Ability in cooldown!\n")
+        do
+            return
+        end
+    else
+        local goHovered = GetGameObjectHovered()
+        if (isAlreadyCasted == false) then
+            -- GetGameObjectHovered() updates the last mouse click
+            target = goHovered
+            mouse = GetLastMouseClick()
+            if (target.tag ~= Tag.FLOOR) then
+                Log("[FAIL] Ability Ultimate: You have to select floor!\n")
+                target = nil
+                do
+                    return
+                end
+            end
+            target = mouse
+        end
+        if (math.abs(Distance3D(target, componentTransform:GetPosition())) <= ultimateCastRange) then
+            if (componentAnimator ~= nil) then
+                abilities.AbilityUltimate = AbilityStatus.Using
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
 
-    componentAnimator:SetSelectedClip("Mosquito")
+                componentAnimator:SetSelectedClip("Mosquito")
 
-    StopMovement(false)
+                StopMovement(false)
 
-    LookAtTarget(position)
+                LookAtTarget(position)
 
-    trackList = {7}
-    ChangeTrack(trackList)
+                trackList = {7}
+                ChangeTrack(trackList)
+            end
+        else
+            if (footstepsParticle ~= nil) then
+                feetTimer = 0.5
+                FootstepMovement()
+            end
+            destination = target
+            SetMovement(Movement.WALK)
+            DispatchEvent("Pathfinder_UpdatePath", {{destination}, false, componentTransform:GetPosition()})
+        end
+    end
 end
 
 function DoUltimate()
