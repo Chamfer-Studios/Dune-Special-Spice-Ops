@@ -571,6 +571,13 @@ function CancelAbilities(onlyAbilities)
             SetState(State.IDLE)
         end
     end
+
+    StopMovement()
+    if (currentMovement == Movement.IDLE_CROUCH) then
+        componentAnimator:SetSelectedClip("IdleCrouch")
+    else
+        componentAnimator:SetSelectedClip("Idle")
+    end
 end
 
 function DrawHoverParticle()
