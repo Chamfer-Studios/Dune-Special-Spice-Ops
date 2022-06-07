@@ -1323,10 +1323,12 @@ function EventHandler(key, fields)
             abilities.AbilitySecondary = AbilityStatus.Disabled -- Should be state disabled 
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
         end
-    elseif (key == "Update_Nerala_State") then -- fields 1 to 3: position | fields 4 to 7: (primary, secondary, ultimate, passive)
+    elseif (key == "Update_Nerala_State") then -- fields 1 to 3: position
+                                               -- fields 4 to 7: (primary, secondary, ultimate, passive)
+                                               -- field 8: health
 
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
-
+        
         if (fields[4] == 1) then
             primaryCastRange = 195
         elseif (fields[4] == 2) then
@@ -1339,7 +1341,7 @@ function EventHandler(key, fields)
         elseif (fields[4] == 3) then
             primaryVisualDebuff = 75
         end
-
+        
         if (fields[5] == 1) then
             secondaryCastRange = 265
             secondaryEffectRadius = 60
@@ -1349,7 +1351,7 @@ function EventHandler(key, fields)
             maxSmokeBombCount = 5
             smokeBombCount = maxSmokeBombCount
         end
-
+        
         if (fields[6] == 1) then
             ultimateMaxDistance = 735
         elseif (fields[6] == 2) then
@@ -1358,7 +1360,7 @@ function EventHandler(key, fields)
             ultimateKills = 2
             ultimateSpiceCost = 750
         end
-
+        
         if (fields[7] == 1) then
             staminaSeconds = 5
             staminaTimer = staminaSeconds
@@ -1368,6 +1370,11 @@ function EventHandler(key, fields)
             crouchMultiplierPercentage = 75
         end
 
+        currentHP = fields[8]
+        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+
+        Log("NERALA HEALTH POINTS: " .. currentHP .. "\n")
+        
     elseif (key == "Nerala_Primary_Bugged") then
         primaryTimer = nil
         abilities.AbilityPrimary = AbilityStatus.Normal
