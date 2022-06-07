@@ -12,6 +12,13 @@ mosquitoAlive = false
 zPanning = 0.0 -- 1 to go front, -1 to go back
 xPanning = 0.0 -- 1 to go right, -1 to go left
 
+borderXNegative = -2000
+borderXPositive = 2190
+borderZNegative = -1900
+borderZPositive = 1350
+
+
+
 camSensitivity = 1.2
 lastDeltaX = 0
 --resetOffset = 1;
@@ -113,6 +120,9 @@ end
 
 function Update(dt)
 
+    
+    str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
+    Log(str)
     local lastFinalPos = componentTransform:GetPosition()
     --input: mouse wheel to zoom in and out
     -- local?
@@ -165,25 +175,41 @@ function Update(dt)
     -- end
     if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - 20)) then -- W --HAY UN KEY REPEAT
         Log("Panning Up")
-        zPanning = -1.0
+        if (gameObject:GetTransform():GetPosition().z <= borderZNegative) then
+            zPanning = 0
+        else 
+            zPanning = -1.0
+        end
     end
     if (GetMouseScreenPos().y < (GetLastViewportSize().y) - 10 and GetMouseScreenPos().y > 15) then -- W
         zPanning = 0.0
     end
     if (GetMouseScreenPos().x > 0 and GetMouseScreenPos().x < 15) then -- A
-        xPanning = -1.0
+        if (gameObject:GetTransform():GetPosition().x <= borderXNegative) then
+            xPanning = 0
+        else
+            xPanning = -1.0
+        end
     end
     if (GetMouseScreenPos().x > 15 and GetMouseScreenPos().x < (GetLastViewportSize().x - 20)) then -- A
         xPanning = 0.0
     end
     if (GetMouseScreenPos().y > 0 and GetMouseScreenPos().y < 15) then -- S
-        zPanning = 1.0
+        if (gameObject:GetTransform():GetPosition().z >= borderZPositive) then
+            zPanning = 0
+        else
+            zPanning = 1.0
+        end
     end
     if (GetMouseScreenPos().y > 15 and GetMouseScreenPos().y < (GetLastViewportSize().y - 20)) then -- S
         zPanning = 0.0
     end
     if (GetMouseScreenPos().x < GetLastViewportSize().x and GetMouseScreenPos().x > (GetLastViewportSize().x - 20)) then -- D
-        xPanning = 1.0
+        if (gameObject:GetTransform():GetPosition().x >= borderXPositive) then
+            xPanning = 0
+        else
+            xPanning = 1.0
+        end
     end
     if (GetMouseScreenPos().x < (GetLastViewportSize().x) - 10 and GetMouseScreenPos().x > 15) then -- D
         xPanning = 0.0
