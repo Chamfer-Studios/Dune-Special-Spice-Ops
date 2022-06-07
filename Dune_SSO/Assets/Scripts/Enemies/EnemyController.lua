@@ -815,8 +815,12 @@ function Die(leaveBody, enemyName)
     end
 
     SwitchState(state, STATE.CORPSE)
-    slashParticle:GetComponentParticle():StopParticleSpawn()
-    bloodParticle:GetComponentParticle():StopParticleSpawn()
+    if (slashParticle ~= nil) then
+        slashParticle:GetComponentParticle():StopParticleSpawn()
+    end
+    if (bloodParticle ~= nil) then
+        bloodParticle:GetComponentParticle():StopParticleSpawn()
+    end
 
     -- Spice Loot Droprate
     math.randomseed(os.time())
