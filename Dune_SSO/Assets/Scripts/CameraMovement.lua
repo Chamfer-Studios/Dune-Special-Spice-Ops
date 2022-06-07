@@ -121,8 +121,8 @@ end
 function Update(dt)
 
     
-    str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
-    Log(str)
+    --str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
+    --Log(str)
     local lastFinalPos = componentTransform:GetPosition()
     --input: mouse wheel to zoom in and out
     -- local?
@@ -132,8 +132,6 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-        else
-            Log("max newZoomedPos: " .. newZoomedPos.y .. "\n")
         end
     elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
@@ -141,8 +139,6 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
-        else
-            Log("min newZoomedPos: " .. newZoomedPos.y .. "\n")
         end
     end
 
@@ -174,7 +170,6 @@ function Update(dt)
     --     xPanning = 0.0
     -- end
     if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - 20)) then -- W --HAY UN KEY REPEAT
-        Log("Panning Up")
         if (gameObject:GetTransform():GetPosition().z <= borderZNegative) then
             zPanning = 0
         else 
@@ -284,13 +279,15 @@ function Update(dt)
         local currentPanSpeed = panSpeed * dt
         panning = float3.new(xPanning, 0, zPanning)
 
-        rotation = componentTransform:GetRotation()
-
         front = componentTransform:GetGlobalFront()
         front.y = 0
         front = Float3Normalized(front)
 
-        panning = float3.new(panning.x * front.x, 0, panning.z * front.z)
+        right = componentTransform:GetGlobalRight()
+        right.y = 0
+        right = Float3Normalized(right)
+
+        panning = Float3Sum(Float3Mult(right, panning.x), Float3Mult(front, panning.z))
 
         target.z = target.z + (panning.z * currentPanSpeed)
         target.x = target.x + (panning.x * currentPanSpeed)
@@ -326,8 +323,6 @@ function Update(dt)
         for j=1, #rayCastCulling do
             rayCastCulling[j].active = false
         end
-
-        Log(#rayCastCulling .. "\n")
     end
     --1st iteration use look at to center at characters
     
