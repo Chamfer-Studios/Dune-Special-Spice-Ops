@@ -12,6 +12,7 @@
     "nerala_secondary_level": 0,
     "nerala_ultimate_level": 0,
     "omozra_hp": 3,
+    "omozra_charges": 6,
     "omozra_available": true,
     "omozra_passive_level": 0,
     "omozra_pos_lvl1": [

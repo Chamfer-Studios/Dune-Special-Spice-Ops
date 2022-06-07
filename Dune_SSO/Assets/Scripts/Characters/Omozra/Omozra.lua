@@ -73,6 +73,7 @@ isTired = false
 -- Passive -- 
 passiveRange = 100
 maxCharges = 6
+currentCharges = maxCharges
 
 -- Primary ability --
 primaryCastRange = 225
@@ -197,7 +198,6 @@ function Start()
 
     -- Abilities
     InstantiatePrefab("Worm")
-    currentCharges = maxCharges
     DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 end
 
@@ -1242,7 +1242,9 @@ function EventHandler(key, fields)
     elseif (key == "Smokebomb_End") then
         smokebombPosition = nil
         smokebombRadius = nil
-    elseif (key == "Update_Omozra_State") then
+    elseif (key == "Update_Omozra_State") then -- fields 1 to 3: position
+                                               -- fields 4 to 7: (primary, secondary, ultimate, passive)
+                                               -- fields 8 and 9: health and charges
 
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
 
@@ -1253,15 +1255,15 @@ function EventHandler(key, fields)
         elseif (fields[4] == 3) then
             primaryHealAmount = 2
         end
-
+        
         if (fields[5] == 1) then
             secondaryCastRange = 265
         elseif (fields[5] == 2) then
-
+            
         elseif (fields[5] == 3) then
-
+            
         end
-
+        
         if (fields[6] == 1) then
             ultimateCastRange = 190
         elseif (fields[6] == 2) then
@@ -1269,7 +1271,7 @@ function EventHandler(key, fields)
         elseif (fields[6] == 3) then
             ultimateSpiceCost = 750
         end
-
+        
         if (fields[7] == 1) then
             staminaSeconds = 7
             staminaTimer = staminaSeconds
@@ -1277,10 +1279,16 @@ function EventHandler(key, fields)
             runMultiplierPercentage = 144
         elseif (fields[7] == 3) then
             maxHP = 4
-            currentHP = maxHP
-            DispatchEvent("Player_Health", {3, currentHP, maxHP})
         end
 
+        currentHP = fields[8]
+        DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
+
+        currentCharges = fields[9]
+        DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
+
+        Log("OMOZRA HEALTH POINTS: " .. currentHP .. "\n")
+        
     elseif (key == "Omozra_Primary_Bugged") then
         currentCharges = currentCharges + primaryChargeCost
         abilities.AbilityPrimary = AbilityStatus.Normal

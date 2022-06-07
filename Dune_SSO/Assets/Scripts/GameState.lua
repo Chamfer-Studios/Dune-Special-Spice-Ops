@@ -50,23 +50,17 @@ levelNumberIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 levelNumberIV = InspectorVariable.new("levelNumber", levelNumberIVT, levelNumber)
 NewVariable(levelNumberIV)
 
-local isStarting = true
-
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
 
     isStarting = true
+    LoadGame()
 end
 
 -- Called each loop iteration
 function Update(dt)
-
-    if (isStarting == true) then
-        LoadGame()
-        isStarting = false
-    end
 
     if (GetInput(50) == KEY_STATE.KEY_DOWN) then
         SaveGame()
@@ -250,21 +244,17 @@ function EventHandler(key, fields)
         elseif (fields[1] == 3) then
             omozraAvailable = true
         end
-        SaveGame()
+        -- Make Sure it is done when unlocking characters (checkpoints)
+        -- SaveGame()
     end
 end
 
 function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
+    -- Zhib Save
     -- SetGameJsonBool("zhib_available", zhibAvailable)
     SetGameJsonInt("zhib_hp", GetVariable("Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
-
-    -- SetGameJsonBool("nerala_available", neralaAvailable)
-    SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
-
-    -- SetGameJsonBool("omozra_available", omozraAvailable)
-    SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
     zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     zhibPos = zhibPos:GetTransform():GetPosition()
@@ -272,11 +262,20 @@ function SaveGame()
     keyJson = "zhib_pos_lvl" .. levelNumber
     SetGameJsonFloat3(keyJson, zhibPos)
 
+    -- Nerala Save
+    -- SetGameJsonBool("nerala_available", neralaAvailable)
+    SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
+
     neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     neralaPos = neralaPos:GetTransform():GetPosition()
     neralaPos.y = 0.0
     keyJson = "nerala_pos_lvl" .. levelNumber
     SetGameJsonFloat3(keyJson, neralaPos)
+
+    -- Omozra Save
+    -- SetGameJsonBool("omozra_available", omozraAvailable)
+    SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
+    SetGameJsonInt("omozra_charges", GetVariable("Omozra.lua", "currentCharges", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
     omozraPos = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     omozraPos = omozraPos:GetTransform():GetPosition()
@@ -307,65 +306,61 @@ function LoadGame()
         spiceAmount = startingSpiceAmount
     end
 
-    --- Zhib
+    --- Zhib Load
     zhib_primary_level = GetGameJsonInt("zhib_primary_level")
     zhib_secondary_level = GetGameJsonInt("zhib_secondary_level")
     zhib_ultimate_level = GetGameJsonInt("zhib_ultimate_level")
     zhib_passive_level = GetGameJsonInt("zhib_passive_level")
 
     zhib_hp = GetGameJsonInt("zhib_hp")
-    SetVariable(zhib_hp, "Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    DispatchGlobalEvent("Player_Health",
-        {1, zhib_hp, GetVariable("Zhib.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
 
     keyJson = "zhib_pos_lvl" .. levelNumber
     zhibPos = GetGameJsonFloat3(keyJson)
-    DispatchGlobalEvent("Update_Zhib_State", {zhibPos.x, zhibPos.y, zhibPos.z, zhib_primary_level, zhib_secondary_level,
-                                              zhib_ultimate_level, zhib_passive_level})
+
+    DispatchGlobalEvent("Update_Zhib_State",
+        {zhibPos.x, zhibPos.y, zhibPos.z, zhib_primary_level, zhib_secondary_level, zhib_ultimate_level,
+         zhib_passive_level, zhib_hp})
 
     -- zhibAvailable = GetGameJsonBool("zhib_available")
     -- if(zhibAvailable == false) then
     --     DispatchEvent("Disable_Character", {1})
     -- end
 
-    --- Nerala
+    --- Nerala Load
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
     nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
     nerala_ultimate_level = GetGameJsonInt("nerala_ultimate_level")
     nerala_passive_level = GetGameJsonInt("nerala_passive_level")
 
     nerala_hp = GetGameJsonInt("nerala_hp")
-    SetVariable(nerala_hp, "Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    DispatchGlobalEvent("Player_Health",
-        {2, nerala_hp, GetVariable("Nerala.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
 
     keyJson = "nerala_pos_lvl" .. levelNumber
     neralaPos = GetGameJsonFloat3(keyJson)
+
     DispatchGlobalEvent("Update_Nerala_State",
         {neralaPos.x, neralaPos.y, neralaPos.z, nerala_primary_level, nerala_secondary_level, nerala_ultimate_level,
-         nerala_passive_level})
+         nerala_passive_level, nerala_hp})
 
     -- neralaAvailable = GetGameJsonBool("nerala_available")
     -- if(neralaAvailable == false) then
     --     DispatchEvent("Disable_Character", {2})
     -- end
 
-    --- Omozra
+    --- Omozra Load
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
     omozra_secondary_level = GetGameJsonInt("omozra_secondary_level")
     omozra_ultimate_level = GetGameJsonInt("omozra_ultimate_level")
     omozra_passive_level = GetGameJsonInt("omozra_passive_level")
 
     omozra_hp = GetGameJsonInt("omozra_hp")
-    SetVariable(omozra_hp, "Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    DispatchGlobalEvent("Player_Health",
-        {3, omozra_hp, GetVariable("Omozra.lua", "maxHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)})
+
+    omozra_charges = GetGameJsonInt("omozra_charges")
 
     keyJson = "omozra_pos_lvl" .. levelNumber
     omozraPos = GetGameJsonFloat3(keyJson)
     DispatchGlobalEvent("Update_Omozra_State",
         {omozraPos.x, omozraPos.y, omozraPos.z, omozra_primary_level, omozra_secondary_level, omozra_ultimate_level,
-         omozra_passive_level})
+         omozra_passive_level, omozra_hp, omozra_charges})
 
     -- omozraAvailable = GetGameJsonBool("omozra_available")
     -- if(omozraAvailable == false) then
