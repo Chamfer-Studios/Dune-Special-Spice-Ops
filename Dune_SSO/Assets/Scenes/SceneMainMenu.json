@@ -1313,14 +1313,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 3,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            0.0,
-                            0.0
+                            232.0,
+                            98.0
                         ],
                         "rotation": [
                             0.0,
@@ -1348,12 +1348,12 @@
                             {
                                 "name": "rightPos",
                                 "type": "int",
-                                "value": 300
+                                "value": 400
                             },
                             {
                                 "name": "leftPos",
                                 "type": "int",
-                                "value": -300
+                                "value": 75
                             }
                         ],
                         "type": 5
@@ -1362,7 +1362,7 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "MV Button",
-                "parent_UID": 1448512991,
+                "parent_UID": 2055808393,
                 "tag": 0
             },
             {
@@ -2437,14 +2437,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 3,
                         "pivot": [
                             0.5,
                             0.5
                         ],
                         "position": [
-                            45.0,
-                            0.0
+                            600.0,
+                            -86.0
                         ],
                         "rotation": [
                             0.0,
@@ -2472,12 +2472,12 @@
                             {
                                 "name": "rightPos",
                                 "type": "int",
-                                "value": 0
+                                "value": 1200
                             },
                             {
                                 "name": "leftPos",
                                 "type": "int",
-                                "value": 500
+                                "value": 600
                             }
                         ],
                         "type": 5
