@@ -30,36 +30,6 @@ end
 function Update(dt)
 
     local lastFinalPos = componentTransform:GetPosition()
-
-    if(GetMouseMotionX() > 0 and GetInput(2) == KEY_STATE.KEY_REPEAT )then
-        xMotion = GetMouseMotionX()
-        newDeltaX = xMotion * camSensitivity -- camera sensitivity
-		deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
-		lastDeltaX = deltaX
-		finalDelta = deltaX * dt
-        --str = finalDelta .. "\n"
-        local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
-       
-        offset = MulQuat(newQuat, offset)
-        --str2 = "Offset X" .. offset.x .. "\n"
-        --Log(str2)
-    end
-
-    if(GetMouseMotionX() < 0 and GetInput(2) == KEY_STATE.KEY_REPEAT) then
-        xMotion = GetMouseMotionX()
-        newDeltaX = xMotion * camSensitivity -- camera sensitivity
-		deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
-		lastDeltaX = deltaX
-		finalDelta = deltaX * dt
-        --str = finalDelta .. "\n"
-        local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
-        
-        offset = MulQuat(newQuat, offset)
-        --Log(str)
-
-        --str2 = "Offset X" .. offset.x .. "\n"
-        --Log(str2)
-    end
     --input: mouse wheel to zoom in and out
     -- local?
     if (GetMouseZ() > 0) then
@@ -85,6 +55,30 @@ function Update(dt)
     --input: wasd keys to pan the camera freely
     --i had to do both key up and down. Down is for activating the panning in the propper direction
     --and up resets it to zero
+    -- if (GetInput(16) == KEY_STATE.KEY_DOWN) then -- W --HAY UN KEY REPEAT
+    --     zPanning = -1.0
+    -- end
+    -- if (GetInput(16) == KEY_STATE.KEY_UP) then -- W
+    --     zPanning = 0.0
+    -- end
+    -- if (GetInput(17) == KEY_STATE.KEY_DOWN) then -- A
+    --     xPanning = -1.0
+    -- end
+    -- if (GetInput(17) == KEY_STATE.KEY_UP) then -- A
+    --     xPanning = 0.0
+    -- end
+    -- if (GetInput(18) == KEY_STATE.KEY_DOWN) then -- S
+    --     zPanning = 1.0
+    -- end
+    -- if (GetInput(18) == KEY_STATE.KEY_UP) then -- S
+    --     zPanning = 0.0
+    -- end
+    -- if (GetInput(19) == KEY_STATE.KEY_DOWN) then -- D
+    --     xPanning = 1.0
+    -- end
+    -- if (GetInput(19) == KEY_STATE.KEY_UP) then -- D
+    --     xPanning = 0.0
+    -- end
     if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - 20)) then -- W --HAY UN KEY REPEAT
         Log("Panning Up")
         zPanning = -1.0
@@ -111,13 +105,27 @@ function Update(dt)
         xPanning = 0.0
     end
 
+    -- go back to the selected character
+    -- if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
+    --     GetSelectedCharacter()
+    --     offset = float3.new(0, 240, 270)
+    -- end
+    -- if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- H
+    --     if freePanningDebug then
+    --         freePanningDebug = false
+    --     else
+    --         freePanningDebug = true
+    --     end
+        
+    -- end
     if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
-       freePanningDebug = not freePanningDebug
-       if freePanningDebug == true then
-            GetSelectedCharacter()
-            offset = float3.new(0, 240, 270)
-       end 
+        freePanningDebug = not freePanningDebug
+        if freePanningDebug == true then
+             GetSelectedCharacter()
+             offset = float3.new(0, 240, 270)
+        end 
     end
+
 
     if  (GetInput(14) == KEY_STATE.KEY_REPEAT) then -- Q
         local newQuat = Quat.new(float3.new(0, 1, 0), -0.0174533)
@@ -126,6 +134,34 @@ function Update(dt)
     if  (GetInput(15) == KEY_STATE.KEY_REPEAT) then -- E
         local newQuat = Quat.new(float3.new(0, 1, 0), 0.0174533)
         offset = MulQuat(newQuat, offset)
+    end
+    
+    if(GetMouseMotionX() > 0 and GetInput(2) == KEY_STATE.KEY_REPEAT )then
+        xMotion = GetMouseMotionX()
+        newDeltaX = xMotion * camSensitivity -- camera sensitivity
+        deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
+        lastDeltaX = deltaX
+        finalDelta = deltaX * dt
+        --str = finalDelta .. "\n"
+        local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
+        offset = MulQuat(newQuat, offset)
+        --str2 = "Offset X" .. offset.x .. "\n"
+        --Log(str2)
+    end
+
+    if(GetMouseMotionX() < 0 and GetInput(2) == KEY_STATE.KEY_REPEAT) then
+        xMotion = GetMouseMotionX()
+        newDeltaX = xMotion * camSensitivity -- camera sensitivity
+        deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
+        lastDeltaX = deltaX
+        finalDelta = deltaX * dt
+        --str = finalDelta .. "\n"
+        local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
+        offset = MulQuat(newQuat, offset)
+        --Log(str)
+
+        --str2 = "Offset X" .. offset.x .. "\n"
+        --Log(str2)
     end
 
     --Log("panning " .. xPanning .. " " .. zPanning .. "\n")
@@ -158,6 +194,21 @@ function Update(dt)
     componentTransform:SetPosition(finalPos)
 
     gameObject:GetCamera():LookAt(target)
+
+    if componentTransform:GetPosition() ~= lastFinalPos then
+        for i=1, #rayCastCulling do
+            rayCastCulling[i].active = true
+        end
+        if #rayCastCulling > 0 then
+            rayCastCulling = {}
+        end
+        rayCastCulling = CustomRayCastList(finalPos, target, {Tag.UNTAGGED, Tag.WALL})
+        for j=1, #rayCastCulling do
+            rayCastCulling[j].active = false
+        end
+
+        Log(#rayCastCulling .. "\n")
+    end
     --1st iteration use look at to center at characters
     
 end
