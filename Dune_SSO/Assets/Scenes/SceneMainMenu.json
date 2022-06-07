@@ -608,6 +608,19 @@
                         "idleTexture": "Assets/New UI/button_a_default.png",
                         "pressedTexture": "Assets/New UI/button_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "file_name": "Assets/Scripts/HUD/UI_OpenSettingsPopUp.lua",
+                        "id": 445987514,
+                        "inspector_variables": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "value": "Settings Menu"
+                            }
+                        ],
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -1495,8 +1508,8 @@
                     },
                     {
                         "active": true,
-                        "file_name": "Assets/Scripts/HUD/UI_ItsActuallyASlider.lua",
-                        "id": 1037110031,
+                        "file_name": "Assets/Scripts/HUD/UI_ScreenBrightness.lua",
+                        "id": 1914436183,
                         "inspector_variables": [
                             {
                                 "name": "rightPos",

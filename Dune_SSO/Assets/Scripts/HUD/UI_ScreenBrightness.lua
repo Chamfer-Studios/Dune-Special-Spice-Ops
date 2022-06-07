@@ -16,7 +16,7 @@ NewVariable(leftPosIV)
 function Update(dt)
 	if (gameObject.active == true) then
 		if (isStarting == true) then
-			screenBrightness = gameObject:GetBrightness()
+			screenBrightness = GetBrightness()
 			screenBrightness = screenBrightness * 4
 			if (screenBrightness == 0.0) then
 				mouseX = leftPos
@@ -45,23 +45,23 @@ function Update(dt)
 			if (mouseX < leftPos) then
 				mouseX = leftPos
 				gameObject:GetTransform2D():SetPositionX(mouseX)
-				gameObject:SetBrightness(0.0)
+				SetBrightness(0.0)
 			elseif (mouseX >= (leftPos + onePart) and mouseX <= (leftPos + (onePart * 2))) then
 				mouseX = leftPos + onePart
 				gameObject:GetTransform2D():SetPositionX(mouseX)
-				gameObject:SetBrightness(0.25)
+				SetBrightness(0.25)
 			elseif (mouseX >= (leftPos + (onePart * 2)) and (mouseX <= (leftPos + (onePart * 3)))) then
 				mouseX = leftPos + (onePart * 2)
 				gameObject:GetTransform2D():SetPositionX(mouseX)
-				gameObject:SetBrightness(0.5)
+				SetBrightness(0.5)
 			elseif (mouseX >= (leftPos + (onePart * 3)) and (mouseX < rightPos)) then
 				mouseX = leftPos + (onePart * 3)
 				gameObject:GetTransform2D():SetPositionX(mouseX)
-				gameObject:SetBrightness(0.75)
+				SetBrightness(0.75)
 			elseif (mouseX > rightPos) then
 				mouseX = rightPos
 				gameObject:GetTransform2D():SetPositionX(mouseX)
-				gameObject:SetBrightness(1.0)
+				SetBrightness(1.0)
 			end
 		end
 	end
