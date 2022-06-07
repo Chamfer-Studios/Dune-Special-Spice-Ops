@@ -17,7 +17,11 @@ borderXPositive = 2190
 borderZNegative = -1900
 borderZPositive = 1350
 
-
+cursorMargin = 25
+mouseTopIn = true
+mouseBottomIn = true
+mouseLeftIn = true
+mouseRightIn = true
 
 camSensitivity = 1.2
 lastDeltaX = 0
@@ -142,73 +146,103 @@ function Update(dt)
         end
     end
 
-    --input: wasd keys to pan the camera freely
-    --i had to do both key up and down. Down is for activating the panning in the propper direction
-    --and up resets it to zero
-    -- if (GetInput(16) == KEY_STATE.KEY_DOWN) then -- W --HAY UN KEY REPEAT
-    --     zPanning = -1.0
-    -- end
-    -- if (GetInput(16) == KEY_STATE.KEY_UP) then -- W
-    --     zPanning = 0.0
-    -- end
-    -- if (GetInput(17) == KEY_STATE.KEY_DOWN) then -- A
-    --     xPanning = -1.0
-    -- end
-    -- if (GetInput(17) == KEY_STATE.KEY_UP) then -- A
-    --     xPanning = 0.0
-    -- end
-    -- if (GetInput(18) == KEY_STATE.KEY_DOWN) then -- S
-    --     zPanning = 1.0
-    -- end
-    -- if (GetInput(18) == KEY_STATE.KEY_UP) then -- S
-    --     zPanning = 0.0
-    -- end
-    -- if (GetInput(19) == KEY_STATE.KEY_DOWN) then -- D
-    --     xPanning = 1.0
-    -- end
-    -- if (GetInput(19) == KEY_STATE.KEY_UP) then -- D
-    --     xPanning = 0.0
-    -- end
-    if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - 20)) then -- W --HAY UN KEY REPEAT
+    if (GetInput(16) == KEY_STATE.KEY_REPEAT) then -- W --HAY UN KEY REPEAT
+        if (gameObject:GetTransform():GetPosition().z <= borderZNegative) then
+            zPanning = 0
+        else 
+            zPanning = -1.0
+        end
+     end
+     if (GetInput(16) == KEY_STATE.KEY_UP) then -- W
+         zPanning = 0.0
+     end
+     if (GetInput(17) == KEY_STATE.KEY_REPEAT) then -- A
+        if (gameObject:GetTransform():GetPosition().x <= borderXNegative) then
+            xPanning = 0
+        else
+            xPanning = -1.0
+        end
+     end
+     if (GetInput(17) == KEY_STATE.KEY_UP) then -- A
+         xPanning = 0.0
+     end
+     if (GetInput(18) == KEY_STATE.KEY_REPEAT) then -- S
+        if (gameObject:GetTransform():GetPosition().z >= borderZPositive) then
+            zPanning = 0
+        else
+            zPanning = 1.0
+        end
+     end
+     if (GetInput(18) == KEY_STATE.KEY_UP) then -- S
+         zPanning = 0.0
+     end
+     if (GetInput(19) == KEY_STATE.KEY_REPEAT) then -- D
+        if (gameObject:GetTransform():GetPosition().x >= borderXPositive) then
+            xPanning = 0
+        else
+            xPanning = 1.0
+        end
+     end
+     if (GetInput(19) == KEY_STATE.KEY_UP) then -- D
+         xPanning = 0.0
+     end
+
+    --Mouse Movement
+
+    if (GetMouseScreenPos().y < GetLastViewportSize().y and GetMouseScreenPos().y > (GetLastViewportSize().y - cursorMargin)) then -- W --HAY UN KEY REPEAT
+        str = "Moving value " .. tostring(mouseTopIn) .. "\n"
+        Log(str)
+        mouseTopIn = true
         if (gameObject:GetTransform():GetPosition().z <= borderZNegative) then
             zPanning = 0
         else 
             zPanning = -1.0
         end
     end
-    if (GetMouseScreenPos().y < (GetLastViewportSize().y) - 10 and GetMouseScreenPos().y > 15) then -- W
+    if ((GetMouseScreenPos().y < (GetLastViewportSize().y) - cursorMargin and GetMouseScreenPos().y > cursorMargin) and mouseTopIn == true) then -- W
+        mouseTopIn = false
         zPanning = 0.0
     end
-    if (GetMouseScreenPos().x > 0 and GetMouseScreenPos().x < 15) then -- A
+    if ((GetMouseScreenPos().x > 0 and GetMouseScreenPos().x < cursorMargin)) then -- A
+        str = "Moving value " .. tostring(mouseLeftIn) .. "\n"
+        Log(str)
+        mouseLeftIn = true
         if (gameObject:GetTransform():GetPosition().x <= borderXNegative) then
             xPanning = 0
         else
             xPanning = -1.0
         end
     end
-    if (GetMouseScreenPos().x > 15 and GetMouseScreenPos().x < (GetLastViewportSize().x - 20)) then -- A
+    if (GetMouseScreenPos().x > cursorMargin and GetMouseScreenPos().x < (GetLastViewportSize().x - cursorMargin) and mouseLeftIn == true) then -- A
+        mouseLeftIn = false
+        Log("stopped")
         xPanning = 0.0
     end
-    if (GetMouseScreenPos().y > 0 and GetMouseScreenPos().y < 15) then -- S
+    if (GetMouseScreenPos().y > 0 and GetMouseScreenPos().y < cursorMargin) then -- S
+        mouseBottomIn = true
         if (gameObject:GetTransform():GetPosition().z >= borderZPositive) then
             zPanning = 0
         else
             zPanning = 1.0
         end
     end
-    if (GetMouseScreenPos().y > 15 and GetMouseScreenPos().y < (GetLastViewportSize().y - 20)) then -- S
+    if (GetMouseScreenPos().y > cursorMargin and GetMouseScreenPos().y < (GetLastViewportSize().y - cursorMargin) and mouseBottomIn == true) then -- S
+        mouseBottomIn = false
         zPanning = 0.0
     end
-    if (GetMouseScreenPos().x < GetLastViewportSize().x and GetMouseScreenPos().x > (GetLastViewportSize().x - 20)) then -- D
+    if (GetMouseScreenPos().x < GetLastViewportSize().x and GetMouseScreenPos().x > (GetLastViewportSize().x - cursorMargin)) then -- D
+        mouseRightIn = true
         if (gameObject:GetTransform():GetPosition().x >= borderXPositive) then
             xPanning = 0
         else
             xPanning = 1.0
         end
     end
-    if (GetMouseScreenPos().x < (GetLastViewportSize().x) - 10 and GetMouseScreenPos().x > 15) then -- D
+    if (GetMouseScreenPos().x < (GetLastViewportSize().x) - cursorMargin and GetMouseScreenPos().x > 15 and mouseRightIn == true) then -- D
+        mouseRightIn = false
         xPanning = 0.0
     end
+
 
     -- go back to the selected character
     -- if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
