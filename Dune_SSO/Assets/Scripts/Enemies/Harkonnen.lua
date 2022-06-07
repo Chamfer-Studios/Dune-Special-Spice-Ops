@@ -133,7 +133,7 @@ function EventHandler(key, fields)
     elseif key == "Death_Mark" then
         if (fields[1] == gameObject) then
             deathMarkTimer = 0.0
-            deathMarkDuration = fields[2]
+            deathMarkDuration = fields[2] * 0.3
         end
         -- Nerala Mosquito
     elseif key == "Mosquito_Hit" then

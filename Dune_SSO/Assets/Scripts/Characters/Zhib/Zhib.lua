@@ -1218,7 +1218,7 @@ function DoUltimate()
         end
     end
 
-    deathMarkDuration = 1
+    local deathMarkDuration = 1
     -- Set IN ORDER the death mark
     for i = 1, #enemiesInRange do
         DispatchGlobalEvent("Death_Mark", {enemiesInRange[i], deathMarkDuration})
@@ -1432,8 +1432,8 @@ function EventHandler(key, fields)
         smokebombPosition = nil
         smokebombRadius = nil
     elseif (key == "Update_Zhib_State") then -- fields 1 to 3: position
-                                             -- fields 4 to 7: (primary, secondary, ultimate, passive)
-                                             -- field 8: health
+        -- fields 4 to 7: (primary, secondary, ultimate, passive)
+        -- field 8: health
 
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
 
@@ -1449,7 +1449,7 @@ function EventHandler(key, fields)
             awareChanceSardKnife = 40
             aggroChanceSardKnife = 20
         end
-        
+
         if (fields[5] == 1) then
             secondaryCastRange = 225
             secondaryEffectRadius = 150
@@ -1458,17 +1458,17 @@ function EventHandler(key, fields)
         elseif (fields[5] == 3) then
             secondaryCooldown = 6
         end
-        
+
         if (fields[6] == 1) then
             ultimateCastRange = 120
             maxEnemies = 6
         elseif (fields[6] == 2) then
-            
+
         elseif (fields[6] == 3) then
             maxEnemies = 8
             ultimateSpiceCost = 1800
         end
-        
+
         if (fields[7] == 1) then
             staminaSeconds = 6
             staminaTimer = staminaSeconds
@@ -1483,6 +1483,8 @@ function EventHandler(key, fields)
 
         Log("ZHIB HEALTH POINTS: " .. currentHP .. "\n")
 
+    elseif (key == "Death_Mark") then
+        invisibilityDuration = fields[2] * 0.3
     elseif (key == "Zhib_Primary_Bugged") then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
