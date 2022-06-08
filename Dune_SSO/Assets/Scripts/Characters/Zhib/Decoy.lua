@@ -26,6 +26,7 @@ function Start()
         vec2 = Normalize(vec2, d)
         componentTransform:SetPosition(
             float3.new(playerPos.x + vec2[1] * 5, playerPos.y + 10, playerPos.z + vec2[2] * 5))
+        waveParticleTimer = 1.0
         waveParticle = Find("Zhib Wave Particle")
         if (waveParticle ~= nil) then
             waveParticle:GetComponentParticle():StopParticleSpawn()
@@ -60,10 +61,14 @@ function Update(dt)
         lifeTimer = lifeTimer + dt
 
         if (effectTimer == nil) then
-            if (waveParticle ~= nil) then
-                waveParticle:GetComponentParticle():ResumeParticleSpawn()
-                waveParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
-                    componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+            waveParticleTimer = waveParticleTimer + dt
+            if (waveParticleTimer > 1.0) then
+                waveParticleTimer = 0.0
+                if (waveParticle ~= nil) then
+                    waveParticle:GetComponentParticle():ResumeParticleSpawn()
+                    waveParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+                        componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
+                end
             end
             trackList = {0}
             ChangeTrack(trackList)
