@@ -521,14 +521,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {11}
+        trackList = {12}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {12}
+        trackList = {13}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -544,7 +544,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE) then
-            trackList = {11}
+            trackList = {12}
             ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
@@ -1280,7 +1280,7 @@ function EventHandler(key, fields)
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
-        trackList = {13}
+        trackList = {14}
         ChangeTrack(trackList)
         ultimateTimer = 0.0
         mosquitoDeathParticleTimer = 0.0
@@ -1320,7 +1320,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {10}
+        trackList = {10, 11}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
