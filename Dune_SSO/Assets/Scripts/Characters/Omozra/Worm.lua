@@ -16,6 +16,7 @@ startCalled = false
 -------------------- Methods ---------------------
 
 function Start()
+
     omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -50,
         omozra:GetTransform():GetPosition().z))
@@ -32,6 +33,11 @@ function Start()
     if (componentAnimator ~= nil) then
         componentAnimator:SetSelectedClip("Idle") -- Doesn't exists but I need it to be different
     end
+
+    healParticles = Find("Heal Particles")
+    if (healParticles ~= nil) then
+        healParticles:GetComponentParticle():StopParticleSpawn()
+    end
 end
 
 -- Called each loop iteration
@@ -41,6 +47,10 @@ function Update(dt)
         startCalled = true
     end
 
+    if (healHit ~= nil) then
+        healHit = nil
+        healParticles:GetComponentParticle():StopParticleSpawn()
+    end
     -- if (lastRotation ~= nil) then
     --     componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
     -- end
@@ -84,7 +94,7 @@ function CastPrimary(thisTarget, omozraPos)
     local d = Distance(pos2D, targetPos2D)
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
-    componentTransform:SetPosition(float3.new(targetPos.x + vec2[1] * 40, 0, targetPos.z + vec2[2] * 40))
+    componentTransform:SetPosition(float3.new(targetPos.x + vec2[1] * 50, 0, targetPos.z + vec2[2] * 50))
 
     -- math.randomseed(os.time())
     -- randomOffsetX = 40
@@ -332,6 +342,13 @@ function EventHandler(key, fields)
         end
     elseif (key == "Sadiq_Heal") then -- fields[1] -> target; fields[2] -> pos;
         CastPrimary(fields[1], fields[2])
+    elseif (key == "Spit_Heal_Hit") then
+        if (healParticles ~= nil) then
+            healParticles:SetPosition(float3.new(fields[1]:GetTransform():GetPosition().x,
+                fields[1]:GetTransform():GetPosition().y + 1, fields[1]:GetTransform():GetPosition().z))
+            healParticles:GetComponentParticle():ResumeParticleSpawn()
+            healHit = true
+        end
     end
 end
 --------------------------------------------------
