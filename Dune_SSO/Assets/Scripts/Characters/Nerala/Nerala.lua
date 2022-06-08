@@ -579,8 +579,6 @@ function CancelAbilities(onlyAbilities)
             SetState(State.IDLE)
         end
         StopMovement()
-    else
-        StopMovement(false)
     end
 end
 
@@ -1150,7 +1148,7 @@ function CastUltimate(isAlreadyCasted)
 
                 StopMovement(false)
 
-                LookAtTarget(position)
+                LookAtTarget(target)
 
                 trackList = {7}
                 ChangeTrack(trackList)

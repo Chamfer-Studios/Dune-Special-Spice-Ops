@@ -586,8 +586,6 @@ function CancelAbilities(onlyAbilities)
             SetState(State.IDLE)
         end
         StopMovement()
-    else
-        StopMovement(false)
     end
 end
 
@@ -1344,7 +1342,6 @@ end
 -------------------- Events ----------------------
 function EventHandler(key, fields)
     if (key == "Stop_Movement") then
-        Log("PARA, ZORRAAAAA\n")
         StopMovement()
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Idle")
