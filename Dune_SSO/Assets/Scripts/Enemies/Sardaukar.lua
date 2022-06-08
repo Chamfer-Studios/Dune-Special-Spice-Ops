@@ -152,8 +152,8 @@ function EventHandler(key, fields)
         -- Omozra ñam ñam
     elseif key == "Sadiq_Update_Target" then -- fields[1] -> target; targeted for (1 -> warning; 2 -> eat; 3 -> spit)
         if (fields[1] == gameObject) then
-            if fields[2] == 1 then
-                DispatchEvent("Enemy_Death", {EnemyDeath.PLAYER_ATTACK})
+            if (fields[2] == 1) then
+                DispatchEvent("Stop_Movement", {"Worm"})
             elseif (fields[2] == 2) then
                 if (currentState == STATE.UNAWARE or currentState == STATE.AWARE) then
                     secondaryHitChance = GetVariable("Omozra.lua", "unawareChanceSardSecondary",

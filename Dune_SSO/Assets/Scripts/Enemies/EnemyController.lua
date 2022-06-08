@@ -887,7 +887,13 @@ function Update(dt)
     UpdateAnimation(dt, oldState, target)
     RotateToTargetDirection(dt)
 
-    if state == STATE.UNAWARE and isOnStandBy == nil then
+    if (isWormTarget ~= nil) then
+        if (componentAnimator ~= nil) then
+            if (componentAnimator:GetSelectedClip() ~= "Idle") then
+                componentAnimator:SetSelectedClip("Idle")
+            end
+        end
+    elseif state == STATE.UNAWARE and isOnStandBy == nil then
         DispatchEvent(pathfinderFollowKey, {speed, dt, loop, false})
     elseif state == STATE.SUS then
         DispatchEvent(pathfinderFollowKey, {speed, dt, false, false})
@@ -947,7 +953,11 @@ function ClearDecoyTarget()
 end
 
 function EventHandler(key, fields)
-    if key == "Decoy_Trigger_End" then
+    if key == "Stop_Movement" then
+        if (fields[1] == "Worm") then
+            isWormTarget = true
+        end
+    elseif key == "Decoy_Trigger_End" then
         decoyOnce = false
         ClearDecoyTarget()
     elseif key == "Auditory_Trigger" then -- fields[1] -> position; fields[2] -> range; fields[3] -> type ("single", "repeated", "decoy"); fields[4] -> source ("GameObject");
@@ -1046,6 +1056,8 @@ function EventHandler(key, fields)
     elseif key == "Hover_End" then
         hoveredWeaponName = nil
         StopChanceParticles()
+    elseif key == "Stop_Movement" then
+        isMoving = false
     end
 end
 

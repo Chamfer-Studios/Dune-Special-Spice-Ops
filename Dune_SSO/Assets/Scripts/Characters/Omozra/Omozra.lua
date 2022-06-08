@@ -575,8 +575,6 @@ function CancelAbilities(onlyAbilities)
             SetState(State.IDLE)
         end
         StopMovement()
-    else
-        StopMovement(false)
     end
 end
 

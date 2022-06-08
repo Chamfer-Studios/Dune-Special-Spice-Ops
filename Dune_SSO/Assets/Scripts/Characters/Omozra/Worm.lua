@@ -12,10 +12,13 @@ State = {
 target = nil
 currentState = State.IDLE
 startCalled = false
+sandShakeTime = 1
 
 -------------------- Methods ---------------------
 
 function Start()
+
+    DispatchGlobalEvent("Worm_Spawn", {})
 
     omozra = GetVariable("Omozra.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
     componentTransform:SetPosition(float3.new(omozra:GetTransform():GetPosition().x, -50,
@@ -38,6 +41,11 @@ function Start()
     if (healParticles ~= nil) then
         healParticles:GetComponentParticle():StopParticleSpawn()
     end
+
+    sandParticles = Find("Sand Particle")
+    if (sandParticles ~= nil) then
+        sandParticles:GetComponentParticle():StopParticleSpawn()
+    end
 end
 
 -- Called each loop iteration
@@ -51,21 +59,44 @@ function Update(dt)
         healParticles:GetComponentParticle():StopParticleSpawn()
     end
     healHit = nil
-    -- if (lastRotation ~= nil) then
-    --     componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
-    -- end
+
+    if (sandShakeTimer ~= nil) then
+        sandShakeTimer = sandShakeTimer + dt
+        if (currentState ~= State.SPIT and currentState ~= State.SPIT_HEAL) then
+            if (math.abs(Distance3D(nextPosition, target:GetTransform():GetPosition())) >= 5) then
+                nextPosition = target:GetTransform():GetPosition()
+                if (sandParticles ~= nil) then
+                    sandParticles:GetTransform():SetPosition(nextPosition)
+                end
+            end
+        end
+        if (sandShakeTimer >= sandShakeTime) then
+            sandShakeTimer = nil
+            if (componentAnimator ~= nil) then
+                componentAnimator:SetSelectedClip(nextClip)
+                componentTransform:SetPosition(nextPosition)
+                if (nextRotation ~= nil) then
+                    LookAtTarget(nextRotation)
+                    nextRotation = nil
+                end
+            end
+            if (sandParticles ~= nil) then
+                sandParticles:GetComponentParticle():StopParticleSpawn()
+            end
+        end
+    end
 
     -- Animation timer
     if (componentAnimator ~= nil) then
         if (componentAnimator:IsCurrentClipLooping() == false) then
             if (componentAnimator:IsCurrentClipPlaying() == false) then
-                if (currentState == State.DEVOUR) then
+                if (currentState == State.DEVOUR and sandShakeTimer == nil) then
                     DoDevour()
-                elseif (currentState == State.EAT) then
+                elseif (currentState == State.EAT and sandShakeTimer == nil) then
                     DoUltimate()
-                elseif (currentState == State.SPIT) then
+                elseif (currentState == State.SPIT and sandShakeTimer == nil) then
                     DoSpit()
-                elseif (currentState == State.SPIT_HEAL) then
+                elseif (currentState == State.SPIT_HEAL and sandShakeTimer == nil) then
                     DoPrimary()
                 else
                     componentTransform:SetPosition(float3.new(0, -50, 0))
@@ -94,7 +125,9 @@ function CastPrimary(thisTarget, omozraPos)
     local d = Distance(pos2D, targetPos2D)
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
-    componentTransform:SetPosition(float3.new(targetPos.x + vec2[1] * 50, 0, targetPos.z + vec2[2] * 50))
+
+    nextPosition = float3.new(targetPos.x + vec2[1] * 50, 0, targetPos.z + vec2[2] * 50)
+    nextRotation = targetPos
 
     -- math.randomseed(os.time())
     -- randomOffsetX = 40
@@ -110,10 +143,13 @@ function CastPrimary(thisTarget, omozraPos)
     -- componentTransform:SetPosition(a)
     -- Log("X: " .. a.x .. " Y: " .. a.y .. " Z: " .. a.z .. "\n")
 
-    LookAtTarget(targetPos)
-
     if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("SpitHeal")
+        nextClip = "SpitHeal"
+        sandShakeTimer = 0
+    end
+    if (sandParticles ~= nil) then
+        sandParticles:GetTransform():SetPosition(nextPosition)
+        sandParticles:GetComponentParticle():ResumeParticleSpawn()
     end
 
     trackList = {0, 4}
@@ -166,15 +202,19 @@ function CastDevour(castedOn)
     end
 
     local targetPos = target:GetTransform():GetPosition()
-    componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
 
+    nextPosition = float3.new(targetPos.x, 0, targetPos.z)
     if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Devour")
+        nextClip = "Devour"
+        sandShakeTimer = 0
+    end
+    if (sandParticles ~= nil) then
+        sandParticles:GetTransform():SetPosition(nextPosition)
+        sandParticles:GetComponentParticle():ResumeParticleSpawn()
     end
 
     trackList = {0, 4}
     ChangeTrack(trackList)
-
     currentState = State.DEVOUR
 end
 
@@ -224,10 +264,15 @@ function CastUltimate(castedOn)
     end
 
     local targetPos = target:GetTransform():GetPosition()
-    componentTransform:SetPosition(float3.new(targetPos.x, 0, targetPos.z))
 
+    nextPosition = float3.new(targetPos.x, 0, targetPos.z)
     if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Devour")
+        nextClip = "Devour"
+        sandShakeTimer = 0
+    end
+    if (sandParticles ~= nil) then
+        sandParticles:GetTransform():SetPosition(nextPosition)
+        sandParticles:GetComponentParticle():ResumeParticleSpawn()
     end
 
     trackList = {0, 4}
@@ -280,13 +325,18 @@ function CastSpit(position)
         end
     end
 
-    componentTransform:SetPosition(position)
-
     -- This is just to stop the movement
     DispatchGlobalEvent("Sadiq_Update_Target", {target, 1}) -- fields[1] -> target; fields[2] -> step of devour ability (1 -> warning; 2 -> eat; 3 -> spit)
 
+    nextPosition = position
+
     if (componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Spit")
+        nextClip = "Spit"
+        sandShakeTimer = 0
+    end
+    if (sandParticles ~= nil) then
+        sandParticles:GetTransform():SetPosition(nextPosition)
+        sandParticles:GetComponentParticle():ResumeParticleSpawn()
     end
 
     trackList = {0, 4}
