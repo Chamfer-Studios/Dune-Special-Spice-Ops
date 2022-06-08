@@ -34,7 +34,7 @@ function Start()
         componentAnimator:SetSelectedClip("Idle") -- Doesn't exists but I need it to be different
     end
 
-    healParticles = Find("Heal Particles")
+    healParticles = Find("Heal Particle")
     if (healParticles ~= nil) then
         healParticles:GetComponentParticle():StopParticleSpawn()
     end
@@ -47,10 +47,10 @@ function Update(dt)
         startCalled = true
     end
 
-    if (healHit ~= nil) then
-        healHit = nil
+    if (healHit == nil) then
         healParticles:GetComponentParticle():StopParticleSpawn()
     end
+    healHit = nil
     -- if (lastRotation ~= nil) then
     --     componentTransform:LookAt(lastRotation, float3.new(0, 1, 0))
     -- end
@@ -344,8 +344,8 @@ function EventHandler(key, fields)
         CastPrimary(fields[1], fields[2])
     elseif (key == "Spit_Heal_Hit") then
         if (healParticles ~= nil) then
-            healParticles:SetPosition(float3.new(fields[1]:GetTransform():GetPosition().x,
-                fields[1]:GetTransform():GetPosition().y + 1, fields[1]:GetTransform():GetPosition().z))
+            healParticles:GetTransform():SetPosition(float3.new(fields[1]:GetTransform():GetPosition().x,
+                fields[1]:GetTransform():GetPosition().y + 13, fields[1]:GetTransform():GetPosition().z))
             healParticles:GetComponentParticle():ResumeParticleSpawn()
             healHit = true
         end
