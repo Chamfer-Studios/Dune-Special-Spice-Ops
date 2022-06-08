@@ -989,7 +989,7 @@ function EventHandler(key, fields)
             MissDone = true
         end
     elseif key == "Enemy_Death" then -- fields[1] = EnemyDeath table --- fields[2] = EnemyTypeString
-        if (HitParticle ~= nil) then
+        if (HitParticle ~= nil and (fields[1] == EnemyDeath.KNIFE or fields[1] == EnemyDeath.PLAYER_ATTACK)) then
             HitParticle:GetComponentParticle():ResumeParticleSpawn()
             HitDone = true
         end
