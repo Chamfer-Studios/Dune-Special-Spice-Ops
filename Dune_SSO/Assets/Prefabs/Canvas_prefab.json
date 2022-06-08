@@ -2378,17 +2378,11 @@
                             "active": true,
                             "texture": "Assets/New UI/spice_bar_fill_default.png",
                             "type": 14
-                        },
-                        {
-                            "active": true,
-                            "file_name": "Assets/Scripts/New HUD Scripts/spice_bar.lua",
-                            "id": 2040907340,
-                            "type": 5
                         }
                     ],
                     "is3D": false,
                     "isPrefab": false,
-                    "name": "Spice bar fill",
+                    "name": "Stamina Bar Fill",
                     "tag": 0
                 },
                 {
@@ -2429,61 +2423,7 @@
                     ],
                     "is3D": false,
                     "isPrefab": false,
-                    "name": "Spice Bar Frame",
-                    "tag": 0
-                },
-                {
-                    "active": true,
-                    "children": [],
-                    "components": [
-                        {
-                            "active": true,
-                            "type": 23
-                        },
-                        {
-                            "active": true,
-                            "anchor": 7,
-                            "pivot": [
-                                0.5,
-                                0.5
-                            ],
-                            "position": [
-                                0.0,
-                                40.0
-                            ],
-                            "rotation": [
-                                0.0,
-                                0.0,
-                                0.0
-                            ],
-                            "size": [
-                                60.0,
-                                30.0
-                            ],
-                            "type": 22
-                        },
-                        {
-                            "active": true,
-                            "color": [
-                                255,
-                                255,
-                                255,
-                                255
-                            ],
-                            "fontPath": "Assets/Fonts/Inter/Inter-Black.otf",
-                            "type": 16,
-                            "value": "0"
-                        },
-                        {
-                            "active": true,
-                            "file_name": "Assets/Scripts/New HUD Scripts/spice_text.lua",
-                            "id": 1443486017,
-                            "type": 5
-                        }
-                    ],
-                    "is3D": false,
-                    "isPrefab": false,
-                    "name": "Spice Text",
+                    "name": "Stamina Bar Frame",
                     "tag": 0
                 }
             ],

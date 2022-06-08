@@ -218,6 +218,9 @@ function Start()
     -- Abilities
     knifeCount = maxKnives
     decoyCount = maxDecoy
+
+    -- Stamina Bar Blue
+    staminaBar = Find("Stamina Bar Fill")
 end
 
 -- Called each loop iteration
@@ -666,6 +669,10 @@ function UpdateStamina()
     else -- From Yellow to Red
         characterSelectedParticle:GetComponentParticle():SetColor(255, (proportion * 2) * 255, 0, 255)
     end
+
+    if staminaBar ~= nil then
+        staminaBar:GetTransform2D():SetMask(float2.new(proportion, 1))
+    end
 end
 
 function ManageTimers(dt)
@@ -691,13 +698,11 @@ function ManageTimers(dt)
         else
             staminaTimer = staminaTimer + dt
         end
-        if (staminaTimer > recoveryTime) then
+        if staminaTimer / staminaSeconds >= 1 then
             staminaTimer = staminaSeconds
             isTired = false
-            -- Log("I am recovered! :) \n")
-        else
-            -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
+        -- Log("Stamina timer: " .. staminaTimer .. "\n")
     end
 
     -- Running state logic
@@ -1497,18 +1502,6 @@ function EventHandler(key, fields)
         decoyCount = decoyCount + 1
         Log("Decoy bugged, correction applied.\n")
     end
-end
-
-function ConfigStaminaBars()
-    Log("Configuring stamina bars\n")
-    staminaBarYellow = Find("Stamina Bar Yellow")
-    staminaBarGreen = Find("Stamina Bar Green")
-    staminaBarRed = Find("Stamina Bar Red")
-    staminaBarBlue = Find("Stamina Bar Blue")
-
-    staminaBarSizeX = staminaBarGreen:GetTransform():GetScale().x
-    staminaBarSizeY = staminaBarGreen:GetTransform():GetScale().y
-    staminaBarSizeZ = staminaBarGreen:GetTransform():GetScale().z
 end
 --------------------------------------------------
 

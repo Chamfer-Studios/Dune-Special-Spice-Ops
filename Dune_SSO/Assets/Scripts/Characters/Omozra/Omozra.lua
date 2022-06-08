@@ -68,6 +68,7 @@ runMultiplierPercentage = 133
 staminaSeconds = 6
 recoveryTime = 7
 staminaTimer = staminaSeconds
+standingStaminaMultiplier = 1.5
 isTired = false
 
 -- Passive -- 
@@ -199,6 +200,9 @@ function Start()
     -- Abilities
     InstantiatePrefab("Worm")
     DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
+
+    -- Stamina Bar Blue
+    staminaBar = Find("Stamina Bar Fill")
 end
 
 -- Called each loop iteration
@@ -677,6 +681,10 @@ function UpdateStamina()
     else -- From Yellow to Red
         characterSelectedParticle:GetComponentParticle():SetColor(255, (proportion * 2) * 255, 0, 255)
     end
+
+    if staminaBar ~= nil then
+        staminaBar:GetTransform2D():SetMask(float2.new(proportion, 1))
+    end
 end
 
 function ManageTimers(dt)
@@ -697,14 +705,16 @@ function ManageTimers(dt)
             -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
     else
-        staminaTimer = staminaTimer + dt
-        if (staminaTimer > recoveryTime) then
+        if (currentMovement == Movement.IDLE or currentMovement == Movement.IDLE_CROUCH) then
+            staminaTimer = staminaTimer + dt * standingStaminaMultiplier
+        else
+            staminaTimer = staminaTimer + dt
+        end
+        if staminaTimer / staminaSeconds >= 1 then
             staminaTimer = staminaSeconds
             isTired = false
-            -- Log("I am recovered! :) \n")
-        else
-            -- Log("Stamina timer: " .. staminaTimer .. "\n")
         end
+        -- Log("Stamina timer: " .. staminaTimer .. "\n")
     end
 
     -- Running state logic
@@ -1374,8 +1384,8 @@ function EventHandler(key, fields)
         smokebombPosition = nil
         smokebombRadius = nil
     elseif (key == "Update_Omozra_State") then -- fields 1 to 3: position
-                                               -- fields 4 to 7: (primary, secondary, ultimate, passive)
-                                               -- fields 8 and 9: health and charges
+        -- fields 4 to 7: (primary, secondary, ultimate, passive)
+        -- fields 8 and 9: health and charges
 
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
 
@@ -1386,15 +1396,15 @@ function EventHandler(key, fields)
         elseif (fields[4] == 3) then
             primaryHealAmount = 2
         end
-        
+
         if (fields[5] == 1) then
             secondaryCastRange = 265
         elseif (fields[5] == 2) then
-            
+
         elseif (fields[5] == 3) then
-            
+
         end
-        
+
         if (fields[6] == 1) then
             ultimateCastRange = 190
         elseif (fields[6] == 2) then
@@ -1402,7 +1412,7 @@ function EventHandler(key, fields)
         elseif (fields[6] == 3) then
             ultimateSpiceCost = 750
         end
-        
+
         if (fields[7] == 1) then
             staminaSeconds = 7
             staminaTimer = staminaSeconds
@@ -1419,7 +1429,7 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
 
         Log("OMOZRA HEALTH POINTS: " .. currentHP .. "\n")
-        
+
     elseif (key == "Omozra_Primary_Bugged") then
         currentCharges = currentCharges + primaryChargeCost
         abilities.AbilityPrimary = AbilityStatus.Normal
