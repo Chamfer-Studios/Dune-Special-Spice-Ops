@@ -211,7 +211,10 @@ function Start()
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     footstepsParticle = Find("Nerala Footstep Particle")
-
+    deathParticle = Find("Nerala Mosquito Death Particle")
+    if (deathParticle ~= nil) then
+        deathParticle:GetComponentParticle():StopParticleSpawn()
+    end
     -- Audio
     currentTrackID = -1
 
@@ -795,6 +798,16 @@ function ManageTimers(dt)
         end
     end
 
+    if (mosquitoDeathParticleTimer ~= nil) then
+        mosquitoDeathParticleTimer = mosquitoDeathParticleTimer + dt
+        if (mosquitoDeathParticleTimer > 0.5) then
+            if (deathParticle ~= nil) then
+                deathParticle:GetComponentParticle():StopParticleSpawn()
+            end
+            mosquitoDeathParticleTimer = nil
+        end
+    end
+
     -- If she's dead she can't do anything
     if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
@@ -1272,6 +1285,7 @@ function EventHandler(key, fields)
         trackList = {10}
         ChangeTrack(trackList)
         ultimateTimer = 0.0
+        mosquitoDeathParticleTimer = 0.0
         abilities.AbilityUltimate = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability",
             {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateCooldown})

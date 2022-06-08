@@ -39,10 +39,17 @@ function Start()
         if (mouseParticles ~= nil) then
             mouseParticles:GetComponentParticle():StopParticleSpawn()
         end
+        deathParticle = Find("Nerala Mosquito Death Particle")
+        if (deathParticle ~= nil) then
+            deathParticle:GetComponentParticle():StopParticleSpawn()
+        end
 
         DispatchGlobalEvent("Mosquito_Spawn", {gameObject}) -- fields[1] -> gameObject
     else
         DispatchGlobalEvent("Nerala_Ultimate_Bugged", {})
+        if (deathParticle ~= nil) then
+            deathParticle:GetComponentParticle():ResumeParticleSpawn()
+        end
         DeleteGameObject()
     end
 end
@@ -65,6 +72,11 @@ function Update(dt)
         if (poisonTimer >= 1) then
             poisonTimer = nil
         end
+    end
+
+    if (deathParticle ~= nil) then
+        deathParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y + 15, componentTransform:GetPosition().z + 10))
     end
 
     DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), 100, "repeated", player}) -- TODO: Check range
@@ -201,6 +213,9 @@ function Die()
         do
             return
         end
+    end
+    if (deathParticle ~= nil) then
+        deathParticle:GetComponentParticle():ResumeParticleSpawn()
     end
     DeleteGameObject()
     DispatchGlobalEvent("Mosquito_Death", {})
