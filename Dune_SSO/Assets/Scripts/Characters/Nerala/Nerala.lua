@@ -225,6 +225,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+    isSelected = IsSelected()
 
     DrawActiveAbilities()
     DrawHoverParticle()
@@ -308,7 +309,7 @@ function Update(dt)
     end
 
     -- Gather Inputs
-    if (IsSelected() == true) then
+    if (isSelected == true) then
 
         UpdateStamina()
 
@@ -553,6 +554,7 @@ function CancelAbilities(onlyAbilities)
     if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        DispatchGlobalEvent("Hover_End", {})
     elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
@@ -588,10 +590,10 @@ function DrawHoverParticle()
         end
     end
 
-    if (IsSelected() == true) then
+    if (isSelected == true) then
         local drawingTarget = GetGameObjectHovered()
         local finalPosition
-        if ((currentState == State.ATTACK or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
+        if ((currentState == Sta or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
             currentState == State.AIM_ULTIMATE) and target ~= nil) then
             if (target.x == nil) then
                 t = target:GetTransform():GetPosition()
@@ -638,7 +640,7 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if componentLight ~= nil then
-        if (IsSelected() == true) then
+        if (isSelected == true) then
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
@@ -907,13 +909,10 @@ function LookAtTarget(lookAt)
 end
 
 function IsSelected()
-
     local id = GetVariable("GameState.lua", "characterSelected", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-
     if (id == characterID) then
         return true
     end
-
     return false
 end
 
@@ -958,6 +957,7 @@ function ActivePrimary()
             SetState(State.AIM_PRIMARY)
             abilities.AbilityPrimary = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Hover_Start", {"Dart"})
         end
     end
 end
@@ -980,6 +980,7 @@ function CastPrimary()
                 return
             end
         else
+            DispatchGlobalEvent("Hover_End", {})
             if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
                 primaryCastRange) then
                 if (componentAnimator ~= nil) then

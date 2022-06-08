@@ -207,6 +207,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+    isSelected = IsSelected()
 
     DrawActiveAbilities()
     DrawHoverParticle()
@@ -304,7 +305,7 @@ function Update(dt)
     end
 
     -- Gather Inputs
-    if (IsSelected() == true) then
+    if (isSelected == true) then
 
         UpdateStamina()
 
@@ -588,7 +589,7 @@ function DrawHoverParticle()
         end
     end
 
-    if (IsSelected() == true) then
+    if (isSelected == true) then
         local drawingTarget = GetGameObjectHovered()
         local finalPosition
         if ((currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or currentState ==
@@ -646,7 +647,7 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if componentLight ~= nil then
-        if (IsSelected() == true) then
+        if (isSelected == true) then
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)

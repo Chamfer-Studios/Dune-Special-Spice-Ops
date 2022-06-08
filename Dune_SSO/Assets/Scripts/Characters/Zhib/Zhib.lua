@@ -84,8 +84,8 @@ primarySoundRange = 300
 unawareChanceHarkKnife = 100
 awareChanceHarkKnife = 80
 aggroChanceHarkKnife = 20
-unawareChanceSardKnife = 75
-awareChanceSardKnife = 25
+unawareChanceSardKnife = 80
+awareChanceSardKnife = 30
 aggroChanceSardKnife = 0
 
 -- Secondary ability --
@@ -225,6 +225,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
+    isSelected = IsSelected()
 
     DrawActiveAbilities()
     DrawHoverParticle()
@@ -313,7 +314,7 @@ function Update(dt)
     end
 
     -- Gather Inputs
-    if (IsSelected() == true) then
+    if (isSelected == true) then
 
         UpdateStamina()
 
@@ -555,6 +556,7 @@ function CancelAbilities(onlyAbilities)
     if (currentState == State.AIM_PRIMARY and abilities.AbilityPrimary == AbilityStatus.Active) then
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+        DispatchGlobalEvent("Hover_End", {})
     elseif (currentState == State.AIM_SECONDARY and abilities.AbilitySecondary == AbilityStatus.Active) then
         abilities.AbilitySecondary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
@@ -590,7 +592,7 @@ function DrawHoverParticle()
         end
     end
 
-    if (IsSelected() == true) then
+    if (isSelected == true) then
         local drawingTarget = GetGameObjectHovered()
         local finalPosition
         if ((currentState == State.ATTACK or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
@@ -638,7 +640,7 @@ function DrawActiveAbilities()
         componentLight = gameObject:GetLight()
     end
     if (componentLight ~= nil) then
-        if (IsSelected() == true) then
+        if (isSelected == true) then
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
@@ -972,6 +974,7 @@ function ActivePrimary()
             SetState(State.AIM_PRIMARY)
             abilities.AbilityPrimary = AbilityStatus.Active
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            DispatchGlobalEvent("Hover_Start", {"Knife"})
         end
     end
 end
@@ -993,6 +996,7 @@ function CastPrimary()
                 return
             end
         else
+            DispatchGlobalEvent("Hover_End", {})
             if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
                 primaryCastRange) then
                 if (componentAnimator ~= nil) then

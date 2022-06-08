@@ -60,6 +60,7 @@ function EventHandler(key, fields)
                     else
                         Log("Culona's attack D100 roll has been " .. rng ..
                                 " so the UNAWARE HARKONNEN enemy has dodged the attack :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 elseif currentState == STATE.SUS then
                     neralaAttackHitChance = GetVariable("Nerala.lua", "awareChanceHarkAttack",
@@ -72,6 +73,7 @@ function EventHandler(key, fields)
                     else
                         Log("Culona's attack D100 roll has been " .. rng ..
                                 " so the AWARE HARKONNEN enemy has dodged the attack :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 elseif currentState == STATE.AGGRO then
                     neralaAttackHitChance = GetVariable("Nerala.lua", "aggroChanceHarkAttack",
@@ -84,6 +86,7 @@ function EventHandler(key, fields)
                     else
                         Log("Culona's attack D100 roll has been " .. rng ..
                                 " so the AGGRO HARKONNEN enemy has dodged the attack :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 end
             end
@@ -102,6 +105,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the UNAWARE HARKONNEN enemy has dodged the knife :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -115,6 +119,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the AWARE HARKONNEN enemy has dodged the knife :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -128,6 +133,7 @@ function EventHandler(key, fields)
                 else
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the AGGRO HARKONNEN enemy has dodged the knife :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -159,6 +165,7 @@ function EventHandler(key, fields)
                     else
                         Log("Ñam ñam's D100 roll has been " .. rng ..
                                 " so the UNAWARE HARKONNEN enemy has dodged the ñam ñam :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 elseif (currentState == STATE.SUS) then
                     secondaryHitChance = GetVariable("Omozra.lua", "awareChanceHarkSecondary",
@@ -171,6 +178,7 @@ function EventHandler(key, fields)
                     else
                         Log("Ñam ñam's D100 roll has been " .. rng ..
                                 " so the AWARE HARKONNEN enemy has dodged the ñam ñam :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 elseif (currentState == STATE.AGGRO) then
                     secondaryHitChance = GetVariable("Omozra.lua", "aggroChanceHarkSecondary",
@@ -183,6 +191,7 @@ function EventHandler(key, fields)
                     else
                         Log("Ñam ñam's D100 roll has been " .. rng ..
                                 " so the AGGRO HARKONNEN enemy has dodged the ñam ñam :( \n")
+                        DispatchEvent("Missed", {})
                     end
                 end
             elseif fields[2] == 4 then
@@ -203,6 +212,7 @@ function EventHandler(key, fields)
                 else
                     Log("Dart's D100 roll has been " .. rng ..
                             " so the UNAWARE HARKONNEN enemy has dodged the dart :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -215,6 +225,7 @@ function EventHandler(key, fields)
                     DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE HARKONNEN enemy has dodged the dart :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
@@ -227,6 +238,7 @@ function EventHandler(key, fields)
                     DispatchEvent("Dart_Success", {fields[2], fields[3]})
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO HARKONNEN enemy has dodged the dart :( \n")
+                    DispatchEvent("Missed", {})
                     trackList = {1}
                     ChangeTrack(trackList)
                 end
