@@ -529,14 +529,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {16}
+        trackList = {17}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {17}
+        trackList = {18}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -552,7 +552,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            trackList = {16}
+            trackList = {17}
             ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
@@ -1393,7 +1393,7 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
-        trackList = {15}
+        trackList = {15, 16}
         ChangeTrack(trackList)
         secondaryTimer = 0.0
         abilities.AbilitySecondary = AbilityStatus.Cooldown
@@ -1401,7 +1401,7 @@ function EventHandler(key, fields)
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
-        trackList = {15}
+        trackList = {15, 16}
         ChangeTrack(trackList)
         Log("I have grabbed a knife! \n")
         abilities.AbilityPrimary = AbilityStatus.Normal
@@ -1439,7 +1439,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {15}
+        trackList = {15, 16}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then

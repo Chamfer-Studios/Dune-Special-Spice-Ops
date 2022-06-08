@@ -54,6 +54,11 @@ function Update(dt)
         MoveToDestination(dt)
     elseif (lifeTimer <= lifeTime) then
 
+        if(currentTrackID ~= 0) then
+            trackList = {0}
+            ChangeTrack(trackList)
+        end
+
         if (componentLight ~= nil) then
             -- componentLight:SetAngle(360 / 2)
         end
@@ -70,8 +75,7 @@ function Update(dt)
                         componentTransform:GetPosition().y + 1, componentTransform:GetPosition().z))
                 end
             end
-            trackList = {0}
-            ChangeTrack(trackList)
+            
             DispatchGlobalEvent("Auditory_Trigger", {componentTransform:GetPosition(), effectRadius, "decoy", player})
             effectTimer = 0.0
         else
