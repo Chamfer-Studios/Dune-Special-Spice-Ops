@@ -1818,12 +1818,12 @@
                                                     "colors": [
                                                         {
                                                             "color": [
-                                                                0.0,
-                                                                0.7843137383460999,
                                                                 1.0,
+                                                                0.0,
+                                                                0.0,
                                                                 1.0
                                                             ],
-                                                            "position": 0.5
+                                                            "position": 0.0
                                                         }
                                                     ],
                                                     "type": 3
@@ -3174,7 +3174,7 @@
                 }
             ],
             "is3D": true,
-            "isPrefab": false,
+            "isPrefab": true,
             "name": "Enemy Particles",
             "tag": 0
         }

@@ -207,6 +207,10 @@ function Start()
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
     footstepsParticle = Find("Zhib Footstep Particle")
+    jumpParticle = Find("Zhib Jump Particle")
+    if (jumpParticle ~= nil) then
+        jumpParticle:GetComponentParticle():StopParticleSpawn()
+    end
 
     -- Audio
     currentTrackID = -1
@@ -233,6 +237,11 @@ function Update(dt)
     if (bloodParticle ~= nil) then
         bloodParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+    end
+
+    if (jumpParticle ~= nil) then
+        jumpParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
+            componentTransform:GetPosition().y, componentTransform:GetPosition().z))
     end
 
     if GetVariable("GameState.lua", "zhibAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
@@ -804,6 +813,22 @@ function ManageTimers(dt)
         end
     end
 
+    if (jumpParticleTimer ~= nil) then
+        jumpParticleTimer = jumpParticleTimer + dt
+        if (jumpParticleTimer > 0.4 and hasSpawned == true) then
+            if (jumpParticle ~= nil) then
+                jumpParticle:GetComponentParticle():ResumeParticleSpawn()
+            end
+            hasSpawned = false
+        end
+        if (jumpParticleTimer > 1.0) then
+            if (jumpParticle ~= nil) then
+                jumpParticle:GetComponentParticle():StopParticleSpawn()
+            end
+            jumpParticleTimer = nil
+        end
+    end
+
     -- If he's dead he can't do anything
     if (currentState == State.DEAD or currentState == State.WORM) then
         ret = false
@@ -1148,6 +1173,8 @@ function CastUltimate(position)
                 return
             end
         else
+            jumpParticleTimer = 0.0
+            hasSpawned = true
             if (Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition()) <= ultimateCastRange) then
                 abilities.AbilityUltimate = AbilityStatus.Using
                 DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})

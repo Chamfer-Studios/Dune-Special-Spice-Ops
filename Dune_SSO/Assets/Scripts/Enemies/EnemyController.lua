@@ -781,10 +781,17 @@ function UpdateAnimation(dt, oldState, target)
     end
 end
 
-function UpdateParticles()
+function UpdateParticles(dt)
     if (slashParticle ~= nil) then
         slashParticle:GetTransform():SetPosition(float3.new(componentTransform:GetPosition().x,
             componentTransform:GetPosition().y + 23, componentTransform:GetPosition().z + 12))
+        if (slashParticleTimer ~= nil) then
+            slashParticleTimer = slashParticleTimer + dt
+            if (slashParticleTimer > 0.5) then
+                slashParticle:GetComponentParticle():StopParticleSpawn()
+                slashParticleTimer = nil
+            end
+        end
     end
 
     if (bloodParticle ~= nil) then
@@ -916,9 +923,7 @@ function Die(leaveBody, enemyName)
     end
 
     SwitchState(state, STATE.CORPSE)
-    if (slashParticle ~= nil) then
-        slashParticle:GetComponentParticle():StopParticleSpawn()
-    end
+
     if (bloodParticle ~= nil) then
         bloodParticle:GetComponentParticle():StopParticleSpawn()
     end
@@ -1000,6 +1005,7 @@ function EventHandler(key, fields)
             end
         elseif fields[1] == EnemyDeath.WEIRDING_WAY then
             SwitchState(state, STATE.DEAD)
+            slashParticleTimer = 0.0
             if (slashParticle ~= nil) then
                 slashParticle:GetComponentParticle():ResumeParticleSpawn()
             end
