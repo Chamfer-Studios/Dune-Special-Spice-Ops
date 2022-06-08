@@ -446,6 +446,8 @@ function Start()
     coneLight = gameObject:GetLight()
     componentRigidbody = gameObject:GetRigidBody()
     componentBoxCollider = gameObject:GetBoxCollider()
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1;
     componentAnimator = gameObject:GetParent():GetComponentAnimator()
     if (componentAnimator ~= nil) then
         if (static == true) then
@@ -766,12 +768,16 @@ function UpdateAnimation(dt, oldState, target)
                 end
             end
         elseif state == STATE.AGGRO then
-            if (thisType == "Harkonnen" or thisType == "Rabban") then
+            if (thisType == "Harkonnen") then 
                 AttackHarkonnen(currentClip)
             elseif (thisType == "Sardaukar") then
                 AttackSardaukar(currentClip)
+            elseif (thisType == "Rabban") then
+                AttackRabban(currentClip)
             end
         elseif componentAnimator:GetSelectedClip() ~= "Death" and state == STATE.DEAD then
+            trackList = {3,4,5}
+            ChangeTrack(trackList)
             componentAnimator:SetSelectedClip("Death")
         elseif componentAnimator:GetSelectedClip() == "Death" and state == STATE.DEAD and state ~= STATE.CORPSE and
             componentAnimator:IsCurrentClipPlaying() == false then
@@ -900,6 +906,10 @@ function Update(dt)
     elseif state == STATE.AGGRO then
         ClearDecoyTarget()
         if (not isAttacking) then
+            if(currentTrackID ~= 7) then
+                trackList = {7}
+                ChangeTrack(trackList)
+            end
             DispatchEvent(pathfinderFollowKey, {chaseSpeed, dt, false, false})
         end
     end
@@ -1203,12 +1213,17 @@ function AttackHarkonnen(currentClip)
         componentAnimator:SetSelectedClip("Attack")
         isAttacking = true
     elseif currentClip == "Attack" then
+        if(currentTrackID ~= 0 and currentTrackID ~= 1 and currentTrackID ~= 2) then
+            trackList = {0, 1, 2}
+            ChangeTrack(trackList)
+        end
         if (componentAnimator:IsCurrentClipPlaying() == false) then
             DispatchGlobalEvent("Enemy_Attack", {target["source"], thisType})
             componentAnimator:SetSelectedClip("AttackToIdle")
             attackTimer = 0
         end
     elseif currentClip == "AttackToIdle" then
+        currentTrackID = 7
         if componentAnimator:IsCurrentClipPlaying() == false then
             if (distance > attackRange) then
                 if (currentClip ~= "Run") then
@@ -1243,6 +1258,8 @@ function AttackSardaukar(currentClip)
             isAttacking = true
         elseif currentClip == "Ranged" then
             if (componentAnimator:IsCurrentClipPlaying() == false) then
+                trackList = {8,9}
+                ChangeTrack(trackList)
                 dartName = "SardaukarDart " .. gameObject:GetUID() .. " " .. dartCount * (-1) + 3
                 updateDartTarget = true
                 InstantiateNamedPrefab("SardaukarDart", dartName)
@@ -1263,6 +1280,10 @@ function AttackSardaukar(currentClip)
             componentAnimator:SetSelectedClip("Attack")
             isAttacking = true
         elseif currentClip == "Attack" then
+            if(currentTrackID ~= 0 and currentTrackID ~= 1 and currentTrackID ~= 2) then
+                trackList = {0, 1, 2}
+                ChangeTrack(trackList)
+            end
             if (componentAnimator:IsCurrentClipPlaying() == false) then
                 DispatchGlobalEvent("Enemy_Attack", {target["source"], "Sardaukar"})
                 componentAnimator:SetSelectedClip("AttackToIdle")
@@ -1288,6 +1309,57 @@ function AttackSardaukar(currentClip)
                 componentAnimator:SetSelectedClip("Run")
             end
         end
+    end
+end
+
+function AttackRabban(currentClip)
+    if currentClip ~= "Attack" and currentClip ~= "AttackToIdle" and attackTimer == nil and distance < attackRange then
+        componentAnimator:SetSelectedClip("Attack")
+        isAttacking = true
+    elseif currentClip == "Attack" then
+        trackList = {1}
+        ChangeTrack(trackList)
+        if (componentAnimator:IsCurrentClipPlaying() == false) then
+            DispatchGlobalEvent("Enemy_Attack", {target["source"], thisType})
+            componentAnimator:SetSelectedClip("AttackToIdle")
+            attackTimer = 0
+        end
+    elseif currentClip == "AttackToIdle" then
+        if componentAnimator:IsCurrentClipPlaying() == false then
+            if (distance > attackRange) then
+                if (currentClip ~= "Run") then
+                    componentAnimator:SetSelectedClip("Run")
+                end
+            else
+                componentAnimator:SetSelectedClip("Idle")
+            end
+            isAttacking = false
+        end
+    elseif (isWalking == false) then
+        if (currentClip ~= "Idle") then
+            componentAnimator:SetSelectedClip("Idle")
+        end
+    else
+        if (currentClip ~= "Run") then
+            componentAnimator:SetSelectedClip("Run")
+        end
+    end
+end
+
+function ChangeTrack(_trackList)
+    size = 0
+    for i in pairs(_trackList) do
+        size = size + 1
+    end
+
+    index = math.random(size)
+
+    if (componentSwitch ~= nil) then
+        if (currentTrackID ~= -1) then
+            componentSwitch:StopTrack(currentTrackID)
+        end
+        currentTrackID = _trackList[index]
+        componentSwitch:PlayTrack(currentTrackID)
     end
 end
 

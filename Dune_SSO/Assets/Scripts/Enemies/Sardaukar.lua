@@ -23,6 +23,9 @@ currentState = STATE.UNAWARE
 
 function Start()
     DispatchEvent("Assign_Type", {"Sardaukar"})
+    componentSwitch = gameObject:GetAudioSwitch()
+    currentTrackID = -1;
+
 end
 
 function Update(dt)
@@ -105,7 +108,7 @@ function EventHandler(key, fields)
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the UNAWARE SARDAUKAR enemy has dodged the knife :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
@@ -119,7 +122,7 @@ function EventHandler(key, fields)
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the AWARE SARDAUKAR enemy has dodged the knife :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
@@ -133,7 +136,7 @@ function EventHandler(key, fields)
                     Log("Knife's D100 roll has been " .. rng ..
                             " so the AGGRO SARDAUKAR enemy has dodged the knife :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             end
@@ -214,7 +217,7 @@ function EventHandler(key, fields)
                     Log("Dart's D100 roll has been " .. rng ..
                             " so the UNAWARE SARDAUKAR enemy has dodged the dart :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.SUS) then
@@ -227,7 +230,7 @@ function EventHandler(key, fields)
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AWARE SARDAUKAR enemy has dodged the dart :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             elseif (currentState == STATE.AGGRO) then
@@ -240,7 +243,7 @@ function EventHandler(key, fields)
                 else
                     Log("Dart's D100 roll has been " .. rng .. " so the AGGRO SARDAUKAR enemy has dodged the dart :( \n")
                     DispatchEvent("Missed", {})
-                    trackList = {1}
+                    trackList = {6}
                     ChangeTrack(trackList)
                 end
             end

@@ -529,14 +529,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {0}
+        trackList = {16}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {1}
+        trackList = {17}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -552,7 +552,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            trackList = {0}
+            trackList = {16}
             ChangeTrack(trackList)
         end
         if (componentAnimator ~= nil) then
@@ -773,7 +773,7 @@ function ManageTimers(dt)
                     componentBoxCollider:UpdateIsTrigger()
                 end
 
-                trackList = {8, 13}
+                trackList = {11, 12}
                 ChangeTrack(trackList)
 
                 componentRigidBody:SetUseGravity(true)
@@ -973,7 +973,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    trackList = {4, 10}
+    trackList = {0, 1}
     ChangeTrack(trackList)
 
     attackTimer = 0.0
@@ -1053,7 +1053,7 @@ function DoPrimary()
         -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
-    trackList = {5, 11}
+    trackList = {6, 7}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
@@ -1129,7 +1129,7 @@ function DoSecondary()
 
     decoyCount = decoyCount - 1
 
-    trackList = {6}
+    trackList = {8}
     ChangeTrack(trackList)
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
@@ -1182,7 +1182,7 @@ function CastUltimate(position)
                 iFramesTimer = 0.0
                 StopMovement(false)
 
-                trackList = {7, 12}
+                trackList = {9, 10}
                 ChangeTrack(trackList)
 
                 LookAtTarget(target:GetTransform():GetPosition())
@@ -1264,7 +1264,7 @@ function DoUltimate()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
 
-    trackList = {9, 14}
+    trackList = {13, 14}
     ChangeTrack(trackList)
 
     -- Add as reappear position the position from the last enemy who's gonna die
@@ -1312,7 +1312,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2}
+        trackList = {2, 3, 4}
         ChangeTrack(trackList)
     else
         currentHP = 0
@@ -1331,7 +1331,7 @@ function Die()
     end
 
     if (currentTrackID ~= 3) then
-        trackList = {3}
+        trackList = {5}
         ChangeTrack(trackList)
     end
 

@@ -518,14 +518,14 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {0}
+        trackList = {8}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {1}
+        trackList = {9}
         ChangeTrack(trackList)
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
@@ -540,7 +540,7 @@ function SetMovement(newMovement)
         end
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
-        trackList = {0}
+        trackList = {8}
         ChangeTrack(trackList)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -976,7 +976,7 @@ function CastPrimary()
                     componentAnimator:SetSelectedClip("Point")
                     StopMovement(false)
 
-                    trackList = {4}
+                    trackList = {4, 5, 6}
                     ChangeTrack(trackList)
 
                     if (target ~= gameObject) then
@@ -1048,7 +1048,7 @@ function CastSecondary()
                 componentAnimator:SetSelectedClip("Point")
                 StopMovement(false)
 
-                trackList = {4}
+                trackList = {4, 5, 6}
                 ChangeTrack(trackList)
 
                 LookAtTarget(target:GetTransform():GetPosition())
@@ -1129,7 +1129,7 @@ function CastUltimate()
 
                 LookAtTarget(target:GetTransform():GetPosition())
 
-                trackList = {4}
+                trackList = {4, 5, 6}
                 ChangeTrack(trackList)
             end
         else
@@ -1194,7 +1194,7 @@ function RecastUltimate(isAlreadyCasted)
 
             LookAtTarget(target)
 
-            trackList = {4}
+            trackList = {4, 5, 6}
             ChangeTrack(trackList)
 
             ultimateTimer = 0.0
@@ -1243,7 +1243,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2}
+        trackList = {0, 1, 2}
         ChangeTrack(trackList)
     else
         currentHP = 0
@@ -1324,7 +1324,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {5}
+        trackList = {7}
         ChangeTrack(trackList)
     elseif (key == "Spit_Heal_Hit") then
         if (currentCharges >= primaryChargeCost) then

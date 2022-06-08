@@ -622,7 +622,7 @@
                                                     ],
                                                     "rotation": [
                                                         0.017121700569987297,
-                                                        -0.0027152560651302338,
+                                                        -0.0027152360416948795,
                                                         -0.006756574846804142,
                                                         0.9998269081115723
                                                     ],
@@ -685,15 +685,15 @@
                                         -3.9413599967956543
                                     ],
                                     "rotation": [
-                                        0.02254626527428627,
-                                        0.01746111735701561,
-                                        0.01680898293852806,
-                                        0.9994519948959351
+                                        0.02254657819867134,
+                                        0.01746143028140068,
+                                        0.016809280961751938,
+                                        0.9994519352912903
                                     ],
                                     "scale": [
-                                        0.9999751448631287,
+                                        0.9999746084213257,
                                         0.9999811053276062,
-                                        0.9999819993972778
+                                        0.9999816417694092
                                     ],
                                     "type": 21
                                 }
@@ -797,11 +797,11 @@
                                                     "rotation": [
                                                         0.6777206063270569,
                                                         -0.00954693928360939,
-                                                        0.0009200727217830718,
+                                                        0.0009200442000292242,
                                                         0.7352569699287415
                                                     ],
                                                     "scale": [
-                                                        0.999934732913971,
+                                                        0.9999296069145203,
                                                         1.0,
                                                         1.0
                                                     ],
@@ -865,7 +865,7 @@
                                         -0.020205974578857422
                                     ],
                                     "scale": [
-                                        1.0001285076141357,
+                                        1.000138759613037,
                                         1.0000139474868774,
                                         1.0
                                     ],
@@ -952,9 +952,9 @@
                 {
                     "active": true,
                     "position": [
-                        -1526.3253173828125,
-                        -0.00016345977201126516,
-                        107.6223373413086
+                        -1577.3343505859375,
+                        0.0006381954299286008,
+                        603.5219116210938
                     ],
                     "rotation": [
                         0.0,
@@ -1130,6 +1130,7 @@
                 {
                     "active": true,
                     "ambientValue": 0.0,
+                    "castShadows": false,
                     "constantAttenuationValue": 1.0,
                     "cutOffAngle": 0.8191520571708679,
                     "diffuseValue": 0.800000011920929,
@@ -1144,15 +1145,154 @@
                         -1.0
                     ],
                     "lightPosition": [
-                        -1526.3253173828125,
-                        -0.00016345977201126516,
-                        107.6223373413086
+                        -1577.3343505859375,
+                        0.0006381954299286008,
+                        603.5219116210938
                     ],
                     "linearAttenuationValue": 0.0,
                     "quadraticAttenuationValue": 0.0,
                     "sourceType": 2,
                     "specularValue": 0.0,
                     "type": 19
+                },
+                {
+                    "active": true,
+                    "fade_time": 2.0,
+                    "offset_sync": false,
+                    "total_tracks": 10,
+                    "tracks": [
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_attack_1_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_attack_2_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_attack_3_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_death_1_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_death_2_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_death_3_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Generic/generic_enemy_dodge_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Generic/generic_enemy_aware_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_knife_throw_1_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        },
+                        {
+                            "bypass": false,
+                            "custom_loop": false,
+                            "loop": false,
+                            "loop_offset": 0.0,
+                            "mute": false,
+                            "offset": 0.0,
+                            "pan": 0.0,
+                            "play_on_start": false,
+                            "track_path": "Assets/Audio/SFX/Sardaukar/sardaukar_knife_throw_2_fx.wav",
+                            "transpose": 1.0,
+                            "volume": 100.0
+                        }
+                    ],
+                    "type": 11
                 }
             ],
             "is3D": true,
@@ -3009,7 +3149,7 @@
                     "clipDuration": 15.0,
                     "clipDurationInSeconds": 0.625,
                     "clipEndFrame": 360.0,
-                    "clipFinished": true,
+                    "clipFinished": false,
                     "clipLoop": true,
                     "clipName": "Run",
                     "clipStartFrame": 345.0,
