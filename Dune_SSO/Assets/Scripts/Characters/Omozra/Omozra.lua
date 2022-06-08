@@ -77,7 +77,7 @@ currentCharges = maxCharges
 
 -- Primary ability --
 primaryCastRange = 225
-primaryChargeCost = 6
+primaryChargeCost = 3
 primaryHealAmount = 1
 
 -- Secondary ability --
@@ -1302,8 +1302,7 @@ function EventHandler(key, fields)
             -- If game changed to omozra, update HUD events depending on Abilities
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
             -- Log("Omozra: Primary = " .. abilities.AbilityPrimary .. "\n")
-            DispatchGlobalEvent("Player_Ability",
-                {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryTimer})
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             -- Log("Omozra: Secondary = " .. abilities.AbilitySecondary .. "\n")
             DispatchGlobalEvent("Player_Ability",
                 {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
@@ -1329,6 +1328,14 @@ function EventHandler(key, fields)
             DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
         end
 
+        if currentCharges >= secondaryChargeCost then
+            abilities.AbilitySecondary = AbilityStatus.Normal
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        else
+            abilities.AbilitySecondary = AbilityStatus.Disabled
+            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+        end
+
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
                 currentHP = currentHP + primaryHealAmount
@@ -1343,12 +1350,20 @@ function EventHandler(key, fields)
             end
         end
     elseif key == "Sadiq_Update_Target" then
-        if fields[2] == 2 then
-            if (currentCharges >= secondaryChargeCost) then
+        if fields[2] == 2 or fields[2] == 4 then
+            if (currentCharges >= primaryChargeCost) then
+                abilities.AbilityPrimary = AbilityStatus.Normal
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            else
+                abilities.AbilityPrimary = AbilityStatus.Disabled
+                DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
+            end
+
+            if currentCharges >= secondaryChargeCost then
                 abilities.AbilitySecondary = AbilityStatus.Normal
                 DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             else
-                abilities.AbilityPrimary = AbilityStatus.Disabled
+                abilities.AbilitySecondary = AbilityStatus.Disabled
                 DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
             end
         end
