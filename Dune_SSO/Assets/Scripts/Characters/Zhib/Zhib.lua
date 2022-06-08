@@ -565,23 +565,20 @@ function CancelAbilities(onlyAbilities)
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Ultimate, abilities.AbilityUltimate})
     end
 
-    if (currentMovement == Movement.IDLE and componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("Idle")
-    elseif (currentMovement == Movement.IDLE_CROUCH and componentAnimator ~= nil) then
-        componentAnimator:SetSelectedClip("IdleCrouch")
-    end
-
     if (onlyAbilities == nil) then
+        if componentAnimator ~= nil then
+            if (currentMovement == Movement.IDLE_CROUCH) then
+                componentAnimator:SetSelectedClip("IdleCrouch")
+            else
+                componentAnimator:SetSelectedClip("Idle")
+            end
+        end
         if (currentState ~= State.WORM) then
             SetState(State.IDLE)
         end
-    end
-
-    StopMovement()
-    if (currentMovement == Movement.IDLE_CROUCH) then
-        componentAnimator:SetSelectedClip("IdleCrouch")
+        StopMovement()
     else
-        componentAnimator:SetSelectedClip("Idle")
+        StopMovement(false)
     end
 end
 
