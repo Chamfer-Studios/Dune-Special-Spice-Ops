@@ -23,7 +23,7 @@ mouseBottomIn = true
 mouseLeftIn = true
 mouseRightIn = true
 
-camSensitivity = 1.2
+camSensitivity = 0.2
 lastDeltaX = 0
 --resetOffset = 1;
 --currentTarget = float3.new(0, 0, 0)
@@ -269,38 +269,45 @@ function Update(dt)
     if  (GetInput(14) == KEY_STATE.KEY_REPEAT) then -- Q
         local newQuat = Quat.new(float3.new(0, 1, 0), -0.0174533)
         offset = MulQuat(newQuat, offset) 
+        newZoomedPos = MulQuat(newQuat, newZoomedPos) 
     end
     if  (GetInput(15) == KEY_STATE.KEY_REPEAT) then -- E
         local newQuat = Quat.new(float3.new(0, 1, 0), 0.0174533)
         offset = MulQuat(newQuat, offset)
+        newZoomedPos = MulQuat(newQuat, newZoomedPos) 
+
     end
     
     if(GetMouseMotionX() > 0 and GetInput(2) == KEY_STATE.KEY_REPEAT )then
         xMotion = GetMouseMotionX()
         newDeltaX = xMotion * camSensitivity -- camera sensitivity
-        deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
+        deltaX = newDeltaX + 0.8 * (lastDeltaX - newDeltaX)
         lastDeltaX = deltaX
         finalDelta = deltaX * dt
         --str = finalDelta .. "\n"
         local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
         offset = MulQuat(newQuat, offset)
+        newZoomedPos = MulQuat(newQuat, newZoomedPos) 
         --str2 = "Offset X" .. offset.x .. "\n"
         --Log(str2)
+        xMotion = 0
     end
 
     if(GetMouseMotionX() < 0 and GetInput(2) == KEY_STATE.KEY_REPEAT) then
         xMotion = GetMouseMotionX()
         newDeltaX = xMotion * camSensitivity -- camera sensitivity
-        deltaX = newDeltaX + 0.95 * (lastDeltaX - newDeltaX)
+        deltaX = newDeltaX + 0.8 * (lastDeltaX - newDeltaX)
         lastDeltaX = deltaX
         finalDelta = deltaX * dt
         --str = finalDelta .. "\n"
         local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
         offset = MulQuat(newQuat, offset)
+        newZoomedPos = MulQuat(newQuat, newZoomedPos) 
         --Log(str)
 
         --str2 = "Offset X" .. offset.x .. "\n"
         --Log(str2)
+        xMotion = 0
     end
 
     --Log("panning " .. xPanning .. " " .. zPanning .. "\n")
