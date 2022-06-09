@@ -17,10 +17,15 @@ borderXPositive = 2190
 borderZNegative = -1900
 borderZPositive = 1350
 
-borderXNegative2 = -2000
-borderXPositive2 = 2190
-borderZNegative2 = -1900
-borderZPositive2 = 1350
+borderXNegative1 = -2000
+borderXPositive1 = 2190
+borderZNegative1 = -1900
+borderZPositive1 = 1350
+
+borderXNegative2 = -1900
+borderXPositive2 = 1880
+borderZNegative2 = -900
+borderZPositive2 = 1075
 
 cursorMargin = 25
 mouseTopIn = true
@@ -36,6 +41,7 @@ closestY = -100.0
 furthestY = 2000.0
 rayCastCulling = {}
 local freePanningDebug
+isStarting = true
 --use the fokin start
 
 function Float3Length(v)
@@ -123,12 +129,31 @@ end
 
 function Start()
     --Put the position of the selected character inside variable target
+
     freePanningDebug = true
     GetSelectedCharacter()
+
 end
 
 function Update(dt)
-
+    if(isStarting == true) then
+        level = GetVariable("GameState.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        if level == 1 then
+            borderXNegative = borderXNegative1
+            borderXPositive = borderXPositive1
+            borderZNegative = borderZNegative1
+            borderZPositive = borderZPositive1
+            --Log("Level 1")
+        elseif level == 2 then
+            borderXNegative = borderXNegative2
+            borderXPositive = borderXPositive2
+            borderZNegative = borderZNegative2
+            borderZPositive = borderZPositive2
+            --Log("Level 2")
+        end
+        --Log("Level xD")
+        isStarting = false
+    end
     
     --str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
     --Log(str)
@@ -286,8 +311,8 @@ function Update(dt)
 
         panning = Float3Sum(Float3Mult(right, panning.x), Float3Mult(front, panning.z))
 
-        str = "Front Normalized: " .. tostring(panning) .. "\n"
-        Log(str)
+        --str = "Front Normalized: " .. tostring(panning) .. "\n"
+        --Log(str)
 
         if (target.z >= borderZPositive and panning.z > 0) then
             panning = float3.new(0, 0, 0)
@@ -326,19 +351,20 @@ function Update(dt)
     gameObject:GetCamera():LookAt(target)
 
     if componentTransform:GetPosition() ~= lastFinalPos then
-        for i=1, #rayCastCulling do
-            rayCastCulling[i].active = true
-        end
-        if #rayCastCulling > 0 then
-            rayCastCulling = {}
-        end
-        rayCastCulling = CustomRayCastList(finalPos, target, {Tag.UNTAGGED, Tag.WALL})
-        for j=1, #rayCastCulling do
-            rayCastCulling[j].active = false
-        end
+    for i=1, #rayCastCulling do
+        rayCastCulling[i].active = true
     end
+    if #rayCastCulling > 0 then
+        rayCastCulling = {}
+    end
+    rayCastCulling = CustomRayCastList(finalPos, target, {Tag.UNTAGGED, Tag.WALL})
+    for j=1, #rayCastCulling do
+        rayCastCulling[j].active = false
+    end
+    
     --1st iteration use look at to center at characters
     
+end
 end
 
 function EventHandler(key, fields) --funcion virtual que recibe todos los eventos que se componen de una key y unos fields. la cosa esta en especificar la key (quees el evento) 
