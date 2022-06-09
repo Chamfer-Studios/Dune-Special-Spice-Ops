@@ -130,8 +130,8 @@ end
 function Update(dt)
 
     
-    str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
-    Log(str)
+    --str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
+    --Log(str)
     local lastFinalPos = componentTransform:GetPosition()
     --input: mouse wheel to zoom in and out
     -- local?
@@ -253,12 +253,9 @@ function Update(dt)
         deltaX = newDeltaX + 0.8 * (lastDeltaX - newDeltaX)
         lastDeltaX = deltaX
         finalDelta = deltaX * dt
-        --str = finalDelta .. "\n"
         local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
         offset = MulQuat(newQuat, offset)
         newZoomedPos = MulQuat(newQuat, newZoomedPos) 
-        --str2 = "Offset X" .. offset.x .. "\n"
-        --Log(str2)
         xMotion = 0
     end
 
@@ -268,21 +265,11 @@ function Update(dt)
         deltaX = newDeltaX + 0.8 * (lastDeltaX - newDeltaX)
         lastDeltaX = deltaX
         finalDelta = deltaX * dt
-        --str = finalDelta .. "\n"
         local newQuat = Quat.new(float3.new(0, 1, 0), finalDelta)
         offset = MulQuat(newQuat, offset)
         newZoomedPos = MulQuat(newQuat, newZoomedPos) 
-        --Log(str)
-
-        --str2 = "Offset X" .. offset.x .. "\n"
-        --Log(str2)
         xMotion = 0
     end
-
-    --Log("panning " .. xPanning .. " " .. zPanning .. "\n")
-
-    --input: click mouse wheel to orbit the camera
-    --TODO
     
     -- modify target with the camera panning
     if (freePanningDebug == true) then
