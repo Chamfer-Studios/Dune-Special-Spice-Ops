@@ -7,9 +7,11 @@ NewVariable(nameIV)
 
 -- Called each loop iteration
 function Update(dt)
-	if (gameObject:GetButton():IsPressed() == true) then
-		-- gameObject:LoadScene("HUD_Scene")
-		gameObject:ChangeScene(true, name);
+	if (gameObject.active == true) then
+		if (gameObject:GetButton():IsPressed() == true) then
+			-- gameObject:LoadScene("HUD_Scene")
+			gameObject:ChangeScene(true, name);
+		end
 	end
 end
 
