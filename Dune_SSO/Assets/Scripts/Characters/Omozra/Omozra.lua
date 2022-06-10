@@ -1265,7 +1265,7 @@ function Die()
         ChangeTrack(trackList)
     end
 
-    DispatchGlobalEvent("Player_Death", {characterID})
+    SetVariable(0, "GameState.lua", "gameOverTimer", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
 --------------------------------------------------
 

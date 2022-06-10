@@ -9,26 +9,26 @@
         {
             "active": true,
             "position": [
-                -1558.3626708984375,
-                0.0,
-                1033.0723876953125
+                1076.1182861328125,
+                36.62047576904297,
+                592.7979736328125
             ],
             "rotation": [
                 0.0,
+                0.32474184036254883,
                 0.0,
-                0.0,
-                1.0
+                0.9458026885986328
             ],
             "scale": [
+                1.2830045223236084,
                 1.0,
-                1.0,
-                1.0
+                0.9996523261070251
             ],
             "type": 21
         },
         {
             "active": true,
-            "body_type": "Dynamic",
+            "body_type": "Static",
             "freeze_position_x": false,
             "freeze_position_y": false,
             "freeze_position_z": false,
@@ -49,9 +49,9 @@
             "filter": "",
             "is_trigger": true,
             "scale_factor": [
-                69.0,
-                26.200000762939453,
-                8.600000381469727
+                51.0,
+                15.829999923706055,
+                21.799999237060547
             ],
             "type": 7
         },
@@ -64,7 +64,7 @@
                 {
                     "name": "sceneName",
                     "type": "string",
-                    "value": "default_level"
+                    "value": "SceneWin"
                 }
             ],
             "type": 5
