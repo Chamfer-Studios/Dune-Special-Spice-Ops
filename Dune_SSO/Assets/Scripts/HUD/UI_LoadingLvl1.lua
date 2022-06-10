@@ -9,7 +9,6 @@ function Update(dt)
     end
     if os.time() >= endTime then
         gameObject:ChangeScene(true, "SceneTutorial_new")
-        print("here")
     end
 end
     
