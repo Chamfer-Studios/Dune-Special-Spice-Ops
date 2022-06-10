@@ -7,9 +7,9 @@ nameIV = InspectorVariable.new("name", nameIVT, name)
 NewVariable(nameIV)
 
 -- Called each loop iteration
-function Update(dt)
+function UpdateUI(dt)
 	if (isStarting == true) then
-		child = gameObject:GetParent():GetChild(name)
+		child = gameObject:GetParent():GetParent():GetParent():GetChild(name)
 		child:Active(false)
 		isStarting = false
 	end
@@ -17,10 +17,7 @@ function Update(dt)
 		if (popUp == false) then
 			popUp = true
 			child:Active(true)
-			
-		elseif (popUp == true) then
-			popUp = false
-			child:Active(false)
+			gameObject:GetParent():GetChild("Background"):Active(false)
 		end
 	end
 end

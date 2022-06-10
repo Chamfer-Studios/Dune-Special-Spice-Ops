@@ -1,4 +1,3 @@
--- player = Find("Character")
 name = "Level_1"
 
 local nameIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_STRING
@@ -9,8 +8,15 @@ NewVariable(nameIV)
 function Update(dt)
 	if (gameObject.active == true) then
 		if (gameObject:GetButton():IsPressed() == true) then
-			-- gameObject:LoadScene("HUD_Scene")
-			gameObject:ChangeScene(true, name);
+			gameObject:ChangeScene(true, name)
+		end
+	end
+end
+
+function UpdateUI(dt)
+	if (gameObject.active == true) then
+		if (gameObject:GetButton():IsPressed() == true) then
+			gameObject:ChangeScene(true, name)
 		end
 	end
 end

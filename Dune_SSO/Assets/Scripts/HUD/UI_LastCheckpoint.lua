@@ -1,6 +1,6 @@
 
 -- Called each loop iteration
-function Update(dt)
+function UpdateUI(dt)
 	if (gameObject.active == true) then
         if (gameObject:GetButton():IsPressed() == true) then
             DispatchGlobalEvent("Last_Checkpoint", {true})
