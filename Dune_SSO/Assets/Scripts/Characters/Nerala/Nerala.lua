@@ -582,6 +582,8 @@ function CancelAbilities(onlyAbilities)
     end
 end
 
+isHoveringEnemy = nil
+lastEnemyTarget = nil
 function DrawHoverParticle()
     if (choosingTargetParticle == nil) then
         do
@@ -601,7 +603,13 @@ function DrawHoverParticle()
             end
             choosingTargetParticle:GetComponentParticle():SetColor(255, 0, 255, 255)
             finalPosition = float3.new(t.x, t.y + 1, t.z)
+            lastEnemyTarget = drawingTarget
+            if isHoveringEnemy ~= nil then
+                DispatchGlobalEvent("Not_Hovering_Enemy", {lastEnemyTarget})
+                isHoveringEnemy = nil
+            end
         elseif (currentState == State.AIM_PRIMARY and drawingTarget.tag == Tag.ENEMY) then
+            lastEnemyTarget = drawingTarget
             local dist = Distance3D(drawingTarget:GetTransform():GetPosition(), componentTransform:GetPosition())
             if (currentState == State.AIM_PRIMARY and dist <= primaryCastRange) then
                 choosingTargetParticle:GetComponentParticle():SetColor(0, 255, 0, 255)
@@ -610,6 +618,13 @@ function DrawHoverParticle()
             end
             finalPosition = drawingTarget:GetTransform():GetPosition()
             finalPosition.y = finalPosition.y + 1
+
+            if isHoveringEnemy == nil then
+                if currentState == State.AIM_PRIMARY then
+                    DispatchGlobalEvent("Hovering_Enemy", {drawingTarget, "Knife"})
+                end
+                isHoveringEnemy = true
+            end
         elseif ((currentState == State.AIM_SECONDARY or currentState == State.AIM_ULTIMATE) and drawingTarget.tag ==
             Tag.FLOOR) then
             local mouseClick = GetLastMouseClick()
@@ -624,7 +639,14 @@ function DrawHoverParticle()
             -- This is only 1 instead of mouseClick.y + 1 because if hovering game objects with height like characters, the hovering particle will go up
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
+            if isHoveringEnemy ~= nil then
+                Log("Sending is not hovering event\n")
+                DispatchGlobalEvent("Not_Hovering_Enemy", {lastEnemyTarget})
+                isHoveringEnemy = nil
+            end
+
             choosingTargetParticle:GetComponentParticle():StopParticleSpawn()
+
             do
                 return
             end
@@ -643,19 +665,19 @@ function DrawActiveAbilities()
             if (abilities.AbilityPrimary == AbilityStatus.Active) then
                 componentLight:SetRange(primaryCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.3)
             elseif (abilities.AbilitySecondary == AbilityStatus.Active) then
                 componentLight:SetRange(secondaryCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.3)
             elseif (abilities.AbilityUltimate == AbilityStatus.Active) then
                 componentLight:SetRange(ultimateCastRange)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.2)
+                componentLight:SetDiffuse(0.3)
             elseif (abilities.AbilityUltimate == AbilityStatus.Using) then
                 componentLight:SetRange(ultimateMaxDistance)
                 componentLight:SetAngle(360 / 2)
-                componentLight:SetDiffuse(0.1)
+                componentLight:SetDiffuse(0.2)
             else
                 componentLight:SetAngle(0)
             end
