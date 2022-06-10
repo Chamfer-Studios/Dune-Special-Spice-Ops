@@ -4499,6 +4499,20 @@
                                     "idleTexture": "Assets/New UI/button_a_default.png",
                                     "pressedTexture": "Assets/New UI/button_a_pressed.png",
                                     "type": 15
+                                },
+                                {
+                                    "active": true,
+                                    "async": false,
+                                    "file_name": "Assets/Scripts/HUD/UI_ChangeScenes.lua",
+                                    "id": 802331395,
+                                    "inspector_variables": [
+                                        {
+                                            "name": "name",
+                                            "type": "string",
+                                            "value": "SceneLoading"
+                                        }
+                                    ],
+                                    "type": 5
                                 }
                             ],
                             "is3D": false,

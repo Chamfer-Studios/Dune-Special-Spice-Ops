@@ -8,7 +8,7 @@ function Update(dt)
         isStarting = false
     end
     if os.time() >= endTime then
-        gameObject:ChangeScene(true, "SceneMainMenu")
+        gameObject:ChangeScene(true, "SceneTutorial_new")
         print("here")
     end
 end
