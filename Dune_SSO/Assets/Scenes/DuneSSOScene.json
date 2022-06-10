@@ -234,8 +234,8 @@
                             0.0
                         ],
                         "size": [
-                            1920.0,
-                            1080.0
+                            960.0,
+                            540.0
                         ],
                         "type": 22
                     },
@@ -288,6 +288,7 @@
                     },
                     {
                         "active": true,
+                        "async": false,
                         "file_name": "Assets/Scripts/Intro/IntroTransitionEnd.lua",
                         "id": 1668170532,
                         "type": 5
@@ -336,14 +337,10 @@
                     },
                     {
                         "active": true,
+                        "async": false,
                         "file_name": "Assets/Scripts/Intro/IntroTransitionBegin.lua",
                         "id": 547779835,
                         "inspector_variables": [
-                            {
-                                "name": "",
-                                "type": "string",
-                                "value": ""
-                            },
                             {
                                 "name": "transitionTo",
                                 "type": "string",
