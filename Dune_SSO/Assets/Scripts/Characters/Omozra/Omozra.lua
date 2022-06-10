@@ -458,22 +458,6 @@ function Update(dt)
         MoveToDestination(dt)
         hasToMove = false
     end
-
-    if abilities.AbilityPrimary == AbilityStatus.Using then
-        isUsingQ = true
-    else
-        isUsingQ = false
-    end
-    if abilities.AbilitySecondary == AbilityStatus.Using then
-        isUsingW = true
-    else
-        isUsingW = false
-    end
-    if abilities.AbilityUltimate == AbilityStatus.Using then
-        isUsingE = true
-    else
-        isUsingE = false
-    end
 end
 
 --------------------------------------------------

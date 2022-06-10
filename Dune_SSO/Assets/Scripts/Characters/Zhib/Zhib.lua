@@ -68,9 +68,6 @@ recoveryTime = 7
 staminaTimer = staminaSeconds
 standingStaminaMultiplier = 1.5
 isTired = false
-isUsingQ = false
-isUsingW = false
-isUsingE = false
 
 -- Basic Attack --
 attackRange = 25.0
@@ -478,22 +475,6 @@ function Update(dt)
     if (hasToMove == true and destination ~= nil) then
         MoveToDestination(dt)
         hasToMove = false
-    end
-
-    if abilities.AbilityPrimary == AbilityStatus.Using then
-        isUsingQ = true
-    else
-        isUsingQ = false
-    end
-    if abilities.AbilitySecondary == AbilityStatus.Using then
-        isUsingW = true
-    else
-        isUsingW = false
-    end
-    if abilities.AbilityUltimate == AbilityStatus.Using then
-        isUsingE = true
-    else
-        isUsingE = false
     end
 end
 --------------------------------------------------
