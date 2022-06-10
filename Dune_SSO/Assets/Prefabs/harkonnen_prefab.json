@@ -1359,7 +1359,7 @@
                         {
                             "name": "visionConeRadius",
                             "type": "int",
-                            "value": 200
+                            "value": 170
                         },
                         {
                             "name": "hearingRange",
@@ -1415,11 +1415,11 @@
                     "castShadows": false,
                     "constantAttenuationValue": 1.0,
                     "cutOffAngle": 0.8660253882408142,
-                    "diffuseValue": 1.0,
+                    "diffuseValue": 0.4000000059604645,
                     "lightColor": [
-                        0.0,
-                        0.4000000059604645,
-                        0.0
+                        0.10000000149011612,
+                        0.6000000238418579,
+                        1.0
                     ],
                     "lightDirection": [
                         0.0,
