@@ -68,7 +68,7 @@
                         "sCullingRadius": 499,
                         "sphere_culling": false,
                         "type": 4,
-                        "vertical_fov": 585.0
+                        "vertical_fov": 1000.0
                     }
                 ],
                 "is3D": true,
@@ -1347,7 +1347,7 @@
                             0.5
                         ],
                         "position": [
-                            232.0,
+                            306.0,
                             98.0
                         ],
                         "rotation": [
@@ -1377,12 +1377,12 @@
                             {
                                 "name": "rightPos",
                                 "type": "int",
-                                "value": 400
+                                "value": 460
                             },
                             {
                                 "name": "leftPos",
                                 "type": "int",
-                                "value": 75
+                                "value": 160
                             }
                         ],
                         "type": 5
@@ -1391,7 +1391,7 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "MV Button",
-                "parent_UID": 2055808393,
+                "parent_UID": 255768270,
                 "tag": 0
             },
             {
