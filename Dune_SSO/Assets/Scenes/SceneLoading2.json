@@ -1,5 +1,5 @@
 {
-    "SceneLoading": {
+    "SceneLoading2": {
         "active": true,
         "draw_skybox": true,
         "game_objects_amount": 12,
@@ -68,7 +68,7 @@
                         "sCullingRadius": 499,
                         "sphere_culling": false,
                         "type": 4,
-                        "vertical_fov": 1000.0
+                        "vertical_fov": 585.0
                     }
                 ],
                 "is3D": true,
@@ -250,13 +250,6 @@
                         "active": true,
                         "texture": "Assets/UI/Menu UI/main_menu.png",
                         "type": 14
-                    },
-                    {
-                        "active": true,
-                        "async": false,
-                        "file_name": "Assets/Scripts/HUD/UI_LoadingLvl1.lua",
-                        "id": 1812871860,
-                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -567,7 +560,7 @@
                 "tag": 0
             }
         ],
-        "name": "SceneLoading",
+        "name": "SceneLoading2",
         "navmesh": {
             "basic": {
                 "areas": [

@@ -18,6 +18,7 @@ function UpdateUI(dt)
 		if (gameObject:GetButton():IsPressed() == true) then
 			gameObject:ChangeScene(true, name)
 		end
+		ToggleRuntime()
 	end
 end
 
