@@ -718,7 +718,7 @@ function ManageTimers(dt)
     end
 
     if (currentState == State.AIM_PRIMARY) then
-        DispatchGlobalEvent("Omozra_Primary", {})
+        SetVariable(true, "GameState.lua", "omozraPrimary", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
     end
 
     -- Secondary ability cooldown
@@ -741,7 +741,7 @@ function ManageTimers(dt)
         end
     end
     if (currentState == State.AIM_ULTIMATE) then
-        DispatchGlobalEvent("Omozra_Ultimate", {})
+        SetVariable(true, "GameState.lua", "omozraUltimate", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
     end
 
     -- Animation timer
