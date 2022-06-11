@@ -287,6 +287,13 @@
                         "idleTexture": "Assets/New UI/button_a_default.png",
                         "pressedTexture": "Assets/New UI/button_a_pressed.png",
                         "type": 15
+                    },
+                    {
+                        "active": true,
+                        "async": false,
+                        "file_name": "Assets/Scripts/HUD/UI_ContinueGame.lua",
+                        "id": 1687598347,
+                        "type": 5
                     }
                 ],
                 "is3D": false,

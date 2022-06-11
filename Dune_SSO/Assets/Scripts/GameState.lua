@@ -250,6 +250,9 @@ function EventHandler(key, fields)
 end
 
 function SaveGame()
+
+    SetGameJsonInt("level_progression", levelNumber)
+
     SetGameJsonInt("spice", spiceAmount)
 
     -- Zhib Save
