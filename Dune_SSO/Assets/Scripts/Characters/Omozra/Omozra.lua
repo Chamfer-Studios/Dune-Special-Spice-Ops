@@ -316,7 +316,7 @@ function Update(dt)
     end
 
     -- Gather Inputs
-    if (isSelected == true) then
+    if (isSelected == true and isDialogueOpen == false) then
 
         UpdateStamina()
 
