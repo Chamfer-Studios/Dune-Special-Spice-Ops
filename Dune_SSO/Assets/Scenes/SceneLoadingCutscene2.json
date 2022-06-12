@@ -260,7 +260,7 @@
                             {
                                 "name": "name",
                                 "type": "string",
-                                "value": "SceneTransition"
+                                "value": "CutsceneLevel1Level2"
                             }
                         ],
                         "type": 5

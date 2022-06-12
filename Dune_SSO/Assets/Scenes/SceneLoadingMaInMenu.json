@@ -260,7 +260,7 @@
                             {
                                 "name": "name",
                                 "type": "string",
-                                "value": "CutsceneIntro"
+                                "value": "SceneMainMenu"
                             }
                         ],
                         "type": 5
