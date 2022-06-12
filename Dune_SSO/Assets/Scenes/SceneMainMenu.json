@@ -2,7 +2,7 @@
     "SceneMainMenu": {
         "active": true,
         "draw_skybox": true,
-        "game_objects_amount": 61,
+        "game_objects_amount": 70,
         "game_objects_list": [
             {
                 "UID": 1475716659,
@@ -2266,7 +2266,7 @@
                             0.0
                         ],
                         "size": [
-                            208.0,
+                            150.0,
                             40.0
                         ],
                         "type": 22
@@ -2306,7 +2306,7 @@
                             0.5
                         ],
                         "position": [
-                            -256.0,
+                            -218.0,
                             -77.0
                         ],
                         "rotation": [
@@ -2315,7 +2315,7 @@
                             0.0
                         ],
                         "size": [
-                            213.0,
+                            145.0,
                             40.0
                         ],
                         "type": 22
@@ -2355,7 +2355,7 @@
                             0.5
                         ],
                         "position": [
-                            255.0,
+                            212.0,
                             -81.0
                         ],
                         "rotation": [
@@ -2364,7 +2364,7 @@
                             0.0
                         ],
                         "size": [
-                            213.0,
+                            143.0,
                             40.0
                         ],
                         "type": 22
@@ -2454,7 +2454,7 @@
                         ],
                         "position": [
                             0.0,
-                            -100.0
+                            -135.0
                         ],
                         "rotation": [
                             0.0,
@@ -2484,7 +2484,7 @@
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "WS Button",
+                "name": "WS Button 2",
                 "parent_UID": 1266759538,
                 "tag": 0
             },
@@ -2926,6 +2926,437 @@
                 "isPrefab": false,
                 "name": "SB5",
                 "parent_UID": 2055808393,
+                "tag": 0
+            },
+            {
+                "UID": 921681555,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -72.0,
+                            -81.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Button 1",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 98762895,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            72.0,
+                            -81.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            151.0,
+                            122.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "hoverTexture": "Assets/New UI/checkbox_a_hover.png",
+                        "idleTexture": "Assets/New UI/checkbox_a_default.png",
+                        "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
+                        "type": 15
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Button 3",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1966900636,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -203.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            155.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "1920 x 1080"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 2",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1146944354,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -167.0,
+                            -54.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            69.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "1024"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 1 1",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1528423433,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            167.0,
+                            -55.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            67.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "1280"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 3 1",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 405636396,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            167.0,
+                            -79.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            19.0,
+                            31.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "x"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 3 2",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1401567866,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            166.0,
+                            -107.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            44.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "720"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 3 3",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1194446400,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -167.0,
+                            -79.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            19.0,
+                            31.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "x"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 1 2",
+                "parent_UID": 1266759538,
+                "tag": 0
+            },
+            {
+                "UID": 1543551619,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            -168.0,
+                            -106.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            46.0,
+                            40.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
+                        "type": 16,
+                        "value": "768"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "WS Text 1 3",
+                "parent_UID": 1266759538,
                 "tag": 0
             }
         ],
