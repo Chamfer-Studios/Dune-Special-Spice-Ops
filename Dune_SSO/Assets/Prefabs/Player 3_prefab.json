@@ -345,11 +345,11 @@
                                                     "rotation": [
                                                         0.6530930995941162,
                                                         -0.003732283366844058,
-                                                        -6.167993706185371e-05,
+                                                        -6.16790130152367e-05,
                                                         0.7572684288024902
                                                     ],
                                                     "scale": [
-                                                        0.9999086260795593,
+                                                        0.9999101758003235,
                                                         1.0000001192092896,
                                                         1.0
                                                     ],
@@ -905,7 +905,7 @@
                                                             "rotation": [
                                                                 -0.32361841201782227,
                                                                 0.00512474961578846,
-                                                                0.004114792216569185,
+                                                                0.004114778712391853,
                                                                 0.9461648464202881
                                                             ],
                                                             "scale": [
@@ -1092,14 +1092,14 @@
                 {
                     "active": true,
                     "position": [
-                        -1547.804931640625,
-                        0.0019713728688657284,
-                        812.738525390625
+                        -331.3524169921875,
+                        0.0019708580803126097,
+                        637.5726318359375
                     ],
                     "rotation": [
-                        4.152674293322889e-08,
+                        4.152688148906236e-08,
                         0.04878337308764458,
-                        -4.579166201779117e-08,
+                        -4.579170820306899e-08,
                         0.9988093972206116
                     ],
                     "scale": [
@@ -1192,9 +1192,9 @@
                         0.0
                     ],
                     "lightPosition": [
-                        -1547.804931640625,
-                        0.0019713728688657284,
-                        812.738525390625
+                        -331.3524169921875,
+                        0.0019708580803126097,
+                        637.5726318359375
                     ],
                     "linearAttenuationValue": 0.0,
                     "quadraticAttenuationValue": 0.0,
@@ -1220,145 +1220,6 @@
                         }
                     ],
                     "type": 5
-                },
-                {
-                    "active": true,
-                    "fade_time": 2.0,
-                    "offset_sync": false,
-                    "total_tracks": 10,
-                    "tracks": [
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": true,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Generic/generic_sand_steps_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": true,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Generic/generic_sand_run_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Generic/generic_item_pick_1_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_hurt_1_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_hurt_2_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_hurt_3_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_death_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_order_shout_1_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_order_shout_2_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        },
-                        {
-                            "bypass": false,
-                            "custom_loop": false,
-                            "loop": false,
-                            "loop_offset": 0.0,
-                            "mute": false,
-                            "offset": 0.0,
-                            "pan": 0.0,
-                            "play_on_start": false,
-                            "track_path": "Assets/Audio/SFX/Omozra/omozra_order_shout_3_fx.wav",
-                            "transpose": 1.0,
-                            "volume": 100.0
-                        }
-                    ],
-                    "type": 11
                 }
             ],
             "is3D": true,
