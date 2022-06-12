@@ -274,11 +274,51 @@
     },
     {
       "id": 38,
-      "targetID": -1,
+      "targetID": 39,
+      "src": "Assets/UI/HUD/Portraits/omozra_v1.0",
+      "char": "Omozra           ",
+      "line1": "How have you have you been brother? Ah, Nerala, sister, glad you didn't get killed",
+      "line2": "Did you cause a mess as always?                                               "
+    },
+    {
+      "id": 39,
+      "targetID": 40,
+      "src": "Assets/UI/HUD/Portraits/nerala_v1.0.png",
+      "char": "Nerala           ",
+      "line1": "Anoying as always, wurm lover, I am ok, thanks for asking                         ",
+      "line2": " "
+    },
+    {
+      "id": 40,
+      "targetID": 41,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "Good to see you, I managed to find Nerala, have you and Sadiq gathered new info?",
+      "line1": "Focus both of you, can you tell us anything about the camp, Omozra?               ",
       "line2": " "
+    },
+    {
+      "id": 41,
+      "targetID": 42,
+      "src": "Assets/UI/HUD/Portraits/omozra_v1.0",
+      "char": "Omozra           ",
+      "line1": "You passed through a camp entrance that was heavily guarded on your way here, no? ",
+      "line2": "Well, Sadiq tells me that ogre is there, preparing his ship to leave somewhere.   "
+    },
+    {
+      "id": 42,
+      "targetID": 43,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": "Zhib             ",
+      "line1": "Let's go, focus and be ready!                                             ",
+      "line2": " "
+    },
+    {
+      "id": 43,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/logo_dialogs.png",
+      "char": " ",
+      "line1": "You just unlocked a new character! Omozra is now available                ",
+      "line2": "His designed key is C, to switch to him                                   "
     }
   ]
 }
