@@ -1,4 +1,4 @@
-local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
+local path = "Assets/Descriptions/SceneTransitionDescriptions.json"
 
 character = {
     Zhib = 1,

@@ -255,7 +255,6 @@ function Update(dt)
         if freePanningDebug == true then
              GetSelectedCharacter()
              offset = float3.new(0, 240, 270)
-             newZoomedPos = float3.new(0, 0, 0)
         end 
     end
 
