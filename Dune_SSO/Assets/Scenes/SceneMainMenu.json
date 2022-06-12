@@ -2429,6 +2429,13 @@
                         "fontPath": "Assets/Fonts/Lato/Lato-Regular.ttf",
                         "type": 16,
                         "value": "Window Size"
+                    },
+                    {
+                        "active": true,
+                        "async": false,
+                        "file_name": "Assets/Scripts/HUD/UI_WindowSize.lua",
+                        "id": 511167204,
+                        "type": 5
                     }
                 ],
                 "is3D": false,
@@ -2473,13 +2480,6 @@
                         "idleTexture": "Assets/New UI/checkbox_a_default.png",
                         "pressedTexture": "Assets/New UI/checkbox_a_pressed.png",
                         "type": 15
-                    },
-                    {
-                        "active": true,
-                        "async": false,
-                        "file_name": "Assets/Scripts/HUD/UI_FullscreenDesktop.lua",
-                        "id": 129396576,
-                        "type": 5
                     }
                 ],
                 "is3D": false,
