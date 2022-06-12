@@ -693,7 +693,7 @@ function UpdateStamina()
 
     if staminaBar ~= nil then
         staminaBar:GetTransform2D():SetMask(float2.new(proportion, 1))
-        if proportion <= 0.3 then
+        if proportion <= 0.3 or isTired == true then
             staminaBar:GetImage():SetTexture(staminaRedPath)
         else
             staminaBar:GetImage():SetTexture(staminaDefaultPath)

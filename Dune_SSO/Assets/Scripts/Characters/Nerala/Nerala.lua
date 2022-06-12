@@ -224,6 +224,10 @@ function Start()
 
     -- Stamina Bar Blue
     staminaBar = Find("Stamina Bar Fill")
+    staminaDefaultPath = "Assets/New UI/spice_bar_fill_default.png"
+    staminaRedPath = "Assets/New UI/spice_bar_fill_red.png"
+    staminaWhitePath = "Assets/New UI/spice_bar_fill_white.png"
+    staminaBar:GetImage():SetTexture(staminaDefaultPath)
 end
 
 -- Called each loop iteration
@@ -683,6 +687,11 @@ function UpdateStamina()
 
     if staminaBar ~= nil then
         staminaBar:GetTransform2D():SetMask(float2.new(proportion, 1))
+        if proportion <= 0.3 or isTired == true then
+            staminaBar:GetImage():SetTexture(staminaRedPath)
+        else
+            staminaBar:GetImage():SetTexture(staminaDefaultPath)
+        end
     end
 end
 
