@@ -1095,6 +1095,8 @@ function AttackRabban(currentClip)
         if componentAnimator:IsCurrentClipPlaying() == false then
             if (distance > attackRange) then
                 if (currentClip ~= "Run") then
+                    trackList = {4}
+                    ChangeTrack(trackList)
                     componentAnimator:SetSelectedClip("Run")
                 end
             else
@@ -1108,6 +1110,8 @@ function AttackRabban(currentClip)
         end
     else
         if (currentClip ~= "Run") then
+            trackList = {4}
+            ChangeTrack(trackList)
             componentAnimator:SetSelectedClip("Run")
         end
     end
