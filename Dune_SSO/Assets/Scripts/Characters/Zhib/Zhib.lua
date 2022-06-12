@@ -529,15 +529,13 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {17}
-        ChangeTrack(trackList)
+        ChangeTrack({0})
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {18}
-        ChangeTrack(trackList)
+        ChangeTrack({1})
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -552,8 +550,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE and componentSwitch ~= nil) then
-            trackList = {17}
-            ChangeTrack(trackList)
+            ChangeTrack({0})
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -800,8 +797,7 @@ function ManageTimers(dt)
                     componentBoxCollider:UpdateIsTrigger()
                 end
 
-                trackList = {11, 12}
-                ChangeTrack(trackList)
+                ChangeTrack({12})
 
                 componentRigidBody:SetUseGravity(true)
                 componentRigidBody:UpdateEnableGravity()
@@ -1013,8 +1009,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    trackList = {0, 1}
-    ChangeTrack(trackList)
+    ChangeTrack({7, 8})
 
     attackTimer = 0.0
 
@@ -1093,8 +1088,8 @@ function DoPrimary()
         -- DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
     end
 
-    trackList = {6, 7}
-    ChangeTrack(trackList)
+    ChangeTrack({9})
+
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
     SetState(State.IDLE)
@@ -1169,8 +1164,7 @@ function DoSecondary()
 
     decoyCount = decoyCount - 1
 
-    trackList = {8}
-    ChangeTrack(trackList)
+    ChangeTrack({10})
 
     componentAnimator:SetSelectedClip("DecoyToIdle")
     SetState(State.IDLE)
@@ -1222,8 +1216,7 @@ function CastUltimate(position)
                 iFramesTimer = 0.0
                 StopMovement(false)
 
-                trackList = {9, 10}
-                ChangeTrack(trackList)
+                ChangeTrack({11})
 
                 LookAtTarget(target:GetTransform():GetPosition())
             else
@@ -1304,8 +1297,7 @@ function DoUltimate()
     local vec2 = {targetPos2D[1] - pos2D[1], targetPos2D[2] - pos2D[2]}
     vec2 = Normalize(vec2, d)
 
-    trackList = {13, 14}
-    ChangeTrack(trackList)
+    ChangeTrack({13})
 
     -- Add as reappear position the position from the last enemy who's gonna die
     local dist = 15
@@ -1352,8 +1344,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2, 3, 4}
-        ChangeTrack(trackList)
+        ChangeTrack({3, 4, 5})
     else
         currentHP = 0
         Log("Zhib: Dying\n")
@@ -1371,8 +1362,7 @@ function Die()
     end
 
     if (currentTrackID ~= 3) then
-        trackList = {5}
-        ChangeTrack(trackList)
+        ChangeTrack({6})
     end
 
     SetVariable(0, "GameState.lua", "gameOverTimer", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -1433,16 +1423,14 @@ function EventHandler(key, fields)
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
     elseif (key == "Decoy_Grabbed") then
         Log("I have grabbed the decoy! \n")
-        trackList = {15, 16}
-        ChangeTrack(trackList)
+        ChangeTrack({2})
         secondaryTimer = 0.0
         abilities.AbilitySecondary = AbilityStatus.Cooldown
         DispatchGlobalEvent("Player_Ability",
             {characterID, Ability.Secondary, abilities.AbilitySecondary, secondaryCooldown})
         decoyCount = decoyCount + 1
     elseif (key == "Knife_Grabbed") then
-        trackList = {15, 16}
-        ChangeTrack(trackList)
+        ChangeTrack({2})
         Log("I have grabbed a knife! \n")
         abilities.AbilityPrimary = AbilityStatus.Normal
         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
@@ -1480,8 +1468,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {15, 16}
-        ChangeTrack(trackList)
+        ChangeTrack({2})
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
