@@ -516,15 +516,13 @@ function SetMovement(newMovement)
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Walk")
         end
-        trackList = {12}
-        ChangeTrack(trackList)
+        ChangeTrack({0})
     elseif (newMovement == Movement.RUN) then
         currentMovement = Movement.RUN
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Run")
         end
-        trackList = {13}
-        ChangeTrack(trackList)
+        ChangeTrack({1})
     elseif (newMovement == Movement.IDLE_CROUCH) then
         currentMovement = Movement.IDLE_CROUCH
         if (componentAnimator ~= nil) then
@@ -539,8 +537,7 @@ function SetMovement(newMovement)
     elseif (newMovement == Movement.CROUCH) then
         currentMovement = Movement.CROUCH
         if (currentMovement ~= Movement.IDLE) then
-            trackList = {12}
-            ChangeTrack(trackList)
+            ChangeTrack({0})
         end
         if (componentAnimator ~= nil) then
             componentAnimator:SetSelectedClip("Crouch")
@@ -967,8 +964,7 @@ function DoAttack()
 
     LookAtTarget(target:GetTransform():GetPosition())
 
-    trackList = {0, 1}
-    ChangeTrack(trackList)
+    ChangeTrack({7, 8})
 
     attackTimer = 0.0
 
@@ -1044,8 +1040,7 @@ function FireDart()
     abilities.AbilityPrimary = AbilityStatus.Cooldown
     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary, primaryCooldown})
 
-    trackList = {6, 7}
-    ChangeTrack(trackList)
+    ChangeTrack({9})
 
     componentAnimator:SetSelectedClip("DartToIdle")
     SetState(State.IDLE)
@@ -1115,8 +1110,7 @@ function PlaceSmokebomb()
 
     -- secondaryTimer = 0.0
 
-    trackList = {8}
-    ChangeTrack(trackList)
+    ChangeTrack({10})
 
     componentAnimator:SetSelectedClip("SmokebombToIdle")
     SetState(State.IDLE)
@@ -1172,8 +1166,7 @@ function CastUltimate(isAlreadyCasted)
 
                 LookAtTarget(target)
 
-                trackList = {9}
-                ChangeTrack(trackList)
+                ChangeTrack({11})
             end
         else
             if (footstepsParticle ~= nil) then
@@ -1228,8 +1221,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        trackList = {2, 3, 4}
-        ChangeTrack(trackList)
+        ChangeTrack({3,4,5})
     else
         currentHP = 0
         Log("Nerala: Dying\n")
@@ -1247,8 +1239,7 @@ function Die()
     end
 
     if (currentTrackID ~= 3) then
-        trackList = {5}
-        ChangeTrack(trackList)
+        ChangeTrack({6})
     end
 
     SetVariable(0, "GameState.lua", "gameOverTimer", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
@@ -1302,8 +1293,7 @@ function EventHandler(key, fields)
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
         end
     elseif (key == "Mosquito_Death") then
-        trackList = {14}
-        ChangeTrack(trackList)
+        ChangeTrack({12})
         ultimateTimer = 0.0
         mosquitoDeathParticleTimer = 0.0
         abilities.AbilityUltimate = AbilityStatus.Cooldown
@@ -1342,8 +1332,7 @@ function EventHandler(key, fields)
     elseif (key == "Dialogue_Closed") then
         isDialogueOpen = false
     elseif (key == "Spice_Reward") then
-        trackList = {10, 11}
-        ChangeTrack(trackList)
+        ChangeTrack({2})
     elseif (key == "Spit_Heal_Hit") then
         if (fields[1] == gameObject) then
             if (currentHP < maxHP) then
