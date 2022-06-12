@@ -1356,9 +1356,8 @@ function Die()
         componentAnimator:SetSelectedClip("Death")
     end
 
-    if (currentTrackID ~= 3) then
-        ChangeTrack({6})
-    end
+    ChangeTrack({6})
+
 
     SetVariable(0, "GameState.lua", "gameOverTimer", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
