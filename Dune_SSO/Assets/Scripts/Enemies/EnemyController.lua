@@ -49,7 +49,7 @@ NewVariable(awarenessSizeIV)
 
 awarenessSoundSpeed = 0.3
 awarenessVisualSpeed = 1.0
-awarenessDecaySpeed = 0.5
+awarenessDecaySpeed = 0.1
 
 pingpong = false
 local pingpongIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
