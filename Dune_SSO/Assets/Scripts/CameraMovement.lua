@@ -250,7 +250,7 @@ function Update(dt)
     --     end
         
     -- end
-    if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
+    if  (GetInput(43) == KEY_STATE.KEY_DOWN) then -- SPACE
         freePanningDebug = not freePanningDebug
         if freePanningDebug == true then
              GetSelectedCharacter()
