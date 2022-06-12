@@ -144,8 +144,10 @@ function Start()
         --Log("Level 2")
     end
     --Log("Level xD")
-    freePanningDebug = true
+    freePanningDebug = false
     GetSelectedCharacter()
+    offset = float3.new(0, 240, 270)
+    newZoomedPos = float3.new(0, 99, 112)
 
 end
 
@@ -162,6 +164,7 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
+            Log("New Zoomed Pos X" .. newZoomedPos.x .."New Zoomed Pos Y" .. newZoomedPos.y .."New Zoomed Pos Z" .. newZoomedPos.z .. "\n" )
         end
     elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
@@ -169,6 +172,7 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
+            Log("New Zoomed Pos X" .. newZoomedPos.x .."New Zoomed Pos Y" .. newZoomedPos.y .."New Zoomed Pos Z" .. newZoomedPos.z .. "\n" )
         end
     end
 
