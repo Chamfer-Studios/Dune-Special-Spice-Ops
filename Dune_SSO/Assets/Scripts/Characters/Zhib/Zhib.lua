@@ -241,7 +241,7 @@ end
 
 -- Called each loop iteration
 function Update(dt)
-    if isDialogueOpen == true then
+    if isDialogueOpen == true or currentState == State.DEAD then
         StopMovement(false)
     end
 
