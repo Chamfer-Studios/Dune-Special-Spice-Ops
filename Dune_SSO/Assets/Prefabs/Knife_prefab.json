@@ -78,9 +78,9 @@
             "filter": "projectile",
             "is_trigger": true,
             "scale_factor": [
-                1.0,
-                1.0,
-                1.0
+                3.0,
+                3.0,
+                3.0
             ],
             "type": 7
         },

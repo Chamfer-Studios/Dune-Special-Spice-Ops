@@ -242,7 +242,7 @@ end
 -- Called each loop iteration
 function Update(dt)
     if isDialogueOpen == true or currentState == State.DEAD then
-        StopMovement(false)
+        StopMovement()
     end
 
     isSelected = IsSelected()
@@ -642,7 +642,6 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             if isHoveringEnemy ~= nil then
-                Log("Sending is not hovering event\n")
                 DispatchGlobalEvent("Not_Hovering_Enemy", {lastEnemyTarget})
                 isHoveringEnemy = nil
             end
@@ -949,17 +948,21 @@ end
 
 function StopMovement(resetTarget)
 
-    if (currentMovement == Movement.CROUCH) then
-        SetMovement(Movement.IDLE_CROUCH)
+    if (currentMovement == Movement.CROUCH or currentMovement == Movement.IDLE_CROUCH) then
+        if resetTarget == nil then
+            SetMovement(Movement.IDLE_CROUCH)
+        else
+            SetMovement(Movement.IDLE)
+        end
     elseif (currentMovement ~= Movement.IDLE_CROUCH) then
         SetMovement(Movement.IDLE)
     end
 
-    destination = nil
-
     if (resetTarget == nil) then -- Default case
         target = nil
     end
+    destination = nil
+
     if (componentRigidBody ~= nil) then
         componentRigidBody:SetLinearVelocity(float3.new(0, 0, 0))
     end
@@ -1037,9 +1040,6 @@ end
 function CastPrimary()
     if (knifeCount <= 0) then
         Log("[FAIL] Ability Primary: You don't have enough knives!\n")
-        do
-            return
-        end
     else
         if (target == nil) then
             target = GetGameObjectHovered()
@@ -1047,9 +1047,6 @@ function CastPrimary()
         if (target.tag ~= Tag.ENEMY) then
             Log("[FAIL] Ability Primary: You have to select an enemy first!\n")
             target = nil
-            do
-                return
-            end
         else
             DispatchGlobalEvent("Hover_End", {})
             if (math.abs(Distance3D(target:GetTransform():GetPosition(), componentTransform:GetPosition())) <=
@@ -1057,7 +1054,6 @@ function CastPrimary()
                 if (componentAnimator ~= nil) then
                     abilities.AbilityPrimary = AbilityStatus.Using
                     DispatchGlobalEvent("Player_Ability", {characterID, Ability.Primary, abilities.AbilityPrimary})
-
                     componentAnimator:SetSelectedClip("Knife")
                     StopMovement(false)
 
@@ -1089,7 +1085,6 @@ function DoPrimary()
     end
 
     ChangeTrack({9})
-
 
     componentAnimator:SetSelectedClip("KnifeToIdle")
     SetState(State.IDLE)

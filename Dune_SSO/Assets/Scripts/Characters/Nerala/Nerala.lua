@@ -236,7 +236,7 @@ end
 -- Called each loop iteration
 function Update(dt)
     if isDialogueOpen == true or currentState == State.DEAD then
-        StopMovement(false)
+        StopMovement()
     end
 
     isSelected = IsSelected()
@@ -632,7 +632,6 @@ function DrawHoverParticle()
             finalPosition = float3.new(mouseClick.x, 1, mouseClick.z)
         else
             if isHoveringEnemy ~= nil then
-                Log("Sending is not hovering event\n")
                 DispatchGlobalEvent("Not_Hovering_Enemy", {lastEnemyTarget})
                 isHoveringEnemy = nil
             end
@@ -908,8 +907,12 @@ end
 
 function StopMovement(resetTarget)
 
-    if (currentMovement == Movement.CROUCH) then
-        SetMovement(Movement.IDLE_CROUCH)
+    if (currentMovement == Movement.CROUCH or currentMovement == Movement.IDLE_CROUCH) then
+        if resetTarget == nil then
+            SetMovement(Movement.IDLE_CROUCH)
+        else
+            SetMovement(Movement.IDLE)
+        end
     elseif (currentMovement ~= Movement.IDLE_CROUCH) then
         SetMovement(Movement.IDLE)
     end
