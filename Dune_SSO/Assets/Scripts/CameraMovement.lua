@@ -153,6 +153,10 @@ end
 
 function Update(dt)
     
+    if(GetMouseScreenPos().y < 0 or GetMouseScreenPos().y > GetLastViewportSize().y or GetMouseScreenPos().x < 0 or GetMouseScreenPos().x > GetLastViewportSize().x) then
+        xPanning = 0.0
+        zPanning = 0.0
+    end
     --str = "Position X: " .. tostring(gameObject:GetTransform():GetPosition().x) .. "Position Z: " .. tostring(gameObject:GetTransform():GetPosition().z) .. "\n"
     --Log(str)
     local lastFinalPos = componentTransform:GetPosition()
@@ -164,7 +168,6 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-            Log("New Zoomed Pos X" .. newZoomedPos.x .."New Zoomed Pos Y" .. newZoomedPos.y .."New Zoomed Pos Z" .. newZoomedPos.z .. "\n" )
         end
     elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
@@ -172,7 +175,6 @@ function Update(dt)
             newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
-            Log("New Zoomed Pos X" .. newZoomedPos.x .."New Zoomed Pos Y" .. newZoomedPos.y .."New Zoomed Pos Z" .. newZoomedPos.z .. "\n" )
         end
     end
 
@@ -223,7 +225,7 @@ function Update(dt)
         mouseBottomIn = true
         zPanning = 1.0
     end
-    if (GetMouseScreenPos().y > cursorMargin and GetMouseScreenPos().y < (GetLastViewportSize().y - cursorMargin) and mouseBottomIn == true) then -- S
+    if (GetMouseScreenPos().y > cursorMargin and GetMouseScreenPos().y < (GetLastViewportSize().y - cursorMargin) and GetMouseScreenPos().y < 0 and mouseBottomIn == true) then -- S
         mouseBottomIn = false
         zPanning = 0.0
     end
@@ -235,8 +237,6 @@ function Update(dt)
         mouseRightIn = false
         xPanning = 0.0
     end
-
-
     -- go back to the selected character
     -- if  (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
     --     GetSelectedCharacter()
@@ -255,6 +255,7 @@ function Update(dt)
         if freePanningDebug == true then
              GetSelectedCharacter()
              offset = float3.new(0, 240, 270)
+             newZoomedPos = float3.new(0, 99, 112)
         end 
     end
 
