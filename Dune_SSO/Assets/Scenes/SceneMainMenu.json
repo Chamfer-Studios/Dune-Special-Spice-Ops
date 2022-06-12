@@ -530,7 +530,7 @@
                             {
                                 "name": "name",
                                 "type": "string",
-                                "value": "CutsceneIntro"
+                                "value": "SceneLoadingCutscene1"
                             }
                         ],
                         "type": 5
