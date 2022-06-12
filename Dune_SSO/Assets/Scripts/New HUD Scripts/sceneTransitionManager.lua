@@ -191,7 +191,7 @@ local upgradeArray = {upgradeButton1Z, upgradeButton2Z, upgradeButton3Z, upgrade
                       upgradeButton6Z, upgradeButton7Z, upgradeButton8Z, upgradeButton9Z, upgradeButton10Z,
                       upgradeButton11Z, upgradeButton12Z}
 
-local path = "Assets/Scenes/SceneTransitionUI/sceneTransition.json"
+local path = "Assets/Descriptions/SceneTransitionDescriptions.json"
 
 local primaryLvl1Cost = 200
 local ultimateLvl1Cost = 300
@@ -212,6 +212,7 @@ function Start()
     SpiceAmountText = Find("SpiceAmount")
 
     LoadJsonFile(path)
+
     skillUiArray = {1, 2, 3, 101}
     dialogueGo = Find("Dialogue")
 
@@ -540,6 +541,7 @@ function SetDialogValue(index)
     if (index == 1) then
         dialogueGo:Active(true)
         dialog = GetTransString("description1", skillUiArray[1])
+        print(dialog)
         dialog1 = GetTransString("description2", skillUiArray[1])
         dialog2 = GetTransString("description3", skillUiArray[1])
         dialog3 = GetTransString("description4", skillUiArray[1])
