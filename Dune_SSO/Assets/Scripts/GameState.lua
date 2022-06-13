@@ -50,6 +50,8 @@ levelNumberIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT
 levelNumberIV = InspectorVariable.new("levelNumber", levelNumberIVT, levelNumber)
 NewVariable(levelNumberIV)
 
+triggerDialogues = true
+
 -------------------- Methods ---------------------
 function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
@@ -133,7 +135,14 @@ function Update(dt)
                 Log("I am not god:(\n")
                 GodMode = false
             end
-
+        elseif (GetInput(74) == KEY_STATE.KEY_DOWN) then
+            if (triggerDialogues == false) then
+                Log("I am triggering dialogues\n")
+                triggerDialogues = true
+            elseif (triggerDialogues == true) then
+                Log("I am not triggering dialogues :(\n")
+                triggerDialogues = false
+            end
         end
         if (characterSelected ~= 0) then
             if (characterSelected == 2 and characters[4] ~= nil) then

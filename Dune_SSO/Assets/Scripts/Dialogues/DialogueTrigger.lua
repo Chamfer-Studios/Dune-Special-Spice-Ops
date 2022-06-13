@@ -26,7 +26,7 @@ NewVariable(unlockingOmozraIV)
 triggered = false
 
 function Start()
-    --gameobjUID = gameObject:GetUID()
+    -- gameobjUID = gameObject:GetUID()
 end
 
 function OnTriggerEnter(go)
@@ -36,12 +36,16 @@ function OnTriggerEnter(go)
             triggered = true
             if unlockingNerala == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 2})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             elseif unlockingOmozra == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 3})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             else
-                DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                if GetVariable("GameState.lua", "triggerDialogues", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+                    DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                    DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
+                end
             end
-            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
         end
         -- Only omozra
     elseif onlyOmozra == true then
@@ -49,12 +53,17 @@ function OnTriggerEnter(go)
             triggered = true
             if unlockingNerala == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 2})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             elseif unlockingOmozra == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 3})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             else
-                DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                if GetVariable("GameState.lua", "triggerDialogues", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+                    DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                    DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
+                end
             end
-            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
+
         end
         -- All
     else
@@ -62,12 +71,17 @@ function OnTriggerEnter(go)
             triggered = true
             if unlockingNerala == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 2})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             elseif unlockingOmozra == true then
                 DispatchGlobalEvent("DialogueTriggered", {id, 3})
+                DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
             else
-                DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                if GetVariable("GameState.lua", "triggerDialogues", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) == true then
+                    DispatchGlobalEvent("DialogueTriggered", {id, nil})
+                    DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
+                end
             end
-            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
         end
     end
+
 end
