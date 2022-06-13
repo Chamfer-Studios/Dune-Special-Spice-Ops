@@ -1,7 +1,7 @@
 {
     "gameobjects_to_delete_lvl1": [],
     "gameobjects_to_delete_lvl2": [],
-    "level_progression": 1,
+    "level_progression": 0,
     "nerala_available": false,
     "nerala_hp": 3,
     "nerala_passive_level": 0,
