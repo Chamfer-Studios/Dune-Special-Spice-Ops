@@ -516,7 +516,7 @@ function UpdateTargetAwareness()
 
     if #visualTriggers ~= 0 then
         targetAwareness = 2
-        prop = 1.2 - (distance / visionConeRadius)
+        prop = 1.7 - (distance / visionConeRadius)
         awarenessSpeed = awarenessVisualSpeed * prop * visualDebuffMultiplier
     elseif #repeatingAuditoryTriggers ~= 0 then
         targetAwareness = 2
