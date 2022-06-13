@@ -446,6 +446,19 @@ function Update(dt)
             end
         end
 
+        -- To Keep Making Walk/Run Sound After Pickup
+        if (currentMovement == Movement.WALK and currentTrackID == 2) then
+            if(componentSwitch:IsAnyTrackPlaying() == false) then
+                ChangeTrack({0})
+            end
+        end
+
+        if (currentMovement == Movement.RUN and currentTrackID == 2) then
+            if(componentSwitch:IsAnyTrackPlaying() == false) then
+                ChangeTrack({1})
+            end
+        end
+
         -- 1
         if (GetInput(21) == KEY_STATE.KEY_DOWN) then
             ActivePrimary()
