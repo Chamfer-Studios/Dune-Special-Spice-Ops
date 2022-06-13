@@ -163,7 +163,7 @@ smokebombFlag = false
 
 function Start()
 
-    SetOutlineThickness(40)
+    SetOutlineThickness(0.5)
 
     -- Components
     componentRigidBody = gameObject:GetRigidBody()
@@ -432,13 +432,13 @@ function Update(dt)
 
         -- To Keep Making Walk/Run Sound After Pickup
         if (currentMovement == Movement.WALK and currentTrackID == 2) then
-            if(componentSwitch:IsAnyTrackPlaying() == false) then
+            if (componentSwitch:IsAnyTrackPlaying() == false) then
                 ChangeTrack({0})
             end
         end
 
         if (currentMovement == Movement.RUN and currentTrackID == 2) then
-            if(componentSwitch:IsAnyTrackPlaying() == false) then
+            if (componentSwitch:IsAnyTrackPlaying() == false) then
                 ChangeTrack({1})
             end
         end

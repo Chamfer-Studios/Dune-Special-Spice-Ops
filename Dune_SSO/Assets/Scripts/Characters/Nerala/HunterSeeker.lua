@@ -12,7 +12,7 @@ poisonCount = 1
 
 function Start()
 
-    SetOutlineThickness(40)
+    SetOutlineThickness(0.1)
     SetRenderOutline(false)
 
     componentRigidBody = gameObject:GetRigidBody() -- This is here instead of at "awake" so the order of component creation does not affect
