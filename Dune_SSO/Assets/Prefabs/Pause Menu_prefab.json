@@ -352,7 +352,7 @@
                                 {
                                     "name": "name",
                                     "type": "string",
-                                    "value": "SceneLoadingMaInMenu"
+                                    "value": "SceneLoadingMainMenu"
                                 }
                             ],
                             "type": 5
