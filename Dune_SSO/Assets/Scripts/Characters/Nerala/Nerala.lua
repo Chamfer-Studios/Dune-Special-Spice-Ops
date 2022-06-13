@@ -1372,7 +1372,7 @@ function EventHandler(key, fields)
         componentRigidBody:SetRigidBodyPos(float3.new(fields[1], fields[2], fields[3]))
 
         if (fields[4] == 1) then
-            primaryCastRange = 195
+            primaryCastRange = 210
         elseif (fields[4] == 2) then
             unawareChanceHarkDart = 100
             awareChanceHarkDart = 100
