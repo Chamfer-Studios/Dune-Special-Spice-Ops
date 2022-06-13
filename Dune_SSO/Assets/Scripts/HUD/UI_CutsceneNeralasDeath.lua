@@ -15,7 +15,7 @@ function Update(dt)
         isStarting = true
     end
     if (GetInput(44) == KEY_STATE.KEY_DOWN) then -- ENTER
-        isActive = 14
+        isActive = 9
         change = true
     end
     if (GetInput(43) == KEY_STATE.KEY_DOWN) then -- SPACE
