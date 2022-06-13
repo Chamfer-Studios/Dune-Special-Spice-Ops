@@ -149,7 +149,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
-      "line1": "Omozra's ultimate ability will will let you teleport Zhib or Nerala.",
+      "line1": "Omozra's ultimate ability will let you teleport Zhib or Nerala.",
       "line2": "It can be very useful to catch enemies off guard.                   "
     },
     {
@@ -181,8 +181,8 @@
       "targetID": 25,
       "src": "Assets/UI/HUD/Portraits/nerala_v1.0.png",
       "char": "Nerala           ",
-      "line1": "(Through the speaking device) It's too late, when I arrived they    ",
-      "line2": "ambushed me. We need to move, Rabban is still in the camp.          "
+      "line1": "*Through the speaking device* It's too late, when I arrived they    ",
+      "line2": "were already aware. We need to move, Rabban is still in the camp.   "
     },
     {
       "id": 25,
@@ -301,7 +301,7 @@
       "targetID": 39,
       "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
       "char": "Omozra           ",
-      "line1": "How have you have you been brother? Ah, Nerala, sister, glad you didn't get killed",
+      "line1": "How have you have you been brother? Ah, Nerala, glad you are still alive.     ",
       "line2": "Did you cause a mess as always?                                               "
     },
     {
@@ -309,7 +309,7 @@
       "targetID": 40,
       "src": "Assets/UI/HUD/Portraits/nerala_v1.0.png",
       "char": "Nerala           ",
-      "line1": "Annoying as always, worm lover, I am ok, thanks for asking.                         ",
+      "line1": "Annoying as usual, worm lover, I am ok, thanks for asking.                         ",
       "line2": " "
     },
     {
@@ -333,7 +333,7 @@
       "targetID": 43,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "Let's go, focus and be ready!                                             ",
+      "line1": "Let's finish this. You know what to do.                             ",
       "line2": " "
     },
     {
