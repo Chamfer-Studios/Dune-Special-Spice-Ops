@@ -3,7 +3,100 @@
     "children": [
         {
             "active": true,
-            "children": [],
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "position": [
+                                0.0,
+                                0.000152587890625,
+                                -205.990234375
+                            ],
+                            "rotation": [
+                                -2.8421722982931164e-14,
+                                0.0,
+                                -1.6940658945086007e-21,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ],
+                            "type": 21
+                        },
+                        {
+                            "active": true,
+                            "resource": [
+                                {
+                                    "emitters": [
+                                        {
+                                            "loop": true,
+                                            "maxParticles": 500,
+                                            "modules": [
+                                                {
+                                                    "maxParticleLife": 3.0,
+                                                    "minParticleLife": 0.20000000298023224,
+                                                    "particlesPerSpawn": 1,
+                                                    "randomParticleLife": false,
+                                                    "spawnTime": 0.10000000149011612,
+                                                    "type": 1
+                                                },
+                                                {
+                                                    "billboardingType": 2,
+                                                    "frontAxis": true,
+                                                    "maxDegrees": 360,
+                                                    "minDegrees": 0,
+                                                    "sideAxis": false,
+                                                    "topAxis": false,
+                                                    "type": 5
+                                                },
+                                                {
+                                                    "colors": [
+                                                        {
+                                                            "color": [
+                                                                0.0,
+                                                                1.0,
+                                                                0.0,
+                                                                1.0
+                                                            ],
+                                                            "position": 0.5
+                                                        }
+                                                    ],
+                                                    "type": 3
+                                                },
+                                                {
+                                                    "minInitialSize": [
+                                                        17.0,
+                                                        17.0,
+                                                        17.0
+                                                    ],
+                                                    "type": 4
+                                                }
+                                            ],
+                                            "name": "Light",
+                                            "texture_path": "Assets/Textures/Particles/light.png"
+                                        }
+                                    ],
+                                    "name": "Green Light"
+                                }
+                            ],
+                            "type": 3
+                        }
+                    ],
+                    "is3D": true,
+                    "isPrefab": false,
+                    "name": "PanelParticle1",
+                    "tag": 0
+                }
+            ],
             "components": [
                 {
                     "active": true,
@@ -23,9 +116,9 @@
                         0.70710688829422
                     ],
                     "scale": [
-                        0.14146386086940765,
+                        0.14146365225315094,
                         0.11672893166542053,
-                        0.0363529697060585
+                        0.036352917551994324
                     ],
                     "type": 21
                 },
@@ -102,7 +195,100 @@
         },
         {
             "active": true,
-            "children": [],
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "position": [
+                                0.0,
+                                0.0,
+                                -185.4599609375
+                            ],
+                            "rotation": [
+                                6.600080725005508e-18,
+                                0.0,
+                                3.637978807091713e-12,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ],
+                            "type": 21
+                        },
+                        {
+                            "active": true,
+                            "resource": [
+                                {
+                                    "emitters": [
+                                        {
+                                            "loop": true,
+                                            "maxParticles": 500,
+                                            "modules": [
+                                                {
+                                                    "maxParticleLife": 3.0,
+                                                    "minParticleLife": 0.20000000298023224,
+                                                    "particlesPerSpawn": 1,
+                                                    "randomParticleLife": false,
+                                                    "spawnTime": 0.10000000149011612,
+                                                    "type": 1
+                                                },
+                                                {
+                                                    "billboardingType": 2,
+                                                    "frontAxis": true,
+                                                    "maxDegrees": 360,
+                                                    "minDegrees": 0,
+                                                    "sideAxis": false,
+                                                    "topAxis": false,
+                                                    "type": 5
+                                                },
+                                                {
+                                                    "colors": [
+                                                        {
+                                                            "color": [
+                                                                0.0,
+                                                                1.0,
+                                                                0.0,
+                                                                1.0
+                                                            ],
+                                                            "position": 0.5
+                                                        }
+                                                    ],
+                                                    "type": 3
+                                                },
+                                                {
+                                                    "minInitialSize": [
+                                                        17.0,
+                                                        17.0,
+                                                        17.0
+                                                    ],
+                                                    "type": 4
+                                                }
+                                            ],
+                                            "name": "Light",
+                                            "texture_path": "Assets/Textures/Particles/light.png"
+                                        }
+                                    ],
+                                    "name": "Green Light"
+                                }
+                            ],
+                            "type": 3
+                        }
+                    ],
+                    "is3D": true,
+                    "isPrefab": false,
+                    "name": "PanelParticle2",
+                    "tag": 0
+                }
+            ],
             "components": [
                 {
                     "active": true,
@@ -116,15 +302,15 @@
                         -326.2581787109375
                     ],
                     "rotation": [
-                        -5.479091214510845e-06,
+                        -5.4790893955214415e-06,
                         0.7071068286895752,
-                        -5.479090759763494e-06,
+                        -5.4790930335002486e-06,
                         0.7071067094802856
                     ],
                     "scale": [
-                        0.14146444201469421,
+                        0.1414642333984375,
                         0.11672893166542053,
-                        0.03635310381650925
+                        0.03635305166244507
                     ],
                     "type": 21
                 },
@@ -201,7 +387,100 @@
         },
         {
             "active": true,
-            "children": [],
+            "children": [
+                {
+                    "active": true,
+                    "children": [],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "position": [
+                                0.0,
+                                -0.021270751953125,
+                                -205.42578125
+                            ],
+                            "rotation": [
+                                -6.002664337811936e-11,
+                                -4.440891569105034e-16,
+                                -8.695821162750181e-14,
+                                1.0
+                            ],
+                            "scale": [
+                                1.0,
+                                1.0000001192092896,
+                                1.0000001192092896
+                            ],
+                            "type": 21
+                        },
+                        {
+                            "active": true,
+                            "resource": [
+                                {
+                                    "emitters": [
+                                        {
+                                            "loop": true,
+                                            "maxParticles": 500,
+                                            "modules": [
+                                                {
+                                                    "maxParticleLife": 3.0,
+                                                    "minParticleLife": 0.20000000298023224,
+                                                    "particlesPerSpawn": 1,
+                                                    "randomParticleLife": false,
+                                                    "spawnTime": 0.10000000149011612,
+                                                    "type": 1
+                                                },
+                                                {
+                                                    "billboardingType": 2,
+                                                    "frontAxis": true,
+                                                    "maxDegrees": 360,
+                                                    "minDegrees": 0,
+                                                    "sideAxis": false,
+                                                    "topAxis": false,
+                                                    "type": 5
+                                                },
+                                                {
+                                                    "colors": [
+                                                        {
+                                                            "color": [
+                                                                0.0,
+                                                                1.0,
+                                                                0.0,
+                                                                1.0
+                                                            ],
+                                                            "position": 0.5
+                                                        }
+                                                    ],
+                                                    "type": 3
+                                                },
+                                                {
+                                                    "minInitialSize": [
+                                                        17.0,
+                                                        17.0,
+                                                        17.0
+                                                    ],
+                                                    "type": 4
+                                                }
+                                            ],
+                                            "name": "Light",
+                                            "texture_path": "Assets/Textures/Particles/light.png"
+                                        }
+                                    ],
+                                    "name": "Green Light"
+                                }
+                            ],
+                            "type": 3
+                        }
+                    ],
+                    "is3D": true,
+                    "isPrefab": false,
+                    "name": "PanelParticle3",
+                    "tag": 0
+                }
+            ],
             "components": [
                 {
                     "active": true,
@@ -217,13 +496,13 @@
                     "rotation": [
                         9.099709359361441e-07,
                         1.0,
-                        -0.00018306174024473876,
+                        -0.00018306166748516262,
                         -4.354480864776633e-08
                     ],
                     "scale": [
                         0.14146468043327332,
                         0.11672893166542053,
-                        0.036353204399347305
+                        0.036353256553411484
                     ],
                     "type": 21
                 },
@@ -329,13 +608,6 @@
             "async": false,
             "file_name": "Assets/Scripts/PanelCounter.lua",
             "id": 879419756,
-            "inspector_variables": [
-                {
-                    "name": "sceneName",
-                    "type": "string",
-                    "value": "CutsceneFinal"
-                }
-            ],
             "type": 5
         }
     ],

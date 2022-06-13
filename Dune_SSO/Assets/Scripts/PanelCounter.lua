@@ -1,14 +1,10 @@
-sceneName = "default_level"
-
-local sceneNameIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_STRING
-sceneNameIV = InspectorVariable.new("sceneName", sceneNameIVT, sceneName)
-NewVariable(sceneNameIV)
-
 activatedPanels = 0
+finalTriggerAvailable = false
 
 function Update(dt)
-    if (activatedPanels == 3) then
-		gameObject:ChangeScene(true, sceneName)
+    if (activatedPanels == 3 and canContinue == false) then
+        finalTriggerAvailable = true
+        DispatchGlobalEvent("FinalTrigger_Available", {})
 	end
 end
 

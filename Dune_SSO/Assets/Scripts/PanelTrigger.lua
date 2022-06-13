@@ -1,5 +1,7 @@
+hasTriggered = false
+
 function Start()
-	hasTriggered = false
+	particleGO = gameObject:GetChildren()[1]
 end
 
 ------------------ Collisions --------------------
@@ -7,6 +9,7 @@ function OnTriggerEnter(go)
 	if (go.tag == Tag.PLAYER and hasTriggered == false) then
 		hasTriggered = true
 		DispatchGlobalEvent("Panel_Activated", {})
+		particleGO:GetComponentParticle():StopParticleSpawn()
 	end
 end
 --------------------------------------------------
