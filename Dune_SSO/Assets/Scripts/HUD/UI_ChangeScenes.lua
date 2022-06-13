@@ -14,12 +14,14 @@ function Update(dt)
 end
 
 function UpdateUI(dt)
-	if (gameObject.active == true) then
-		if (gameObject:GetButton():IsPressed() == true) then
-			gameObject:ChangeScene(true, name)
-			ToggleRuntime()
-		end
-	end
+    if (gameObject.active == true) then
+        if (gameObject:GetButton():IsPressed() == true) then
+            gameObject:ChangeScene(true, name)
+            if (GetRuntimeState() == RuntimeState.PAUSED) then
+                ToggleRuntime()
+            end
+        end
+    end
 end
 
 print("UI_ChangeScenes.lua compiled succesfully")

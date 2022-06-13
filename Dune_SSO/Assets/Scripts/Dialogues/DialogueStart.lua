@@ -6,9 +6,10 @@ NewVariable(idIV)
 triggered = false
 
 function Start()
-    if (not triggered and GetVariable("GameState.lua", "triggerDialogues", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) ==
+    if (GetVariable("GameState.lua", "level_progression", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) ~= 0) then
+        DeleteGameObject()
+    elseif (not triggered and GetVariable("GameState.lua", "triggerDialogues", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL) ==
         true) then
         DispatchGlobalEvent("DialogueTriggered", {id, nil, gameObject:GetUID()})
-        DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
     end
 end

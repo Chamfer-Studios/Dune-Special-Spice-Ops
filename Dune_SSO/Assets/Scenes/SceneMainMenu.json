@@ -524,8 +524,8 @@
                     {
                         "active": true,
                         "async": false,
-                        "file_name": "Assets/Scripts/HUD/UI_ChangeScenes.lua",
-                        "id": 1348187397,
+                        "file_name": "Assets/Scripts/HUD/UI_NewGame.lua",
+                        "id": 1836158283,
                         "inspector_variables": [
                             {
                                 "name": "name",

@@ -10,6 +10,10 @@ deadAllyPenalization = 2000
 particleActive = false
 gameOverTime = 5
 
+reset_game = false
+
+level_progression = 0
+
 zhib_hp = 4
 zhib_primary_level = 0
 zhib_secondary_level = 0
@@ -57,7 +61,6 @@ function Start()
     characters = {Find("Zhib"), Find("Nerala"), Find("Omozra")}
     characterSelectedParticle = Find("Selected Particle")
 
-    isStarting = true
     LoadGame()
 end
 
@@ -288,10 +291,15 @@ function EventHandler(key, fields)
             omozraAvailable = true
         end
         -- Make Sure it is done when unlocking characters (checkpoints)
+        level_progression = levelNumber
         SaveGame()
     elseif key == "Last_Checkpoint" then -- fields[1] -> if it has to load
         if (fields[1] == true) then
-            LoadGame()
+            Log("RECEIVING CHECKPOINT: level Num is: " .. levelNumber .. " | level Prog: " .. level_progression .. " \n")
+            if (level_progression == levelNumber) then
+                LoadGame()
+                Log("LOADING CHECKPOINT \n")
+            end
         end
     end
 end
@@ -338,6 +346,14 @@ end
 
 function LoadGame()
     LoadGameState()
+
+    reset_game = GetGameJsonBool("reset")
+    if (reset_game == true) then
+        LoadDefaultGame()
+        return
+    end
+
+    level_progression = GetGameJsonInt("level_progression")
 
     keyJson = "gameobjects_to_delete_lvl" .. levelNumber
     SizeToDelete = GetGameJsonArraySize(keyJson)
@@ -424,7 +440,112 @@ function LoadGame()
         neralaAvailable = true
         omozraAvailable = true
     end
+end
 
+function LoadDefaultGame()
+    LoadGameStateDefault()
+
+    level_progression = 0
+
+    spiceAmount = startingSpiceAmount
+
+    -- Zhib
+    zhib_hp = 4
+
+    zhib_primary_level = 0
+    zhib_secondary_level = 0
+    zhib_ultimate_level = 0
+    zhib_passive_level = 0
+
+    zhibPos = float3.new(-1567.0, 0.0, 876.0)
+
+    DispatchGlobalEvent("Update_Zhib_State",
+        {zhibPos.x, zhibPos.y, zhibPos.z, zhib_primary_level, zhib_secondary_level, zhib_ultimate_level,
+         zhib_passive_level, zhib_hp})
+
+    -- Nerala
+    nerala_hp = 3
+
+    nerala_primary_level = 0
+    nerala_secondary_level = 0
+    nerala_ultimate_level = 0
+    nerala_passive_level = 0
+
+    neralaPos = float3.new(-1404.0, 0.0, -1817.0)
+
+    DispatchGlobalEvent("Update_Nerala_State",
+        {neralaPos.x, neralaPos.y, neralaPos.z, nerala_primary_level, nerala_secondary_level, nerala_ultimate_level,
+         nerala_passive_level, nerala_hp})
+
+    -- Omozra
+    omozra_hp = 3
+    omozra_charges = 6
+
+    omozra_primary_level = 0
+    omozra_secondary_level = 0
+    omozra_ultimate_level = 0
+    omozra_passive_level = 0
+
+    omozraPos = float3.new(-331.0, 0.0, 637.0)
+
+    DispatchGlobalEvent("Update_Omozra_State",
+        {omozraPos.x, omozraPos.y, omozraPos.z, omozra_primary_level, omozra_secondary_level, omozra_ultimate_level,
+         omozra_passive_level, omozra_hp, omozra_charges})
+
+    if (levelNumber == 1) then
+
+        zhibAvailable = true
+
+        neralaAvailable = false
+        DispatchEvent("Disable_Character", {2})
+
+        omozraAvailable = false
+        DispatchEvent("Disable_Character", {3})
+
+    elseif (levelNumber == 2) then
+        zhib_available = true
+        neralaAvailable = true
+        omozraAvailable = true
+    end
+
+    SaveDefaultGame()
+end
+
+function SaveDefaultGame()
+
+    reset_game = false
+    SetGameJsonBool("reset", reset_game)
+
+    ClearGameJsonArray("gameobjects_to_delete_lvl1")
+    ClearGameJsonArray("gameobjects_to_delete_lvl2")
+    
+    SetGameJsonInt("level_progression", level_progression)
+
+    SetGameJsonInt("spice", spiceAmount)
+
+    -- Zhib Save
+    SetGameJsonBool("zhib_available", zhibAvailable)
+    SetGameJsonInt("zhib_hp", zhib_hp)
+
+    keyJson = "zhib_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, zhibPos)
+
+    -- Nerala Save
+    SetGameJsonBool("nerala_available", neralaAvailable)
+    SetGameJsonInt("nerala_hp", nerala_hp)
+
+    keyJson = "nerala_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, neralaPos)
+
+    -- Omozra Save
+    SetGameJsonBool("omozra_available", omozraAvailable)
+    SetGameJsonInt("omozra_hp", omozra_hp)
+    SetGameJsonInt("omozra_charges", omozra_charges)
+
+    keyJson = "omozra_pos_lvl" .. levelNumber
+    SetGameJsonFloat3(keyJson, omozraPos)
+
+    SaveGameState()
 end
 
 print("GameState.lua compiled successfully!")

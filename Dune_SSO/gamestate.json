@@ -35,14 +35,15 @@
     "omozra_primary_level": 0,
     "omozra_secondary_level": 0,
     "omozra_ultimate_level": 0,
+    "reset": false,
     "spice": 0,
     "zhib_available": true,
     "zhib_hp": 4,
     "zhib_passive_level": 0,
     "zhib_pos_lvl1": [
-        -1567,
+        -1567.0,
         0.0,
-        876
+        876.0
     ],
     "zhib_pos_lvl2": [
         1704.609,
