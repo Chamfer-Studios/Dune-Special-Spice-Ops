@@ -1,20 +1,14 @@
 {
-    "gameobjects_to_delete_lvl1": [
-        637598436,
-        1945372473,
-        825478752,
-        18777998,
-        1170426410
-    ],
+    "gameobjects_to_delete_lvl1": [],
     "gameobjects_to_delete_lvl2": [],
-    "level_progression": 1,
-    "nerala_available": true,
+    "level_progression": 0,
+    "nerala_available": false,
     "nerala_hp": 3,
     "nerala_passive_level": 0,
     "nerala_pos_lvl1": [
-        -1371.5052490234375,
+        -1404.0,
         0.0,
-        -1773.8431396484375
+        -1817.0
     ],
     "nerala_pos_lvl2": [
         1757.45,
@@ -41,14 +35,14 @@
     "omozra_primary_level": 0,
     "omozra_secondary_level": 0,
     "omozra_ultimate_level": 0,
-    "spice": 2000,
+    "spice": 0,
     "zhib_available": true,
     "zhib_hp": 4,
     "zhib_passive_level": 0,
     "zhib_pos_lvl1": [
-        -1508.6495361328125,
+        -1567,
         0.0,
-        626.6134643554688
+        876
     ],
     "zhib_pos_lvl2": [
         1704.609,
