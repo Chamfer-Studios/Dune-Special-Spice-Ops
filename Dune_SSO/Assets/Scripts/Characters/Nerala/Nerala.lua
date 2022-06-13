@@ -185,6 +185,8 @@ unlocked = false;
 
 function Start()
 
+    SetOutlineThickness(40)
+
     -- Components
     componentRigidBody = gameObject:GetRigidBody()
     componentBoxCollider = gameObject:GetBoxCollider()
@@ -1294,6 +1296,7 @@ function EventHandler(key, fields)
         if (fields[1] == characterID) then
             -- If nerala is being changed
             CancelAbilities(true)
+            SetRenderOutline(false)
         end
         if (fields[2] == characterID) then
             DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -1305,6 +1308,7 @@ function EventHandler(key, fields)
             DispatchGlobalEvent("Player_Ability",
                 {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Nerala: Ultimate = " .. abilities.AbilityUltimate .. "\n")
+            SetRenderOutline(true)
         end
     elseif (key == "Mosquito_Death") then
         ChangeTrack({12})

@@ -163,6 +163,8 @@ smokebombFlag = false
 
 function Start()
 
+    SetOutlineThickness(40)
+
     -- Components
     componentRigidBody = gameObject:GetRigidBody()
     componentBoxCollider = gameObject:GetBoxCollider()
@@ -990,7 +992,7 @@ function CastPrimary()
                     componentAnimator:SetSelectedClip("Point")
                     StopMovement(false)
 
-                    ChangeTrack({7,8,9})
+                    ChangeTrack({7, 8, 9})
 
                     if (target ~= gameObject) then
                         LookAtTarget(target:GetTransform():GetPosition())
@@ -1061,7 +1063,7 @@ function CastSecondary()
                 componentAnimator:SetSelectedClip("Point")
                 StopMovement(false)
 
-                ChangeTrack({7,8,9})
+                ChangeTrack({7, 8, 9})
 
                 LookAtTarget(target:GetTransform():GetPosition())
             end
@@ -1141,7 +1143,7 @@ function CastUltimate()
 
                 LookAtTarget(target:GetTransform():GetPosition())
 
-                ChangeTrack({7,8,9})
+                ChangeTrack({7, 8, 9})
             end
         else
             if (footstepsParticle ~= nil) then
@@ -1205,7 +1207,7 @@ function RecastUltimate(isAlreadyCasted)
 
             LookAtTarget(target)
 
-            ChangeTrack({7,8,9})
+            ChangeTrack({7, 8, 9})
 
             ultimateTimer = 0.0
             abilities.AbilityUltimate = AbilityStatus.Cooldown
@@ -1253,7 +1255,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        ChangeTrack({3,4,5})
+        ChangeTrack({3, 4, 5})
     else
         currentHP = 0
         Log("Omozra: Dying\n")
@@ -1310,6 +1312,7 @@ function EventHandler(key, fields)
         if (fields[1] == characterID) then
             -- If omozra is being changed
             CancelAbilities(true)
+            SetRenderOutline(false)
         end
         if (fields[2] == characterID) then
             DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
@@ -1322,6 +1325,7 @@ function EventHandler(key, fields)
                 {characterID, Ability.Ultimate, abilities.AbilityUltimate, ultimateTimer})
             -- Log("Omozra: Ultimate = " .. abilities.AbilityUltimate .. "\n")
             DispatchGlobalEvent("Omozra_Charges", {currentCharges, maxCharges})
+            SetRenderOutline(true)
         end
     elseif (key == "Dialogue_Opened") then
         isDialogueOpen = true
