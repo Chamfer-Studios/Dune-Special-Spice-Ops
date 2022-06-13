@@ -386,11 +386,19 @@
     },
     {
       "id": 65,
-      "targetID": -1,
+      "targetID": 66,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
       "line1": "First of all we need to find the three computer panels, turn them off.     ",
       "line2": "Then find the main button to shut down the cities shields.                 "
+    },
+    {
+      "id": 66,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/logo_dialogs.png",
+      "char": "             ",
+      "line1": "In this level, you might need a bird's view to move around the building    ",
+      "line2": "You can toggle it by pressing R                                            "
     }
   ]
 }
