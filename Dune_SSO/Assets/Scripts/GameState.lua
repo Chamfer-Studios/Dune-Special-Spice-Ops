@@ -295,10 +295,9 @@ function EventHandler(key, fields)
         SaveGame()
     elseif key == "Last_Checkpoint" then -- fields[1] -> if it has to load
         if (fields[1] == true) then
-            Log("RECEIVING CHECKPOINT: level Num is: " .. levelNumber .. " | level Prog: " .. level_progression .. " \n")
             if (level_progression == levelNumber) then
-                LoadGame()
-                Log("LOADING CHECKPOINT \n")
+                local name = "SceneLoadingLevel1"
+                gameObject:ChangeScene(true, name)
             end
         end
     end
@@ -420,10 +419,7 @@ function LoadGame()
 
     if (levelNumber == 1) then
 
-        zhibAvailable = GetGameJsonBool("zhib_available")
-        if (zhibAvailable == false) then
-            DispatchEvent("Disable_Character", {1})
-        end
+        zhibAvailable = true
 
         neralaAvailable = GetGameJsonBool("nerala_available")
         if (neralaAvailable == false) then
@@ -518,7 +514,7 @@ function SaveDefaultGame()
 
     ClearGameJsonArray("gameobjects_to_delete_lvl1")
     ClearGameJsonArray("gameobjects_to_delete_lvl2")
-    
+
     SetGameJsonInt("level_progression", level_progression)
 
     SetGameJsonInt("spice", spiceAmount)
