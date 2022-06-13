@@ -152,13 +152,13 @@ function Update(dt)
     local lastFinalPos = componentTransform:GetPosition()
     -- input: mouse wheel to zoom in and out
     -- local?
-    if (GetMouseZ() > 0) then
+    if (GetMouseZ() > 110) then
         local deltaY = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
         Log(tostring(deltaY) .. "\n")
         newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
         newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
         newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-    elseif (GetMouseZ() < 0) then
+    elseif (GetMouseZ() < 110) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
         Log(tostring(deltaY) .. "\n")
         newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
@@ -245,10 +245,10 @@ function Update(dt)
 
     -- end
     if (GetInput(43) == KEY_STATE.KEY_DOWN) then -- SPACE
-        if(isEagleView == true) then
+        if (isEagleView == true) then
             return
         end
-       
+
         freePanningDebug = not freePanningDebug
         if freePanningDebug == true then
             GetSelectedCharacter()
@@ -346,7 +346,8 @@ function Update(dt)
 
     if Float3Angle(Float3Difference(target, newPos), Float3Difference(target, finalPos)) > math.rad(90) then
         front = Float3Normalized(gameObject:GetCamera():GetFront())
-        finalPos = float3.new(finalPos.x - front.x * zoomSpeed, finalPos.y - front.y * zoomSpeed, finalPos.z - front.z * zoomSpeed)
+        finalPos = float3.new(finalPos.x - front.x * zoomSpeed, finalPos.y - front.y * zoomSpeed,
+            finalPos.z - front.z * zoomSpeed)
         newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
         newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
         newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
@@ -428,7 +429,7 @@ function GetSelectedCharacter()
 
 end
 
-function CleanCulling() 
+function CleanCulling()
 
     for j = 1, #rayCastCulling do
         rayCastCulling[j].active = true
