@@ -16,12 +16,24 @@ NewVariable(omozraMustIV)
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
-    local currentLevel = GetVariable("Gamestate.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    local currentLevel = GetVariable("GameState.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+    Log("In level: " .. currentLevel .. "\n")
     if currentLevel == 1 then
         local neralaAvailable = GetVariable("GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+        if neralaAvailable == true then
+            Log("Nerala unlocked: True")
+        else
+            Log("Nerala unlocked: False")
+        end
         local omozraAvailable = GetVariable("GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+        if neralaAvailable == true then
+            Log("Omozra unlocked: True")
+        else
+            Log("Omozra unlocked: False")
+        end
         if neralaAvailable == true and omozraAvailable == true then
             if (go.tag == Tag.PLAYER) then
+                Log("Changing scene!\n")
                 gameObject:ChangeScene(true, sceneName);
             end
         end
