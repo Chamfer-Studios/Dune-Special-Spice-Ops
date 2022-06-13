@@ -586,7 +586,7 @@ function DrawHoverParticle()
     if (isSelected == true) then
         local drawingTarget = GetGameObjectHovered()
         local finalPosition
-        if ((currentState == Sta or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
+        if ((currentState == State.ATTACK or currentState == State.AIM_PRIMARY or currentState == State.AIM_SECONDARY or
             currentState == State.AIM_ULTIMATE) and target ~= nil) then
             if (target.x == nil) then
                 t = target:GetTransform():GetPosition()
@@ -1224,7 +1224,7 @@ function TakeDamage(damage)
 
         DispatchGlobalEvent("Player_Health", {characterID, currentHP, maxHP})
 
-        ChangeTrack({3,4,5})
+        ChangeTrack({3, 4, 5})
     else
         currentHP = 0
         Log("Nerala: Dying\n")
@@ -1241,9 +1241,7 @@ function Die()
         componentAnimator:SetSelectedClip("Death")
     end
 
-
     ChangeTrack({6})
-
 
     SetVariable(0, "GameState.lua", "gameOverTimer", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
 end
