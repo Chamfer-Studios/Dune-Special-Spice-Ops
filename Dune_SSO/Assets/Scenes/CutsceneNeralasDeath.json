@@ -2,7 +2,7 @@
     "CutsceneNeralasDeath": {
         "active": true,
         "draw_skybox": true,
-        "game_objects_amount": 33,
+        "game_objects_amount": 36,
         "game_objects_list": [
             {
                 "UID": 1588352491,
@@ -231,7 +231,48 @@
                 "tag": 0
             },
             {
-                "UID": 479328241,
+                "UID": 543581396,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "logicalSize": [
+                            1920.0,
+                            1080.0
+                        ],
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 13
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": true,
+                "name": "PressThings",
+                "parent_UID": 1843548128,
+                "tag": 0
+            },
+            {
+                "UID": 1723543482,
                 "active": true,
                 "components": [
                     {
@@ -246,8 +287,8 @@
                             0.5
                         ],
                         "position": [
-                            645.0,
-                            474.0
+                            735.0,
+                            490.0
                         ],
                         "rotation": [
                             0.0,
@@ -255,8 +296,8 @@
                             0.0
                         ],
                         "size": [
-                            533.0,
-                            83.0
+                            330.0,
+                            28.0
                         ],
                         "type": 22
                     },
@@ -270,17 +311,192 @@
                         ],
                         "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
                         "type": 16,
-                        "value": "Press enter to skip"
+                        "value": "PRESS SPACE TO CONTINUE"
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "SkipText",
+                "name": "SkipText (1)",
+                "parent_UID": 543581396,
+                "tag": 0
+            },
+            {
+                "UID": 2024500550,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            762.0,
+                            452.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            276.0,
+                            27.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "PRESS ENTER TO SKIP"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text (2)",
+                "parent_UID": 543581396,
+                "tag": 0
+            },
+            {
+                "UID": 85944820,
+                "active": true,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -388.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            2217.0,
+                            307.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/New UI/cutscene_text_background.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Image (1)",
                 "parent_UID": 1843548128,
                 "tag": 0
             },
             {
-                "UID": 1379037672,
+                "UID": 1491421809,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.0,
+                            0.0
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text1",
+                "parent_UID": 1843548128,
+                "tag": 0
+            },
+            {
+                "UID": 838092274,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            -139.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text1Part1",
+                "parent_UID": 1491421809,
+                "tag": 0
+            },
+            {
+                "UID": 1547482658,
                 "active": false,
                 "components": [
                     {
@@ -325,53 +541,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text",
-                "parent_UID": 935936089,
+                "parent_UID": 838092274,
                 "tag": 0
             },
             {
-                "UID": 282872236,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.0,
-                            0.0
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text1",
-                "parent_UID": 1843548128,
-                "tag": 0
-            },
-            {
-                "UID": 270048376,
+                "UID": 183046275,
                 "active": false,
                 "components": [
                     {
@@ -416,501 +590,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text5",
-                "parent_UID": 935936089,
+                "parent_UID": 838092274,
                 "tag": 0
             },
             {
-                "UID": 752630075,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.0,
-                            0.0
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text2",
-                "parent_UID": 1843548128,
-                "tag": 0
-            },
-            {
-                "UID": 2056582413,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            850.0,
-                            20.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1800.0,
-                            60.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "In a furious rage Nerala lunges forward, ignoring Zhib’s advice. "
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text8",
-                "parent_UID": 707661581,
-                "tag": 0
-            },
-            {
-                "UID": 935936089,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            -139.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text1Part1",
-                "parent_UID": 282872236,
-                "tag": 0
-            },
-            {
-                "UID": 707661581,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text2Part1",
-                "parent_UID": 752630075,
-                "tag": 0
-            },
-            {
-                "UID": 1104294419,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.0,
-                            0.0
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text3",
-                "parent_UID": 1843548128,
-                "tag": 0
-            },
-            {
-                "UID": 1366170406,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text3Part1",
-                "parent_UID": 1104294419,
-                "tag": 0
-            },
-            {
-                "UID": 1614696372,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            14.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text3Part2",
-                "parent_UID": 1104294419,
-                "tag": 0
-            },
-            {
-                "UID": 60770564,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            850.0,
-                            20.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1800.0,
-                            60.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "Rabaan turns and catches her before the attack lands and laughs at the trio."
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text15",
-                "parent_UID": 1366170406,
-                "tag": 0
-            },
-            {
-                "UID": 1732236741,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            675.0,
-                            100.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1506.0,
-                            60.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "Rabban - “I am the Rabban,the Beast!!, you can't enter my"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text18",
-                "parent_UID": 1614696372,
-                "tag": 0
-            },
-            {
-                "UID": 1667496935,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            842.0,
-                            40.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1313.0,
-                            60.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "place and toy with my facility. You will die for this,"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text19",
-                "parent_UID": 1614696372,
-                "tag": 0
-            },
-            {
-                "UID": 1235969954,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 6,
-                        "pivot": [
-                            0.014999999664723873,
-                            0.0
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text4",
-                "parent_UID": 1843548128,
-                "tag": 0
-            },
-            {
-                "UID": 236053647,
+                "UID": 696750477,
                 "active": false,
                 "components": [
                     {
@@ -955,11 +639,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text25",
-                "parent_UID": 935936089,
+                "parent_UID": 838092274,
                 "tag": 0
             },
             {
-                "UID": 314417589,
+                "UID": 1104340781,
                 "active": false,
                 "components": [
                     {
@@ -968,14 +652,14 @@
                     },
                     {
                         "active": true,
-                        "anchor": 4,
+                        "anchor": 6,
                         "pivot": [
-                            0.5,
-                            0.5
+                            0.014999999664723873,
+                            0.0
                         ],
                         "position": [
-                            583.0,
-                            -20.0
+                            0.0,
+                            0.0
                         ],
                         "rotation": [
                             0.0,
@@ -983,32 +667,25 @@
                             0.0
                         ],
                         "size": [
-                            800.0,
-                            60.0
+                            200.0,
+                            200.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "just like your beloved Sannara!\""
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Text10",
-                "parent_UID": 1614696372,
+                "name": "Text4",
+                "parent_UID": 1491421809,
                 "tag": 0
             },
             {
-                "UID": 1023480165,
+                "UID": 579177780,
                 "active": false,
                 "components": [
                     {
@@ -1046,137 +723,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text4Part1",
-                "parent_UID": 1235969954,
+                "parent_UID": 1104340781,
                 "tag": 0
             },
             {
-                "UID": 1838784075,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text4Part2",
-                "parent_UID": 1235969954,
-                "tag": 0
-            },
-            {
-                "UID": 467895668,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text4Part3",
-                "parent_UID": 1235969954,
-                "tag": 0
-            },
-            {
-                "UID": 706156448,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            0.0,
-                            0.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            200.0,
-                            200.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
-                        "type": 14
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text4Part4",
-                "parent_UID": 1235969954,
-                "tag": 0
-            },
-            {
-                "UID": 88412870,
+                "UID": 241924257,
                 "active": false,
                 "components": [
                     {
@@ -1221,11 +772,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text11",
-                "parent_UID": 1023480165,
+                "parent_UID": 579177780,
                 "tag": 0
             },
             {
-                "UID": 704289968,
+                "UID": 294453176,
                 "active": false,
                 "components": [
                     {
@@ -1270,11 +821,53 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text12",
-                "parent_UID": 1023480165,
+                "parent_UID": 579177780,
                 "tag": 0
             },
             {
-                "UID": 2025233824,
+                "UID": 245672034,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text4Part2",
+                "parent_UID": 1104340781,
+                "tag": 0
+            },
+            {
+                "UID": 1324215803,
                 "active": false,
                 "components": [
                     {
@@ -1319,11 +912,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text13",
-                "parent_UID": 1838784075,
+                "parent_UID": 245672034,
                 "tag": 0
             },
             {
-                "UID": 1470249625,
+                "UID": 1755454953,
                 "active": false,
                 "components": [
                     {
@@ -1368,11 +961,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text14",
-                "parent_UID": 1838784075,
+                "parent_UID": 245672034,
                 "tag": 0
             },
             {
-                "UID": 996289742,
+                "UID": 1087448396,
                 "active": false,
                 "components": [
                     {
@@ -1387,8 +980,8 @@
                             0.5
                         ],
                         "position": [
-                            850.0,
-                            40.0
+                            0.0,
+                            0.0
                         ],
                         "rotation": [
                             0.0,
@@ -1396,81 +989,25 @@
                             0.0
                         ],
                         "size": [
-                            1800.0,
-                            60.0
+                            200.0,
+                            200.0
                         ],
                         "type": 22
                     },
                     {
                         "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "Rabban - No... is not possible... No! What have you done to me!"
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
                     }
                 ],
                 "is3D": false,
                 "isPrefab": false,
-                "name": "Text27",
-                "parent_UID": 706156448,
+                "name": "Text4Part3",
+                "parent_UID": 1104340781,
                 "tag": 0
             },
             {
-                "UID": 1113813329,
-                "active": false,
-                "components": [
-                    {
-                        "active": true,
-                        "type": 23
-                    },
-                    {
-                        "active": true,
-                        "anchor": 4,
-                        "pivot": [
-                            0.5,
-                            0.5
-                        ],
-                        "position": [
-                            706.0,
-                            -20.0
-                        ],
-                        "rotation": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "size": [
-                            1000.0,
-                            60.0
-                        ],
-                        "type": 22
-                    },
-                    {
-                        "active": true,
-                        "color": [
-                            255,
-                            255,
-                            255,
-                            255
-                        ],
-                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
-                        "type": 16,
-                        "value": "You are nothing more than insects!!!"
-                    }
-                ],
-                "is3D": false,
-                "isPrefab": false,
-                "name": "Text28",
-                "parent_UID": 706156448,
-                "tag": 0
-            },
-            {
-                "UID": 1310768786,
+                "UID": 961970478,
                 "active": false,
                 "components": [
                     {
@@ -1515,11 +1052,11 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text29",
-                "parent_UID": 467895668,
+                "parent_UID": 1087448396,
                 "tag": 0
             },
             {
-                "UID": 864091045,
+                "UID": 1921633496,
                 "active": false,
                 "components": [
                     {
@@ -1564,7 +1101,602 @@
                 "is3D": false,
                 "isPrefab": false,
                 "name": "Text (1)",
-                "parent_UID": 467895668,
+                "parent_UID": 1087448396,
+                "tag": 0
+            },
+            {
+                "UID": 2109384210,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text4Part4",
+                "parent_UID": 1104340781,
+                "tag": 0
+            },
+            {
+                "UID": 1897673753,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            850.0,
+                            40.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1800.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "Rabban - No... is not possible... No! What have you done to me!"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text27",
+                "parent_UID": 2109384210,
+                "tag": 0
+            },
+            {
+                "UID": 455426879,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            706.0,
+                            -20.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1000.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "You are nothing more than insects!!!"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text28",
+                "parent_UID": 2109384210,
+                "tag": 0
+            },
+            {
+                "UID": 1826178551,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.0,
+                            0.0
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text2",
+                "parent_UID": 1843548128,
+                "tag": 0
+            },
+            {
+                "UID": 2079531377,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text2Part1",
+                "parent_UID": 1826178551,
+                "tag": 0
+            },
+            {
+                "UID": 285064635,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            850.0,
+                            20.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1800.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "In a furious rage Nerala lunges forward, ignoring Zhib’s advice. "
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text8",
+                "parent_UID": 2079531377,
+                "tag": 0
+            },
+            {
+                "UID": 1588571408,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 6,
+                        "pivot": [
+                            0.0,
+                            0.0
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text3",
+                "parent_UID": 1843548128,
+                "tag": 0
+            },
+            {
+                "UID": 963258132,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text3Part1",
+                "parent_UID": 1588571408,
+                "tag": 0
+            },
+            {
+                "UID": 1733306563,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            850.0,
+                            20.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1800.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "Rabaan turns and catches her before the attack lands and laughs at the trio."
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text15",
+                "parent_UID": 963258132,
+                "tag": 0
+            },
+            {
+                "UID": 987646752,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            0.0,
+                            14.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            200.0,
+                            200.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                        "type": 14
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text3Part2",
+                "parent_UID": 1588571408,
+                "tag": 0
+            },
+            {
+                "UID": 1541711838,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            675.0,
+                            100.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1506.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "Rabban - “I am the Rabban,the Beast!!, you can't enter my"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text18",
+                "parent_UID": 987646752,
+                "tag": 0
+            },
+            {
+                "UID": 2139712691,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            842.0,
+                            40.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            1313.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "place and toy with my facility. You will die for this,"
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text19",
+                "parent_UID": 987646752,
+                "tag": 0
+            },
+            {
+                "UID": 144151368,
+                "active": false,
+                "components": [
+                    {
+                        "active": true,
+                        "type": 23
+                    },
+                    {
+                        "active": true,
+                        "anchor": 4,
+                        "pivot": [
+                            0.5,
+                            0.5
+                        ],
+                        "position": [
+                            583.0,
+                            -20.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "size": [
+                            800.0,
+                            60.0
+                        ],
+                        "type": 22
+                    },
+                    {
+                        "active": true,
+                        "color": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                        "type": 16,
+                        "value": "just like your beloved Sannara!\""
+                    }
+                ],
+                "is3D": false,
+                "isPrefab": false,
+                "name": "Text10",
+                "parent_UID": 987646752,
                 "tag": 0
             }
         ],

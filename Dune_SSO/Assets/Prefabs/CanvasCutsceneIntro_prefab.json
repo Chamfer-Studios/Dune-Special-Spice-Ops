@@ -1,0 +1,1553 @@
+{
+    "active": true,
+    "children": [
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "It is the year 10193 in Arrakis.  This deserted planet is the only source of spice,  the key"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "to space travel, that has been found. War between the Atreides, who took on the"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text5",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "planetary fief by order of the emperor, and the Harkonnen,previous rulers of Arrakis."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (1)",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text1Part1",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5049999952316284,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "This war has shaken the infinite dunes of the planet, and has resulted in the near"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text6",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "annihilation of the Atreides and reinstated the tyranny of the Harkonnen."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text7",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "The Fremen, the true inhabitants of the planet, now face the Harkonnen alone."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (2)",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text1Part2",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text1",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [
+                {
+                    "active": true,
+                    "children": [
+                        {
+                            "active": true,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "One of the only Fremen cities that escaped the Harkonnen control is Sannara,"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text8",
+                            "tag": 0
+                        },
+                        {
+                            "active": true,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "which location remains hidden by mirages, something that was about to change..."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text9",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text2Part1",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text2",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "The current ruler of Arrakis, the tyrant Glossu Rabaan Harkonnen, the Beast,"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text15",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "was made aware of the possible loation of Sannara. Immediately establishing a camp"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text16",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "near the locaton he was ready to sieze the opportunity, the beast was ready for a bloodbth."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text17",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text3Part1",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        634.0,
+                                        48.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1423.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "He had established a perimeter around the rock formation where Sannara"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text18",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        709.0,
+                                        0.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1570.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "was established and had complete vision of the mirages that hid the Sietch."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text19",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text3Part2",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text3",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "The only ones capable of stopping this threat were the group of warriors that"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text20",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "form the spearhead from Sannara: Nerala, fiercest hunter in Arrakis, Omozra, "
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text21",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "master of worms, and their head, Zhib, son of Zhiffat, blade of the desert."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text22",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text4Part1",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "Nerala was sent on a reconnaissance mission and reported that Rabban had made a mistake.  He was"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text23",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "there, in the camp, at her reach, and she was going to end the bloodshed right then and there."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text24",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        600.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "She was going to kill him."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (3)",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text4Part2",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "Fearing the dangers of this improvised mission, Zhib and Omozra decided to go after her"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (4)",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        80.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        250.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "to stop her."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (5)",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text4Part3",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.014999999664723873,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text4",
+            "tag": 0
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "anchor": 4,
+            "logicalSize": [
+                1920.0,
+                1080.0
+            ],
+            "pivot": [
+                0.5,
+                0.5
+            ],
+            "position": [
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "size": [
+                200.0,
+                200.0
+            ],
+            "type": 13
+        }
+    ],
+    "is3D": false,
+    "isPrefab": true,
+    "name": "CanvasCutsceneIntro",
+    "tag": 0
+}

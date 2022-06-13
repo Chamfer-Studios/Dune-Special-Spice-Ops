@@ -1,0 +1,137 @@
+{
+    "active": true,
+    "children": [
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 4,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        735.0,
+                        490.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        330.0,
+                        28.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "color": [
+                        255,
+                        255,
+                        255,
+                        255
+                    ],
+                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                    "type": 16,
+                    "value": "PRESS SPACE TO CONTINUE"
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "SkipText",
+            "tag": 0
+        },
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 4,
+                    "pivot": [
+                        0.5,
+                        0.5
+                    ],
+                    "position": [
+                        762.0,
+                        452.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        276.0,
+                        27.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "color": [
+                        255,
+                        255,
+                        255,
+                        255
+                    ],
+                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                    "type": 16,
+                    "value": "PRESS ENTER TO SKIP"
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text (2)",
+            "tag": 0
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "anchor": 4,
+            "logicalSize": [
+                1920.0,
+                1080.0
+            ],
+            "pivot": [
+                0.5,
+                0.5
+            ],
+            "position": [
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "size": [
+                200.0,
+                200.0
+            ],
+            "type": 13
+        }
+    ],
+    "is3D": false,
+    "isPrefab": true,
+    "name": "PressThings",
+    "tag": 0
+}

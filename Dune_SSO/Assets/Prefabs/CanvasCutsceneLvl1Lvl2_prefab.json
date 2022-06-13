@@ -1,0 +1,1265 @@
+{
+    "active": true,
+    "children": [
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        100.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "Their dread continued to grow as they rushed to Zhib’s Thopter,"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "Rabban intelligence rivals that of a worm, so the fact that"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text55",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "they fell into a trap plotted by him made it the more infuriating."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text25",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text1Part1",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text1",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "The flames coming from Sannara light Zhib, Omozra and Nerala’s hearts"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text7",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 4,
+                                    "pivot": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        850.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "with anger and sorrow. Sannara had been destroyed, they had failed. "
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text26",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text2Part1",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text2",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "As they looked back at their lost home, a message from a so called Muad’dib"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text18",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        600.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "arrived to the thopter."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text (1)",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                14.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text4Part1",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text4",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "He introduced himself as the leader of a rebellion against the harkonnen. Secluded"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text37",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "in their Sietch, the news hadn’t reached them, but this ignited their hope and will of revenge."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text38",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text5Part1",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "He had heard of them and of the destruction of the legendary city. He knew he could trust "
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text43",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1800.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "them with the most important mission of all: to take down the shields and Rabaan with them."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text44",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text5Part2",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text5",
+            "tag": 0
+        },
+        {
+            "active": false,
+            "children": [
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1499.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "All of them knew doing this mission was a death wish, but"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text49",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1563.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "nevertheless Paul trusted them, and they had nothing else to lose."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text50",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text6Part1",
+                    "tag": 0
+                },
+                {
+                    "active": false,
+                    "children": [
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        40.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1583.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "With a newborn alliance, Zhib, Nerala and Omozra headed into"
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text51",
+                            "tag": 0
+                        },
+                        {
+                            "active": false,
+                            "children": [],
+                            "components": [
+                                {
+                                    "active": true,
+                                    "type": 23
+                                },
+                                {
+                                    "active": true,
+                                    "anchor": 3,
+                                    "pivot": [
+                                        0.0,
+                                        0.5
+                                    ],
+                                    "position": [
+                                        50.0,
+                                        -20.0
+                                    ],
+                                    "rotation": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "size": [
+                                        1730.0,
+                                        60.0
+                                    ],
+                                    "type": 22
+                                },
+                                {
+                                    "active": true,
+                                    "color": [
+                                        255,
+                                        255,
+                                        255,
+                                        255
+                                    ],
+                                    "fontPath": "Assets/Fonts/Inter/Inter-Regular.otf",
+                                    "type": 16,
+                                    "value": "Rabban’s base of operations, location of the shield’s generators."
+                                }
+                            ],
+                            "is3D": false,
+                            "isPrefab": false,
+                            "name": "Text52",
+                            "tag": 0
+                        }
+                    ],
+                    "components": [
+                        {
+                            "active": true,
+                            "type": 23
+                        },
+                        {
+                            "active": true,
+                            "anchor": 4,
+                            "pivot": [
+                                0.5,
+                                0.5
+                            ],
+                            "position": [
+                                0.0,
+                                0.0
+                            ],
+                            "rotation": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "size": [
+                                200.0,
+                                200.0
+                            ],
+                            "type": 22
+                        },
+                        {
+                            "active": true,
+                            "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                            "type": 14
+                        }
+                    ],
+                    "is3D": false,
+                    "isPrefab": false,
+                    "name": "Text6Part2",
+                    "tag": 0
+                }
+            ],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "anchor": 6,
+                    "pivot": [
+                        0.0,
+                        0.0
+                    ],
+                    "position": [
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "size": [
+                        200.0,
+                        200.0
+                    ],
+                    "type": 22
+                },
+                {
+                    "active": true,
+                    "texture": "Assets/UI/HUD/blank_asset_v1.0.png",
+                    "type": 14
+                }
+            ],
+            "is3D": false,
+            "isPrefab": false,
+            "name": "Text6",
+            "tag": 0
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "anchor": 4,
+            "logicalSize": [
+                1920.0,
+                1080.0
+            ],
+            "pivot": [
+                0.5,
+                0.5
+            ],
+            "position": [
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "size": [
+                200.0,
+                200.0
+            ],
+            "type": 13
+        }
+    ],
+    "is3D": false,
+    "isPrefab": true,
+    "name": "CanvasCutsceneLvl1Lvl2",
+    "tag": 0
+}
