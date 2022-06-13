@@ -74,7 +74,7 @@
     },
     {
       "id": 8,
-      "targetID": 9,
+      "targetID": -1,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "Zhib's second ability is a Decoy.                                   ",
@@ -117,7 +117,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
-      "line1": "But be carefull, enemies should not detect it or it will be destroyed.",
+      "line1": "But be careful, enemies should not detect it or it will be destroyed.",
       "line2": " "
     },
     {
