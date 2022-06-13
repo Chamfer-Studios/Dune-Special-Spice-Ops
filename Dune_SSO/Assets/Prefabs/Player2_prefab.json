@@ -215,7 +215,7 @@
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Generic/generic_sand_steps_fx.wav",
                             "transpose": 1.0,
-                            "volume": 100.0
+                            "volume": 50.0
                         },
                         {
                             "bypass": false,
@@ -228,7 +228,7 @@
                             "play_on_start": false,
                             "track_path": "Assets/Audio/SFX/Generic/generic_sand_run_fx.wav",
                             "transpose": 1.0,
-                            "volume": 100.0
+                            "volume": 50.0
                         },
                         {
                             "bypass": false,
@@ -626,7 +626,7 @@
                                                                     ],
                                                                     "rotation": [
                                                                         0.013312622904777527,
-                                                                        0.006830336060374975,
+                                                                        0.00683033699169755,
                                                                         -0.07146187126636505,
                                                                         0.9973311424255371
                                                                     ],
@@ -1403,12 +1403,12 @@
                                                                                                     ],
                                                                                                     "rotation": [
                                                                                                         0.1800972819328308,
-                                                                                                        -0.0006507083890028298,
-                                                                                                        -0.0005635633715428412,
+                                                                                                        -0.0006507087964564562,
+                                                                                                        -0.000563563487958163,
                                                                                                         0.983648419380188
                                                                                                     ],
                                                                                                     "scale": [
-                                                                                                        0.9999034404754639,
+                                                                                                        0.9999032020568848,
                                                                                                         1.0,
                                                                                                         0.9999999403953552
                                                                                                     ],
