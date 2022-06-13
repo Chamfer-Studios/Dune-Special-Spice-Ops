@@ -149,9 +149,9 @@ function Update(dt)
             end
             -- F7
         elseif (GetInput(77) == KEY_STATE.KEY_DOWN) then
-            if (GetRuntimeState() == RuntimeState.PAUSED) then
-                ToggleRuntime()
-            end
+            -- if (GetRuntimeState() == RuntimeState.PAUSED) then
+            --     ToggleRuntime()
+            -- end
             gameObject:ChangeScene(true, "CutsceneNeralasDeath")
             -- F8
         elseif (GetInput(78) == KEY_STATE.KEY_DOWN) then
