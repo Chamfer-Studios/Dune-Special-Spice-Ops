@@ -9,9 +9,9 @@
         {
             "active": true,
             "position": [
-                0.0,
-                0.0,
-                0.0
+                47.557003021240234,
+                1.5888309478759766,
+                23.840383529663086
             ],
             "rotation": [
                 0.0,
@@ -57,6 +57,7 @@
         },
         {
             "active": true,
+            "async": false,
             "file_name": "Assets/Scripts/Characters/Nerala/Smokebomb.lua",
             "id": 1465207712,
             "type": 5
@@ -101,22 +102,22 @@
             "ambientValue": 0.0,
             "castShadows": false,
             "constantAttenuationValue": 0.0,
-            "cutOffAngle": 1.0,
-            "diffuseValue": 0.20000000298023224,
+            "cutOffAngle": -1.0,
+            "diffuseValue": 0.10000000149011612,
             "lightColor": [
                 0.0,
                 1.0,
                 0.0
             ],
             "lightDirection": [
-                1.0,
                 0.0,
+                -1.0,
                 0.0
             ],
             "lightPosition": [
-                0.0,
-                0.0,
-                0.0
+                47.557003021240234,
+                1.5888309478759766,
+                23.840383529663086
             ],
             "linearAttenuationValue": 0.0,
             "quadraticAttenuationValue": 0.0,
