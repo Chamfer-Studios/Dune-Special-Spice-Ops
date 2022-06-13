@@ -1,12 +1,6 @@
-sceneName = "default_level"
-
-local sceneNameIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_STRING
-sceneNameIV = InspectorVariable.new("sceneName", sceneNameIVT, sceneName)
-NewVariable(sceneNameIV)
-
-function EventHandler(key, fields)
-    if (key == "FinalTrigger_Available") then
-        gameObject:ChangeScene(true, sceneName)
+function OnTriggerEnter()
+    if GetVariable("QuestsManagerLvl2.lua", "terminalCount", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT) >= 3 then
+        gameObject:ChangeScene(true, "CursceneFinal")
     end
 end
 
