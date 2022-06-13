@@ -204,7 +204,7 @@
     },
     {
       "id": 41,
-      "description1": "Range: 12->14.                                          ",
+      "description1": "Stamina 5->6.                                          ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
@@ -213,7 +213,7 @@
     },
     {
       "id": 42,
-      "description1": "Increases overall chances of hitting enemies.        ",
+      "description1": "Sprint Bonus 33%->44%.        ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
@@ -222,7 +222,7 @@
     },
     {
       "id": 43,
-      "description1": "Visual Debuff: 0->25%.                               ",
+      "description1": "Crouch Decrease 40%-30%.                               ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
@@ -312,7 +312,7 @@
     },
     {
       "id": 81,
-      "description1": "Range: 15->17.5.                                     ",
+      "description1": "Stamina 3->5.                                     ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
@@ -321,8 +321,8 @@
     },
     {
       "id": 82,
-      "description1": "Range: 17.5->20.                                     ",
-      "description2": " ",
+      "description1": "Sound Range: 12->14.                                     ",
+      "description2": "Attack Time 10.5->8                                      ",
       "description3": " ",
       "description4": " ",
       "description5": " ",
@@ -330,7 +330,7 @@
     },
     {
       "id": 83,
-      "description1": "Corpses Needed: 6->5.                                   ",
+      "description1": "Crouch Decrease 37%->25%.                                   ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
@@ -429,7 +429,7 @@
     },
     {
       "id": 1032,
-      "description1": "Sprint Speed: 133->144%.                                  ",
+      "description1": "Sprint Speed: 33%->44%.                                  ",
       "description2": " ",
       "description3": " ",
       "description4": " ",
