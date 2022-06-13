@@ -5,18 +5,10 @@ function Start()
     -- gameobjUID = gameObject:GetUID()
 end
 
-function OnTriggerEnter(go)
-    -- Only nerala
-    if(triggered == false) then
-       triggered = true
-       DispatchGlobalEvent("Eagle_View_Camera", {}) 
+function Update(dt)
+    if (GetInput(10) == KEY_STATE.KEY_DOWN) then -- R
+        DispatchGlobalEvent("Eagle_View_Camera", {}) 
     end
-
-    if(go.tag ~= Tag.PLAYER) then
-        Log("Not Player")
-    end
-
 end
-
 
 

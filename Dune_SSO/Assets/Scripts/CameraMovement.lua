@@ -154,18 +154,16 @@ function Update(dt)
     -- local?
     if (GetMouseZ() > 0) then
         local deltaY = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
-        if math.abs(deltaY) < 350 then
-            newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
-            newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
-            newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-        end
+        Log(tostring(deltaY) .. "\n")
+        newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
+        newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
+        newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
     elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
-        if math.abs(deltaY) < 350 then
-            newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
-            newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
-            newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
-        end
+        Log(tostring(deltaY) .. "\n")
+        newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
+        newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
+        newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
     end
 
     if (GetInput(16) == KEY_STATE.KEY_REPEAT) then -- W --HAY UN KEY REPEAT
@@ -346,6 +344,14 @@ function Update(dt)
     finalPos.y = newPos.y + newZoomedPos.y
     finalPos.z = newPos.z + newZoomedPos.z
 
+    if Float3Angle(Float3Difference(target, newPos), Float3Difference(target, finalPos)) > math.rad(90) then
+        front = Float3Normalized(gameObject:GetCamera():GetFront())
+        finalPos = float3.new(finalPos.x - front.x * zoomSpeed, finalPos.y - front.y * zoomSpeed, finalPos.z - front.z * zoomSpeed)
+        newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
+        newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
+        newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
+    end
+
     componentTransform:SetPosition(finalPos)
 
     gameObject:GetCamera():LookAt(target)
@@ -374,11 +380,18 @@ function EventHandler(key, fields) -- funcion virtual que recibe todos los event
     elseif (key == "Mosquito_Death") then
         mosquito = nil
     elseif (key == "Eagle_View_Camera") then
-        isEagleView = true
-        Log("eagle view!")
-        freePanningDebug = false
-        offset = float3.new(0, 300, 10)
-        CleanCulling()
+        if isEagleView == false then
+            isEagleView = true
+            Log("eagle view!")
+            offset = float3.new(0, 300, 10)
+            CleanCulling()
+        else
+            isEagleView = false
+            Log("off eagle view!")
+            offset = float3.new(0, 240, 270)
+            newZoomedPos = float3.new(0, 99, 112)
+            CleanCulling()
+        end
     end
 end
 
