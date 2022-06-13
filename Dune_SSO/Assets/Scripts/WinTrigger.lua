@@ -8,8 +8,8 @@ NewVariable(sceneNameIV)
 function OnTriggerEnter(go)
     local currentLevel = GetVariable("Gamestate.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
     if currentLevel == 1 then
-        local neralaAvailable = GetVariable("Gamestate.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-        local omozraAvailable = GetVariable("Gamestate.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        local neralaAvailable = GetVariable("Gamestate.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+        local omozraAvailable = GetVariable("Gamestate.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
         if neralaAvailable == true and omozraAvailable == true then
             if (go.tag == Tag.PLAYER) then
                 gameObject:ChangeScene(true, sceneName);
