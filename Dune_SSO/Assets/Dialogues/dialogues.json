@@ -13,12 +13,12 @@
       "targetID": 3,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
-      "line1": "You can move by right clicking where you want to go.                ",
-      "line2": "You can run by double clicking but only for a short period of time. "
+      "line1": "You can move by right-clicking where you want to go.                ",
+      "line2": "You can run by double-clicking but only for a short period of time. "
     },
     {
       "id": 3,
-      "targetID":45,
+      "targetID": 45,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "The camera will automatically follow the selected character.",
@@ -29,8 +29,8 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
-      "line1": "In that mode you can move it with dragging the mouse to the corner  ",
-      "line2": "of the screen or with WASD. To rotate it, use Q and E.              "
+      "line1": "In free mode you can move it with dragging the mouse to the corner  ",
+      "line2": "of the screen or with WASD. To rotate it, use Q/E or the mouse wheel."
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "Spice is used to cast and, later on, upgrade your abilities.        ",
-      "line2": "Your character will automatically pick it if you move close to it.  "
+      "line2": "Your character will automatically pick it up if you move close to it."
     },
     {
       "id": 5,
@@ -77,7 +77,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
-      "line1": "Zhib's second ability is a Decoy.                                   ",
+      "line1": "Zhib's second ability is a decoy.                                   ",
       "line2": "You can throw it to attract enemies.                                "
     },
     {
@@ -94,7 +94,7 @@
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "Nerala's first ability is a sleeping dart.                          ",
-      "line2": "Enemies under its effects will have a harder time detecting you.    "
+      "line2": "Enemies under its effects will have a harder time hearing you.      "
     },
     {
       "id": 11,
@@ -102,7 +102,7 @@
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "Nerala's second ability is a smoke bomb.                            ",
-      "line2": "Enemies will not detect you inside the smoke.                       "
+      "line2": "Enemies will not see you inside the smoke.                       "
     },
     {
       "id": 12,
@@ -165,7 +165,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "There are sounds of a struggle going on coming from there.          ",
+      "line1": "There are sounds of a struggle coming from there.                   ",
       "line2": "That could be Nerala!                                               "
     },
     {
@@ -190,7 +190,7 @@
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
       "line1": "This is unacceptable, you can't put the sietch in danger because of an outburst",
-      "line2": "of bravery. This can not be overlooked Nerala, not at a time like this."
+      "line2": "of bravery. This cannot be overlooked Nerala, not at a time like this."
     },
     {
       "id": 26,
@@ -229,7 +229,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "Hmm, that must be the camp entrance, come on, follow me, Omozra shouldn't be",
+      "line1": "Hmm, that must be the camp's' entrance, come on, follow me, Omozra shouldn't be",
       "line2": "too far from here, and I dont belive he would be so naive as to enter alone"
     },
     {
@@ -237,7 +237,7 @@
       "targetID": 32,
       "src": "Assets/UI/HUD/Portraits/rabban_icon.png",
       "char": "Rabban           ",
-      "line1": "I thought that after all those attacks, your kind you would be a force",
+      "line1": "I thought that after all those attacks, your kind would be a force         ",
       "line2": "to be reckoned. But you are nothing more than insects. Rats trying to steal"
     },
     {
@@ -261,7 +261,7 @@
       "targetID": 34,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "No... It's a trap! Make haste! we are in serious problems. We should have ",
+      "line1": "No... It's a trap! Make haste! We are in serious problems. We should have ",
       "line2": "thought about this, now due to our own stupidity we led them straight to our home."
     },
     {
@@ -277,7 +277,7 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "Probably yes. Or maybe they spoted us instead, while we were searching",
+      "line1": "Probably yes. Or maybe they spotted us instead, while we were searching",
       "line2": "for you. It may be too late now. Get to the thopter!                "
     },
     {
@@ -301,7 +301,7 @@
       "targetID": 39,
       "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
       "char": "Omozra           ",
-      "line1": "How have you have you been brother? Ah, Nerala, glad you are still alive.     ",
+      "line1": "How have you been brother? Ah, Nerala, glad you are still alive.     ",
       "line2": "Did you cause a mess as always?                                               "
     },
     {
@@ -325,8 +325,8 @@
       "targetID": 42,
       "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
       "char": "Omozra           ",
-      "line1": "You passed through a camp entrance that was heavily guarded on your way here, no? ",
-      "line2": "Well, Sadiq tells me that The Beast is there, preparing his ship to leave somewhere."
+      "line1": "You passed through a camp entrance that was heavily guarded on your way here, right? ",
+      "line2": "Well, Sadiq told me that The Beast is there, preparing his ship to leave somewhere."
     },
     {
       "id": 42,
@@ -342,14 +342,14 @@
       "src": "Assets/UI/HUD/logo_dialogs.png",
       "char": " ",
       "line1": "You just unlocked the final character! Omozra is now available.          ",
-      "line2": "You can press the C key to select him.                                   "
+      "line2": "You can press C to select him.                                   "
     },
     {
       "id": 60,
       "targetID": 61,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "We are finally here, lets find Rabban in this hideous place and    ",
+      "line1": "We are finally here, let's find Rabban in this hideous place and    ",
       "line2": "make him pay for his sins.                                         "
     },
     {
@@ -358,7 +358,7 @@
       "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
       "char": "Omozra           ",
       "line1": "I finally found a place to call home and these filthy outsiders with    ",
-      "line2": "their search for power and greed took everything from us, they shall pay"
+      "line2": "their search for power and greed took everything from us, they shall pay."
     },
     {
       "id": 62,
@@ -389,8 +389,8 @@
       "targetID": -1,
       "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
       "char": "Zhib             ",
-      "line1": "First of all, we need to find the three computer panels, turn them off.    ",
-      "line2": "Then find the main buttom to shut down the cities shields.                 "
+      "line1": "First of all we need to find the three computer panels, turn them off.     ",
+      "line2": "Then find the main button to shut down the cities shields.                 "
     }
   ]
 }
