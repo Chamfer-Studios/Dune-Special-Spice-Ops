@@ -1136,7 +1136,7 @@ end
 
 function AnyPlayerInRange()
     for i = 1, #players do
-        if (math.abs(Float3Distance(players[i]:GetTransform():GetPosition(), componentTransform:GetPosition())) <= 500) then
+        if (math.abs(Float3Distance(players[i]:GetTransform():GetPosition(), componentTransform:GetPosition())) <= 900) then
             return true
         end
     end
