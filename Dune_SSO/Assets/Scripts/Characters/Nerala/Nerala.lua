@@ -95,8 +95,8 @@ aggroChanceSardDart = 0
 
 -- Secondary ability --
 secondaryCastRange = 200
-secondaryEffectRadius = 50
-secondaryDuration = 5
+secondaryEffectRadius = 70
+secondaryDuration = 9
 maxSmokeBombCount = 3
 smokeBombCount = maxSmokeBombCount
 smokebombActive = false
@@ -255,6 +255,7 @@ function Update(dt)
         if (smokebombPosition == nil) then
             DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
         elseif (Distance3D(componentTransform:GetPosition(), smokebombPosition) > smokebombRadius) then
+            -- Log("Nerala out of smokebomb\n")
             DispatchGlobalEvent("Player_Position", {componentTransform:GetPosition(), gameObject})
         end
     end
@@ -434,13 +435,13 @@ function Update(dt)
 
         -- To Keep Making Walk/Run Sound After Pickup
         if (currentMovement == Movement.WALK and currentTrackID == 2) then
-            if(componentSwitch:IsAnyTrackPlaying() == false) then
+            if (componentSwitch:IsAnyTrackPlaying() == false) then
                 ChangeTrack({0})
             end
         end
 
         if (currentMovement == Movement.RUN and currentTrackID == 2) then
-            if(componentSwitch:IsAnyTrackPlaying() == false) then
+            if (componentSwitch:IsAnyTrackPlaying() == false) then
                 ChangeTrack({1})
             end
         end
@@ -1401,9 +1402,9 @@ function EventHandler(key, fields)
 
         if (fields[5] == 1) then
             secondaryCastRange = 265
-            secondaryEffectRadius = 60
+            secondaryEffectRadius = 100
         elseif (fields[5] == 2) then
-            secondaryDuration = 7
+            secondaryDuration = 10
         elseif (fields[5] == 3) then
             maxSmokeBombCount = 5
             smokeBombCount = maxSmokeBombCount

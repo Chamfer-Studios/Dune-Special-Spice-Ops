@@ -833,7 +833,7 @@ function ClearPerceptionMemory()
 end
 
 function Die(leaveBody, enemyName)
-    DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetUID()})
+    DispatchGlobalEvent("Enemy_Defeated", {gameObject:GetParent():GetUID()})
 
     if (leaveBody == false) then
         do

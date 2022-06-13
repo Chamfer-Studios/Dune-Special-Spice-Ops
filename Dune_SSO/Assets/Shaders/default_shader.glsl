@@ -60,7 +60,7 @@ void main() {
 
 const int MAX_DIR_LIGHTS = 32;
 const int MAX_POINT_LIGHTS = 32;
-const int MAX_FOCAL_LIGHTS = 32; 
+const int MAX_FOCAL_LIGHTS = 64; 
 
 in vec4 ourColor;
 in vec2 TexCoord;
