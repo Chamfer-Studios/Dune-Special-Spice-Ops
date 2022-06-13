@@ -135,6 +135,7 @@ function Update(dt)
                 Log("I am not god:(\n")
                 GodMode = false
             end
+            -- F4
         elseif (GetInput(74) == KEY_STATE.KEY_DOWN) then
             if (triggerDialogues == false) then
                 Log("I am triggering dialogues\n")
@@ -142,6 +143,36 @@ function Update(dt)
             elseif (triggerDialogues == true) then
                 Log("I am not triggering dialogues :(\n")
                 triggerDialogues = false
+            end
+            -- F8
+        elseif (GetInput(78) == KEY_STATE.KEY_DOWN) then
+            if neralaAvailable == true then
+                if (characterSelected == 2) then
+                    DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 2 to 0
+                    characterSelected = 0
+                    neralaAvailable = false
+                else
+                    neralaAvailable = false
+                end
+                Log("Nerala is not available\n")
+            else
+                Log("Nerala is available\n")
+                neralaAvailable = true
+            end
+            -- F9
+        elseif (GetInput(79) == KEY_STATE.KEY_DOWN) then
+            if omozraAvailable == true then
+                if (characterSelected == 3) then
+                    DispatchGlobalEvent("Changed_Character", {characterSelected, 0}) -- From character 3 to 0
+                    characterSelected = 0
+                    omozraAvailable = false
+                else
+                    omozraAvailable = false
+                end
+                Log("Omozra is not available\n")
+            else
+                Log("Omozra is available\n")
+                omozraAvailable = true
             end
         end
         if (characterSelected ~= 0) then

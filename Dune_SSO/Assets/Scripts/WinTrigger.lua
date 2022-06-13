@@ -4,37 +4,34 @@ local sceneNameIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_STRING
 sceneNameIV = InspectorVariable.new("sceneName", sceneNameIVT, sceneName)
 NewVariable(sceneNameIV)
 
-neralaMust = true
-local neralaMustIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
-neralaMustIV = InspectorVariable.new("neralaMust", neralaMustIVT, neralaMust)
-NewVariable(neralaMustIV)
-
-omozraMust = true
-local omozraMustIVT = INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL
-omozraMustIV = InspectorVariable.new("omozraMust", omozraMustIVT, omozraMust)
-NewVariable(omozraMustIV)
+triggered = false
 
 ------------------ Collisions --------------------
 function OnTriggerEnter(go)
-    local currentLevel = GetVariable("GameState.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
-    Log("In level: " .. currentLevel .. "\n")
-    if currentLevel == 1 then
-        local neralaAvailable = GetVariable("GameState.lua", "neralaAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
-        if neralaAvailable == true then
-            Log("Nerala unlocked: True")
-        else
-            Log("Nerala unlocked: False")
-        end
-        local omozraAvailable = GetVariable("GameState.lua", "omozraAvailable", INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
-        if neralaAvailable == true then
-            Log("Omozra unlocked: True")
-        else
-            Log("Omozra unlocked: False")
-        end
-        if neralaAvailable == true and omozraAvailable == true then
-            if (go.tag == Tag.PLAYER) then
-                Log("Changing scene!\n")
-                gameObject:ChangeScene(true, sceneName);
+    if triggered == false then
+        local currentLevel = GetVariable("GameState.lua", "levelNumber", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT)
+        Log("In level: " .. currentLevel .. "\n")
+        if currentLevel == 1 then
+            local neralaAvailable = GetVariable("GameState.lua", "neralaAvailable",
+                INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+            if neralaAvailable == true then
+                Log("Nerala unlocked: True\n")
+            else
+                Log("Nerala unlocked: False\n")
+            end
+            local omozraAvailable = GetVariable("GameState.lua", "omozraAvailable",
+                INSPECTOR_VARIABLE_TYPE.INSPECTOR_BOOL)
+            if omozraAvailable == true then
+                Log("Omozra unlocked: True\n")
+            else
+                Log("Omozra unlocked: False\n")
+            end
+            if neralaAvailable == true and omozraAvailable == true then
+                if (go.tag == Tag.PLAYER) then
+                    Log("Changing scene!\n")
+                    triggered = true
+                    gameObject:ChangeScene(true, sceneName);
+                end
             end
         end
     end
