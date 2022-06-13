@@ -750,14 +750,14 @@ function ManageTimers(dt)
     end
 
     -- Secondary ability cooldown
-    if (secondaryTimer ~= nil) then
-        secondaryTimer = secondaryTimer + dt
-        if (secondaryTimer >= secondaryCooldown) then
-            secondaryTimer = nil
-            abilities.AbilitySecondary = AbilityStatus.Normal
-            DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
-        end
-    end
+    -- if (secondaryTimer ~= nil) then
+    --     secondaryTimer = secondaryTimer + dt
+    --     if (secondaryTimer >= secondaryCooldown) then
+    --         secondaryTimer = nil
+    --         abilities.AbilitySecondary = AbilityStatus.Normal
+    --         DispatchGlobalEvent("Player_Ability", {characterID, Ability.Secondary, abilities.AbilitySecondary})
+    --     end
+    -- end
 
     -- Ultimate ability cooldown
     if (ultimateTimer ~= nil) then
