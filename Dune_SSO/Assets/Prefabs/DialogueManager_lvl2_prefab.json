@@ -1,0 +1,90 @@
+{
+    "active": true,
+    "children": [
+        {
+            "active": true,
+            "children": [],
+            "components": [
+                {
+                    "active": true,
+                    "type": 23
+                },
+                {
+                    "active": true,
+                    "position": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "rotation": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.0
+                    ],
+                    "scale": [
+                        1.0,
+                        1.0,
+                        1.0
+                    ],
+                    "type": 21
+                },
+                {
+                    "active": true,
+                    "async": false,
+                    "file_name": "Assets/Scripts/Dialogues/DialogueStart.lua",
+                    "id": 455555275,
+                    "inspector_variables": [
+                        {
+                            "name": "id",
+                            "type": "int",
+                            "value": 60
+                        }
+                    ],
+                    "type": 5
+                }
+            ],
+            "is3D": true,
+            "isPrefab": false,
+            "name": "DialogueAndTutoStart",
+            "tag": 0
+        }
+    ],
+    "components": [
+        {
+            "active": true,
+            "type": 23
+        },
+        {
+            "active": true,
+            "position": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "type": 21
+        },
+        {
+            "active": true,
+            "async": false,
+            "file_name": "Assets/Scripts/Dialogues/DialogueManager.lua",
+            "id": 379520983,
+            "type": 5
+        }
+    ],
+    "is3D": true,
+    "isPrefab": true,
+    "name": "DialogueManager_lvl2",
+    "tag": 0
+}

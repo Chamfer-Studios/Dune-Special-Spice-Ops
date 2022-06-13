@@ -343,6 +343,54 @@
       "char": " ",
       "line1": "You just unlocked the final character! Omozra is now available.          ",
       "line2": "You can press the C key to select him.                                   "
+    },
+    {
+      "id": 60,
+      "targetID": 61,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": "Zhib             ",
+      "line1": "We are finally here, lets find Rabban in this hideous place and    ",
+      "line2": "make him pay for his sins.                                         "
+    },
+    {
+      "id": 61,
+      "targetID": 62,
+      "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
+      "char": "Omozra           ",
+      "line1": "I finally found a place to call home and these filthy outsiders with    ",
+      "line2": "their search for power and greed took everything from us, they shall pay"
+    },
+    {
+      "id": 62,
+      "targetID": 63,
+      "src": "Assets/UI/HUD/Portraits/nerala_v1.0.png",
+      "char": "Nerala           ",
+      "line1": "This idiotic so called 'Beast' will meet a real monster when I find him ",
+      "line2": "*She starts clenching her fist so hard that blood starts dripping from her palm*"
+    },
+    {
+      "id": 63,
+      "targetID": 64,
+      "src": "Assets/UI/HUD/Portraits/omozra_v1.0.png",
+      "char": "Omozra           ",
+      "line1": "Sister, keep calm, don't do anything you will regret.",
+      "line2": "Anger leads to hate. Hate leads to suffering...       "
+    },
+    {
+      "id": 64,
+      "targetID": 65,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": "Zhib             ",
+      "line1": "We will give them peace, whatever it takes.                              ",
+      "line2": "   "
+    },
+    {
+      "id": 65,
+      "targetID": -1,
+      "src": "Assets/UI/HUD/Portraits/zhib_v1.1.png",
+      "char": "Zhib             ",
+      "line1": "First of all, we need to find the three computer panels, turn them off.    ",
+      "line2": "Then find the main buttom to shut down the cities shields.                 "
     }
   ]
 }
