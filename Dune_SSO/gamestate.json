@@ -35,7 +35,7 @@
     "omozra_primary_level": 0,
     "omozra_secondary_level": 0,
     "omozra_ultimate_level": 0,
-    "spice": 16600,
+    "spice": 10000,
     "zhib_available": true,
     "zhib_hp": 4,
     "zhib_passive_level": 0,
@@ -51,5 +51,5 @@
     ],
     "zhib_primary_level": 0,
     "zhib_secondary_level": 0,
-    "zhib_ultimate_level": 2
+    "zhib_ultimate_level": 0
 }

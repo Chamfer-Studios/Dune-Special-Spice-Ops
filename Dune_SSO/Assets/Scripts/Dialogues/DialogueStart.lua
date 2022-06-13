@@ -7,6 +7,7 @@ triggered = false
 
 function Start()
     if (not triggered) then
-        DispatchGlobalEvent("DialogueTriggered", {id})
+        DispatchGlobalEvent("DialogueTriggered", {id, nil, gameObject:GetUID()})
+        DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
     end
 end

@@ -199,6 +199,9 @@ function EventHandler(key, fields)
     elseif (key == "Enemy_Defeated") then
         keyJson = "gameobjects_to_delete_lvl" .. levelNumber
         AddGameJsonElement(keyJson, fields[1])
+    elseif (key == "DialoguePassed") then
+        keyJson = "gameobjects_to_delete_lvl" .. levelNumber
+        AddGameJsonElement(keyJson, fields[1])
     elseif (key == "Dialogue_Opened") then
         auxGodMode = GodMode
         if (GodMode == false) then
@@ -260,7 +263,7 @@ function SaveGame()
     SetGameJsonInt("spice", spiceAmount)
 
     -- Zhib Save
-    -- SetGameJsonBool("zhib_available", zhibAvailable)
+    SetGameJsonBool("zhib_available", zhibAvailable)
     SetGameJsonInt("zhib_hp", GetVariable("Zhib.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
     zhibPos = GetVariable("Zhib.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
@@ -270,7 +273,7 @@ function SaveGame()
     SetGameJsonFloat3(keyJson, zhibPos)
 
     -- Nerala Save
-    -- SetGameJsonBool("nerala_available", neralaAvailable)
+    SetGameJsonBool("nerala_available", neralaAvailable)
     SetGameJsonInt("nerala_hp", GetVariable("Nerala.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
     neralaPos = GetVariable("Nerala.lua", "gameObject", INSPECTOR_VARIABLE_TYPE.INSPECTOR_GAMEOBJECT)
@@ -280,7 +283,7 @@ function SaveGame()
     SetGameJsonFloat3(keyJson, neralaPos)
 
     -- Omozra Save
-    -- SetGameJsonBool("omozra_available", omozraAvailable)
+    SetGameJsonBool("omozra_available", omozraAvailable)
     SetGameJsonInt("omozra_hp", GetVariable("Omozra.lua", "currentHP", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
     SetGameJsonInt("omozra_charges", GetVariable("Omozra.lua", "currentCharges", INSPECTOR_VARIABLE_TYPE.INSPECTOR_INT))
 
@@ -328,11 +331,6 @@ function LoadGame()
         {zhibPos.x, zhibPos.y, zhibPos.z, zhib_primary_level, zhib_secondary_level, zhib_ultimate_level,
          zhib_passive_level, zhib_hp})
 
-    -- zhibAvailable = GetGameJsonBool("zhib_available")
-    -- if(zhibAvailable == false) then
-    --     DispatchEvent("Disable_Character", {1})
-    -- end
-
     --- Nerala Load
     nerala_primary_level = GetGameJsonInt("nerala_primary_level")
     nerala_secondary_level = GetGameJsonInt("nerala_secondary_level")
@@ -347,11 +345,6 @@ function LoadGame()
     DispatchGlobalEvent("Update_Nerala_State",
         {neralaPos.x, neralaPos.y, neralaPos.z, nerala_primary_level, nerala_secondary_level, nerala_ultimate_level,
          nerala_passive_level, nerala_hp})
-
-    -- neralaAvailable = GetGameJsonBool("nerala_available")
-    -- if(neralaAvailable == false) then
-    --     DispatchEvent("Disable_Character", {2})
-    -- end
 
     --- Omozra Load
     omozra_primary_level = GetGameJsonInt("omozra_primary_level")
@@ -369,10 +362,29 @@ function LoadGame()
         {omozraPos.x, omozraPos.y, omozraPos.z, omozra_primary_level, omozra_secondary_level, omozra_ultimate_level,
          omozra_passive_level, omozra_hp, omozra_charges})
 
-    -- omozraAvailable = GetGameJsonBool("omozra_available")
-    -- if(omozraAvailable == false) then
-    --     DispatchEvent("Disable_Character", {3})
-    -- end
+    if (levelNumber == 1) then
+
+        zhibAvailable = GetGameJsonBool("zhib_available")
+        if (zhibAvailable == false) then
+            DispatchEvent("Disable_Character", {1})
+        end
+
+        neralaAvailable = GetGameJsonBool("nerala_available")
+        if (neralaAvailable == false) then
+            DispatchEvent("Disable_Character", {2})
+        end
+
+        omozraAvailable = GetGameJsonBool("omozra_available")
+        if (omozraAvailable == false) then
+            DispatchEvent("Disable_Character", {3})
+        end
+
+    elseif (levelNumber == 2) then
+        zhib_available = true
+        neralaAvailable = true
+        omozraAvailable = true
+    end
+
 end
 
 print("GameState.lua compiled successfully!")

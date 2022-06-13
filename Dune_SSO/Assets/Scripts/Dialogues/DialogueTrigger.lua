@@ -25,8 +25,11 @@ NewVariable(unlockingOmozraIV)
 
 triggered = false
 
-function OnTriggerEnter(go)
+function Start()
+    --gameobjUID = gameObject:GetUID()
+end
 
+function OnTriggerEnter(go)
     -- Only nerala
     if onlyNerala == true then
         if (triggered == false and go:GetName() == "Nerala") then
@@ -38,6 +41,7 @@ function OnTriggerEnter(go)
             else
                 DispatchGlobalEvent("DialogueTriggered", {id, nil})
             end
+            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
         end
         -- Only omozra
     elseif onlyOmozra == true then
@@ -50,6 +54,7 @@ function OnTriggerEnter(go)
             else
                 DispatchGlobalEvent("DialogueTriggered", {id, nil})
             end
+            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
         end
         -- All
     else
@@ -62,6 +67,7 @@ function OnTriggerEnter(go)
             else
                 DispatchGlobalEvent("DialogueTriggered", {id, nil})
             end
+            DispatchGlobalEvent("DialoguePassed", {gameObject:GetUID()})
         end
     end
 end
