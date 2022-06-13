@@ -93,10 +93,10 @@ aggroChanceSardSecondary = 100
 secondaryChargeCost = 6
 
 -- Ultimate ability --
-ultimateCastRange = 150
+ultimateCastRange = 100
 ultimateCooldown = 2
 ultimateSpiceCost = 1000
-ultimateRecastRange = 100
+ultimateRecastRange = 200
 ---------------------------------------------------------
 
 -------------------- Movement logic ---------------------
