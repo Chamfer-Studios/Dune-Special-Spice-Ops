@@ -152,18 +152,22 @@ function Update(dt)
     local lastFinalPos = componentTransform:GetPosition()
     -- input: mouse wheel to zoom in and out
     -- local?
-    if (GetMouseZ() > 110) then
+    if (GetMouseZ() > 0) then
         local deltaY = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
         Log(tostring(deltaY) .. "\n")
-        newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
-        newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
-        newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
-    elseif (GetMouseZ() < 110) then
+        if math.abs(deltaY) < 110 then
+            newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
+            newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
+            newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
+        end
+    elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
         Log(tostring(deltaY) .. "\n")
-        newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
-        newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
-        newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
+        if math.abs(deltaY) < 110 then
+            newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
+            newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
+            newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
+        end
     end
 
     if (GetInput(16) == KEY_STATE.KEY_REPEAT) then -- W --HAY UN KEY REPEAT
