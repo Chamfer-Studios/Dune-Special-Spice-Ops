@@ -3,8 +3,8 @@ levelNumber = 1
 
 characterSelected = 1
 
-spiceAmount = 1000
-startingSpiceAmount = 1000
+spiceAmount = 0
+startingSpiceAmount = 0
 deadAllyPenalization = 2000
 
 particleActive = false
