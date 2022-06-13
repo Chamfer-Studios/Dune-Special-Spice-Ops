@@ -33,6 +33,8 @@ mouseBottomIn = true
 mouseLeftIn = true
 mouseRightIn = true
 
+isEagleView = false
+
 camSensitivity = 0.2
 lastDeltaX = 0
 -- resetOffset = 1;
@@ -152,14 +154,14 @@ function Update(dt)
     -- local?
     if (GetMouseZ() > 0) then
         local deltaY = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
-        if math.abs(deltaY) < 110 then
+        if math.abs(deltaY) < 350 then
             newZoomedPos.y = newZoomedPos.y + gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x + gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z + gameObject:GetCamera():GetFront().z * zoomSpeed
         end
     elseif (GetMouseZ() < 0) then
         local deltaY = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
-        if math.abs(deltaY) < 110 then
+        if math.abs(deltaY) < 350 then
             newZoomedPos.y = newZoomedPos.y - gameObject:GetCamera():GetFront().y * zoomSpeed
             newZoomedPos.x = newZoomedPos.x - gameObject:GetCamera():GetFront().x * zoomSpeed
             newZoomedPos.z = newZoomedPos.z - gameObject:GetCamera():GetFront().z * zoomSpeed
@@ -245,6 +247,10 @@ function Update(dt)
 
     -- end
     if (GetInput(43) == KEY_STATE.KEY_DOWN) then -- SPACE
+        if(isEagleView == true) then
+            return
+        end
+       
         freePanningDebug = not freePanningDebug
         if freePanningDebug == true then
             GetSelectedCharacter()
@@ -367,6 +373,12 @@ function EventHandler(key, fields) -- funcion virtual que recibe todos los event
         mosquito = fields[1]
     elseif (key == "Mosquito_Death") then
         mosquito = nil
+    elseif (key == "Eagle_View_Camera") then
+        isEagleView = true
+        Log("eagle view!")
+        freePanningDebug = false
+        offset = float3.new(0, 300, 10)
+        CleanCulling()
     end
 end
 
